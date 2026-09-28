@@ -2,8 +2,10 @@
 
 A Devin plugin that reviews pull requests against:
 
-1. **Functional / non-functional requirements** from the Jira ticket linked to the PR (via the Atlassian MCP).
+1. **Functional / non-functional requirements** from the Jira story or epic linked to the PR (via the Atlassian MCP). For an epic, its child stories are included.
 2. **Enterprise standards** stored as Markdown in `skills/enterprise-code-review/standards/`.
+
+It also reviews the requirements themselves and reports gaps (missing, ambiguous or untestable acceptance criteria, unhandled scenarios, missing NFRs) as suggestions for the product owner. The PR summary starts with a plain-language section for non-technical stakeholders; developer detail is collapsed below it.
 
 ## Layout
 ```
@@ -15,7 +17,8 @@ enterprise-review-plugin/
 │       ├── coding-standards.md
 │       ├── approved-libraries.md
 │       ├── tech-stack.md
-│       └── nfr-checklist.md
+│       ├── nfr-checklist.md
+│       └── requirements-quality.md  # applied to the Jira story/epic
 └── templates/REVIEW.md           # optional: copy into target repos for built-in Devin Review
 ```
 
@@ -36,4 +39,4 @@ Customize → Plugins → Add plugin → **From repository**: enter `sri465inno/
 - Manually: start a Devin session with the `!enterprise_review` playbook and a PR URL (optionally a Jira key).
 - Automatically: a Devin Automation on `pull_request` opened / ready_for_review, or a PR comment starting with `/review-reqs`.
 
-The Jira key is taken from the PR title, branch name, or body (pattern `ABC-123`).
+The Jira key (story or epic) is taken from the PR title, branch name, or body (pattern `ABC-123`), or passed explicitly.
