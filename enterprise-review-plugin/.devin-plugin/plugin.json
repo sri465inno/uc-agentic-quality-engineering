@@ -1,0 +1,6 @@
+{
+  "name": "enterprise-review",
+  "displayName": "Enterprise Code Review",
+  "description": "Reviews pull requests against Jira functional/non-functional requirements and enterprise standards (coding standards, approved libraries, tech stack, NFR checklist).",
+  "keywords": ["Code Review", "Quality Engineering"]
+}
