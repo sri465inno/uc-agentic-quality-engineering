@@ -300,8 +300,8 @@ async function viewHome() {
     ['Validate', 'Agents 6–8', 'Real execution, evidence-backed defects and the cycle report.'],
     ['Release', 'Quality evidence', 'A traceable, release-ready report for sign-off.'],
   ];
-  $view.innerHTML = `<section class="hero home-hero"><div class="eyebrow">Agentic QE Platform</div><h1>Engineering Quality at Scale with AI Agents and Human Governance</h1>
-<p>Transform requirements, code, APIs, and business documents into traceable test assets, automated validation, execution intelligence, and release-ready quality evidence, while keeping humans in control of every critical decision.</p>
+  $view.innerHTML = `<section class="hero home-hero"><div class="eyebrow">Quality Engineering at Scale</div><h1>Agentic Quality Engineering Platform</h1>
+<p>Transforming testing and quality assurance with AI-driven automation, continuous validation, and human-in-the-loop governance.</p>
 <div class="hero-cta"><a class="btn" href="#/run?type=baseline">&#9654; Start a baseline</a><a class="btn secondary" href="#/cycles">View cycles</a></div></section>
 <section class="stats">${stats.map(([n, t, d]) => `<div class="stat"><b>${esc(n)}</b><span class="stat-t">${esc(t)}</span><span class="stat-d">${esc(d)}</span></div>`).join('')}</section>
 <section class="lifecycle"><h2>How the platform works</h2><ol>${lifecycle.map(([k, t, d]) => `<li><span class="lc-k">${esc(k)}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join('')}</ol></section>
