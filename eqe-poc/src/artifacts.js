@@ -18,8 +18,8 @@ function stageStatus(run) {
   const g = run.gates || {};
   return [
     g.scope?.status === 'approved' ? 'Approved' : g.scope?.status === 'rejected' ? 'Rejected' : run.stage1 ? 'Awaiting approval' : 'Not started',
-    g.cases?.status === 'approved' ? 'Approved' : run.stage2 ? 'Awaiting review' : 'Locked',
-    g.code?.status === 'approved' ? 'Approved' : run.stage3?.status === 'complete' ? 'Awaiting approval' : run.stage3?.status ? run.stage3.status : 'Locked',
+    g.cases?.status === 'approved' ? 'Approved' : g.cases?.status === 'rejected' ? 'Rejected' : run.stage2 ? 'Awaiting review' : 'Locked',
+    g.code?.status === 'approved' ? 'Approved' : g.code?.status === 'rejected' ? 'Rejected' : run.stage3?.status === 'complete' ? 'Awaiting approval' : run.stage3?.status ? run.stage3.status : 'Locked',
     'Coming soon', 'Coming soon',
   ];
 }
