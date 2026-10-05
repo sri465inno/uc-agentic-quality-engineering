@@ -6,9 +6,12 @@ class Store {
   constructor(dir) { this.dir = dir; this.runsDir = path.join(dir, 'runs'); fs.mkdirSync(this.runsDir, { recursive: true }); }
   runDir(id) { return path.join(this.runsDir, id); }
   artifactsDir(id) { const d = path.join(this.runDir(id), 'artifacts'); fs.mkdirSync(d, { recursive: true }); return d; }
+  /** Reserves the next run ID synchronously by creating its directory, so concurrent creates never share an ID. */
   nextId() {
-    const n = this.list().reduce((m, r) => Math.max(m, Number(r.id.split('-')[1]) || 0), 0) + 1;
-    return `RUN-${n}`;
+    let n = fs.readdirSync(this.runsDir).filter((d) => /^RUN-\d+$/.test(d)).reduce((m, d) => Math.max(m, Number(d.split('-')[1])), 0) + 1;
+    for (;;) {
+      try { fs.mkdirSync(this.runDir(`RUN-${n}`)); return `RUN-${n}`; } catch (e) { if (e.code !== 'EEXIST') throw e; n += 1; }
+    }
   }
   save(run) { fs.mkdirSync(this.runDir(run.id), { recursive: true }); run.updatedAt = new Date().toISOString(); fs.writeFileSync(path.join(this.runDir(run.id), 'run.json'), JSON.stringify(run, null, 2)); return run; }
   get(id) {

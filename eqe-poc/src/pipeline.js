@@ -20,7 +20,22 @@ const now = () => new Date().toISOString();
 class Pipeline {
   constructor({ store, baseURL, runs = 5, env = process.env }) {
     Object.assign(this, { store, baseURL, runsRequired: runs, env });
-    for (const r of store.list()) if (r.stage3?.status === 'running') { r.stage3.status = 'interrupted'; store.save(r); }
+    this.locks = new Map();
+    for (const r of store.list()) {
+      if (r.stage3?.status !== 'running') continue;
+      r.stage3.status = 'interrupted'; r.status = 'ready-for-automation';
+      this.trail(r, 'system', 'system', 'Stage 3 interrupted by server restart', `${r.stage3.runs.length}/${runs} dry runs kept for reference; start Stage 3 again`);
+      store.save(r);
+    }
+  }
+
+  /** Serialises mutations of one run so run.json and its artifacts are never written concurrently. */
+  lock(id, fn) {
+    const prev = this.locks.get(id) || Promise.resolve();
+    const next = prev.catch(() => {}).then(fn);
+    this.locks.set(id, next);
+    next.finally(() => { if (this.locks.get(id) === next) this.locks.delete(id); }).catch(() => {});
+    return next;
   }
 
   async persist(run) { this.store.save(run); await artifacts.writeAll(run, this.store.artifactsDir(run.id)); return run; }
@@ -44,15 +59,15 @@ class Pipeline {
     return this.persist(run);
   }
 
-  async startReview(id, gate, { actor, role } = {}) {
+  async startReview(id, gate, { actor, role } = {}) { return this.lock(id, async () => {
     const run = this.load(id); const g = run.gates[gate] || fail(404, 'Unknown gate');
     if (g.status !== 'pending') fail(409, `${GATES[gate]} is ${g.status}`);
     if (!actor) fail(400, 'Reviewer name is required');
     if (!g.startedAt) { Object.assign(g, { startedAt: now(), actor, role }); this.trail(run, actor, role, `${GATES[gate]} review started`); }
     return this.persist(run);
-  }
+  }); }
 
-  async decide(id, gate, { decision, actor, role, comment = '' } = {}) {
+  async decide(id, gate, { decision, actor, role, comment = '' } = {}) { return this.lock(id, async () => {
     const run = this.load(id); const g = run.gates[gate] || fail(404, 'Unknown gate');
     if (g.status !== 'pending') fail(409, `${GATES[gate]} is ${g.status}`);
     if (!['approved', 'rejected'].includes(decision)) fail(400, 'decision must be approved or rejected');
@@ -78,7 +93,7 @@ class Pipeline {
       run.status = 'complete';
     }
     return this.persist(run);
-  }
+  }); }
 
   compareGolden(run, overrides = {}) {
     for (const epic of run.epics) {
@@ -89,7 +104,7 @@ class Pipeline {
     }
   }
 
-  async replaceGolden(id, set, { actor, role } = {}) {
+  async replaceGolden(id, set, { actor, role } = {}) { return this.lock(id, async () => {
     const run = this.load(id);
     if (!run.stage2) fail(409, 'Stage 2 has not run');
     if (!set || !run.epics.includes(set.epic)) fail(400, `epic must be one of ${run.epics.join(', ')}`);
@@ -99,9 +114,9 @@ class Pipeline {
     this.compareGolden(run, { [set.epic]: set });
     this.trail(run, actor, role, 'Golden set replaced', `${set.epic}: ${set.cases.length} cases`);
     return this.persist(run);
-  }
+  }); }
 
-  async verdict(id, caseId, { verdict, actor, note = '' } = {}) {
+  async verdict(id, caseId, { verdict, actor, note = '' } = {}) { return this.lock(id, async () => {
     const run = this.load(id);
     if (run.gates.cases.status !== 'pending') fail(409, 'Case review is not open');
     if (!run.stage2.cases.some((c) => c.id === caseId)) fail(404, `Unknown case ${caseId}`);
@@ -110,9 +125,9 @@ class Pipeline {
     run.stage2.verdicts[caseId] = { verdict, actor, note, at: now() };
     this.trail(run, actor, 'reviewer', `Case ${caseId} marked ${verdict}`, note);
     return this.persist(run);
-  }
+  }); }
 
-  async startStage3(id, { caseIds, actor = 'Automation engineer' } = {}) {
+  async startStage3(id, { caseIds, actor = 'Automation engineer' } = {}) { return this.lock(id, async () => {
     const run = this.load(id);
     if (run.gates.cases.status !== 'approved') fail(409, 'Stage 2 cases must be approved first');
     if (run.stage3?.status === 'running') fail(409, 'Stage 3 is already running');
@@ -137,20 +152,24 @@ class Pipeline {
     await this.persist(run);
     this.execute(id, dir).catch((e) => console.error('stage3 failed', e));
     return run;
-  }
+  }); }
 
   async execute(id, dir) {
     for (let n = 1; n <= this.runsRequired; n += 1) {
       const result = await stage3.runOnce(dir, this.baseURL, n);
-      const run = this.load(id); run.stage3.runs.push(result); await this.persist(run);
+      await this.lock(id, async () => { const run = this.load(id); run.stage3.runs.push(result); await this.persist(run); });
     }
+    return this.lock(id, async () => {
     const run = this.load(id);
-    run.stage3.status = run.stage3.runs.every((r) => r.tests.length) ? 'complete' : 'error';
+    const ids = run.stage3.caseIds;
+    const allReported = run.stage3.runs.every((r) => ids.every((c) => r.tests.some((t) => t.id === c)));
+    run.stage3.status = allReported ? 'complete' : 'error';
     run.stage3.finishedAt = now();
-    if (run.stage3.status === 'complete') { run.gates.code = { status: 'pending' }; run.status = 'awaiting-code-review'; }
+    if (run.stage3.status === 'complete') { run.gates.code = { status: 'pending' }; run.status = 'awaiting-code-review'; } else run.status = 'ready-for-automation';
     const u2 = metrics.uc2(run);
-    this.trail(run, 'Devin', 'agent', `Stage 3 dry runs ${run.stage3.status}`, `pass rate ${u2.passRate === null ? 'n/a' : Math.round(u2.passRate * 100)}%, flake rate ${u2.flakeRate === null ? 'n/a' : Math.round(u2.flakeRate * 100)}%`);
+    this.trail(run, 'Devin', 'agent', `Stage 3 dry runs ${run.stage3.status}`, `pass rate ${u2.passRate === null ? 'n/a' : Math.round(u2.passRate * 100)}%, flake rate ${u2.flakeRate === null ? 'n/a' : Math.round(u2.flakeRate * 100)}%${u2.missing.length ? `, ${u2.missing.length} missing result(s)` : ''}`);
     await this.persist(run);
+    });
   }
 
   view(run) { return { ...run, metrics: { uc1: metrics.uc1(run), uc2: metrics.uc2(run) }, stages: artifacts.stageStatus(run), artifacts: artifacts.list(this.store.artifactsDir(run.id)) }; }

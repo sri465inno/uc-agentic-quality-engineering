@@ -80,3 +80,31 @@ test('demo-booking server-side validation is authoritative', () => {
   assert.match(validate({ destination: 'Paris', checkIn: d(5), checkOut: d(40), rooms: 1, adults: 2 }).checkOut, /30 nights/);
   assert.match(validate({ destination: 'Paris', checkIn: d(5), checkOut: d(6), rooms: 1, adults: 5 }).adults, /4 adults/);
 });
+
+test('flake rate stays pending when a selected spec is missing from any run', () => {
+  const full = { tests: [{ id: 'a', status: 'passed' }, { id: 'b', status: 'passed' }] };
+  const partial = { n: 3, tests: [{ id: 'a', status: 'passed' }] };
+  const run = { gates: {}, stage3: { caseIds: ['a', 'b'], cases: [{ id: 'a', dataNeeds: [] }, { id: 'b', dataNeeds: [] }], playbookKeys: [], runs: [full, full, partial, full, full] } };
+  const m = metrics.uc2(run);
+  assert.equal(m.flakeRate, null);
+  assert.deepEqual(m.missing, [{ run: 3, id: 'b' }]);
+  assert.equal(m.checks.flakeRate, null);
+});
+
+test('store reserves unique run IDs and restart returns interrupted automation to ready', () => {
+  const fs = require('fs'); const path = require('path');
+  const { Store } = require('../src/store');
+  const { Pipeline } = require('../src/pipeline');
+  fs.mkdirSync(path.join(__dirname, '..', 'data'), { recursive: true });
+  const dir = fs.mkdtempSync(path.join(__dirname, '..', 'data', 'unit-'));
+  try {
+    const store = new Store(dir);
+    const ids = [store.nextId(), store.nextId(), store.nextId()];
+    assert.deepEqual(ids, ['RUN-1', 'RUN-2', 'RUN-3']);
+    store.save({ id: 'RUN-1', status: 'automating', trail: [], stage3: { status: 'running', runs: [{}] } });
+    new Pipeline({ store, baseURL: 'http://x/' });
+    const r = store.get('RUN-1');
+    assert.equal(r.stage3.status, 'interrupted');
+    assert.equal(r.status, 'ready-for-automation');
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});

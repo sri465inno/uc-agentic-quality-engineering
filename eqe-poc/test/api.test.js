@@ -21,6 +21,12 @@ test.before(async () => {
 });
 test.after(() => { server.close(); fs.rmSync(dataDir, { recursive: true, force: true }); });
 
+test('concurrent run creation gets distinct IDs', async () => {
+  const [a, b] = await Promise.all([j('POST', '/api/runs', { epics: ['AQPI-2'] }), j('POST', '/api/runs', { epics: ['AQPI-2'] })]);
+  assert.equal(a.status, 201); assert.equal(b.status, 201);
+  assert.notEqual(a.body.id, b.body.id);
+});
+
 test('full run through the three gates with a 5-run dry run', { timeout: 240000 }, async () => {
   assert.equal((await j('POST', '/api/runs', { epics: ['AQPI-2', 'AQPI-6'] })).status, 409, 'Gate 1 epic limit');
   let r = await j('POST', '/api/runs', { initiative: 'AQPI-1', epics: ['AQPI-2'] });

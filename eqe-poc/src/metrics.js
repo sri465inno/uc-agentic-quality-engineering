@@ -50,13 +50,15 @@ function uc2(run) {
   const ids = Object.keys(tests);
   const flaky = ids.filter((id) => new Set(tests[id].map((s) => (s === 'passed' ? 'p' : 'f'))).size > 1);
   const alwaysFail = ids.filter((id) => tests[id].every((s) => s !== 'passed'));
-  const complete = runs.length >= THRESHOLDS.uc2.runs;
+  const expected = s3.caseIds || s3.cases.map((c) => c.id);
+  const missing = runs.flatMap((r) => expected.filter((id) => !r.tests.some((t) => t.id === id)).map((id) => ({ run: r.n, id })));
+  const complete = runs.length >= THRESHOLDS.uc2.runs && !missing.length;
   const out = {
     ready: true, specs: s3.cases.length, dataNeeds: needs.length, dataMappedCount: mapped.length,
     dataMapped: needs.length ? mapped.length / needs.length : (s3.cases.length ? 1 : null),
     runsCompleted: runs.length, runsRequired: THRESHOLDS.uc2.runs,
     perTest: ids.map((id) => ({ id, statuses: tests[id], flaky: flaky.includes(id), alwaysFail: alwaysFail.includes(id) })),
-    flaky: flaky.length, alwaysFail: alwaysFail.length,
+    flaky: flaky.length, alwaysFail: alwaysFail.length, missing,
     flakeRate: complete && ids.length ? flaky.length / ids.length : null,
     passRate: runs.length ? runs.reduce((n, r) => n + r.tests.filter((t) => t.status === 'passed').length, 0) / runs.reduce((n, r) => n + r.tests.length, 0) : null,
     reviewMinutesTotal: gate.minutes ?? null, reviewMinutesPerSpec: gate.minutes == null ? null : gate.minutes / Math.max(1, s3.cases.length),

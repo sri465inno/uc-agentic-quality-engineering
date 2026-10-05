@@ -35,6 +35,8 @@ All PoC criteria are computed from run data (verdicts, timed gates, Playwright J
 - `golden-set/AQPI-2.golden.json` is a **draft seeded by Devin, pending QE-lead sign-off**. Replace it with the team's
   human-authored cases (file or Compare tab) before using the golden comparison as evidence.
 - `_WORKFLOW.md` is provisional (the original was not available).
+- No authentication: reviewer name and role are self-declared and recorded in the governance trail. Run it only on a
+  trusted network or behind the preview login; add SSO before using gate approvals as audit evidence.
 - Analysis and design are deterministic rules over the Jira text and the framework's UI map (`framework/ui-map.js`), not an LLM call.
 
 ## Layout

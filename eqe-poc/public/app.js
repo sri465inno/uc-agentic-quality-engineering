@@ -66,7 +66,7 @@ function gatePanel(run) {
   const order = ['scope', 'cases', 'code'];
   const key = order.find((k) => run.gates[k].status === 'pending');
   if (!key) {
-    if (run.status === 'ready-for-automation') return `<div class="card gate"><h3>Stage 3 - generate and dry-run Playwright specs</h3><p class="muted">Approved, automatable cases become Playwright TypeScript reusing the demo-booking Page Objects, then run 5 times against demo-booking. Gate 2 allows ${S.meta.scaling.uc2.maxCases} case(s).</p><button class="btn gold" id="s3">Generate specs and run 5 times</button></div>`;
+    if (run.status === 'ready-for-automation') return `<div class="card gate"><h3>Stage 3 - generate and dry-run Playwright specs</h3>${run.stage3 && run.stage3.status !== 'running' ? `<p class="warn">Previous Stage 3 attempt ended as <b>${esc(run.stage3.status)}</b> (${run.stage3.runs.length}/5 runs${run.metrics.uc2.missing?.length ? `, ${run.metrics.uc2.missing.length} missing test result(s)` : ''}). Starting again replaces it.</p>` : ''}<p class="muted">Approved, automatable cases become Playwright TypeScript reusing the demo-booking Page Objects, then run 5 times against demo-booking. Gate 2 allows ${S.meta.scaling.uc2.maxCases} case(s).</p><button class="btn gold" id="s3">${run.stage3 ? 'Retry: generate specs and run 5 times' : 'Generate specs and run 5 times'}</button></div>`;
     if (run.stage3?.status === 'running') return `<div class="card gate"><h3>Stage 3 running</h3><p>${run.stage3.runs.length}/5 dry runs complete...</p></div>`;
     return `<div class="card"><b>Status:</b> ${esc(run.status)}</div>`;
   }
