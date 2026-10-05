@@ -1,0 +1,434 @@
+{
+  "key": "AQPI-10",
+  "id": "17994",
+  "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17994",
+  "_site": "https://tcs-team-ou6drgfr.atlassian.net",
+  "fields": {
+    "summary": "[Epic 3] Personalized Ancillary Offers",
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Parent initiative: ",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "Intelligent Hotel Shopping and Reservation Experience"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Capability summary"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Recommend optional products using seasonality, trip context, and guest interests."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Business value"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Improves relevance and ancillary revenue without obstructing the core booking."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Scope (user stories)"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "5.1 Determine eligible ancillary offers"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "5.2 Display ancillary offers"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "5.3 Explain and control personalization"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Epic acceptance criteria"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "All child user stories meet their acceptance criteria and the Definition of Done."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Negative and error paths for each story are tested and evidenced."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Required logging is in place and verified free of sensitive data."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "The Product Owner has accepted the capability end to end."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Dependencies"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Ancillary inventory"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Rules or recommendation service"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Consent service"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Recommendation and ancillary services"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Consent and preference services"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Indicative size: ",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "26 story points across 3 stories (to be refined by the delivery team)"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Target planning period: ",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "To be agreed at PI / release planning"
+            }
+          ]
+        }
+      ]
+    },
+    "issuetype": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10121",
+      "id": "10121",
+      "description": "Workstreams track a set of related work and activities that work towards a larger deliverable.",
+      "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+      "name": "Workstream",
+      "subtask": false,
+      "avatarId": 10307,
+      "entityId": "4838daea-66de-49f0-899b-2b8c77a6cf9d",
+      "hierarchyLevel": 1
+    },
+    "status": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+      "description": "",
+      "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+      "name": "To Do",
+      "id": "10109",
+      "statusCategory": {
+        "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      }
+    },
+    "priority": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+      "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "labels": [
+      "epic",
+      "epic-03",
+      "hotel-booking"
+    ],
+    "project": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/project/10100",
+      "id": "10100",
+      "key": "AQPI",
+      "name": "Agentic QE Platform Initiative",
+      "projectTypeKey": "business",
+      "simplified": true,
+      "avatarUrls": {
+        "48x48": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+        "24x24": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+        "16x16": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+        "32x32": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+      }
+    },
+    "issuelinks": [
+      {
+        "id": "10002",
+        "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issueLink/10002",
+        "type": {
+          "id": "10003",
+          "name": "Relates",
+          "inward": "relates to",
+          "outward": "relates to",
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issueLinkType/10003"
+        },
+        "outwardIssue": {
+          "id": "17985",
+          "key": "AQPI-1",
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17985",
+          "fields": {
+            "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+            "status": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+              "description": "",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+              "name": "To Do",
+              "id": "10109",
+              "statusCategory": {
+                "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+                "id": 2,
+                "key": "new",
+                "colorName": "blue-gray",
+                "name": "To Do"
+              }
+            },
+            "priority": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+              "name": "Medium",
+              "id": "3"
+            },
+            "issuetype": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10121",
+              "id": "10121",
+              "description": "Workstreams track a set of related work and activities that work towards a larger deliverable.",
+              "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+              "name": "Workstream",
+              "subtask": false,
+              "avatarId": 10307,
+              "entityId": "4838daea-66de-49f0-899b-2b8c77a6cf9d",
+              "hierarchyLevel": 1
+            }
+          }
+        }
+      }
+    ],
+    "duedate": "2026-11-14",
+    "customfield_10015": "2026-10-31"
+  }
+}
