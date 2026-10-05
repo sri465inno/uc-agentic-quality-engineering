@@ -1,0 +1,29 @@
+{
+  "run": 4,
+  "startedAt": "2026-10-05T12:00:43.417Z",
+  "exitCode": 0,
+  "durationMs": 983,
+  "tests": [
+    {
+      "file": "demo-booking/TC-AQPI-2-01.spec.ts",
+      "title": "TC-AQPI-2-01 valid search returns matching available hotels with a search reference",
+      "status": "passed",
+      "durationMs": 303,
+      "error": ""
+    },
+    {
+      "file": "demo-booking/TC-AQPI-2-02.spec.ts",
+      "title": "TC-AQPI-2-02 submitted criteria remain visible and editable on the results page",
+      "status": "passed",
+      "durationMs": 448,
+      "error": ""
+    },
+    {
+      "file": "demo-booking/TC-AQPI-2-06.spec.ts",
+      "title": "TC-AQPI-2-06 no-availability result explains the outcome and allows criteria changes",
+      "status": "passed",
+      "durationMs": 350,
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+case,title,spec,traces,tracesMatch,data,pageObjects,rawLocators,flake
+TC-AQPI-2-01,Valid search returns matching available hotels with a search reference,tests/demo-booking/TC-AQPI-2-01.spec.ts,AQPI-3-AC1,true,search.valid.lisbon,demo-booking/SearchPage; demo-booking/ResultsPage,0,passed; passed; passed; passed; passed
+TC-AQPI-2-02,Submitted criteria remain visible and editable on the results page,tests/demo-booking/TC-AQPI-2-02.spec.ts,AQPI-3-AC2,true,search.valid.lisbon; filter.maxPrice.100,demo-booking/SearchPage; demo-booking/ResultsPage,0,passed; passed; passed; passed; passed
+TC-AQPI-2-06,No-availability result explains the outcome and allows criteria changes,tests/demo-booking/TC-AQPI-2-06.spec.ts,AQPI-3-AC4,true,search.zero.reykjavik; search.valid.rome,demo-booking/SearchPage; demo-booking/ResultsPage,0,passed; passed; passed; passed; passed

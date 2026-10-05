@@ -1,0 +1,147 @@
+{
+  "generatedAt": "2026-10-05T12:02:48.117Z",
+  "app": "demo-booking",
+  "thresholds": [
+    {
+      "metric": "Test data mapped",
+      "target": ">= 85%",
+      "value": 100,
+      "unit": "%",
+      "met": true,
+      "how": "5/5 test-data references of the automated cases resolve to playbook keys used by the spec"
+    },
+    {
+      "metric": "Review time per spec",
+      "target": "< 25 min",
+      "value": null,
+      "unit": "min",
+      "met": null,
+      "how": "Not yet measured: recorded by the code reviewer at gate UC2-CODE-REVIEW"
+    },
+    {
+      "metric": "Flake over 5 runs",
+      "target": "< 5%",
+      "value": 0,
+      "unit": "%",
+      "met": true,
+      "how": "0/15 failed executions over 5 consecutive runs; 0 test(s) with inconsistent outcomes"
+    },
+    {
+      "metric": "Raw locators in specs (G6)",
+      "target": "0",
+      "value": 0,
+      "unit": "",
+      "met": true,
+      "how": "Static check: specs may only use Page Objects"
+    },
+    {
+      "metric": "Human code approval to scale",
+      "target": "approved",
+      "value": "pending",
+      "unit": "",
+      "met": null,
+      "how": "Governance trail gate UC2-GATE-SCALE"
+    }
+  ],
+  "specs": [
+    {
+      "case": "TC-AQPI-2-01",
+      "title": "Valid search returns matching available hotels with a search reference",
+      "spec": "tests/demo-booking/TC-AQPI-2-01.spec.ts",
+      "traces": [
+        "AQPI-3-AC1"
+      ],
+      "tracesMatch": true,
+      "data": [
+        "search.valid.lisbon"
+      ],
+      "pageObjects": [
+        "demo-booking/SearchPage",
+        "demo-booking/ResultsPage"
+      ],
+      "rawLocators": 0,
+      "flake": [
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "case": "TC-AQPI-2-02",
+      "title": "Submitted criteria remain visible and editable on the results page",
+      "spec": "tests/demo-booking/TC-AQPI-2-02.spec.ts",
+      "traces": [
+        "AQPI-3-AC2"
+      ],
+      "tracesMatch": true,
+      "data": [
+        "search.valid.lisbon",
+        "filter.maxPrice.100"
+      ],
+      "pageObjects": [
+        "demo-booking/SearchPage",
+        "demo-booking/ResultsPage"
+      ],
+      "rawLocators": 0,
+      "flake": [
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed"
+      ]
+    },
+    {
+      "case": "TC-AQPI-2-06",
+      "title": "No-availability result explains the outcome and allows criteria changes",
+      "spec": "tests/demo-booking/TC-AQPI-2-06.spec.ts",
+      "traces": [
+        "AQPI-3-AC4"
+      ],
+      "tracesMatch": true,
+      "data": [
+        "search.zero.reykjavik",
+        "search.valid.rome"
+      ],
+      "pageObjects": [
+        "demo-booking/SearchPage",
+        "demo-booking/ResultsPage"
+      ],
+      "rawLocators": 0,
+      "flake": [
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed"
+      ]
+    }
+  ],
+  "pageObjects": [
+    {
+      "file": "ResultsPage.ts",
+      "class": "ResultsPage",
+      "methods": [
+        "heading",
+        "changeOption",
+        "expectResults"
+      ]
+    },
+    {
+      "file": "SearchPage.ts",
+      "class": "SearchPage",
+      "methods": [
+        "field",
+        "goto",
+        "fill",
+        "submit",
+        "search",
+        "filterByMaxPrice",
+        "expectCriteria",
+        "expectFieldError"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "epic": "AQPI-2",
+  "generatedAt": "2026-10-05T12:02:48.117Z",
+  "jira": {
+    "mode": "export-snapshot",
+    "label": "Jira export snapshot (demo/jira-export)",
+    "site": "https://github.com/sri465inno/uc-agentic-quality-engineering/tree/demo/jira-export/jira",
+    "epic": {
+      "key": "AQPI-2",
+      "summary": "[Epic 1] Search and Availability",
+      "labels": [
+        "epic",
+        "epic-01",
+        "hotel-booking"
+      ],
+      "text": "Parent initiative: Intelligent Hotel Shopping and Reservation Experience\n## Capability summary\nEnable guests to submit valid stay criteria and retrieve bookable hotel inventory.\n## Business value\nCreates qualified traffic for the shopping funnel.\n## Scope (user stories)\n- 3.1 Search hotels by destination and date range\n- 3.2 Validate occupancy and stay criteria\n- 3.3 Handle unavailable or failed searches\n## Epic acceptance criteria\n- All child user stories meet their acceptance criteria and the Definition of Done.\n- Negative and error paths for each story are tested and evidenced.\n- Required logging is in place and verified free of sensitive data.\n- The Product Owner has accepted the capability end to end.\n## Dependencies\n- Availability service\n- Property service\nIndicative size: 18 story points across 3 stories (to be refined by the delivery team)\nTarget planning period: To be agreed at PI / release planning\n",
+      "acceptanceCriteria": [
+        {
+          "id": "AQPI-2-AC1",
+          "text": "All child user stories meet their acceptance criteria and the Definition of Done."
+        },
+        {
+          "id": "AQPI-2-AC2",
+          "text": "Negative and error paths for each story are tested and evidenced."
+        },
+        {
+          "id": "AQPI-2-AC3",
+          "text": "Required logging is in place and verified free of sensitive data."
+        },
+        {
+          "id": "AQPI-2-AC4",
+          "text": "The Product Owner has accepted the capability end to end."
+        }
+      ],
+      "businessRules": [],
+      "logging": []
+    },
+    "stories": [
+      {
+        "key": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "labels": [
+          "epic-01",
+          "hotel-booking",
+          "sp-8",
+          "user-story"
+        ],
+        "text": "Epic: Epic 1: Search and Availability\n## User story\nAs a guest, I want to search by destination and stay dates so that I can find hotels for my trip.\n## Description\nCapture destination, check-in, check-out, rooms, adults, and children.\n## Acceptance criteria\n- Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.\n- The submitted criteria remain visible and editable on the results page.\n- Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.\n- A no-availability result explains that no matching inventory was found and allows criteria changes.\n## Business rules\n- Check-in must precede check-out.\n- Occupancy must comply with configured room limits.\n- Maximum stay length must be configurable.\n## Dependencies\nAvailability service, Property service\n## Logging and audit requirements\n- Correlation ID\n- Search timestamp\n- Destination token or code\n- Date range\n- Room and occupancy counts\n- Result count\n- Response status and duration\n- Do not log guest names, email addresses, payment data, or raw free-text containing personal data\nStory points (indicative): 8 – to be confirmed in refinement\n## Notes for refinement\n- Use synthetic or approved masked test data only.\n- Test cases must trace to this story; defects must link back to it or its test case.\n",
+        "acceptanceCriteria": [
+          {
+            "id": "AQPI-3-AC1",
+            "text": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned."
+          },
+          {
+            "id": "AQPI-3-AC2",
+            "text": "The submitted criteria remain visible and editable on the results page."
+          },
+          {
+            "id": "AQPI-3-AC3",
+            "text": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages."
+          },
+          {
+            "id": "AQPI-3-AC4",
+            "text": "A no-availability result explains that no matching inventory was found and allows criteria changes."
+          }
+        ],
+        "businessRules": [
+          {
+            "id": "AQPI-3-BR1",
+            "text": "Check-in must precede check-out."
+          },
+          {
+            "id": "AQPI-3-BR2",
+            "text": "Occupancy must comply with configured room limits."
+          },
+          {
+            "id": "AQPI-3-BR3",
+            "text": "Maximum stay length must be configurable."
+          }
+        ],
+        "logging": [
+          "Correlation ID",
+          "Search timestamp",
+          "Destination token or code",
+          "Date range",
+          "Room and occupancy counts",
+          "Result count",
+          "Response status and duration",
+          "Do not log guest names, email addresses, payment data, or raw free-text containing personal data"
+        ]
+      },
+      {
+        "key": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "labels": [
+          "epic-01",
+          "hotel-booking",
+          "sp-5",
+          "user-story"
+        ],
+        "text": "Epic: Epic 1: Search and Availability\n## User story\nAs a guest, I want invalid search inputs identified before submission so that I can correct them quickly.\n## Description\nApply client-side and server-side validation consistently.\n## Acceptance criteria\n- Required fields are clearly identified.\n- Invalid combinations return field-level messages.\n- Server validation is authoritative when client and server results differ.\n- Validation messages are accessible to assistive technology.\n## Business rules\n- Validation rules must be configurable where market or property rules vary.\n## Dependencies\nNone identified.\n## Logging and audit requirements\n- Validation rule identifier\n- Outcome\n- Error category\n- Correlation ID; no sensitive field values\nStory points (indicative): 5 – to be confirmed in refinement\n## Notes for refinement\n- Use synthetic or approved masked test data only.\n- Test cases must trace to this story; defects must link back to it or its test case.\n",
+        "acceptanceCriteria": [
+          {
+            "id": "AQPI-4-AC1",
+            "text": "Required fields are clearly identified."
+          },
+          {
+            "id": "AQPI-4-AC2",
+            "text": "Invalid combinations return field-level messages."
+          },
+          {
+            "id": "AQPI-4-AC3",
+            "text": "Server validation is authoritative when client and server results differ."
+          },
+          {
+            "id": "AQPI-4-AC4",
+            "text": "Validation messages are accessible to assistive technology."
+          }
+        ],
+        "businessRules": [
+          {
+            "id": "AQPI-4-BR1",
+            "text": "Validation rules must be configurable where market or property rules vary."
+          }
+        ],
+        "logging": [
+          "Validation rule identifier",
+          "Outcome",
+          "Error category",
+          "Correlation ID; no sensitive field values"
+        ]
+      },
+      {
+        "key": "AQPI-5",
+        "summary": "3.3 Handle unavailable or failed searches",
+        "labels": [
+          "epic-01",
+          "hotel-booking",
+          "sp-5",
+          "user-story"
+        ],
+        "text": "Epic: Epic 1: Search and Availability\n## User story\nAs a guest, I want a clear response when inventory cannot be found or the search service fails so that I know what to do next.\n## Description\nDistinguish valid zero-result responses from technical failures.\n## Acceptance criteria\n- Zero results provide options to alter dates, occupancy, destination, or filters.\n- Technical failures display a non-technical message and retry option.\n- Repeated submission does not create inconsistent sessions.\n## Dependencies\nAvailability service\n## Logging and audit requirements\n- Failure category\n- Dependency status\n- Retry count\n- Duration\n- Correlation ID\nStory points (indicative): 5 – to be confirmed in refinement\n## Notes for refinement\n- Use synthetic or approved masked test data only.\n- Test cases must trace to this story; defects must link back to it or its test case.\n",
+        "acceptanceCriteria": [
+          {
+            "id": "AQPI-5-AC1",
+            "text": "Zero results provide options to alter dates, occupancy, destination, or filters."
+          },
+          {
+            "id": "AQPI-5-AC2",
+            "text": "Technical failures display a non-technical message and retry option."
+          },
+          {
+            "id": "AQPI-5-AC3",
+            "text": "Repeated submission does not create inconsistent sessions."
+          }
+        ],
+        "businessRules": [],
+        "logging": [
+          "Failure category",
+          "Dependency status",
+          "Retry count",
+          "Duration",
+          "Correlation ID"
+        ]
+      }
+    ]
+  },
+  "thresholds": [
+    {
+      "metric": "AC coverage",
+      "target": ">= 80%",
+      "value": 100,
+      "unit": "%",
+      "met": true,
+      "how": "11/11 story ACs traced by at least one case (computed from Jira export + stage-2.json)"
+    },
+    {
+      "metric": "Hallucination rate",
+      "target": "<= 10%",
+      "value": 0,
+      "unit": "%",
+      "met": true,
+      "how": "0/49 source claims ungrounded (automated verbatim grounding check); golden-set check: pending-golden-set"
+    },
+    {
+      "metric": "Review time per epic",
+      "target": "< 20 min",
+      "value": null,
+      "unit": "min",
+      "met": null,
+      "how": "Not yet measured: recorded by the QE lead at the Stage-2 approval gate"
+    },
+    {
+      "metric": "Golden-set recall",
+      "target": "report",
+      "value": null,
+      "unit": "%",
+      "met": null,
+      "how": "Golden set (12-15 human-authored cases) not yet supplied by the QE lead; comparison not run."
+    },
+    {
+      "metric": "QE-lead approval to scale",
+      "target": "approved",
+      "value": "pending",
+      "unit": "",
+      "met": null,
+      "how": "Governance trail gate UC1-GATE1"
+    }
+  ],
+  "coverage": {
+    "ac": {
+      "covered": 11,
+      "total": 11,
+      "pct": 100
+    },
+    "br": {
+      "covered": 4,
+      "total": 4,
+      "pct": 100
+    },
+    "uncovered": [
+      "AQPI-2-AC1",
+      "AQPI-2-AC2",
+      "AQPI-2-AC3",
+      "AQPI-2-AC4"
+    ]
+  },
+  "grounding": {
+    "claims": 49,
+    "ungrounded": []
+  },
+  "quality": {
+    "duplicates": [],
+    "overlaps": [
+      {
+        "a": "TC-AQPI-2-03",
+        "b": "TC-AQPI-2-04",
+        "shared": [
+          "AQPI-3-AC3"
+        ],
+        "note": "Shares a requirement but differs in data/assertion; kept, flag for QE-lead review"
+      },
+      {
+        "a": "TC-AQPI-2-03",
+        "b": "TC-AQPI-2-05",
+        "shared": [
+          "AQPI-3-AC3"
+        ],
+        "note": "Shares a requirement but differs in data/assertion; kept, flag for QE-lead review"
+      },
+      {
+        "a": "TC-AQPI-2-04",
+        "b": "TC-AQPI-2-05",
+        "shared": [
+          "AQPI-3-AC3"
+        ],
+        "note": "Shares a requirement but differs in data/assertion; kept, flag for QE-lead review"
+      }
+    ],
+    "negatives": [
+      {
+        "story": "AQPI-3",
+        "positive": 3,
+        "negative": 5,
+        "missingNegative": false
+      },
+      {
+        "story": "AQPI-4",
+        "positive": 1,
+        "negative": 3,
+        "missingNegative": false
+      },
+      {
+        "story": "AQPI-5",
+        "positive": 1,
+        "negative": 2,
+        "missingNegative": false
+      }
+    ],
+    "negativesRequested": true
+  },
+  "golden": {
+    "status": "pending-golden-set",
+    "note": "Golden set (12-15 human-authored cases) not yet supplied by the QE lead; comparison not run.",
+    "authoredBy": null
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "app": "demo-booking",
+  "policy": "Synthetic data only. Dates are offsets in days from the run date (UTC), so the data never goes stale.",
+  "accessBoundary": "Local demo-booking app only (http://127.0.0.1:4300). No real client systems, no PII.",
+  "data": {
+    "search.valid.lisbon": {
+      "destination": "Lisbon",
+      "checkInOffsetDays": 30,
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "expect": {
+        "resultCount": 3
+      }
+    },
+    "search.valid.rome": {
+      "destination": "Rome",
+      "checkInOffsetDays": 45,
+      "nights": 2,
+      "rooms": 1,
+      "adults": 1,
+      "children": 0,
+      "expect": {
+        "resultCount": 2
+      }
+    },
+    "search.zero.reykjavik": {
+      "destination": "Reykjavik",
+      "checkInOffsetDays": 30,
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "expect": {
+        "resultCount": 0
+      }
+    },
+    "search.failure.atlantis": {
+      "destination": "Atlantis",
+      "checkInOffsetDays": 30,
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "expect": {
+        "status": 503
+      }
+    },
+    "search.invalid.pastCheckIn": {
+      "destination": "Lisbon",
+      "checkInOffsetDays": -1,
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "expect": {
+        "field": "checkIn",
+        "rule": "PAST_DATE"
+      }
+    },
+    "search.invalid.checkoutNotAfterCheckin": {
+      "destination": "Lisbon",
+      "checkInOffsetDays": 30,
+      "nights": 0,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "expect": {
+        "field": "checkOut",
+        "rule": "CHECKOUT_NOT_AFTER_CHECKIN"
+      }
+    },
+    "search.invalid.missingDestination": {
+      "destination": "",
+      "checkInOffsetDays": 30,
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "expect": {
+        "field": "destination",
+        "rule": "REQUIRED"
+      }
+    },
+    "search.invalid.adultsOverRoomLimit": {
+      "destination": "Lisbon",
+      "checkInOffsetDays": 30,
+      "nights": 3,
+      "rooms": 1,
+      "adults": 4,
+      "children": 0,
+      "expect": {
+        "field": "adults",
+        "rule": "OCCUPANCY_LIMIT"
+      }
+    },
+    "search.invalid.childrenOverRoomLimit": {
+      "destination": "Lisbon",
+      "checkInOffsetDays": 30,
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 3,
+      "expect": {
+        "field": "children",
+        "rule": "OCCUPANCY_LIMIT"
+      }
+    },
+    "search.invalid.overMaxStay": {
+      "destination": "Lisbon",
+      "checkInOffsetDays": 30,
+      "nights": 31,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "expect": {
+        "field": "checkOut",
+        "rule": "MAX_STAY"
+      }
+    },
+    "search.invalid.marketMaxStay.venice": {
+      "destination": "Venice",
+      "checkInOffsetDays": 30,
+      "nights": 8,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "expect": {
+        "field": "checkOut",
+        "rule": "MARKET_MAX_STAY"
+      }
+    },
+    "filter.maxPrice.100": {
+      "maxPrice": "100",
+      "expect": {
+        "lisbonResultCount": 1
+      }
+    },
+    "config.limits": {
+      "maxRooms": 4,
+      "maxAdultsPerRoom": 3,
+      "maxChildrenPerRoom": 2,
+      "maxStayNights": 30,
+      "marketMaxStay": {
+        "Venice": 7
+      }
+    }
+  }
+}

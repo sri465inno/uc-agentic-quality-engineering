@@ -1,0 +1,52 @@
+{
+  "initiative": "AQPI-1",
+  "epic": "AQPI-2",
+  "author": "Devin (Stage 1 - Cognitive Analysis)",
+  "workflow": "_WORKFLOW.md (DRAFT)",
+  "sources": [
+    { "kind": "jira", "keys": ["AQPI-1", "AQPI-2", "AQPI-3", "AQPI-4", "AQPI-5"] },
+    { "kind": "confluence", "keys": [], "note": "No approved Confluence pages were supplied for the PoC (see GAP-11)." }
+  ],
+  "scope": {
+    "inScope": ["AQPI-3", "AQPI-4", "AQPI-5"],
+    "lens": "Key-element-only UI E2E against the bundled demo-booking app",
+    "negativesRequestedBy": { "id": "AQPI-2-AC2", "quote": "Negative and error paths for each story are tested and evidenced" },
+    "outOfScope": ["Stage 4 execution orchestration", "Stage 5 insight reporting", "Epics AQPI-6 .. AQPI-32 until Gate 1 is approved"]
+  },
+  "requirements": [
+    { "id": "AQPI-3-AC1", "risk": "High", "rationale": "Core funnel entry; if it fails, no booking can happen." },
+    { "id": "AQPI-3-AC2", "risk": "Medium", "rationale": "Guests lose context and re-enter criteria." },
+    { "id": "AQPI-3-AC3", "risk": "High", "rationale": "Three separate validation paths (past date, date order, mandatory fields)." },
+    { "id": "AQPI-3-AC4", "risk": "Medium", "rationale": "A dead end at zero results leads to drop-off." },
+    { "id": "AQPI-3-BR1", "risk": "High", "rationale": "Date-order rule; shared with AQPI-3-AC3." },
+    { "id": "AQPI-3-BR2", "risk": "Medium", "rationale": "Room limits are configuration-driven; values not stated in Jira (GAP-01)." },
+    { "id": "AQPI-3-BR3", "risk": "Medium", "rationale": "Maximum stay is configuration-driven; value not stated in Jira (GAP-02)." },
+    { "id": "AQPI-4-AC1", "risk": "Low", "rationale": "Static presentation of required markers." },
+    { "id": "AQPI-4-AC2", "risk": "Medium", "rationale": "Field-level messages for invalid combinations of occupancy/dates." },
+    { "id": "AQPI-4-AC3", "risk": "High", "rationale": "A client/server mismatch can let invalid searches through." },
+    { "id": "AQPI-4-AC4", "risk": "Medium", "rationale": "Accessibility obligation; full audit beyond key-element lens (GAP-06)." },
+    { "id": "AQPI-4-BR1", "risk": "Medium", "rationale": "Market-specific rules; demonstrated with a synthetic market rule (GAP-02)." },
+    { "id": "AQPI-5-AC1", "risk": "Medium", "rationale": "Recovery options at zero results; 'filters' not defined in Jira (GAP-09)." },
+    { "id": "AQPI-5-AC2", "risk": "High", "rationale": "Technical failure must not leak technical detail and must allow retry." },
+    { "id": "AQPI-5-AC3", "risk": "Medium", "rationale": "'Inconsistent sessions' is not defined in Jira (GAP-07)." }
+  ],
+  "epicCriteria": [
+    { "id": "AQPI-2-AC1", "treatment": "Met through the story-level coverage; Definition of Done is a process item (GAP-04)." },
+    { "id": "AQPI-2-AC2", "treatment": "Drives the negative cases (happy-path default lifted for this epic)." },
+    { "id": "AQPI-2-AC3", "treatment": "Logging is not observable through the UI (GAP-03, GAP-05)." },
+    { "id": "AQPI-2-AC4", "treatment": "Product Owner acceptance is a human sign-off, not a test (GAP-04)." }
+  ],
+  "gaps": [
+    { "id": "GAP-01", "g": "G2", "ref": "AQPI-3-BR2", "summary": "Room limits are 'configured' but no values are given.", "assumption": "demo-booking config: max 4 rooms, 3 adults and 2 children per room.", "owner": "Product Owner", "status": "open" },
+    { "id": "GAP-02", "g": "G15", "ref": "AQPI-3-BR3", "summary": "Maximum stay length is configurable but no default or market values are given.", "assumption": "demo-booking config: 30 nights globally, Venice 7 nights (synthetic market rule).", "owner": "Product Owner", "status": "open" },
+    { "id": "GAP-03", "g": "G4", "ref": "AQPI-3 / AQPI-4 / AQPI-5 logging", "summary": "Logging and audit requirements (correlation ID, duration, retry count...) are not observable through the UI.", "assumption": "Not designed as UI cases; candidate for API/log checks outside this PoC.", "owner": "QE lead", "status": "open" },
+    { "id": "GAP-04", "g": "G9", "ref": "AQPI-2-AC1, AQPI-2-AC4", "summary": "Definition of Done and Product Owner acceptance are process sign-offs, not tests.", "assumption": "Tracked in the governance trail.", "owner": "QE lead", "status": "open" },
+    { "id": "GAP-05", "g": "G16", "ref": "AQPI-2-AC3", "summary": "'Logging verified free of sensitive data' needs log inspection, outside the UI lens.", "assumption": "Out of UI scope; listed for Stage 4/API follow-up.", "owner": "QE lead", "status": "open" },
+    { "id": "GAP-06", "g": "G10", "ref": "AQPI-4-AC4", "summary": "Only key accessibility semantics are asserted (role=alert summary, aria-invalid, aria-describedby). A full WCAG audit needs tooling such as axe.", "assumption": "Key-element assertions only.", "owner": "QE lead", "status": "open" },
+    { "id": "GAP-07", "g": "G1", "ref": "AQPI-5-AC3", "summary": "'Inconsistent sessions' is not defined.", "assumption": "A double submission produces exactly one search session and one search reference.", "owner": "Product Owner", "status": "open" },
+    { "id": "GAP-08", "g": "G1", "ref": "AQPI-3-AC1", "summary": "'A search request is created' has no stated UI evidence.", "assumption": "The results page shows a search reference.", "owner": "Product Owner", "status": "open" },
+    { "id": "GAP-09", "g": "G2", "ref": "AQPI-5-AC1", "summary": "'Filters' are mentioned but no filter set is defined.", "assumption": "demo-booking offers a max-price-per-night filter.", "owner": "Product Owner", "status": "open" },
+    { "id": "GAP-10", "g": "G12", "ref": "AQPI-2 dependencies", "summary": "The Availability and Property services are not available; demo-booking simulates them (Atlantis = outage, Reykjavik = zero inventory).", "assumption": "Synthetic stand-in only.", "owner": "QE lead", "status": "accepted" },
+    { "id": "GAP-11", "g": "G20", "ref": "Approved context", "summary": "No approved Confluence/BRD pages were supplied; the analysis uses Jira only.", "assumption": "Jira descriptions are treated as the approved context.", "owner": "QE lead", "status": "open" }
+  ]
+}

@@ -233,3 +233,12 @@ details.ms[open]>summary{border-color:var(--navy);box-shadow:0 0 0 2px var(--nav
 .lab-example{display:block;width:100%;text-align:left;margin:6px 0 0;padding:7px 10px;border:1px solid var(--line2);border-radius:3px;background:var(--s1);color:inherit;font:inherit;font-size:13px;cursor:pointer}
 .lab-example:hover{border-color:var(--navy);background:var(--navy-soft)}
 #lab-text{font-family:inherit;font-size:14px;line-height:1.45;min-height:96px}
+
+/* EQE PoC stage bar and tabs */
+.eqe-stages{display:flex;gap:6px;list-style:none;padding:0;margin:14px 0}
+.eqe-stages li{flex:1;display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--line2);border-top:4px solid var(--navy);border-radius:4px;background:var(--s1)}
+.eqe-stages li.soon{opacity:.6;border-style:dashed;border-top-color:var(--line2);background:var(--s2)}
+.eqe-stages .eqe-n{font-size:11px;font-weight:700;color:var(--gold-d)}.eqe-stages .eqe-s{font-size:12px;color:var(--mut)}
+.eqe-tabs{display:flex;gap:4px;border-bottom:2px solid var(--line);margin:0 0 14px}
+.eqe-tabs a{padding:8px 14px;text-decoration:none;font-weight:600;color:var(--mut);border-bottom:3px solid transparent;margin-bottom:-2px}
+.eqe-tabs a.active{color:var(--navy);border-bottom-color:var(--gold)}

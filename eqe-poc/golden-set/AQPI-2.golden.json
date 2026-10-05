@@ -1,0 +1,8 @@
+{
+  "epic": "AQPI-2",
+  "status": "pending-human-authoring",
+  "authoredBy": null,
+  "authoredAt": null,
+  "_instructions": "QE lead: write 12-15 cases for AQPI-2 from Jira alone, without looking at design/AQPI-2/stage-2.json. Put them in 'cases' in the shape of golden-set/TEMPLATE.golden.json, then run: npm run compare:golden.",
+  "cases": []
+}

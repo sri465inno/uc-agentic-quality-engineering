@@ -1,0 +1,193 @@
+{
+  "initiative": "AQPI-1",
+  "epic": "AQPI-2",
+  "author": "Devin (Stage 2 - Intelligent Design)",
+  "basedOn": "design/AQPI-1/AQPI-2/stage-1.json",
+  "component": "Search and Availability",
+  "scenarios": [
+    { "id": "SC-01", "title": "Guest finds available hotels for valid criteria", "stories": ["AQPI-3"] },
+    { "id": "SC-02", "title": "Invalid stay criteria are rejected with actionable, field-level messages", "stories": ["AQPI-3", "AQPI-4"] },
+    { "id": "SC-03", "title": "Required fields and validation messages are perceivable", "stories": ["AQPI-4"] },
+    { "id": "SC-04", "title": "Zero availability offers a way forward", "stories": ["AQPI-3", "AQPI-5"] },
+    { "id": "SC-05", "title": "Technical failures and repeated submissions are handled safely", "stories": ["AQPI-5"] }
+  ],
+  "journeys": [
+    { "id": "GJ-01", "title": "City-break planner", "narrative": "Guest searches Lisbon for 3 nights, sees available hotels, then narrows the search with a price filter without re-entering criteria.", "cases": ["TC-AQPI-2-01", "TC-AQPI-2-02"] },
+    { "id": "GJ-02", "title": "Sold-out destination", "narrative": "Guest searches Reykjavik, is told no inventory matches, uses 'Change destination' and finds hotels in Rome.", "cases": ["TC-AQPI-2-06", "TC-AQPI-2-13"] },
+    { "id": "GJ-03", "title": "Service hiccup", "narrative": "Guest searches while the availability service is down, sees a plain-language message and retries.", "cases": ["TC-AQPI-2-14", "TC-AQPI-2-15"] }
+  ],
+  "cases": [
+    {
+      "id": "TC-AQPI-2-01", "scenario": "SC-01", "story": "AQPI-3", "type": "positive", "priority": "High",
+      "title": "Valid search returns matching available hotels with a search reference",
+      "objective": "Prove a valid search creates a search request and lists matching available hotels.",
+      "preconditions": ["demo-booking is running", "Guest is on the search page"],
+      "data": ["search.valid.lisbon"],
+      "traces": [{ "id": "AQPI-3-AC1", "quote": "a search request is created and matching available hotels are returned" }],
+      "steps": [
+        { "action": "Enter destination, check-in, check-out, rooms, adults and children", "data": "search.valid.lisbon", "expected": "All fields accept the values without error", "proves": [] },
+        { "action": "Select 'Search hotels'", "data": "", "expected": "Results heading shows '3 hotels available in Lisbon'", "proves": ["AQPI-3-AC1"] },
+        { "action": "Inspect the results", "data": "", "expected": "Three hotel cards are listed and a search reference (S-nnnn) is shown", "proves": ["AQPI-3-AC1"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-02", "scenario": "SC-01", "story": "AQPI-3", "type": "positive", "priority": "Medium",
+      "title": "Submitted criteria remain visible and editable on the results page",
+      "objective": "Prove the guest can see and change the criteria from the results page.",
+      "preconditions": ["A valid search has returned results"],
+      "data": ["search.valid.lisbon", "filter.maxPrice.100"],
+      "traces": [{ "id": "AQPI-3-AC2", "quote": "The submitted criteria remain visible and editable on the results page" }],
+      "steps": [
+        { "action": "Run a valid search", "data": "search.valid.lisbon", "expected": "Results are shown", "proves": [] },
+        { "action": "Check the search form and criteria summary on the results page", "data": "", "expected": "Destination, dates, rooms, adults and children show the submitted values and the inputs are editable", "proves": ["AQPI-3-AC2"] },
+        { "action": "Change the price filter and search again", "data": "filter.maxPrice.100", "expected": "Results update to '1 hotel available in Lisbon' without re-entering other criteria", "proves": ["AQPI-3-AC2"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-03", "scenario": "SC-02", "story": "AQPI-3", "type": "negative", "priority": "High", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Past check-in date is rejected with an actionable message",
+      "objective": "Prove a past check-in date cannot be searched.",
+      "preconditions": ["Guest is on the search page"],
+      "data": ["search.invalid.pastCheckIn"],
+      "traces": [{ "id": "AQPI-3-AC3", "quote": "Past check-in dates" }],
+      "steps": [
+        { "action": "Enter criteria with check-in yesterday and submit", "data": "search.invalid.pastCheckIn", "expected": "Check-in shows 'Check-in date cannot be in the past. Choose today or a later date.' and no results are shown", "proves": ["AQPI-3-AC3"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-04", "scenario": "SC-02", "story": "AQPI-3", "type": "negative", "priority": "High", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Check-out not after check-in is rejected",
+      "objective": "Prove the date-order rule is enforced with a field-level message.",
+      "preconditions": ["Guest is on the search page"],
+      "data": ["search.invalid.checkoutNotAfterCheckin"],
+      "traces": [{ "id": "AQPI-3-AC3", "quote": "check-out dates not after check-in" }, { "id": "AQPI-3-BR1", "quote": "Check-in must precede check-out" }],
+      "steps": [
+        { "action": "Enter check-out equal to check-in and submit", "data": "search.invalid.checkoutNotAfterCheckin", "expected": "Check-out shows 'Check-out date must be after the check-in date.'", "proves": ["AQPI-3-AC3", "AQPI-3-BR1"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-05", "scenario": "SC-02", "story": "AQPI-3", "type": "negative", "priority": "High", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Missing mandatory destination is rejected",
+      "objective": "Prove mandatory fields are enforced.",
+      "preconditions": ["Guest is on the search page"],
+      "data": ["search.invalid.missingDestination"],
+      "traces": [{ "id": "AQPI-3-AC3", "quote": "missing mandatory fields are rejected with actionable messages" }],
+      "steps": [
+        { "action": "Leave destination empty and submit", "data": "search.invalid.missingDestination", "expected": "Destination shows 'Enter a destination.' and focus moves to it", "proves": ["AQPI-3-AC3"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-06", "scenario": "SC-04", "story": "AQPI-3", "type": "positive", "priority": "Medium",
+      "title": "No-availability result explains the outcome and allows criteria changes",
+      "objective": "Prove a valid zero-result search explains that no inventory matched and lets the guest change criteria.",
+      "preconditions": ["Guest is on the search page"],
+      "data": ["search.zero.reykjavik", "search.valid.rome"],
+      "traces": [{ "id": "AQPI-3-AC4", "quote": "explains that no matching inventory was found and allows criteria changes" }],
+      "steps": [
+        { "action": "Search a destination without inventory", "data": "search.zero.reykjavik", "expected": "Heading 'No hotels found' and text 'We found no matching inventory for these criteria.'", "proves": ["AQPI-3-AC4"] },
+        { "action": "Change the destination in the still-visible form and search again", "data": "search.valid.rome", "expected": "Results heading shows '2 hotels available in Rome'", "proves": ["AQPI-3-AC4"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-07", "scenario": "SC-02", "story": "AQPI-3", "type": "negative", "priority": "Medium", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Occupancy above the configured room limit is rejected",
+      "objective": "Prove occupancy limits from configuration are enforced.",
+      "preconditions": ["Room limits per config.limits (GAP-01)"],
+      "data": ["search.invalid.adultsOverRoomLimit", "config.limits"],
+      "traces": [{ "id": "AQPI-3-BR2", "quote": "Occupancy must comply with configured room limits" }],
+      "steps": [
+        { "action": "Enter 4 adults for 1 room and submit", "data": "search.invalid.adultsOverRoomLimit", "expected": "Adults shows 'A room holds at most 3 adults. Add a room or reduce adults.'", "proves": ["AQPI-3-BR2"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-08", "scenario": "SC-02", "story": "AQPI-3", "type": "negative", "priority": "Medium", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Stay longer than the configured maximum is rejected",
+      "objective": "Prove the configurable maximum stay length is enforced.",
+      "preconditions": ["Max stay per config.limits (GAP-02)"],
+      "data": ["search.invalid.overMaxStay", "config.limits"],
+      "traces": [{ "id": "AQPI-3-BR3", "quote": "Maximum stay length must be configurable" }],
+      "steps": [
+        { "action": "Enter a 31-night stay and submit", "data": "search.invalid.overMaxStay", "expected": "Check-out shows 'Stays in this search are limited to 30 nights. Choose an earlier check-out date.'", "proves": ["AQPI-3-BR3"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-09", "scenario": "SC-03", "story": "AQPI-4", "type": "positive", "priority": "Low",
+      "title": "Required fields are clearly identified",
+      "objective": "Prove required fields carry a visible marker and are exposed as required to assistive technology.",
+      "preconditions": ["Guest is on the search page"],
+      "data": [],
+      "traces": [{ "id": "AQPI-4-AC1", "quote": "Required fields are clearly identified" }],
+      "steps": [
+        { "action": "Open the search page", "data": "", "expected": "Hint 'Fields marked * are required.' is shown; Destination, Check-in, Check-out, Rooms and Adults are marked * and required", "proves": ["AQPI-4-AC1"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-10", "scenario": "SC-02", "story": "AQPI-4", "type": "negative", "priority": "Medium", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Invalid occupancy combination returns a field-level message",
+      "objective": "Prove invalid combinations are reported against the field at fault.",
+      "preconditions": ["Guest is on the search page"],
+      "data": ["search.invalid.childrenOverRoomLimit"],
+      "traces": [{ "id": "AQPI-4-AC2", "quote": "Invalid combinations return field-level messages" }],
+      "steps": [
+        { "action": "Enter 3 children for 1 room and submit", "data": "search.invalid.childrenOverRoomLimit", "expected": "Only Children shows 'A room holds at most 2 children. Add a room or reduce children.'", "proves": ["AQPI-4-AC2"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-11", "scenario": "SC-02", "story": "AQPI-4", "type": "negative", "priority": "High", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Server-only market rule is enforced when the client accepts the input",
+      "objective": "Prove server validation is authoritative and market rules are configurable.",
+      "preconditions": ["Venice market max stay per config.limits (GAP-02)"],
+      "data": ["search.invalid.marketMaxStay.venice"],
+      "traces": [{ "id": "AQPI-4-AC3", "quote": "Server validation is authoritative when client and server results differ" }, { "id": "AQPI-4-BR1", "quote": "configurable where market or property rules vary" }],
+      "steps": [
+        { "action": "Search Venice for 8 nights (passes client validation)", "data": "search.invalid.marketMaxStay.venice", "expected": "Check-out shows 'Stays in Venice are limited to 7 nights. Choose an earlier check-out date.' and no results are shown", "proves": ["AQPI-4-AC3", "AQPI-4-BR1"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-12", "scenario": "SC-03", "story": "AQPI-4", "type": "negative", "priority": "Medium", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Validation messages are exposed to assistive technology",
+      "objective": "Prove error messages are announced and linked to their fields.",
+      "preconditions": ["Guest is on the search page"],
+      "data": ["search.invalid.missingDestination"],
+      "traces": [{ "id": "AQPI-4-AC4", "quote": "Validation messages are accessible to assistive technology" }],
+      "steps": [
+        { "action": "Submit with destination empty", "data": "search.invalid.missingDestination", "expected": "An alert summary lists the error; Destination is marked invalid and described by its message", "proves": ["AQPI-4-AC4"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-13", "scenario": "SC-04", "story": "AQPI-5", "type": "positive", "priority": "Medium",
+      "title": "Zero results offer options to change dates, occupancy, destination or filters",
+      "objective": "Prove each recovery option is offered and takes the guest to the matching input.",
+      "preconditions": ["A zero-result search has been made"],
+      "data": ["search.zero.reykjavik"],
+      "traces": [{ "id": "AQPI-5-AC1", "quote": "Zero results provide options to alter dates, occupancy, destination, or filters" }],
+      "steps": [
+        { "action": "Search a destination without inventory", "data": "search.zero.reykjavik", "expected": "Options 'Change dates', 'Change occupancy', 'Change destination' and 'Change filters' are shown", "proves": ["AQPI-5-AC1"] },
+        { "action": "Select each option in turn", "data": "", "expected": "Focus moves to Check-in, Adults, Destination and the price filter respectively", "proves": ["AQPI-5-AC1"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-14", "scenario": "SC-05", "story": "AQPI-5", "type": "negative", "priority": "High", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Technical failure shows a non-technical message and a retry option",
+      "objective": "Prove technical failures are distinguished from zero results and are recoverable.",
+      "preconditions": ["Availability service unavailable for the destination (GAP-10)"],
+      "data": ["search.failure.atlantis"],
+      "traces": [{ "id": "AQPI-5-AC2", "quote": "Technical failures display a non-technical message and retry option" }],
+      "steps": [
+        { "action": "Search the outage destination", "data": "search.failure.atlantis", "expected": "Alert 'We couldn't complete your search' with plain-language text and a 'Try again' button; no error codes shown", "proves": ["AQPI-5-AC2"] },
+        { "action": "Select 'Try again'", "data": "", "expected": "The search is retried with the same criteria", "proves": ["AQPI-5-AC2"] }
+      ]
+    },
+    {
+      "id": "TC-AQPI-2-15", "scenario": "SC-05", "story": "AQPI-5", "type": "negative", "priority": "Medium", "negativeRequestedBy": "AQPI-2-AC2",
+      "title": "Rapid repeated submission creates a single consistent search session",
+      "objective": "Prove repeated submission does not create inconsistent sessions (GAP-07 interpretation).",
+      "preconditions": ["Guest is on the search page"],
+      "data": ["search.valid.lisbon"],
+      "traces": [{ "id": "AQPI-5-AC3", "quote": "Repeated submission does not create inconsistent sessions" }],
+      "steps": [
+        { "action": "Double-click 'Search hotels' with valid criteria", "data": "search.valid.lisbon", "expected": "Exactly one results set with one search reference is shown", "proves": ["AQPI-5-AC3"] }
+      ]
+    }
+  ]
+}

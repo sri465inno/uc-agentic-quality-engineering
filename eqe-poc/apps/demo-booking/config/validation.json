@@ -1,0 +1,10 @@
+{
+  "_note": "Synthetic configuration for the demo-booking PoC stand-in. Market rules are server-only, so the server stays authoritative (AQPI-4-AC3).",
+  "maxRooms": 4,
+  "maxAdultsPerRoom": 3,
+  "maxChildrenPerRoom": 2,
+  "maxStayNights": 30,
+  "markets": {
+    "Venice": { "maxStayNights": 7 }
+  }
+}

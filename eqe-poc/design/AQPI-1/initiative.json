@@ -1,0 +1,8 @@
+{
+  "initiative": "AQPI-1",
+  "title": "Intelligent Hotel Shopping and Reservation Experience",
+  "epicsInScope": ["AQPI-2"],
+  "scaleGate": "UC1-GATE1",
+  "candidateEpicsAfterGate1": ["AQPI-6", "AQPI-10", "AQPI-14", "AQPI-18", "AQPI-23"],
+  "_rule": "Only add epics to epicsInScope after the governance trail has an 'approved' UC1-GATE1 entry from the QE lead (Week 2: scale to 4-6 epics)."
+}

@@ -1,0 +1,13 @@
+{
+  "_note": "Synthetic inventory. Reykjavik has no availability (valid zero result). Atlantis simulates an availability-service outage (technical failure).",
+  "unavailableDependency": ["Atlantis"],
+  "hotels": [
+    { "id": "LIS-01", "destination": "Lisbon", "name": "Aurora Lisbon Riverside", "stars": 4, "pricePerNight": 145 },
+    { "id": "LIS-02", "destination": "Lisbon", "name": "Aurora Alfama Boutique", "stars": 3, "pricePerNight": 98 },
+    { "id": "LIS-03", "destination": "Lisbon", "name": "Aurora Lisbon Grand", "stars": 5, "pricePerNight": 260 },
+    { "id": "ROM-01", "destination": "Rome", "name": "Aurora Roma Centro", "stars": 4, "pricePerNight": 180 },
+    { "id": "ROM-02", "destination": "Rome", "name": "Aurora Trastevere House", "stars": 3, "pricePerNight": 120 },
+    { "id": "VCE-01", "destination": "Venice", "name": "Aurora Canal View", "stars": 4, "pricePerNight": 210 },
+    { "id": "VCE-02", "destination": "Venice", "name": "Aurora Lido Palace", "stars": 5, "pricePerNight": 330 }
+  ]
+}

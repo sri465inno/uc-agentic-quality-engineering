@@ -1,0 +1,9 @@
+{
+  "epic": "<EPIC-KEY>",
+  "status": "authored",
+  "authoredBy": "<QE lead name>",
+  "authoredAt": "<YYYY-MM-DD>",
+  "cases": [
+    { "id": "G-01", "title": "<case title>", "type": "positive", "traces": ["<STORY>-AC1"], "expected": "<key expected result>" }
+  ]
+}

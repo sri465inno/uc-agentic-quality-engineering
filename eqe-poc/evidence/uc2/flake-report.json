@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-10-05T12:00:46.609Z",
+  "environment": "demo-booking (synthetic, local, Stage-equivalent)",
+  "browser": "chromium",
+  "retries": 0,
+  "threshold": "< 5%",
+  "runs": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-05T12:00:38.710Z",
+      "exitCode": 0,
+      "durationMs": 1119
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-05T12:00:40.346Z",
+      "exitCode": 0,
+      "durationMs": 945
+    },
+    {
+      "run": 3,
+      "startedAt": "2026-10-05T12:00:41.845Z",
+      "exitCode": 0,
+      "durationMs": 1014
+    },
+    {
+      "run": 4,
+      "startedAt": "2026-10-05T12:00:43.417Z",
+      "exitCode": 0,
+      "durationMs": 983
+    },
+    {
+      "run": 5,
+      "startedAt": "2026-10-05T12:00:45.096Z",
+      "exitCode": 0,
+      "durationMs": 931
+    }
+  ],
+  "tests": [
+    {
+      "title": "TC-AQPI-2-01 valid search returns matching available hotels with a search reference",
+      "file": "demo-booking/TC-AQPI-2-01.spec.ts",
+      "outcomes": [
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed"
+      ],
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "title": "TC-AQPI-2-02 submitted criteria remain visible and editable on the results page",
+      "file": "demo-booking/TC-AQPI-2-02.spec.ts",
+      "outcomes": [
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed"
+      ],
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "title": "TC-AQPI-2-06 no-availability result explains the outcome and allows criteria changes",
+      "file": "demo-booking/TC-AQPI-2-06.spec.ts",
+      "outcomes": [
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed"
+      ],
+      "passed": 5,
+      "failed": 0
+    }
+  ],
+  "totalExecutions": 15,
+  "failedExecutions": 0,
+  "flakeRate": 0,
+  "inconsistentTests": [],
+  "consistentlyFailing": [],
+  "verdict": "within threshold"
+}

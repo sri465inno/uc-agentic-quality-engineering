@@ -1,0 +1,9 @@
+{
+  "_note": "HITL governance trail. Devin may only add 'submitted' entries. Gate decisions (approved/refine/rejected), approver names and review minutes are entered by people, either through the EQE PoC page in the UI (POST /api/eqe/approvals) or by editing this file in a reviewed PR.",
+  "entries": [
+    { "id": "GT-001", "at": "2026-10-05T12:00:00Z", "useCase": "UC1", "gate": "UC1-STAGE1-SCOPE", "stage": 1, "subject": "AQPI-2 Stage-1 analysis (stage-1.json, Stage - 1 Requirement & details.xlsx)", "decision": "submitted", "by": "Devin", "reviewMinutes": null },
+    { "id": "GT-002", "at": "2026-10-05T12:00:00Z", "useCase": "UC1", "gate": "UC1-STAGE2-APPROVAL", "stage": 2, "subject": "AQPI-2 Stage-2 design: 15 cases, 5 scenarios, 3 guest journeys", "decision": "submitted", "by": "Devin", "reviewMinutes": null },
+    { "id": "GT-003", "at": "2026-10-05T12:00:00Z", "useCase": "UC2", "gate": "UC2-WEEK1-READINESS", "stage": 3, "subject": "Stage env demo-booking, framework snapshot (pages/demo-booking), test-data playbook, access boundary", "decision": "submitted", "by": "Devin", "reviewMinutes": null },
+    { "id": "GT-004", "at": "2026-10-05T12:00:00Z", "useCase": "UC2", "gate": "UC2-CODE-REVIEW", "stage": 3, "subject": "Playwright v1 specs for TC-AQPI-2-01, TC-AQPI-2-02, TC-AQPI-2-06", "decision": "submitted", "by": "Devin", "reviewMinutes": null }
+  ]
+}

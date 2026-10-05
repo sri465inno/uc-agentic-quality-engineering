@@ -1172,6 +1172,77 @@ async function viewLab(params) {
 
 /* ---------------- router ---------------- */
 let lastPath = null;
+/* ---------- EQE PoC (Stages 1-3): Run, By Jira item, Compare, Gaps, Governance ---------- */
+const EQE_TABS = [['run', 'Run'], ['jira', 'By Jira item'], ['compare', 'Compare report'], ['gaps', 'Gap register'], ['trail', 'Governance']];
+const eqeBadge = (met) => (met === null || met === undefined ? pill('pending', 'pending') : met ? pill('met', 'passed') : pill('not met', 'failed'));
+const eqeVal = (t) => (t.value === null || t.value === undefined ? '-' : `${esc(t.value)}${esc(t.unit)}`);
+const eqeFile = (s, f) => `<a href="/api/eqe/file?path=${encodeURIComponent(f)}" target="_blank">${esc(f.split('/').pop())}</a>`;
+function eqeStageBar(stages) {
+  return `<ol class="eqe-stages">${stages.map((s) => `<li class="${s.active ? 'on' : 'soon'}"><span class="eqe-n">${s.n}</span><b>${esc(s.name)}</b><span class="eqe-s">${esc(s.status)}</span></li>`).join('')}</ol>`;
+}
+function eqeThresholds(ts) {
+  return table(['Metric', 'Target', 'Value', 'Status', 'How measured'], ts.map((t) => [`<b>${esc(t.metric)}</b>`, esc(t.target), eqeVal(t), eqeBadge(t.met), `<span class="small">${esc(t.how)}</span>`]));
+}
+function eqeRun(s) {
+  const files = s.files.filter((f) => !f.includes('/scaffolds/'));
+  const scaffolds = s.files.filter((f) => f.includes('/scaffolds/'));
+  const f = s.uc2.flake;
+  return `<div class="grid2"><div class="card"><h3>UC1 · Initiative &rarr; approved test design</h3><p class="small">${esc(s.initiative.initiative)} ${esc(s.initiative.title || '')} · week-1 epic <b>${esc(s.epic)}</b> · ${s.uc1.cases.length} cases, ${s.uc1.scenarios.length} scenarios, ${s.uc1.journeys.length} guest journeys</p>${eqeThresholds(s.uc1.thresholds)}</div>
+<div class="card"><h3>UC2 · Approved cases &rarr; Playwright automation</h3><p class="small">${s.uc2.specs.length} specs on demo-booking · Page Objects: ${esc(s.uc2.pageObjects.map((p) => p.class).join(', '))} · flake ${f ? `${esc(f.flakeRate)}% over ${f.runs.length} runs` : 'not run'}</p>${eqeThresholds(s.uc2.thresholds)}</div></div>
+<h2>Artifacts</h2><div class="card">${table(['Artifact', 'Path'], files.map((x) => [eqeFile(s, x), `<code class="small">${esc(x)}</code>`]))}<p class="small">Design scaffolds (${scaffolds.length}): ${scaffolds.map((x) => eqeFile(s, x)).join(' · ')}</p></div>
+<h2>Automated specs (UC2)</h2>${table(['Case', 'Title', 'Spec', 'Traces', 'Test data', 'Page Objects', 'Raw locators', '5-run outcomes'], s.uc2.specs.map((x) => [esc(x.case), esc(x.title), `<code class="small">${esc(x.spec)}</code>`, esc(x.traces.join(', ')), esc(x.data.join(', ')), esc(x.pageObjects.join(', ')), x.rawLocators, esc((x.flake || []).join(' · '))]))}`;
+}
+function eqeJira(s, params) {
+  const key = params.get('key') || s.uc1.jiraItems[0].key;
+  const items = s.uc1.jiraItems;
+  const reqs = s.uc1.coverage.filter((r) => r.story === key);
+  const cases = s.uc1.cases.filter((c) => c.story === key || c.traces.some((t) => reqs.some((r) => r.id === t.id)));
+  const spec = (id) => s.uc2.specs.find((x) => x.case === id);
+  const gaps = s.uc1.gaps.filter((g) => String(g.ref).includes(key));
+  return `<div class="row">${items.map((i) => `<a class="btn ${i.key === key ? '' : 'secondary'}" href="#/eqe?tab=jira&key=${esc(i.key)}">${esc(i.key)}</a>`).join('')}</div>
+<div class="card"><h3>${esc(key)} · ${esc((items.find((i) => i.key === key) || {}).summary)}</h3>
+<h4>Requirements (verbatim Jira) &rarr; cases</h4>${table(['ID', 'Type', 'Requirement', 'Risk', 'Cases', 'Status'], reqs.map((r) => [esc(r.id), esc(r.kind), esc(r.text), esc(r.risk), esc(r.cases.join(', ')), pill(r.status, r.status === 'covered' ? 'passed' : 'pending')]))}
+<h4>Test cases &rarr; automation</h4>${table(['Case', 'Type', 'Priority', 'Title', 'Traces (source quote)', 'Playwright spec'], cases.map((c) => [esc(c.id), esc(c.type), esc(c.priority), esc(c.title), c.traces.map((t) => `<b>${esc(t.id)}</b> <span class="small">"${esc(t.quote)}"</span>`).join('<br>'), spec(c.id) ? `<code class="small">${esc(spec(c.id).spec)}</code>` : '<span class="muted">design only</span>']))}
+<h4>Gaps</h4>${table(['Gap', 'Category', 'Summary', 'Assumption', 'Owner', 'Status'], gaps.map((g) => [esc(g.id), esc(g.g), esc(g.summary), esc(g.assumption), esc(g.owner), esc(g.status)]))}</div>`;
+}
+function eqeCompare(s) {
+  const g = s.uc1.golden;
+  const q = s.uc1.quality;
+  const goldenHtml = g.status === 'compared'
+    ? `<p>Golden set by <b>${esc(g.authoredBy)}</b>: recall <b>${esc(g.recall)}%</b> (${g.matched}/${g.goldenCases}) · Devin-only: ${esc(g.devinOnly.join(', ') || 'none')} · missed requirements: ${esc(g.missedRequirements.join(', ') || 'none')}</p>${table(['Golden case', 'Title', 'Traces', 'Best Devin match'], g.matches.map((m) => [esc(m.golden), esc(m.title), esc(m.traces.join(', ')), m.match ? `${esc(m.match.case)} (Jaccard ${m.match.score})` : pill('no match', 'failed')]))}`
+    : `<div class="banner info"><b>Golden set pending.</b> ${esc(g.note)} Add <code>eqe-poc/golden-set/${esc(s.epic)}.golden.json</code> (template in golden-set/) and rebuild.</div>`;
+  return `<div class="card"><h3>Devin design vs human golden set</h3>${goldenHtml}</div>
+<div class="card"><h3>Automated quality checks</h3><p>Grounding: <b>${s.uc1.grounding.ungrounded.length}</b> of ${s.uc1.grounding.claims} source claims not found verbatim in Jira.</p>
+${table(['Story', 'Positive', 'Negative', 'Missing negative'], q.negatives.map((n) => [esc(n.story), n.positive, n.negative, n.missingNegative ? pill('yes', 'failed') : 'no']))}
+<h4>Duplicates (${q.duplicates.length}) and overlaps for QE-lead review (${q.overlaps.length})</h4>${table(['Case A', 'Case B', 'Shared requirements', 'Note'], [...q.duplicates.map((d) => [esc(d.a), esc(d.b), esc(d.shared.join(', ')), pill('duplicate', 'failed')]), ...q.overlaps.map((o) => [esc(o.a), esc(o.b), esc(o.shared.join(', ')), `<span class="small">${esc(o.note)}</span>`])])}</div>`;
+}
+function eqeGaps(s) {
+  return table(['Gap', 'Category', 'Reference', 'Summary', 'Working assumption', 'Owner', 'Status'], s.uc1.gaps.map((g) => [esc(g.id), esc(g.g), esc(g.ref), esc(g.summary), esc(g.assumption), esc(g.owner), esc(g.status)]));
+}
+function eqeTrail(s) {
+  return `<div class="card"><h3>Record a gate decision (human reviewer)</h3><p class="small">Devin only submits. Decisions, reviewer names and measured review minutes come from people and feed the review-time and approval-to-scale metrics.</p>
+<div class="row"><select id="eqe-gate">${s.gates.map((g) => `<option>${esc(g)}</option>`).join('')}</select><select id="eqe-decision">${s.decisions.map((d) => `<option>${esc(d)}</option>`).join('')}</select>
+<input id="eqe-approver" placeholder="Reviewer name" aria-label="Reviewer name"><input id="eqe-minutes" type="number" min="1" placeholder="Review minutes" aria-label="Review minutes"><input id="eqe-note" placeholder="Note (optional)" aria-label="Note"><button class="btn" id="eqe-save">Record decision</button></div><div id="eqe-msg"></div></div>
+${table(['ID', 'When', 'Gate', 'Subject', 'Decision', 'By', 'Review min', 'Note'], s.trail.map((e) => [esc(e.id), fmtTime(e.at), esc(e.gate), esc(e.subject), pill(e.decision, e.decision === 'approved' ? 'passed' : e.decision === 'submitted' ? 'pending' : 'failed'), esc(e.by), esc(e.reviewMinutes ?? '-'), esc(e.note || '')]))}`;
+}
+async function viewEqe(params) {
+  setTitle('EQE PoC');
+  const tab = params.get('tab') || 'run';
+  const s = await api('/api/eqe');
+  const body = { run: eqeRun, jira: eqeJira, compare: eqeCompare, gaps: eqeGaps, trail: eqeTrail }[tab] || eqeRun;
+  $view.innerHTML = `<div class="row"><h1 style="margin:0">EQE PoC · Stages 1-3</h1><span class="small muted">Jira: ${esc(s.jira.label)} · synthetic app demo-booking · built ${fmtTime(s.generatedAt)}</span></div>
+${eqeStageBar(s.stages)}<nav class="eqe-tabs">${EQE_TABS.map(([id, label]) => `<a href="#/eqe?tab=${id}" class="${id === tab ? 'active' : ''}">${esc(label)}</a>`).join('')}</nav>${body(s, params)}`;
+  const save = document.getElementById('eqe-save');
+  if (save) save.onclick = async () => {
+    const v = (id) => document.getElementById(id).value;
+    const msg = document.getElementById('eqe-msg');
+    try {
+      await api('/api/eqe/approvals', { method: 'POST', body: { gate: v('eqe-gate'), decision: v('eqe-decision'), approver: v('eqe-approver'), reviewMinutes: Number(v('eqe-minutes')), note: v('eqe-note') } });
+      route();
+    } catch (e) { msg.innerHTML = `<div class="banner err">${esc(e.message)}${e.details ? `<ul>${e.details.map((d) => `<li>${esc(d)}</li>`).join('')}</ul>` : ''}</div>`; }
+  };
+}
+
 async function route() {
   clearTimeout(pollTimer);
   const [path, query] = location.hash.replace(/^#\/?/, '').split('?');
@@ -1191,6 +1262,7 @@ async function route() {
       case 'scripts': return await pickCycle(params, 'Scripts', scriptsView, (c) => ['completed', 'awaiting-merge'].includes(c.status));
       case 'execution': return await pickCycle(params, 'Execution', executionView, (c) => c.status === 'completed');
       case 'defects': return await pickCycle(params, 'Defects', defectsView, (c) => c.status === 'completed');
+      case 'eqe': return await viewEqe(params);
       case 'reporting': return await viewReporting(params);
       case 'reports': location.hash = '#/reporting'; return undefined;
       case 'compare': return await viewCompare(params);

@@ -1,0 +1,20 @@
+Requirement,Level,Jira key,Type,Requirement,Risk,Cases,Status
+AQPI-2-AC1,epic,AQPI-2,AC,All child user stories meet their acceptance criteria and the Definition of Done.,,,gap logged
+AQPI-2-AC2,epic,AQPI-2,AC,Negative and error paths for each story are tested and evidenced.,,,process/epic criterion
+AQPI-2-AC3,epic,AQPI-2,AC,Required logging is in place and verified free of sensitive data.,,,gap logged
+AQPI-2-AC4,epic,AQPI-2,AC,The Product Owner has accepted the capability end to end.,,,gap logged
+AQPI-3-AC1,story,AQPI-3,AC,"Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.",High,TC-AQPI-2-01,covered
+AQPI-3-AC2,story,AQPI-3,AC,The submitted criteria remain visible and editable on the results page.,Medium,TC-AQPI-2-02,covered
+AQPI-3-AC3,story,AQPI-3,AC,"Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.",High,TC-AQPI-2-03; TC-AQPI-2-04; TC-AQPI-2-05,covered
+AQPI-3-AC4,story,AQPI-3,AC,A no-availability result explains that no matching inventory was found and allows criteria changes.,Medium,TC-AQPI-2-06,covered
+AQPI-3-BR1,story,AQPI-3,BR,Check-in must precede check-out.,High,TC-AQPI-2-04,covered
+AQPI-3-BR2,story,AQPI-3,BR,Occupancy must comply with configured room limits.,Medium,TC-AQPI-2-07,covered
+AQPI-3-BR3,story,AQPI-3,BR,Maximum stay length must be configurable.,Medium,TC-AQPI-2-08,covered
+AQPI-4-AC1,story,AQPI-4,AC,Required fields are clearly identified.,Low,TC-AQPI-2-09,covered
+AQPI-4-AC2,story,AQPI-4,AC,Invalid combinations return field-level messages.,Medium,TC-AQPI-2-10,covered
+AQPI-4-AC3,story,AQPI-4,AC,Server validation is authoritative when client and server results differ.,High,TC-AQPI-2-11,covered
+AQPI-4-AC4,story,AQPI-4,AC,Validation messages are accessible to assistive technology.,Medium,TC-AQPI-2-12,covered
+AQPI-4-BR1,story,AQPI-4,BR,Validation rules must be configurable where market or property rules vary.,Medium,TC-AQPI-2-11,covered
+AQPI-5-AC1,story,AQPI-5,AC,"Zero results provide options to alter dates, occupancy, destination, or filters.",Medium,TC-AQPI-2-13,covered
+AQPI-5-AC2,story,AQPI-5,AC,Technical failures display a non-technical message and retry option.,High,TC-AQPI-2-14,covered
+AQPI-5-AC3,story,AQPI-5,AC,Repeated submission does not create inconsistent sessions.,Medium,TC-AQPI-2-15,covered

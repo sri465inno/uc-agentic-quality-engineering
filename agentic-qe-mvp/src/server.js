@@ -19,10 +19,11 @@ const { TESTING_TYPES, DEFAULT_TESTING_TYPE } = require('./testing-types');
 const { FLOWS: DEMO_INPUT_FLOWS } = require('../scripts/make-demo-inputs');
 const { labMeta, generateData, runLabCase } = require('./lab');
 const { isHotelBranch } = require('../sut/hotel');
+const { eqeRouter } = require('./eqe');
 
 const XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
-function createApp({ dataDir = path.join(__dirname, '..', 'data'), env = process.env, skillsDir = path.join(__dirname, '..', 'skills') } = {}) {
+function createApp({ dataDir = path.join(__dirname, '..', 'data'), env = process.env, skillsDir = path.join(__dirname, '..', 'skills'), eqe = {} } = {}) {
   const store = new Store(dataDir);
   const uploadDir = path.join(dataDir, 'skills');
   const readSkills = () => {
@@ -56,6 +57,8 @@ function createApp({ dataDir = path.join(__dirname, '..', 'data'), env = process
     res.send(body);
   };
   const needReport = (c) => { if (!c.report) { const e = new Error('Report not available until the cycle has completed'); e.status = 409; throw e; } return c.report; };
+
+  app.use('/api/eqe', eqeRouter(eqe));
 
   app.get('/api/meta', (req, res) => {
     const jira = jiraLiveConfig(env);

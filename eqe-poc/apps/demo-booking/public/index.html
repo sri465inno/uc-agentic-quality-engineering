@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demo-booking — hotel search</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="bar"><b>demo-booking</b><span>Synthetic hotel search · EQE PoC stand-in (no real client data)</span></header>
+<main>
+  <section aria-labelledby="search-title" class="card">
+    <h1 id="search-title">Find a hotel</h1>
+    <p class="hint" id="required-hint">Fields marked <span aria-hidden="true">*</span> are required.</p>
+    <div id="error-summary" role="alert" class="summary" hidden></div>
+    <form id="search" aria-label="Hotel search" novalidate>
+      <div class="field"><label for="destination">Destination <span class="req" aria-hidden="true">*</span></label>
+        <input id="destination" name="destination" required aria-required="true" autocomplete="off"><p class="err" id="destination-error"></p></div>
+      <div class="field"><label for="checkIn">Check-in <span class="req" aria-hidden="true">*</span></label>
+        <input id="checkIn" name="checkIn" type="date" required aria-required="true"><p class="err" id="checkIn-error"></p></div>
+      <div class="field"><label for="checkOut">Check-out <span class="req" aria-hidden="true">*</span></label>
+        <input id="checkOut" name="checkOut" type="date" required aria-required="true"><p class="err" id="checkOut-error"></p></div>
+      <div class="field small"><label for="rooms">Rooms <span class="req" aria-hidden="true">*</span></label>
+        <input id="rooms" name="rooms" type="number" min="1" value="1" required aria-required="true"><p class="err" id="rooms-error"></p></div>
+      <div class="field small"><label for="adults">Adults <span class="req" aria-hidden="true">*</span></label>
+        <input id="adults" name="adults" type="number" min="1" value="2" required aria-required="true"><p class="err" id="adults-error"></p></div>
+      <div class="field small"><label for="children">Children</label>
+        <input id="children" name="children" type="number" min="0" value="0"><p class="err" id="children-error"></p></div>
+      <div class="field"><label for="maxPrice">Max price per night (filter)</label>
+        <select id="maxPrice" name="maxPrice"><option value="">Any price</option><option value="100">Up to 100</option><option value="150">Up to 150</option><option value="250">Up to 250</option></select></div>
+      <div class="actions"><button type="submit" id="submit">Search hotels</button></div>
+    </form>
+  </section>
+  <section id="outcome" aria-live="polite"></section>
+</main>
+<script src="/validate.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

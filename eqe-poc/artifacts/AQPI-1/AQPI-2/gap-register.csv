@@ -1,0 +1,12 @@
+id,g,ref,summary,assumption,owner,status
+GAP-01,G2,AQPI-3-BR2,Room limits are 'configured' but no values are given.,"demo-booking config: max 4 rooms, 3 adults and 2 children per room.",Product Owner,open
+GAP-02,G15,AQPI-3-BR3,Maximum stay length is configurable but no default or market values are given.,"demo-booking config: 30 nights globally, Venice 7 nights (synthetic market rule).",Product Owner,open
+GAP-03,G4,AQPI-3 / AQPI-4 / AQPI-5 logging,"Logging and audit requirements (correlation ID, duration, retry count...) are not observable through the UI.",Not designed as UI cases; candidate for API/log checks outside this PoC.,QE lead,open
+GAP-04,G9,"AQPI-2-AC1, AQPI-2-AC4","Definition of Done and Product Owner acceptance are process sign-offs, not tests.",Tracked in the governance trail.,QE lead,open
+GAP-05,G16,AQPI-2-AC3,"'Logging verified free of sensitive data' needs log inspection, outside the UI lens.",Out of UI scope; listed for Stage 4/API follow-up.,QE lead,open
+GAP-06,G10,AQPI-4-AC4,"Only key accessibility semantics are asserted (role=alert summary, aria-invalid, aria-describedby). A full WCAG audit needs tooling such as axe.",Key-element assertions only.,QE lead,open
+GAP-07,G1,AQPI-5-AC3,'Inconsistent sessions' is not defined.,A double submission produces exactly one search session and one search reference.,Product Owner,open
+GAP-08,G1,AQPI-3-AC1,'A search request is created' has no stated UI evidence.,The results page shows a search reference.,Product Owner,open
+GAP-09,G2,AQPI-5-AC1,'Filters' are mentioned but no filter set is defined.,demo-booking offers a max-price-per-night filter.,Product Owner,open
+GAP-10,G12,AQPI-2 dependencies,"The Availability and Property services are not available; demo-booking simulates them (Atlantis = outage, Reykjavik = zero inventory).",Synthetic stand-in only.,QE lead,accepted
+GAP-11,G20,Approved context,No approved Confluence/BRD pages were supplied; the analysis uses Jira only.,Jira descriptions are treated as the approved context.,QE lead,open
