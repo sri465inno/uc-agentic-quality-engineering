@@ -1,0 +1,25 @@
+{
+  "epic": "AQPI-2",
+  "title": "Golden set - Epic 1 Search and Availability",
+  "provenance": {
+    "authoredBy": "DRAFT seeded by Devin for the PoC - must be reviewed, corrected or replaced by the QE lead before Gate 1",
+    "status": "draft-pending-qe-lead-signoff",
+    "note": "The PoC requires 12-15 human-authored cases. Replace this file (or paste a new set on the Compare tab) with the QE team's own cases; the comparison is recomputed from whatever set is present."
+  },
+  "cases": [
+    { "id": "G-01", "req": "AQPI-3-AC1", "title": "Guest finds hotels for a valid Paris stay", "steps": ["Go to the search page", "Type Paris, pick dates a month ahead for 3 nights, 1 room, 2 adults", "Press Search hotels"], "expected": "Results page opens with a count of hotels found and hotel cards" },
+    { "id": "G-02", "req": "AQPI-3-AC2", "title": "Search criteria shown on results and can be edited", "steps": ["Run a valid Paris search", "Look at the summary bar", "Click Modify search"], "expected": "Summary shows Paris and the dates; the form opens again with Paris filled in and editable" },
+    { "id": "G-03", "req": "AQPI-3-AC3", "title": "Check-in yesterday is blocked", "steps": ["Open search", "Set check-in to yesterday, check-out in two days", "Press Search hotels"], "expected": "Error under check-in says the date cannot be in the past; no results shown" },
+    { "id": "G-04", "req": "AQPI-3-AC3", "title": "Same-day check-out is blocked", "steps": ["Open search", "Set check-out equal to check-in", "Press Search hotels"], "expected": "Error under check-out says it must be after the check-in date" },
+    { "id": "G-05", "req": "AQPI-3-AC3", "title": "Empty mandatory fields are blocked", "steps": ["Open search", "Leave destination and dates blank", "Press Search hotels"], "expected": "Error summary appears and destination says it is required" },
+    { "id": "G-06", "req": "AQPI-3-AC4", "title": "City with no inventory explains there is nothing available", "steps": ["Search Reykjavik for valid dates", "Read the message"], "expected": "Message says no hotels match and no available inventory was found; Modify search lets the guest change criteria" },
+    { "id": "G-07", "req": "AQPI-3-BR2", "title": "Too many children for one room is blocked", "steps": ["Open search", "Enter 1 room, 2 adults, 4 children", "Press Search hotels"], "expected": "Children field says a room holds up to 3 children" },
+    { "id": "G-08", "req": "AQPI-4-AC1", "title": "Mandatory fields are marked", "steps": ["Open search", "Look at the field labels"], "expected": "Destination, check-in, check-out, rooms and adults carry a required marker; a Required field legend is shown" },
+    { "id": "G-09", "req": "AQPI-4-AC2", "title": "Five adults in one room gets a field message", "steps": ["Open search", "Enter 1 room and 5 adults", "Press Search hotels"], "expected": "Adults field explains a room holds up to 4 adults" },
+    { "id": "G-10", "req": "AQPI-4-AC3", "title": "Server rejects a 31-night stay the browser lets through", "steps": ["Open search", "Enter a stay of 31 nights", "Press Search hotels"], "expected": "Server message on check-out says stays are limited to 30 nights" },
+    { "id": "G-11", "req": "AQPI-4-AC4", "title": "Errors are announced to screen readers", "steps": ["Open search", "Submit with empty fields"], "expected": "An alert region announces the errors and invalid fields are flagged and described by their message" },
+    { "id": "G-12", "req": "AQPI-5-AC1", "title": "No results offers ways to change the search", "steps": ["Search Reykjavik", "Look at the options offered"], "expected": "Change dates, change occupancy and change destination options are shown; change dates puts focus on check-in" },
+    { "id": "G-13", "req": "AQPI-5-AC2", "title": "Availability outage shows a friendly error with retry", "steps": ["Search Outage City", "Click Try again"], "expected": "Plain message that the search could not be completed, no error codes, and a Try again button" },
+    { "id": "G-14", "req": "AQPI-5-AC3", "title": "Double-clicking search runs one search", "steps": ["Fill a valid Paris search", "Double-click Search hotels"], "expected": "One results list with a single search reference" }
+  ]
+}

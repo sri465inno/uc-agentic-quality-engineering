@@ -1,0 +1,18 @@
+'use strict';
+// Synthetic inventory only. Reykjavik has no inventory (zero-result path); "Outage City" simulates an availability-service failure.
+const RULES = { maxStayNights: 30, maxRooms: 5, maxAdultsPerRoom: 4, maxChildrenPerRoom: 3 };
+const CITIES = [
+  { name: 'Paris' }, { name: 'London' }, { name: 'Rome' }, { name: 'Reykjavik' }, { name: 'Outage City', outage: true },
+];
+const room = (id, name, price, cancel) => ({ id, name, price, cancellation: cancel });
+const HOTELS = [
+  { id: 'par-1', city: 'Paris', name: 'Aurora Opera Paris', location: 'Paris, 9th arr.', stars: 5, rating: 9.1, price: 320, currency: 'EUR', available: true, distanceKm: 1.2, amenities: ['Wi-Fi', 'Spa', 'Breakfast'], fees: 'City tax EUR 4 per night payable at the hotel.', description: 'Grand hotel beside the opera house.', rooms: [room('par-1-k', 'Deluxe King', 320, 'Free cancellation until 48 hours before arrival.'), room('par-1-t', 'Classic Twin', 290, 'Non-refundable.')] },
+  { id: 'par-2', city: 'Paris', name: 'Aurora Left Bank', location: 'Paris, 6th arr.', stars: 4, rating: 8.6, price: 210, currency: 'EUR', available: true, distanceKm: 2.4, amenities: ['Wi-Fi', 'Breakfast'], fees: 'City tax EUR 3 per night payable at the hotel.', description: 'Boutique hotel near Saint-Germain.', rooms: [room('par-2-q', 'Superior Queen', 210, 'Free cancellation until 24 hours before arrival.')] },
+  { id: 'par-3', city: 'Paris', name: 'Aurora Gare du Nord', location: 'Paris, 10th arr.', stars: 3, rating: 7.9, price: 140, currency: 'EUR', available: true, distanceKm: 3.1, amenities: ['Wi-Fi'], fees: 'City tax EUR 2 per night payable at the hotel.', description: 'Practical rooms next to the station.', rooms: [room('par-3-d', 'Standard Double', 140, 'Non-refundable.')] },
+  { id: 'par-4', city: 'Paris', name: 'Aurora Montmartre', location: 'Paris, 18th arr.', stars: 4, rating: 8.2, price: 185, currency: 'EUR', available: false, distanceKm: 4.0, amenities: ['Wi-Fi', 'Gym'], fees: 'City tax EUR 3 per night payable at the hotel.', description: 'Hilltop views over the city.', rooms: [] },
+  { id: 'par-5', city: 'Paris', name: 'Aurora La Defense', location: 'Paris, La Defense', stars: 4, rating: 8.0, price: 175, currency: 'EUR', available: true, distanceKm: 7.5, amenities: ['Wi-Fi', 'Gym', 'Parking'], fees: 'City tax EUR 3 per night payable at the hotel.', description: 'Business hotel in the financial district.', rooms: [room('par-5-k', 'Executive King', 175, 'Free cancellation until 24 hours before arrival.')] },
+  { id: 'lon-1', city: 'London', name: 'Aurora Covent Garden', location: 'London, WC2', stars: 5, rating: 9.0, price: 380, currency: 'GBP', available: true, distanceKm: 0.8, amenities: ['Wi-Fi', 'Spa', 'Gym'], fees: 'All taxes included.', description: 'Theatre-district luxury.', rooms: [room('lon-1-k', 'Deluxe King', 380, 'Free cancellation until 48 hours before arrival.')] },
+  { id: 'lon-2', city: 'London', name: 'Aurora Kings Cross', location: 'London, N1', stars: 3, rating: 8.1, price: 160, currency: 'GBP', available: true, distanceKm: 2.6, amenities: ['Wi-Fi', 'Breakfast'], fees: 'All taxes included.', description: 'Modern rooms by the station.', rooms: [room('lon-2-d', 'Standard Double', 160, 'Non-refundable.')] },
+  { id: 'rom-1', city: 'Rome', name: 'Aurora Piazza Navona', location: 'Rome, Centro Storico', stars: 4, rating: 8.8, price: 230, currency: 'EUR', available: true, distanceKm: 0.5, amenities: ['Wi-Fi', 'Breakfast'], fees: 'City tax EUR 6 per night payable at the hotel.', description: 'Palazzo steps from the piazza.', rooms: [room('rom-1-q', 'Classic Queen', 230, 'Free cancellation until 72 hours before arrival.')] },
+];
+module.exports = { RULES, CITIES, HOTELS };

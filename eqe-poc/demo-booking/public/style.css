@@ -1,0 +1,23 @@
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:#f5f3ef;color:#1d2230;font-size:15px}
+.bar{background:#2c1f4a;color:#fff;padding:12px 5%;display:flex;gap:16px;align-items:center}.brand{color:#fff;font-weight:700;text-decoration:none;font-size:18px}.tag{font-size:12px;color:#c8bfe0}
+main{max-width:1100px;margin:0 auto;padding:24px 5%}
+h1{font-size:24px;margin:0 0 14px}h2{font-size:18px}
+form.search{background:#fff;border:1px solid #ddd5c9;border-radius:6px;padding:18px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;align-items:end}
+.field{display:flex;flex-direction:column;gap:4px}.field.wide{grid-column:span 2}label{font-size:13px;font-weight:600}
+.req{color:#a32020}input,select{padding:8px;border:1px solid #b9b0a2;border-radius:4px;font-size:14px}
+input[aria-invalid=true],select[aria-invalid=true]{border-color:#a32020;background:#fff6f6}
+.err{color:#a32020;font-size:12.5px;min-height:1em}
+button{background:#2c1f4a;color:#fff;border:0;border-radius:4px;padding:9px 16px;font-size:14px;cursor:pointer}button:disabled{opacity:.6;cursor:wait}
+button.ghost{background:#fff;color:#2c1f4a;border:1px solid #2c1f4a}
+.summary{background:#fff6f6;border:1px solid #e0b4b4;border-radius:6px;padding:10px 14px;margin:0 0 12px}
+.criteria{background:#fff;border:1px solid #ddd5c9;border-radius:6px;padding:10px 14px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.layout{display:grid;grid-template-columns:230px 1fr;gap:18px}
+aside{background:#fff;border:1px solid #ddd5c9;border-radius:6px;padding:12px;font-size:14px}aside fieldset{border:0;padding:0;margin:0 0 12px}aside legend{font-weight:600;margin-bottom:4px}
+.cards{display:grid;gap:12px}.card{background:#fff;border:1px solid #ddd5c9;border-radius:6px;display:grid;grid-template-columns:120px 1fr auto;gap:14px;padding:12px;align-items:center}
+.card img{width:120px;height:80px;border-radius:4px;background:#ddd}.price{font-size:18px;font-weight:700}.fee{font-size:12px;color:#5a606d}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;background:#e5f3ea;color:#1e7a4a}.badge.sold{background:#f3e5e5;color:#a32020}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.chip{background:#ece7f7;color:#2c1f4a;border:0;padding:3px 10px;border-radius:12px;font-size:12.5px}
+.notice{background:#fff;border:1px solid #ddd5c9;border-left:4px solid #c9952d;border-radius:6px;padding:16px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.rooms{display:grid;gap:10px}.room{background:#fff;border:1px solid #ddd5c9;border-radius:6px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ok{background:#e5f3ea;border:1px solid #b6d5c2;border-radius:6px;padding:12px;margin-top:12px}

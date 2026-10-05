@@ -1,0 +1,438 @@
+{
+  "key": "AQPI-32",
+  "id": "18016",
+  "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/18016",
+  "_site": "https://tcs-team-ou6drgfr.atlassian.net",
+  "fields": {
+    "summary": "[Epic 8] Release 2.0 – Booking Rule Changes and Free Cancellation",
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Parent initiative: ",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "Intelligent Hotel Shopping and Reservation Experience"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Capability summary"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Release 2.0 of the hotel booking platform: tighter cart, stay-length and resend rules, plus free cancellation for guests."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Business value"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Frees held inventory sooner, applies the Paris market's new stay policy, lowers 'I never got my e-mail' support calls and lets guests cancel without calling the hotel."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Scope (user stories)"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "10.1 Shorten the cart hold to 20 minutes"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "10.2 Limit Paris stays to 14 nights"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "10.3 Allow up to 5 confirmation resends"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "10.4 Cancel a reservation free of charge"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Changes from release 1.0"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Changed: cart hold 30 -> 20 minutes (AQPI-15)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Changed: Paris maximum stay 21 -> 14 nights (AQPI-4)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Changed: confirmation resends 3 -> 5 per booking in 24 hours (AQPI-26)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "New: free cancellation up to 48 hours before check-in"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Epic acceptance criteria"
+            }
+          ]
+        },
+        {
+          "type": "orderedList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "All child user stories meet their acceptance criteria and the Definition of Done."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Release 1.0 behaviour not named in this epic is unchanged and passes regression."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Required logging is in place and verified free of sensitive data."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "The Product Owner has accepted the release 2.0 changes end to end."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Dependencies"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Search, cart, reservation, hotel inventory and notification services"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Indicative size: 16 story points across 4 stories (to be refined by the delivery team)"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Target planning period: Release 2.0, December 2026"
+            }
+          ]
+        }
+      ]
+    },
+    "issuetype": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10121",
+      "id": "10121",
+      "description": "Workstreams track a set of related work and activities that work towards a larger deliverable.",
+      "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+      "name": "Workstream",
+      "subtask": false,
+      "avatarId": 10307,
+      "entityId": "4838daea-66de-49f0-899b-2b8c77a6cf9d",
+      "hierarchyLevel": 1
+    },
+    "status": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+      "description": "",
+      "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+      "name": "To Do",
+      "id": "10109",
+      "statusCategory": {
+        "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      }
+    },
+    "priority": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+      "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "labels": [
+      "epic",
+      "epic-08",
+      "hotel-booking",
+      "release-2.0"
+    ],
+    "project": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/project/10100",
+      "id": "10100",
+      "key": "AQPI",
+      "name": "Agentic QE Platform Initiative",
+      "projectTypeKey": "business",
+      "simplified": true,
+      "avatarUrls": {
+        "48x48": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+        "24x24": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+        "16x16": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+        "32x32": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+      }
+    },
+    "issuelinks": [
+      {
+        "id": "10007",
+        "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issueLink/10007",
+        "type": {
+          "id": "10003",
+          "name": "Relates",
+          "inward": "relates to",
+          "outward": "relates to",
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issueLinkType/10003"
+        },
+        "outwardIssue": {
+          "id": "17985",
+          "key": "AQPI-1",
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17985",
+          "fields": {
+            "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+            "status": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+              "description": "",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+              "name": "To Do",
+              "id": "10109",
+              "statusCategory": {
+                "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+                "id": 2,
+                "key": "new",
+                "colorName": "blue-gray",
+                "name": "To Do"
+              }
+            },
+            "priority": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+              "name": "Medium",
+              "id": "3"
+            },
+            "issuetype": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10121",
+              "id": "10121",
+              "description": "Workstreams track a set of related work and activities that work towards a larger deliverable.",
+              "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+              "name": "Workstream",
+              "subtask": false,
+              "avatarId": 10307,
+              "entityId": "4838daea-66de-49f0-899b-2b8c77a6cf9d",
+              "hierarchyLevel": 1
+            }
+          }
+        }
+      }
+    ],
+    "duedate": "2026-12-31",
+    "customfield_10015": "2026-12-01"
+  }
+}

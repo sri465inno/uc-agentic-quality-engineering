@@ -1,0 +1,19 @@
+{
+  "app": "demo-booking",
+  "boundaries": "Synthetic data only. No real guest names, emails or payment data. Relative dates (+Nd) are resolved at run time.",
+  "entries": {
+    "validSearch": { "destination": "Paris", "checkIn": "+30d", "checkOut": "+33d", "rooms": 1, "adults": 2, "children": 0 },
+    "pastCheckIn": { "destination": "Paris", "checkIn": "-1d", "checkOut": "+2d", "rooms": 1, "adults": 2, "children": 0 },
+    "checkOutNotAfterCheckIn": { "destination": "Paris", "checkIn": "+30d", "checkOut": "+30d", "rooms": 1, "adults": 2, "children": 0 },
+    "missingMandatory": { "destination": "", "checkIn": "", "checkOut": "", "rooms": 1, "adults": 2, "children": 0 },
+    "overOccupancy": { "destination": "Paris", "checkIn": "+30d", "checkOut": "+33d", "rooms": 1, "adults": 5, "children": 0 },
+    "overMaxStay": { "destination": "Paris", "checkIn": "+30d", "checkOut": "+61d", "rooms": 1, "adults": 2, "children": 0 },
+    "zeroInventory": { "destination": "Reykjavik", "checkIn": "+30d", "checkOut": "+33d", "rooms": 1, "adults": 2, "children": 0 },
+    "serviceOutage": { "destination": "Outage City", "checkIn": "+30d", "checkOut": "+33d", "rooms": 1, "adults": 2, "children": 0 },
+    "filterMaxPrice": { "maxPrice": "200" },
+    "filterAmenity": { "amenity": "Spa" },
+    "filterNoMatch": { "maxPrice": "150", "amenity": "Spa" },
+    "bookableHotel": { "name": "Aurora Left Bank", "room": "Superior Queen" },
+    "soldOutHotel": { "name": "Aurora Montmartre" }
+  }
+}

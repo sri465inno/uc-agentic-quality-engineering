@@ -1,0 +1,499 @@
+{
+  "key": "AQPI-11",
+  "id": "17995",
+  "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17995",
+  "_site": "https://tcs-team-ou6drgfr.atlassian.net",
+  "fields": {
+    "summary": "5.1 Determine eligible ancillary offers",
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Epic: ",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "Epic 3: Personalized Ancillary Offers"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "User story"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "As a product owner, I want eligible ancillaries determined from trip and guest context so that only relevant and available products are offered."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Description"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Apply configurable eligibility and ranking rules."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Acceptance criteria"
+            }
+          ]
+        },
+        {
+          "type": "orderedList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Unavailable or ineligible products are excluded."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "The service returns a reason code for each recommended item."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "When personalization data is unavailable, safe contextual defaults may be returned."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Business rules"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Sensitive traits must not be inferred or used."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Personalization must honor consent and data-retention rules."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Business rules and model versions must be auditable."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Dependencies"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Ancillary inventory, Rules or recommendation service, Consent service"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Logging and audit requirements"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Request context using approved coded values"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Recommendation and rule/model version"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Eligibility result"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Reason code"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Rank"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Latency"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Correlation ID; exclude raw profile and free-text data"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Story points (indicative): ",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "13 – to be confirmed in refinement"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Notes for refinement"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Use synthetic or approved masked test data only."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Test cases must trace to this story; defects must link back to it or its test case."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "issuetype": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10122",
+      "id": "10122",
+      "description": "A small, distinct piece of work.",
+      "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+      "name": "Task",
+      "subtask": false,
+      "avatarId": 10318,
+      "entityId": "31ac3e8f-9a69-477e-a76c-1f5fffb1eef8",
+      "hierarchyLevel": 0
+    },
+    "status": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+      "description": "",
+      "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+      "name": "To Do",
+      "id": "10109",
+      "statusCategory": {
+        "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      }
+    },
+    "priority": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+      "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "labels": [
+      "epic-03",
+      "hotel-booking",
+      "sp-13",
+      "user-story"
+    ],
+    "parent": {
+      "id": "17994",
+      "key": "AQPI-10",
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17994",
+      "fields": {
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "status": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+          "description": "",
+          "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+          "name": "To Do",
+          "id": "10109",
+          "statusCategory": {
+            "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+          "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "issuetype": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10121",
+          "id": "10121",
+          "description": "Workstreams track a set of related work and activities that work towards a larger deliverable.",
+          "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+          "name": "Workstream",
+          "subtask": false,
+          "avatarId": 10307,
+          "entityId": "4838daea-66de-49f0-899b-2b8c77a6cf9d",
+          "hierarchyLevel": 1
+        }
+      }
+    },
+    "project": {
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/project/10100",
+      "id": "10100",
+      "key": "AQPI",
+      "name": "Agentic QE Platform Initiative",
+      "projectTypeKey": "business",
+      "simplified": true,
+      "avatarUrls": {
+        "48x48": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+        "24x24": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+        "16x16": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+        "32x32": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+      }
+    },
+    "issuelinks": [],
+    "duedate": "2026-11-04",
+    "customfield_10015": "2026-10-31"
+  }
+}

@@ -1,0 +1,1348 @@
+{
+  "startAt": 0,
+  "maxResults": 3,
+  "total": 3,
+  "isLast": true,
+  "issues": [
+    {
+      "key": "AQPI-3",
+      "id": "17987",
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17987",
+      "_site": "https://tcs-team-ou6drgfr.atlassian.net",
+      "fields": {
+        "summary": "3.1 Search hotels by destination and date range",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Epic: ",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "Epic 1: Search and Availability"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "User story"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "As a guest, I want to search by destination and stay dates so that I can find hotels for my trip."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Description"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Capture destination, check-in, check-out, rooms, adults, and children."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Acceptance criteria"
+                }
+              ]
+            },
+            {
+              "type": "orderedList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "The submitted criteria remain visible and editable on the results page."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "A no-availability result explains that no matching inventory was found and allows criteria changes."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Business rules"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Check-in must precede check-out."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Occupancy must comply with configured room limits."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Maximum stay length must be configurable."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Dependencies"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Availability service, Property service"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Logging and audit requirements"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Correlation ID"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Search timestamp"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Destination token or code"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Date range"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Room and occupancy counts"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Result count"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Response status and duration"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Do not log guest names, email addresses, payment data, or raw free-text containing personal data"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Story points (indicative): ",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "8 – to be confirmed in refinement"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Notes for refinement"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Use synthetic or approved masked test data only."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Test cases must trace to this story; defects must link back to it or its test case."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "issuetype": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10122",
+          "id": "10122",
+          "description": "A small, distinct piece of work.",
+          "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318,
+          "entityId": "31ac3e8f-9a69-477e-a76c-1f5fffb1eef8",
+          "hierarchyLevel": 0
+        },
+        "status": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+          "description": "",
+          "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+          "name": "To Do",
+          "id": "10109",
+          "statusCategory": {
+            "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+          "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "labels": [
+          "epic-01",
+          "hotel-booking",
+          "sp-8",
+          "user-story"
+        ],
+        "parent": {
+          "id": "17986",
+          "key": "AQPI-2",
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17986",
+          "fields": {
+            "summary": "[Epic 1] Search and Availability",
+            "status": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+              "description": "",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+              "name": "To Do",
+              "id": "10109",
+              "statusCategory": {
+                "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+                "id": 2,
+                "key": "new",
+                "colorName": "blue-gray",
+                "name": "To Do"
+              }
+            },
+            "priority": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+              "name": "Medium",
+              "id": "3"
+            },
+            "issuetype": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10121",
+              "id": "10121",
+              "description": "Workstreams track a set of related work and activities that work towards a larger deliverable.",
+              "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+              "name": "Workstream",
+              "subtask": false,
+              "avatarId": 10307,
+              "entityId": "4838daea-66de-49f0-899b-2b8c77a6cf9d",
+              "hierarchyLevel": 1
+            }
+          }
+        },
+        "project": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/project/10100",
+          "id": "10100",
+          "key": "AQPI",
+          "name": "Agentic QE Platform Initiative",
+          "projectTypeKey": "business",
+          "simplified": true,
+          "avatarUrls": {
+            "48x48": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+            "24x24": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+            "16x16": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+            "32x32": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+          }
+        },
+        "issuelinks": [],
+        "duedate": "2026-10-05",
+        "customfield_10015": "2026-10-01"
+      }
+    },
+    {
+      "key": "AQPI-4",
+      "id": "17988",
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17988",
+      "_site": "https://tcs-team-ou6drgfr.atlassian.net",
+      "fields": {
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Epic: ",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "Epic 1: Search and Availability"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "User story"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "As a guest, I want invalid search inputs identified before submission so that I can correct them quickly."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Description"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Apply client-side and server-side validation consistently."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Acceptance criteria"
+                }
+              ]
+            },
+            {
+              "type": "orderedList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Required fields are clearly identified."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Invalid combinations return field-level messages."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Server validation is authoritative when client and server results differ."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Validation messages are accessible to assistive technology."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Business rules"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Validation rules must be configurable where market or property rules vary."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Dependencies"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "None identified."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Logging and audit requirements"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Validation rule identifier"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Outcome"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Error category"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Correlation ID; no sensitive field values"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Story points (indicative): ",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "5 – to be confirmed in refinement"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Notes for refinement"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Use synthetic or approved masked test data only."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Test cases must trace to this story; defects must link back to it or its test case."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "issuetype": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10122",
+          "id": "10122",
+          "description": "A small, distinct piece of work.",
+          "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318,
+          "entityId": "31ac3e8f-9a69-477e-a76c-1f5fffb1eef8",
+          "hierarchyLevel": 0
+        },
+        "status": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+          "description": "",
+          "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+          "name": "To Do",
+          "id": "10109",
+          "statusCategory": {
+            "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+          "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "labels": [
+          "epic-01",
+          "hotel-booking",
+          "sp-5",
+          "user-story"
+        ],
+        "parent": {
+          "id": "17986",
+          "key": "AQPI-2",
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17986",
+          "fields": {
+            "summary": "[Epic 1] Search and Availability",
+            "status": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+              "description": "",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+              "name": "To Do",
+              "id": "10109",
+              "statusCategory": {
+                "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+                "id": 2,
+                "key": "new",
+                "colorName": "blue-gray",
+                "name": "To Do"
+              }
+            },
+            "priority": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+              "name": "Medium",
+              "id": "3"
+            },
+            "issuetype": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10121",
+              "id": "10121",
+              "description": "Workstreams track a set of related work and activities that work towards a larger deliverable.",
+              "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+              "name": "Workstream",
+              "subtask": false,
+              "avatarId": 10307,
+              "entityId": "4838daea-66de-49f0-899b-2b8c77a6cf9d",
+              "hierarchyLevel": 1
+            }
+          }
+        },
+        "project": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/project/10100",
+          "id": "10100",
+          "key": "AQPI",
+          "name": "Agentic QE Platform Initiative",
+          "projectTypeKey": "business",
+          "simplified": true,
+          "avatarUrls": {
+            "48x48": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+            "24x24": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+            "16x16": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+            "32x32": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+          }
+        },
+        "issuelinks": [],
+        "duedate": "2026-10-10",
+        "customfield_10015": "2026-10-06"
+      }
+    },
+    {
+      "key": "AQPI-5",
+      "id": "17989",
+      "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17989",
+      "_site": "https://tcs-team-ou6drgfr.atlassian.net",
+      "fields": {
+        "summary": "3.3 Handle unavailable or failed searches",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Epic: ",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "Epic 1: Search and Availability"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "User story"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "As a guest, I want a clear response when inventory cannot be found or the search service fails so that I know what to do next."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Description"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Distinguish valid zero-result responses from technical failures."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Acceptance criteria"
+                }
+              ]
+            },
+            {
+              "type": "orderedList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Zero results provide options to alter dates, occupancy, destination, or filters."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Technical failures display a non-technical message and retry option."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Repeated submission does not create inconsistent sessions."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Dependencies"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Availability service"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Logging and audit requirements"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Failure category"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Dependency status"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Retry count"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Duration"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Correlation ID"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Story points (indicative): ",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "5 – to be confirmed in refinement"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 3
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Notes for refinement"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Use synthetic or approved masked test data only."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Test cases must trace to this story; defects must link back to it or its test case."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "issuetype": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10122",
+          "id": "10122",
+          "description": "A small, distinct piece of work.",
+          "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318,
+          "entityId": "31ac3e8f-9a69-477e-a76c-1f5fffb1eef8",
+          "hierarchyLevel": 0
+        },
+        "status": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+          "description": "",
+          "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+          "name": "To Do",
+          "id": "10109",
+          "statusCategory": {
+            "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+          "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "labels": [
+          "epic-01",
+          "hotel-booking",
+          "sp-5",
+          "user-story"
+        ],
+        "parent": {
+          "id": "17986",
+          "key": "AQPI-2",
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issue/17986",
+          "fields": {
+            "summary": "[Epic 1] Search and Availability",
+            "status": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/status/10109",
+              "description": "",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/statuses/generic.png",
+              "name": "To Do",
+              "id": "10109",
+              "statusCategory": {
+                "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/statuscategory/2",
+                "id": 2,
+                "key": "new",
+                "colorName": "blue-gray",
+                "name": "To Do"
+              }
+            },
+            "priority": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/priority/3",
+              "iconUrl": "https://tcs-team-ou6drgfr.atlassian.net/images/icons/priorities/medium_new.svg",
+              "name": "Medium",
+              "id": "3"
+            },
+            "issuetype": {
+              "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/issuetype/10121",
+              "id": "10121",
+              "description": "Workstreams track a set of related work and activities that work towards a larger deliverable.",
+              "iconUrl": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+              "name": "Workstream",
+              "subtask": false,
+              "avatarId": 10307,
+              "entityId": "4838daea-66de-49f0-899b-2b8c77a6cf9d",
+              "hierarchyLevel": 1
+            }
+          }
+        },
+        "project": {
+          "self": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/project/10100",
+          "id": "10100",
+          "key": "AQPI",
+          "name": "Agentic QE Platform Initiative",
+          "projectTypeKey": "business",
+          "simplified": true,
+          "avatarUrls": {
+            "48x48": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414",
+            "24x24": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=small",
+            "16x16": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+            "32x32": "https://api.atlassian.com/ex/jira/565eb966-e060-4529-a2df-ce43e25142b9/rest/api/3/universal_avatar/view/type/project/avatar/10414?size=medium"
+          }
+        },
+        "issuelinks": [],
+        "duedate": "2026-10-15",
+        "customfield_10015": "2026-10-11"
+      }
+    }
+  ]
+}
