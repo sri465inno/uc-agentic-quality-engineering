@@ -79,6 +79,8 @@ h3{font-size:14px;font-weight:600;margin:14px 0 6px;color:var(--tx)}
 .pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;background:var(--s3);color:var(--mut);border:1px solid var(--line);white-space:nowrap}
 .pill.fixture{background:var(--gold-soft);color:#7d5c1c;border-color:#e2cd9f}.pill.live{background:#eaf5ee;color:var(--ok);border-color:#b6d5c2}.pill.pasted{background:#efedf7;color:#4f4a86;border-color:#cfcbe6}
 .pill.github{background:var(--navy-soft);color:var(--navy);border-color:#b9cbe0}.pill.demo{background:var(--s3)}
+.pill.ai{background:#f1ecfb;color:#5b3fa0;border-color:#d4c6ef}
+.ai-note{margin-top:6px;padding:6px 8px;border-left:3px solid #b9a6e6;background:#f8f5fd;border-radius:4px}.ai-note ul,.ai-note ol{margin:4px 0;padding-left:18px}
 .pill.new,.pill.passed,.pill.agreed,.pill.executed{background:#eaf5ee;color:var(--ok);border-color:#b6d5c2}
 .pill.enhanced,.pill.re-designed,.pill.re-generated{background:var(--gold-soft);color:#7d5c1c;border-color:#e2cd9f}
 .pill.unchanged,.pill.carried,.pill.not-run,.pill.skipped,.pill.pending{background:var(--s3);color:var(--mut)}

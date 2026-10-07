@@ -177,12 +177,15 @@ async function reportWorkbook(report, cycle) {
     { k: 'Execution tool', v: ex.executed ? ex.tool : 'not executed' }, { k: 'Defects', v: report.defects.open.length },
     { k: 'Coverage (passing %)', v: report.coverage ? report.coverage.percent.passing : 0 },
     { k: 'Narrative', v: report.narrative.text }, { k: 'Narrative drafted by', v: report.narrative.draftedBy },
+    ...((report.narrative.risks || []).length ? [{ k: 'Risks (AI-drafted)', v: report.narrative.risks.join('\n') }] : []),
+    ...(report.narrative.recommendation ? [{ k: 'Recommendation (AI-drafted)', v: report.narrative.recommendation }] : []),
+    { k: 'AI mode', v: report.ai ? (report.ai.mode === 'ai' ? `${report.ai.provider} ${report.ai.model}` : 'rule-based (no model API key set)') : 'not recorded' },
   ]);
   sheetFromRows(wb, 'Inputs', [['Input', 'label', 18], ['Reference', 'ref', 40], ['Statements', 'statements', 12], ['Provenance', 'provenance', 12], ['Provenance detail', 'provenanceLabel', 80]], report.inputs);
-  sheetFromRows(wb, 'Requirements', [['ID', 'id', 10], ['Jira', 'jira', 16], ['Requirement', 'text', 70], ['Type', 'type', 16], ['Source', 'source', 12], ['Business rule', 'ruleId', 10], ['Rule', 'rule', 34], ['Exact values', 'ruleValues', 40], ['Test approach', 'approach', 13], ['Status', 'status', 14], ['Version', 'version', 8], ['Superseded value', 'previous', 60]], report.requirements.list);
+  sheetFromRows(wb, 'Requirements', [['ID', 'id', 10], ['Jira', 'jira', 16], ['Requirement', 'text', 70], ['Type', 'type', 16], ['Source', 'source', 12], ['Business rule', 'ruleId', 10], ['Rule', 'rule', 34], ['Exact values', 'ruleValues', 40], ['Test approach', 'approach', 13], ['Status', 'status', 14], ['Version', 'version', 8], ['Superseded value', 'previous', 60], ['AI title (suggested)', 'aiTitle', 30], ['AI summary (suggested)', 'aiSummary', 60], ['AI acceptance criteria (suggested)', 'aiAcceptance', 80]], report.requirements.list);
   addTestCaseSheet(wb, cycle);
-  sheetFromRows(wb, 'Execution', [['Case', 'key', 11], ['Requirement', 'requirementId', 12], ['Name', 'name', 60], ['Result', 'status', 10], ['Duration ms', 'duration', 12], ['Note', 'reason', 50]], ex.executed ? ex.results : []);
-  sheetFromRows(wb, 'Defects', [['ID', 'id', 9], ['Title', 'title', 50], ['Severity', 'severity', 9], ['Story', 'story', 11], ['Jira defect', 'jira', 40], ['Case', 'testCaseKey', 10], ['Requirement', 'requirementId', 12], ['Expected', 'expected', 14], ['Actual', 'actual', 14], ['Failing assertion', 'assertion', 50], ['Movement', 'movement', 12]], report.defects.open);
+  sheetFromRows(wb, 'Execution', [['Case', 'key', 11], ['Requirement', 'requirementId', 12], ['Name', 'name', 60], ['Result', 'status', 10], ['Duration ms', 'duration', 12], ['Note', 'reason', 50], ['AI triage (suggested; result unchanged)', 'aiTriage', 60]], ex.executed ? ex.results : []);
+  sheetFromRows(wb, 'Defects', [['ID', 'id', 9], ['Title', 'title', 50], ['Severity', 'severity', 9], ['Story', 'story', 11], ['Jira defect', 'jira', 40], ['Case', 'testCaseKey', 10], ['Requirement', 'requirementId', 12], ['Expected', 'expected', 14], ['Actual', 'actual', 14], ['Failing assertion', 'assertion', 50], ['Movement', 'movement', 12], ['AI triage', 'aiTriage', 14], ['AI summary (drafted)', 'aiSummary', 60], ['AI steps to reproduce', 'aiSteps', 60], ['AI likely cause', 'aiLikelyCause', 40]], report.defects.open);
   sheetFromRows(wb, 'Fixed and certified', [['ID', 'id', 9], ['Title', 'title', 50], ['Story', 'story', 11], ['Case', 'testCaseKey', 10], ['First seen', 'firstSeenCycle', 11], ['Retested in', 'resolvedInCycle', 11], ['Result', 'retestResult', 9], ['Status', 'status', 9], ['Certification', 'certification', 80]], report.defects.resolved || []);
   sheetFromRows(wb, 'Coverage', [['Requirement', 'requirementId', 12], ['Text', 'text', 70], ['Cases', 'cases', 8], ['Automated', 'automated', 10], ['Executed', 'executed', 10], ['Failed', 'failed', 8], ['Status', 'status', 24]], report.coverage ? report.coverage.rows : []);
   if (report.coverage && report.coverage.attributes) {
@@ -194,6 +197,10 @@ async function reportWorkbook(report, cycle) {
       report.traceability.stories.map((x) => ({ ...x, parent: x.parent || '', defectsText: x.defects.join(', ') })));
     sheetFromRows(wb, 'Traceability matrix', [['Jira', 'jira', 16], ['Requirement', 'requirementId', 12], ['Requirement text', 'requirement', 60], ['Rule', 'ruleId', 9], ['Test case', 'testCaseKey', 11], ['Name', 'testCase', 50], ['Type', 'testType', 12], ['Automation', 'automation', 11], ['Test data', 'testDataId', 11], ['Script', 'scriptFile', 40], ['Result', 'result', 14], ['Defect', 'defectsText', 10], ['Jira defect', 'jiraDefectsText', 12]],
       report.traceability.rows.map((x) => ({ ...x, jira: x.jiraKeys.join(', '), defectsText: x.defects.join(', '), jiraDefectsText: x.jiraDefects.join(', ') })));
+  }
+  if (report.ai) {
+    sheetFromRows(wb, 'AI activity', [['Call', 'id', 9], ['Agent', 'agent', 14], ['Purpose', 'purpose', 44], ['Model', 'model', 20], ['When', 'at', 24], ['OK', 'okText', 6], ['Cached', 'cachedText', 8], ['ms', 'ms', 8], ['Accepted', 'accepted', 9], ['Rejected by code', 'rejected', 10], ['Note', 'note', 60], ['Error', 'error', 30]],
+      report.ai.calls.map((c) => ({ ...c, okText: c.ok ? 'yes' : 'no', cachedText: c.cached ? 'yes' : '' })));
   }
   sheetFromRows(wb, 'Approvals', [['Gate', 'gate', 26], ['Decision', 'decision', 10], ['By', 'by', 18], ['When', 'at', 26], ['Detail', 'detail', 80]], report.approvals);
   sheetFromRows(wb, 'Skills', [['Skill id', 'id', 28], ['Name', 'name', 40], ['Description', 'description', 70], ['Seen by agents', 'agents', 40], ['File', 'file', 30]],

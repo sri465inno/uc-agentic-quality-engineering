@@ -2,10 +2,11 @@
 const { getTestingType } = require('./testing-types');
 const { PLATFORM_AGENTS, INPUT_TYPES } = require('./platform');
 const { domainOf } = require('./agents/domains');
-// Cycle report: every figure is computed here from persisted artifacts; the model (optional) drafts the narrative only.
+// Cycle report: every figure is computed here from persisted artifacts; the model (optional) drafts the narrative, risks and recommendation only.
 const { draftNarrative } = require('./llm');
 const { computeTraceability } = require('./traceability');
 const { jiraDefectText } = require('./connectors/jira-defects');
+const { AiSession, aiSummary } = require('./ai');
 
 const APP_TITLE = 'Agentic QE Platform - MVP';
 
@@ -26,7 +27,7 @@ function collectHandovers(cycle) {
 const PROVENANCE = { live: 'live Jira call', github: 'pulled live from GitHub', 'jira-export': 'Jira export on GitHub', fixture: 'recorded fixture', pasted: 'pasted' };
 const provKind = (p) => (p.kind === 'github' && p.system === 'jira' ? 'jira-export' : p.kind);
 
-async function buildCycleReport(cycle, { env = process.env, fetchImpl, guidance = '' } = {}) {
+async function buildCycleReport(cycle, { env = process.env, fetchImpl = globalThis.fetch, guidance = '', ai = new AiSession({ env, fetchImpl, state: cycle.ai || null }) } = {}) {
   const a = cycle.artifacts;
   const sourceOf = (r) => {
     if (r.bucket === 'conflict') return 'conflict';
@@ -54,8 +55,10 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl, guidance 
     passRate: exec ? exec.summary.passRate : 0,
     defects: defects.length,
     defectTitles: defects.map((d) => `${d.id} ${d.title}`).join('; '),
+    defectSeverities: defects.map((d) => `${d.id} ${d.severity}${d.blocksRelease ? ' (blocks release)' : ''}`).join('; '),
   };
-  const narrative = await draftNarrative(facts, { env, fetchImpl, guidance });
+  const narrative = await draftNarrative(facts, { env, fetchImpl, guidance, ai });
+  const aiState = ai.state;
   const carried = a.testCases.filter((t) => t.status === 'carried over').length;
   const manual = a.testCases.filter((t) => t.automation !== 'Automated');
   const handovers = collectHandovers(cycle);
@@ -96,7 +99,8 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl, guidance 
         return { id: r.id, text: r.text, type: r.type, status: r.status, version: r.version, previous: r.previous ? r.previous.text : null, jiraKeys: r.jiraKeys,
           jira: (r.jiraKeys || []).join(', '), source: sourceOf(r), ruleId: b ? b.id : null, rule: b ? b.title : null,
           ruleValues: b ? Object.entries(b.parameters).map(([k, v]) => `${k}=${typeof v === 'object' ? JSON.stringify(v) : v}`).join('; ') : null,
-          approach: b ? (b.executable ? 'Automatable' : 'Manual') : null };
+          approach: b ? (b.executable ? 'Automatable' : 'Manual') : null,
+          aiTitle: r.ai ? r.ai.title : null, aiSummary: r.ai ? r.ai.summary : null, aiAcceptance: r.ai ? r.ai.acceptance.join(' | ') : null };
       }),
     },
     rules: { total: a.rules.length, executable: a.rules.filter((r) => r.executable).length, manual: a.rules.filter((r) => !r.executable).length },
@@ -124,11 +128,13 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl, guidance 
     scripts: { total: a.scripts.length, byStatus: countBy(a.scripts, (s) => s.status), files: a.scripts.map((s) => ({ file: s.file, covers: s.covers, status: s.status, version: s.version })) },
     execution: exec && exec.executed !== false ? {
       executed: true, quarantined: 'not measured', durationMs: Date.parse(exec.finishedAt) - Date.parse(exec.startedAt), tool: exec.tool, command: exec.command, sut: exec.sut, startedAt: exec.startedAt, finishedAt: exec.finishedAt, summary: exec.summary,
-      results: exec.results.map((r) => ({ key: r.key, requirementId: r.requirementId, name: r.name, status: r.status, duration: r.duration, reason: r.reason || null })),
+      results: exec.results.map((r) => ({ key: r.key, requirementId: r.requirementId, name: r.name, status: r.status, duration: r.duration, reason: r.reason || null,
+        aiTriage: r.aiTriage ? `${r.aiTriage.category} (${r.aiTriage.confidence}): ${r.aiTriage.rationale}` : null })),
     } : { executed: false, reason: exec ? exec.tool : null },
     defects: {
       open: defects.map((d) => ({ id: d.id, title: d.title, severity: d.severity, blocksRelease: d.blocksRelease ?? null, ruleId: d.ruleId || null, movement: d.movement, testCaseKey: d.testCaseKey, requirementId: d.requirementId, expected: d.expected, actual: d.actual, assertion: d.assertion,
-        story: (d.jira && d.jira.linkedTo) || (d.jiraKeys || [])[0] || null, jiraStatus: d.jira ? d.jira.status : 'not raised', jiraKey: d.jira ? d.jira.key || null : null, jiraUrl: d.jira ? d.jira.url || null : null, jira: jiraDefectText(d) })),
+        story: (d.jira && d.jira.linkedTo) || (d.jiraKeys || [])[0] || null, jiraStatus: d.jira ? d.jira.status : 'not raised', jiraKey: d.jira ? d.jira.key || null : null, jiraUrl: d.jira ? d.jira.url || null : null, jira: jiraDefectText(d),
+        aiTriage: d.aiTriage ? d.aiTriage.category : null, aiSummary: d.ai ? d.ai.summary : null, aiSteps: d.ai ? d.ai.stepsToReproduce.join(' | ') : null, aiLikelyCause: d.ai ? d.ai.likelyCause : null })),
       resolved: (a.resolvedDefects || []).map((d) => ({ id: d.id, title: d.title, testCaseKey: d.testCaseKey, story: (d.jira && d.jira.linkedTo) || (d.jiraKeys || [])[0] || null, status: d.status, firstSeenCycle: d.firstSeenCycle, resolvedInCycle: d.resolvedInCycle || null, retestResult: d.retest ? d.retest.result : null, certification: d.certification || null })),
       movement: countBy(defects, (d) => d.movement),
     },
@@ -136,10 +142,27 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl, guidance 
     traceability: computeTraceability(cycle),
     approvals: cycle.approvals,
     narrative,
+    ai: {
+      mode: aiState.mode, provider: aiState.providerLabel || null, model: aiState.model || null, note: aiState.note || null,
+      agents: aiSummary(aiState),
+      calls: aiState.calls.map(({ id, agent, purpose, model, at, ok, cached, ms, accepted, rejected, note, error }) => ({ id, agent, purpose, model, at, ok, cached: !!cached, ms, accepted: accepted ?? null, rejected: rejected ?? null, note: note || null, error: error || null })),
+      suggestions: {
+        normalisationMatches: cycle.normalisation.counts.aiMatched || 0,
+        reviewFindings: cycle.reviewAgent ? cycle.reviewAgent.counts.ai || 0 : 0,
+        requirementsDescribed: a.requirements.filter((r) => r.ai).length,
+        testCases: a.testCases.filter((t) => t.origin === 'ai').length,
+        personas: a.testDataSummary && a.testDataSummary.ai ? a.testDataSummary.ai.personas : 0,
+        draftScripts: (a.aiScripts || []).length,
+        failuresTriaged: exec && exec.results ? exec.results.filter((r) => r.aiTriage).length : 0,
+        defectsDescribed: defects.filter((d) => d.ai).length,
+      },
+    },
     honesty: [
       ...cycle.inputs.map((i) => `${i.label} ${i.ref}: ${i.provenance.label}`),
       exec ? `Execution: ${exec.summary.executed} automated cases really executed by ${exec.tool} against ${exec.sut.name} (${exec.sut.build}); ${exec.summary.notRun} manual case(s) designed but not executed.` : 'Execution: not run.',
-      'Normalisation, delta classification, coverage, pass/fail and defect raising are computed in code, not by a model.',
+      aiState.mode === 'ai'
+        ? `AI (${aiState.providerLabel} ${aiState.model}) suggested matches, findings, descriptions, extra manual cases, synthetic data, draft specs, triage and prose; code checked every suggestion and people approved the requirement set. Values, delta classification, coverage, pass/fail and defect raising are computed in code, not by the model.`
+        : 'No model was used (no model API key set): normalisation, review, design, data, triage and prose are rule-based. Delta classification, coverage, pass/fail and defect raising are always computed in code.',
     ],
   };
 }
@@ -165,6 +188,13 @@ function traceabilityHtml(t) {
 <h3>By test case</h3>${table(['Jira', 'Requirement', 'Rule', 'Test case', 'Type', 'Test data', 'Script', 'Result', 'Defect', 'Jira defect'], t.rows.map((x) => [esc(x.jiraKeys.join(', ')), esc(x.requirementId), esc(x.ruleId || '-'), `${esc(x.testCaseKey)} ${esc(x.testCase)}`, esc(x.testType), esc(x.testDataId || '-'), esc(x.scriptFile || '-'), res(x.result), esc(x.defects.join(', ') || '-'), esc(x.jiraDefects.join(', ') || '-')]))}`;
 }
 
+function aiHtml(x) {
+  if (!x) return '';
+  if (x.mode !== 'ai') return `<h2>AI assistance</h2><p class="muted">${esc(x.note || 'No model was used for this cycle.')}</p>`;
+  return `<h2>AI assistance</h2><p>Model: <b>${esc(x.provider)} ${esc(x.model)}</b>. AI suggests, code checks, people approve; AI output is labelled AI-suggested throughout.</p><p>${kv(x.suggestions)}</p>
+${table(['Agent', 'Calls', 'Failed', 'Accepted', 'Rejected by code', 'Notes'], x.agents.map((g) => [esc(g.agent), g.calls, g.failed, g.accepted, g.rejected, esc(g.notes.join('; '))]))}`;
+}
+
 function renderReportHtml(r) {
   const ex = r.execution;
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(r.title)} - ${esc(r.cycle.name)}</title><style>${CSS}</style></head><body>
@@ -180,7 +210,8 @@ ${r.platform ? `<h2>Platform scope</h2><p>Capability under test: <b>${esc(r.plat
 <div class="kpi">Requirements<b>${r.requirements.total}</b></div><div class="kpi">Test cases<b>${r.testCases.total}</b></div><div class="kpi">Scripts<b>${r.scripts.total}</b></div>
 <div class="kpi">Executed<b>${ex.executed ? ex.summary.executed : 0}</b></div><div class="kpi">Pass rate<b>${ex.executed ? ex.summary.passRate + '%' : 'n/a'}</b></div><div class="kpi">Defects<b>${r.defects.open.length}</b></div>
 </div>
-<h2>Summary</h2><p>${esc(r.narrative.text)}</p><p class="muted">Narrative: ${esc(r.narrative.draftedBy)}</p>
+<h2>Summary</h2><p>${esc(r.narrative.text)}</p>${(r.narrative.risks || []).length ? `<p><b>Risks</b></p><ul>${r.narrative.risks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${r.narrative.recommendation ? `<p><b>Recommendation:</b> ${esc(r.narrative.recommendation)}</p>` : ''}<p class="muted">Narrative: ${esc(r.narrative.draftedBy)}</p>
+${aiHtml(r.ai)}
 <h2>Inputs and provenance</h2>${table(['Input', 'Reference', 'Statements', 'Provenance'], r.inputs.map((i) => [esc(i.label), esc(i.ref), i.statements, `<span class="tag">${esc(i.provenance)}</span> ${esc(i.provenanceLabel)}`]))}
 <h2>Requirements</h2><p>Normalisation: ${kv(r.normalisation)}</p>${r.delta ? `<p>Delta: <b>${esc(r.delta.summary)}</b></p>` : ''}
 <p>By type: ${kv(r.requirements.byType)}<br>By status: ${kv(r.requirements.byStatus)}<br>By source: ${kv(r.requirements.bySource)}</p>

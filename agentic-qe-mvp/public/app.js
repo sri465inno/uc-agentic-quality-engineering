@@ -71,7 +71,7 @@ function modesHtml() {
   return [
     META.jira.mode === 'live' ? pill(`Jira: live (${META.jira.baseUrl}); defects raised in Jira`, 'live') : `<span title="${esc(META.jira.note)}">${pill(`Jira: export on GitHub (${META.jiraExport.branch}) or recorded fixture; live Jira not configured, so defects are not raised in Jira`, 'github')}</span>`,
     pill(`Source: GitHub ${META.codebase.repo}`, 'github'),
-    META.model.mode === 'model' ? pill(`Prose: ${META.model.model}`, 'live') : `<span title="${esc(META.model.note)}">${pill('Prose: deterministic demo mode', 'demo')}</span>`,
+    META.ai && META.ai.mode === 'ai' ? pill(`AI: ${META.ai.providerLabel} ${META.ai.model} in every agent; code checks, people approve`, 'ai') : `<span title="${esc((META.ai && META.ai.note) || META.model.note)}">${pill('AI: off (no model API key) - rule-based mode', 'demo')}</span>`,
   ].join('');
 }
 
@@ -595,6 +595,21 @@ ${rails}
   if (c.status === 'running') pollTimer = setTimeout(route, 1500);
 }
 
+const aiBadge = (x, text = 'AI-suggested') => (x ? ` <span title="${esc(x.by || x.model || '')}">${pill(text, 'ai')}</span>` : '');
+function aiActivity(c) {
+  const st = c.ai;
+  if (!st) return '';
+  if (st.mode !== 'ai') return `<p class="muted small">AI: off for this cycle. ${esc(st.note || '')}</p>`;
+  const by = {};
+  for (const x of st.calls || []) {
+    const g = by[x.agent] || (by[x.agent] = { calls: 0, failed: 0, accepted: 0, rejected: 0, notes: [] });
+    g.calls += 1; if (!x.ok) g.failed += 1; g.accepted += x.accepted || 0; g.rejected += x.rejected || 0; if (x.note && !g.notes.includes(x.note)) g.notes.push(x.note);
+  }
+  return `<details class="card"><summary><b>AI activity</b> ${pill(`${st.providerLabel} ${st.model}`, 'ai')} <span class="muted small">${(st.calls || []).length} model call(s). AI suggests, code checks every suggestion, people approve.</span></summary>
+${table(['Agent', 'Calls', 'Failed', 'Accepted', 'Rejected by code', 'What came of it'], Object.entries(by).map(([k, g]) => [esc(k), g.calls, g.failed, g.accepted, g.rejected, esc(g.notes.join('; '))]))}
+${table(['Call', 'Agent', 'Purpose', 'When', 'Result', 'Prompt hash'], (st.calls || []).map((x) => [esc(x.id), esc(x.agent), esc(x.purpose), fmtTime(x.at), x.ok ? `${pill(x.cached ? 'cached' : 'ok', 'passed')} ${x.ms} ms` : `${pill('failed', 'failed')} <span class="small">${esc(x.error || '')}</span>`, `<code class="small">${esc(x.promptHash)}</code>`]))}</details>`;
+}
+
 function artifactsView(c) {
   const a = c.artifacts || {};
   const dl = {
@@ -609,7 +624,7 @@ function artifactsView(c) {
     const no = agentNo(p.name);
     return [`<a href="${p.name === 'report' ? `#/reporting?cycle=${esc(c.id)}` : `#/cycle/${esc(c.id)}?tab=${esc(t)}`}">${esc(p.label)}</a>`, no ? `Agent ${no}` : PHASE_CAT[p.name] === 'gate' ? 'Human gate' : 'Intake', `<span class="status-dot ${esc(p.status)}"></span> ${esc(p.status)}`, p.summary ? esc(p.summary) : '<span class="muted">not produced yet</span>', dl[p.name] || ''];
   });
-  return `<p class="muted">Each row is one step of the cycle and what it produced. Click a step to open its artifact.</p>${table(['Step', 'Who', 'Status', 'What it produced', 'Download'], rows)}`;
+  return `<p class="muted">Each row is one step of the cycle and what it produced. Click a step to open its artifact.</p>${table(['Step', 'Who', 'Status', 'What it produced', 'Download'], rows)}${aiActivity(c)}`;
 }
 
 function inputsTable(c) {
@@ -629,12 +644,16 @@ function normaliseView(c, interactive) {
   const decisions = c.review || { excluded: [], resolutions: {} };
   const byBucket = (b) => n.groups.filter((g) => g.bucket === b);
   const excl = (g) => interactive ? `<label class="small"><input type="checkbox" class="excl" data-g="${esc(g.id)}"> exclude</label>` : (decisions.excluded.includes(g.id) ? pill('excluded', 'failed') : '');
-  const simple = (b) => table(['Group', 'Statement', 'Sources and quotes', ''], byBucket(b).map((g) => [esc(g.id), esc(g.text), originCell(groupOrigins(c, g)), excl(g)]));
+  const aiMatch = (g) => (g.ai && g.ai.kind === 'match' ? `${aiBadge(g.ai, `AI-matched ${g.ai.merged.join(' + ')} (${g.ai.confidence})`)}<br><span class="small muted">${esc(g.ai.reason)} Values: ${esc(g.ai.valuesFrom)}.</span>` : '');
+  const simple = (b) => table(['Group', 'Statement', 'Sources and quotes', ''], byBucket(b).map((g) => [esc(g.id), `${esc(g.text)}${aiMatch(g)}`, originCell(groupOrigins(c, g)), excl(g)]));
+  const aiOn = c.ai && c.ai.mode === 'ai';
   const conflicts = byBucket('conflict');
   return `<div class="kpis"><div class="kpi">Statements<b>${n.counts.statements}</b></div><div class="kpi">Agreed<b>${n.counts.agreed}</b></div><div class="kpi">Only Jira<b>${n.counts['jira-only']}</b></div><div class="kpi">Only code<b>${n.counts['code-only']}</b></div><div class="kpi">Conflicts<b>${n.counts.conflict}</b></div></div>
-<p class="muted small">Computed in code: statements are grouped by subject (token similarity) and compared on extracted values (%, days, hours, ms, HTTP status...). Nothing here was decided by a model.</p>
+<p class="muted small">${aiOn
+    ? `Statements are first grouped by subject in code (token similarity). AI (${esc(c.ai.providerLabel)} ${esc(c.ai.model)}) then paired Jira and code statements of the same story that state the same rule in different words: ${n.counts.aiMatched || 0} pair(s), each marked AI-matched for you to keep or exclude. Values (%, days, hours, ms, HTTP status...) are always compared in code, so a pair with different values stays a conflict.`
+    : 'Computed in code: statements are grouped by subject (token similarity) and compared on extracted values (%, days, hours, ms, HTTP status...). No model was used: no model API key is set.'}</p>
 <h2>Conflicting values ${pill(`${conflicts.length}`, 'conflict')}</h2>${conflicts.length ? conflicts.map((g) => `<div class="card" data-conflict="${esc(g.id)}"><b>${esc(g.id)}</b> - subject: <i>${esc(g.subject)}</i>
-${table(['Choose', 'Value', 'Statement', 'Source'], g.options.map((o) => [interactive ? `<input type="radio" name="res-${esc(g.id)}" value="${esc(o.optionId)}" class="res" data-g="${esc(g.id)}">` : (decisions.resolutions[g.id] === o.optionId ? pill('chosen', 'passed') : ''),
+${aiMatch(g)}${table(['Choose', 'Value', 'Statement', 'Source'], g.options.map((o) => [interactive ? `<input type="radio" name="res-${esc(g.id)}" value="${esc(o.optionId)}" class="res" data-g="${esc(g.id)}">` : (decisions.resolutions[g.id] === o.optionId ? pill('chosen', 'passed') : ''),
     `<b>${esc(o.signature)}</b>`, esc(o.text), o.sources.map((s) => pill(s, s === 'jira' ? 'jira-only' : 'code-only')).join(' ')]))}
 ${interactive ? `<label class="small"><input type="radio" name="res-${esc(g.id)}" value="__exclude" class="res" data-g="${esc(g.id)}"> exclude this requirement</label> <span class="pill conflict res-state" data-g="${esc(g.id)}">unresolved</span>` : (decisions.excluded.includes(g.id) ? pill('excluded', 'failed') : '')}</div>`).join('') : '<p class="muted">No conflicting values.</p>'}
 <h2>Only Jira has ${pill(byBucket('jira-only').length, 'jira-only')}</h2>${simple('jira-only')}
@@ -642,14 +661,14 @@ ${interactive ? `<label class="small"><input type="radio" name="res-${esc(g.id)}
 <h2>Agreed by Jira and code ${pill(byBucket('agreed').length, 'agreed')}</h2>${simple('agreed')}`;
 }
 
-const RA_CAT = { added: ['Added', 'enhanced'], missing: ['Missing', 'failed'], conflict: ['Conflict', 'conflict'] };
+const RA_CAT = { added: ['Added', 'enhanced'], missing: ['Missing', 'failed'], conflict: ['Conflict', 'conflict'], ai: ['AI check', 'ai'] };
 function reviewAgentView(c, { compact = false } = {}) {
   const ra = c.reviewAgent;
   if (!ra) return '<p class="muted">No review agent ran for this cycle.</p>';
   const src = (f) => f.sources.map((x) => `${esc(x.source)} ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.ref || '')}</a>` : esc(x.ref || '')}${x.line ? `:${esc(x.line)}` : ''}`).join('<br>') || '<span class="muted">-</span>';
   const rows = ra.findings.map((f) => [esc(f.id), pill(RA_CAT[f.category][0], RA_CAT[f.category][1]), esc(f.severity), `<b>${esc(f.title)}</b>${f.groupId ? ` <span class="muted small">${esc(f.groupId)}</span>` : ''}<br><span class="small">${esc(f.detail || '')}</span>`, esc(f.suggestion), src(f)]);
   const head = `<h2>${compact ? 'Review agent suggestions for you' : 'Review agent suggestions'} <span class="muted small">for ${esc(testingTypeOf(ra.testingType).name)}</span></h2>
-<p class="small">${ra.counts.added} added · ${ra.counts.missing} missing · ${ra.counts.conflicts} conflicts · ${ra.counts.high} high severity. <span class="muted">${esc(ra.note)}</span></p>`;
+<p class="small">${ra.counts.added} added · ${ra.counts.missing} missing · ${ra.counts.conflicts} conflicts${ra.counts.ai ? ` · ${ra.counts.ai} AI-suggested` : ''} · ${ra.counts.high} high severity. <span class="muted">${esc(ra.note)}</span></p>`;
   const body = ra.findings.length ? table(['ID', 'Kind', 'Severity', 'What it found', 'Suggestion', 'Source'], rows) : '<p class="muted">No suggestions: every input agrees and nothing is missing.</p>';
   return compact ? `<details class="card review-agent" open><summary><b>Review agent: ${ra.findings.length} suggestion(s) before you approve</b></summary>${head}${body}</details>` : `${head}${body}`;
 }
@@ -808,7 +827,7 @@ function requirementsView(c) {
   const row = (r) => {
     const b = ruleOf(r);
     return [esc(r.id),
-      `<b>${esc(r.title || '')}</b><br>${esc(r.text)}${r.previous ? `<br><span class="old">${esc(r.previous.text)}</span> <span class="small muted">v${r.previous.version}</span>` : ''}`,
+      `<b>${esc(r.title || '')}</b><br>${esc(r.text)}${r.previous ? `<br><span class="old">${esc(r.previous.text)}</span> <span class="small muted">v${r.previous.version}</span>` : ''}${r.ai ? `<div class="ai-note">${aiBadge(r.ai)} <b>${esc(r.ai.title)}</b>: ${esc(r.ai.summary)}<ul>${r.ai.acceptance.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>` : ''}`,
       b ? `<b>${esc(b.id)}</b> <span class="small muted">${esc(b.kind)}</span><br>${b.executable ? `<code>${esc(ruleValues(b.parameters))}</code>` : '<span class="muted small">no testable value</span>'}${b.previous ? `<br><span class="old"><code>${esc(ruleValues(b.previous.parameters))}</code></span>` : ''}` : '<span class="muted">-</span>',
       b ? pill(b.executable ? 'automatable' : 'manual', b.executable ? 'passed' : 'pending') : '',
       `${esc(r.type)}<br><span class="small muted">${esc(SOURCE_LABEL[sourceOf(r)] || sourceOf(r) || '')}</span>`,
@@ -822,7 +841,8 @@ function requirementsView(c) {
     return `<details class="guidance req-epic" ${open ? 'open' : ''}><summary>${link(g.key)}${g.summary ? ` ${esc(g.summary)}` : ''} <span class="muted small">· ${g.stories.length} ${g.stories.length === 1 ? 'story' : 'stories'} · ${n} requirement${n === 1 ? '' : 's'}${delta ? ` · ${delta} new or enhanced` : ''}</span></summary>
 ${g.stories.map((s) => `<h3>${link(s.key)}${s.summary ? ` ${esc(s.summary)}` : ''} <span class="muted small">(${s.reqs.length})</span></h3>${table(head, s.reqs.map(row), (k) => `row-${s.reqs[k].status}`)}`).join('')}</details>`;
   };
-  return `<div class="banner info">The requirements agent turned the approved inputs into one common requirement set. Each requirement carries its business rule with the exact values to test, where it is stated (Jira and code, with links and line numbers) and whether it can be automated. A BA, PO or QE can read the functionality here, story by story, before any test case is designed.</div>
+  const described = reqs.filter((r) => r.ai).length;
+  return `<div class="banner info">The requirements agent turned the approved inputs into one common requirement set.${described ? ` AI described ${described} of them in plain language with Given/When/Then acceptance criteria (marked AI-suggested); a description that stated a number the source does not was rejected.` : ''} Each requirement carries its business rule with the exact values to test, where it is stated (Jira and code, with links and line numbers) and whether it can be automated. A BA, PO or QE can read the functionality here, story by story, before any test case is designed.</div>
 <div class="kpis"><div class="kpi">Requirements<b>${reqs.length}</b></div><div class="kpi">Jira stories<b>${groups.reduce((s, g) => s + g.stories.filter((x) => /^[A-Z]+-\d+$/.test(x.key)).length, 0)}</b></div><div class="kpi">Automatable rules<b>${automatable}</b></div><div class="kpi">Manual<b>${reqs.length - automatable}</b></div>${Object.entries(bySource).map(([k, v]) => `<div class="kpi">${esc(SOURCE_LABEL[k] || k)}<b>${v}</b></div>`).join('')}</div>
 ${c.type === 'incremental' ? `<p class="small">Against the baseline: ${Object.entries(byStatus).map(([k, v]) => `${esc(k)}: <b>${v}</b>`).join(' · ')}. Enhanced requirements show the superseded text and values struck through.</p>` : ''}
 ${c.report ? `<div class="row"><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.xlsx">Download Excel (Requirements sheet)</a></div>` : ''}
@@ -835,9 +855,9 @@ function testCasesView(c) {
   const kv = (o) => Object.entries(o).map(([k, v]) => `${esc(k)}: <b>${v}</b>`).join(' · ');
   return `${testingScope(c)}<div class="row"><h2 style="margin:0">Test cases (${tcs.length})</h2><a class="btn" href="/api/cycles/${esc(c.id)}/export/testcases.xlsx">Download Excel (.xlsx, Zephyr Scale columns)</a></div>
 <p class="small">By type: ${kv(cnt((t) => t.type))} · by label: ${kv(cnt((t) => t.labels))} · ${kv(cnt((t) => t.automation))}${c.type === 'incremental' ? ` · ${kv(cnt((t) => t.status))}` : ''}</p>
-<p class="muted small">These are <b>designed</b> test cases. Execution results are on the Execution tab.${c.type === 'incremental' ? ' In the Excel export, new rows are green, changed rows amber (superseded expected result in a cell note).' : ''}</p>
+${tcs.some((t) => t.origin === 'ai') ? `<p class="small">${pill(`${tcs.filter((t) => t.origin === 'ai').length} AI-suggested`, 'ai')} extra negative, edge, exploratory or integration scenarios, designed as manual cases and traced to their requirement. They are not executed until a QE automates them.</p>` : ''}<p class="muted small">These are <b>designed</b> test cases. Execution results are on the Execution tab.${c.type === 'incremental' ? ' In the Excel export, new rows are green, changed rows amber (superseded expected result in a cell note).' : ''}</p>
 ${table(['Key', 'Name / objective', 'Precondition', 'Steps', 'Test data', 'Expected result', 'Priority', 'Type', 'Labels', 'Links', 'Automation', 'Status'], tcs.map((t) => [esc(t.key),
-    `<b>${esc(t.name)}</b>${t.previous && t.previous.name !== t.name ? `<br><span class="old">${esc(t.previous.name)}</span>` : ''}<br><span class="small muted">${esc(t.objective)}</span>`, esc(t.precondition),
+    `<b>${esc(t.name)}</b>${t.origin === 'ai' ? aiBadge(t.ai, `AI-suggested ${t.ai.scenario}`) : ''}${t.previous && t.previous.name !== t.name ? `<br><span class="old">${esc(t.previous.name)}</span>` : ''}<br><span class="small muted">${esc(t.objective)}</span>${t.aiDraft ? `<br><a class="small" href="#/scripts?cycle=${esc(c.id)}&file=${esc(t.aiDraft)}">AI draft spec (not executed)</a>` : ''}`, esc(t.precondition),
     `<ol style="margin:0;padding-left:16px">${t.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>`, `<code>${esc(t.testData)}</code>`,
     `${t.previous && t.previous.expected !== t.expected ? `<span class="old">${esc(t.previous.expected)}</span><br>` : ''}<span class="${t.previous ? 'newv' : ''}">${esc(t.expected)}</span>`, esc(t.priority), esc(t.type), esc(t.labels.join(', ')),
     esc([...(t.issueLinks || []), t.requirementId].join(', ')), t.scriptFile ? `${esc(t.automation)}<br><a class="small" href="#/scripts?cycle=${esc(c.id)}&file=${esc(t.scriptFile)}">${esc(t.scriptFile)}</a>` : esc(t.automation), artPill(t.status)]), (i) => `row-${tcs[i].status}`)}`;
@@ -857,7 +877,7 @@ ${table(['Data set', 'Test case', 'Set by the test case', 'Generated from the sp
     const t = cases.get(x.testCaseKey) || {};
     return [esc(x.id), `<a href="#/cycle/${esc(c.id)}?tab=testcases">${esc(x.testCaseKey)}</a><br><span class="small muted">${esc(t.name || '')}</span>`,
       x.drivers.length ? x.drivers.map((v) => `<code>${esc(v.attribute)}</code> = <b>${esc((v.variants || [v.value]).join(' | '))}</b> <span class="small muted">(${esc(v.spec)})</span>`).join('<br>') : '<span class="muted">none: standard booking</span>',
-      `${x.generated} attributes${Object.keys(x.parameters).length ? `<br><span class="small muted">run settings: ${esc(Object.entries(x.parameters).map(([k, v]) => `${k}=${v}`).join('; '))}</span>` : ''}`,
+      `${x.generated} attributes${x.aiGenerated ? `<br>${pill(`${x.aiGenerated} AI-generated (${x.persona})`, 'ai')}` : ''}${Object.keys(x.parameters).length ? `<br><span class="small muted">run settings: ${esc(Object.entries(x.parameters).map(([k, v]) => `${k}=${v}`).join('; '))}</span>` : ''}`,
       `${pill(...CONFORMANCE[x.conformance])}${x.problems.length ? `<br><span class="small">${esc(x.problems.join('; '))}</span>` : ''}`,
       artPill(x.status), `<a href="/api/cycles/${esc(c.id)}/testdata/${esc(x.testCaseKey)}.json" target="_blank">JSON</a>`];
   }))}`;
@@ -875,7 +895,10 @@ function changedLines(code, prev) {
 function scriptsView(c, params = new URLSearchParams()) {
   const scripts = c.artifacts.scripts;
   const file = params.get('file');
-  return `<h2>Playwright scripts (${scripts.length})</h2><p class="muted small">Generated, self-contained specs against the bundled sample service. ${c.artifacts.execution ? 'These specs were <b>executed</b> by the Playwright CLI in this cycle.' : 'Designed, not yet executed.'}</p>
+  const drafts = c.artifacts.aiScripts || [];
+  const draftHtml = drafts.length ? `<h2>AI draft specs (${drafts.length}) ${pill('AI draft - not executed', 'ai')}</h2><p class="muted small">Drafted for manual test cases, compiled and checked in code (asserts something, no require/process/eval). They are kept out of the run until a QE reviews and promotes them.</p>
+${drafts.map((s) => `<details class="card" ${file === s.file ? 'open' : ''} id="s-${esc(s.file)}"><summary><b>${esc(s.file)}</b> · for ${esc(s.caseKey)} · ${esc(s.requirementId)} ${aiBadge(s, 'AI draft')}</summary>${codeBlock(s.code)}</details>`).join('')}` : '';
+  return `${draftHtml}<h2>Playwright scripts (${scripts.length})</h2><p class="muted small">Generated, self-contained specs against the bundled sample service. ${c.artifacts.execution ? 'These specs were <b>executed</b> by the Playwright CLI in this cycle.' : 'Designed, not yet executed.'}</p>
 ${scripts.map((s) => `<details class="card" ${!file || file === s.file ? 'open' : ''} id="s-${esc(s.file)}"><summary><b>${esc(s.file)}</b> · covers ${esc(s.covers.join(', '))} · ${esc(s.requirementId)} · v${s.version} ${artPill(s.status)}
 <a class="small" href="/api/cycles/${esc(c.id)}/scripts/${encodeURIComponent(s.file)}?download=1">download</a></summary>
 ${s.previous ? `<p class="small">Re-designed from v${s.previous.version}; changed lines highlighted.</p><div class="grid2"><div><b class="small">Superseded (v${s.previous.version})</b>${codeBlock(s.previous.code, changedLines(s.previous.code, s.code))}</div><div><b class="small">New (v${s.version})</b>${codeBlock(s.code, changedLines(s.code, s.previous.code))}</div></div>` : codeBlock(s.code)}</details>`).join('')}`;
@@ -912,9 +935,9 @@ function executionView(c) {
   const s = ex.summary;
   return `<h2>Execution ${pill('executed', 'executed')}</h2>
 <div class="kpis"><div class="kpi">Test cases<b>${s.total}</b></div><div class="kpi">Executed<b>${s.executed}</b></div><div class="kpi">Passed<b>${s.passed}</b></div><div class="kpi">Failed<b>${s.failed}</b></div><div class="kpi">Not run (manual)<b>${s.notRun}</b></div><div class="kpi">Pass rate<b>${s.passRate}%</b></div><div class="kpi">Duration<b>${s.durationMs} ms</b></div></div>
-<p class="small">Really executed by <b>${esc(ex.tool)}</b> against <b>${esc(ex.sut.name)}</b> (build <code>${esc(ex.sut.build)}</code>, ${esc(ex.sut.url)}) from ${fmtTime(ex.startedAt)} to ${fmtTime(ex.finishedAt)}. Exit code ${ex.exitCode}. Command: <code>${esc(ex.command)}</code>. <a href="/api/cycles/${esc(c.id)}/playwright-report.json" target="_blank">Raw Playwright JSON report</a></p>
+<p class="small">Really executed by <b>${esc(ex.tool)}</b> against <b>${esc(ex.sut.name)}</b> (build <code>${esc(ex.sut.build)}</code>, ${esc(ex.sut.url)}) from ${fmtTime(ex.startedAt)} to ${fmtTime(ex.finishedAt)}. Exit code ${ex.exitCode}.${ex.results.some((r) => r.aiTriage) ? ' AI triage is a suggestion beside each failure; the result comes only from the run.' : ''} Command: <code>${esc(ex.command)}</code>. <a href="/api/cycles/${esc(c.id)}/playwright-report.json" target="_blank">Raw Playwright JSON report</a></p>
 ${table(['Case', 'Req', 'Name', 'Result', 'Duration', 'Failure / note', 'Evidence'], ex.results.map((r) => [esc(r.key), esc(r.requirementId), esc(r.name), pill(r.status, r.status),
-    r.duration != null ? `${r.duration} ms` : '-', r.error ? `<code>${esc(r.error.assertion || '')}</code><br>expected <b>${esc(r.error.expected)}</b>, actual <b>${esc(r.error.actual)}</b><br><span class="small muted">${esc(r.error.location || '')}</span>` : esc(r.reason || ''),
+    r.duration != null ? `${r.duration} ms` : '-', `${r.error ? `<code>${esc(r.error.assertion || '')}</code><br>expected <b>${esc(r.error.expected)}</b>, actual <b>${esc(r.error.actual)}</b><br><span class="small muted">${esc(r.error.location || '')}</span>` : esc(r.reason || '')}${r.aiTriage ? `<div class="ai-note">${aiBadge(r.aiTriage, `AI triage: ${r.aiTriage.category} (${r.aiTriage.confidence})`)} <span class="small">${esc(r.aiTriage.rationale)}</span></div>` : ''}`,
     (r.evidence || []).map((e) => `<a class="small" target="_blank" href="/api/cycles/${esc(c.id)}/evidence/${esc(e.file)}">${esc(e.name)}</a>`).join('<br>')]), (i) => `row-${ex.results[i].status}`)}`;
 }
 
@@ -949,6 +972,7 @@ function defectsView(c) {
 ${d.length ? d.map((x) => `<div class="card"><h3>${esc(x.id)} - ${esc(x.title)} ${pill(x.severity, 'failed')} ${pill(x.movement === 'still open' ? `still open since ${x.firstSeenCycle}` : x.movement, x.movement === 'new' ? 'failed' : 'enhanced')}</h3>
 <div class="grid2"><div><b>Expected:</b> <span class="newv">${esc(x.expected)}</span><br><b>Actual:</b> <span class="old" style="text-decoration:none">${esc(x.actual)}</span><br><b>Severity:</b> ${esc(x.severity)}${x.impact ? ` (${esc(x.impact)})` : ''}<br><b>Release:</b> ${esc(x.releaseDecision || 'not assessed')}<br><b>Suspected code area:</b> <code>${esc(x.suspectedCodeArea || '-')}</code><br><b>Failing assertion:</b> <code>${esc(x.assertion)}</code> <span class="small muted">(${esc(x.location)})</span></div>
 <div><b>Test case:</b> <a href="#/cycle/${esc(c.id)}?tab=testcases">${esc(x.testCaseKey)}</a> · <b>Script:</b> <a href="#/scripts?cycle=${esc(c.id)}&file=${esc(x.scriptFile)}">${esc(x.scriptFile)}</a><br><b>Requirement:</b> <a href="#/cycle/${esc(c.id)}?tab=requirements">${esc(x.requirementId)}</a> ${esc(x.requirementText)}<br><b>Rule:</b> ${esc(x.ruleId || '-')} · <b>Source:</b> ${esc((x.sourceRefs || x.jiraKeys).join(', '))} · first seen ${esc(x.firstSeenCycle)}<br>${jiraDefectLine(x)}</div></div>
+${x.ai || x.aiTriage ? `<div class="ai-note">${x.aiTriage ? `${aiBadge(x.aiTriage, `AI triage: ${x.aiTriage.category}`)} ` : ''}${x.ai ? `${aiBadge(x.ai, 'AI-drafted description')}<br>${esc(x.ai.summary)}<br><b>Steps to reproduce:</b><ol>${x.ai.stepsToReproduce.map((st) => `<li>${esc(st)}</li>`).join('')}</ol><b>Likely cause:</b> ${esc(x.ai.likelyCause || '-')}<br><b>Business impact:</b> ${esc(x.ai.businessImpact || '-')}` : ''}<br><span class="small muted">Expected, actual, severity and evidence above come from the run, not the model.</span></div>` : ''}
 <details><summary class="small">Error output and evidence</summary><pre class="code">${esc(x.errorMessage)}</pre>${x.evidence.map((e) => `<a class="small" target="_blank" href="/api/cycles/${esc(c.id)}/evidence/${esc(e.file)}">${esc(e.name)}</a>`).join(' · ')}</details></div>`).join('') : '<div class="banner ok">No test case failed, so no defects were raised.</div>'}
 ${res.length ? `<h3>Fixed, retested and certified (${res.length})</h3><p class="muted small">Defects open in the previous cycle whose test case was re-run against this build and passed.</p>${table(['ID', 'Title', 'Story', 'First seen', 'Retest', 'Result', 'Certification'], res.map((x) => [esc(x.id), esc(x.title), esc((x.jira && x.jira.linkedTo) || (x.jiraKeys || [])[0] || '-'), esc(x.firstSeenCycle), `${esc(x.testCaseKey)} in ${esc(x.resolvedInCycle)}${x.retest && x.retest.scriptFile ? ` · <a href="#/scripts?cycle=${esc(c.id)}&file=${esc(x.retest.scriptFile)}">${esc(x.retest.scriptFile)}</a>` : ''}`, pill(x.retest ? x.retest.result : 'passed', 'passed'), `${pill(x.status || 'Closed', 'passed')} ${esc(x.certification || '')}`]))}` : ''}`;
 }
@@ -957,7 +981,8 @@ function reportView(c) {
   const r = c.report;
   return `<div class="row"><h2 style="margin:0">Cycle report</h2><a class="btn" href="/api/cycles/${esc(c.id)}/report.html" target="_blank">Open HTML</a><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.html?download=1">Download HTML</a><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.xlsx">Download Excel</a></div>
 <div class="kpis" style="margin-top:10px"><div class="kpi">Requirements<b>${r.requirements.total}</b></div><div class="kpi">Test cases<b>${r.testCases.total}</b></div><div class="kpi">Scripts<b>${r.scripts.total}</b></div><div class="kpi">Executed<b>${r.execution.executed ? r.execution.summary.executed : 0}</b></div><div class="kpi">Pass rate<b>${r.execution.executed ? `${r.execution.summary.passRate}%` : 'n/a'}</b></div><div class="kpi">Defects<b>${r.defects.open.length}</b></div><div class="kpi">Coverage (passing)<b>${r.coverage ? r.coverage.percent.passing : 0}%</b></div></div>
-<div class="card"><b>Summary</b><p>${esc(r.narrative.text)}</p><p class="muted small">${esc(r.narrative.draftedBy)}</p></div>
+<div class="card"><b>Summary</b>${r.narrative.origin === 'ai' ? aiBadge({ by: r.narrative.draftedBy }, 'AI-drafted') : ''}<p>${esc(r.narrative.text)}</p>${(r.narrative.risks || []).length ? `<b>Risks</b><ul>${r.narrative.risks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${r.narrative.recommendation ? `<p><b>Recommendation:</b> ${esc(r.narrative.recommendation)}</p>` : ''}<p class="muted small">${esc(r.narrative.draftedBy)}</p></div>
+${aiActivity(c)}
 <div class="card" id="report-skills"><b>Active skills (${(r.skills || []).length})</b> · hand-over <span class="hand ${r.handoverStatus === 'complete' ? 'ok' : 'bad'}">${esc(r.handoverStatus || 'not checked')}</span>
 <p class="small">${(r.skills || []).map((s) => `${pill(s.id, 'designed')} ${esc(s.name)}`).join('<br>') || 'No skills were active for this cycle.'}</p><a class="small" href="#/cycle/${esc(c.id)}?tab=skills">Hand-over detail per phase</a></div>
 <iframe class="report" src="/api/cycles/${esc(c.id)}/report.html" title="Cycle report"></iframe>`;

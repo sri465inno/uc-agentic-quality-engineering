@@ -32,6 +32,12 @@ function defectFields(d, { cycle, story }) {
       `Failing assertion: ${d.assertion} (${d.location || '-'})`,
       `Severity: ${d.severity} - ${d.impact || ''}. ${d.releaseDecision || ''}`,
       `Suspected code area: ${d.suspectedCodeArea || '-'}. Executed at ${d.executedAt}.`,
+      ...(d.aiTriage ? [`AI triage (${d.aiTriage.by}): ${d.aiTriage.category} - ${d.aiTriage.rationale}`] : []),
+      ...(d.ai ? [
+        `AI-drafted summary (${d.ai.by}, review before triage): ${d.ai.summary}`,
+        `Steps to reproduce: ${d.ai.stepsToReproduce.map((x, i) => `${i + 1}. ${x}`).join(' ')}`,
+        `Likely cause (AI): ${d.ai.likelyCause || '-'}. Business impact (AI): ${d.ai.businessImpact || '-'}`,
+      ] : []),
     ]),
   };
 }

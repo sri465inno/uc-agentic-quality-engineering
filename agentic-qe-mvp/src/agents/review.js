@@ -57,6 +57,15 @@ function reviewInputs({ normalisation, inputs = [], testingType, deltaPreview = 
       sources: refsOf(g, byId),
     });
   }
+  for (const g of groups.filter((x) => x.ai && x.ai.kind === 'match')) {
+    add({
+      category: 'ai', by: 'ai', model: g.ai.by, severity: g.bucket === 'conflict' ? 'medium' : 'low', groupId: g.id,
+      title: `AI matched a Jira statement and a code rule of ${g.ai.story} by meaning (confidence ${g.ai.confidence})`,
+      detail: `Jira: ${g.ai.jiraText} / Code: ${g.ai.codeText}`,
+      suggestion: `${g.ai.reason} Values compared in code: ${g.ai.valuesFrom}. Confirm they state the same rule; exclude the group if they do not.`,
+      sources: refsOf(g, byId),
+    });
+  }
   for (const g of groups.filter((x) => x.bucket === 'jira-only')) {
     add({
       category: 'missing', severity: money(g) ? 'high' : 'medium', groupId: g.id,
@@ -127,7 +136,7 @@ function reviewInputs({ normalisation, inputs = [], testingType, deltaPreview = 
     generatedAt: new Date().toISOString(),
     testingType: tt.id,
     note: 'Suggestions only. The human reviewer decides every conflict and approves the requirement set.',
-    counts: { added: count('added'), missing: count('missing'), conflicts: count('conflict'), high: findings.filter((f) => f.severity === 'high').length },
+    counts: { added: count('added'), missing: count('missing'), conflicts: count('conflict'), ai: count('ai'), high: findings.filter((f) => f.severity === 'high').length },
     findings,
   };
 }

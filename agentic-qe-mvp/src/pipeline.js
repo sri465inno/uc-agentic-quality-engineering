@@ -11,7 +11,7 @@ const { raiseDefectsInJira } = require('./connectors/jira-defects');
 const { cycleJiraItems } = require('./traceability');
 const { computeCoverage } = require('./coverage');
 const { DEFAULT_BUILD, BUILDS, ENGINE_DIR } = require('../sut/server');
-const { isHotelBranch } = require('./agents/domains');
+const { isHotelBranch, domainOf } = require('./agents/domains');
 const { BRANCHES } = require('./connectors/codebase');
 
 const hotelDictionary = (branch) => path.join(__dirname, '..', 'fixtures', 'github', BRANCHES[branch].dir, 'contents', 'data-dictionary', 'booking-attributes.json.json');
@@ -25,6 +25,8 @@ const { producedBy } = require('./handover');
 const { reviewInputs } = require('./agents/review');
 const { getTestingType } = require('./testing-types');
 const { testDataAgent, dataSetFile } = require('./agents/testdata');
+const { AiSession } = require('./ai');
+const ai = require('./agents/ai');
 
 const DICTIONARY_FILE = 'inputs/data-dictionary.json';
 
@@ -107,6 +109,13 @@ class Pipeline {
     }
   }
 
+  /** The cycle's model session; its call log and reply cache persist on cycle.ai. */
+  aiFor(cycle) {
+    const session = new AiSession({ env: this.env, fetchImpl: this.fetchImpl, state: cycle.ai || null });
+    cycle.ai = session.state;
+    return session;
+  }
+
   /** Hands an agent the bodies of the skills that target it, and records which ones it saw. */
   skillContext(cycle, agentId) {
     const ctx = agentContext(cycle.skills, agentId);
@@ -169,15 +178,24 @@ class Pipeline {
       fs.writeFileSync(file, JSON.stringify(codebase.dictionary));
     }
     setPhase(cycle, 'ingest', 'done', `${loaded.length} input(s), ${statements.length} statements`);
-    this.skillContext(cycle, 'normalise');
+    const session = this.aiFor(cycle);
+    const matched = await ai.aiMatchStatements(normalisation, session, { guidance: this.skillContext(cycle, 'normalise').guidance });
+    cycle.normalisation = matched.normalisation;
+    const nc = cycle.normalisation.counts;
     this.handover(cycle, 'normalise');
-    setPhase(cycle, 'normalise', 'done', `${normalisation.counts.agreed} agreed · ${normalisation.counts['jira-only']} Jira only · ${normalisation.counts['code-only']} code only · ${normalisation.counts.conflict} conflicts`);
+    setPhase(cycle, 'normalise', 'done', `${nc.agreed} agreed · ${nc['jira-only']} Jira only · ${nc['code-only']} code only · ${nc.conflict} conflicts${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
     if (baseline) cycle.deltaPreview = this.previewDelta(cycle, {}, baseline);
-    this.skillContext(cycle, 'review-agent');
-    cycle.reviewAgent = reviewInputs({ normalisation, inputs: cycle.inputs, testingType: tt.id, deltaPreview: cycle.deltaPreview || null, baseline });
+    const reviewCtx = this.skillContext(cycle, 'review-agent');
+    cycle.reviewAgent = reviewInputs({ normalisation: cycle.normalisation, inputs: cycle.inputs, testingType: tt.id, deltaPreview: cycle.deltaPreview || null, baseline });
+    const aiFindings = await ai.aiReviewFindings(cycle.normalisation, session, { guidance: reviewCtx.guidance });
+    if (aiFindings.length) {
+      const ra = cycle.reviewAgent;
+      ra.findings = [...ra.findings, ...aiFindings].map((f, i) => ({ ...f, id: `RA-${String(i + 1).padStart(2, '0')}` }));
+      ra.counts = { ...ra.counts, ai: ra.findings.filter((f) => f.category === 'ai').length, high: ra.findings.filter((f) => f.severity === 'high').length };
+    }
     this.handover(cycle, 'review-agent');
     const rc = cycle.reviewAgent.counts;
-    setPhase(cycle, 'review-agent', 'done', `${rc.added} added · ${rc.missing} missing · ${rc.conflicts} conflicts suggested for the reviewer`);
+    setPhase(cycle, 'review-agent', 'done', `${rc.added} added · ${rc.missing} missing · ${rc.conflicts} conflicts${rc.ai ? ` · ${rc.ai} AI finding(s)` : ''} suggested for the reviewer`);
     setPhase(cycle, 'review', 'waiting');
     return this.store.saveCycle(cycle);
   }
@@ -235,27 +253,83 @@ class Pipeline {
     return { cycle: this.store.getCycle(id), done: p };
   }
 
+  /**
+   * The AI step of the design agents (1-4), asked once per cycle: suggestions are kept on cycle.aiDesign and applied by
+   * runDesignPhases, so a re-design (rows rejected at the merge gate) re-uses them without asking the model again.
+   */
+  async aiDesignStep(cycle, requirements, previous) {
+    const session = this.aiFor(cycle);
+    if (!session.enabled) return;
+    const skills = Object.fromEntries(['requirements', 'testcases', 'testdata', 'scripts'].map((a) => [a, this.skillContext(cycle, a)]));
+    const probe = design.designAgents(requirements, { cycle, counters: clone(cycle.counters), previous, skills, testingType: cycle.testingType });
+    design.attachBusinessRules(requirements, probe.rules);
+    const only = previous ? new Set(requirements.filter((r) => ['new', 'enhanced'].includes(r.status)).map((r) => r.id)) : null;
+    await ai.aiDescribeRequirements(requirements, session, { guidance: skills.requirements.guidance, only });
+    const cases = await ai.aiSuggestTestCases(requirements, probe.testCases, session, { guidance: skills.testcases.guidance, only });
+    const personas = await ai.aiPersonas(this.dictionaryOf(cycle).dictionary, session, { guidance: skills.testdata.guidance });
+    const scripts = await ai.aiDraftScripts(probe.testCases, requirements, probe.scripts, session, { guidance: skills.scripts.guidance, dom: domainOf(cycle), only });
+    const textOf = new Map(requirements.map((r) => [r.id, r.text]));
+    cycle.aiDesign = {
+      requirements: Object.fromEntries(requirements.filter((r) => r.ai && (!only || only.has(r.id))).map((r) => [`${r.id}|${r.text}`, r.ai])),
+      cases: cases.map((c) => ({ ...c, by: session.label, requirementText: textOf.get(c.requirementId) })),
+      personas,
+      scripts,
+    };
+  }
+
+  /** Puts the AI suggestions of cycle.aiDesign on the rule-based design; a suggestion for a requirement whose text changed is dropped. */
+  applyAiDesign(cycle, requirements, out) {
+    const d = cycle.aiDesign;
+    if (!d) return;
+    for (const r of requirements) { const x = d.requirements[`${r.id}|${r.text}`]; if (x) r.ai = x; }
+    const reqById = new Map(requirements.map((r) => [r.id, r]));
+    const ruleByReq = new Map(out.rules.map((b) => [b.requirementId, b]));
+    const extra = new Map();
+    for (const s of d.cases) {
+      const req = reqById.get(s.requirementId);
+      if (!req || req.text !== s.requirementText) continue;
+      if (!extra.has(req.id)) extra.set(req.id, []);
+      extra.get(req.id).push(design.aiTestCase(req, s, { cycle, counters: cycle.counters, rule: ruleByReq.get(req.id) }));
+    }
+    if (extra.size) {
+      const lastOf = new Map();
+      out.testCases.forEach((t, i) => lastOf.set(t.requirementId, i));
+      const merged = [];
+      out.testCases.forEach((t, i) => { merged.push(t); if (lastOf.get(t.requirementId) === i && extra.has(t.requirementId)) { merged.push(...extra.get(t.requirementId)); extra.delete(t.requirementId); } });
+      for (const xs of extra.values()) merged.push(...xs);
+      out.testCases = merged;
+    }
+    const keys = new Set(out.testCases.map((t) => t.key));
+    const drafts = (d.scripts || []).filter((x) => keys.has(x.caseKey));
+    for (const x of drafts) out.testCases.find((t) => t.key === x.caseKey).aiDraft = x.file;
+    out.aiScripts = drafts;
+  }
+
   runDesignPhases(cycle, requirements, previous) {
     const counters = cycle.counters;
     const skills = Object.fromEntries(['requirements', 'testcases', 'testdata', 'scripts'].map((a) => [a, this.skillContext(cycle, a)]));
     const out = design.designAgents(requirements, { cycle, counters, previous, skills, testingType: cycle.testingType });
     design.attachBusinessRules(requirements, out.rules);
+    this.applyAiDesign(cycle, requirements, out);
+    if (cycle.aiDesign) out.selection = design.selectionSummary(getTestingType(cycle.testingType, domainOf(cycle).id), requirements, out.testCases, previous, domainOf(cycle));
     const count = (arr, st) => arr.filter((x) => x.status === st).length;
     const split = (arr) => (previous ? ` (${count(arr, 'new') + count(arr, 'added')} new · ${count(arr, 're-designed')} re-designed · ${count(arr, 'carried over')} carried over)` : '');
     const sel = out.selection;
     const scope = sel.notInRun ? ` · ${sel.inRun} in this ${sel.name.toLowerCase()} run` : '';
     const automatable = out.rules.filter((r) => r.executable).length;
+    const aiNote = (n, what) => (n ? ` · ${n} ${what}` : '');
+    const aiCases = out.testCases.filter((t) => t.origin === 'ai').length;
     const reqSplit = previous ? ` (${count(requirements, 'new')} new · ${count(requirements, 'enhanced')} enhanced · ${count(requirements, 'unchanged') + count(requirements, 'carried over')} unchanged)` : '';
-    setPhase(cycle, 'requirements', 'done', `${requirements.length} requirements${reqSplit}, each with its business rule: ${automatable} automatable · ${out.rules.length - automatable} manual`);
-    setPhase(cycle, 'testcases', 'done', `${out.testCases.length} test cases${split(out.testCases)}${scope}`);
+    setPhase(cycle, 'requirements', 'done', `${requirements.length} requirements${reqSplit}, each with its business rule: ${automatable} automatable · ${out.rules.length - automatable} manual${aiNote(requirements.filter((r) => r.ai).length, 'described in plain language by AI')}`);
+    setPhase(cycle, 'testcases', 'done', `${out.testCases.length} test cases${split(out.testCases)}${scope}${aiNote(aiCases, 'AI-suggested (manual)')}`);
     const dict = this.dictionaryOf(cycle);
-    const td = testDataAgent(out.testCases, dict.dictionary, { previous: previous?.testData, source: dict.source });
+    const td = testDataAgent(out.testCases, dict.dictionary, { previous: previous?.testData, source: dict.source, personas: cycle.aiDesign?.personas || null });
     const byCase = new Map(td.dataSets.map((d) => [d.testCaseKey, d.id]));
     for (const t of out.testCases) t.dataSet = byCase.get(t.key);
     const tds = td.summary;
-    setPhase(cycle, 'testdata', 'done', `${tds.total} data sets of ${tds.dictionary.attributeCount} attributes · ${tds.conforming} conform to the data dictionary · ${tds.negative} deliberately invalid (negative tests)${tds.nonConforming ? ` · ${tds.nonConforming} do not conform` : ''}${previous ? ` (${tds.byStatus.new || 0} new · ${tds.byStatus['re-generated'] || 0} re-generated · ${tds.byStatus['carried over'] || 0} carried over)` : ''}`);
-    setPhase(cycle, 'scripts', 'done', `${out.scripts.length} Playwright specs${split(out.scripts)}`);
-    cycle.artifacts = { ...cycle.artifacts, requirements, rules: out.rules, testCases: out.testCases, testData: td.dataSets, testDataSummary: tds, scripts: out.scripts, affected: out.affected, selection: sel };
+    setPhase(cycle, 'testdata', 'done', `${tds.total} data sets of ${tds.dictionary.attributeCount} attributes · ${tds.conforming} conform to the data dictionary · ${tds.negative} deliberately invalid (negative tests)${tds.nonConforming ? ` · ${tds.nonConforming} do not conform` : ''}${previous ? ` (${tds.byStatus.new || 0} new · ${tds.byStatus['re-generated'] || 0} re-generated · ${tds.byStatus['carried over'] || 0} carried over)` : ''}${tds.ai ? ` · ${tds.ai.personas} AI personas` : ''}`);
+    setPhase(cycle, 'scripts', 'done', `${out.scripts.length} Playwright specs${split(out.scripts)}${aiNote((out.aiScripts || []).length, 'AI draft spec(s) awaiting QE review, not executed')}`);
+    cycle.artifacts = { ...cycle.artifacts, requirements, rules: out.rules, testCases: out.testCases, testData: td.dataSets, testDataSummary: tds, scripts: out.scripts, aiScripts: out.aiScripts || [], affected: out.affected, selection: out.selection };
     for (const a of ['requirements', 'testcases', 'testdata', 'scripts']) this.handover(cycle, a);
   }
 
@@ -264,6 +338,7 @@ class Pipeline {
     cycle.counters = { req: 0, rule: 0, caseF: 0, caseN: 0 };
     setPhase(cycle, 'requirements', 'running');
     const requirements = design.requirementsAgentBaseline(cycle.reviewed, { cycle, counters: cycle.counters });
+    await this.aiDesignStep(cycle, requirements, null);
     this.runDesignPhases(cycle, requirements, null);
     this.store.saveCycle(cycle);
     await this.runExecutionPhases(cycle.id, { previousDefects: [] });
@@ -301,7 +376,7 @@ class Pipeline {
       const cmp = compareCycles(prev, cycle);
       cycle.comparison = { a: cmp.a.id, b: cmp.b.id, generatedAt: cmp.generatedAt, requirements: cmp.requirements, testCases: cmp.testCases, scripts: cmp.scripts, execution: cmp.execution, defects: cmp.defects };
     }
-    cycle.report = await buildCycleReport(cycle, { env: this.env, fetchImpl: this.fetchImpl, guidance: ctx.guidance });
+    cycle.report = await buildCycleReport(cycle, { env: this.env, fetchImpl: this.fetchImpl, guidance: ctx.guidance, ai: this.aiFor(cycle) });
     setPhase(cycle, 'report', 'done', 'Report generated');
     const h = this.handover(cycle, 'report');
     cycle.report.handovers = collectHandovers(cycle);
@@ -321,6 +396,7 @@ class Pipeline {
     setPhase(cycle, 'delta', 'done', delta.summary);
     cycle.counters = clone(baseline.counters);
     const requirements = design.requirementsAgentIncremental(baseline.requirements, delta, { cycle, counters: cycle.counters });
+    await this.aiDesignStep(cycle, requirements, baseline);
     this.runDesignPhases(cycle, requirements, baseline);
     this.proposeMerge(cycle, baseline);
     setPhase(cycle, 'merge-approval', 'waiting');
@@ -357,6 +433,7 @@ class Pipeline {
     a.testCases = a.testCases.filter((t) => !drop.has(t.requirementId));
     a.testData = a.testData.filter((d) => !drop.has(d.requirementId));
     a.scripts = a.scripts.filter((x) => !drop.has(x.requirementId));
+    a.aiScripts = (a.aiScripts || []).filter((x) => !drop.has(x.requirementId));
     for (const x of ['requirements', 'testcases', 'testdata', 'scripts']) this.handover(cycle, x);
     this.proposeMerge(cycle, baseline);
   }
@@ -438,17 +515,23 @@ class Pipeline {
     execution.testingType = cycle.testingType;
     execution.notInRun = cycle.artifacts.testCases.length - runCases.length;
     cycle = this.mustGet(cycleId);
+    const session = this.aiFor(cycle);
+    await ai.aiTriageFailures(execution, cycle.artifacts.testCases, cycle.artifacts.requirements, session, { guidance: this.skillContext(cycle, 'execution').guidance });
     cycle.artifacts.execution = execution;
     this.handover(cycle, 'execution');
+    const triaged = execution.results.filter((r) => r.aiTriage).length;
     const s = execution.summary;
-    setPhase(cycle, 'execution', 'done', `${s.executed} executed · ${s.passed} passed · ${s.failed} failed · ${s.notRun} not run (manual)${execution.notInRun ? ` · ${execution.notInRun} kept in the pack, outside this run` : ''}`);
+    setPhase(cycle, 'execution', 'done', `${s.executed} executed · ${s.passed} passed · ${s.failed} failed · ${s.notRun} not run (manual)${execution.notInRun ? ` · ${execution.notInRun} kept in the pack, outside this run` : ''}${triaged ? ` · ${triaged} failure(s) triaged by AI` : ''}`);
     setPhase(cycle, 'defects', 'running');
-    this.skillContext(cycle, 'defects');
+    const defectCtx = this.skillContext(cycle, 'defects');
     const { defects, resolved, nextNo } = raiseDefects({
       execution, testCases: cycle.artifacts.testCases, requirements: cycle.artifacts.requirements, cycle,
       previousDefects, startNo: this.store.meta().nextDefect,
     });
     this.store.bumpDefectCounter(nextNo);
+    const triageOf = new Map(execution.results.filter((r) => r.aiTriage).map((r) => [r.key, r.aiTriage]));
+    for (const d of defects) if (triageOf.has(d.testCaseKey)) d.aiTriage = triageOf.get(d.testCaseKey);
+    await ai.aiDescribeDefects(defects, cycle.artifacts.testCases, session, { guidance: defectCtx.guidance });
     await raiseDefectsInJira(defects, { cycle, env: this.env, fetchImpl: this.fetchImpl, items: cycleJiraItems(cycle) });
     cycle.artifacts.defects = defects;
     cycle.artifacts.resolvedDefects = resolved;
