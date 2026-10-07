@@ -29,7 +29,32 @@ Node 20+.
 | Execution | Real: generated specs are written to `data/runs/<cycle>/` and run by the Playwright CLI (headless) against a bundled copy of the engine for the cycle's branch (`samples/commission-engine/{baseline,v2}`, started by `sut/server.js`); the JSON report is parsed. Each spec builds a full 1000-attribute reservation from the engine's own `/api/data-dictionary` and overrides only the drivers under test. |
 | Seeded defect | `samples/commission-engine/*/src/commission.js` applies the long-stay bonus only for `nights > 7`, so the exactly-7-nights case genuinely fails in both cycles (defect `still open` in Cycle 2). |
 | Attribute coverage | The report shows which of the commission-driving attributes are varied by at least one test case, and with what real result. |
-| Prose | Without `ANTHROPIC_API_KEY` a deterministic template drafts the report narrative (demo mode). With a key the model drafts only that narrative. |
+| AI in the agents | Optional; see "AI across the agents" below. Without a model key every agent runs rule-based (the app says `AI: off`) and the report narrative comes from a template (demo mode). |
+
+## AI across the agents
+
+AI suggests, code checks, people approve. Set one provider (`src/ai.js`); with none set, or with `AI_DISABLED=1`, the platform runs rule-based and every result below is unchanged.
+
+| Variable | Default | |
+| --- | --- | --- |
+| `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`, `ANTHROPIC_BASE_URL` | `claude-sonnet-4-5`, `https://api.anthropic.com` | used first when set |
+| `OPENAI_API_KEY`, `OPENAI_MODEL`, `OPENAI_BASE_URL` | `gpt-4o`, `https://api.openai.com/v1` | any OpenAI-compatible endpoint (Azure OpenAI, vLLM, ...) |
+| `AI_TIMEOUT_MS`, `AI_CONCURRENCY` | `90000`, `4` | per call; parallel calls |
+| `AI_DISABLED` | unset | `1` forces rule-based mode |
+
+| Step | What the model adds (labelled AI-suggested) | What code still decides |
+| --- | --- | --- |
+| Normalise | Pairs a Jira-only and a code-only statement of the same story that state the same rule in different words (e.g. AQPI-15 cart expiry) | Story scope, confidence >= 0.6, ids; values compared in code, so different values stay a conflict |
+| Review agent | Ambiguous, untestable or incomplete statements, with suggested wording | Advisory only; the human approves |
+| 1 Requirements | Plain-language title, summary, Given/When/Then | Rejected if it states a number the sources do not |
+| 2 Test design | Extra negative, edge, exploratory, integration scenarios | Kept manual and traced to the requirement; duplicates dropped |
+| 3 Test data | Fictitious guest personas | Every value checked against the data dictionary; e-mails only on example.com/org/net |
+| 4 Automation | Draft Playwright specs for manual cases | Must compile, assert, avoid require/process/eval; never executed until a QE promotes them |
+| 5 Execution | Failure triage (product defect, test issue, environment) | Pass/fail, evidence and counts come only from the Playwright run |
+| 6 Defects | Summary, steps to reproduce, likely cause, impact | Raised only from real failures; expected/actual/severity from the run |
+| 7 Reporting | Narrative, risks, recommendation | Every figure computed in code; a draft with an unknown number falls back to the template |
+
+Each cycle stores its AI call log on `cycle.ai` (agent, purpose, model, prompt hash, ok, accepted, rejected; never the key). It is shown under Artifacts and Report, and exported to the report's `AI activity` sheet. `test/ai.test.js` runs both flows against a stand-in model.
 
 ## Layout
 

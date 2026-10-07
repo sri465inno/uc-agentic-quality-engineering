@@ -289,6 +289,23 @@ function designAgents(requirements, { cycle, counters, previous = null, skills =
   return { rules, testCases, scripts, affected: [...affected], selection: selectionSummary(tt, requirements, testCases, previous, dom) };
 }
 
+/** A manual test case from an AI-suggested scenario, traced to its requirement and rule like any designed case. */
+function aiTestCase(req, s, { cycle, counters, rule = null, testingType = cycle.testingType }) {
+  const tt = getTestingType(testingType, domainOf(cycle).id);
+  const nf = req.type === 'non-functional';
+  counters[nf ? 'caseN' : 'caseF'] = (counters[nf ? 'caseN' : 'caseF'] || 0) + 1;
+  const suite = nf ? 'nfr' : 'api';
+  return {
+    key: `TC-${nf ? 'N' : 'F'}-${pad(counters[nf ? 'caseN' : 'caseF'])}`, requirementId: req.id, ruleId: rule ? rule.id : null, slot: `ai-${s.scenario}`, kind: 'unclassified', suite,
+    name: s.name, objective: s.objective, precondition: 'Access to the system under test.', steps: s.steps, testData: 'n/a', expected: s.expected,
+    priority: 'Low', type: req.type, labels: [...caseLabels(req.type, suite, 'unclassified', 'manual', false, tt), 'ai-suggested', s.scenario],
+    automation: 'Not automated', scriptFile: null, issueLinks: req.jiraKeys, sourceRefs: sourceRefs(req), cycle: cycle.name, designedWith: [], designedFor: tt.id,
+    inRun: inRun(tt, { suite, kind: 'unclassified', slot: 'manual' }), status: 'new', version: 1, previous: null, revisionNote: null, ui: false, varies: [],
+    origin: 'ai', ai: { by: s.by, scenario: s.scenario, status: 'AI-suggested: review before relying on it' },
+    automationNote: 'AI-suggested scenario: designed as a manual case',
+  };
+}
+
 /** What the type of testing selected, reused and left out, and the gaps it leaves. */
 function selectionSummary(tt, requirements, testCases, previous, dom = DOMAINS.commission) {
   const run = testCases.filter((t) => t.inRun);
@@ -352,4 +369,4 @@ ${tests}
 `;
 }
 
-module.exports = { requirementsAgentBaseline, requirementsAgentIncremental, designAgents, attachBusinessRules, affectedRequirementIds, renderSpec };
+module.exports = { requirementsAgentBaseline, requirementsAgentIncremental, designAgents, attachBusinessRules, affectedRequirementIds, renderSpec, aiTestCase, selectionSummary };

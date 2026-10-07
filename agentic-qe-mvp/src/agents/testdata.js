@@ -50,7 +50,8 @@ const generatedValue = (attr) => attr.example;
 function buildReservation(dictionary, set) {
   const fixed = new Map(set.drivers.map((d) => [d.attribute, d.value]));
   const res = {};
-  for (const a of dictionary.attributes) res[a.name] = fixed.has(a.name) ? fixed.get(a.name) : generatedValue(a);
+  const ai = set.aiValues || {};
+  for (const a of dictionary.attributes) res[a.name] = fixed.has(a.name) ? fixed.get(a.name) : a.name in ai ? ai[a.name] : generatedValue(a);
   return res;
 }
 
@@ -66,12 +67,23 @@ const sameSet = (a, b) => JSON.stringify([a.drivers, a.parameters]) === JSON.str
  * testCases: designed cases (keys, testData line, expected). dictionary: { name, version, attributes }.
  * previous: data sets of the baseline (incremental), matched by test case key.
  */
-function testDataAgent(testCases, dictionary, { previous = [], source = null } = {}) {
+/**
+ * personas (optional): AI-generated values already checked against the dictionary; each data set takes one persona's
+ * values for the attributes its test case does not set. A carried-over data set keeps the values it had.
+ */
+function testDataAgent(testCases, dictionary, { previous = [], source = null, personas = null } = {}) {
   const attrs = new Map(dictionary.attributes.map((a) => [a.name, a]));
   const prev = new Map((previous || []).map((d) => [d.testCaseKey, d]));
-  const dataSets = testCases.map((t) => {
+  const pool = personas && personas.personas.length ? personas.personas : null;
+  const dataSets = testCases.map((t, i) => {
     const { drivers, parameters } = readCaseData(t.testData, attrs);
-    const base = { id: t.key.replace(/^TC-/, 'TD-'), testCaseKey: t.key, requirementId: t.requirementId, drivers, parameters };
+    const pp = prev.get(t.key);
+    const persona = pool ? pool[i % pool.length] : null;
+    const set0 = drivers.map((d) => d.attribute);
+    const aiValues = pp && pp.aiValues ? pp.aiValues
+      : persona ? Object.fromEntries(Object.entries(persona.values).filter(([k]) => !set0.includes(k))) : null;
+    const base = { id: t.key.replace(/^TC-/, 'TD-'), testCaseKey: t.key, requirementId: t.requirementId, drivers, parameters,
+      ...(aiValues ? { aiValues, persona: pp && pp.aiValues ? pp.persona : persona.id } : {}) };
     const res = buildReservation(dictionary, { ...base, testCaseKey: t.key });
     const problems = [
       ...drivers.flatMap((d) => (d.variants || [d.value]).map((v) => checkValue(attrs.get(d.attribute), v)).filter(Boolean)),
@@ -84,6 +96,7 @@ function testDataAgent(testCases, dictionary, { previous = [], source = null } =
       drivers: drivers.map((d) => ({ ...d, spec: specOf(attrs.get(d.attribute)) })),
       attributeCount: Object.keys(res).length,
       generated: Object.keys(res).length - drivers.length,
+      aiGenerated: aiValues ? Object.keys(aiValues).length : 0,
       conformance: !problems.length ? 'conforms' : negative ? 'negative test' : 'does not conform',
       problems,
       file: `test-data/${t.key}.json`,
@@ -101,7 +114,8 @@ function testDataAgent(testCases, dictionary, { previous = [], source = null } =
       negative: count((d) => d.conformance === 'negative test'),
       nonConforming: count((d) => d.conformance === 'does not conform'),
       byStatus: dataSets.reduce((m, d) => ({ ...m, [d.status]: (m[d.status] || 0) + 1 }), {}),
-      method: dictionary.generationMethod || 'Commission drivers come from the test case; every other attribute takes the value the data dictionary specifies as its example.',
+      method: `${dictionary.generationMethod || 'Commission drivers come from the test case; every other attribute takes the value the data dictionary specifies as its example.'}${pool ? ` AI (${personas.by}) supplied ${pool.length} realistic synthetic personas for ${personas.attributes.join(', ')}; every value was checked against the data dictionary before use.` : ''}`,
+      ai: pool ? { by: personas.by, personas: pool.length, attributes: personas.attributes, rejectedValues: personas.rejectedValues } : null,
     },
   };
 }
@@ -112,8 +126,9 @@ function dataSetFile(set, dictionary) {
     dataSet: set.id, testCase: set.testCaseKey, generatedBy: 'Test data agent',
     dictionary: { name: dictionary.name, version: dictionary.version },
     drivers: clone(set.drivers), parameters: clone(set.parameters), conformance: set.conformance, problems: clone(set.problems),
+    ...(set.aiValues ? { aiGenerated: { persona: set.persona, attributes: Object.keys(set.aiValues) } } : {}),
     reservation: buildReservation(dictionary, set),
   };
 }
 
-module.exports = { testDataAgent, dataSetFile, buildReservation, readCaseData };
+module.exports = { testDataAgent, dataSetFile, buildReservation, readCaseData, checkValue };

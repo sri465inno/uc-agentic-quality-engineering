@@ -1,10 +1,11 @@
 'use strict';
-// Optional model: drafts prose only (report narrative). Every number it is given was computed in code.
-// Without ANTHROPIC_API_KEY the app runs in deterministic demo mode with a template narrative.
+// Reporting agent's AI step: drafts the QE-lead narrative, risks and recommendation. Every number it is given was
+// computed in code, and a draft that states any other number is rejected for the template.
+const { AiSession, aiConfig, onlyKnownNumbers } = require('./ai');
 
 function modelConfig(env = process.env) {
-  if (!env.ANTHROPIC_API_KEY) return null;
-  return { apiKey: env.ANTHROPIC_API_KEY, model: env.ANTHROPIC_MODEL || 'claude-sonnet-4-5' };
+  const cfg = aiConfig(env);
+  return cfg ? { provider: cfg.provider, model: cfg.model } : null;
 }
 
 function templateNarrative(f) {
@@ -19,30 +20,30 @@ function templateNarrative(f) {
 }
 
 /** `guidance` is the concatenated body of the skills that target the report agent (and only those). */
-async function draftNarrative(facts, { env = process.env, fetchImpl = globalThis.fetch, guidance = '' } = {}) {
-  const fallback = { text: templateNarrative(facts), draftedBy: 'Deterministic template (demo mode - no model API key set)' };
-  const cfg = modelConfig(env);
-  if (!cfg) return fallback;
-  try {
-    const res = await fetchImpl('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'x-api-key': cfg.apiKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-      body: JSON.stringify({
-        model: cfg.model,
-        max_tokens: 400,
-        ...(guidance ? { system: `House rules for this report (skill files):\n${guidance}` } : {}),
-        messages: [{ role: 'user', content: `Write a 4-sentence business summary of this QA cycle for a non-technical reader. Use only these facts; do not invent numbers.\n${JSON.stringify(facts)}` }],
-      }),
-      signal: AbortSignal.timeout(20000),
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = await res.json();
-    const text = (json.content || []).map((c) => c.text || '').join('').trim();
-    if (!text) throw new Error('empty response');
-    return { text, draftedBy: `Model (${cfg.model}) - prose only; all figures computed in code` };
-  } catch (e) {
-    return { ...fallback, draftedBy: `Deterministic template (model call failed: ${e.message})` };
+async function draftNarrative(facts, { env = process.env, fetchImpl = globalThis.fetch, guidance = '', ai = new AiSession({ env, fetchImpl }) } = {}) {
+  const fallback = { text: templateNarrative(facts), risks: [], recommendation: null, draftedBy: 'Deterministic template (demo mode - no model API key set)', origin: 'rule-based' };
+  if (!ai.enabled) return fallback;
+  const rep = await ai.json('report', 'Write the QE-lead narrative, risks and recommendation', {
+    guidance,
+    system: 'You are a QE lead writing the cycle summary for business and delivery stakeholders.',
+    prompt: `Write a 4-sentence business summary of this QA cycle for a non-technical reader, up to 3 release risks, and a one-sentence release recommendation. Use only these facts; do not state any number that is not in them.
+Reply as {"narrative":"...","risks":["..."],"recommendation":"..."}.
+${JSON.stringify(facts)}`,
+    maxTokens: 900,
+  });
+  const risks = rep && Array.isArray(rep.risks) ? rep.risks.filter((x) => typeof x === 'string' && x.trim()).slice(0, 3) : [];
+  const all = rep ? [rep.narrative, rep.recommendation, ...risks].join(' ') : '';
+  if (!rep || typeof rep.narrative !== 'string' || !rep.narrative.trim()) {
+    ai.outcome('report', { rejected: 1, note: 'No usable narrative; template used' });
+    return { ...fallback, draftedBy: 'Deterministic template (model call failed or replied without a narrative)' };
   }
+  if (!onlyKnownNumbers(all, facts)) {
+    ai.outcome('report', { rejected: 1, note: 'Narrative stated a number not in the computed facts; template used' });
+    return { ...fallback, draftedBy: `Deterministic template (the ${ai.label} draft stated a number not in the computed facts, so it was rejected)` };
+  }
+  ai.outcome('report', { accepted: 1, note: 'Narrative, risks and recommendation drafted' });
+  return { text: rep.narrative.trim(), risks, recommendation: typeof rep.recommendation === 'string' ? rep.recommendation.trim() : null,
+    draftedBy: `AI (${ai.label}) - prose only; every figure computed in code and checked against the draft`, origin: 'ai' };
 }
 
 module.exports = { draftNarrative, modelConfig, templateNarrative };

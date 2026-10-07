@@ -10,7 +10,7 @@ const { testCasesWorkbook, reportWorkbook, compareWorkbook } = require('./excel'
 const { buildLeadReport, renderLeadHtml, renderLeadPage, renderLeadMarkdown } = require('./lead-report');
 const { jiraLiveConfig, EXPORT } = require('./connectors/jira');
 const { listFixtureBranches, loadCodebaseFixture, DEFAULT_BRANCH, SOURCE } = require('./connectors/codebase');
-const { modelConfig } = require('./llm');
+const { aiStatus } = require('./ai');
 const { PW_VERSION } = require('./execution');
 const { dataSetFile } = require('./agents/testdata');
 const { loadSkills, parseSkill, AGENTS } = require('./skills');
@@ -22,7 +22,7 @@ const { isHotelBranch } = require('../sut/hotel');
 
 const XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
-function createApp({ dataDir = path.join(__dirname, '..', 'data'), env = process.env, skillsDir = path.join(__dirname, '..', 'skills') } = {}) {
+function createApp({ dataDir = path.join(__dirname, '..', 'data'), env = process.env, skillsDir = path.join(__dirname, '..', 'skills'), fetchImpl = globalThis.fetch } = {}) {
   const store = new Store(dataDir);
   const uploadDir = path.join(dataDir, 'skills');
   const readSkills = () => {
@@ -38,7 +38,7 @@ function createApp({ dataDir = path.join(__dirname, '..', 'data'), env = process
   };
   let skillLib = readSkills();
   for (const w of skillLib.warnings) console.warn(`[skills] ${w}`);
-  const pipeline = new Pipeline(store, { env, skills: skillLib.skills });
+  const pipeline = new Pipeline(store, { env, skills: skillLib.skills, fetchImpl });
   const reloadSkills = () => { skillLib = readSkills(); pipeline.skills = skillLib.skills; };
   pipeline.recover();
   const app = express();
@@ -59,11 +59,12 @@ function createApp({ dataDir = path.join(__dirname, '..', 'data'), env = process
 
   app.get('/api/meta', (req, res) => {
     const jira = jiraLiveConfig(env);
-    const model = modelConfig(env);
+    const ai = aiStatus(env);
     res.json({
       title: APP_TITLE,
       jira: jira ? { mode: 'live', baseUrl: jira.baseUrl, defects: 'raised in Jira' } : { mode: 'fixture', defects: 'not raised in Jira', note: 'JIRA_BASE_URL / JIRA_EMAIL / JIRA_API_TOKEN not set: recorded fixtures are used; no live Jira call is made, and defects stay in the platform with their story link' },
-      model: model ? { mode: 'model', model: model.model } : { mode: 'demo', note: 'No model API key: deterministic demo mode (template prose)' },
+      model: ai.mode === 'ai' ? { mode: 'model', model: ai.model } : { mode: 'demo', note: 'No model API key: deterministic demo mode (template prose)' },
+      ai,
       codebase: { repo: SOURCE.fullName, url: SOURCE.htmlUrl, branches: listFixtureBranches().filter(isHotelBranch) },
       jiraExport: { repo: EXPORT.repo, branch: EXPORT.branch },
       playwright: PW_VERSION,
