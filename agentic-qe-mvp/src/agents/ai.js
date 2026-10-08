@@ -4,6 +4,7 @@
 // rule-based result of the agent stands unchanged.
 const { mapLimit, chunk, onlyKnownNumbers } = require('../ai');
 const { checkValue } = require('./testdata');
+const { checkEndpoints } = require('../contracts');
 
 const clip = (s, n) => (String(s || '').length > n ? `${String(s).slice(0, n - 1)}…` : String(s || ''));
 const strings = (a, max) => (Array.isArray(a) ? a.filter((x) => typeof x === 'string' && x.trim()).slice(0, max).map((x) => clip(x.trim(), 300)) : []);
@@ -247,7 +248,7 @@ function checkDraft(body) {
   return null;
 }
 
-async function aiDraftScripts(testCases, requirements, scripts, ai, { guidance = '', dom, limit = 6, only = null } = {}) {
+async function aiDraftScripts(testCases, requirements, scripts, ai, { guidance = '', dom, limit = 6, only = null, contract = [] } = {}) {
   if (!ai.enabled || !dom) return [];
   const reqById = new Map(requirements.map((r) => [r.id, r]));
   const manual = testCases.filter((t) => t.automation !== 'Automated' && (only ? only.has(t.requirementId) : true) && t.inRun !== false).slice(0, limit);
@@ -261,14 +262,15 @@ async function aiDraftScripts(testCases, requirements, scripts, ai, { guidance =
     const rep = await ai.json('scripts', 'Draft a Playwright spec for a manual test case', {
       guidance,
       system: 'You write Playwright API tests. You use only the helpers and endpoints shown in the example spec.',
-      prompt: `Write the body of one Playwright test for the test case below. It runs inside: test(title, async ({ request, page }, testInfo) => { <body> }). Use only the helpers, services and endpoints that appear in the example spec, and assert the expected result with expect(). Do not use require, process or dynamic imports.
+      prompt: `Write the body of one Playwright test for the test case below. It runs inside: test(title, async ({ request, page }, testInfo) => { <body> }). Use only the helpers and services of the example spec and the endpoints of the API contract, and assert the expected result with expect(). Do not use require, process or dynamic imports.
 Reply as {"body":"<JavaScript statements>","assumptions":"<what you assumed, one sentence>"}.
 Test case: ${JSON.stringify({ key: t.key, name: t.name, steps: t.steps, expected: t.expected, requirement: reqById.get(t.requirementId)?.text })}
+API contract (from the codebase controllers): ${JSON.stringify(contract.map((e) => `${e.method} ${e.service}${e.path}`))}
 Example spec (${ex.file}):
 ${clip(ex.code, 6000)}`,
       maxTokens: 1500,
     });
-    const problem = rep ? checkDraft(rep.body) : 'no reply';
+    const problem = rep ? checkDraft(rep.body) || checkEndpoints(rep.body, contract) : 'no reply';
     if (problem) return { rejected: true, key: t.key, problem };
     const file = `ai-draft-${t.key.toLowerCase()}.spec.js`;
     const code = `// AI draft by ${ai.label} for ${t.key} (${t.name}), requirement ${t.requirementId}.
@@ -282,7 +284,7 @@ test(${JSON.stringify(`${t.key} ${t.name}`)}, async ({ request, page }, testInfo
 ${rep.body.trim()}
 });
 `;
-    return { file, caseKey: t.key, requirementId: t.requirementId, code, by: ai.label, status: 'AI draft - not executed', basedOn: ex.file };
+    return { file, caseKey: t.key, caseName: t.name, requirementId: t.requirementId, code, body: rep.body.trim(), by: ai.label, status: 'AI draft - not executed', basedOn: ex.file, contractChecked: contract.length > 0 };
   });
   const ok = drafts.filter((d) => !d.rejected);
   ai.outcome('scripts', { accepted: ok.length, rejected: drafts.length - ok.length, note: `${ok.length} draft spec(s) compiled and kept out of the run` });

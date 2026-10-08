@@ -583,6 +583,7 @@ ${c.error ? `<div class="banner err">Failed: ${esc(c.error)} <button class="btn 
 ${c.status === 'interrupted' ? `<div class="banner">This cycle was interrupted by a restart. <button class="btn secondary" id="resume">Resume</button></div>` : ''}
 ${c.status === 'running' ? '<div class="banner info">Agents are running... this page refreshes automatically.</div>' : ''}
 ${GATE_TEXT[c.status] && tab !== (c.status === 'awaiting-review' ? 'review' : 'merge') ? `<div class="banner action"><b>Action needed</b> This cycle is stopped until you ${GATE_TEXT[c.status]}${c.status === 'awaiting-merge' ? ` ${esc(c.baselineId)}` : ''}. <a href="#/cycle/${esc(c.id)}?tab=${c.status === 'awaiting-review' ? 'review' : 'merge'}">Go to the approval</a></div>` : ''}
+${adaptedPanel(c)}
 ${summaryRail}
 ${rails}
 <section class="panel" id="detail-panel"><div class="panel-head"><h2>${esc(label)}</h2><span class="crumbs"><a href="#/cycles">Cycles</a> › <a href="#/cycle/${esc(c.id)}">${esc(c.id)}</a> › ${esc(label)}</span></div><div id="tab">${body}</div></section>`;
@@ -653,7 +654,7 @@ function normaliseView(c, interactive) {
     ? `Statements are first grouped by subject in code (token similarity). AI (${esc(c.ai.providerLabel)} ${esc(c.ai.model)}) then paired Jira and code statements of the same story that state the same rule in different words: ${n.counts.aiMatched || 0} pair(s), each marked AI-matched for you to keep or exclude. Values (%, days, hours, ms, HTTP status...) are always compared in code, so a pair with different values stays a conflict.`
     : 'Computed in code: statements are grouped by subject (token similarity) and compared on extracted values (%, days, hours, ms, HTTP status...). No model was used: no model API key is set.'}</p>
 <h2>Conflicting values ${pill(`${conflicts.length}`, 'conflict')}</h2>${conflicts.length ? conflicts.map((g) => `<div class="card" data-conflict="${esc(g.id)}"><b>${esc(g.id)}</b> - subject: <i>${esc(g.subject)}</i>
-${aiMatch(g)}${table(['Choose', 'Value', 'Statement', 'Source'], g.options.map((o) => [interactive ? `<input type="radio" name="res-${esc(g.id)}" value="${esc(o.optionId)}" class="res" data-g="${esc(g.id)}">` : (decisions.resolutions[g.id] === o.optionId ? pill('chosen', 'passed') : ''),
+${aiMatch(g)}${(c.learned && c.learned.review.resolutions.find((x) => x.groupId === g.id)) ? `<p class="small">${pill('learned', 'ai')} Pre-filled: ${esc(c.learned.review.resolutions.find((x) => x.groupId === g.id).lesson)}. Change it if this release differs.</p>` : ''}${table(['Choose', 'Value', 'Statement', 'Source'], g.options.map((o) => [interactive ? `<input type="radio" name="res-${esc(g.id)}" value="${esc(o.optionId)}" class="res" data-g="${esc(g.id)}">` : (decisions.resolutions[g.id] === o.optionId ? pill('chosen', 'passed') : ''),
     `<b>${esc(o.signature)}</b>`, esc(o.text), o.sources.map((s) => pill(s, s === 'jira' ? 'jira-only' : 'code-only')).join(' ')]))}
 ${interactive ? `<label class="small"><input type="radio" name="res-${esc(g.id)}" value="__exclude" class="res" data-g="${esc(g.id)}"> exclude this requirement</label> <span class="pill conflict res-state" data-g="${esc(g.id)}">unresolved</span>` : (decisions.excluded.includes(g.id) ? pill('excluded', 'failed') : '')}</div>`).join('') : '<p class="muted">No conflicting values.</p>'}
 <h2>Only Jira has ${pill(byBucket('jira-only').length, 'jira-only')}</h2>${simple('jira-only')}
@@ -726,6 +727,15 @@ ${normaliseView(c, true)}
 function bindCycleTab(c, tab) {
   if (tab !== 'review' || c.status !== 'awaiting-review') return;
   const conflicts = c.normalisation.groups.filter((g) => g.bucket === 'conflict');
+  const pre = c.learned ? c.learned.review : { resolutions: [], exclusions: [] };
+  for (const x of pre.resolutions) {
+    const el = $view.querySelector(`input.res[data-g="${x.groupId}"][value="${x.optionId}"]`);
+    if (el) { el.checked = true; el.dispatchEvent(new Event('change', { bubbles: true })); el.closest('tr').title = x.lesson; }
+  }
+  for (const x of pre.exclusions) {
+    const el = $view.querySelector(`input.excl[data-g="${x.groupId}"], input.res[data-g="${x.groupId}"][value="__exclude"]`);
+    if (el) { el.checked = true; el.dispatchEvent(new Event('change', { bubbles: true })); }
+  }
   const collect = () => {
     const excluded = [...$view.querySelectorAll('.excl:checked')].map((e) => e.dataset.g);
     const resolutions = {};
@@ -857,7 +867,7 @@ function testCasesView(c) {
 <p class="small">By type: ${kv(cnt((t) => t.type))} · by label: ${kv(cnt((t) => t.labels))} · ${kv(cnt((t) => t.automation))}${c.type === 'incremental' ? ` · ${kv(cnt((t) => t.status))}` : ''}</p>
 ${tcs.some((t) => t.origin === 'ai') ? `<p class="small">${pill(`${tcs.filter((t) => t.origin === 'ai').length} AI-suggested`, 'ai')} extra negative, edge, exploratory or integration scenarios, designed as manual cases and traced to their requirement. They are not executed until a QE automates them.</p>` : ''}<p class="muted small">These are <b>designed</b> test cases. Execution results are on the Execution tab.${c.type === 'incremental' ? ' In the Excel export, new rows are green, changed rows amber (superseded expected result in a cell note).' : ''}</p>
 ${table(['Key', 'Name / objective', 'Precondition', 'Steps', 'Test data', 'Expected result', 'Priority', 'Type', 'Labels', 'Links', 'Automation', 'Status'], tcs.map((t) => [esc(t.key),
-    `<b>${esc(t.name)}</b>${t.origin === 'ai' ? aiBadge(t.ai, `AI-suggested ${t.ai.scenario}`) : ''}${t.previous && t.previous.name !== t.name ? `<br><span class="old">${esc(t.previous.name)}</span>` : ''}<br><span class="small muted">${esc(t.objective)}</span>${t.aiDraft ? `<br><a class="small" href="#/scripts?cycle=${esc(c.id)}&file=${esc(t.aiDraft)}">AI draft spec (not executed)</a>` : ''}`, esc(t.precondition),
+    `<b>${esc(t.name)}</b>${t.origin === 'ai' ? `${aiBadge(t.ai, `AI-suggested ${t.ai.scenario}`)} ${fbButtons(c, 'testcase', t.key, ['accept', 'reject'])}` : ''}${t.risk ? ` <span title="${esc((t.learned || []).join('; '))}">${pill('defect history', 'failed')}</span>` : ''}${t.scriptOrigin === 'ai' ? ` ${pill('AI-generated, code-checked script', 'ai')}` : ''}${t.previous && t.previous.name !== t.name ? `<br><span class="old">${esc(t.previous.name)}</span>` : ''}<br><span class="small muted">${esc(t.objective)}</span>${t.aiDraft ? `<br><a class="small" href="#/scripts?cycle=${esc(c.id)}&file=${esc(t.aiDraft)}">AI draft spec (not executed)</a>` : ''}`, esc(t.precondition),
     `<ol style="margin:0;padding-left:16px">${t.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>`, `<code>${esc(t.testData)}</code>`,
     `${t.previous && t.previous.expected !== t.expected ? `<span class="old">${esc(t.previous.expected)}</span><br>` : ''}<span class="${t.previous ? 'newv' : ''}">${esc(t.expected)}</span>`, esc(t.priority), esc(t.type), esc(t.labels.join(', ')),
     esc([...(t.issueLinks || []), t.requirementId].join(', ')), t.scriptFile ? `${esc(t.automation)}<br><a class="small" href="#/scripts?cycle=${esc(c.id)}&file=${esc(t.scriptFile)}">${esc(t.scriptFile)}</a>` : esc(t.automation), artPill(t.status)]), (i) => `row-${tcs[i].status}`)}`;
@@ -897,9 +907,9 @@ function scriptsView(c, params = new URLSearchParams()) {
   const file = params.get('file');
   const drafts = c.artifacts.aiScripts || [];
   const draftHtml = drafts.length ? `<h2>AI draft specs (${drafts.length}) ${pill('AI draft - not executed', 'ai')}</h2><p class="muted small">Drafted for manual test cases, compiled and checked in code (asserts something, no require/process/eval). They are kept out of the run until a QE reviews and promotes them.</p>
-${drafts.map((s) => `<details class="card" ${file === s.file ? 'open' : ''} id="s-${esc(s.file)}"><summary><b>${esc(s.file)}</b> · for ${esc(s.caseKey)} · ${esc(s.requirementId)} ${aiBadge(s, 'AI draft')}</summary>${codeBlock(s.code)}</details>`).join('')}` : '';
+${drafts.map((s) => `<details class="card" ${file === s.file ? 'open' : ''} id="s-${esc(s.file)}"><summary><b>${esc(s.file)}</b> · for ${esc(s.caseKey)} · ${esc(s.requirementId)} ${aiBadge(s, 'AI draft')} <span class="small muted">${esc(s.status)}</span></summary><p class="small">${fbButtons(c, 'script', s.file, ['accept', 'reject'])} <span class="muted">Accept to run it: at the merge gate it joins this run, otherwise it runs from the next cycle after a fresh API contract check.</span></p>${codeBlock(s.code)}</details>`).join('')}` : '';
   return `${draftHtml}<h2>Playwright scripts (${scripts.length})</h2><p class="muted small">Generated, self-contained specs against the bundled sample service. ${c.artifacts.execution ? 'These specs were <b>executed</b> by the Playwright CLI in this cycle.' : 'Designed, not yet executed.'}</p>
-${scripts.map((s) => `<details class="card" ${!file || file === s.file ? 'open' : ''} id="s-${esc(s.file)}"><summary><b>${esc(s.file)}</b> · covers ${esc(s.covers.join(', '))} · ${esc(s.requirementId)} · v${s.version} ${artPill(s.status)}
+${scripts.map((s) => `<details class="card" ${!file || file === s.file ? 'open' : ''} id="s-${esc(s.file)}"><summary><b>${esc(s.file)}</b> · covers ${esc(s.covers.join(', '))} · ${esc(s.requirementId)} · v${s.version ?? 1} ${artPill(s.status)}${s.origin === 'ai' ? ` ${pill('AI-generated, code-checked', 'ai')} <span class="small muted">accepted by ${esc(s.acceptedBy)}</span>` : ''}
 <a class="small" href="/api/cycles/${esc(c.id)}/scripts/${encodeURIComponent(s.file)}?download=1">download</a></summary>
 ${s.previous ? `<p class="small">Re-designed from v${s.previous.version}; changed lines highlighted.</p><div class="grid2"><div><b class="small">Superseded (v${s.previous.version})</b>${codeBlock(s.previous.code, changedLines(s.previous.code, s.code))}</div><div><b class="small">New (v${s.version})</b>${codeBlock(s.code, changedLines(s.code, s.previous.code))}</div></div>` : codeBlock(s.code)}</details>`).join('')}`;
 }
@@ -969,7 +979,8 @@ function defectsView(c) {
   const d = c.artifacts.defects;
   const res = c.artifacts.resolvedDefects || [];
   return `<h2>Defects (${d.length})</h2><p class="muted small">Raised only from test cases that actually failed in the real Playwright run of this cycle.</p>
-${d.length ? d.map((x) => `<div class="card"><h3>${esc(x.id)} - ${esc(x.title)} ${pill(x.severity, 'failed')} ${pill(x.movement === 'still open' ? `still open since ${x.firstSeenCycle}` : x.movement, x.movement === 'new' ? 'failed' : 'enhanced')}</h3>
+${d.length ? d.map((x) => `<div class="card"><h3>${esc(x.id)} - ${esc(x.title)} ${pill(x.severity, 'failed')} ${pill(x.movement === 'still open' ? `still open since ${x.firstSeenCycle}` : x.movement, x.movement === 'new' ? 'failed' : 'enhanced')}${x.confirmation ? ` ${pill({ needed: 'awaits QE confirmation', confirmed: 'confirmed by QE', 'not-a-defect': 'not a defect' }[x.confirmation.status], x.confirmation.status === 'confirmed' ? 'failed' : 'ai')}` : ''}</h3>
+<p class="small">${fbButtons(c, 'defect', x.id, ['confirm', 'not-a-defect'])}${x.confirmation && x.confirmation.reason ? ` <span class="muted">${esc(x.confirmation.reason)}</span>` : ''}</p>
 <div class="grid2"><div><b>Expected:</b> <span class="newv">${esc(x.expected)}</span><br><b>Actual:</b> <span class="old" style="text-decoration:none">${esc(x.actual)}</span><br><b>Severity:</b> ${esc(x.severity)}${x.impact ? ` (${esc(x.impact)})` : ''}<br><b>Release:</b> ${esc(x.releaseDecision || 'not assessed')}<br><b>Suspected code area:</b> <code>${esc(x.suspectedCodeArea || '-')}</code><br><b>Failing assertion:</b> <code>${esc(x.assertion)}</code> <span class="small muted">(${esc(x.location)})</span></div>
 <div><b>Test case:</b> <a href="#/cycle/${esc(c.id)}?tab=testcases">${esc(x.testCaseKey)}</a> · <b>Script:</b> <a href="#/scripts?cycle=${esc(c.id)}&file=${esc(x.scriptFile)}">${esc(x.scriptFile)}</a><br><b>Requirement:</b> <a href="#/cycle/${esc(c.id)}?tab=requirements">${esc(x.requirementId)}</a> ${esc(x.requirementText)}<br><b>Rule:</b> ${esc(x.ruleId || '-')} · <b>Source:</b> ${esc((x.sourceRefs || x.jiraKeys).join(', '))} · first seen ${esc(x.firstSeenCycle)}<br>${jiraDefectLine(x)}</div></div>
 ${x.ai || x.aiTriage ? `<div class="ai-note">${x.aiTriage ? `${aiBadge(x.aiTriage, `AI triage: ${x.aiTriage.category}`)} ` : ''}${x.ai ? `${aiBadge(x.ai, 'AI-drafted description')}<br>${esc(x.ai.summary)}<br><b>Steps to reproduce:</b><ol>${x.ai.stepsToReproduce.map((st) => `<li>${esc(st)}</li>`).join('')}</ol><b>Likely cause:</b> ${esc(x.ai.likelyCause || '-')}<br><b>Business impact:</b> ${esc(x.ai.businessImpact || '-')}` : ''}<br><span class="small muted">Expected, actual, severity and evidence above come from the run, not the model.</span></div>` : ''}
@@ -1253,6 +1264,62 @@ async function viewLab(params) {
   };
 }
 
+/* ---------------- learning and feedback ---------------- */
+const LESSON_KIND = { risk: 'Risk-based priority', 'not-a-defect': 'Needs QE confirmation', script: 'Accepted AI script runs' };
+function adaptedPanel(c) {
+  const l = c.learned;
+  if (!l) return '';
+  const rows = [
+    ...l.review.resolutions.map((x) => ['Review decision pre-filled', `${x.groupId}: ${x.lesson}`]),
+    ...l.review.exclusions.map((x) => ['Exclusion pre-filled', `${x.groupId}: ${x.lesson}`]),
+    ...l.design.map((x) => [LESSON_KIND[x.kind] || x.kind, x.lesson]),
+    ...l.suppressed.map((x) => ['Rejected suggestion not repeated', `${x.requirementId}: ${x.lesson}`]),
+    ...l.defects.map((x) => ['Defect awaits QE confirmation', x.lesson]),
+  ];
+  const kept = l.review.kept != null ? ` The reviewer kept ${l.review.kept} pre-filled decision(s) and changed ${l.review.overridden}.` : '';
+  return `<details class="card adapted" ${rows.length ? 'open' : ''}><summary><b>Adapted this cycle</b> ${pill(`${rows.length} lesson(s) applied`, rows.length ? 'ai' : 'designed')} <span class="small muted">from reviewer decisions, feedback and defects of earlier cycles · <a href="#/learning">what the platform learned</a></span></summary>
+${rows.length ? table(['Lesson', 'Applied'], rows.map(([k, v]) => [esc(k), esc(v)])) : '<p class="muted small">Nothing learned yet applied to this cycle. Decisions, feedback and defects from this cycle are remembered for the next one.</p>'}<p class="muted small">${esc(kept)} Lessons pre-fill and prioritise; a person still approves every gate, and pass/fail still comes only from the real run.</p></details>`;
+}
+
+function fbButtons(c, target, id, verdicts) {
+  const mine = (c.feedback || []).find((f) => f.target === target && f.id === id);
+  const label = { accept: 'Accept', reject: 'Reject', confirm: 'Confirm defect', 'not-a-defect': 'Not a defect' };
+  return `<span class="fb-bar">${verdicts.map((v) => `<button class="btn secondary small fb" data-cycle="${esc(c.id)}" data-target="${esc(target)}" data-id="${esc(id)}" data-verdict="${v}">${label[v]}</button>`).join(' ')}${mine ? ` ${pill(`${mine.verdict} by ${mine.by}`, mine.verdict === 'reject' || mine.verdict === 'not-a-defect' ? 'failed' : 'passed')}` : ''}</span>`;
+}
+
+document.addEventListener('click', async (e) => {
+  const b = e.target.closest('.fb');
+  if (!b) return;
+  e.preventDefault();
+  const by = (localStorage.getItem('aqe-user') || window.prompt('Your name (feedback is recorded against a person)') || '').trim();
+  if (!by) return;
+  localStorage.setItem('aqe-user', by);
+  const note = ['reject', 'not-a-defect'].includes(b.dataset.verdict) ? (window.prompt('Why? (optional - the agents use this next cycle)') || '') : '';
+  try {
+    await api(`/api/cycles/${b.dataset.cycle}/feedback`, { method: 'POST', body: { target: b.dataset.target, id: b.dataset.id, verdict: b.dataset.verdict, note, by } });
+    route();
+  } catch (err) { alert(err.message); }
+});
+
+async function viewLearning() {
+  setTitle('Learning');
+  const L = await api('/api/learning');
+  const n = L.counts;
+  const fbRows = [...L.feedback].reverse().map((f) => [fmtTime(f.at), esc(f.cycleId), esc(f.by), esc(f.target), pill(f.verdict, ['reject', 'not-a-defect'].includes(f.verdict) ? 'failed' : 'passed'), `${esc(f.text)}${f.note ? `<br><span class="small muted">${esc(f.note)}</span>` : ''}`]);
+  $view.innerHTML = `<section class="hero small-hero"><div class="eyebrow">Adaptive platform</div><h1>What the platform learned</h1>
+<p class="muted">Every cycle leaves lessons: how reviewers settled conflicts, what people accepted or rejected, which defects were raised, confirmed or fixed. The next cycle applies them in code (pre-filled decisions, risk-based priority, no repeated rejected suggestions, accepted AI scripts in the run) and hands them to the AI agents as guidance. People still approve every gate.</p>
+<div class="facts"><div><b>${n.decisions}</b>conflict decisions</div><div><b>${n.exclusions}</b>exclusions</div><div><b>${n.accepted}</b>accepted</div><div><b>${n.rejected}</b>rejected</div><div><b>${n.defects}</b>defects remembered</div><div><b>${n.riskStories}</b>stories at risk</div></div>
+<div class="muted small">${L.updatedAt ? `Last lesson ${fmtTime(L.updatedAt)}` : 'Nothing learned yet: run a cycle, approve it and give feedback.'} · "Reset the demo" clears this memory.</div></section>
+<section class="panel"><h2>Stories with defect history ${pill(L.risk.stories.length, 'failed')}</h2><p class="muted small">Their test cases run at High priority next cycle and the AI is asked for more negative and boundary cases.</p>
+${L.risk.stories.length ? table(['Story', 'Defects'], L.risk.stories.map((s) => [esc(s.story), esc(s.defects.join(', '))])) : '<p class="muted">None yet.</p>'}
+<h2>Defects remembered (${L.defects.length})</h2>${L.defects.length ? table(['Defect', 'Cycle', 'Status', 'Story', 'Requirement', 'Code area', 'Confirmation'], L.defects.map((d) => [esc(d.id), esc(d.cycleId), esc(d.movement || d.status || '-'), esc(d.jiraKeys.join(', ')), esc(d.requirementText || '-'), `<code>${esc(d.codeArea || '-')}</code>`, esc(d.confirmation || '-')])) : '<p class="muted">None yet.</p>'}
+<h2>Reviewer decisions (${L.decisions.length})</h2><p class="muted small">The same conflict in a later cycle is pre-filled with this choice; the reviewer can change it.</p>
+${L.decisions.length ? table(['Subject', 'Chosen', 'Rejected', 'Cycle', 'By'], L.decisions.map((d) => [esc(d.subject), `<b>${esc(d.chosenSignature)}</b> (${esc(d.chosenSources.join('/'))})`, esc(d.rejected.map((x) => `${x.signature} (${x.sources.join('/')})`).join(', ')), esc(d.cycleId), esc(d.by)])) : '<p class="muted">None yet.</p>'}
+${L.exclusions.length ? `<h2>Exclusions (${L.exclusions.length})</h2>${table(['Statement', 'Reason', 'Cycle', 'By'], L.exclusions.map((x) => [esc(x.text), esc(x.reason), esc(x.cycleId), esc(x.by)]))}` : ''}
+<h2>Feedback (${L.feedback.length})</h2><p class="muted small">Given with the Accept / Reject and Confirm / Not a defect buttons on a cycle's test cases, scripts and defects, and by rows rejected at the merge gate.</p>
+${fbRows.length ? table(['When', 'Cycle', 'By', 'On', 'Verdict', 'What'], fbRows) : '<p class="muted">None yet.</p>'}</section>`;
+}
+
 /* ---------------- router ---------------- */
 let lastPath = null;
 async function route() {
@@ -1275,6 +1342,7 @@ async function route() {
       case 'execution': return await pickCycle(params, 'Execution', executionView, (c) => c.status === 'completed');
       case 'defects': return await pickCycle(params, 'Defects', defectsView, (c) => c.status === 'completed');
       case 'reporting': return await viewReporting(params);
+      case 'learning': return await viewLearning();
       case 'reports': location.hash = '#/reporting'; return undefined;
       case 'compare': return await viewCompare(params);
       case 'baselines': return await viewBaselines();

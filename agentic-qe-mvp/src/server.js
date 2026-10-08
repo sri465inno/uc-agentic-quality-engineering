@@ -4,6 +4,7 @@ const fs = require('fs');
 const express = require('express');
 const { Store } = require('./store');
 const { Pipeline } = require('./pipeline');
+const learning = require('./learning');
 const { renderReportHtml, APP_TITLE } = require('./report');
 const { compareCycles, renderCompareHtml } = require('./compare');
 const { testCasesWorkbook, reportWorkbook, compareWorkbook } = require('./excel');
@@ -145,6 +146,8 @@ function createApp({ dataDir = path.join(__dirname, '..', 'data'), env = process
   });
   app.post('/api/cycles/:id/review', (req, res) => res.status(202).json(pipeline.review(req.params.id, req.body || {}).cycle));
   app.post('/api/cycles/:id/merge', (req, res) => res.status(202).json(pipeline.decideMerge(req.params.id, req.body || {}).cycle));
+  app.post('/api/cycles/:id/feedback', (req, res) => res.json(pipeline.feedback(req.params.id, req.body || {})));
+  app.get('/api/learning', (req, res) => res.json(learning.summary(store.getLearning())));
   app.post('/api/cycles/:id/resume', (req, res) => res.status(202).json(pipeline.resume(req.params.id).cycle));
 
   app.get('/api/cycles/:id/export/testcases.xlsx', wrap(async (req, res) => {

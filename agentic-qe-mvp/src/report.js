@@ -2,6 +2,7 @@
 const { getTestingType } = require('./testing-types');
 const { PLATFORM_AGENTS, INPUT_TYPES } = require('./platform');
 const { domainOf } = require('./agents/domains');
+const { adaptedIn } = require('./learning');
 // Cycle report: every figure is computed here from persisted artifacts; the model (optional) drafts the narrative, risks and recommendation only.
 const { draftNarrative } = require('./llm');
 const { computeTraceability } = require('./traceability');
@@ -63,6 +64,7 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl = globalTh
   const manual = a.testCases.filter((t) => t.automation !== 'Automated');
   const handovers = collectHandovers(cycle);
   return {
+    adapted: adaptedIn(cycle),
     title: `${APP_TITLE} - Cycle report`,
     generatedAt: new Date().toISOString(),
     cycle: {
@@ -204,6 +206,7 @@ ${r.platform ? `<h2>Platform scope</h2><p>Capability under test: <b>${esc(r.plat
 <p>${r.platform.agents.length} platform agents: ${r.platform.agents.map((g) => `${g.no}. ${esc(g.name)} <span class="muted">(${esc(g.status)})</span>`).join(' &middot; ')}</p>
 <p>Inputs implemented in this MVP: ${esc(r.platform.inputsImplemented.join('; '))}. Platform input types not in this MVP: <span class="muted">${esc(r.platform.inputsPlatformOnly.join('; '))}</span>.</p>` : ''}
 <h2>Type of testing</h2>${r.testing ? `<p><b>${esc(r.testing.name)}</b>: ${esc(r.testing.focus)}<br>${esc(r.testing.approach)}</p>${r.testing.selection ? `<p>${kv({ 'cases in the pack': r.testing.selection.designed, 'in this run': r.testing.selection.inRun, reused: r.testing.selection.reused, 're-designed': r.testing.selection.redesigned, added: r.testing.selection.added, 'kept outside this run': r.testing.selection.notInRun })}</p>${r.testing.selection.gaps.length ? `<ul>${r.testing.selection.gaps.map((g) => `<li class="fail">${esc(g.message)}</li>`).join('')}</ul>` : ''}` : ''}` : ''}
+<h2>Adapted this cycle: what the platform learned from earlier cycles</h2>${(r.adapted || []).length ? table(['Lesson applied', 'Detail'], r.adapted.map((x) => [esc(x.kind), esc(x.lesson)])) : '<p>No earlier lesson applied to this cycle.</p>'}
 <h2>Review agent suggestions</h2>${r.reviewAgent ? `<p>${kv(r.reviewAgent.counts)} &middot; <span class="muted">${esc(r.reviewAgent.note)}</span></p>${table(['ID', 'Kind', 'Severity', 'Suggestion', 'Source'], r.reviewAgent.findings.map((f) => [esc(f.id), esc(f.category), esc(f.severity), `<b>${esc(f.title)}</b><br>${esc(f.detail || '')}<br><span class="muted">${esc(f.suggestion)}</span>`, esc(f.sources.map((x) => [x.ref, x.line].filter(Boolean).join(':')).join(', '))]))}` : '<p>No review agent ran for this cycle.</p>'}
 <h2>Active skills</h2>${(r.skills || []).length ? table(['Skill', 'Description', 'Seen by agents', 'Owes', 'File'], r.skills.map((k) => [`<b>${esc(k.name)}</b><br><code>${esc(k.id)}</code>`, esc(k.description), esc(k.appliesTo.join(', ')), esc(Object.entries(k.delivers).map(([ag, keys]) => `${ag}: ${keys.join(', ')}`).join('; ')), `${esc(k.file)} <span class="muted">${esc(k.sha256)}</span>`])) : '<p>No skills were active for this cycle.</p>'}
 <div class="kpis">
