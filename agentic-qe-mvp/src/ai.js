@@ -2,10 +2,12 @@
 // Model client shared by every agent. The model suggests; code checks every suggestion before an agent uses it,
 // and every call is recorded on the cycle (agent, purpose, model, outcome). Without a model key the agents run rule-based only.
 const crypto = require('crypto');
+const fs = require('fs');
 
 const PROVIDERS = {
   anthropic: { label: 'Anthropic', base: 'https://api.anthropic.com', model: 'claude-sonnet-4-5' },
   openai: { label: 'OpenAI-compatible', base: 'https://api.openai.com/v1', model: 'gpt-4o' },
+  cassette: { label: 'Recorded replies of' },
 };
 
 function aiConfig(env = process.env) {
@@ -17,7 +19,19 @@ function aiConfig(env = process.env) {
   if (env.OPENAI_API_KEY) {
     return { ...common, provider: 'openai', apiKey: env.OPENAI_API_KEY, model: env.OPENAI_MODEL || PROVIDERS.openai.model, baseUrl: (env.OPENAI_BASE_URL || PROVIDERS.openai.base).replace(/\/+$/, '') };
   }
+  if (env.AI_CASSETTE && fs.existsSync(env.AI_CASSETTE)) return { ...common, provider: 'cassette', model: readCassette(env.AI_CASSETTE).model || 'unknown model' };
   return null;
+}
+
+/** Model replies keyed by prompt hash: recorded while a model is set, replayed without one, so a demo repeats exactly. */
+function readCassette(file) {
+  return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : { model: null, replies: {} };
+}
+function recordCassette(file, model, key, data) {
+  const c = readCassette(file);
+  c.model = model;
+  c.replies[key] = data;
+  fs.writeFileSync(file, JSON.stringify(c, null, 2));
 }
 
 /** What the UI and reports show about the model, without the key. */
@@ -93,6 +107,7 @@ class AiSession {
   constructor({ env = process.env, fetchImpl = globalThis.fetch, state = null } = {}) {
     this.cfg = aiConfig(env);
     this.fetchImpl = fetchImpl;
+    this.cassette = env.AI_CASSETTE || null;
     const status = aiStatus(env);
     this.state = state || { ...status, calls: [], cache: {} };
     if (!this.state.calls) this.state.calls = [];
@@ -116,9 +131,17 @@ class AiSession {
       return this.state.cache[key];
     }
     const t0 = Date.now();
+    if (this.cfg.provider === 'cassette') {
+      const data = readCassette(this.cassette).replies[key];
+      Object.assign(entry, data === undefined ? { ok: false, ms: 0, error: 'no recorded reply for this prompt' } : { ok: true, replayed: true, ms: 0 });
+      if (data === undefined) return null;
+      this.state.cache[key] = data;
+      return data;
+    }
     try {
       const data = parseJson(await complete(this.cfg, { system: fullSystem, prompt, maxTokens }, this.fetchImpl));
       this.state.cache[key] = data;
+      if (this.cassette) recordCassette(this.cassette, this.cfg.model, key, data);
       Object.assign(entry, { ok: true, ms: Date.now() - t0 });
       return data;
     } catch (e) {

@@ -41,6 +41,7 @@ AI suggests, code checks, people approve. Set one provider (`src/ai.js`); with n
 | `OPENAI_API_KEY`, `OPENAI_MODEL`, `OPENAI_BASE_URL` | `gpt-4o`, `https://api.openai.com/v1` | any OpenAI-compatible endpoint (Azure OpenAI, vLLM, ...) |
 | `AI_TIMEOUT_MS`, `AI_CONCURRENCY` | `90000`, `4` | per call; parallel calls |
 | `AI_DISABLED` | unset | `1` forces rule-based mode |
+| `AI_CASSETTE` | unset | JSON file of model replies keyed by prompt hash: recorded while a model is set, replayed when none is, so a demo repeats exactly |
 
 | Step | What the model adds (labelled AI-suggested) | What code still decides |
 | --- | --- | --- |
@@ -49,12 +50,26 @@ AI suggests, code checks, people approve. Set one provider (`src/ai.js`); with n
 | 1 Requirements | Plain-language title, summary, Given/When/Then | Rejected if it states a number the sources do not |
 | 2 Test design | Extra negative, edge, exploratory, integration scenarios | Kept manual and traced to the requirement; duplicates dropped |
 | 3 Test data | Fictitious guest personas | Every value checked against the data dictionary; e-mails only on example.com/org/net |
-| 4 Automation | Draft Playwright specs for manual cases | Must compile, assert, avoid require/process/eval; never executed until a QE promotes them |
+| 4 Automation | Draft Playwright specs for manual cases, from the API contract of the codebase | Must compile, assert, avoid require/process/eval and call only endpoints the controllers declare (`src/contracts.js`); runs only after a QE accepts it, and its failures need QE confirmation before they block a release or reach Jira |
 | 5 Execution | Failure triage (product defect, test issue, environment) | Pass/fail, evidence and counts come only from the Playwright run |
 | 6 Defects | Summary, steps to reproduce, likely cause, impact | Raised only from real failures; expected/actual/severity from the run |
 | 7 Reporting | Narrative, risks, recommendation | Every figure computed in code; a draft with an unknown number falls back to the template |
 
 Each cycle stores its AI call log on `cycle.ai` (agent, purpose, model, prompt hash, ok, accepted, rejected; never the key). It is shown under Artifacts and Report, and exported to the report's `AI activity` sheet. `test/ai.test.js` runs both flows against a stand-in model.
+
+## Adaptive platform: what it learns
+
+`src/learning.js` keeps a memory across cycles in `data/learning.json` (cleared by "Reset the demo"). It is shown on the **Learning** page (`GET /api/learning`), and every cycle shows an **Adapted this cycle** panel, also in the cycle report and its `Adapted this cycle` Excel sheet.
+
+| It remembers | From | The next cycle |
+| --- | --- | --- |
+| How a reviewer settled a conflict, and excluded statements | Human review | Pre-fills the same choice; the reviewer still approves |
+| Rows rejected at the merge gate, rejected AI cases and scripts | Merge gate, Reject buttons | Does not offer the same suggestion again; the AI is told what was rejected |
+| Accepted AI cases and scripts | Accept buttons | An accepted script is re-checked against the API contract and runs for the same case |
+| Defects, their story, requirement and code area | Defect agent, retests | Test cases of that requirement run at High priority (`risk: defect-history`); the AI is asked for more negative and boundary cases |
+| "Not a defect" and "Confirm" | Defect buttons | The same failure needs QE confirmation before it blocks the release or is raised in Jira |
+
+Feedback: `POST /api/cycles/:id/feedback` with `{ target: requirement|testcase|script|defect, id, verdict: accept|reject|confirm|not-a-defect, note, by }`. `test/learning.test.js` covers the learning loop with AI off and on.
 
 ## Layout
 

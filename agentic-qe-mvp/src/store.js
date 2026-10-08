@@ -2,6 +2,7 @@
 // File-based persistence: cycles, baselines (with version snapshots), artifacts, approvals, reports.
 const fs = require('fs');
 const path = require('path');
+const { EMPTY } = require('./learning');
 
 class Store {
   constructor(dataDir) {
@@ -9,7 +10,11 @@ class Store {
     for (const d of ['cycles', 'baselines', 'runs']) fs.mkdirSync(path.join(dataDir, d), { recursive: true });
     this.metaFile = path.join(dataDir, 'meta.json');
     if (!fs.existsSync(this.metaFile)) this.writeJson(this.metaFile, { nextCycle: 1, nextBaseline: 1, nextDefect: 0 });
+    this.learningFile = path.join(dataDir, 'learning.json');
   }
+
+  getLearning() { return this.readJson(this.learningFile) || EMPTY(); }
+  saveLearning(m) { this.writeJson(this.learningFile, m); return m; }
 
   writeJson(file, obj) {
     const tmp = `${file}.${process.pid}.tmp`;
@@ -61,13 +66,14 @@ class Store {
 
   runDir(cycleId) { return path.join(this.dir, 'runs', cycleId); }
 
-  /** Deletes every cycle, baseline and run and restarts the id counters. */
+  /** Deletes every cycle, baseline, run and the learning memory, and restarts the id counters. */
   reset() {
     for (const d of ['cycles', 'baselines', 'runs']) {
       fs.rmSync(path.join(this.dir, d), { recursive: true, force: true });
       fs.mkdirSync(path.join(this.dir, d), { recursive: true });
     }
     this.writeJson(this.metaFile, { nextCycle: 1, nextBaseline: 1, nextDefect: 0 });
+    fs.rmSync(this.learningFile, { force: true });
   }
 }
 

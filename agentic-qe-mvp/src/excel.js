@@ -207,6 +207,7 @@ async function reportWorkbook(report, cycle) {
     (report.skills || []).map((k) => ({ ...k, agents: k.appliesTo.join(', ') })));
   sheetFromRows(wb, 'Hand-overs', [['Phase', 'label', 32], ['Skills seen', 'skills', 50], ['Hand-over', 'status', 12], ['Missing', 'missing', 30], ['Artefacts owed', 'items', 70]],
     (report.handovers || []).map((h) => ({ label: h.label, skills: h.skills.join(', '), status: h.status, missing: h.missing.join(', '), items: h.items.map((i) => `${i.key}: ${i.status}`).join('; ') })));
+  sheetFromRows(wb, 'Adapted this cycle', [['Lesson applied', 'kind', 30], ['Detail', 'lesson', 110]], report.adapted || []);
   return Buffer.from(await wb.xlsx.writeBuffer());
 }
 
