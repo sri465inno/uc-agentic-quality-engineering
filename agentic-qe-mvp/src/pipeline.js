@@ -652,6 +652,8 @@ ${body}
       d.confirmation = { ...(d.confirmation || {}), status: rec.verdict === 'confirm' ? 'confirmed' : 'not-a-defect', by: rec.by, at: rec.at, note: rec.note, blocksReleaseIfConfirmed: wasBlocking };
       d.blocksRelease = rec.verdict === 'confirm' ? wasBlocking : false;
       d.releaseDecision = rec.verdict === 'confirm' ? `Confirmed by ${rec.by}. ${wasBlocking ? 'Blocks the release.' : 'Does not block the release.'}` : `Marked not a defect by ${rec.by}${rec.note ? `: ${rec.note}` : ''}. Treated as a test issue in later cycles.`;
+      learning.recordDefects(memory, cycle);
+      this.store.saveLearning(memory);
     }
     this.store.saveCycle(cycle);
     return { feedback: rec, learning: learning.summary(memory) };

@@ -78,6 +78,7 @@ test('the platform learns across cycles: reviewer decisions pre-fill, defect his
   const confirmed = store.getCycle(c3.id).artifacts.defects.find((d) => d.id === again.id);
   assert.equal(confirmed.confirmation.status, 'confirmed');
   assert.equal(confirmed.blocksRelease, confirmed.confirmation.blocksReleaseIfConfirmed);
+  assert.equal(store.getLearning().defects.find((d) => d.id === again.id && d.cycleId === c3.id).confirmation, 'confirmed', 'the Learning page shows the confirmation');
 
   store.reset();
   assert.equal(store.getLearning().feedback.length, 0, 'reset clears the learning memory');
