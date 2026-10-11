@@ -241,4 +241,4 @@ details.ms[open]>summary{border-color:var(--navy);box-shadow:0 0 0 2px var(--nav
 .flow-step:hover{border-color:var(--line2)}.flow-step.sel{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy)}
 .flow-step.done{border-top-color:#2e7d32}.flow-step.running,.flow-step.waiting{border-top-color:#e09b00}.flow-step.failed{border-top-color:#c62828}
 .flow-step b{font-size:13px}.flow-who{color:var(--muted,#5b6475);font-size:11px;text-transform:uppercase;letter-spacing:.03em}.flow-st{font-size:11px}
-.flow-sum{color:var(--muted,#5b6475);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.flow-sum{color:var(--muted,#5b6475);overflow-wrap:anywhere}
