@@ -54,24 +54,18 @@ public class HotelController {
         this.events = events;
     }
 
-    /** Stories 4.1 and 4.2 (AQPI-7, AQPI-8). */
+    /** Story 4.1 (AQPI-7): results in recommended order, page by page. */
     @GetMapping("/hotels/availability")
     public Mono<AvailabilityPage> availability(@RequestParam String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkIn,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkOut,
             @RequestParam(defaultValue = "1") int rooms, @RequestParam(defaultValue = "2") int adults,
-            @RequestParam(defaultValue = "0") int children, @RequestParam(required = false) BigDecimal minPrice,
-            @RequestParam(required = false) BigDecimal maxPrice, @RequestParam(required = false) String amenities,
-            @RequestParam(required = false) Integer minCategory, @RequestParam(required = false) Double maxDistanceKm,
-            @RequestParam(defaultValue = "RECOMMENDED") String sort, @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "0") int children, @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        Sort order = parseSort(sort);
-        List<String> wanted = amenities == null || amenities.isBlank() ? List.of()
-                : Arrays.stream(amenities.split(",")).map(String::trim).filter(a -> !a.isEmpty())
-                        .map(a -> a.toLowerCase(Locale.ROOT)).toList();
+        Sort order = Sort.RECOMMENDED;
         return Mono.fromSupplier(() -> queries.availability(
                 new HotelQueries.Stay(destination, checkIn, checkOut, rooms, adults, children),
-                new HotelQueries.Filters(minPrice, maxPrice, wanted, minCategory, maxDistanceKm), order, page, size))
+                new HotelQueries.Filters(null, null, List.of(), null, null), order, page, size))
                 .flatMap(result -> events.event(result.appliedFilters().isEmpty() && order == Sort.RECOMMENDED
                         ? EventNames.RESULTS_IMPRESSION : EventNames.RESULTS_REFINED)
                         .attr("destination", result.destination()).attr("results", result.totalResults())
@@ -143,12 +137,4 @@ public class HotelController {
         });
     }
 
-    private static Sort parseSort(String value) {
-        try {
-            return Sort.valueOf(value.trim().toUpperCase(Locale.ROOT));
-        } catch (IllegalArgumentException e) {
-            throw new ApiException(HttpStatus.BAD_REQUEST, "UNSUPPORTED_SORT",
-                    "Sort by one of: " + Arrays.toString(Sort.values()));
-        }
-    }
 }

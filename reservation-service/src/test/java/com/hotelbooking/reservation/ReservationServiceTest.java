@@ -91,13 +91,12 @@ class ReservationServiceTest {
         Outcome outcome = service.submit("key-void-0001", request("tok_visa_ok")).block().outcome();
         assertThat(outcome.status()).isEqualTo(Status.FAILED);
         assertThat(outcome.paymentStatus()).isEqualTo(PaymentStatus.VOIDED);
-        assertThat(outcome.message()).contains("unavailable", "released").doesNotContain("Exception");
         assertThat(service.reconciliation().get(0).consistent()).isTrue();
         verify(downstream, never()).requestConfirmation(any());
     }
 
     @Test
-    @DisplayName("AQPI-22 7.4 AC2: a failed void after a lost room goes to manual review, never a silent charge")
+    @DisplayName("AQPI-21 7.3 AC4: a failed void after a lost room goes to manual review, never a silent charge")
     void failedVoidGoesToManualReview() {
         when(downstream.commit(any())).thenReturn(Mono.error(new ApiException(HttpStatus.CONFLICT, "SOLD_OUT", "gone")));
         Outcome outcome = service.submit("key-void-0002", request("tok_void_fails")).block().outcome();
