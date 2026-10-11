@@ -69,6 +69,7 @@ class Pipeline {
   constructor(store, { env = process.env, skills = [], fetchImpl = globalThis.fetch } = {}) {
     this.store = store;
     this.env = env;
+    this.learningOn = env.AQE_LEARNING === 'on';
     this.skills = skills;
     this.fetchImpl = fetchImpl;
     this.running = new Map();
@@ -140,9 +141,13 @@ ${body}
     return file;
   }
 
+  memory() { return this.learningOn ? this.store.getLearning() : learning.EMPTY(); }
+
+  saveMemory(m) { if (this.learningOn) this.store.saveLearning(m); }
+
   /** Scripts people accepted in earlier cycles are re-checked and run for the same case in this one. */
   promoteLearnedScripts(cycle, requirements, out) {
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     if (!memory.feedback.some((f) => f.target === 'script' && f.verdict === 'accept')) return [];
     const contract = this.contractOf(cycle);
     const reqText = new Map(requirements.map((r) => [r.id, r.text]));
@@ -169,7 +174,7 @@ ${body}
     const ctx = agentContext(cycle.skills, agentId);
     const p = cycle.phases.find((x) => x.name === agentId);
     if (p) p.skills = ctx.skills.map((x) => x.id);
-    const learned = learning.guidance(this.store.getLearning());
+    const learned = learning.guidance(this.memory());
     return learned ? { ...ctx, guidance: [ctx.guidance, learned].filter(Boolean).join('\n\n'), learned: true } : ctx;
   }
 
@@ -237,7 +242,7 @@ ${body}
       findings: gaps.findGaps({ normalisation: cycle.normalisation, inputs: loaded }),
       pickedUp: (baseline?.skippedGaps || []).map((g) => ({ story: g.story, summary: g.summary, defectId: g.defectId, skippedInCycle: g.skippedInCycle, statementCount: g.statements.length })),
     };
-    cycle.learned = { review: learning.reviewLessons(this.store.getLearning(), cycle.normalisation), design: [], suppressed: [], defects: [] };
+    if (this.learningOn) cycle.learned = { review: learning.reviewLessons(this.memory(), cycle.normalisation), design: [], suppressed: [], defects: [] };
     const nc = cycle.normalisation.counts;
     this.handover(cycle, 'normalise');
     setPhase(cycle, 'normalise', 'done', `${nc.agreed} agreed · ${nc['jira-only']} Jira only · ${nc['code-only']} code only · ${nc.conflict} conflicts${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
@@ -303,9 +308,9 @@ ${body}
       lr.kept = lr.resolutions.filter((x) => resolutions[x.groupId] === x.optionId).length + lr.exclusions.filter((x) => excluded.includes(x.groupId)).length;
       lr.overridden = lr.resolutions.length + lr.exclusions.length - lr.kept;
     }
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     learning.recordReview(memory, cycle);
-    this.store.saveLearning(memory);
+    this.saveMemory(memory);
     cycle.approvals.push({ gate: 'Requirement set review', by: reviewer, at: cycle.review.at, decision: 'approved', comment,
       detail: `${reviewed.length} requirements approved; ${excluded.length} excluded${cycle.gaps?.excluded?.length ? ` (gaps ${cycle.gaps.excluded.join(', ')})` : ''}; ${Object.keys(resolutions).length} conflict(s) resolved` });
     setPhase(cycle, 'review', 'done', `Approved by ${reviewer}`);
@@ -379,7 +384,7 @@ ${body}
     const reqById = new Map(requirements.map((r) => [r.id, r]));
     const ruleByReq = new Map(out.rules.map((b) => [b.requirementId, b]));
     const extra = new Map();
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     const suppressed = [];
     for (const s of d.cases) {
       const req = reqById.get(s.requirementId);
@@ -410,7 +415,7 @@ ${body}
     const out = design.designAgents(requirements, { cycle, counters, previous, skills, testingType: cycle.testingType });
     design.attachBusinessRules(requirements, out.rules);
     this.applyAiDesign(cycle, requirements, out);
-    if (cycle.learned) cycle.learned.design = [...learning.applyToDesign(this.store.getLearning(), requirements, out.testCases), ...this.promoteLearnedScripts(cycle, requirements, out)];
+    if (cycle.learned) cycle.learned.design = [...learning.applyToDesign(this.memory(), requirements, out.testCases), ...this.promoteLearnedScripts(cycle, requirements, out)];
     if (cycle.aiDesign) out.selection = design.selectionSummary(getTestingType(cycle.testingType, domainOf(cycle).id), requirements, out.testCases, previous, domainOf(cycle));
     const count = (arr, st) => arr.filter((x) => x.status === st).length;
     const split = (arr) => (previous ? ` (${count(arr, 'new') + count(arr, 'added')} new · ${count(arr, 're-designed')} re-designed · ${count(arr, 'carried over')} carried over)` : '');
@@ -563,9 +568,9 @@ ${body}
     if (unknown.length) throw httpError(400, `Not a row of this merge: ${unknown.join(', ')}`);
     if (rejected.length && rejected.length === cycle.mergeProposal.requirements.length) throw httpError(400, 'Every row is rejected - reject the whole merge instead');
     if (rejected.length) {
-      const memory = this.store.getLearning();
+      const memory = this.memory();
       learning.recordMergeRejections(memory, cycle, rejected, approver);
-      this.store.saveLearning(memory);
+      this.saveMemory(memory);
       cycle.rejectedRows = rejected;
       this.withoutRejectedRows(cycle, baseline, rejected);
     }
@@ -654,9 +659,9 @@ ${body}
     cycle.artifacts.defects = [...(cycle.artifacts.gapDefects || []), ...gapRetest.open, ...defects];
     cycle.artifacts.resolvedDefects = [...gapRetest.closed, ...resolved];
     if (cycle.learned) cycle.learned.defects = defects.filter((d) => d.confirmation).map((d) => ({ id: d.id, testCaseKey: d.testCaseKey, lesson: `${d.id} awaits QE confirmation: ${d.confirmation.reason}` }));
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     learning.recordDefects(memory, cycle);
-    this.store.saveLearning(memory);
+    this.saveMemory(memory);
     this.handover(cycle, 'defects');
     const inJira = defects.filter((d) => d.jira && d.jira.key).length;
     setPhase(cycle, 'defects', 'done', `${defects.length} defect(s) from real failures${defects.length ? ` · ${inJira} in Jira` : ''}${resolved.length ? ` · ${resolved.length} resolved` : ''}`);
@@ -666,11 +671,12 @@ ${body}
 
   /** A person's verdict on an artefact of a cycle; it is remembered for the next cycles. */
   feedback(cycleId, body = {}) {
+    if (!this.learningOn) throw httpError(404, 'Learning is switched off (set AQE_LEARNING=on)');
     const cycle = this.mustGet(cycleId);
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     let rec;
     try { rec = learning.recordFeedback(memory, cycle, body); } catch (e) { throw httpError(400, e.message); }
-    this.store.saveLearning(memory);
+    this.saveMemory(memory);
     cycle.feedback = [...(cycle.feedback || []).filter((f) => !(f.target === rec.target && f.id === rec.id)), rec];
     if (rec.target === 'script' && rec.verdict === 'accept' && cycle.status === 'awaiting-merge') {
       const a = cycle.artifacts;
@@ -694,7 +700,7 @@ ${body}
       d.blocksRelease = rec.verdict === 'confirm' ? wasBlocking : false;
       d.releaseDecision = rec.verdict === 'confirm' ? `Confirmed by ${rec.by}. ${wasBlocking ? 'Blocks the release.' : 'Does not block the release.'}` : `Marked not a defect by ${rec.by}${rec.note ? `: ${rec.note}` : ''}. Treated as a test issue in later cycles.`;
       learning.recordDefects(memory, cycle);
-      this.store.saveLearning(memory);
+      this.saveMemory(memory);
     }
     this.store.saveCycle(cycle);
     return { feedback: rec, learning: learning.summary(memory) };

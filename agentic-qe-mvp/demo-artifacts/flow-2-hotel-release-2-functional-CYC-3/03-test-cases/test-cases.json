@@ -780,7 +780,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "destination, checkIn, checkOut, rooms, adults required; children optional; every field has an errorId",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -810,11 +810,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-015",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 on story AQPI-4"
-    ]
+    "dataSet": "TD-F-015"
   },
   {
     "key": "TC-F-016",
@@ -831,7 +827,7 @@
     ],
     "testData": "occupancy.rooms=2; occupancy.adults=1; every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 400 VALIDATION_FAILED, adults.perRoom",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -864,11 +860,7 @@
       "occupancy.rooms",
       "occupancy.adults"
     ],
-    "dataSet": "TD-F-016",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 on story AQPI-4"
-    ]
+    "dataSet": "TD-F-016"
   },
   {
     "key": "TC-F-017",
@@ -886,7 +878,7 @@
     ],
     "testData": "n/a",
     "expected": "Server validation is authoritative when client and server results differ.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -915,11 +907,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-017",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 on story AQPI-4"
-    ]
+    "dataSet": "TD-F-017"
   },
   {
     "key": "TC-F-018",
@@ -937,7 +925,7 @@
     ],
     "testData": "n/a",
     "expected": "Validation rules must be configurable where market or property rules vary.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -966,11 +954,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-018",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 on story AQPI-4"
-    ]
+    "dataSet": "TD-F-018"
   },
   {
     "key": "TC-F-019",
@@ -2499,11 +2483,7 @@
     "varies": [
       "extras.code"
     ],
-    "dataSet": "TD-F-049",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-007 on story AQPI-17"
-    ]
+    "dataSet": "TD-F-049"
   },
   {
     "key": "TC-F-050",
@@ -2521,7 +2501,7 @@
     ],
     "testData": "n/a",
     "expected": "Currency is consistently displayed.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -2550,11 +2530,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-050",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-007 on story AQPI-17"
-    ]
+    "dataSet": "TD-F-050"
   },
   {
     "key": "TC-F-051",
@@ -2572,7 +2548,7 @@
     ],
     "testData": "n/a",
     "expected": "Material changes are highlighted and require acknowledgement.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -2601,11 +2577,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-051",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-007 on story AQPI-17"
-    ]
+    "dataSet": "TD-F-051"
   },
   {
     "key": "TC-F-052",
@@ -2623,7 +2595,7 @@
     ],
     "testData": "n/a",
     "expected": "The guest can return to edit supported selections.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -2652,11 +2624,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-052",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-007 on story AQPI-17"
-    ]
+    "dataSet": "TD-F-052"
   },
   {
     "key": "TC-F-053",
@@ -2674,7 +2642,7 @@
     ],
     "testData": "n/a",
     "expected": "The final payable total must be revalidated before reservation submission.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -2703,11 +2671,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-053",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-007 on story AQPI-17"
-    ]
+    "dataSet": "TD-F-053"
   },
   {
     "key": "TC-F-054",
@@ -3489,11 +3453,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-068",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 on story AQPI-21"
-    ]
+    "dataSet": "TD-F-068"
   },
   {
     "key": "TC-F-069",
@@ -3542,11 +3502,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-069",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 on story AQPI-21"
-    ]
+    "dataSet": "TD-F-069"
   },
   {
     "key": "TC-F-070",
@@ -3565,7 +3521,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "Reconciliation lists both reservations and marks each consistent",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -3595,11 +3551,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-070",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 on story AQPI-21"
-    ]
+    "dataSet": "TD-F-070"
   },
   {
     "key": "TC-F-071",
@@ -3617,7 +3569,7 @@
     ],
     "testData": "n/a",
     "expected": "Partial failures trigger defined recovery or manual-review handling.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -3646,11 +3598,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-071",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 on story AQPI-21"
-    ]
+    "dataSet": "TD-F-071"
   },
   {
     "key": "TC-F-072",
@@ -3668,7 +3616,7 @@
     ],
     "testData": "n/a",
     "expected": "Reservation submission must use an idempotency mechanism.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -3697,11 +3645,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-072",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 on story AQPI-21"
-    ]
+    "dataSet": "TD-F-072"
   },
   {
     "key": "TC-F-073",
@@ -3719,7 +3663,7 @@
     ],
     "testData": "n/a",
     "expected": "The source of truth for confirmation status must be defined.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -3748,11 +3692,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-073",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 on story AQPI-21"
-    ]
+    "dataSet": "TD-F-073"
   },
   {
     "key": "TC-F-074",
@@ -5186,11 +5126,7 @@
     "varies": [
       "selection.ratePlanCode"
     ],
-    "dataSet": "TD-F-102",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-007 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-102"
   },
   {
     "key": "TC-F-103",
@@ -5241,11 +5177,7 @@
     "varies": [
       "selection.ratePlanCode"
     ],
-    "dataSet": "TD-F-103",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-007 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-103"
   },
   {
     "key": "TC-F-104",
@@ -5316,7 +5248,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 400 IDEMPOTENCY_KEY_REQUIRED",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5346,11 +5278,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-105",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-105"
   },
   {
     "key": "TC-F-106",
@@ -5368,7 +5296,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 400 IDEMPOTENCY_KEY_REQUIRED",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5398,11 +5326,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-106",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-106"
   },
   {
     "key": "TC-F-107",
@@ -5420,7 +5344,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 409 IDEMPOTENCY_KEY_REUSED",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5450,11 +5374,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-F-107",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-008 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-107"
   },
   {
     "key": "TC-F-108",
@@ -5689,7 +5609,7 @@
     ],
     "testData": "occupancy.adults=4; every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 200 with a searchId",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5721,11 +5641,7 @@
     "varies": [
       "occupancy.adults"
     ],
-    "dataSet": "TD-F-112",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-112"
   },
   {
     "key": "TC-F-113",
@@ -5742,7 +5658,7 @@
     ],
     "testData": "occupancy.adults=5; every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 400 VALIDATION_FAILED, adults.max",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5774,11 +5690,7 @@
     "varies": [
       "occupancy.adults"
     ],
-    "dataSet": "TD-F-113",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-113"
   },
   {
     "key": "TC-F-114",
@@ -5795,7 +5707,7 @@
     ],
     "testData": "occupancy.children=4; every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 400 VALIDATION_FAILED, children.max",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5827,11 +5739,7 @@
     "varies": [
       "occupancy.children"
     ],
-    "dataSet": "TD-F-114",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-114"
   },
   {
     "key": "TC-F-115",
@@ -5848,7 +5756,7 @@
     ],
     "testData": "occupancy.rooms=9; occupancy.adults=9; every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 400 VALIDATION_FAILED, rooms.range",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5881,11 +5789,7 @@
       "occupancy.rooms",
       "occupancy.adults"
     ],
-    "dataSet": "TD-F-115",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 (CYC-2) on this requirement"
-    ]
+    "dataSet": "TD-F-115"
   },
   {
     "key": "TC-F-116",
@@ -5902,7 +5806,7 @@
     ],
     "testData": "stay.checkInOffsetDays=500; every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 200 with a searchId",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5934,11 +5838,7 @@
     "varies": [
       "stay.checkInOffsetDays"
     ],
-    "dataSet": "TD-F-116",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 on story AQPI-4"
-    ]
+    "dataSet": "TD-F-116"
   },
   {
     "key": "TC-F-117",
@@ -5955,7 +5855,7 @@
     ],
     "testData": "stay.checkInOffsetDays=501; every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 400 VALIDATION_FAILED, checkIn.tooFarAhead",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -5987,11 +5887,7 @@
     "varies": [
       "stay.checkInOffsetDays"
     ],
-    "dataSet": "TD-F-117",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 on story AQPI-4"
-    ]
+    "dataSet": "TD-F-117"
   },
   {
     "key": "TC-F-118",
@@ -6607,7 +6503,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "Every filtered result lists spa among its amenities",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -6637,10 +6533,6 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-001, DEF-004 on story AQPI-8"
-    ],
     "dataSet": "TD-F-130"
   },
   {
@@ -6659,7 +6551,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "Starting prices of bookable results are non-decreasing",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -6689,10 +6581,6 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-001, DEF-004 on story AQPI-8"
-    ],
     "dataSet": "TD-F-131"
   },
   {
@@ -6711,7 +6599,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 400 UNSUPPORTED_SORT",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -6741,10 +6629,6 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-001, DEF-004 on story AQPI-8"
-    ],
     "dataSet": "TD-F-132"
   },
   {
@@ -6763,7 +6647,7 @@
     ],
     "testData": "n/a",
     "expected": "Selected criteria are visible and removable.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -6792,10 +6676,6 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-001, DEF-004 on story AQPI-8"
-    ],
     "dataSet": "TD-F-133"
   },
   {
@@ -6814,7 +6694,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "Status NO_AVAILABILITY with a RESET_FILTERS suggestion",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -6844,10 +6724,6 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-001, DEF-004 on story AQPI-8"
-    ],
     "dataSet": "TD-F-134"
   },
   {
@@ -6866,7 +6742,7 @@
     ],
     "testData": "n/a",
     "expected": "The interface identifies when offers are personalized where required.",
-    "priority": "High",
+    "priority": "Low",
     "type": "functional",
     "labels": [
       "functional",
@@ -6895,10 +6771,6 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-002, DEF-005 on story AQPI-13"
-    ],
     "dataSet": "TD-F-135"
   },
   {
@@ -6917,7 +6789,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "HTTP 201 CONFIRMED with optional extras 0",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -6947,10 +6819,6 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-002, DEF-005 on story AQPI-13"
-    ],
     "dataSet": "TD-F-136"
   },
   {
@@ -6971,7 +6839,7 @@
     ],
     "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
     "expected": "With consent: personalized true and a disclosure; after withdrawal: personalized false and no offer marked personalized",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -7001,10 +6869,6 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-002, DEF-005 on story AQPI-13"
-    ],
     "dataSet": "TD-F-137"
   },
   {
@@ -7023,7 +6887,7 @@
     ],
     "testData": "extras.code=BREAKFAST; extras.quantity=1; every other booking attribute from the hotel data dictionary examples",
     "expected": "Response has confirmationNumber, hotel name, stay dates, the breakfast line and total",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -7055,10 +6919,6 @@
     "varies": [
       "extras.code"
     ],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-003, DEF-006 on story AQPI-22"
-    ],
     "dataSet": "TD-F-138"
   },
   {
@@ -7077,7 +6937,7 @@
     ],
     "testData": "payment.token=tok_decline; every other booking attribute from the hotel data dictionary examples",
     "expected": "No confirmation number and the headline does not say confirmed",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -7109,10 +6969,6 @@
     "varies": [
       "payment.token"
     ],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-003, DEF-006 on story AQPI-22"
-    ],
     "dataSet": "TD-F-139"
   },
   {
@@ -7131,7 +6987,7 @@
     ],
     "testData": "payment.token=tok_timeout; every other booking attribute from the hotel data dictionary examples",
     "expected": "PENDING_UNKNOWN, doNotResubmit true and a recovery instruction",
-    "priority": "High",
+    "priority": "Medium",
     "type": "functional",
     "labels": [
       "functional",
@@ -7162,10 +7018,6 @@
     "ui": false,
     "varies": [
       "payment.token"
-    ],
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-003, DEF-006 on story AQPI-22"
     ],
     "dataSet": "TD-F-140"
   }

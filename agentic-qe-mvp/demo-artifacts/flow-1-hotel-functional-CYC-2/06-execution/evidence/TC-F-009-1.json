@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:34317/api/searches",
+    "url": "http://127.0.0.1:36697/api/searches",
     "headers": {},
     "data": {
       "destination": "NYC",
@@ -14,12 +14,12 @@
   },
   "response": {
     "status": 400,
-    "correlationId": "5dbbe057-bceb-4bff-96c5-8aef70e9050e",
+    "correlationId": "03682d7a-a9b0-472b-bac2-6c734c62c263",
     "body": {
       "status": 400,
       "code": "VALIDATION_FAILED",
       "message": "Please correct the highlighted search details.",
-      "correlationId": "5dbbe057-bceb-4bff-96c5-8aef70e9050e",
+      "correlationId": "03682d7a-a9b0-472b-bac2-6c734c62c263",
       "retryable": false,
       "fieldIssues": [
         {

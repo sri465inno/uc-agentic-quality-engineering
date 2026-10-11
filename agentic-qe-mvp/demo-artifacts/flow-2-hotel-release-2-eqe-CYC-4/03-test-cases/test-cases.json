@@ -385,7 +385,7 @@
     ],
     "testData": "n/a",
     "expected": "Validation messages are accessible to assistive technology.",
-    "priority": "High",
+    "priority": "Low",
     "type": "non-functional",
     "labels": [
       "non-functional",
@@ -415,11 +415,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
-    "dataSet": "TD-N-001",
-    "risk": "defect-history",
-    "learned": [
-      "High priority: defect history - DEF-009 on story AQPI-4"
-    ]
+    "dataSet": "TD-N-001"
   },
   {
     "key": "TC-F-008",

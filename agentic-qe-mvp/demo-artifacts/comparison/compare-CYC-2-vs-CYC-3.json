@@ -1,6 +1,6 @@
 {
   "title": "Agentic QE Platform - MVP - Cycle comparison",
-  "generatedAt": "2026-10-11T16:16:08.150Z",
+  "generatedAt": "2026-10-11T16:44:58.775Z",
   "a": {
     "id": "CYC-2",
     "name": "Hotel booking baseline · Functional",
@@ -418,7 +418,7 @@
       "failed": 3,
       "skipped": 0,
       "notRun": 56,
-      "durationMs": 3692,
+      "durationMs": 3262,
       "passRate": 95.4
     },
     "b": {
@@ -428,7 +428,7 @@
       "failed": 4,
       "skipped": 0,
       "notRun": 61,
-      "durationMs": 4945,
+      "durationMs": 4720,
       "passRate": 95.2
     },
     "passRateDelta": -0.2

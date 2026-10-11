@@ -282,8 +282,8 @@ async function viewHome() {
     HOME_DETAIL[`agent-${g.id}`] = `<h2>${esc(g.name)}</h2><ul class="brief"><li><b>What it does:</b> ${esc(does)}</li><li><b>Why it matters:</b> ${esc(value)}</li><li><b>Works from:</b> ${esc([...from, ...(g.no > 1 ? ['the output of the agent before it'] : [])].join(', '))}</li></ul>`;
     return tile({ detail: `agent-${g.id}`, art: g.no <= 4 ? 'design' : 'run', tag: `Agent ${g.no}`, big: g.no, title: g.name, lines: [esc(does)] });
   });
-  const flowTiles = Object.entries(FLOW_BRIEF).map(([id, [name, intro, points, href, cta]], i) => {
-    HOME_DETAIL[`flow-${id}`] = `<h2>${esc(name)}</h2><p>${esc(intro)}</p><ul class="brief">${points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul><a class="btn" href="${href}">${esc(cta)}</a>`;
+  const flowTiles = Object.entries(FLOW_BRIEF).map(([id, [name, intro, points]], i) => {
+    HOME_DETAIL[`flow-${id}`] = `<h2>${esc(name)}</h2><p>${esc(intro)}</p><ul class="brief">${points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`;
     return tile({ detail: `flow-${id}`, art: i ? 'flow2' : 'flow1', tag: `Flow ${i + 1}`, big: i + 1, title: name, lines: [esc(intro)] });
   });
   const stats = [
@@ -300,8 +300,7 @@ async function viewHome() {
     ['Release', 'Quality evidence', 'A traceable, release-ready report for sign-off.'],
   ];
   $view.innerHTML = `<section class="hero home-hero"><div class="eyebrow">Quality Engineering at Scale</div><h1>Agentic Quality Engineering Platform</h1>
-<p>Transforming testing and quality assurance with AI-driven automation, continuous validation, and human-in-the-loop governance.</p>
-<div class="hero-cta"><a class="btn" href="#/run?type=baseline">&#9654; Start a baseline</a><a class="btn secondary" href="#/cycles">View cycles</a></div></section>
+<p>Transforming testing and quality assurance with AI-driven automation, continuous validation, and human-in-the-loop governance.</p></section>
 <section class="stats">${stats.map(([n, t, d]) => `<div class="stat"><b>${esc(n)}</b><span class="stat-t">${esc(t)}</span><span class="stat-d">${esc(d)}</span></div>`).join('')}</section>
 <section class="lifecycle"><h2>How the platform works</h2><ol>${lifecycle.map(([k, t, d]) => `<li><span class="lc-k">${esc(k)}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join('')}</ol></section>
 ${rail('value', 'Why it matters', 'click an outcome for details', valueTiles)}
@@ -1403,6 +1402,7 @@ ${rows.length ? table(['Lesson', 'Applied'], rows.map(([k, v]) => [esc(k), esc(v
 }
 
 function fbButtons(c, target, id, verdicts) {
+  if (!c.learned) return '';
   const mine = (c.feedback || []).find((f) => f.target === target && f.id === id);
   const label = { accept: 'Accept', reject: 'Reject', confirm: 'Confirm defect', 'not-a-defect': 'Not a defect' };
   return `<span class="fb-bar">${verdicts.map((v) => `<button class="btn secondary small fb" data-cycle="${esc(c.id)}" data-target="${esc(target)}" data-id="${esc(id)}" data-verdict="${v}">${label[v]}</button>`).join(' ')}${mine ? ` ${pill(`${mine.verdict} by ${mine.by}`, mine.verdict === 'reject' || mine.verdict === 'not-a-defect' ? 'failed' : 'passed')}` : ''}</span>`;
@@ -1455,7 +1455,6 @@ async function route() {
     switch (parts[0]) {
       case '': return await viewHome();
       case 'run': return await viewRun(params);
-      case 'lab': return await viewLab(params);
       case 'cycles': return await viewCycles();
       case 'cycle': return await viewCycle(parts[1], params);
       case 'testcases': return await pickCycle(params, 'Test cases', testCasesView, (c) => ['completed', 'awaiting-merge'].includes(c.status));
@@ -1463,7 +1462,6 @@ async function route() {
       case 'execution': return await pickCycle(params, 'Execution', executionView, (c) => c.status === 'completed');
       case 'defects': return await pickCycle(params, 'Defects', defectsView, (c) => c.status === 'completed');
       case 'reporting': return await viewReporting(params);
-      case 'learning': return await viewLearning();
       case 'traceability': return await viewTraceability(params);
       case 'reports': location.hash = '#/reporting'; return undefined;
       case 'compare': return await viewCompare(params);

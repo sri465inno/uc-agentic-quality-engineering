@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:43897/api/carts",
+    "url": "http://127.0.0.1:33105/api/carts",
     "headers": {},
     "data": {
       "hotelId": "H-PAR-001",
@@ -16,12 +16,12 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "ebac4547-e968-4aa0-b45c-0abff0cc377c",
+    "correlationId": "9d2cc735-4785-4f8c-ab35-ca12a2bd568c",
     "body": {
-      "cartId": "C-6a30b458",
+      "cartId": "C-e62a00a3",
       "status": "ACTIVE",
-      "createdAt": "2026-10-11T16:16:05.144854245Z",
-      "expiresAt": "2026-10-11T16:36:05.144854245Z",
+      "createdAt": "2026-10-11T16:44:55.563223024Z",
+      "expiresAt": "2026-10-11T17:04:55.563223024Z",
       "secondsRemaining": 1199,
       "timeoutBehaviour": "Your cart is held for 20 minutes. Rooms are not reserved until you complete booking; after expiry, price and availability are checked again.",
       "room": {

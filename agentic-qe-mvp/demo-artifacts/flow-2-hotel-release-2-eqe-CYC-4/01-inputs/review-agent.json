@@ -2,7 +2,7 @@
   "agent": "Review agent",
   "advisory": true,
   "status": "suggestions",
-  "generatedAt": "2026-10-11T16:15:59.180Z",
+  "generatedAt": "2026-10-11T16:44:48.998Z",
   "testingType": "eqe",
   "note": "Suggestions only. The human reviewer decides every conflict and approves the requirement set.",
   "counts": {

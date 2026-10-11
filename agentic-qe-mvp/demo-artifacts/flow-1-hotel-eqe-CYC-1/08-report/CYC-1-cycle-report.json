@@ -1,7 +1,7 @@
 {
-  "adapted": [],
+  "adapted": null,
   "title": "Agentic QE Platform - MVP - Cycle report",
-  "generatedAt": "2026-10-11T16:15:28.312Z",
+  "generatedAt": "2026-10-11T16:44:18.765Z",
   "cycle": {
     "id": "CYC-1",
     "name": "Hotel booking baseline · EQE",
@@ -9,8 +9,8 @@
     "testingType": "eqe",
     "testingTypeName": "EQE testing",
     "status": "completed",
-    "createdAt": "2026-10-11T16:15:18.653Z",
-    "completedAt": "2026-10-11T16:15:28.279Z",
+    "createdAt": "2026-10-11T16:44:10.289Z",
+    "completedAt": "2026-10-11T16:44:18.733Z",
     "baselineId": "BL-1",
     "baselineVersionAtStart": null,
     "baselineVersionAfter": 1,
@@ -2403,7 +2403,7 @@
       "children": [],
       "statements": 7,
       "provenance": "github",
-      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T16:15:17.679Z",
+      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T16:44:09.579Z",
       "files": [
         "README.md",
         "TRACEABILITY.md",
@@ -5160,24 +5160,24 @@
   "execution": {
     "executed": true,
     "quarantined": "not measured",
-    "durationMs": 4990,
+    "durationMs": 4506,
     "tool": "Playwright 1.63.0 (headless Chromium, JSON reporter)",
-    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-bkfpuX/runs/CYC-1/playwright.config.js",
+    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-o7diOP/runs/CYC-1/playwright.config.js",
     "sut": {
       "build": "demo/hotel-booking-platform",
-      "url": "http://127.0.0.1:33387",
+      "url": "http://127.0.0.1:43779",
       "services": {
-        "hotel-service": "http://127.0.0.1:41411",
-        "offer-service": "http://127.0.0.1:39839",
-        "notification-service": "http://127.0.0.1:39047",
-        "search-service": "http://127.0.0.1:33387",
-        "cart-service": "http://127.0.0.1:36499",
-        "reservation-service": "http://127.0.0.1:33153"
+        "hotel-service": "http://127.0.0.1:41243",
+        "offer-service": "http://127.0.0.1:33631",
+        "notification-service": "http://127.0.0.1:46425",
+        "search-service": "http://127.0.0.1:43779",
+        "cart-service": "http://127.0.0.1:42047",
+        "reservation-service": "http://127.0.0.1:35151"
       },
       "name": "Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform"
     },
-    "startedAt": "2026-10-11T16:15:23.270Z",
-    "finishedAt": "2026-10-11T16:15:28.260Z",
+    "startedAt": "2026-10-11T16:44:14.208Z",
+    "finishedAt": "2026-10-11T16:44:18.714Z",
     "summary": {
       "total": 13,
       "executed": 8,
@@ -5185,7 +5185,7 @@
       "failed": 0,
       "skipped": 0,
       "notRun": 5,
-      "durationMs": 1835,
+      "durationMs": 1552,
       "passRate": 100
     },
     "results": [
@@ -5194,7 +5194,7 @@
         "requirementId": "REQ-001",
         "name": "Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail",
         "status": "passed",
-        "duration": 1231,
+        "duration": 1038,
         "reason": null,
         "aiTriage": null
       },
@@ -5203,7 +5203,7 @@
         "requirementId": "REQ-001",
         "name": "Guest books a prepaid non-refundable room in Paris and pays now",
         "status": "passed",
-        "duration": 160,
+        "duration": 108,
         "reason": null,
         "aiTriage": null
       },
@@ -5212,7 +5212,7 @@
         "requirementId": "REQ-002",
         "name": "A sold-out hotel is shown as unavailable and cannot be put in a cart",
         "status": "passed",
-        "duration": 89,
+        "duration": 75,
         "reason": null,
         "aiTriage": null
       },
@@ -5221,7 +5221,7 @@
         "requirementId": "REQ-004",
         "name": "An unavailable extra is refused and the room still books",
         "status": "passed",
-        "duration": 87,
+        "duration": 85,
         "reason": null,
         "aiTriage": null
       },
@@ -5230,7 +5230,7 @@
         "requirementId": "REQ-005",
         "name": "A double-clicked Book button creates one reservation and one payment",
         "status": "passed",
-        "duration": 66,
+        "duration": 59,
         "reason": null,
         "aiTriage": null
       },
@@ -5239,7 +5239,7 @@
         "requirementId": "REQ-006",
         "name": "The confirmation number can be looked up again after booking",
         "status": "passed",
-        "duration": 63,
+        "duration": 59,
         "reason": null,
         "aiTriage": null
       },
@@ -5248,7 +5248,7 @@
         "requirementId": "REQ-007",
         "name": "The guest sees the booking outcome and one confirmation e-mail is created",
         "status": "passed",
-        "duration": 65,
+        "duration": 63,
         "reason": null,
         "aiTriage": null
       },
@@ -5266,7 +5266,7 @@
         "requirementId": "REQ-047",
         "name": "An unavailable extra is refused and the room still books",
         "status": "passed",
-        "duration": 74,
+        "duration": 65,
         "reason": null,
         "aiTriage": null
       },
@@ -7289,7 +7289,7 @@
     {
       "gate": "Requirement set review",
       "by": "Priya Shah",
-      "at": "2026-10-11T16:15:18.665Z",
+      "at": "2026-10-11T16:44:10.301Z",
       "decision": "approved",
       "comment": "",
       "detail": "118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved"
@@ -7323,7 +7323,7 @@
   "honesty": [
     "Jira initiative AQPI-1: Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export): Jira REST API v3 JSON of AQPI-1, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
     "Jira epic AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27: Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export): Jira REST API v3 JSON of AQPI-2, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
-    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T16:15:17.679Z",
+    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T16:44:09.579Z",
     "Execution: 8 automated cases really executed by Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform (demo/hotel-booking-platform); 5 manual case(s) designed but not executed.",
     "No model was used (no model API key set): normalisation, review, design, data, triage and prose are rule-based. Delta classification, coverage, pass/fail and defect raising are always computed in code."
   ]

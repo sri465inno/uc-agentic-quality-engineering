@@ -59,7 +59,9 @@ Each cycle stores its AI call log on `cycle.ai` (agent, purpose, model, prompt h
 
 ## Adaptive platform: what it learns
 
-`src/learning.js` keeps a memory across cycles in `data/learning.json` (cleared by "Reset the demo"). It is shown on the **Learning** page (`GET /api/learning`), and every cycle shows an **Adapted this cycle** panel, also in the cycle report and its `Adapted this cycle` Excel sheet.
+Switched off by default for now: start the server with `AQE_LEARNING=on` to turn it on. When off, no memory is read or written, cycles carry no `learned` section, the feedback endpoint returns 404, and the report has no `Adapted this cycle` section or sheet. The Learning page and the Test Lab are not in the menu (the Test Lab API, `/api/lab`, is unchanged).
+
+`src/learning.js` keeps a memory across cycles in `data/learning.json` (cleared by "Reset the demo"). It is exposed as `GET /api/learning`, and when on every cycle shows an **Adapted this cycle** panel, also in the cycle report and its `Adapted this cycle` Excel sheet.
 
 | It remembers | From | The next cycle |
 | --- | --- | --- |

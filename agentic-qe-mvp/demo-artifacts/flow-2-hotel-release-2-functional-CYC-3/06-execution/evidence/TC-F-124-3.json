@@ -1,17 +1,17 @@
 {
   "request": {
     "method": "GET",
-    "url": "http://127.0.0.1:40783/api/confirmations/R-efd2a8bd",
+    "url": "http://127.0.0.1:37679/api/confirmations/R-92e4e876",
     "headers": {},
     "data": null
   },
   "response": {
     "status": 200,
-    "correlationId": "75745cc7-2b12-45af-b13a-4c2fe327149e",
+    "correlationId": "ad311410-172a-4bac-8d83-bd2d5c67dd3d",
     "body": {
-      "messageId": "M-451530e4",
-      "reservationId": "R-efd2a8bd",
-      "confirmationNumber": "HBLM33UCZX",
+      "messageId": "M-548d88c5",
+      "reservationId": "R-92e4e876",
+      "confirmationNumber": "HBZ5MTNA67",
       "kind": "CONFIRMATION",
       "locale": "en-GB",
       "templateVersion": "confirmation-v2",
@@ -21,24 +21,24 @@
       "history": [
         {
           "status": "QUEUED",
-          "at": "2026-10-11T16:15:53.957740029Z",
+          "at": "2026-10-11T16:44:43.020666205Z",
           "detail": "CONFIRMATION"
         },
         {
           "status": "SENT",
-          "at": "2026-10-11T16:15:53.958147443Z",
+          "at": "2026-10-11T16:44:43.020904876Z",
           "detail": "accepted by provider"
         },
         {
           "status": "DELIVERED",
-          "at": "2026-10-11T16:15:53.958151359Z",
+          "at": "2026-10-11T16:44:43.020907488Z",
           "detail": "simulated provider webhook"
         }
       ],
-      "subject": "Your booking is confirmed - HBLM33UCZX",
-      "html": "<!DOCTYPE html>\n<html lang=\"en-GB\">\n<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width\"><title>Your booking is confirmed - HBLM33UCZX</title></head>\n<body>\n<main role=\"main\" style=\"font-family:Arial,sans-serif;font-size:16px;line-height:1.5;color:#1a1a1a\">\n<h1>Booking confirmed</h1>\n<p>Hello Jane,</p>\n<p>Your reservation is confirmed.</p>\n<p><strong>Confirmation number:</strong> HBLM33UCZX</p>\n<h2>Your stay</h2>\n<p>Harbor View Hotel<br>12 Pier Street, New York</p>\n<dl><dt>Check-in</dt><dd>10 November 2026 (15:00)</dd><dt>Check-out</dt><dd>13 November 2026 (11:00)</dd><dt>Room</dt><dd>Standard King - Flexible – pay at hotel</dd>\n<dt>Guests</dt><dd>1 room(s), 2 adult(s), 0 child(ren)</dd></dl>\n<h2>What you booked</h2>\n<table>\n<caption>What you booked</caption>\n<thead><tr><th scope=\"col\">Item</th><th scope=\"col\">Qty</th><th scope=\"col\">Amount</th></tr></thead>\n<tbody>\n<tr><td>Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)</td><td>1</td><td>585.00 USD</td></tr>\n<tr><td>Taxes</td><td>1</td><td>110.42 USD</td></tr>\n<tr><td>Mandatory fees (payable as part of the room price)</td><td>1</td><td>75.00 USD</td></tr>\n</tbody>\n<tfoot><tr><th scope=\"row\" colspan=\"2\">Total</th><td>770.42 USD</td></tr></tfoot>\n</table>\n<p>Payment: Pay at the hotel</p>\n<h2>Policies</h2>\n<p>Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.</p>\n<p><strong>Free cancellation until 2026-11-08 00:00 UTC (48 hours before check-in).</strong></p>\n</main>\n</body>\n</html>\n",
-      "text": "Booking confirmed\n\nHello Jane,\nYour reservation is confirmed.\n\nConfirmation number: HBLM33UCZX\n\nHarbor View Hotel, 12 Pier Street, New York\nCheck-in: 10 November 2026 (15:00)\nCheck-out: 13 November 2026 (11:00)\nRoom: Standard King - Flexible – pay at hotel\n\nWhat you booked:\n- Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s) x1: 585.00 USD\n- Taxes x1: 110.42 USD\n- Mandatory fees (payable as part of the room price) x1: 75.00 USD\nTotal: 770.42 USD\nPayment: Pay at the hotel\n\nPolicies: Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.\nFree cancellation until 2026-11-08 00:00 UTC (48 hours before check-in).\n",
-      "createdAt": "2026-10-11T16:15:53.957738226Z"
+      "subject": "Your booking is confirmed - HBZ5MTNA67",
+      "html": "<!DOCTYPE html>\n<html lang=\"en-GB\">\n<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width\"><title>Your booking is confirmed - HBZ5MTNA67</title></head>\n<body>\n<main role=\"main\" style=\"font-family:Arial,sans-serif;font-size:16px;line-height:1.5;color:#1a1a1a\">\n<h1>Booking confirmed</h1>\n<p>Hello Jane,</p>\n<p>Your reservation is confirmed.</p>\n<p><strong>Confirmation number:</strong> HBZ5MTNA67</p>\n<h2>Your stay</h2>\n<p>Harbor View Hotel<br>12 Pier Street, New York</p>\n<dl><dt>Check-in</dt><dd>10 November 2026 (15:00)</dd><dt>Check-out</dt><dd>13 November 2026 (11:00)</dd><dt>Room</dt><dd>Standard King - Flexible – pay at hotel</dd>\n<dt>Guests</dt><dd>1 room(s), 2 adult(s), 0 child(ren)</dd></dl>\n<h2>What you booked</h2>\n<table>\n<caption>What you booked</caption>\n<thead><tr><th scope=\"col\">Item</th><th scope=\"col\">Qty</th><th scope=\"col\">Amount</th></tr></thead>\n<tbody>\n<tr><td>Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)</td><td>1</td><td>585.00 USD</td></tr>\n<tr><td>Taxes</td><td>1</td><td>110.42 USD</td></tr>\n<tr><td>Mandatory fees (payable as part of the room price)</td><td>1</td><td>75.00 USD</td></tr>\n</tbody>\n<tfoot><tr><th scope=\"row\" colspan=\"2\">Total</th><td>770.42 USD</td></tr></tfoot>\n</table>\n<p>Payment: Pay at the hotel</p>\n<h2>Policies</h2>\n<p>Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.</p>\n<p><strong>Free cancellation until 2026-11-08 00:00 UTC (48 hours before check-in).</strong></p>\n</main>\n</body>\n</html>\n",
+      "text": "Booking confirmed\n\nHello Jane,\nYour reservation is confirmed.\n\nConfirmation number: HBZ5MTNA67\n\nHarbor View Hotel, 12 Pier Street, New York\nCheck-in: 10 November 2026 (15:00)\nCheck-out: 13 November 2026 (11:00)\nRoom: Standard King - Flexible – pay at hotel\n\nWhat you booked:\n- Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s) x1: 585.00 USD\n- Taxes x1: 110.42 USD\n- Mandatory fees (payable as part of the room price) x1: 75.00 USD\nTotal: 770.42 USD\nPayment: Pay at the hotel\n\nPolicies: Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.\nFree cancellation until 2026-11-08 00:00 UTC (48 hours before check-in).\n",
+      "createdAt": "2026-10-11T16:44:43.020665085Z"
     }
   }
 }

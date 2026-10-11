@@ -9,7 +9,7 @@ CYC-1 · baseline cycle
 | EQE testing | 118 | 13 | 8 | 100% | 3 | 5.9% |
 
 ## 1. Summary
-- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-11 16:15 UTC.
+- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-11 16:44 UTC.
 - Type of testing: EQE testing. The guest's business flows across the six services (search, hotel details, offers, cart, payment, reservation, confirmation and cancellation e-mails), plus the privacy, security, observability and resilience checks (AQPI-28 to AQPI-31).
 - We took 3 inputs (Jira initiative AQPI-1, Jira epic AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27, Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)) and produced 118 requirements, 13 test cases and 7 automated scripts.
 - We ran 8 automated tests for real: 8 passed, 0 failed (pass rate 100%). 5 manual tests still to be run by hand.
@@ -25,7 +25,7 @@ CYC-1 · baseline cycle
 ## 3. How we ran the cycle
 1. Read 152 statements from the inputs and lined them up into 128 requirement groups: 0 agreed by every source, 121 only in Jira, 7 only in the code, 0 in conflict.
 2. The review agent read the inputs first and suggested 7 addition(s), 63 missing piece(s) and 0 conflict(s) for the reviewer (1 high severity). It approved nothing.
-3. Priya Shah reviewed and approved the requirement set on 2026-10-11 16:15 UTC.
+3. Priya Shah reviewed and approved the requirement set on 2026-10-11 16:44 UTC.
 4. EQE testing steered the design: Designs one API journey per guest business flow and the enterprise quality checks, and runs them against the six hotel services, keeping every request and response as evidence. The services have no browser screen, so no screenshots are taken. Result: 13 case(s) in this run (0 reused, 0 re-designed, 13 new).
 5. The requirements agent wrote 118 requirements, each with its business rule, exact values and source quotes (57 automatable, 61 manual); the agents then designed 13 test cases (8 functional, 5 non-functional) and generated 7 Playwright scripts.
 6. Executed the automated suite with Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform; defects were raised only for tests that actually failed.
@@ -105,22 +105,22 @@ _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by
 ## 7. Sign-off
 | Gate | Decision | By | When | Detail |
 |---|---|---|---|---|
-| Requirement set review | approved | Priya Shah | 2026-10-11 16:15 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
+| Requirement set review | approved | Priya Shah | 2026-10-11 16:44 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
 
-_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-11 16:15 UTC. Every figure comes from the persisted cycle; nothing is estimated._
+_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-11 16:44 UTC. Every figure comes from the persisted cycle; nothing is estimated._
 
 ## Appendix A: test results (real Playwright run)
 | Key | Test | Result | ms |
 |---|---|---|---|
-| TC-F-001 | Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail | passed | 1231 |
-| TC-F-002 | Guest books a prepaid non-refundable room in Paris and pays now | passed | 160 |
-| TC-F-003 | A sold-out hotel is shown as unavailable and cannot be put in a cart | passed | 89 |
-| TC-F-004 | An unavailable extra is refused and the room still books | passed | 87 |
-| TC-F-005 | A double-clicked Book button creates one reservation and one payment | passed | 66 |
-| TC-F-006 | The confirmation number can be looked up again after booking | passed | 63 |
-| TC-F-007 | The guest sees the booking outcome and one confirmation e-mail is created | passed | 65 |
+| TC-F-001 | Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail | passed | 1038 |
+| TC-F-002 | Guest books a prepaid non-refundable room in Paris and pays now | passed | 108 |
+| TC-F-003 | A sold-out hotel is shown as unavailable and cannot be put in a cart | passed | 75 |
+| TC-F-004 | An unavailable extra is refused and the room still books | passed | 85 |
+| TC-F-005 | A double-clicked Book button creates one reservation and one payment | passed | 59 |
+| TC-F-006 | The confirmation number can be looked up again after booking | passed | 59 |
+| TC-F-007 | The guest sees the booking outcome and one confirmation e-mail is created | passed | 63 |
 | TC-N-001 | Verify: Validation messages are accessible to assistive technology | not-run | 0 |
-| TC-F-008 | An unavailable extra is refused and the room still books | passed | 74 |
+| TC-F-008 | An unavailable extra is refused and the room still books | passed | 65 |
 | TC-N-002 | Verify: Templates support required locale and accessibility standards | not-run | 0 |
 | TC-N-003 | Verify: Metrics and alerts exist for agreed critical failures and latency | not-run | 0 |
 | TC-N-004 | Verify: Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible | not-run | 0 |
