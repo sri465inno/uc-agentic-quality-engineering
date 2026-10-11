@@ -171,7 +171,7 @@ async function reportWorkbook(report, cycle) {
     { k: 'SUT build', v: report.cycle.sutBuild },
     { k: 'Requirements', v: report.requirements.total }, { k: 'Delta', v: report.delta ? report.delta.summary : 'n/a (baseline)' },
     { k: 'Test cases', v: report.testCases.total }, { k: 'Test cases by type', v: JSON.stringify(report.testCases.byType) },
-    { k: 'Test cases by label', v: JSON.stringify(report.testCases.byLabel) }, { k: 'Scripts', v: report.scripts.total },
+    { k: 'Test cases by label', v: JSON.stringify(report.testCases.byLabel) }, { k: 'Automation scripts', v: report.scripts.total },
     { k: 'Executed (real)', v: ex.executed ? ex.summary.executed : 0 }, { k: 'Passed', v: ex.executed ? ex.summary.passed : 0 },
     { k: 'Failed', v: ex.executed ? ex.summary.failed : 0 }, { k: 'Pass rate %', v: ex.executed ? ex.summary.passRate : 0 },
     { k: 'Execution tool', v: ex.executed ? ex.tool : 'not executed' }, { k: 'Defects', v: report.defects.open.length },
@@ -215,7 +215,7 @@ async function compareWorkbook(c) {
   const wb = newBook();
   const art = (label, d) => ({ artifact: label, a: d.countA, b: d.countB, added: d.added.length, changed: d.changed.length, unchanged: d.unchanged.length, addedIds: d.added.join(', '), changedIds: d.changed.join(', ') });
   sheetFromRows(wb, 'Artifacts', [['Artifact', 'artifact', 14], [c.a.id, 'a', 10], [c.b.id, 'b', 10], ['Added', 'added', 8], ['Changed', 'changed', 9], ['Unchanged', 'unchanged', 10], ['Added IDs', 'addedIds', 50], ['Changed IDs', 'changedIds', 50]],
-    [art('Requirements', c.requirements), art('Test cases', c.testCases), art('Scripts', c.scripts)]);
+    [art('Requirements', c.requirements), art('Test cases', c.testCases), art('Automation scripts', c.scripts)]);
   sheetFromRows(wb, 'Changed requirements', [['ID', 'id', 10], [`Before (${c.a.id})`, 'before', 60], [`After (${c.b.id})`, 'after', 60]], c.requirements.changedDetail);
   sheetFromRows(wb, 'Execution', [['Metric', 'm', 14], [c.a.id, 'a', 10], [c.b.id, 'b', 10]], ['executed', 'passed', 'failed', 'passRate'].map((m) => ({ m, a: c.execution.a[m], b: c.execution.b[m] })));
   sheetFromRows(wb, 'Defects', [['Movement', 'm', 14], ['Defect IDs', 'ids', 60]], [

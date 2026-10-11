@@ -52,7 +52,7 @@ function renderCompareHtml(c) {
   const row = (label, d) => [esc(label), d.countA, d.countB, `<b>${d.added.length}</b> ${esc(d.added.join(', '))}`, `<b>${d.changed.length}</b> ${esc(d.changed.join(', '))}`, `<b>${d.unchanged.length}</b>`];
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(c.title)}</title><style>${CSS}</style></head><body>
 <h1>${esc(c.title)}</h1><p><b>${esc(c.a.name)}</b> (${esc(c.a.id)}) vs <b>${esc(c.b.name)}</b> (${esc(c.b.id)}) &middot; generated ${esc(c.generatedAt)}</p>
-<h2>Artifacts</h2>${table(['Artifact', c.a.id, c.b.id, 'Added', 'Changed', 'Unchanged'], [row('Requirements', c.requirements), row('Test cases', c.testCases), row('Scripts', c.scripts)])}
+<h2>Artifacts</h2>${table(['Artifact', c.a.id, c.b.id, 'Added', 'Changed', 'Unchanged'], [row('Requirements', c.requirements), row('Test cases', c.testCases), row('Automation scripts', c.scripts)])}
 <h2>Changed requirements</h2>${table(['ID', `Before (${c.a.id})`, `After (${c.b.id})`], c.requirements.changedDetail.map((d) => [esc(d.id), esc(d.before), esc(d.after)]))}
 <h2>Execution</h2>${table(['Metric', c.a.id, c.b.id], ['executed', 'passed', 'failed', 'passRate'].map((k) => [esc(k), c.execution.a[k], c.execution.b[k]]))}<p>Pass-rate movement: <b>${c.execution.passRateDelta > 0 ? '+' : ''}${c.execution.passRateDelta} pts</b></p>
 <h2>Defect movement</h2><p>${kv({ [`${c.a.id} defects`]: c.defects.a.join(', ') || 'none', [`${c.b.id} defects`]: c.defects.b.join(', ') || 'none', new: c.defects.new.join(', ') || 'none', 'still open': c.defects.stillOpen.join(', ') || 'none', resolved: c.defects.resolved.join(', ') || 'none' })}</p>
