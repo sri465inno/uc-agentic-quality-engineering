@@ -214,7 +214,6 @@ document.addEventListener('click', (ev) => {
 
 /* ---------------- Home ---------------- */
 let HOME_DETAIL = {};
-const PHASE_ICON = { ingest: '⇢', normalise: '≡', 'review-agent': '⚑', review: '✎', delta: 'Δ', 'merge-approval': '⊕' };
 const PHASE_CAT = { ingest: 'intake', normalise: 'intake', 'review-agent': 'intake', review: 'gate', delta: 'intake', 'merge-approval': 'gate', requirements: 'design', testcases: 'design', testdata: 'design', scripts: 'design', execution: 'run', defects: 'run', report: 'run' };
 const agentNo = (id) => (META.platform.agents.find((g) => g.id === id) || {}).no;
 
@@ -533,36 +532,22 @@ const PHASE_GROUPS = [
   ['design', 'Design agents 1-4', 'requirements with their business rules, test cases, test data, scripts', ['requirements', 'testcases', 'testdata', 'scripts', 'merge-approval']],
   ['run', 'Run and results · agents 5-7', 'real execution, defects from real failures, report', ['execution', 'defects', 'report']],
 ];
-const PHASE_PROGRESS = { done: 100, running: 50, waiting: 50, failed: 100, pending: 0, skipped: 0 };
-
-function phaseTile(c, p, tab) {
-  const t = phaseArtifactTab(p.name, c);
-  const no = agentNo(p.name);
-  const cat = PHASE_CAT[p.name];
-  return tile({ href: p.name === 'report' ? `#/reporting?cycle=${c.id}` : `#/cycle/${c.id}?tab=${t}`, art: cat, tag: no ? `Agent ${no}` : cat === 'gate' ? 'Human gate' : p.name === 'review-agent' ? 'Review agent' : 'Intake', big: no || PHASE_ICON[p.name] || '•',
-    corner: `<span class="status-dot ${esc(p.status)}"></span>${esc(p.status)}`, title: p.label, lines: [p.summary ? esc(p.summary) : '<span class="muted">not run yet</span>'], extra: handoverBadge(p),
-    cls: `${p.status} ${t === tab && (p.name !== 'review' || tab === 'review') ? 'sel' : ''}`, progress: PHASE_PROGRESS[p.status] ?? 0 });
-}
 
 async function viewCycle(id, params) {
   const c = await api(`/api/cycles/${id}`);
   setTitle(c.name);
   const tab = params.get('tab') || (c.status === 'awaiting-review' ? 'review' : c.status === 'awaiting-merge' ? 'merge' : 'inputs');
   const present = new Set(c.phases.map((p) => p.name));
-  const rails = PHASE_GROUPS.map(([gid, title, note, names]) => {
-    const tiles = names.filter((n) => present.has(n)).map((n) => phaseTile(c, c.phases.find((p) => p.name === n), tab));
-    if (gid === 'run' && c.type === 'incremental') tiles.push(tile({ href: `#/cycle/${c.id}?tab=skills`, art: 'skill', tag: 'Skills', big: (c.skills || []).length, title: 'Skills and hand-overs', lines: ['Which skills each agent read and what it handed over'], cls: tab === 'skills' ? 'sel' : '' }));
-    return rail(gid, title, note, tiles);
-  }).join('');
+  const rails = workflowStrip(c, tab, present);
   const inputsRail = rail('inputs', 'Inputs considered', 'one line per input the agents read', c.inputs.map((i, n) => tile({ href: `#/cycle/${c.id}?tab=inputs`, art: 'input', tag: `Input ${n + 1}`, big: n + 1, title: i.label, lines: [esc(i.ref)], cls: tab === 'inputs' ? 'sel' : '' })));
   const ex = c.artifacts && c.artifacts.execution ? c.artifacts.execution.summary : null;
   const current = c.phases.find((p) => phaseArtifactTab(p.name, c) === tab);
-  const label = tab === 'overview' ? 'QE lead report' : tab === 'artifacts' ? 'Artifacts produced' : tab === 'inputs' ? 'Inputs taken' : tab === 'skills' ? 'Skills and hand-overs' : tab === 'traceability' ? 'Traceability: Jira to defect' : tab === 'merge' ? 'Human approval to merge' : tab === 'review' ? 'Human review of requirement set' : tab === 'review-agent' ? 'Review agent suggestions' : current ? current.label : tab;
+  const label = tab === 'normalise' ? 'Gap analysis: what the code is missing' : tab === 'overview' ? 'QE lead report' : tab === 'artifacts' ? 'Artifacts produced' : tab === 'inputs' ? 'Inputs taken' : tab === 'skills' ? 'Skills and hand-overs' : tab === 'traceability' ? 'Traceability: Jira to defect' : tab === 'merge' ? 'Human approval to merge' : tab === 'review' ? 'Human review of requirement set' : tab === 'review-agent' ? 'Review agent suggestions' : current ? current.label : tab;
   let body = '';
   try { body = await renderCycleTab(c, tab); } catch (e) { body = `<div class="banner err">${esc(e.message)}</div>`; }
   $view.innerHTML = `<section class="hero small-hero"><div class="eyebrow">${c.type === 'baseline' ? 'Flow 1 · Baseline cycle' : 'Flow 2 · Incremental cycle'}</div>
 <h1>${esc(c.name)} <span class="muted small">${esc(c.id)}</span> ${statusPill(c.status)}</h1>
-<div class="facts"><div><b>${esc(testingTypeOf(c.testingType, exampleIdOf(c)).name)}</b>type of testing</div>${reviewBadge(c)}${c.delta ? `<div><b>${esc(c.delta.summary)}</b>delta</div>` : ''}${ex ? `<div><b>${ex.passed}/${ex.executed}</b>passed</div><div><b>${ex.passRate}%</b>pass rate</div>` : ''}${c.artifacts && c.artifacts.defects ? `<div><b>${c.artifacts.defects.length}</b>defects</div>` : ''}</div>
+<div class="facts"><div><b>${esc(testingTypeOf(c.testingType, exampleIdOf(c)).name)}</b>type of testing</div>${reviewBadge(c)}${c.delta ? `<div><b>${esc(c.delta.summary)}</b>delta</div>` : ''}${ex ? `<div><b>${ex.passed}/${ex.executed}</b>passed</div><div><b>${ex.passRate}%</b>pass rate</div>` : ''}${c.gaps ? `<div><b>${c.gaps.findings.length}</b>gaps in the code</div>` : ''}${c.artifacts && c.artifacts.defects ? `<div><b>${c.artifacts.defects.length}</b>defects</div>` : ''}</div>
 <div class="muted small">Baseline: ${esc(c.baselineId || '(created when this cycle completes)')}${c.baselineVersionAtStart ? ` v${c.baselineVersionAtStart} at start` : ''}${c.baselineVersionAfter ? ` → v${c.baselineVersionAfter}` : ''} · SUT build <code>${esc(c.sutBuild)}</code> · created ${fmtTime(c.createdAt)}</div></section>
 ${c.error ? `<div class="banner err">Failed: ${esc(c.error)} <button class="btn secondary" id="resume">Resume</button></div>` : ''}
 ${c.status === 'interrupted' ? `<div class="banner">This cycle was interrupted by a restart. <button class="btn secondary" id="resume">Resume</button></div>` : ''}
@@ -580,6 +565,20 @@ ${gapSummary(c)}
   if (sel) sel.parentElement.scrollLeft = Math.max(0, sel.offsetLeft - sel.parentElement.offsetLeft - 40);
   if (params.get('tab') && c.status !== 'running') document.getElementById('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
   if (c.status === 'running') pollTimer = setTimeout(route, 1500);
+}
+
+/** The whole process on one strip: every step with who runs it, its status and one line of outcome. */
+function workflowStrip(c, tab, present) {
+  const steps = PHASE_GROUPS.flatMap(([, , , names]) => names.filter((n) => present.has(n)).map((n) => c.phases.find((p) => p.name === n)));
+  const who = (p) => (agentNo(p.name) ? `Agent ${agentNo(p.name)}` : PHASE_CAT[p.name] === 'gate' ? 'Human gate' : p.name === 'review-agent' ? 'Review agent' : 'Intake');
+  const step = (p, i) => {
+    const t = phaseArtifactTab(p.name, c);
+    const href = p.name === 'report' ? `#/reporting?cycle=${esc(c.id)}` : `#/cycle/${esc(c.id)}?tab=${esc(t)}`;
+    const sel = t === tab && (p.name !== 'review' || tab === 'review') ? ' sel' : '';
+    return `<a class="flow-step ${esc(p.status)}${sel}" href="${href}" title="${esc(p.summary || '')}"><span class="flow-who">${i + 1} · ${esc(who(p))}</span><b>${esc(p.label)}</b><span class="flow-st"><span class="status-dot ${esc(p.status)}"></span>${esc(p.status)}</span><span class="flow-sum">${p.summary ? esc(p.summary) : 'not run yet'}</span>${p.handover && p.handover.status !== 'no contract' ? handoverBadge(p).replace('<br>', '') : ''}</a>`;
+  };
+  const skills = c.type === 'incremental' ? `<a class="flow-step done${tab === 'skills' ? ' sel' : ''}" href="#/cycle/${esc(c.id)}?tab=skills"><span class="flow-who">Skills</span><b>Skills and hand-overs</b><span class="flow-sum">Which skills each agent read and what it handed over</span></a>` : '';
+  return `<section class="rail" id="rail-workflow"><div class="rail-head"><h2>Process workflow</h2><span class="muted small">${steps.filter((p) => p.status === 'done').length} of ${steps.length} steps done · click a step to see what it produced</span></div><div class="flow">${steps.map(step).join('')}${skills}</div></section>`;
 }
 
 /** Outcome of the human review of the requirement set: green when approved, red when rejected. */
@@ -662,17 +661,23 @@ function normaliseView(c, interactive) {
   const simple = (b) => table(['Group', 'Statement', 'Sources and quotes', ''], byBucket(b).map((g) => [esc(g.id), `${esc(g.text)}${aiMatch(g)}`, originCell(groupOrigins(c, g)), excl(g)]));
   const aiOn = c.ai && c.ai.mode === 'ai';
   const conflicts = byBucket('conflict');
-  return `<div class="kpis"><div class="kpi">Statements<b>${n.counts.statements}</b></div><div class="kpi">Agreed<b>${n.counts.agreed}</b></div><div class="kpi">Only Jira<b>${n.counts['jira-only']}</b></div><div class="kpi">Only code<b>${n.counts['code-only']}</b></div><div class="kpi">Conflicts<b>${n.counts.conflict}</b></div></div>
+  const gaps = (c.gaps && c.gaps.findings) || [];
+  const jiraItems = new Set(n.statements.filter((s) => s.source === 'jira').map((s) => s.origin.ref).filter(Boolean));
+  const kpis = `<div class="kpis"><div class="kpi">Jira items read<b>${jiraItems.size}</b></div><div class="kpi">Stories missing in the code<b>${gaps.length}</b></div><div class="kpi">Acceptance criteria not implemented<b>${gaps.reduce((s, x) => s + x.statementCount, 0)}</b></div>${conflicts.length ? `<div class="kpi">Conflicting values<b>${conflicts.length}</b></div>` : ''}</div>
+<p class="muted small">The initiative, epics and stories from Jira are compared with ${esc((c.gaps && c.gaps.code) || 'the code')}: a story is a gap when no code implements it. Rules found only in the code are not gaps.</p>`;
+  const gapTable = interactive ? '' : gaps.length ? table(['Story', 'Epic', 'Acceptance criteria not implemented in the code', 'Severity'], gaps.map((x) => [`<b>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.story)}</a>` : esc(x.story)}</b> ${esc(x.summary)}`, x.epic ? esc(`${x.epic.key} ${x.epic.summary || ''}`) : '-', `<ol class="small">${x.statements.map((s) => `<li>${esc(s.text)}</li>`).join('')}</ol>`, pill('Minor', 'pending')])) + `<p class="small muted">${esc(x0(gaps).recommendation)}</p>` : '<p class="ok">No gaps: the code implements every Jira story it was given.</p>';
+  const conflictBlock = conflicts.length ? `<h2>Conflicting values ${pill(`${conflicts.length}`, 'conflict')}</h2>${conflicts.map((g) => `<div class="card" data-conflict="${esc(g.id)}"><b>${esc(g.id)}</b> - subject: <i>${esc(g.subject)}</i>
+${aiMatch(g)}${(c.learned && c.learned.review.resolutions.find((x) => x.groupId === g.id)) ? `<p class="small">${pill('learned', 'ai')} Pre-filled: ${esc(c.learned.review.resolutions.find((x) => x.groupId === g.id).lesson)}. Change it if this release differs.</p>` : ''}${table(['Choose', 'Value', 'Statement', 'Source'], g.options.map((o) => [interactive ? `<input type="radio" name="res-${esc(g.id)}" value="${esc(o.optionId)}" class="res" data-g="${esc(g.id)}">` : (decisions.resolutions[g.id] === o.optionId ? pill('chosen', 'passed') : ''),
+    `<b>${esc(o.signature)}</b>`, esc(o.text), o.sources.map((s) => pill(s, s === 'jira' ? 'jira-only' : 'code-only')).join(' ')]))}
+${interactive ? `<label class="small"><input type="radio" name="res-${esc(g.id)}" value="__exclude" class="res" data-g="${esc(g.id)}"> exclude this requirement</label> <span class="pill conflict res-state" data-g="${esc(g.id)}">unresolved</span>` : (decisions.excluded.includes(g.id) ? pill('excluded', 'failed') : '')}</div>`).join('')}` : '';
+  return `${interactive ? '' : kpis}${gapTable}${conflictBlock}
+<details class="card"><summary class="small"><b>All ${n.counts.statements} statements read from the inputs</b> (for the analyst: ${n.counts.agreed} agreed, ${n.counts['jira-only']} Jira only, ${n.counts['code-only']} code only${interactive ? '; tick to exclude any single statement' : ''})</summary>
 <p class="muted small">${aiOn
     ? `Statements are first grouped by subject in code (token similarity). AI (${esc(c.ai.providerLabel)} ${esc(c.ai.model)}) then paired Jira and code statements of the same story that state the same rule in different words: ${n.counts.aiMatched || 0} pair(s), each marked AI-matched for you to keep or exclude. Values (%, days, hours, ms, HTTP status...) are always compared in code, so a pair with different values stays a conflict.`
     : 'Computed in code: statements are grouped by subject (token similarity) and compared on extracted values (%, days, hours, ms, HTTP status...). No model was used: no model API key is set.'}</p>
-<h2>Conflicting values ${pill(`${conflicts.length}`, 'conflict')}</h2>${conflicts.length ? conflicts.map((g) => `<div class="card" data-conflict="${esc(g.id)}"><b>${esc(g.id)}</b> - subject: <i>${esc(g.subject)}</i>
-${aiMatch(g)}${(c.learned && c.learned.review.resolutions.find((x) => x.groupId === g.id)) ? `<p class="small">${pill('learned', 'ai')} Pre-filled: ${esc(c.learned.review.resolutions.find((x) => x.groupId === g.id).lesson)}. Change it if this release differs.</p>` : ''}${table(['Choose', 'Value', 'Statement', 'Source'], g.options.map((o) => [interactive ? `<input type="radio" name="res-${esc(g.id)}" value="${esc(o.optionId)}" class="res" data-g="${esc(g.id)}">` : (decisions.resolutions[g.id] === o.optionId ? pill('chosen', 'passed') : ''),
-    `<b>${esc(o.signature)}</b>`, esc(o.text), o.sources.map((s) => pill(s, s === 'jira' ? 'jira-only' : 'code-only')).join(' ')]))}
-${interactive ? `<label class="small"><input type="radio" name="res-${esc(g.id)}" value="__exclude" class="res" data-g="${esc(g.id)}"> exclude this requirement</label> <span class="pill conflict res-state" data-g="${esc(g.id)}">unresolved</span>` : (decisions.excluded.includes(g.id) ? pill('excluded', 'failed') : '')}</div>`).join('') : '<p class="muted">No conflicting values.</p>'}
-<h2>Only Jira has ${pill(byBucket('jira-only').length, 'jira-only')}</h2>${simple('jira-only')}
-<h2>Only the code has ${pill(byBucket('code-only').length, 'code-only')}</h2>${simple('code-only')}
-<h2>Agreed by Jira and code ${pill(byBucket('agreed').length, 'agreed')}</h2>${simple('agreed')}`;
+<h3>Only Jira has ${pill(byBucket('jira-only').length, 'jira-only')}</h3>${simple('jira-only')}
+<h3>Only the code has ${pill(byBucket('code-only').length, 'code-only')}</h3>${simple('code-only')}
+<h3>Agreed by Jira and code ${pill(byBucket('agreed').length, 'agreed')}</h3>${simple('agreed')}</details>`;
 }
 
 const RA_CAT = { gap: ['Gap', 'failed'], added: ['Added', 'enhanced'], missing: ['Missing', 'failed'], conflict: ['Conflict', 'conflict'], ai: ['AI check', 'ai'] };
@@ -721,7 +726,7 @@ async function renderCycleTab(c, tab) {
     case 'normalise': return `${c.review ? `<div class="banner ok">Reviewed by ${esc(c.review.reviewer)} at ${fmtTime(c.review.at)}. The reviewed set - not the raw inputs - flowed on.</div>` : ''}${normaliseView(c, false)}`;
     case 'review': {
       if (c.status !== 'awaiting-review') return `<div class="banner ok">Review complete.</div>${normaliseView(c, false)}`;
-      return `<div class="banner info">Human review: settle every conflicting value (choose a value or exclude it), optionally exclude any statement, then approve the requirement set. Only the approved set flows on.</div>
+      return `<div class="banner info">Human review: the stories missing in the code are ticked to exclude. Each excluded story becomes a Minor gap defect linked to its Jira story and is picked up again in the next release. Settle any conflicting value, then approve: only the approved set flows on to test design and execution.</div>
 ${gapReviewCard(c)}
 ${reviewAgentView(c, { compact: true })}
 ${c.type === 'incremental' ? `<div class="card" id="delta-box">${deltaView(c.deltaPreview, { title: 'Delta preview (before anything is designed)' })}</div>` : ''}
