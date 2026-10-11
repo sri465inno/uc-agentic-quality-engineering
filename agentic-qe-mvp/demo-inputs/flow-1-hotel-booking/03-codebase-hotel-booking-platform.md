@@ -801,7 +801,6 @@ public final class HotelApi {
             String startingRoom) {
     }
 
-    /** Story 4.2: an applied filter the guest can see and remove. */
     public record AppliedFilter(String name, String value, String removeHint) {
     }
 
@@ -910,24 +909,18 @@ public class HotelController {
         this.events = events;
     }
 
-    /** Stories 4.1 and 4.2 (AQPI-7, AQPI-8). */
+    /** Story 4.1 (AQPI-7): results in recommended order, page by page. */
     @GetMapping("/hotels/availability")
     public Mono<AvailabilityPage> availability(@RequestParam String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkIn,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkOut,
             @RequestParam(defaultValue = "1") int rooms, @RequestParam(defaultValue = "2") int adults,
-            @RequestParam(defaultValue = "0") int children, @RequestParam(required = false) BigDecimal minPrice,
-            @RequestParam(required = false) BigDecimal maxPrice, @RequestParam(required = false) String amenities,
-            @RequestParam(required = false) Integer minCategory, @RequestParam(required = false) Double maxDistanceKm,
-            @RequestParam(defaultValue = "RECOMMENDED") String sort, @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "0") int children, @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        Sort order = parseSort(sort);
-        List<String> wanted = amenities == null || amenities.isBlank() ? List.of()
-                : Arrays.stream(amenities.split(",")).map(String::trim).filter(a -> !a.isEmpty())
-                        .map(a -> a.toLowerCase(Locale.ROOT)).toList();
+        Sort order = Sort.RECOMMENDED;
         return Mono.fromSupplier(() -> queries.availability(
                 new HotelQueries.Stay(destination, checkIn, checkOut, rooms, adults, children),
-                new HotelQueries.Filters(minPrice, maxPrice, wanted, minCategory, maxDistanceKm), order, page, size))
+                new HotelQueries.Filters(null, null, List.of(), null, null), order, page, size))
                 .flatMap(result -> events.event(result.appliedFilters().isEmpty() && order == Sort.RECOMMENDED
                         ? EventNames.RESULTS_IMPRESSION : EventNames.RESULTS_REFINED)
                         .attr("destination", result.destination()).attr("results", result.totalResults())
@@ -999,14 +992,6 @@ public class HotelController {
         });
     }
 
-    private static Sort parseSort(String value) {
-        try {
-            return Sort.valueOf(value.trim().toUpperCase(Locale.ROOT));
-        } catch (IllegalArgumentException e) {
-            throw new ApiException(HttpStatus.BAD_REQUEST, "UNSUPPORTED_SORT",
-                    "Sort by one of: " + Arrays.toString(Sort.values()));
-        }
-    }
 }
 
 
@@ -1644,7 +1629,7 @@ class BookingJourneyTest {
     }
 
     @Test
-    @DisplayName("AQPI-3 AQPI-7 AQPI-9 AQPI-11 AQPI-15 AQPI-16 AQPI-19 AQPI-20 AQPI-21 AQPI-22 AQPI-24 AQPI-25 AQPI-29: search to confirmed booking and e-mail")
+    @DisplayName("AQPI-3 AQPI-7 AQPI-9 AQPI-11 AQPI-15 AQPI-16 AQPI-19 AQPI-20 AQPI-21 AQPI-24 AQPI-25 AQPI-29: search to confirmed booking and e-mail")
     void happyPathBooking() {
         JsonNode search = post("search-service", "/api/searches", Map.of("destination", "NYC", "checkIn", CHECK_IN,
                 "checkOut", CHECK_OUT, "rooms", 1, "adults", 2, "children", 0), HttpStatus.OK);
@@ -1736,18 +1721,6 @@ class BookingJourneyTest {
     }
 
     @Test
-    @DisplayName("AQPI-8: sorting by an unsupported option is refused with the approved options, not a server error")
-    void unsupportedSortRefused() {
-        JsonNode search = post("search-service", "/api/searches", Map.of("destination", "NYC", "checkIn", CHECK_IN,
-                "checkOut", CHECK_OUT, "rooms", 1, "adults", 2, "children", 0), HttpStatus.OK);
-        JsonNode error = platform.client("search-service").get()
-                .uri("/api/searches/" + search.path("searchId").asText() + "/results?sort=NAME").exchange()
-                .expectStatus().isBadRequest().expectBody(JsonNode.class).returnResult().getResponseBody();
-        assertThat(error.path("code").asText()).isEqualTo("UNSUPPORTED_SORT");
-        assertThat(error.path("message").asText()).contains("PRICE_ASC");
-    }
-
-    @Test
     @DisplayName("AQPI-17 AQPI-21: a price change must be acknowledged before the booking can be paid")
     void priceChangeNeedsAcknowledgement() {
         String cartId = createCart("H-NYC-001", "STD-K", "FLEX").path("cartId").asText();
@@ -1769,7 +1742,7 @@ class BookingJourneyTest {
     }
 
     @Test
-    @DisplayName("AQPI-20 AQPI-22: a declined pay-now card books nothing and holds no inventory")
+    @DisplayName("AQPI-20: a declined pay-now card books nothing and holds no inventory")
     void paymentDeclined() {
         String cartId = createCart("H-NYC-001", "STD-K", "SAVER").path("cartId").asText();
         JsonNode summary = get("reservation-service", "/api/checkout/" + cartId + "/payment-summary");
@@ -1812,7 +1785,7 @@ class BookingJourneyTest {
     }
 
     @Test
-    @DisplayName("AQPI-21 AQPI-22: a lost payment response is shown as pending and reconciled without a second charge")
+    @DisplayName("AQPI-21: a lost payment response is held as pending and reconciled without a second charge")
     void lostPaymentResponseReconciled() {
         String cartId = createCart("H-NYC-001", "STD-K", "FLEX").path("cartId").asText();
         JsonNode pending = reserve("journey-" + UUID.randomUUID(), cartId, "tok_timeout", "jane@example.com", null,
@@ -2804,7 +2777,7 @@ import org.springframework.stereotype.Component;
 import com.hotelbooking.offer.OfferApi.Consent;
 import com.hotelbooking.offer.OfferApi.Interest;
 
-/** Consented profile interests with retention (stories 5.1 BR, 5.3 AC3, 9.1 AC5). */
+/** Consented profile interests with retention (story 5.1 BR, 9.1 AC5). */
 @Component
 public class ConsentStore {
 
@@ -3047,7 +3020,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -3060,8 +3032,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hotelbooking.common.events.EventNames;
 import com.hotelbooking.common.events.EventPublisher;
 import com.hotelbooking.common.web.ApiException;
-import com.hotelbooking.offer.OfferApi.Consent;
-import com.hotelbooking.offer.OfferApi.ConsentRequest;
 import com.hotelbooking.offer.OfferApi.Interaction;
 import com.hotelbooking.offer.OfferApi.OfferContext;
 import com.hotelbooking.offer.OfferApi.OfferResponse;
@@ -3090,7 +3060,7 @@ public class OfferController {
         this.events = events;
     }
 
-    /** Stories 5.1, 5.2, 5.3 (AQPI-11, AQPI-12, AQPI-13). */
+    /** Stories 5.1, 5.2 (AQPI-11, AQPI-12). */
     @PostMapping("/offers/recommendations")
     public Mono<OfferResponse> recommend(@Valid @RequestBody OfferContext context) {
         return Mono.fromSupplier(() -> engine.recommend(context))
@@ -3116,26 +3086,6 @@ public class OfferController {
         return Mono.fromRunnable(() -> engine.interact(interaction.sessionId(), interaction.offerCode(), interaction.action()))
                 .then(events.event(EventNames.OFFER_INTERACTION).attr("offerCode", interaction.offerCode())
                         .attr("action", interaction.action().name()).publish());
-    }
-
-    /** Story 5.3 AC3: consent changes apply to the next recommendation. */
-    @PutMapping("/consents/{profileId}")
-    public Mono<Consent> consent(@PathVariable String profileId, @RequestBody ConsentRequest request) {
-        return Mono.fromSupplier(() -> consents.save(profileId, request.personalization(),
-                request.interests() == null ? List.of() : request.interests()))
-                .flatMap(c -> events.event(EventNames.CONSENT_CHANGED).attr("personalization", c.personalization())
-                        .attr("categories", c.interests().size()).publish().thenReturn(c));
-    }
-
-    @GetMapping("/consents/{profileId}")
-    public Mono<Consent> getConsent(@PathVariable String profileId) {
-        return Mono.fromSupplier(() -> consents.find(profileId).orElseThrow(
-                () -> new ApiException(HttpStatus.NOT_FOUND, "CONSENT_NOT_FOUND", "No preferences are stored for this profile.")));
-    }
-
-    @DeleteMapping("/consents/{profileId}")
-    public Mono<Map<String, Object>> deleteConsent(@PathVariable String profileId) {
-        return Mono.fromSupplier(() -> Map.of("profileId", profileId, "deleted", consents.delete(profileId)));
     }
 
     @PutMapping("/admin/offers/{code}/availability")
@@ -3191,7 +3141,7 @@ import com.hotelbooking.offer.OfferApi.OfferResponse;
 import com.hotelbooking.offer.OfferCatalog.Product;
 
 /**
- * Eligibility then ranking (stories 5.1-5.3). Eligibility uses only stay context; ranking may use declared
+ * Eligibility then ranking (stories 5.1-5.2). Eligibility uses only stay context; ranking may use declared
  * interests and, with consent, profile interests. No other personal attributes are read.
  */
 @Service
@@ -4818,11 +4768,9 @@ public final class ReservationApi {
     public record Item(String label, int quantity, Money amount) {
     }
 
-    /** Story 7.4: the outcome page. No confirmation number unless the reservation is confirmed. */
+    /** Reservation status from the system of record. No confirmation number unless the reservation is confirmed. */
     public record Outcome(String reservationId, Status status, String confirmationNumber, String headline,
-            String message, boolean doNotResubmit, List<String> nextSteps, String statusUrl, String hotelName,
-            String roomName, String ratePlanName, LocalDate checkIn, LocalDate checkOut, long nights, int rooms,
-            int adults, int children, List<Item> items, Money total, String paymentRule, PaymentStatus paymentStatus,
+            boolean doNotResubmit, String statusUrl, Money total, String paymentRule, PaymentStatus paymentStatus,
             String cancellationTerms, String guestFirstName, String notificationStatus, Instant updatedAt) {
     }
 
@@ -4933,7 +4881,7 @@ public class ReservationController {
                 .body(s.outcome()));
     }
 
-    /** Story 7.4: outcome from the system of record. */
+    /** Reservation status from the system of record. */
     @GetMapping("/reservations/{id}")
     public Mono<Outcome> view(@PathVariable String id) {
         return reservations.view(id);
@@ -5067,7 +5015,7 @@ import com.hotelbooking.reservation.ReservationApi.Status;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
-/** Stories 7.1-7.4 (AQPI-19..22) and the reservation side of 9.1 (AQPI-28). */
+/** Stories 7.1-7.3 (AQPI-19..21) and the reservation side of 9.1 (AQPI-28). */
 @Service
 public class ReservationService {
 
@@ -5162,7 +5110,7 @@ public class ReservationService {
                 .then(Mono.fromSupplier(() -> new Submission(outcome(reservation), false)));
     }
 
-    /** Story 7.3 AC4 / 7.4 AC2: resolve PENDING_UNKNOWN and inventory-unknown MANUAL_REVIEW cases. */
+    /** Story 7.3 AC4: resolve PENDING_UNKNOWN and inventory-unknown MANUAL_REVIEW cases. */
     public Mono<Outcome> reconcile(String reservationId) {
         Reservation r = find(reservationId);
         if (r.status == Status.PENDING_UNKNOWN) {
@@ -5378,59 +5326,36 @@ public class ReservationService {
     Outcome outcome(Reservation r) {
         synchronized (r) {
             String headline;
-            String message;
             boolean doNotResubmit;
-            List<String> next;
             switch (r.status) {
                 case CONFIRMED -> {
                     headline = "Your booking is confirmed";
-                    message = "Your confirmation number is " + r.confirmationNumber + ". We've sent the details to your e-mail.";
                     doNotResubmit = true;
-                    next = List.of("Save your confirmation number", "Check your e-mail for the confirmation",
-                            "Contact the hotel for special requests");
                 }
                 case PAYMENT_DECLINED -> {
                     headline = "Your payment was declined";
-                    message = "Your bank declined the payment. You have not been charged and no booking was made.";
                     doNotResubmit = false;
-                    next = List.of("Try a different card", "Contact your bank if the problem continues");
                 }
                 case FAILED -> {
                     headline = "Your booking was not completed";
-                    message = "ROOM_UNAVAILABLE".equals(r.failureCode)
-                            ? "The room became unavailable while we were booking it. Any payment hold has been released."
-                            : "We couldn't complete the payment step. You have not been charged and no booking was made.";
                     doNotResubmit = false;
-                    next = "ROOM_UNAVAILABLE".equals(r.failureCode) ? List.of("Search again for other rooms or dates")
-                            : List.of("Try again in a few minutes");
                 }
                 case PENDING_UNKNOWN -> {
                     headline = "We're confirming your booking";
-                    message = "Please don't book again. We'll update this page and e-mail you as soon as it's confirmed.";
                     doNotResubmit = true;
-                    next = List.of("Check this page again in a few minutes");
                 }
                 case MANUAL_REVIEW -> {
                     headline = "Your booking is being checked";
-                    message = "Our team is checking your booking. You will not be charged twice, and we'll e-mail you with the result.";
                     doNotResubmit = true;
-                    next = List.of("Keep this reference: " + r.id, "Check this page again later");
                 }
                 default -> {
                     headline = "Your booking is being processed";
-                    message = "Please wait and don't submit again.";
                     doNotResubmit = true;
-                    next = List.of("Check this page again in a moment");
                 }
             }
             CartRoom room = r.cart == null ? null : r.cart.room();
-            return new Outcome(r.id, r.status, r.status == Status.CONFIRMED ? r.confirmationNumber : null, headline, message,
-                    doNotResubmit, next, "/api/reservations/" + r.id,
-                    room == null ? null : room.hotelName(), room == null ? null : room.roomName(),
-                    room == null ? null : room.ratePlanName(), room == null ? null : room.checkIn(),
-                    room == null ? null : room.checkOut(), room == null ? 0 : room.nights(),
-                    room == null ? 0 : room.rooms(), room == null ? 0 : room.adults(), room == null ? 0 : room.children(),
-                    r.cart == null ? List.of() : items(r), r.cart == null ? null : r.cart.totals().total(),
+            return new Outcome(r.id, r.status, r.status == Status.CONFIRMED ? r.confirmationNumber : null, headline,
+                    doNotResubmit, "/api/reservations/" + r.id, r.cart == null ? null : r.cart.totals().total(),
                     room == null ? null : room.paymentRule(), r.paymentStatus,
                     room == null ? null : room.cancellationTerms(),
                     r.anonymized || r.firstNameSealed == null ? null : open(r.firstNameSealed), r.notificationStatus,
@@ -5673,8 +5598,7 @@ import reactor.core.publisher.Mono;
 public class SearchController {
 
     public static final String SESSION_HEADER = "X-Session-Id";
-    private static final Set<String> REFINEMENTS = Set.of("sort", "minPrice", "maxPrice", "amenities", "minCategory",
-            "maxDistanceKm", "page", "size");
+    private static final Set<String> REFINEMENTS = Set.of("page", "size");
 
     private final SearchService searches;
     private final SearchValidator validator;
@@ -5691,7 +5615,7 @@ public class SearchController {
         return searches.search(request, sessionId).map(SearchController::entity);
     }
 
-    /** Story 4.2: sort, filter and page an existing search. */
+    /** Story 4.1: page an existing search. */
     @GetMapping("/{searchId}/results")
     public Mono<ResponseEntity<SearchResponse>> refine(@PathVariable String searchId,
             @RequestParam Map<String, String> params) {
@@ -6178,18 +6102,15 @@ Maps every story in the Jira space AQPI (https://tcs-team-ou6drgfr.atlassian.net
 | [AQPI-4](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4) | 3.2 Validate occupancy and stay criteria | AQPI-2 Search and Availability | 1. Required fields are clearly identified.<br>2. Invalid combinations return field-level messages.<br>3. Server validation is authoritative when client and server results differ.<br>4. Validation messages are accessible to assistive technology. | search-service: SearchValidator, SearchRules, GET /api/searches/form, POST /api/searches/validate | BookingJourneyTest#invalidSearch<br>SearchServiceTest#validationRules | Limits are configuration properties, not an admin UI. |
 | [AQPI-5](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5) | 3.3 Handle unavailable or failed searches | AQPI-2 Search and Availability | 1. Zero results provide options to alter dates, occupancy, destination, or filters.<br>2. Technical failures display a non-technical message and retry option.<br>3. Repeated submission does not create inconsistent sessions. | search-service: SearchService (NO_AVAILABILITY, SERVICE_UNAVAILABLE, suggestions), HotelClient | BookingJourneyTest#noAvailability<br>SearchServiceTest#dependencyUnavailable<br>SearchServiceTest#noAvailability |  |
 | [AQPI-7](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7) | 4.1 Display available hotels | AQPI-6 Hotel Results and Selection | 1. Each result shows hotel name, location, representative image, starting price, currency, and availability indicator.<br>2. Mandatory fees or pricing qualifications are clearly disclosed.<br>3. Unavailable hotels are not presented as immediately bookable.<br>4. Results support pagination or progressive loading. | hotel-service: HotelController GET /api/hotels/availability, HotelQueries, Catalog, Pricing | BookingJourneyTest#happyPathBooking<br>HotelServiceTest#resultsCards | Images are placeholder references. |
-| [AQPI-8](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8) | 4.2 Sort and filter hotel results | AQPI-6 Hotel Results and Selection | 1. The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.<br>2. The guest can sort using approved options.<br>3. Selected criteria are visible and removable.<br>4. Zero results after filtering offer a reset option. | hotel-service: HotelQueries (sort, filters, pagination, reset); search-service refine | HotelServiceTest#refineResults<br>BookingJourneyTest#unsupportedSortRefused |  |
 | [AQPI-9](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9) | 4.3 View hotel and room details | AQPI-6 Hotel Results and Selection | 1. Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed.<br>2. The guest can select a valid room and rate plan.<br>3. If inventory changes, the guest is informed before continuing. | hotel-service: GET /api/hotels/{id}, POST /api/hotels/{id}/quotes | BookingJourneyTest#happyPathBooking<br>HotelServiceTest#hotelDetails<br>HotelServiceTest#quotePriceChange | Rates and inventory are in-memory. |
 | [AQPI-11](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11) | 5.1 Determine eligible ancillary offers | AQPI-10 Personalized Ancillary Offers | 1. The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.<br>2. Unavailable or ineligible products are excluded.<br>3. The service returns a reason code for each recommended item.<br>4. When personalization data is unavailable, safe contextual defaults may be returned. | offer-service: OfferEngine.recommend, OfferCatalog | BookingJourneyTest#happyPathBooking<br>OfferServiceTest#eligibilityBeforeRanking |  |
 | [AQPI-12](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12) | 5.2 Display ancillary offers | AQPI-10 Personalized Ancillary Offers | 1. Each offer shows name, description, price, currency, applicability, and any restrictions.<br>2. The guest can add, skip, or dismiss an offer.<br>3. Offers are clearly distinguished from mandatory fees.<br>4. Failure to load offers does not block room booking. | offer-service: POST /api/offers/validate, /api/offers/interactions | BookingJourneyTest#unavailableExtraIsolated<br>OfferServiceTest#dismissal<br>OfferServiceTest#validateItems | No UI; display is the API contract. |
-| [AQPI-13](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13) | 5.3 Explain and control personalization | AQPI-10 Personalized Ancillary Offers | 1. The interface identifies when offers are personalized where required.<br>2. The guest can proceed without selecting ancillary products.<br>3. A consent or preference change affects future eligible recommendations according to policy. | offer-service: ConsentStore, /api/consents/{profileId} | OfferServiceTest#consentAwarePersonalisation | Consent store is in-memory; no identity provider. |
 | [AQPI-15](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15) | 6.1 Add room selection to cart | AQPI-14 Cart Management | 1. The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components.<br>2. Inventory and price are revalidated when required.<br>3. The cart has a defined expiration and displays relevant timeout behavior. | cart-service: CartService.create/view, CartProperties (30 min TTL) | BookingJourneyTest#happyPathBooking<br>CartServiceTest#cartTotalsAndExpiry<br>CartServiceTest#unavailableRoom |  |
 | [AQPI-16](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16) | 6.2 Add, update, and remove ancillaries | AQPI-14 Cart Management | 1. The guest can add an available ancillary.<br>2. Supported quantities can be changed within product limits.<br>3. Removal updates totals immediately.<br>4. Ineligible or sold-out products cannot be retained silently. | cart-service: CartService ancillary add/update/remove, Downstream.validateOffers | BookingJourneyTest#happyPathBooking<br>BookingJourneyTest#unavailableExtraIsolated<br>CartServiceTest#offerOutageIsolated |  |
 | [AQPI-17](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17) | 6.3 Review cart and total price | AQPI-14 Cart Management | 1. Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized.<br>2. Currency is consistently displayed.<br>3. Material changes are highlighted and require acknowledgement.<br>4. The guest can return to edit supported selections. | cart-service: CartService.revalidate/acknowledge/checkout, totals | BookingJourneyTest#priceChangeNeedsAcknowledgement<br>CartServiceTest#materialChange<br>HotelServiceTest#quotePriceChange |  |
 | [AQPI-19](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19) | 7.1 Capture guest and contact information | AQPI-18 Checkout and Reservation | 1. Required and optional fields are clearly distinguished.<br>2. Inputs are validated and error messages are accessible.<br>3. The guest receives applicable privacy notice and consent controls.<br>4. Data is transmitted securely and is not exposed in client logs. | reservation-service: GuestValidator, ReservationService.submit | BookingJourneyTest#happyPathBooking<br>BookingJourneyTest#rawCardRejected<br>ReservationServiceTest#guestValidation |  |
 | [AQPI-20](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20) | 7.2 Capture and authorize payment | AQPI-18 Checkout and Reservation | 1. The guest sees the final payable or guarantee amount before authorization.<br>2. Payment data is handled through approved secure components.<br>3. Authorization success, decline, timeout, and technical failure are handled distinctly.<br>4. The product does not store prohibited card data in application logs. | reservation-service: PaymentGateway (simulated tokens), GET /api/checkout/{cartId}/payment-summary | BookingJourneyTest#happyPathBooking<br>BookingJourneyTest#paymentDeclined<br>ReservationServiceTest#payAtHotelGuarantee | Payment provider is simulated; tokens like tok_visa_ok / tok_decline drive outcomes. |
 | [AQPI-21](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21) | 7.3 Create reservation idempotently | AQPI-18 Checkout and Reservation | 1. A successful request creates one reservation and returns a confirmation identifier.<br>2. Repeated submissions with the same idempotency key do not create duplicate reservations.<br>3. Inventory, price, payment, and reservation outcomes remain reconcilable.<br>4. Partial failures trigger defined recovery or manual-review handling. | reservation-service: ReservationService (Idempotency-Key, inventory commit/void), hotel-service inventory commitments | BookingJourneyTest#happyPathBooking<br>BookingJourneyTest#idempotencyMismatch<br>BookingJourneyTest#lastRoomSoldOnce<br>BookingJourneyTest#lostPaymentResponseReconciled<br>BookingJourneyTest#priceChangeNeedsAcknowledgement<br>CartServiceTest#completedCart<br>HotelServiceTest#inventoryCommitments<br>ReservationServiceTest#inventoryConflictVoidsPayment<br>ReservationServiceTest#inventoryTimeoutRecovered | Idempotency store is in-memory, single instance. |
-| [AQPI-22](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22) | 7.4 Show booking outcome | AQPI-18 Checkout and Reservation | 1. Success displays confirmation identifier, hotel, stay summary, selected products, and total.<br>2. A failure does not display a false confirmation.<br>3. Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path. | reservation-service: Outcome, GET /api/reservations/{id}, reconcile, ops manual-review | BookingJourneyTest#happyPathBooking<br>BookingJourneyTest#lostPaymentResponseReconciled<br>BookingJourneyTest#paymentDeclined<br>ReservationServiceTest#failedVoidGoesToManualReview |  |
 | [AQPI-24](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24) | 8.1 Generate confirmation message | AQPI-23 Confirmation and Notifications | 1. The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.<br>2. The message content matches the confirmed reservation state.<br>3. Templates support required locale and accessibility standards. | notification-service: TemplateRenderer, NotificationService.confirm | BookingJourneyTest#happyPathBooking<br>NotificationServiceTest#accessibleTemplate<br>ReservationServiceTest#notificationFailureKeepsBooking |  |
 | [AQPI-25](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25) | 8.2 Send and track confirmation email | AQPI-23 Confirmation and Notifications | 1. A successful reservation creates one confirmation-email request.<br>2. Send failure does not reverse a valid reservation.<br>3. Permitted retries avoid duplicate or excessive messages.<br>4. Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider. | notification-service: EmailProvider (simulated), delivery states, webhook, ops retry | BookingJourneyTest#happyPathBooking<br>NotificationServiceTest#deliveryStates<br>NotificationServiceTest#idempotentConfirmation | E-mail provider is simulated (fail.test, flaky.test, bounce.test domains). |
 | [AQPI-26](https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26) | 8.3 Resend confirmation safely | AQPI-23 Confirmation and Notifications | 1. The request verifies sufficient reservation information without exposing data.<br>2. Rate limits and abuse controls apply.<br>3. The resend creates a new message event without creating a new reservation. | notification-service: POST /api/confirmations/resend (generic answer, rate limits) | BookingJourneyTest#resendConfirmation<br>NotificationServiceTest#resendGeneric |  |

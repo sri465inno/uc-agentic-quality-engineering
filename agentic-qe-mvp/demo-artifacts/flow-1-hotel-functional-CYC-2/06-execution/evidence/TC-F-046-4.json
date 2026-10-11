@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "http://127.0.0.1:42029/api/carts/C-f15f7676/ancillaries/BREAKFAST",
+    "headers": {},
+    "data": {
+      "quantity": 5
+    }
+  },
+  "response": {
+    "status": 422,
+    "correlationId": "36865c67-17b7-4a3b-a321-0b2c8f9b0dd1",
+    "body": {
+      "status": 422,
+      "code": "EXTRA_QUANTITY_LIMIT",
+      "message": "You can add up to 4 of Daily breakfast.",
+      "correlationId": "36865c67-17b7-4a3b-a321-0b2c8f9b0dd1",
+      "retryable": false,
+      "fieldIssues": []
+    }
+  }
+}

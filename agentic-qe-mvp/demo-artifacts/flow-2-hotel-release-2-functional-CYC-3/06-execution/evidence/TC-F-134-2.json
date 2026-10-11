@@ -1,0 +1,111 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:37589/api/searches/S-82ee9d92/results?minPrice=99999",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "bce636ea-f2a9-4195-926d-9fc1dd2bea13",
+    "body": {
+      "searchId": "S-82ee9d92",
+      "sessionId": "ecd242c8-96ab-430d-bb4a-8bd692f6f0da",
+      "status": "NO_AVAILABILITY",
+      "criteria": {
+        "destination": "NYC",
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "rooms": 1,
+        "adults": 2,
+        "children": 0,
+        "nights": 3
+      },
+      "message": "No hotels match the filters you applied. Remove a filter or reset all filters.",
+      "retryable": false,
+      "suggestions": [
+        {
+          "action": "RESET_FILTERS",
+          "label": "Reset all filters",
+          "criteria": {
+            "destination": "NYC",
+            "checkIn": "2026-11-10",
+            "checkOut": "2026-11-13",
+            "rooms": 1,
+            "adults": 2,
+            "children": 0
+          }
+        },
+        {
+          "action": "CHANGE_DATES",
+          "label": "Try one day later",
+          "criteria": {
+            "destination": "NYC",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
+            "rooms": 1,
+            "adults": 2,
+            "children": 0
+          }
+        },
+        {
+          "action": "CHANGE_OCCUPANCY",
+          "label": "Search for fewer guests",
+          "criteria": {
+            "destination": "NYC",
+            "checkIn": "2026-11-10",
+            "checkOut": "2026-11-13",
+            "rooms": 1,
+            "adults": 1,
+            "children": 0
+          }
+        },
+        {
+          "action": "CHANGE_DESTINATION",
+          "label": "Try LON",
+          "criteria": {
+            "destination": "LON",
+            "checkIn": "2026-11-10",
+            "checkOut": "2026-11-13",
+            "rooms": 1,
+            "adults": 2,
+            "children": 0
+          }
+        }
+      ],
+      "page": {
+        "results": [],
+        "page": 0,
+        "size": 10,
+        "totalResults": 0,
+        "totalPages": 0,
+        "unfilteredResults": 4,
+        "sort": "RECOMMENDED",
+        "sortOptions": [
+          "RECOMMENDED",
+          "PRICE_ASC",
+          "PRICE_DESC",
+          "DISTANCE",
+          "CATEGORY"
+        ],
+        "appliedFilters": [
+          {
+            "name": "minPrice",
+            "value": "99999",
+            "removeHint": "Remove minPrice"
+          }
+        ],
+        "resetAvailable": true,
+        "availableAmenities": [
+          "gym",
+          "kitchen",
+          "parking",
+          "pool",
+          "restaurant",
+          "spa",
+          "wifi"
+        ]
+      }
+    }
+  }
+}

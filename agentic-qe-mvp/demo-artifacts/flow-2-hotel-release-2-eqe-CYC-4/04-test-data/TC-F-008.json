@@ -1,0 +1,47 @@
+{
+  "dataSet": "TD-F-008",
+  "testCase": "TC-F-008",
+  "generatedBy": "Test data agent",
+  "dictionary": {
+    "name": "Hotel booking attributes",
+    "version": "1.0"
+  },
+  "drivers": [
+    {
+      "attribute": "extras.code",
+      "value": "LATE_CHECKOUT",
+      "spec": "one of BREAKFAST, LATE_CHECKOUT, AIRPORT_TRANSFER, PARKING, SPA_ACCESS, KIDS_CLUB, CITY_TOUR, ROMANCE, WINTER_SKATING"
+    },
+    {
+      "attribute": "extras.quantity",
+      "value": 1,
+      "spec": "integer"
+    }
+  ],
+  "parameters": {},
+  "conformance": "conforms",
+  "problems": [],
+  "reservation": {
+    "search.destination": "NYC",
+    "stay.checkInOffsetDays": 30,
+    "stay.nights": 3,
+    "occupancy.rooms": 1,
+    "occupancy.adults": 2,
+    "occupancy.children": 0,
+    "selection.hotelId": "H-NYC-001",
+    "selection.roomCode": "STD-K",
+    "selection.ratePlanCode": "FLEX",
+    "extras.code": "LATE_CHECKOUT",
+    "extras.quantity": 1,
+    "guest.firstName": "Jane",
+    "guest.lastName": "Doe",
+    "guest.email": "jane.doe@example.com",
+    "guest.phone": "+1 212 555 0100",
+    "guest.arrivalTime": "18:00",
+    "payment.token": "tok_visa_ok",
+    "consent.privacyNoticeAccepted": true,
+    "consent.marketingOptIn": false,
+    "notification.locale": "en",
+    "request.idempotencyKeyPrefix": "aqe-booking"
+  }
+}

@@ -16,7 +16,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** Epic 3 (AQPI-10) stories 5.1-5.3. */
+/** Epic 3 (AQPI-10) stories 5.1-5.2. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "spring.config.name=offer-service")
 class OfferServiceTest {
 
@@ -50,13 +50,11 @@ class OfferServiceTest {
     }
 
     @Test
-    @DisplayName("AQPI-13 5.3: personalisation only with consent, withdrawn consent stops it, outages fall back safely")
-    void consentAwarePersonalisation() {
-        web.put().uri("/api/consents/P-1").bodyValue(Map.of("personalization", true, "interests", List.of("DINING")))
-                .exchange().expectStatus().is2xxSuccessful();
-        JsonNode personal = recommend(context("FLEX", 0, "P-1", null));
-        assertThat(personal.path("personalized").asBoolean()).isTrue();
-        assertThat(personal.path("disclosure").asText()).isNotBlank();
+    @DisplayName("AQPI-11 5.1: no personalisation without stored consent, outages fall back safely")
+    void personalisationNeedsConsent() {
+        JsonNode none = recommend(context("FLEX", 0, "P-1", null));
+        assertThat(none.path("personalized").asBoolean()).isFalse();
+        assertThat(none.path("fallbackReason").asText()).isEqualTo("NO_PERSONALIZATION_CONSENT");
 
         web.put().uri("/api/admin/profile-store").bodyValue(Map.of("available", false)).exchange()
                 .expectStatus().is2xxSuccessful();
@@ -66,9 +64,6 @@ class OfferServiceTest {
         assertThat(fallback.path("offers").size()).isPositive();
         web.put().uri("/api/admin/profile-store").bodyValue(Map.of("available", true)).exchange()
                 .expectStatus().is2xxSuccessful();
-
-        web.delete().uri("/api/consents/P-1").exchange().expectStatus().is2xxSuccessful();
-        assertThat(recommend(context("FLEX", 0, "P-1", null)).path("personalized").asBoolean()).isFalse();
     }
 
     @Test

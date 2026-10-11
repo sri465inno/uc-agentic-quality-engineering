@@ -3,6 +3,7 @@
 const { loadJiraIssue } = require('./connectors/jira');
 const { loadCodebaseFixture, loadCodebaseLive, DEFAULT_BRANCH, BRANCHES } = require('./connectors/codebase');
 const x = require('./extract');
+const { storyKeysIn } = require('./gaps');
 
 const SLOT_LABEL = { initiative: 'Jira initiative', epic: 'Jira epic', codebase: 'Codebase' };
 
@@ -12,12 +13,12 @@ async function loadInput(slot, spec, opts = {}) {
     if (spec.mode === 'paste') {
       const statements = x.statementsFromPastedCodebase(spec.text, { input: slot });
       return { slot, label: SLOT_LABEL[slot], mode: 'paste', ref: 'pasted README / source notes', statements,
-        provenance: { kind: 'pasted', label: 'Pasted by the user (not fetched from any system)' }, branch: BRANCHES[spec.branch] ? spec.branch : null };
+        provenance: { kind: 'pasted', label: 'Pasted by the user (not fetched from any system)' }, branch: BRANCHES[spec.branch] ? spec.branch : null, storyKeys: storyKeysIn([spec.text]) };
     }
     const branch = spec.branch || DEFAULT_BRANCH;
     const cb = spec.mode === 'github' ? await loadCodebaseLive(branch, { cloneUrl: opts.cloneUrl }) : loadCodebaseFixture(branch);
     return { slot, label: SLOT_LABEL[slot], mode: spec.mode === 'github' ? 'github' : 'sample', ref: cb.provenance.ref, statements: x.statementsFromCodebase(cb, { input: slot }),
-      provenance: cb.provenance, branch: cb.branch, repo: cb.repo, commit: cb.commit, compare: cb.compare, description: cb.description, dataModel: cb.dataModel, dictionary: cb.dictionary };
+      provenance: cb.provenance, branch: cb.branch, repo: cb.repo, commit: cb.commit, compare: cb.compare, description: cb.description, dataModel: cb.dataModel, dictionary: cb.dictionary, storyKeys: storyKeysIn(cb.files.map((f) => f.text)) };
   }
   if (spec.mode === 'paste') {
     const statements = x.statementsFromPastedJira(spec.text, { input: slot });

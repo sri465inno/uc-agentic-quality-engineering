@@ -1,0 +1,176 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:39513/api/offers/recommendations",
+    "headers": {},
+    "data": {
+      "hotelId": "H-NYC-001",
+      "destination": "NYC",
+      "checkIn": "2026-11-10",
+      "checkOut": "2026-11-13",
+      "roomCode": "STD-K",
+      "ratePlanCode": "FLEX",
+      "adults": 2,
+      "children": 0,
+      "currency": "USD"
+    }
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "bc1c6273-1408-4c27-9c17-3d363b7f7b08",
+    "body": {
+      "offers": [
+        {
+          "code": "BREAKFAST",
+          "name": "Daily breakfast",
+          "description": "Buffet breakfast for every guest in the room",
+          "category": "DINING",
+          "unitPrice": {
+            "amount": 24,
+            "currency": "USD"
+          },
+          "pricingUnit": "PER_NIGHT",
+          "priceForStay": {
+            "amount": 72,
+            "currency": "USD"
+          },
+          "currency": "USD",
+          "applicability": "All guests in the booked room",
+          "restrictions": "Not offered on rates that already include breakfast",
+          "maxQuantity": 4,
+          "kind": "OPTIONAL_EXTRA",
+          "kindLabel": "Optional extra - not included in the room price and not a mandatory fee",
+          "reasonCodes": [
+            "POPULAR_AT_DESTINATION_NYC"
+          ],
+          "personalized": false
+        },
+        {
+          "code": "LATE_CHECKOUT",
+          "name": "Late check-out (2 pm)",
+          "description": "Keep your room until 2 pm on departure day",
+          "category": "BUSINESS",
+          "unitPrice": {
+            "amount": 35,
+            "currency": "USD"
+          },
+          "pricingUnit": "PER_STAY",
+          "priceForStay": {
+            "amount": 35,
+            "currency": "USD"
+          },
+          "currency": "USD",
+          "applicability": "Departure day",
+          "restrictions": "Subject to confirmation at check-in",
+          "maxQuantity": 1,
+          "kind": "OPTIONAL_EXTRA",
+          "kindLabel": "Optional extra - not included in the room price and not a mandatory fee",
+          "reasonCodes": [
+            "POPULAR_AT_DESTINATION_NYC"
+          ],
+          "personalized": false
+        },
+        {
+          "code": "AIRPORT_TRANSFER",
+          "name": "Airport transfer",
+          "description": "Private one-way car from the airport",
+          "category": "TRANSPORT",
+          "unitPrice": {
+            "amount": 75,
+            "currency": "USD"
+          },
+          "pricingUnit": "PER_STAY",
+          "priceForStay": {
+            "amount": 75,
+            "currency": "USD"
+          },
+          "currency": "USD",
+          "applicability": "Arrival day, up to 3 passengers",
+          "restrictions": "Book at least 24 hours before arrival",
+          "maxQuantity": 2,
+          "kind": "OPTIONAL_EXTRA",
+          "kindLabel": "Optional extra - not included in the room price and not a mandatory fee",
+          "reasonCodes": [
+            "POPULAR_AT_DESTINATION_NYC"
+          ],
+          "personalized": false
+        },
+        {
+          "code": "WINTER_SKATING",
+          "name": "Ice-skating pass",
+          "description": "Seasonal rink entry near the hotel",
+          "category": "FAMILY",
+          "unitPrice": {
+            "amount": 25,
+            "currency": "USD"
+          },
+          "pricingUnit": "PER_STAY",
+          "priceForStay": {
+            "amount": 25,
+            "currency": "USD"
+          },
+          "currency": "USD",
+          "applicability": "Per person",
+          "restrictions": "November to February only",
+          "maxQuantity": 6,
+          "kind": "OPTIONAL_EXTRA",
+          "kindLabel": "Optional extra - not included in the room price and not a mandatory fee",
+          "reasonCodes": [
+            "SEASONAL_NOVEMBER"
+          ],
+          "personalized": false
+        },
+        {
+          "code": "ROMANCE",
+          "name": "Romance package",
+          "description": "Champagne, flowers and chocolates in the room",
+          "category": "ROMANCE",
+          "unitPrice": {
+            "amount": 95,
+            "currency": "USD"
+          },
+          "pricingUnit": "PER_STAY",
+          "priceForStay": {
+            "amount": 95,
+            "currency": "USD"
+          },
+          "currency": "USD",
+          "applicability": "Once per stay",
+          "restrictions": "Guests 21 and over",
+          "maxQuantity": 1,
+          "kind": "OPTIONAL_EXTRA",
+          "kindLabel": "Optional extra - not included in the room price and not a mandatory fee",
+          "reasonCodes": [
+            "POPULAR_AT_DESTINATION_NYC"
+          ],
+          "personalized": false
+        }
+      ],
+      "personalized": false,
+      "contextualDefaults": true,
+      "disclosure": "These offers are based on your stay details only.",
+      "fallbackReason": null,
+      "rulesVersion": "offer-rules-v3",
+      "modelVersion": "contextual-ranker-1.2",
+      "excluded": [
+        {
+          "code": "PARKING",
+          "reason": "HOTEL_LACKS_PARKING"
+        },
+        {
+          "code": "SPA_ACCESS",
+          "reason": "HOTEL_LACKS_SPA"
+        },
+        {
+          "code": "KIDS_CLUB",
+          "reason": "PARTY_HAS_NO_CHILDREN"
+        },
+        {
+          "code": "CITY_TOUR",
+          "reason": "NOT_OFFERED_AT_DESTINATION"
+        }
+      ],
+      "proceedWithoutOffers": true
+    }
+  }
+}

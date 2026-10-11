@@ -1,0 +1,363 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:46519/api/hotels/H-NYC-001?checkIn=2026-11-10&checkOut=2026-11-13",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "18327551-ed5a-4fde-a20c-5c43e349d3b4",
+    "body": {
+      "hotelId": "H-NYC-001",
+      "name": "Harbor View Hotel",
+      "city": "New York",
+      "address": "12 Pier Street",
+      "distanceKm": 1.2,
+      "category": 4,
+      "description": "Harbor View Hotel in New York, 4-star, 1.2 km from the centre.",
+      "images": [
+        "https://img.example.test/H-NYC-001/exterior.jpg",
+        "https://img.example.test/H-NYC-001/room.jpg"
+      ],
+      "amenities": [
+        "wifi",
+        "gym",
+        "restaurant",
+        "parking"
+      ],
+      "policies": {
+        "checkInFrom": "15:00",
+        "checkOutUntil": "11:00",
+        "pets": "Pets not allowed",
+        "smoking": "Non-smoking property",
+        "minimumAge": "18"
+      },
+      "mandatoryFeeDisclosure": "Destination fee per room per night: 25.00 USD, payable on top of the room rate",
+      "currency": "USD",
+      "rooms": [
+        {
+          "code": "STD-K",
+          "name": "Standard King",
+          "description": "One king bed, city view, 25 m²",
+          "maxAdults": 2,
+          "maxChildren": 1,
+          "amenities": [
+            "wifi",
+            "tv",
+            "desk"
+          ],
+          "roomsLeft": 8,
+          "fitsParty": true,
+          "selectable": true,
+          "ratePlans": [
+            {
+              "code": "FLEX",
+              "name": "Flexible – pay at hotel",
+              "refundable": true,
+              "breakfastIncluded": false,
+              "paymentRule": "PAY_AT_HOTEL",
+              "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+              "restrictions": "Card guarantee required",
+              "averageNightly": {
+                "amount": 195,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 585,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 110.42,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 770.42,
+                "currency": "USD"
+              },
+              "priceVersion": "eeae2aec71ba9172"
+            },
+            {
+              "code": "SAVER",
+              "name": "Advance saver – pay now",
+              "refundable": false,
+              "breakfastIncluded": false,
+              "paymentRule": "PAY_NOW",
+              "cancellationTerms": "Non-refundable. Changes are not permitted.",
+              "restrictions": "Full prepayment at booking",
+              "averageNightly": {
+                "amount": 165.75,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 497.25,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 93.86,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 666.11,
+                "currency": "USD"
+              },
+              "priceVersion": "0456c8c03aa58890"
+            },
+            {
+              "code": "BB",
+              "name": "Bed and breakfast",
+              "refundable": true,
+              "breakfastIncluded": true,
+              "paymentRule": "PAY_AT_HOTEL",
+              "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+              "restrictions": "Breakfast for registered guests only",
+              "averageNightly": {
+                "amount": 225,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 675,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 127.41,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 877.41,
+                "currency": "USD"
+              },
+              "priceVersion": "7ed0490a44374a8c"
+            }
+          ]
+        },
+        {
+          "code": "STD-TT",
+          "name": "Standard Twin",
+          "description": "Two twin beds, 24 m²",
+          "maxAdults": 2,
+          "maxChildren": 2,
+          "amenities": [
+            "wifi",
+            "tv"
+          ],
+          "roomsLeft": 8,
+          "fitsParty": true,
+          "selectable": true,
+          "ratePlans": [
+            {
+              "code": "FLEX",
+              "name": "Flexible – pay at hotel",
+              "refundable": true,
+              "breakfastIncluded": false,
+              "paymentRule": "PAY_AT_HOTEL",
+              "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+              "restrictions": "Card guarantee required",
+              "averageNightly": {
+                "amount": 195,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 585,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 110.42,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 770.42,
+                "currency": "USD"
+              },
+              "priceVersion": "eeae2aec71ba9172"
+            },
+            {
+              "code": "SAVER",
+              "name": "Advance saver – pay now",
+              "refundable": false,
+              "breakfastIncluded": false,
+              "paymentRule": "PAY_NOW",
+              "cancellationTerms": "Non-refundable. Changes are not permitted.",
+              "restrictions": "Full prepayment at booking",
+              "averageNightly": {
+                "amount": 165.75,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 497.25,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 93.86,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 666.11,
+                "currency": "USD"
+              },
+              "priceVersion": "0456c8c03aa58890"
+            },
+            {
+              "code": "BB",
+              "name": "Bed and breakfast",
+              "refundable": true,
+              "breakfastIncluded": true,
+              "paymentRule": "PAY_AT_HOTEL",
+              "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+              "restrictions": "Breakfast for registered guests only",
+              "averageNightly": {
+                "amount": 225,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 675,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 127.41,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 877.41,
+                "currency": "USD"
+              },
+              "priceVersion": "7ed0490a44374a8c"
+            }
+          ]
+        },
+        {
+          "code": "STE-F",
+          "name": "Family Suite",
+          "description": "Separate living room, sleeps 4, 45 m²",
+          "maxAdults": 4,
+          "maxChildren": 3,
+          "amenities": [
+            "wifi",
+            "tv",
+            "sofa-bed",
+            "minibar"
+          ],
+          "roomsLeft": 8,
+          "fitsParty": true,
+          "selectable": true,
+          "ratePlans": [
+            {
+              "code": "FLEX",
+              "name": "Flexible – pay at hotel",
+              "refundable": true,
+              "breakfastIncluded": false,
+              "paymentRule": "PAY_AT_HOTEL",
+              "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+              "restrictions": "Card guarantee required",
+              "averageNightly": {
+                "amount": 312,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 936,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 176.67,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 1187.67,
+                "currency": "USD"
+              },
+              "priceVersion": "5d4e17c95dbb5be5"
+            },
+            {
+              "code": "SAVER",
+              "name": "Advance saver – pay now",
+              "refundable": false,
+              "breakfastIncluded": false,
+              "paymentRule": "PAY_NOW",
+              "cancellationTerms": "Non-refundable. Changes are not permitted.",
+              "restrictions": "Full prepayment at booking",
+              "averageNightly": {
+                "amount": 265.2,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 795.6,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 150.17,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 1020.77,
+                "currency": "USD"
+              },
+              "priceVersion": "2d4a143e2dfd1e00"
+            },
+            {
+              "code": "BB",
+              "name": "Bed and breakfast",
+              "refundable": true,
+              "breakfastIncluded": true,
+              "paymentRule": "PAY_AT_HOTEL",
+              "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+              "restrictions": "Breakfast for registered guests only",
+              "averageNightly": {
+                "amount": 360,
+                "currency": "USD"
+              },
+              "roomCharge": {
+                "amount": 1080,
+                "currency": "USD"
+              },
+              "taxes": {
+                "amount": 203.85,
+                "currency": "USD"
+              },
+              "mandatoryFees": {
+                "amount": 75,
+                "currency": "USD"
+              },
+              "total": {
+                "amount": 1358.85,
+                "currency": "USD"
+              },
+              "priceVersion": "293b1c6973154cba"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

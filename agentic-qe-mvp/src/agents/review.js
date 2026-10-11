@@ -27,7 +27,7 @@ function variedAttributes(groups, classify) {
   return out;
 }
 
-function reviewInputs({ normalisation, inputs = [], testingType, deltaPreview = null, baseline = null }) {
+function reviewInputs({ normalisation, inputs = [], gaps = null, testingType, deltaPreview = null, baseline = null }) {
   const tt = getTestingType(testingType);
   const dom = domainOf(inputs);
   const { classify, CATALOGUE, MONEY_KINDS } = dom;
@@ -66,13 +66,13 @@ function reviewInputs({ normalisation, inputs = [], testingType, deltaPreview = 
       sources: refsOf(g, byId),
     });
   }
-  for (const g of groups.filter((x) => x.bucket === 'jira-only')) {
+  for (const gap of gaps?.findings || []) {
     add({
-      category: 'missing', severity: money(g) ? 'high' : 'medium', groupId: g.id,
-      title: 'Asked for in Jira but not mentioned in the code',
-      detail: g.text,
-      suggestion: 'Tests are designed from the Jira wording; expect them to fail until it is built, or confirm with the developers where it lives.',
-      sources: refsOf(g, byId),
+      category: 'gap', severity: 'minor', groupId: gap.groupIds[0] || null, groupIds: gap.groupIds, story: gap.story,
+      title: `${gap.title}: ${gap.story} ${gap.summary}`,
+      detail: `${gap.statementCount} acceptance criteria of ${gap.story}${gap.epic ? ` (epic ${gap.epic.key})` : ''} have no implementation in the code: ${gap.statements.map((s) => s.text).join(' ')}`,
+      suggestion: gap.recommendation,
+      sources: [{ source: 'jira', ref: gap.story, line: null, url: gap.url, quote: null }],
     });
   }
   for (const g of groups.filter((x) => x.bucket !== 'conflict' && !classify(groupText(x)) && !x.options[0].values.length)) {
@@ -102,11 +102,8 @@ function reviewInputs({ normalisation, inputs = [], testingType, deltaPreview = 
 
   const kinds = new Set(groups.map(kindOf).filter(Boolean));
   const missingFor = {
-    performance: !kinds.has(dom.gaps.performanceKind) && dom.gaps.performance,
-    e2e: !CATALOGUE.some((e) => (e.ui || e.journey) && kinds.has(e.kind)) && dom.gaps.e2e,
-    smoke: !kinds.has(dom.gaps.smokeKind) && dom.gaps.smoke,
+    eqe: !CATALOGUE.some((e) => (e.ui || e.journey) && kinds.has(e.kind)) && dom.gaps.eqe,
     functional: !groups.some((g) => classify(groupText(g)) && MONEY_KINDS.has(kindOf(g))) && dom.gaps.functional,
-    regression: false,
   };
   for (const id of tt.ids) {
     const gap = missingFor[id];
@@ -136,7 +133,7 @@ function reviewInputs({ normalisation, inputs = [], testingType, deltaPreview = 
     generatedAt: new Date().toISOString(),
     testingType: tt.id,
     note: 'Suggestions only. The human reviewer decides every conflict and approves the requirement set.',
-    counts: { added: count('added'), missing: count('missing'), conflicts: count('conflict'), ai: count('ai'), high: findings.filter((f) => f.severity === 'high').length },
+    counts: { gaps: count('gap'), added: count('added'), missing: count('missing'), conflicts: count('conflict'), ai: count('ai'), high: findings.filter((f) => f.severity === 'high').length },
     findings,
   };
 }

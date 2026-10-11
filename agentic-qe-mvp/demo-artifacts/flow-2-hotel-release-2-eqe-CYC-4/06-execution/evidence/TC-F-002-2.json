@@ -1,0 +1,153 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:43897/api/carts",
+    "headers": {},
+    "data": {
+      "hotelId": "H-PAR-001",
+      "roomCode": "STD-K",
+      "ratePlanCode": "SAVER",
+      "checkIn": "2026-11-10",
+      "checkOut": "2026-11-13",
+      "rooms": 1,
+      "adults": 2,
+      "children": 0
+    }
+  },
+  "response": {
+    "status": 201,
+    "correlationId": "ebac4547-e968-4aa0-b45c-0abff0cc377c",
+    "body": {
+      "cartId": "C-6a30b458",
+      "status": "ACTIVE",
+      "createdAt": "2026-10-11T16:16:05.144854245Z",
+      "expiresAt": "2026-10-11T16:36:05.144854245Z",
+      "secondsRemaining": 1199,
+      "timeoutBehaviour": "Your cart is held for 20 minutes. Rooms are not reserved until you complete booking; after expiry, price and availability are checked again.",
+      "room": {
+        "hotelId": "H-PAR-001",
+        "hotelName": "Hotel Lumiere",
+        "city": "Paris",
+        "address": "9 Rue de Rivoli",
+        "checkInFrom": "16:00",
+        "checkOutUntil": "12:00",
+        "destination": "PAR",
+        "hotelAmenities": [
+          "wifi",
+          "restaurant",
+          "spa"
+        ],
+        "roomCode": "STD-K",
+        "roomName": "Standard King",
+        "ratePlanCode": "SAVER",
+        "ratePlanName": "Advance saver – pay now",
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "nights": 3,
+        "rooms": 1,
+        "adults": 2,
+        "children": 0,
+        "currency": "EUR",
+        "roomCharge": {
+          "amount": 586.5,
+          "currency": "EUR"
+        },
+        "taxes": {
+          "amount": 58.65,
+          "currency": "EUR"
+        },
+        "mandatoryFees": {
+          "amount": 10.5,
+          "currency": "EUR"
+        },
+        "total": {
+          "amount": 655.65,
+          "currency": "EUR"
+        },
+        "paymentRule": "PAY_NOW",
+        "refundable": false,
+        "cancellationTerms": "Non-refundable. Changes are not permitted.",
+        "restrictions": "Full prepayment at booking",
+        "priceVersion": "6209c2e79d3ed25d"
+      },
+      "ancillaries": [],
+      "lines": [
+        {
+          "type": "ROOM",
+          "label": "Standard King - Advance saver – pay now x 1 room(s), 3 night(s)",
+          "quantity": 1,
+          "amount": {
+            "amount": 586.5,
+            "currency": "EUR"
+          }
+        },
+        {
+          "type": "TAX",
+          "label": "Taxes",
+          "quantity": 1,
+          "amount": {
+            "amount": 58.65,
+            "currency": "EUR"
+          }
+        },
+        {
+          "type": "MANDATORY_FEE",
+          "label": "Mandatory fees (payable as part of the room price)",
+          "quantity": 1,
+          "amount": {
+            "amount": 10.5,
+            "currency": "EUR"
+          }
+        },
+        {
+          "type": "DISCOUNT",
+          "label": "Discounts (none applied)",
+          "quantity": 0,
+          "amount": {
+            "amount": 0,
+            "currency": "EUR"
+          }
+        }
+      ],
+      "totals": {
+        "roomCharge": {
+          "amount": 586.5,
+          "currency": "EUR"
+        },
+        "taxes": {
+          "amount": 58.65,
+          "currency": "EUR"
+        },
+        "mandatoryFees": {
+          "amount": 10.5,
+          "currency": "EUR"
+        },
+        "optionalExtras": {
+          "amount": 0,
+          "currency": "EUR"
+        },
+        "discounts": {
+          "amount": 0,
+          "currency": "EUR"
+        },
+        "total": {
+          "amount": 655.65,
+          "currency": "EUR"
+        }
+      },
+      "currency": "EUR",
+      "priceVersion": "33a0b75e34883544",
+      "pendingChange": null,
+      "requiresAcknowledgement": false,
+      "notices": [],
+      "editActions": [
+        "CHANGE_ROOM",
+        "CHANGE_RATE_PLAN",
+        "EDIT_EXTRAS",
+        "CHANGE_DATES_WITH_NEW_SEARCH"
+      ],
+      "reservationId": null,
+      "note": "A cart is not a reservation."
+    }
+  }
+}

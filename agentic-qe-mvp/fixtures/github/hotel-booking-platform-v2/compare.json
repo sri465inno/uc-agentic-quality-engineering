@@ -4,7 +4,7 @@
   "ahead_by": 1,
   "behind_by": 0,
   "base_commit": {
-    "sha": "452df417b95db3cc3064a0f7049b1311ee93684f"
+    "sha": "b212a32842ba767b64efdda896b3a2ec7b4dde63"
   },
   "files": [
     {
@@ -36,7 +36,19 @@
       "status": "modified"
     },
     {
+      "filename": "hotel-service/src/main/java/com/hotelbooking/hotel/api/HotelApi.java",
+      "status": "modified"
+    },
+    {
+      "filename": "hotel-service/src/main/java/com/hotelbooking/hotel/api/HotelController.java",
+      "status": "modified"
+    },
+    {
       "filename": "hotel-service/src/main/java/com/hotelbooking/hotel/domain/Catalog.java",
+      "status": "modified"
+    },
+    {
+      "filename": "hotel-service/src/test/java/com/hotelbooking/hotel/HotelServiceTest.java",
       "status": "modified"
     },
     {
@@ -81,6 +93,22 @@
     },
     {
       "filename": "offer-service/pom.xml",
+      "status": "modified"
+    },
+    {
+      "filename": "offer-service/src/main/java/com/hotelbooking/offer/ConsentStore.java",
+      "status": "modified"
+    },
+    {
+      "filename": "offer-service/src/main/java/com/hotelbooking/offer/OfferController.java",
+      "status": "modified"
+    },
+    {
+      "filename": "offer-service/src/main/java/com/hotelbooking/offer/OfferEngine.java",
+      "status": "modified"
+    },
+    {
+      "filename": "offer-service/src/test/java/com/hotelbooking/offer/OfferServiceTest.java",
       "status": "modified"
     },
     {
@@ -129,6 +157,10 @@
     },
     {
       "filename": "search-service/pom.xml",
+      "status": "modified"
+    },
+    {
+      "filename": "search-service/src/main/java/com/hotelbooking/search/SearchController.java",
       "status": "modified"
     },
     {

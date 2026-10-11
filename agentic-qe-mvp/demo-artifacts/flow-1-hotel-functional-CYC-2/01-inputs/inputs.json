@@ -1,0 +1,441 @@
+[
+  {
+    "slot": "initiative",
+    "label": "Jira initiative",
+    "mode": "github",
+    "ref": "AQPI-1",
+    "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+    "children": [],
+    "hierarchy": [
+      {
+        "key": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "children": []
+      }
+    ],
+    "provenance": {
+      "kind": "github",
+      "system": "jira",
+      "label": "Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export): Jira REST API v3 JSON of AQPI-1, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
+      "ref": "AQPI-1",
+      "fetchedAt": "2026-10-11T16:15:28.358Z",
+      "files": [
+        "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/demo/jira-export/jira/AQPI-1.json"
+      ]
+    },
+    "statementCount": 8
+  },
+  {
+    "slot": "epic",
+    "label": "Jira epic",
+    "mode": "github",
+    "ref": "AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27",
+    "summary": "7 epics: [Epic 1] Search and Availability; [Epic 2] Hotel Results and Selection; [Epic 3] Personalized Ancillary Offers; [Epic 4] Cart Management; [Epic 5] Checkout and Reservation; [Epic 6] Confirmation and Notifications; [Epic 7] Cross-Cutting Quality, Privacy and Observability",
+    "children": [
+      "AQPI-3",
+      "AQPI-4",
+      "AQPI-5",
+      "AQPI-7",
+      "AQPI-8",
+      "AQPI-9",
+      "AQPI-11",
+      "AQPI-12",
+      "AQPI-13",
+      "AQPI-15",
+      "AQPI-16",
+      "AQPI-17",
+      "AQPI-19",
+      "AQPI-20",
+      "AQPI-21",
+      "AQPI-22",
+      "AQPI-24",
+      "AQPI-25",
+      "AQPI-26",
+      "AQPI-28",
+      "AQPI-29",
+      "AQPI-30",
+      "AQPI-31"
+    ],
+    "hierarchy": [
+      {
+        "key": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "children": [
+          {
+            "key": "AQPI-3",
+            "summary": "3.1 Search hotels by destination and date range"
+          },
+          {
+            "key": "AQPI-4",
+            "summary": "3.2 Validate occupancy and stay criteria"
+          },
+          {
+            "key": "AQPI-5",
+            "summary": "3.3 Handle unavailable or failed searches"
+          }
+        ]
+      },
+      {
+        "key": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "children": [
+          {
+            "key": "AQPI-7",
+            "summary": "4.1 Display available hotels"
+          },
+          {
+            "key": "AQPI-8",
+            "summary": "4.2 Sort and filter hotel results"
+          },
+          {
+            "key": "AQPI-9",
+            "summary": "4.3 View hotel and room details"
+          }
+        ]
+      },
+      {
+        "key": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "children": [
+          {
+            "key": "AQPI-11",
+            "summary": "5.1 Determine eligible ancillary offers"
+          },
+          {
+            "key": "AQPI-12",
+            "summary": "5.2 Display ancillary offers"
+          },
+          {
+            "key": "AQPI-13",
+            "summary": "5.3 Explain and control personalization"
+          }
+        ]
+      },
+      {
+        "key": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "children": [
+          {
+            "key": "AQPI-15",
+            "summary": "6.1 Add room selection to cart"
+          },
+          {
+            "key": "AQPI-16",
+            "summary": "6.2 Add, update, and remove ancillaries"
+          },
+          {
+            "key": "AQPI-17",
+            "summary": "6.3 Review cart and total price"
+          }
+        ]
+      },
+      {
+        "key": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "children": [
+          {
+            "key": "AQPI-19",
+            "summary": "7.1 Capture guest and contact information"
+          },
+          {
+            "key": "AQPI-20",
+            "summary": "7.2 Capture and authorize payment"
+          },
+          {
+            "key": "AQPI-21",
+            "summary": "7.3 Create reservation idempotently"
+          },
+          {
+            "key": "AQPI-22",
+            "summary": "7.4 Show booking outcome"
+          }
+        ]
+      },
+      {
+        "key": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "children": [
+          {
+            "key": "AQPI-24",
+            "summary": "8.1 Generate confirmation message"
+          },
+          {
+            "key": "AQPI-25",
+            "summary": "8.2 Send and track confirmation email"
+          },
+          {
+            "key": "AQPI-26",
+            "summary": "8.3 Resend confirmation safely"
+          }
+        ]
+      },
+      {
+        "key": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "children": [
+          {
+            "key": "AQPI-28",
+            "summary": "9.1 Protect sensitive data"
+          },
+          {
+            "key": "AQPI-29",
+            "summary": "9.2 Provide end-to-end observability"
+          },
+          {
+            "key": "AQPI-30",
+            "summary": "9.3 Meet accessibility requirements"
+          },
+          {
+            "key": "AQPI-31",
+            "summary": "9.4 Meet performance and reliability objectives"
+          }
+        ]
+      }
+    ],
+    "provenance": {
+      "kind": "github",
+      "system": "jira",
+      "label": "Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export): Jira REST API v3 JSON of AQPI-2, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
+      "ref": "AQPI-2",
+      "fetchedAt": "2026-10-11T16:15:28.383Z",
+      "files": [
+        "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/demo/jira-export/jira/AQPI-2.json",
+        "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/demo/jira-export/jira/AQPI-2.children.json"
+      ]
+    },
+    "statementCount": 137
+  },
+  {
+    "slot": "codebase",
+    "label": "Codebase",
+    "mode": "github",
+    "ref": "sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)",
+    "provenance": {
+      "kind": "github",
+      "label": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T16:15:28.529Z",
+      "ref": "sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)",
+      "fetchedAt": "2026-10-11T16:15:28.529Z",
+      "files": [
+        "README.md",
+        "TRACEABILITY.md",
+        "cart-service/pom.xml",
+        "cart-service/src/main/java/com/hotelbooking/cart/Cart.java",
+        "cart-service/src/main/java/com/hotelbooking/cart/CartApi.java",
+        "cart-service/src/main/java/com/hotelbooking/cart/CartController.java",
+        "cart-service/src/main/java/com/hotelbooking/cart/CartProperties.java",
+        "cart-service/src/main/java/com/hotelbooking/cart/CartService.java",
+        "cart-service/src/main/java/com/hotelbooking/cart/CartServiceApplication.java",
+        "cart-service/src/main/java/com/hotelbooking/cart/Downstream.java",
+        "cart-service/src/main/resources/cart-service.yml",
+        "data-dictionary/booking-attributes.json",
+        "hotel-service/pom.xml",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/HotelServiceApplication.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/api/HotelApi.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/api/HotelController.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/api/HotelQueries.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/domain/Catalog.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/domain/Hotel.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/domain/Inventory.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/domain/PaymentRule.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/domain/Pricing.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/domain/RatePlan.java",
+        "hotel-service/src/main/java/com/hotelbooking/hotel/domain/Room.java",
+        "hotel-service/src/main/resources/hotel-service.yml",
+        "journey-tests/pom.xml",
+        "journey-tests/src/test/java/com/hotelbooking/journey/BookingJourneyTest.java",
+        "journey-tests/src/test/java/com/hotelbooking/journey/Platform.java",
+        "notification-service/pom.xml",
+        "notification-service/src/main/java/com/hotelbooking/notification/EmailProvider.java",
+        "notification-service/src/main/java/com/hotelbooking/notification/NotificationApi.java",
+        "notification-service/src/main/java/com/hotelbooking/notification/NotificationController.java",
+        "notification-service/src/main/java/com/hotelbooking/notification/NotificationProperties.java",
+        "notification-service/src/main/java/com/hotelbooking/notification/NotificationService.java",
+        "notification-service/src/main/java/com/hotelbooking/notification/NotificationServiceApplication.java",
+        "notification-service/src/main/java/com/hotelbooking/notification/TemplateRenderer.java",
+        "notification-service/src/main/resources/notification-service.yml",
+        "offer-service/pom.xml",
+        "offer-service/src/main/java/com/hotelbooking/offer/ConsentStore.java",
+        "offer-service/src/main/java/com/hotelbooking/offer/OfferApi.java",
+        "offer-service/src/main/java/com/hotelbooking/offer/OfferCatalog.java",
+        "offer-service/src/main/java/com/hotelbooking/offer/OfferController.java",
+        "offer-service/src/main/java/com/hotelbooking/offer/OfferEngine.java",
+        "offer-service/src/main/java/com/hotelbooking/offer/OfferProperties.java",
+        "offer-service/src/main/java/com/hotelbooking/offer/OfferServiceApplication.java",
+        "offer-service/src/main/resources/offer-service.yml",
+        "platform-common/pom.xml",
+        "platform-common/src/main/java/com/hotelbooking/common/PlatformAutoConfiguration.java",
+        "platform-common/src/main/java/com/hotelbooking/common/events/BusinessEvent.java",
+        "platform-common/src/main/java/com/hotelbooking/common/events/EventNames.java",
+        "platform-common/src/main/java/com/hotelbooking/common/events/EventPublisher.java",
+        "platform-common/src/main/java/com/hotelbooking/common/money/Money.java",
+        "platform-common/src/main/java/com/hotelbooking/common/privacy/DataClass.java",
+        "platform-common/src/main/java/com/hotelbooking/common/privacy/DataMap.java",
+        "platform-common/src/main/java/com/hotelbooking/common/privacy/FieldCipher.java",
+        "platform-common/src/main/java/com/hotelbooking/common/privacy/Masking.java",
+        "platform-common/src/main/java/com/hotelbooking/common/resilience/DependencyCalls.java",
+        "platform-common/src/main/java/com/hotelbooking/common/resilience/DependencyUnavailableException.java",
+        "platform-common/src/main/java/com/hotelbooking/common/resilience/PlatformProperties.java",
+        "platform-common/src/main/java/com/hotelbooking/common/web/ApiError.java",
+        "platform-common/src/main/java/com/hotelbooking/common/web/ApiException.java",
+        "platform-common/src/main/java/com/hotelbooking/common/web/CorrelationId.java",
+        "platform-common/src/main/java/com/hotelbooking/common/web/CorrelationIdWebFilter.java",
+        "platform-common/src/main/java/com/hotelbooking/common/web/CorrelationPropagation.java",
+        "platform-common/src/main/java/com/hotelbooking/common/web/DownstreamErrors.java",
+        "platform-common/src/main/java/com/hotelbooking/common/web/FieldIssue.java",
+        "platform-common/src/main/java/com/hotelbooking/common/web/GlobalErrorHandler.java",
+        "pom.xml",
+        "reservation-service/pom.xml",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/Downstream.java",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/GuestValidator.java",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/PaymentGateway.java",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/Reservation.java",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/ReservationApi.java",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/ReservationController.java",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/ReservationProperties.java",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/ReservationService.java",
+        "reservation-service/src/main/java/com/hotelbooking/reservation/ReservationServiceApplication.java",
+        "reservation-service/src/main/resources/reservation-service.yml",
+        "search-service/pom.xml",
+        "search-service/src/main/java/com/hotelbooking/search/HotelClient.java",
+        "search-service/src/main/java/com/hotelbooking/search/SearchApi.java",
+        "search-service/src/main/java/com/hotelbooking/search/SearchController.java",
+        "search-service/src/main/java/com/hotelbooking/search/SearchRules.java",
+        "search-service/src/main/java/com/hotelbooking/search/SearchService.java",
+        "search-service/src/main/java/com/hotelbooking/search/SearchServiceApplication.java",
+        "search-service/src/main/java/com/hotelbooking/search/SearchValidator.java",
+        "search-service/src/main/resources/search-service.yml"
+      ]
+    },
+    "branch": "demo/hotel-booking-platform",
+    "repo": "sri465inno/uc-agentic-quality-engineering",
+    "commit": "b212a32842ba767b64efdda896b3a2ec7b4dde63",
+    "compare": null,
+    "description": "AQPI-1 Intelligent Hotel Shopping and Reservation Experience: reactive Spring Boot microservices",
+    "dataModel": {
+      "file": "data-dictionary/booking-attributes.json",
+      "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/data-dictionary/booking-attributes.json",
+      "name": "Hotel booking attributes",
+      "version": "1.0",
+      "attributeCount": 21,
+      "groupCount": 10,
+      "drivers": [
+        {
+          "name": "search.destination",
+          "type": "string",
+          "description": "Destination code the guest searches (demo catalogue: New York, London, Paris)"
+        },
+        {
+          "name": "stay.checkInOffsetDays",
+          "type": "integer",
+          "description": "Check-in date as days from today (0 = today)"
+        },
+        {
+          "name": "stay.nights",
+          "type": "integer",
+          "description": "Nights between check-in and check-out (PAR allows at most 21)"
+        },
+        {
+          "name": "occupancy.rooms",
+          "type": "integer",
+          "description": "Rooms requested"
+        },
+        {
+          "name": "occupancy.adults",
+          "type": "integer",
+          "description": "Adults in the party (at least one per room, at most 4 per room)"
+        },
+        {
+          "name": "occupancy.children",
+          "type": "integer",
+          "description": "Children in the party (at most 3 per room)"
+        },
+        {
+          "name": "selection.hotelId",
+          "type": "string",
+          "description": "Hotel chosen from the results"
+        },
+        {
+          "name": "selection.roomCode",
+          "type": "string",
+          "description": "Room type chosen on the hotel details page"
+        },
+        {
+          "name": "selection.ratePlanCode",
+          "type": "string",
+          "description": "FLEX = pay at hotel with a card guarantee; SAVER = prepaid, non-refundable"
+        },
+        {
+          "name": "extras.code",
+          "type": "string",
+          "description": "Optional ancillary added to the cart (empty = none)"
+        },
+        {
+          "name": "extras.quantity",
+          "type": "integer",
+          "description": "Quantity of the ancillary"
+        },
+        {
+          "name": "guest.email",
+          "type": "string",
+          "description": "Where the confirmation e-mail goes"
+        },
+        {
+          "name": "payment.token",
+          "type": "string",
+          "description": "Token from the secure payment component; raw card numbers are never accepted"
+        },
+        {
+          "name": "consent.privacyNoticeAccepted",
+          "type": "boolean",
+          "description": "Guest confirmed the privacy notice"
+        },
+        {
+          "name": "request.idempotencyKeyPrefix",
+          "type": "string",
+          "description": "Prefix of the Idempotency-Key sent with a reservation (the full key is 8 to 64 characters)"
+        }
+      ]
+    },
+    "storyKeys": [
+      "AES-256",
+      "AQPI-1",
+      "AQPI-10",
+      "AQPI-11",
+      "AQPI-12",
+      "AQPI-14",
+      "AQPI-15",
+      "AQPI-16",
+      "AQPI-17",
+      "AQPI-18",
+      "AQPI-19",
+      "AQPI-2",
+      "AQPI-20",
+      "AQPI-21",
+      "AQPI-23",
+      "AQPI-24",
+      "AQPI-25",
+      "AQPI-26",
+      "AQPI-27",
+      "AQPI-28",
+      "AQPI-29",
+      "AQPI-3",
+      "AQPI-30",
+      "AQPI-31",
+      "AQPI-4",
+      "AQPI-5",
+      "AQPI-6",
+      "AQPI-7",
+      "AQPI-9",
+      "LON-001",
+      "LON-002",
+      "NYC-001",
+      "NYC-002",
+      "NYC-003",
+      "NYC-004",
+      "PAR-001",
+      "PAR-002",
+      "SHA-256"
+    ],
+    "statementCount": 7
+  }
+]

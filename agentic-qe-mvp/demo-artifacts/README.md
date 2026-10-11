@@ -1,6 +1,6 @@
 # Agentic QE Platform - demo artifacts
 
-Generated 2026-10-05T16:27:31.862Z by `node scripts/export-demo-artifacts.js`. Every cycle was run end to end; the Playwright results are real runs against the system under test.
+Generated 2026-10-11T16:16:08.154Z by `node scripts/export-demo-artifacts.js`. Every cycle was run end to end; the Playwright results are real runs against the system under test.
 
 ## Flow 1: hotel booking platform (AQPI)
 
@@ -8,29 +8,32 @@ Inputs: the AQPI-1 initiative, its 7 epics and 23 stories (Jira REST v3 export o
 
 | Cycle | Mode · testing | Requirements | Test cases | Scripts | Passed | Pass rate | Defects |
 |---|---|---|---|---|---|---|---|
-| CYC-1 | baseline · functional | 128 | 132 | 58 | 71/74 | 95.9% | 3 |
-| CYC-2 | baseline · regression | 128 | 137 | 58 | 71/74 | 95.9% | 3 |
-| CYC-3 | baseline · e2e | 128 | 8 | 7 | 8/8 | 100% | 0 |
+| CYC-1 | baseline · eqe | 118 | 13 | 7 | 8/8 | 100% | 3 |
+| CYC-2 | baseline · functional | 118 | 121 | 50 | 62/65 | 95.4% | 6 |
 
 ## Flow 2: hotel booking release 2.0 (AQPI-32 + AQPI-23)
 
-Inputs: Epic 8 AQPI-32 "Release 2.0" with stories AQPI-33 to AQPI-36, Epic 6 AQPI-23 "Confirmation and Notifications" as revised for release 2.0 (AQPI-24 and AQPI-25 changed, AQPI-26 unchanged, AQPI-37 new; Jira export snapshot `release-2.0`) and the release 2.0 codebase on branch `demo/hotel-booking-platform-v2`, added on top of the functional baseline CYC-1. Changed: cart hold 30 -> 20 minutes, Paris stay 21 -> 14 nights, resends 3 -> 5, ops e-mail retries 2 -> 3, the confirmation of a refundable booking states its free-cancellation deadline. New: free cancellation up to 48 hours before check-in and a cancellation e-mail. The merge was approved before execution; the cases ran against the six release 2.0 services. Release 2.0 fixes the 9-room search defect (AQPI-4), which Flow 2 retests and certifies closed; the other two Flow 1 defects stay open. New defects in the release 2.0 requirements: a 15-night Paris stay is accepted (AQPI-34) and a 4th ops e-mail retry is accepted (AQPI-25).
+Inputs: Epic 8 AQPI-32 "Release 2.0" with stories AQPI-33 to AQPI-36, Epic 6 AQPI-23 "Confirmation and Notifications" as revised for release 2.0 (AQPI-24 and AQPI-25 changed, AQPI-26 unchanged, AQPI-37 new; Jira export snapshot `release-2.0`) and the release 2.0 codebase on branch `demo/hotel-booking-platform-v2`, added on top of the functional baseline CYC-2. Changed: cart hold 30 -> 20 minutes, Paris stay 21 -> 14 nights, resends 3 -> 5, ops e-mail retries 2 -> 3, the confirmation of a refundable booking states its free-cancellation deadline. New: free cancellation up to 48 hours before check-in and a cancellation e-mail. The merge was approved before execution; the cases ran against the six release 2.0 services. Release 2.0 fixes the 9-room search defect (AQPI-4), which Flow 2 retests and certifies closed; the other two Flow 1 defects stay open. New defects in the release 2.0 requirements: a 15-night Paris stay is accepted (AQPI-34) and a 4th ops e-mail retry is accepted (AQPI-25).
 
 | Cycle | Mode · testing | Requirements | Test cases | Scripts | Passed | Pass rate | Defects |
 |---|---|---|---|---|---|---|---|
-| CYC-4 | incremental · regression | 138 | 144 | 65 | 79/83 | 95.2% | 4 |
+| CYC-4 | incremental · eqe | 138 | 13 | 7 | 8/8 | 100% | 3 |
+| CYC-3 | incremental · functional | 138 | 144 | 65 | 79/83 | 95.2% | 4 |
 
-## Defect lifecycle: CYC-1 (release 1.0) -> CYC-4 (release 2.0)
+## Defect lifecycle: CYC-2 (release 1.0) -> CYC-3 (release 2.0)
 
 Every defect comes from a test that really failed. Flow 2 re-runs the Flow 1 test behind each open defect against the release 2.0 build: a pass closes the defect as fixed, retested and certified; a fail keeps it open under the same ID.
 
-| Defect | Story | Title | CYC-1 | CYC-4 |
+| Defect | Story | Title | CYC-2 | CYC-3 |
 |---|---|---|---|---|
-| DEF-001 | AQPI-17 | A price change within 1% does not need acknowledgement: returns true instead of false | new | still open |
-| DEF-002 | AQPI-21 | A key shorter than 8 characters is refused: returns 201 instead of 400 | new | still open |
-| DEF-003 | AQPI-4 | 9 rooms in one search are rejected: returns 200 instead of 400 | new | fixed, retested (TC-F-126 passed), certified closed |
-| DEF-007 | AQPI-34 | A 15-night stay in Paris is rejected: returns 200 instead of 400 | - | new |
-| DEF-008 | AQPI-25 | Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused: returns 200 instead of 409 | - | new |
+| DEF-004 | AQPI-8 | AQPI-8 4.2 Sort and filter hotel results: asked for in Jira but not implemented in the code | new | fixed, retested (4 test(s) of AQPI-8 passed), certified closed |
+| DEF-005 | AQPI-13 | AQPI-13 5.3 Explain and control personalization: asked for in Jira but not implemented in the code | new | fixed, retested (2 test(s) of AQPI-13 passed), certified closed |
+| DEF-006 | AQPI-22 | AQPI-22 7.4 Show booking outcome: asked for in Jira but not implemented in the code | new | fixed, retested (3 test(s) of AQPI-22 passed), certified closed |
+| DEF-007 | AQPI-17 | A price change within 1% does not need acknowledgement: returns true instead of false | new | still open |
+| DEF-008 | AQPI-21 | A key shorter than 8 characters is refused: returns 201 instead of 400 | new | still open |
+| DEF-009 | AQPI-4 | 9 rooms in one search are rejected: returns 200 instead of 400 | new | fixed, retested (TC-F-115 passed), certified closed |
+| DEF-010 | AQPI-34 | A 15-night stay in Paris is rejected: returns 200 instead of 400 | - | new |
+| DEF-011 | AQPI-25 | Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused: returns 200 instead of 409 | - | new |
 
 Each cycle folder's README is its QE lead report: inputs taken, how the cycle was run, artifacts produced, risks, a go/no-go recommendation and sign-off.
 
@@ -45,5 +48,5 @@ Each cycle folder's README is its QE lead report: inputs taken, how the cycle wa
 - `08-report/` QE lead report (HTML, Markdown) and full cycle report (HTML, Excel, JSON)
 - `09-merge-approval/` (Flow 2) merge proposal and approvals
 
-`comparison/` holds the hotel release 1.0 (CYC-1) vs release 2.0 (CYC-4) comparison (HTML, Excel, JSON).
+`comparison/` holds the hotel release 1.0 (CYC-2) vs release 2.0 (CYC-3) comparison (HTML, Excel, JSON).
 Open the `.html` files in a browser (download them or clone the repo; GitHub shows HTML as source).

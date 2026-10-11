@@ -1,0 +1,1672 @@
+{
+  "items": [
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G1",
+        "bucket": "jira-only",
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J1",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-epic",
+            "ref": "AQPI-32",
+            "summary": "[Epic 8] Release 2.0 – Booking Rule Changes and Free Cancellation",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+            "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+          },
+          {
+            "statementId": "J11",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-epic",
+            "ref": "AQPI-23",
+            "summary": "[Epic 6] Confirmation and Notifications",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+            "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-009",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "version": 1
+      },
+      "requirementId": "REQ-009"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G2",
+        "bucket": "jira-only",
+        "text": "Release 1.0 behaviour not named in this epic is unchanged and passes regression.",
+        "values": [
+          {
+            "num": 1,
+            "unit": "",
+            "raw": "1.0"
+          }
+        ],
+        "signature": "1",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J2",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-epic",
+            "ref": "AQPI-32",
+            "summary": "[Epic 8] Release 2.0 – Booking Rule Changes and Free Cancellation",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+            "quote": "Release 1.0 behaviour not named in this epic is unchanged and passes regression."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.08,
+      "requirementId": "REQ-119"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G3",
+        "bucket": "jira-only",
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J3",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-epic",
+            "ref": "AQPI-32",
+            "summary": "[Epic 8] Release 2.0 – Booking Rule Changes and Free Cancellation",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+            "quote": "Required logging is in place and verified free of sensitive data."
+          },
+          {
+            "statementId": "J13",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-epic",
+            "ref": "AQPI-23",
+            "summary": "[Epic 6] Confirmation and Notifications",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+            "quote": "Required logging is in place and verified free of sensitive data."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-011",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "version": 1
+      },
+      "requirementId": "REQ-011"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G4",
+        "bucket": "jira-only",
+        "text": "The Product Owner has accepted the release 2.0 changes end to end.",
+        "values": [
+          {
+            "num": 2,
+            "unit": "",
+            "raw": "2.0"
+          }
+        ],
+        "signature": "2",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J4",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-epic",
+            "ref": "AQPI-32",
+            "summary": "[Epic 8] Release 2.0 – Booking Rule Changes and Free Cancellation",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+            "quote": "The Product Owner has accepted the release 2.0 changes end to end."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.57,
+      "requirementId": "REQ-120"
+    },
+    {
+      "classification": "enhanced",
+      "incoming": {
+        "groupId": "G5",
+        "bucket": "agreed",
+        "text": "A cart expires 20 minutes after it is created and never creates a reservation itself.",
+        "values": [
+          {
+            "num": 20,
+            "unit": "",
+            "raw": "20"
+          }
+        ],
+        "signature": "20",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J5",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-33",
+            "summary": "10.1 Shorten the cart hold to 20 minutes",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-33",
+            "quote": "A cart expires 20 minutes after it is created and never creates a reservation itself."
+          },
+          {
+            "statementId": "C1",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "cart-service/src/main/resources/cart-service.yml",
+            "line": 16,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/cart-service/src/main/resources/cart-service.yml",
+            "story": "AQPI-33",
+            "quote": "# @rule [AQPI-33] A cart expires 20 minutes after it is created and never creates a reservation itself."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-112",
+      "similarity": 1,
+      "previous": {
+        "text": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
+        "values": [
+          {
+            "num": 30,
+            "unit": "",
+            "raw": "30"
+          }
+        ],
+        "version": 1
+      },
+      "matched": null,
+      "requirementId": "REQ-112"
+    },
+    {
+      "classification": "enhanced",
+      "incoming": {
+        "groupId": "G6",
+        "bucket": "agreed",
+        "text": "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights.",
+        "values": [
+          {
+            "num": 30,
+            "unit": "nights",
+            "raw": "30 nights"
+          },
+          {
+            "num": 14,
+            "unit": "nights",
+            "raw": "14 nights"
+          }
+        ],
+        "signature": "14 nights | 30 nights",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J6",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-34",
+            "summary": "10.2 Limit Paris stays to 14 nights",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-34",
+            "quote": "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights."
+          },
+          {
+            "statementId": "C11",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "search-service/src/main/resources/search-service.yml",
+            "line": 12,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/search-service/src/main/resources/search-service.yml",
+            "story": "AQPI-34",
+            "quote": "# @rule [AQPI-34] A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-116",
+      "similarity": 1,
+      "previous": {
+        "text": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+        "values": [
+          {
+            "num": 30,
+            "unit": "nights",
+            "raw": "30 nights"
+          },
+          {
+            "num": 21,
+            "unit": "nights",
+            "raw": "21 nights"
+          }
+        ],
+        "version": 1
+      },
+      "matched": null,
+      "requirementId": "REQ-116"
+    },
+    {
+      "classification": "enhanced",
+      "incoming": {
+        "groupId": "G7",
+        "bucket": "agreed",
+        "text": "A confirmation can be resent at most 5 times per booking in 24 hours.",
+        "values": [
+          {
+            "num": 24,
+            "unit": "hours",
+            "raw": "24 hours"
+          },
+          {
+            "num": 5,
+            "unit": "",
+            "raw": "5"
+          }
+        ],
+        "signature": "24 hours | 5",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J7",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-35",
+            "summary": "10.3 Allow up to 5 confirmation resends",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-35",
+            "quote": "A confirmation can be resent at most 5 times per booking in 24 hours."
+          },
+          {
+            "statementId": "C3",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "notification-service/src/main/resources/notification-service.yml",
+            "line": 7,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "story": "AQPI-35",
+            "quote": "# @rule [AQPI-35] A confirmation can be resent at most 5 times per booking in 24 hours."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-114",
+      "similarity": 1,
+      "previous": {
+        "text": "A confirmation can be resent at most 3 times per booking in 24 hours.",
+        "values": [
+          {
+            "num": 24,
+            "unit": "hours",
+            "raw": "24 hours"
+          },
+          {
+            "num": 3,
+            "unit": "",
+            "raw": "3"
+          }
+        ],
+        "version": 1
+      },
+      "matched": null,
+      "requirementId": "REQ-114"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G8",
+        "bucket": "agreed",
+        "text": "A confirmed reservation on a refundable rate can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed.",
+        "values": [
+          {
+            "num": 48,
+            "unit": "hours",
+            "raw": "48 hours"
+          }
+        ],
+        "signature": "48 hours",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J8",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-36",
+            "summary": "10.4 Cancel a reservation free of charge",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+            "quote": "A confirmed reservation on a refundable rate can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed."
+          },
+          {
+            "statementId": "C9",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "reservation-service/src/main/resources/reservation-service.yml",
+            "line": 22,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/reservation-service/src/main/resources/reservation-service.yml",
+            "story": "AQPI-36",
+            "quote": "# @rule [AQPI-36] A confirmed reservation can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.17,
+      "requirementId": "REQ-121"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G9",
+        "bucket": "agreed",
+        "text": "A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J9",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-36",
+            "summary": "10.4 Cancel a reservation free of charge",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+            "quote": "A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released."
+          },
+          {
+            "statementId": "C10",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "reservation-service/src/main/resources/reservation-service.yml",
+            "line": 23,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/reservation-service/src/main/resources/reservation-service.yml",
+            "story": "AQPI-36",
+            "quote": "# @rule [AQPI-36] A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.14,
+      "requirementId": "REQ-122"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G10",
+        "bucket": "jira-only",
+        "text": "A reservation on a non-refundable rate cannot be cancelled free of charge and stays confirmed.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J10",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-36",
+            "summary": "10.4 Cancel a reservation free of charge",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+            "quote": "A reservation on a non-refundable rate cannot be cancelled free of charge and stays confirmed."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.14,
+      "requirementId": "REQ-123"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G11",
+        "bucket": "jira-only",
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J12",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-epic",
+            "ref": "AQPI-23",
+            "summary": "[Epic 6] Confirmation and Notifications",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+            "quote": "Negative and error paths for each story are tested and evidenced."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-010",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "version": 1
+      },
+      "requirementId": "REQ-010"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G12",
+        "bucket": "jira-only",
+        "text": "The Product Owner has accepted the capability end to end.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J14",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-epic",
+            "ref": "AQPI-23",
+            "summary": "[Epic 6] Confirmation and Notifications",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+            "quote": "The Product Owner has accepted the capability end to end."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-012",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "The Product Owner has accepted the capability end to end.",
+        "version": 1
+      },
+      "requirementId": "REQ-012"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G13",
+        "bucket": "jira-only",
+        "text": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J15",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-24",
+            "summary": "8.1 Generate confirmation message",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+            "quote": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-080",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+        "version": 1
+      },
+      "requirementId": "REQ-080"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G14",
+        "bucket": "jira-only",
+        "text": "The message content matches the confirmed reservation state.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J16",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-24",
+            "summary": "8.1 Generate confirmation message",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+            "quote": "The message content matches the confirmed reservation state."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-081",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "The message content matches the confirmed reservation state.",
+        "version": 1
+      },
+      "requirementId": "REQ-081"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G15",
+        "bucket": "jira-only",
+        "text": "Templates support required locale and accessibility standards.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J17",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-24",
+            "summary": "8.1 Generate confirmation message",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+            "quote": "Templates support required locale and accessibility standards."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-082",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Templates support required locale and accessibility standards.",
+        "version": 1
+      },
+      "requirementId": "REQ-082"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G16",
+        "bucket": "agreed",
+        "text": "The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in.",
+        "values": [
+          {
+            "num": 48,
+            "unit": "hours",
+            "raw": "48 hours"
+          }
+        ],
+        "signature": "48 hours",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J18",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-24",
+            "summary": "8.1 Generate confirmation message",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+            "quote": "The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in."
+          },
+          {
+            "statementId": "C5",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "notification-service/src/main/resources/notification-service.yml",
+            "line": 16,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "story": "AQPI-24",
+            "quote": "# @rule [AQPI-24] The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.14,
+      "requirementId": "REQ-124"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G17",
+        "bucket": "jira-only",
+        "text": "Only necessary personal data may be included.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J19",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-24",
+            "summary": "8.1 Generate confirmation message",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+            "quote": "Only necessary personal data may be included."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-083",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Only necessary personal data may be included.",
+        "version": 1
+      },
+      "requirementId": "REQ-083"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G18",
+        "bucket": "jira-only",
+        "text": "Sensitive payment details must not appear.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J20",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-24",
+            "summary": "8.1 Generate confirmation message",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+            "quote": "Sensitive payment details must not appear."
+          },
+          {
+            "statementId": "J33",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-37",
+            "summary": "8.4 Send a cancellation e-mail",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+            "quote": "Sensitive payment details must not appear."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-084",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Sensitive payment details must not appear.",
+        "version": 1
+      },
+      "requirementId": "REQ-084"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G19",
+        "bucket": "jira-only",
+        "text": "A successful reservation creates one confirmation-email request.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J21",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-25",
+            "summary": "8.2 Send and track confirmation email",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+            "quote": "A successful reservation creates one confirmation-email request."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-085",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "A successful reservation creates one confirmation-email request.",
+        "version": 1
+      },
+      "requirementId": "REQ-085"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G20",
+        "bucket": "jira-only",
+        "text": "Send failure does not reverse a valid reservation.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J22",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-25",
+            "summary": "8.2 Send and track confirmation email",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+            "quote": "Send failure does not reverse a valid reservation."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-086",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Send failure does not reverse a valid reservation.",
+        "version": 1
+      },
+      "requirementId": "REQ-086"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G21",
+        "bucket": "agreed",
+        "text": "Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused.",
+        "values": [
+          {
+            "num": 3,
+            "unit": "",
+            "raw": "3"
+          }
+        ],
+        "signature": "3",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J23",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-25",
+            "summary": "8.2 Send and track confirmation email",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+            "quote": "Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused."
+          },
+          {
+            "statementId": "C4",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "notification-service/src/main/resources/notification-service.yml",
+            "line": 14,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "story": "AQPI-25",
+            "quote": "# @rule [AQPI-25] Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.25,
+      "requirementId": "REQ-125"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G22",
+        "bucket": "jira-only",
+        "text": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J24",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-25",
+            "summary": "8.2 Send and track confirmation email",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+            "quote": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-088",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+        "version": 1
+      },
+      "requirementId": "REQ-088"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G23",
+        "bucket": "jira-only",
+        "text": "Email addresses must be masked outside authorized operational views.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J25",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-25",
+            "summary": "8.2 Send and track confirmation email",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+            "quote": "Email addresses must be masked outside authorized operational views."
+          },
+          {
+            "statementId": "J32",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-37",
+            "summary": "8.4 Send a cancellation e-mail",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+            "quote": "Email addresses must be masked outside authorized operational views."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-089",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Email addresses must be masked outside authorized operational views.",
+        "version": 1
+      },
+      "requirementId": "REQ-089"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G24",
+        "bucket": "jira-only",
+        "text": "The request verifies sufficient reservation information without exposing data.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J26",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-26",
+            "summary": "8.3 Resend confirmation safely",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+            "quote": "The request verifies sufficient reservation information without exposing data."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-090",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "The request verifies sufficient reservation information without exposing data.",
+        "version": 1
+      },
+      "requirementId": "REQ-090"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G25",
+        "bucket": "jira-only",
+        "text": "Rate limits and abuse controls apply.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J27",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-26",
+            "summary": "8.3 Resend confirmation safely",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+            "quote": "Rate limits and abuse controls apply."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-091",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Rate limits and abuse controls apply.",
+        "version": 1
+      },
+      "requirementId": "REQ-091"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G26",
+        "bucket": "jira-only",
+        "text": "The resend creates a new message event without creating a new reservation.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J28",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-26",
+            "summary": "8.3 Resend confirmation safely",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+            "quote": "The resend creates a new message event without creating a new reservation."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-092",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "The resend creates a new message event without creating a new reservation.",
+        "version": 1
+      },
+      "requirementId": "REQ-092"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G27",
+        "bucket": "agreed",
+        "text": "A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J29",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-37",
+            "summary": "8.4 Send a cancellation e-mail",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+            "quote": "A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another."
+          },
+          {
+            "statementId": "C6",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "notification-service/src/main/resources/notification-service.yml",
+            "line": 18,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "story": "AQPI-37",
+            "quote": "# @rule [AQPI-37] A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.2,
+      "requirementId": "REQ-126"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G28",
+        "bucket": "agreed",
+        "text": "A cancellation e-mail that cannot be sent does not undo the cancellation.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "code",
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J30",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-37",
+            "summary": "8.4 Send a cancellation e-mail",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+            "quote": "A cancellation e-mail that cannot be sent does not undo the cancellation."
+          },
+          {
+            "statementId": "C7",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "notification-service/src/main/resources/notification-service.yml",
+            "line": 19,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "story": "AQPI-37",
+            "quote": "# @rule [AQPI-37] A cancellation e-mail that cannot be sent does not undo the cancellation."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.09,
+      "requirementId": "REQ-127"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G29",
+        "bucket": "jira-only",
+        "text": "Operational users see the cancellation e-mail with its own delivery state, separate from the confirmation.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J31",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-37",
+            "summary": "8.4 Send a cancellation e-mail",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+            "quote": "Operational users see the cancellation e-mail with its own delivery state, separate from the confirmation."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.16,
+      "requirementId": "REQ-128"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G30",
+        "bucket": "code-only",
+        "text": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+        "values": [
+          {
+            "num": 1,
+            "unit": "%",
+            "raw": "1%"
+          }
+        ],
+        "signature": "1 %",
+        "sources": [
+          "code"
+        ],
+        "origins": [
+          {
+            "statementId": "C2",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "cart-service/src/main/resources/cart-service.yml",
+            "line": 17,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/cart-service/src/main/resources/cart-service.yml",
+            "story": "AQPI-17",
+            "quote": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-113",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+        "version": 1
+      },
+      "requirementId": "REQ-113"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G31",
+        "bucket": "code-only",
+        "text": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+        "values": [
+          {
+            "num": 24,
+            "unit": "hours",
+            "raw": "24 hours"
+          },
+          {
+            "num": 8,
+            "unit": "",
+            "raw": "8"
+          },
+          {
+            "num": 64,
+            "unit": "",
+            "raw": "64"
+          }
+        ],
+        "signature": "24 hours | 64 | 8",
+        "sources": [
+          "code"
+        ],
+        "origins": [
+          {
+            "statementId": "C8",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "reservation-service/src/main/resources/reservation-service.yml",
+            "line": 20,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/reservation-service/src/main/resources/reservation-service.yml",
+            "story": "AQPI-21",
+            "quote": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-115",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+        "version": 1
+      },
+      "requirementId": "REQ-115"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G32",
+        "bucket": "code-only",
+        "text": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+        "values": [
+          {
+            "num": 8,
+            "unit": "rooms",
+            "raw": "8 rooms"
+          },
+          {
+            "num": 4,
+            "unit": "",
+            "raw": "4"
+          },
+          {
+            "num": 3,
+            "unit": "",
+            "raw": "3"
+          },
+          {
+            "num": 1,
+            "unit": "",
+            "raw": "1"
+          }
+        ],
+        "signature": "1 | 3 | 4 | 8 rooms",
+        "sources": [
+          "code"
+        ],
+        "origins": [
+          {
+            "statementId": "C12",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "search-service/src/main/resources/search-service.yml",
+            "line": 13,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/search-service/src/main/resources/search-service.yml",
+            "story": "AQPI-4",
+            "quote": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-117",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+        "version": 1
+      },
+      "requirementId": "REQ-117"
+    },
+    {
+      "classification": "unchanged",
+      "incoming": {
+        "groupId": "G33",
+        "bucket": "code-only",
+        "text": "Check-in can be at most 500 days ahead.",
+        "values": [
+          {
+            "num": 500,
+            "unit": "days",
+            "raw": "500 days"
+          }
+        ],
+        "signature": "500 days",
+        "sources": [
+          "code"
+        ],
+        "origins": [
+          {
+            "statementId": "C13",
+            "source": "code",
+            "input": "codebase",
+            "kind": "code-source",
+            "ref": "search-service/src/main/resources/search-service.yml",
+            "line": 14,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/search-service/src/main/resources/search-service.yml",
+            "story": "AQPI-4",
+            "quote": "# @rule [AQPI-4] Check-in can be at most 500 days ahead."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": "REQ-118",
+      "similarity": 1,
+      "previous": null,
+      "matched": {
+        "text": "Check-in can be at most 500 days ahead.",
+        "version": 1
+      },
+      "requirementId": "REQ-118"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G34",
+        "bucket": "jira-only",
+        "text": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J34",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-8",
+            "summary": "4.2 Sort and filter hotel results",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.14,
+      "requirementId": "REQ-129"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G35",
+        "bucket": "jira-only",
+        "text": "The guest can sort using approved options.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J35",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-8",
+            "summary": "4.2 Sort and filter hotel results",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "The guest can sort using approved options."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.18,
+      "requirementId": "REQ-130"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G36",
+        "bucket": "jira-only",
+        "text": "Selected criteria are visible and removable.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J36",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-8",
+            "summary": "4.2 Sort and filter hotel results",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "Selected criteria are visible and removable."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.22,
+      "requirementId": "REQ-131"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G37",
+        "bucket": "jira-only",
+        "text": "Zero results after filtering offer a reset option.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J37",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-8",
+            "summary": "4.2 Sort and filter hotel results",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "Zero results after filtering offer a reset option."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.23,
+      "requirementId": "REQ-132"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G38",
+        "bucket": "jira-only",
+        "text": "The interface identifies when offers are personalized where required.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J38",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-13",
+            "summary": "5.3 Explain and control personalization",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "The interface identifies when offers are personalized where required."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.2,
+      "requirementId": "REQ-133"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G39",
+        "bucket": "jira-only",
+        "text": "The guest can proceed without selecting ancillary products.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J39",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-13",
+            "summary": "5.3 Explain and control personalization",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "The guest can proceed without selecting ancillary products."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.25,
+      "requirementId": "REQ-134"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G40",
+        "bucket": "jira-only",
+        "text": "A consent or preference change affects future eligible recommendations according to policy.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J40",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-13",
+            "summary": "5.3 Explain and control personalization",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "A consent or preference change affects future eligible recommendations according to policy."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.14,
+      "requirementId": "REQ-135"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G41",
+        "bucket": "jira-only",
+        "text": "Success displays confirmation identifier, hotel, stay summary, selected products, and total.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J41",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-22",
+            "summary": "7.4 Show booking outcome",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "Success displays confirmation identifier, hotel, stay summary, selected products, and total."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.18,
+      "requirementId": "REQ-136"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G42",
+        "bucket": "jira-only",
+        "text": "A failure does not display a false confirmation.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J42",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-22",
+            "summary": "7.4 Show booking outcome",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "A failure does not display a false confirmation."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.22,
+      "requirementId": "REQ-137"
+    },
+    {
+      "classification": "new",
+      "incoming": {
+        "groupId": "G43",
+        "bucket": "jira-only",
+        "text": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+        "values": [],
+        "signature": "",
+        "sources": [
+          "jira"
+        ],
+        "origins": [
+          {
+            "statementId": "J43",
+            "source": "jira",
+            "input": "epic",
+            "kind": "jira-story",
+            "ref": "AQPI-22",
+            "summary": "7.4 Show booking outcome",
+            "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+            "pickedUpFromGap": "CYC-1",
+            "quote": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path."
+          }
+        ],
+        "resolution": null
+      },
+      "baselineRequirementId": null,
+      "similarity": 0.08,
+      "requirementId": "REQ-138"
+    }
+  ],
+  "counts": {
+    "unchanged": 20,
+    "enhanced": 3,
+    "new": 20
+  },
+  "summary": "20 unchanged · 3 enhanced · 20 new"
+}

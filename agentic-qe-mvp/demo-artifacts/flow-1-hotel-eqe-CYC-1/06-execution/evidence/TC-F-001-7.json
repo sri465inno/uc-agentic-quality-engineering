@@ -1,0 +1,45 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:33153/api/reservations",
+    "headers": {
+      "Idempotency-Key": "aqe-booking-298cc7ba-1"
+    },
+    "data": {
+      "cartId": "C-6d7a2a73",
+      "guest": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+1 212 555 0100",
+        "arrivalTime": "18:00"
+      },
+      "paymentToken": "tok_visa_ok",
+      "privacyNoticeAccepted": true,
+      "marketingOptIn": false,
+      "locale": "en"
+    }
+  },
+  "response": {
+    "status": 201,
+    "correlationId": "ebde6227-c404-45bf-bc31-cc061ce56538",
+    "body": {
+      "reservationId": "R-c4ae6738",
+      "status": "CONFIRMED",
+      "confirmationNumber": "HBKZRS9AYX",
+      "headline": "Your booking is confirmed",
+      "doNotResubmit": true,
+      "statusUrl": "/api/reservations/R-c4ae6738",
+      "total": {
+        "amount": 842.42,
+        "currency": "USD"
+      },
+      "paymentRule": "PAY_AT_HOTEL",
+      "paymentStatus": "AUTHORIZED",
+      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
+      "guestFirstName": "Jane",
+      "notificationStatus": "DELIVERED",
+      "updatedAt": "2026-10-11T16:15:25.305797624Z"
+    }
+  }
+}

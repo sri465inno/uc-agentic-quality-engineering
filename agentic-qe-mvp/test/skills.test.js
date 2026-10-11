@@ -13,9 +13,9 @@ const { tmpDir, baselineCycle, BASELINE_INPUTS } = require('./helpers');
 
 const SKILLS_DIR = path.join(__dirname, '..', 'skills');
 const SHIPPED = ['automation-script-conventions', 'cycle-report', 'defect-reporting', 'incremental-merge', 'input-normalisation', 'input-review', 'test-case-authoring', 'test-data-generation',
-  'testing-e2e', 'testing-functional', 'testing-performance', 'testing-regression', 'testing-smoke', 'traceability-handover'];
-/** Default selection for a cycle: every general skill plus the one for its type of testing (regression by default). */
-const DEFAULT_ON = SHIPPED.filter((id) => !id.startsWith('testing-') || id === 'testing-regression');
+  'testing-eqe', 'testing-functional', 'traceability-handover'];
+/** Default selection for a cycle: every general skill plus the one for its type of testing (functional by default). */
+const DEFAULT_ON = SHIPPED.filter((id) => !id.startsWith('testing-') || id === 'testing-functional');
 
 /** A skills dir holding the shipped skills plus extra files - no code change involved. */
 function skillsDirWith(extra) {
@@ -89,10 +89,10 @@ test('a phase that drops a declared artefact is reported as an incomplete hand-o
   const bad = checkHandover('scripts', producedBy('scripts', dropped), lib);
   assert.equal(bad.status, 'incomplete');
   assert.deepEqual(bad.missing, ['specs']);
-  const noNf = { ...D.def, artifacts: { ...D.def.artifacts, testCases: D.def.artifacts.testCases.filter((t) => t.type === 'functional') } };
-  const tc = checkHandover('testcases', producedBy('testcases', noNf), lib);
+  const noF = { ...D.def, artifacts: { ...D.def.artifacts, testCases: D.def.artifacts.testCases.filter((t) => t.type !== 'functional') } };
+  const tc = checkHandover('testcases', producedBy('testcases', noF), lib);
   assert.equal(tc.status, 'incomplete');
-  assert.deepEqual(tc.missing, ['nonFunctional']);
+  assert.deepEqual(tc.missing, ['functional']);
 });
 
 test('shipped skills: every phase hand-over of a real baseline run is complete; baseline comparison is n/a, not faked', () => {

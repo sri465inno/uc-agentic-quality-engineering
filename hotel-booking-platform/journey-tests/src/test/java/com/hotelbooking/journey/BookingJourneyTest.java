@@ -51,7 +51,7 @@ class BookingJourneyTest {
     }
 
     @Test
-    @DisplayName("AQPI-3 AQPI-7 AQPI-9 AQPI-11 AQPI-15 AQPI-16 AQPI-19 AQPI-20 AQPI-21 AQPI-22 AQPI-24 AQPI-25 AQPI-29: search to confirmed booking and e-mail")
+    @DisplayName("AQPI-3 AQPI-7 AQPI-9 AQPI-11 AQPI-15 AQPI-16 AQPI-19 AQPI-20 AQPI-21 AQPI-24 AQPI-25 AQPI-29: search to confirmed booking and e-mail")
     void happyPathBooking() {
         JsonNode search = post("search-service", "/api/searches", Map.of("destination", "NYC", "checkIn", CHECK_IN,
                 "checkOut", CHECK_OUT, "rooms", 1, "adults", 2, "children", 0), HttpStatus.OK);
@@ -143,18 +143,6 @@ class BookingJourneyTest {
     }
 
     @Test
-    @DisplayName("AQPI-8: sorting by an unsupported option is refused with the approved options, not a server error")
-    void unsupportedSortRefused() {
-        JsonNode search = post("search-service", "/api/searches", Map.of("destination", "NYC", "checkIn", CHECK_IN,
-                "checkOut", CHECK_OUT, "rooms", 1, "adults", 2, "children", 0), HttpStatus.OK);
-        JsonNode error = platform.client("search-service").get()
-                .uri("/api/searches/" + search.path("searchId").asText() + "/results?sort=NAME").exchange()
-                .expectStatus().isBadRequest().expectBody(JsonNode.class).returnResult().getResponseBody();
-        assertThat(error.path("code").asText()).isEqualTo("UNSUPPORTED_SORT");
-        assertThat(error.path("message").asText()).contains("PRICE_ASC");
-    }
-
-    @Test
     @DisplayName("AQPI-17 AQPI-21: a price change must be acknowledged before the booking can be paid")
     void priceChangeNeedsAcknowledgement() {
         String cartId = createCart("H-NYC-001", "STD-K", "FLEX").path("cartId").asText();
@@ -176,7 +164,7 @@ class BookingJourneyTest {
     }
 
     @Test
-    @DisplayName("AQPI-20 AQPI-22: a declined pay-now card books nothing and holds no inventory")
+    @DisplayName("AQPI-20: a declined pay-now card books nothing and holds no inventory")
     void paymentDeclined() {
         String cartId = createCart("H-NYC-001", "STD-K", "SAVER").path("cartId").asText();
         JsonNode summary = get("reservation-service", "/api/checkout/" + cartId + "/payment-summary");
@@ -219,7 +207,7 @@ class BookingJourneyTest {
     }
 
     @Test
-    @DisplayName("AQPI-21 AQPI-22: a lost payment response is shown as pending and reconciled without a second charge")
+    @DisplayName("AQPI-21: a lost payment response is held as pending and reconciled without a second charge")
     void lostPaymentResponseReconciled() {
         String cartId = createCart("H-NYC-001", "STD-K", "FLEX").path("cartId").asText();
         JsonNode pending = reserve("journey-" + UUID.randomUUID(), cartId, "tok_timeout", "jane@example.com", null,

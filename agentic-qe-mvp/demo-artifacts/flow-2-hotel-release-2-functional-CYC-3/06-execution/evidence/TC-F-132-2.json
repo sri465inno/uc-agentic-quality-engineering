@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:37589/api/searches/S-ebfddf83/results?sort=NAME",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 400,
+    "correlationId": "ebd349a5-2f12-4c44-acaf-edf5fe944aad",
+    "body": {
+      "status": 400,
+      "code": "UNSUPPORTED_SORT",
+      "message": "Sort by one of: [RECOMMENDED, PRICE_ASC, PRICE_DESC, DISTANCE, CATEGORY]",
+      "correlationId": "ebd349a5-2f12-4c44-acaf-edf5fe944aad",
+      "retryable": false,
+      "fieldIssues": []
+    }
+  }
+}

@@ -27,10 +27,9 @@ const OUTPUTS = {
       testCases: { value: present(t) },
       functional: tt.produces.functional ? { value: t ? t.filter((x) => x.type === 'functional') : null } : skip('functional'),
       nonFunctional: tt.produces.nonFunctional ? { value: t ? t.filter((x) => x.type === 'non-functional') : null } : skip('non-functional'),
-      regressionPack: { ...of(() => true), note: t ? `${t.filter((x) => x.status === 'carried over' && x.inRun !== false).length} carried-over case(s) re-run` : null },
-      journeys: of((x) => ['ui', 'journey'].includes(suiteOf(x))),
-      smokeSet: of(() => true),
-      performanceChecks: of((x) => ['nfr', 'load'].includes(suiteOf(x))),
+      reusedPack: { ...of(() => true), note: t ? `${t.filter((x) => x.status === 'carried over' && x.inRun !== false).length} carried-over case(s) re-run` : null },
+      journeys: tt.id === 'eqe' ? of((x) => ['ui', 'journey'].includes(suiteOf(x))) : skip('journey'),
+      ruleChecks: tt.id === 'functional' ? of((x) => suiteOf(x) === 'api') : skip('single-rule'),
     };
   },
   testdata: (c) => {

@@ -39,7 +39,6 @@ public final class HotelApi {
             String startingRoom) {
     }
 
-    /** Story 4.2: an applied filter the guest can see and remove. */
     public record AppliedFilter(String name, String value, String removeHint) {
     }
 

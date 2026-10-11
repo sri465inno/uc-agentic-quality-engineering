@@ -1,0 +1,76 @@
+{
+  "proposal": {
+    "baselineId": "BL-1",
+    "baselineVersion": 1,
+    "requirements": [
+      "REQ-112",
+      "REQ-114",
+      "REQ-116",
+      "REQ-119",
+      "REQ-120",
+      "REQ-121",
+      "REQ-122",
+      "REQ-123",
+      "REQ-124",
+      "REQ-125",
+      "REQ-126",
+      "REQ-127",
+      "REQ-128",
+      "REQ-129",
+      "REQ-130",
+      "REQ-131",
+      "REQ-132",
+      "REQ-133",
+      "REQ-134",
+      "REQ-135",
+      "REQ-136",
+      "REQ-137",
+      "REQ-138"
+    ],
+    "rules": [
+      "BR-112",
+      "BR-114",
+      "BR-116",
+      "BR-119",
+      "BR-120",
+      "BR-121",
+      "BR-122",
+      "BR-123",
+      "BR-124",
+      "BR-125",
+      "BR-126",
+      "BR-127",
+      "BR-128",
+      "BR-129",
+      "BR-130",
+      "BR-131",
+      "BR-132",
+      "BR-133",
+      "BR-134",
+      "BR-135",
+      "BR-136",
+      "BR-137",
+      "BR-138"
+    ],
+    "testCases": [],
+    "scripts": []
+  },
+  "approvals": [
+    {
+      "gate": "Requirement set review",
+      "by": "Priya Shah",
+      "at": "2026-10-11T16:15:59.183Z",
+      "decision": "approved",
+      "comment": "",
+      "detail": "43 requirements approved; 0 excluded; 0 conflict(s) resolved"
+    },
+    {
+      "gate": "Merge into baseline",
+      "by": "Sam Lee",
+      "at": "2026-10-11T16:15:59.207Z",
+      "decision": "approved",
+      "comment": "",
+      "detail": "23 requirements, 0 test cases, 0 scripts merged: BL-1 v1 -> v2"
+    }
+  ]
+}

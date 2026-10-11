@@ -18,6 +18,7 @@ function upsert(list, item, same) {
 /** Records the human review of a requirement set: conflict choices and exclusions. */
 function recordReview(memory, cycle) {
   const { reviewer: by, at, excluded = [], resolutions = {} } = cycle.review;
+  const gapGroups = new Set((cycle.gaps?.findings || []).flatMap((x) => x.groupIds));
   for (const g of cycle.normalisation.groups) {
     const optionId = resolutions[g.id];
     if (g.bucket === 'conflict' && optionId) {
@@ -25,7 +26,7 @@ function recordReview(memory, cycle) {
       upsert(memory.decisions, { key: conflictKey(g), subject: g.subject, chosenSignature: o.signature, chosenSources: o.sources, chosenText: o.text,
         rejected: g.options.filter((x) => x !== o).map((x) => ({ signature: x.signature, sources: x.sources })), cycleId: cycle.id, by, at }, (d) => d.key === conflictKey(g));
     }
-    if (excluded.includes(g.id)) {
+    if (excluded.includes(g.id) && !gapGroups.has(g.id)) {
       const text = g.text || g.options.map((x) => x.text).join(' / ');
       upsert(memory.exclusions, { text, key: norm(text), cycleId: cycle.id, by, at, reason: cycle.review.comment || 'excluded by the reviewer' }, (e) => e.key === norm(text));
     }

@@ -1,0 +1,419 @@
+{
+  "executed": true,
+  "tool": "Playwright 1.63.0 (headless Chromium, JSON reporter)",
+  "command": "npx playwright test --config ../../../../../tmp/aqe-demo-bkfpuX/runs/CYC-4/playwright.config.js",
+  "exitCode": 0,
+  "sut": {
+    "build": "demo/hotel-booking-platform-v2",
+    "url": "http://127.0.0.1:34029",
+    "services": {
+      "hotel-service": "http://127.0.0.1:35773",
+      "offer-service": "http://127.0.0.1:41323",
+      "notification-service": "http://127.0.0.1:42175",
+      "search-service": "http://127.0.0.1:34029",
+      "cart-service": "http://127.0.0.1:43897",
+      "reservation-service": "http://127.0.0.1:45763"
+    },
+    "name": "Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2"
+  },
+  "startedAt": "2026-10-11T16:16:03.142Z",
+  "finishedAt": "2026-10-11T16:16:07.813Z",
+  "reportFile": "playwright-report.json",
+  "playwrightStats": {
+    "startTime": "2026-10-11T16:16:03.532Z",
+    "duration": 2228.8210000000004,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "specFiles": [
+    "br-001-booking-journey.spec.js",
+    "br-002-bookable-inventory.spec.js",
+    "br-004-offers-not-blocking.spec.js",
+    "br-005-duplicate-submission.spec.js",
+    "br-006-durable-confirmation.spec.js",
+    "br-007-confirmation-shown.spec.js",
+    "br-047-offers-not-blocking.spec.js"
+  ],
+  "results": [
+    {
+      "key": "TC-F-001",
+      "requirementId": "REQ-001",
+      "ruleId": "BR-001",
+      "name": "Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail",
+      "type": "functional",
+      "scriptFile": "br-001-booking-journey.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 1108,
+      "startTime": "2026-10-11T16:16:03.936Z",
+      "file": "br-001-booking-journey.spec.js",
+      "title": "TC-F-001 Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST search-service/api/searches",
+          "file": "TC-F-001-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET hotel-service/api/hotels/H-NYC-001?checkIn=2026-11-10&checkOut=2026-11-13",
+          "file": "TC-F-001-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST offer-service/api/offers/recommendations",
+          "file": "TC-F-001-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-001-4.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts/C-e68a1aab/ancillaries",
+          "file": "TC-F-001-5.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET reservation-service/api/checkout/C-e68a1aab/payment-summary",
+          "file": "TC-F-001-6.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-001-7.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET notification-service/api/confirmations/R-7d28bd6e",
+          "file": "TC-F-001-8.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-002",
+      "requirementId": "REQ-001",
+      "ruleId": "BR-001",
+      "name": "Guest books a prepaid non-refundable room in Paris and pays now",
+      "type": "functional",
+      "scriptFile": "br-001-booking-journey.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 136,
+      "startTime": "2026-10-11T16:16:05.078Z",
+      "file": "br-001-booking-journey.spec.js",
+      "title": "TC-F-002 Guest books a prepaid non-refundable room in Paris and pays now",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST search-service/api/searches",
+          "file": "TC-F-002-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-002-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET reservation-service/api/checkout/C-6a30b458/payment-summary",
+          "file": "TC-F-002-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-002-4.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-003",
+      "requirementId": "REQ-002",
+      "ruleId": "BR-002",
+      "name": "A sold-out hotel is shown as unavailable and cannot be put in a cart",
+      "type": "functional",
+      "scriptFile": "br-002-bookable-inventory.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 84,
+      "startTime": "2026-10-11T16:16:05.228Z",
+      "file": "br-002-bookable-inventory.spec.js",
+      "title": "TC-F-003 A sold-out hotel is shown as unavailable and cannot be put in a cart",
+      "error": null,
+      "evidence": [
+        {
+          "name": "PUT hotel-service/api/admin/inventory",
+          "file": "TC-F-003-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST search-service/api/searches",
+          "file": "TC-F-003-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-003-3.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-004",
+      "requirementId": "REQ-004",
+      "ruleId": "BR-004",
+      "name": "An unavailable extra is refused and the room still books",
+      "type": "functional",
+      "scriptFile": "br-004-offers-not-blocking.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 93,
+      "startTime": "2026-10-11T16:16:05.322Z",
+      "file": "br-004-offers-not-blocking.spec.js",
+      "title": "TC-F-004 An unavailable extra is refused and the room still books",
+      "error": null,
+      "evidence": [
+        {
+          "name": "PUT offer-service/api/admin/offers/LATE_CHECKOUT/availability",
+          "file": "TC-F-004-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-004-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts/C-21c87d12/ancillaries",
+          "file": "TC-F-004-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-004-4.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-005",
+      "requirementId": "REQ-005",
+      "ruleId": "BR-005",
+      "name": "A double-clicked Book button creates one reservation and one payment",
+      "type": "functional",
+      "scriptFile": "br-005-duplicate-submission.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 69,
+      "startTime": "2026-10-11T16:16:05.426Z",
+      "file": "br-005-duplicate-submission.spec.js",
+      "title": "TC-F-005 A double-clicked Book button creates one reservation and one payment",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-005-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-005-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-005-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET reservation-service/api/ops/payments",
+          "file": "TC-F-005-4.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-006",
+      "requirementId": "REQ-006",
+      "ruleId": "BR-006",
+      "name": "The confirmation number can be looked up again after booking",
+      "type": "functional",
+      "scriptFile": "br-006-durable-confirmation.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 67,
+      "startTime": "2026-10-11T16:16:05.509Z",
+      "file": "br-006-durable-confirmation.spec.js",
+      "title": "TC-F-006 The confirmation number can be looked up again after booking",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-006-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-006-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET reservation-service/api/reservations/R-44fa08b7",
+          "file": "TC-F-006-3.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-007",
+      "requirementId": "REQ-007",
+      "ruleId": "BR-007",
+      "name": "The guest sees the booking outcome and one confirmation e-mail is created",
+      "type": "functional",
+      "scriptFile": "br-007-confirmation-shown.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 74,
+      "startTime": "2026-10-11T16:16:05.585Z",
+      "file": "br-007-confirmation-shown.spec.js",
+      "title": "TC-F-007 The guest sees the booking outcome and one confirmation e-mail is created",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-007-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-007-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET notification-service/api/ops/messages?reservationId=R-827334b2",
+          "file": "TC-F-007-3.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-N-001",
+      "requirementId": "REQ-023",
+      "ruleId": "BR-023",
+      "name": "Verify: Validation messages are accessible to assistive technology",
+      "type": "non-functional",
+      "scriptFile": null,
+      "status": "not-run",
+      "reason": "Manual test case - not automated, not executed",
+      "duration": 0,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "key": "TC-F-008",
+      "requirementId": "REQ-047",
+      "ruleId": "BR-047",
+      "name": "An unavailable extra is refused and the room still books",
+      "type": "functional",
+      "scriptFile": "br-047-offers-not-blocking.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 73,
+      "startTime": "2026-10-11T16:16:05.667Z",
+      "file": "br-047-offers-not-blocking.spec.js",
+      "title": "TC-F-008 An unavailable extra is refused and the room still books",
+      "error": null,
+      "evidence": [
+        {
+          "name": "PUT offer-service/api/admin/offers/LATE_CHECKOUT/availability",
+          "file": "TC-F-008-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-008-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts/C-c70aa0d0/ancillaries",
+          "file": "TC-F-008-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-008-4.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-N-002",
+      "requirementId": "REQ-082",
+      "ruleId": "BR-082",
+      "name": "Verify: Templates support required locale and accessibility standards",
+      "type": "non-functional",
+      "scriptFile": null,
+      "status": "not-run",
+      "reason": "Manual test case - not automated, not executed",
+      "duration": 0,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "key": "TC-N-003",
+      "requirementId": "REQ-100",
+      "ruleId": "BR-100",
+      "name": "Verify: Metrics and alerts exist for agreed critical failures and latency",
+      "type": "non-functional",
+      "scriptFile": null,
+      "status": "not-run",
+      "reason": "Manual test case - not automated, not executed",
+      "duration": 0,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "key": "TC-N-004",
+      "requirementId": "REQ-104",
+      "ruleId": "BR-104",
+      "name": "Verify: Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible",
+      "type": "non-functional",
+      "scriptFile": null,
+      "status": "not-run",
+      "reason": "Manual test case - not automated, not executed",
+      "duration": 0,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "key": "TC-N-005",
+      "requirementId": "REQ-108",
+      "ruleId": "BR-108",
+      "name": "Verify: Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets",
+      "type": "non-functional",
+      "scriptFile": null,
+      "status": "not-run",
+      "reason": "Manual test case - not automated, not executed",
+      "duration": 0,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "executed": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "notRun": 5,
+    "durationMs": 1704,
+    "passRate": 100
+  },
+  "testingType": "eqe",
+  "notInRun": 0
+}

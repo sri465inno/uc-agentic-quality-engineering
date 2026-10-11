@@ -1,0 +1,7172 @@
+{
+  "statements": [
+    {
+      "text": "A guest can complete the complete search-to-confirmation flow using valid inputs.",
+      "source": "jira",
+      "input": "initiative",
+      "origin": {
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1"
+      },
+      "quote": "A guest can complete the complete search-to-confirmation flow using valid inputs.",
+      "id": "J1",
+      "tokens": [
+        "complete",
+        "confirmation",
+        "flow",
+        "guest",
+        "input",
+        "search",
+        "using",
+        "valid"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Only bookable inventory and valid rates are presented as available.",
+      "source": "jira",
+      "input": "initiative",
+      "origin": {
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1"
+      },
+      "quote": "Only bookable inventory and valid rates are presented as available.",
+      "id": "J2",
+      "tokens": [
+        "available",
+        "bookable",
+        "inventory",
+        "only",
+        "presented",
+        "rate",
+        "valid"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Total price is disclosed before confirmation, including mandatory taxes and fees.",
+      "source": "jira",
+      "input": "initiative",
+      "origin": {
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1"
+      },
+      "quote": "Total price is disclosed before confirmation, including mandatory taxes and fees.",
+      "id": "J3",
+      "tokens": [
+        "before",
+        "confirmation",
+        "disclosed",
+        "fee",
+        "including",
+        "mandatory",
+        "price",
+        "taxe",
+        "total"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Ancillary offers do not block booking when declined or unavailable.",
+      "source": "jira",
+      "input": "initiative",
+      "origin": {
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1"
+      },
+      "quote": "Ancillary offers do not block booking when declined or unavailable.",
+      "id": "J4",
+      "tokens": [
+        "ancillary",
+        "block",
+        "booking",
+        "declined",
+        "not",
+        "offer",
+        "unavailable"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The platform prevents or safely handles duplicate reservation submissions.",
+      "source": "jira",
+      "input": "initiative",
+      "origin": {
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1"
+      },
+      "quote": "The platform prevents or safely handles duplicate reservation submissions.",
+      "id": "J5",
+      "tokens": [
+        "duplicate",
+        "handle",
+        "platform",
+        "prevent",
+        "reservation",
+        "safely",
+        "submission"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "A successful reservation produces a durable confirmation identifier.",
+      "source": "jira",
+      "input": "initiative",
+      "origin": {
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1"
+      },
+      "quote": "A successful reservation produces a durable confirmation identifier.",
+      "id": "J6",
+      "tokens": [
+        "confirmation",
+        "durable",
+        "identifier",
+        "produce",
+        "reservation",
+        "successful"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Confirmation is displayed on screen and an email request is generated.",
+      "source": "jira",
+      "input": "initiative",
+      "origin": {
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1"
+      },
+      "quote": "Confirmation is displayed on screen and an email request is generated.",
+      "id": "J7",
+      "tokens": [
+        "confirmation",
+        "displayed",
+        "email",
+        "generated",
+        "request",
+        "screen"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required business and technical events are logged using approved identifiers and masking rules.",
+      "source": "jira",
+      "input": "initiative",
+      "origin": {
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1"
+      },
+      "quote": "Required business and technical events are logged using approved identifiers and masking rules.",
+      "id": "J8",
+      "tokens": [
+        "approved",
+        "event",
+        "identifier",
+        "logged",
+        "masking",
+        "required",
+        "rule",
+        "technical",
+        "using"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2"
+      },
+      "quote": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "id": "J9",
+      "tokens": [
+        "acceptance",
+        "child",
+        "criteria",
+        "definition",
+        "done",
+        "meet",
+        "story",
+        "user"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Negative and error paths for each story are tested and evidenced.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2"
+      },
+      "quote": "Negative and error paths for each story are tested and evidenced.",
+      "id": "J10",
+      "tokens": [
+        "error",
+        "evidenced",
+        "negative",
+        "path",
+        "story",
+        "tested"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required logging is in place and verified free of sensitive data.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2"
+      },
+      "quote": "Required logging is in place and verified free of sensitive data.",
+      "id": "J11",
+      "tokens": [
+        "data",
+        "free",
+        "logging",
+        "required",
+        "sensitive",
+        "verified"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The Product Owner has accepted the capability end to end.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2"
+      },
+      "quote": "The Product Owner has accepted the capability end to end.",
+      "id": "J12",
+      "tokens": [
+        "accepted",
+        "capability",
+        "end",
+        "owner",
+        "product"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3"
+      },
+      "quote": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.",
+      "id": "J13",
+      "tokens": [
+        "available",
+        "created",
+        "criteria",
+        "given",
+        "guest",
+        "hotel",
+        "matching",
+        "request",
+        "returned",
+        "search",
+        "submit",
+        "then",
+        "valid"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The submitted criteria remain visible and editable on the results page.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3"
+      },
+      "quote": "The submitted criteria remain visible and editable on the results page.",
+      "id": "J14",
+      "tokens": [
+        "criteria",
+        "editable",
+        "page",
+        "remain",
+        "result",
+        "submitted",
+        "visible"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3"
+      },
+      "quote": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.",
+      "id": "J15",
+      "tokens": [
+        "actionable",
+        "after",
+        "check",
+        "date",
+        "field",
+        "mandatory",
+        "message",
+        "missing",
+        "not",
+        "out",
+        "past",
+        "rejected"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "A no-availability result explains that no matching inventory was found and allows criteria changes.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3"
+      },
+      "quote": "A no-availability result explains that no matching inventory was found and allows criteria changes.",
+      "id": "J16",
+      "tokens": [
+        "allow",
+        "availability",
+        "change",
+        "criteria",
+        "explain",
+        "found",
+        "inventory",
+        "matching",
+        "no",
+        "result",
+        "was"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Check-in must precede check-out.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3"
+      },
+      "quote": "Check-in must precede check-out.",
+      "id": "J17",
+      "tokens": [
+        "check",
+        "out",
+        "precede"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Occupancy must comply with configured room limits.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3"
+      },
+      "quote": "Occupancy must comply with configured room limits.",
+      "id": "J18",
+      "tokens": [
+        "comply",
+        "configured",
+        "limit",
+        "occupancy",
+        "room"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Maximum stay length must be configurable.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3"
+      },
+      "quote": "Maximum stay length must be configurable.",
+      "id": "J19",
+      "tokens": [
+        "configurable",
+        "length",
+        "maximum",
+        "stay"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required fields are clearly identified.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4"
+      },
+      "quote": "Required fields are clearly identified.",
+      "id": "J20",
+      "tokens": [
+        "clearly",
+        "field",
+        "identified",
+        "required"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Invalid combinations return field-level messages.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4"
+      },
+      "quote": "Invalid combinations return field-level messages.",
+      "id": "J21",
+      "tokens": [
+        "combination",
+        "field",
+        "invalid",
+        "level",
+        "message",
+        "return"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Server validation is authoritative when client and server results differ.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4"
+      },
+      "quote": "Server validation is authoritative when client and server results differ.",
+      "id": "J22",
+      "tokens": [
+        "authoritative",
+        "client",
+        "differ",
+        "result",
+        "server",
+        "validation"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Validation messages are accessible to assistive technology.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4"
+      },
+      "quote": "Validation messages are accessible to assistive technology.",
+      "id": "J23",
+      "tokens": [
+        "accessible",
+        "assistive",
+        "message",
+        "technology",
+        "validation"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Validation rules must be configurable where market or property rules vary.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4"
+      },
+      "quote": "Validation rules must be configurable where market or property rules vary.",
+      "id": "J24",
+      "tokens": [
+        "configurable",
+        "market",
+        "property",
+        "rule",
+        "validation",
+        "vary",
+        "where"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Zero results provide options to alter dates, occupancy, destination, or filters.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-5",
+        "summary": "3.3 Handle unavailable or failed searches",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5"
+      },
+      "quote": "Zero results provide options to alter dates, occupancy, destination, or filters.",
+      "id": "J25",
+      "tokens": [
+        "alter",
+        "date",
+        "destination",
+        "filter",
+        "occupancy",
+        "option",
+        "provide",
+        "result",
+        "zero"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Technical failures display a non-technical message and retry option.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-5",
+        "summary": "3.3 Handle unavailable or failed searches",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5"
+      },
+      "quote": "Technical failures display a non-technical message and retry option.",
+      "id": "J26",
+      "tokens": [
+        "display",
+        "failure",
+        "message",
+        "non",
+        "option",
+        "retry",
+        "technical"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Repeated submission does not create inconsistent sessions.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-5",
+        "summary": "3.3 Handle unavailable or failed searches",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5"
+      },
+      "quote": "Repeated submission does not create inconsistent sessions.",
+      "id": "J27",
+      "tokens": [
+        "create",
+        "inconsistent",
+        "not",
+        "repeated",
+        "session",
+        "submission"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6"
+      },
+      "quote": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "id": "J28",
+      "tokens": [
+        "acceptance",
+        "child",
+        "criteria",
+        "definition",
+        "done",
+        "meet",
+        "story",
+        "user"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Negative and error paths for each story are tested and evidenced.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6"
+      },
+      "quote": "Negative and error paths for each story are tested and evidenced.",
+      "id": "J29",
+      "tokens": [
+        "error",
+        "evidenced",
+        "negative",
+        "path",
+        "story",
+        "tested"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required logging is in place and verified free of sensitive data.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6"
+      },
+      "quote": "Required logging is in place and verified free of sensitive data.",
+      "id": "J30",
+      "tokens": [
+        "data",
+        "free",
+        "logging",
+        "required",
+        "sensitive",
+        "verified"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The Product Owner has accepted the capability end to end.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6"
+      },
+      "quote": "The Product Owner has accepted the capability end to end.",
+      "id": "J31",
+      "tokens": [
+        "accepted",
+        "capability",
+        "end",
+        "owner",
+        "product"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Each result shows hotel name, location, representative image, starting price, currency, and availability indicator.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7"
+      },
+      "quote": "Each result shows hotel name, location, representative image, starting price, currency, and availability indicator.",
+      "id": "J32",
+      "tokens": [
+        "availability",
+        "currency",
+        "hotel",
+        "image",
+        "indicator",
+        "location",
+        "name",
+        "price",
+        "representative",
+        "result",
+        "show",
+        "starting"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Mandatory fees or pricing qualifications are clearly disclosed.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7"
+      },
+      "quote": "Mandatory fees or pricing qualifications are clearly disclosed.",
+      "id": "J33",
+      "tokens": [
+        "clearly",
+        "disclosed",
+        "fee",
+        "mandatory",
+        "pricing",
+        "qualification"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Unavailable hotels are not presented as immediately bookable.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7"
+      },
+      "quote": "Unavailable hotels are not presented as immediately bookable.",
+      "id": "J34",
+      "tokens": [
+        "bookable",
+        "hotel",
+        "immediately",
+        "not",
+        "presented",
+        "unavailable"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Results support pagination or progressive loading.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7"
+      },
+      "quote": "Results support pagination or progressive loading.",
+      "id": "J35",
+      "tokens": [
+        "loading",
+        "pagination",
+        "progressive",
+        "result",
+        "support"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Displayed starting price must correspond to a valid rate returned for the search criteria.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7"
+      },
+      "quote": "Displayed starting price must correspond to a valid rate returned for the search criteria.",
+      "id": "J36",
+      "tokens": [
+        "correspond",
+        "criteria",
+        "displayed",
+        "price",
+        "rate",
+        "returned",
+        "search",
+        "starting",
+        "valid"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-8",
+        "summary": "4.2 Sort and filter hotel results",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8"
+      },
+      "quote": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.",
+      "id": "J37",
+      "tokens": [
+        "amenity",
+        "apply",
+        "available",
+        "category",
+        "data",
+        "distance",
+        "filter",
+        "guest",
+        "hotel",
+        "price",
+        "range",
+        "such",
+        "supported"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest can sort using approved options.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-8",
+        "summary": "4.2 Sort and filter hotel results",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8"
+      },
+      "quote": "The guest can sort using approved options.",
+      "id": "J38",
+      "tokens": [
+        "approved",
+        "guest",
+        "option",
+        "sort",
+        "using"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Selected criteria are visible and removable.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-8",
+        "summary": "4.2 Sort and filter hotel results",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8"
+      },
+      "quote": "Selected criteria are visible and removable.",
+      "id": "J39",
+      "tokens": [
+        "criteria",
+        "removable",
+        "selected",
+        "visible"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Zero results after filtering offer a reset option.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-8",
+        "summary": "4.2 Sort and filter hotel results",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8"
+      },
+      "quote": "Zero results after filtering offer a reset option.",
+      "id": "J40",
+      "tokens": [
+        "after",
+        "filtering",
+        "offer",
+        "option",
+        "reset",
+        "result",
+        "zero"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-9",
+        "summary": "4.3 View hotel and room details",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9"
+      },
+      "quote": "Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed.",
+      "id": "J41",
+      "tokens": [
+        "amenity",
+        "description",
+        "displayed",
+        "hotel",
+        "image",
+        "location",
+        "major",
+        "option",
+        "policy",
+        "pricing",
+        "relevant",
+        "restriction",
+        "room"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest can select a valid room and rate plan.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-9",
+        "summary": "4.3 View hotel and room details",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9"
+      },
+      "quote": "The guest can select a valid room and rate plan.",
+      "id": "J42",
+      "tokens": [
+        "guest",
+        "plan",
+        "rate",
+        "room",
+        "select",
+        "valid"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "If inventory changes, the guest is informed before continuing.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-9",
+        "summary": "4.3 View hotel and room details",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9"
+      },
+      "quote": "If inventory changes, the guest is informed before continuing.",
+      "id": "J43",
+      "tokens": [
+        "before",
+        "change",
+        "continuing",
+        "guest",
+        "if",
+        "informed",
+        "inventory"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Rate conditions and cancellation terms must be shown before selection.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-9",
+        "summary": "4.3 View hotel and room details",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9"
+      },
+      "quote": "Rate conditions and cancellation terms must be shown before selection.",
+      "id": "J44",
+      "tokens": [
+        "before",
+        "cancellation",
+        "condition",
+        "rate",
+        "selection",
+        "shown",
+        "term"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10"
+      },
+      "quote": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "id": "J45",
+      "tokens": [
+        "acceptance",
+        "child",
+        "criteria",
+        "definition",
+        "done",
+        "meet",
+        "story",
+        "user"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Negative and error paths for each story are tested and evidenced.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10"
+      },
+      "quote": "Negative and error paths for each story are tested and evidenced.",
+      "id": "J46",
+      "tokens": [
+        "error",
+        "evidenced",
+        "negative",
+        "path",
+        "story",
+        "tested"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required logging is in place and verified free of sensitive data.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10"
+      },
+      "quote": "Required logging is in place and verified free of sensitive data.",
+      "id": "J47",
+      "tokens": [
+        "data",
+        "free",
+        "logging",
+        "required",
+        "sensitive",
+        "verified"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The Product Owner has accepted the capability end to end.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10"
+      },
+      "quote": "The Product Owner has accepted the capability end to end.",
+      "id": "J48",
+      "tokens": [
+        "accepted",
+        "capability",
+        "end",
+        "owner",
+        "product"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11"
+      },
+      "quote": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+      "id": "J49",
+      "tokens": [
+        "attribute",
+        "available",
+        "composition",
+        "consented",
+        "consider",
+        "context",
+        "date",
+        "declared",
+        "destination",
+        "hotel",
+        "interest",
+        "party",
+        "profile",
+        "room",
+        "season",
+        "service",
+        "stay",
+        "such"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Unavailable or ineligible products are excluded.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11"
+      },
+      "quote": "Unavailable or ineligible products are excluded.",
+      "id": "J50",
+      "tokens": [
+        "excluded",
+        "ineligible",
+        "product",
+        "unavailable"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The service returns a reason code for each recommended item.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11"
+      },
+      "quote": "The service returns a reason code for each recommended item.",
+      "id": "J51",
+      "tokens": [
+        "code",
+        "item",
+        "reason",
+        "recommended",
+        "return",
+        "service"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "When personalization data is unavailable, safe contextual defaults may be returned.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11"
+      },
+      "quote": "When personalization data is unavailable, safe contextual defaults may be returned.",
+      "id": "J52",
+      "tokens": [
+        "contextual",
+        "data",
+        "default",
+        "personalization",
+        "returned",
+        "safe",
+        "unavailable"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Sensitive traits must not be inferred or used.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11"
+      },
+      "quote": "Sensitive traits must not be inferred or used.",
+      "id": "J53",
+      "tokens": [
+        "inferred",
+        "not",
+        "sensitive",
+        "trait",
+        "used"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Personalization must honor consent and data-retention rules.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11"
+      },
+      "quote": "Personalization must honor consent and data-retention rules.",
+      "id": "J54",
+      "tokens": [
+        "consent",
+        "data",
+        "honor",
+        "personalization",
+        "retention",
+        "rule"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Business rules and model versions must be auditable.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11"
+      },
+      "quote": "Business rules and model versions must be auditable.",
+      "id": "J55",
+      "tokens": [
+        "auditable",
+        "model",
+        "rule",
+        "version"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Each offer shows name, description, price, currency, applicability, and any restrictions.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-12",
+        "summary": "5.2 Display ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12"
+      },
+      "quote": "Each offer shows name, description, price, currency, applicability, and any restrictions.",
+      "id": "J56",
+      "tokens": [
+        "applicability",
+        "currency",
+        "description",
+        "name",
+        "offer",
+        "price",
+        "restriction",
+        "show"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest can add, skip, or dismiss an offer.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-12",
+        "summary": "5.2 Display ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12"
+      },
+      "quote": "The guest can add, skip, or dismiss an offer.",
+      "id": "J57",
+      "tokens": [
+        "add",
+        "dismiss",
+        "guest",
+        "offer",
+        "skip"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Offers are clearly distinguished from mandatory fees.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-12",
+        "summary": "5.2 Display ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12"
+      },
+      "quote": "Offers are clearly distinguished from mandatory fees.",
+      "id": "J58",
+      "tokens": [
+        "clearly",
+        "distinguished",
+        "fee",
+        "mandatory",
+        "offer"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Failure to load offers does not block room booking.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-12",
+        "summary": "5.2 Display ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12"
+      },
+      "quote": "Failure to load offers does not block room booking.",
+      "id": "J59",
+      "tokens": [
+        "block",
+        "booking",
+        "failure",
+        "load",
+        "not",
+        "offer",
+        "room"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The interface identifies when offers are personalized where required.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-13",
+        "summary": "5.3 Explain and control personalization",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13"
+      },
+      "quote": "The interface identifies when offers are personalized where required.",
+      "id": "J60",
+      "tokens": [
+        "identify",
+        "interface",
+        "offer",
+        "personalized",
+        "required",
+        "where"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest can proceed without selecting ancillary products.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-13",
+        "summary": "5.3 Explain and control personalization",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13"
+      },
+      "quote": "The guest can proceed without selecting ancillary products.",
+      "id": "J61",
+      "tokens": [
+        "ancillary",
+        "guest",
+        "proceed",
+        "product",
+        "selecting",
+        "without"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "A consent or preference change affects future eligible recommendations according to policy.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-13",
+        "summary": "5.3 Explain and control personalization",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13"
+      },
+      "quote": "A consent or preference change affects future eligible recommendations according to policy.",
+      "id": "J62",
+      "tokens": [
+        "according",
+        "affect",
+        "change",
+        "consent",
+        "eligible",
+        "future",
+        "policy",
+        "preference",
+        "recommendation"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14"
+      },
+      "quote": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "id": "J63",
+      "tokens": [
+        "acceptance",
+        "child",
+        "criteria",
+        "definition",
+        "done",
+        "meet",
+        "story",
+        "user"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Negative and error paths for each story are tested and evidenced.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14"
+      },
+      "quote": "Negative and error paths for each story are tested and evidenced.",
+      "id": "J64",
+      "tokens": [
+        "error",
+        "evidenced",
+        "negative",
+        "path",
+        "story",
+        "tested"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required logging is in place and verified free of sensitive data.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14"
+      },
+      "quote": "Required logging is in place and verified free of sensitive data.",
+      "id": "J65",
+      "tokens": [
+        "data",
+        "free",
+        "logging",
+        "required",
+        "sensitive",
+        "verified"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The Product Owner has accepted the capability end to end.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14"
+      },
+      "quote": "The Product Owner has accepted the capability end to end.",
+      "id": "J66",
+      "tokens": [
+        "accepted",
+        "capability",
+        "end",
+        "owner",
+        "product"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15"
+      },
+      "quote": "The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components.",
+      "id": "J67",
+      "tokens": [
+        "cart",
+        "component",
+        "contain",
+        "currency",
+        "date",
+        "hotel",
+        "occupancy",
+        "plan",
+        "price",
+        "quantity",
+        "rate",
+        "room",
+        "stay"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Inventory and price are revalidated when required.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15"
+      },
+      "quote": "Inventory and price are revalidated when required.",
+      "id": "J68",
+      "tokens": [
+        "inventory",
+        "price",
+        "required",
+        "revalidated"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The cart has a defined expiration and displays relevant timeout behavior.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15"
+      },
+      "quote": "The cart has a defined expiration and displays relevant timeout behavior.",
+      "id": "J69",
+      "tokens": [
+        "behavior",
+        "cart",
+        "defined",
+        "display",
+        "expiration",
+        "relevant",
+        "timeout"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "A cart must not itself create a reservation.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15"
+      },
+      "quote": "A cart must not itself create a reservation.",
+      "id": "J70",
+      "tokens": [
+        "cart",
+        "create",
+        "itself",
+        "not",
+        "reservation"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Price-change handling must require guest acknowledgement when material.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15"
+      },
+      "quote": "Price-change handling must require guest acknowledgement when material.",
+      "id": "J71",
+      "tokens": [
+        "acknowledgement",
+        "change",
+        "guest",
+        "handling",
+        "material",
+        "price",
+        "require"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest can add an available ancillary.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-16",
+        "summary": "6.2 Add, update, and remove ancillaries",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16"
+      },
+      "quote": "The guest can add an available ancillary.",
+      "id": "J72",
+      "tokens": [
+        "add",
+        "ancillary",
+        "available",
+        "guest"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Supported quantities can be changed within product limits.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-16",
+        "summary": "6.2 Add, update, and remove ancillaries",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16"
+      },
+      "quote": "Supported quantities can be changed within product limits.",
+      "id": "J73",
+      "tokens": [
+        "changed",
+        "limit",
+        "product",
+        "quantity",
+        "supported"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Removal updates totals immediately.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-16",
+        "summary": "6.2 Add, update, and remove ancillaries",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16"
+      },
+      "quote": "Removal updates totals immediately.",
+      "id": "J74",
+      "tokens": [
+        "immediately",
+        "removal",
+        "total",
+        "update"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Ineligible or sold-out products cannot be retained silently.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-16",
+        "summary": "6.2 Add, update, and remove ancillaries",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16"
+      },
+      "quote": "Ineligible or sold-out products cannot be retained silently.",
+      "id": "J75",
+      "tokens": [
+        "cannot",
+        "ineligible",
+        "out",
+        "product",
+        "retained",
+        "silently",
+        "sold"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17"
+      },
+      "quote": "Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized.",
+      "id": "J76",
+      "tokens": [
+        "charge",
+        "discount",
+        "fee",
+        "itemized",
+        "mandatory",
+        "optional",
+        "product",
+        "room",
+        "taxe",
+        "total"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Currency is consistently displayed.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17"
+      },
+      "quote": "Currency is consistently displayed.",
+      "id": "J77",
+      "tokens": [
+        "consistently",
+        "currency",
+        "displayed"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Material changes are highlighted and require acknowledgement.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17"
+      },
+      "quote": "Material changes are highlighted and require acknowledgement.",
+      "id": "J78",
+      "tokens": [
+        "acknowledgement",
+        "change",
+        "highlighted",
+        "material",
+        "require"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest can return to edit supported selections.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17"
+      },
+      "quote": "The guest can return to edit supported selections.",
+      "id": "J79",
+      "tokens": [
+        "edit",
+        "guest",
+        "return",
+        "selection",
+        "supported"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The final payable total must be revalidated before reservation submission.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17"
+      },
+      "quote": "The final payable total must be revalidated before reservation submission.",
+      "id": "J80",
+      "tokens": [
+        "before",
+        "final",
+        "payable",
+        "reservation",
+        "revalidated",
+        "submission",
+        "total"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18"
+      },
+      "quote": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "id": "J81",
+      "tokens": [
+        "acceptance",
+        "child",
+        "criteria",
+        "definition",
+        "done",
+        "meet",
+        "story",
+        "user"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Negative and error paths for each story are tested and evidenced.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18"
+      },
+      "quote": "Negative and error paths for each story are tested and evidenced.",
+      "id": "J82",
+      "tokens": [
+        "error",
+        "evidenced",
+        "negative",
+        "path",
+        "story",
+        "tested"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required logging is in place and verified free of sensitive data.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18"
+      },
+      "quote": "Required logging is in place and verified free of sensitive data.",
+      "id": "J83",
+      "tokens": [
+        "data",
+        "free",
+        "logging",
+        "required",
+        "sensitive",
+        "verified"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The Product Owner has accepted the capability end to end.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18"
+      },
+      "quote": "The Product Owner has accepted the capability end to end.",
+      "id": "J84",
+      "tokens": [
+        "accepted",
+        "capability",
+        "end",
+        "owner",
+        "product"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required and optional fields are clearly distinguished.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19"
+      },
+      "quote": "Required and optional fields are clearly distinguished.",
+      "id": "J85",
+      "tokens": [
+        "clearly",
+        "distinguished",
+        "field",
+        "optional",
+        "required"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Inputs are validated and error messages are accessible.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19"
+      },
+      "quote": "Inputs are validated and error messages are accessible.",
+      "id": "J86",
+      "tokens": [
+        "accessible",
+        "error",
+        "input",
+        "message",
+        "validated"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest receives applicable privacy notice and consent controls.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19"
+      },
+      "quote": "The guest receives applicable privacy notice and consent controls.",
+      "id": "J87",
+      "tokens": [
+        "applicable",
+        "consent",
+        "control",
+        "guest",
+        "notice",
+        "privacy",
+        "receive"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Data is transmitted securely and is not exposed in client logs.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19"
+      },
+      "quote": "Data is transmitted securely and is not exposed in client logs.",
+      "id": "J88",
+      "tokens": [
+        "client",
+        "data",
+        "exposed",
+        "log",
+        "not",
+        "securely",
+        "transmitted"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Data minimization applies.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19"
+      },
+      "quote": "Data minimization applies.",
+      "id": "J89",
+      "tokens": [
+        "apply",
+        "data",
+        "minimization"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Sensitive values must be masked in support tools and excluded from analytics logs.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19"
+      },
+      "quote": "Sensitive values must be masked in support tools and excluded from analytics logs.",
+      "id": "J90",
+      "tokens": [
+        "analytic",
+        "excluded",
+        "log",
+        "masked",
+        "sensitive",
+        "support",
+        "tool",
+        "value"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The guest sees the final payable or guarantee amount before authorization.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20"
+      },
+      "quote": "The guest sees the final payable or guarantee amount before authorization.",
+      "id": "J91",
+      "tokens": [
+        "amount",
+        "authorization",
+        "before",
+        "final",
+        "guarantee",
+        "guest",
+        "payable",
+        "see"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Payment data is handled through approved secure components.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20"
+      },
+      "quote": "Payment data is handled through approved secure components.",
+      "id": "J92",
+      "tokens": [
+        "approved",
+        "component",
+        "data",
+        "handled",
+        "payment",
+        "secure",
+        "through"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Authorization success, decline, timeout, and technical failure are handled distinctly.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20"
+      },
+      "quote": "Authorization success, decline, timeout, and technical failure are handled distinctly.",
+      "id": "J93",
+      "tokens": [
+        "authorization",
+        "decline",
+        "distinctly",
+        "failure",
+        "handled",
+        "success",
+        "technical",
+        "timeout"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The product does not store prohibited card data in application logs.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20"
+      },
+      "quote": "The product does not store prohibited card data in application logs.",
+      "id": "J94",
+      "tokens": [
+        "application",
+        "card",
+        "data",
+        "log",
+        "not",
+        "product",
+        "prohibited",
+        "store"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Payment requirements depend on rate conditions.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20"
+      },
+      "quote": "Payment requirements depend on rate conditions.",
+      "id": "J95",
+      "tokens": [
+        "condition",
+        "depend",
+        "payment",
+        "rate",
+        "requirement"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Retry behavior must avoid duplicate authorization.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20"
+      },
+      "quote": "Retry behavior must avoid duplicate authorization.",
+      "id": "J96",
+      "tokens": [
+        "authorization",
+        "avoid",
+        "behavior",
+        "duplicate",
+        "retry"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "A successful request creates one reservation and returns a confirmation identifier.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21"
+      },
+      "quote": "A successful request creates one reservation and returns a confirmation identifier.",
+      "id": "J97",
+      "tokens": [
+        "confirmation",
+        "create",
+        "identifier",
+        "one",
+        "request",
+        "reservation",
+        "return",
+        "successful"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Repeated submissions with the same idempotency key do not create duplicate reservations.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21"
+      },
+      "quote": "Repeated submissions with the same idempotency key do not create duplicate reservations.",
+      "id": "J98",
+      "tokens": [
+        "create",
+        "duplicate",
+        "idempotency",
+        "key",
+        "not",
+        "repeated",
+        "reservation",
+        "same",
+        "submission"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Inventory, price, payment, and reservation outcomes remain reconcilable.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21"
+      },
+      "quote": "Inventory, price, payment, and reservation outcomes remain reconcilable.",
+      "id": "J99",
+      "tokens": [
+        "inventory",
+        "outcome",
+        "payment",
+        "price",
+        "reconcilable",
+        "remain",
+        "reservation"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Partial failures trigger defined recovery or manual-review handling.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21"
+      },
+      "quote": "Partial failures trigger defined recovery or manual-review handling.",
+      "id": "J100",
+      "tokens": [
+        "defined",
+        "failure",
+        "handling",
+        "manual",
+        "partial",
+        "recovery",
+        "review",
+        "trigger"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Reservation submission must use an idempotency mechanism.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21"
+      },
+      "quote": "Reservation submission must use an idempotency mechanism.",
+      "id": "J101",
+      "tokens": [
+        "idempotency",
+        "mechanism",
+        "reservation",
+        "submission",
+        "use"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The source of truth for confirmation status must be defined.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21"
+      },
+      "quote": "The source of truth for confirmation status must be defined.",
+      "id": "J102",
+      "tokens": [
+        "confirmation",
+        "defined",
+        "source",
+        "statu",
+        "truth"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Success displays confirmation identifier, hotel, stay summary, selected products, and total.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-22",
+        "summary": "7.4 Show booking outcome",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22"
+      },
+      "quote": "Success displays confirmation identifier, hotel, stay summary, selected products, and total.",
+      "id": "J103",
+      "tokens": [
+        "confirmation",
+        "display",
+        "hotel",
+        "identifier",
+        "product",
+        "selected",
+        "stay",
+        "success",
+        "summary",
+        "total"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "A failure does not display a false confirmation.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-22",
+        "summary": "7.4 Show booking outcome",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22"
+      },
+      "quote": "A failure does not display a false confirmation.",
+      "id": "J104",
+      "tokens": [
+        "confirmation",
+        "display",
+        "failure",
+        "false",
+        "not"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-22",
+        "summary": "7.4 Show booking outcome",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22"
+      },
+      "quote": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+      "id": "J105",
+      "tokens": [
+        "blindly",
+        "guest",
+        "instruct",
+        "not",
+        "path",
+        "provide",
+        "recovery",
+        "resubmit",
+        "safe",
+        "state",
+        "timeout",
+        "unknown"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23"
+      },
+      "quote": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "id": "J106",
+      "tokens": [
+        "acceptance",
+        "child",
+        "criteria",
+        "definition",
+        "done",
+        "meet",
+        "story",
+        "user"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Negative and error paths for each story are tested and evidenced.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23"
+      },
+      "quote": "Negative and error paths for each story are tested and evidenced.",
+      "id": "J107",
+      "tokens": [
+        "error",
+        "evidenced",
+        "negative",
+        "path",
+        "story",
+        "tested"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required logging is in place and verified free of sensitive data.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23"
+      },
+      "quote": "Required logging is in place and verified free of sensitive data.",
+      "id": "J108",
+      "tokens": [
+        "data",
+        "free",
+        "logging",
+        "required",
+        "sensitive",
+        "verified"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The Product Owner has accepted the capability end to end.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23"
+      },
+      "quote": "The Product Owner has accepted the capability end to end.",
+      "id": "J109",
+      "tokens": [
+        "accepted",
+        "capability",
+        "end",
+        "owner",
+        "product"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24"
+      },
+      "quote": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+      "id": "J110",
+      "tokens": [
+        "applicable",
+        "booked",
+        "confirmation",
+        "contain",
+        "date",
+        "detail",
+        "guest",
+        "hotel",
+        "information",
+        "item",
+        "message",
+        "policy",
+        "pricing",
+        "safe",
+        "stay",
+        "summary"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The message content matches the confirmed reservation state.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24"
+      },
+      "quote": "The message content matches the confirmed reservation state.",
+      "id": "J111",
+      "tokens": [
+        "confirmed",
+        "content",
+        "matche",
+        "message",
+        "reservation",
+        "state"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Templates support required locale and accessibility standards.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24"
+      },
+      "quote": "Templates support required locale and accessibility standards.",
+      "id": "J112",
+      "tokens": [
+        "accessibility",
+        "locale",
+        "required",
+        "standard",
+        "support",
+        "template"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Only necessary personal data may be included.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24"
+      },
+      "quote": "Only necessary personal data may be included.",
+      "id": "J113",
+      "tokens": [
+        "data",
+        "included",
+        "necessary",
+        "only",
+        "personal"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Sensitive payment details must not appear.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24"
+      },
+      "quote": "Sensitive payment details must not appear.",
+      "id": "J114",
+      "tokens": [
+        "appear",
+        "detail",
+        "not",
+        "payment",
+        "sensitive"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "A successful reservation creates one confirmation-email request.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25"
+      },
+      "quote": "A successful reservation creates one confirmation-email request.",
+      "id": "J115",
+      "tokens": [
+        "confirmation",
+        "create",
+        "email",
+        "one",
+        "request",
+        "reservation",
+        "successful"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Send failure does not reverse a valid reservation.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25"
+      },
+      "quote": "Send failure does not reverse a valid reservation.",
+      "id": "J116",
+      "tokens": [
+        "failure",
+        "not",
+        "reservation",
+        "reverse",
+        "send",
+        "valid"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Permitted retries avoid duplicate or excessive messages.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25"
+      },
+      "quote": "Permitted retries avoid duplicate or excessive messages.",
+      "id": "J117",
+      "tokens": [
+        "avoid",
+        "duplicate",
+        "excessive",
+        "message",
+        "permitted",
+        "retry"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25"
+      },
+      "quote": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+      "id": "J118",
+      "tokens": [
+        "bounced",
+        "delivered",
+        "distinguish",
+        "failed",
+        "operational",
+        "provider",
+        "queued",
+        "sent",
+        "state",
+        "supported",
+        "user"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Email addresses must be masked outside authorized operational views.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25"
+      },
+      "quote": "Email addresses must be masked outside authorized operational views.",
+      "id": "J119",
+      "tokens": [
+        "addresse",
+        "authorized",
+        "email",
+        "masked",
+        "operational",
+        "outside",
+        "view"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The request verifies sufficient reservation information without exposing data.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-26",
+        "summary": "8.3 Resend confirmation safely",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26"
+      },
+      "quote": "The request verifies sufficient reservation information without exposing data.",
+      "id": "J120",
+      "tokens": [
+        "data",
+        "exposing",
+        "information",
+        "request",
+        "reservation",
+        "sufficient",
+        "verify",
+        "without"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Rate limits and abuse controls apply.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-26",
+        "summary": "8.3 Resend confirmation safely",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26"
+      },
+      "quote": "Rate limits and abuse controls apply.",
+      "id": "J121",
+      "tokens": [
+        "abuse",
+        "apply",
+        "control",
+        "limit",
+        "rate"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The resend creates a new message event without creating a new reservation.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-26",
+        "summary": "8.3 Resend confirmation safely",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26"
+      },
+      "quote": "The resend creates a new message event without creating a new reservation.",
+      "id": "J122",
+      "tokens": [
+        "create",
+        "creating",
+        "event",
+        "message",
+        "new",
+        "resend",
+        "reservation",
+        "without"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27"
+      },
+      "quote": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "id": "J123",
+      "tokens": [
+        "acceptance",
+        "child",
+        "criteria",
+        "definition",
+        "done",
+        "meet",
+        "story",
+        "user"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Negative and error paths for each story are tested and evidenced.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27"
+      },
+      "quote": "Negative and error paths for each story are tested and evidenced.",
+      "id": "J124",
+      "tokens": [
+        "error",
+        "evidenced",
+        "negative",
+        "path",
+        "story",
+        "tested"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Required logging is in place and verified free of sensitive data.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27"
+      },
+      "quote": "Required logging is in place and verified free of sensitive data.",
+      "id": "J125",
+      "tokens": [
+        "data",
+        "free",
+        "logging",
+        "required",
+        "sensitive",
+        "verified"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "The Product Owner has accepted the capability end to end.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-epic",
+        "ref": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27"
+      },
+      "quote": "The Product Owner has accepted the capability end to end.",
+      "id": "J126",
+      "tokens": [
+        "accepted",
+        "capability",
+        "end",
+        "owner",
+        "product"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Sensitive data is classified and mapped to approved storage and processing locations.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28"
+      },
+      "quote": "Sensitive data is classified and mapped to approved storage and processing locations.",
+      "id": "J127",
+      "tokens": [
+        "approved",
+        "classified",
+        "data",
+        "location",
+        "mapped",
+        "processing",
+        "sensitive",
+        "storage"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Data is encrypted in transit and at rest where required.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28"
+      },
+      "quote": "Data is encrypted in transit and at rest where required.",
+      "id": "J128",
+      "tokens": [
+        "data",
+        "encrypted",
+        "required",
+        "rest",
+        "transit",
+        "where"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Logs and analytics exclude or mask prohibited fields.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28"
+      },
+      "quote": "Logs and analytics exclude or mask prohibited fields.",
+      "id": "J129",
+      "tokens": [
+        "analytic",
+        "exclude",
+        "field",
+        "log",
+        "mask",
+        "prohibited"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Access to operational data is role-based and auditable.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28"
+      },
+      "quote": "Access to operational data is role-based and auditable.",
+      "id": "J130",
+      "tokens": [
+        "access",
+        "auditable",
+        "based",
+        "data",
+        "operational",
+        "role"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Retention and deletion follow approved policy.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28"
+      },
+      "quote": "Retention and deletion follow approved policy.",
+      "id": "J131",
+      "tokens": [
+        "approved",
+        "deletion",
+        "follow",
+        "policy",
+        "retention"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Events use a correlation ID across supported services.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29"
+      },
+      "quote": "Events use a correlation ID across supported services.",
+      "id": "J132",
+      "tokens": [
+        "across",
+        "correlation",
+        "event",
+        "id",
+        "service",
+        "supported",
+        "use"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Business events and technical logs are distinguishable.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29"
+      },
+      "quote": "Business events and technical logs are distinguishable.",
+      "id": "J133",
+      "tokens": [
+        "distinguishable",
+        "event",
+        "log",
+        "technical"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Metrics and alerts exist for agreed critical failures and latency.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29"
+      },
+      "quote": "Metrics and alerts exist for agreed critical failures and latency.",
+      "id": "J134",
+      "tokens": [
+        "agreed",
+        "alert",
+        "critical",
+        "exist",
+        "failure",
+        "latency",
+        "metric"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29"
+      },
+      "quote": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+      "id": "J135",
+      "tokens": [
+        "block",
+        "booking",
+        "degradation",
+        "explicitly",
+        "expose",
+        "logging",
+        "not",
+        "payload",
+        "required",
+        "sensitive",
+        "silently",
+        "unless"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Event schemas must be versioned.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29"
+      },
+      "quote": "Event schemas must be versioned.",
+      "id": "J136",
+      "tokens": [
+        "event",
+        "schema",
+        "versioned"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Production log access must be controlled and retained according to policy.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29"
+      },
+      "quote": "Production log access must be controlled and retained according to policy.",
+      "id": "J137",
+      "tokens": [
+        "access",
+        "according",
+        "controlled",
+        "log",
+        "policy",
+        "production",
+        "retained"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-30",
+        "summary": "9.3 Meet accessibility requirements",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30"
+      },
+      "quote": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+      "id": "J138",
+      "tokens": [
+        "accessible",
+        "error",
+        "focu",
+        "handling",
+        "instruction",
+        "keyboard",
+        "label",
+        "messaging",
+        "navigation",
+        "order",
+        "statu"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Visual information is not conveyed by color alone.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-30",
+        "summary": "9.3 Meet accessibility requirements",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30"
+      },
+      "quote": "Visual information is not conveyed by color alone.",
+      "id": "J139",
+      "tokens": [
+        "alone",
+        "color",
+        "conveyed",
+        "information",
+        "not",
+        "visual"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Dynamic updates are announced appropriately.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-30",
+        "summary": "9.3 Meet accessibility requirements",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30"
+      },
+      "quote": "Dynamic updates are announced appropriately.",
+      "id": "J140",
+      "tokens": [
+        "announced",
+        "appropriately",
+        "dynamic",
+        "update"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Email templates are readable and structurally accessible.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-30",
+        "summary": "9.3 Meet accessibility requirements",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30"
+      },
+      "quote": "Email templates are readable and structurally accessible.",
+      "id": "J141",
+      "tokens": [
+        "accessible",
+        "email",
+        "readable",
+        "structurally",
+        "template"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-31",
+        "summary": "9.4 Meet performance and reliability objectives",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31"
+      },
+      "quote": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+      "id": "J142",
+      "tokens": [
+        "agreed",
+        "cart",
+        "checkout",
+        "dependency",
+        "email",
+        "performance",
+        "pricing",
+        "reservation",
+        "search",
+        "target"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-31",
+        "summary": "9.4 Meet performance and reliability objectives",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31"
+      },
+      "quote": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+      "id": "J143",
+      "tokens": [
+        "behavior",
+        "breaker",
+        "circuit",
+        "documented",
+        "fallback",
+        "retry",
+        "timeout"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Load, resilience, and recovery tests cover critical journeys.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-31",
+        "summary": "9.4 Meet performance and reliability objectives",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31"
+      },
+      "quote": "Load, resilience, and recovery tests cover critical journeys.",
+      "id": "J144",
+      "tokens": [
+        "cover",
+        "critical",
+        "journey",
+        "load",
+        "recovery",
+        "resilience",
+        "test"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+      "source": "jira",
+      "input": "epic",
+      "origin": {
+        "kind": "jira-story",
+        "ref": "AQPI-31",
+        "summary": "9.4 Meet performance and reliability objectives",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31"
+      },
+      "quote": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+      "id": "J145",
+      "tokens": [
+        "analytic",
+        "critical",
+        "integrity",
+        "non",
+        "over",
+        "personalization",
+        "prioritized",
+        "reservation"
+      ],
+      "values": [],
+      "signature": ""
+    },
+    {
+      "text": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
+      "source": "code",
+      "input": "codebase",
+      "origin": {
+        "kind": "code-source",
+        "ref": "cart-service/src/main/resources/cart-service.yml",
+        "line": 16,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+        "story": "AQPI-15"
+      },
+      "quote": "# @rule [AQPI-15] A cart expires 30 minutes after it is created and never creates a reservation itself.",
+      "id": "C1",
+      "tokens": [
+        "after",
+        "cart",
+        "create",
+        "created",
+        "expire",
+        "itself",
+        "minute",
+        "never",
+        "reservation"
+      ],
+      "values": [
+        {
+          "num": 30,
+          "unit": "",
+          "raw": "30"
+        }
+      ],
+      "signature": "30"
+    },
+    {
+      "text": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+      "source": "code",
+      "input": "codebase",
+      "origin": {
+        "kind": "code-source",
+        "ref": "cart-service/src/main/resources/cart-service.yml",
+        "line": 17,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+        "story": "AQPI-17"
+      },
+      "quote": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout.",
+      "id": "C2",
+      "tokens": [
+        "acknowledged",
+        "before",
+        "change",
+        "checkout",
+        "guest",
+        "price"
+      ],
+      "values": [
+        {
+          "num": 1,
+          "unit": "%",
+          "raw": "1%"
+        }
+      ],
+      "signature": "1 %"
+    },
+    {
+      "text": "A confirmation can be resent at most 3 times per booking in 24 hours.",
+      "source": "code",
+      "input": "codebase",
+      "origin": {
+        "kind": "code-source",
+        "ref": "notification-service/src/main/resources/notification-service.yml",
+        "line": 7,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/notification-service/src/main/resources/notification-service.yml",
+        "story": "AQPI-26"
+      },
+      "quote": "# @rule [AQPI-26] A confirmation can be resent at most 3 times per booking in 24 hours.",
+      "id": "C3",
+      "tokens": [
+        "booking",
+        "confirmation",
+        "most",
+        "resent",
+        "time"
+      ],
+      "values": [
+        {
+          "num": 24,
+          "unit": "hours",
+          "raw": "24 hours"
+        },
+        {
+          "num": 3,
+          "unit": "",
+          "raw": "3"
+        }
+      ],
+      "signature": "24 hours | 3"
+    },
+    {
+      "text": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+      "source": "code",
+      "input": "codebase",
+      "origin": {
+        "kind": "code-source",
+        "ref": "reservation-service/src/main/resources/reservation-service.yml",
+        "line": 20,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/reservation-service/src/main/resources/reservation-service.yml",
+        "story": "AQPI-21"
+      },
+      "quote": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+      "id": "C4",
+      "tokens": [
+        "character",
+        "idempotency",
+        "key",
+        "need",
+        "original",
+        "outcome",
+        "replay",
+        "request",
+        "reservation",
+        "return"
+      ],
+      "values": [
+        {
+          "num": 24,
+          "unit": "hours",
+          "raw": "24 hours"
+        },
+        {
+          "num": 8,
+          "unit": "",
+          "raw": "8"
+        },
+        {
+          "num": 64,
+          "unit": "",
+          "raw": "64"
+        }
+      ],
+      "signature": "24 hours | 64 | 8"
+    },
+    {
+      "text": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+      "source": "code",
+      "input": "codebase",
+      "origin": {
+        "kind": "code-source",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 12,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+        "story": "AQPI-4"
+      },
+      "quote": "# @rule [AQPI-4] A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+      "id": "C5",
+      "tokens": [
+        "allow",
+        "most",
+        "par",
+        "pari",
+        "stay"
+      ],
+      "values": [
+        {
+          "num": 30,
+          "unit": "nights",
+          "raw": "30 nights"
+        },
+        {
+          "num": 21,
+          "unit": "nights",
+          "raw": "21 nights"
+        }
+      ],
+      "signature": "21 nights | 30 nights"
+    },
+    {
+      "text": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+      "source": "code",
+      "input": "codebase",
+      "origin": {
+        "kind": "code-source",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 13,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+        "story": "AQPI-4"
+      },
+      "quote": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+      "id": "C6",
+      "tokens": [
+        "adult",
+        "book",
+        "children",
+        "hold",
+        "most",
+        "one",
+        "room",
+        "search"
+      ],
+      "values": [
+        {
+          "num": 8,
+          "unit": "rooms",
+          "raw": "8 rooms"
+        },
+        {
+          "num": 4,
+          "unit": "",
+          "raw": "4"
+        },
+        {
+          "num": 3,
+          "unit": "",
+          "raw": "3"
+        },
+        {
+          "num": 1,
+          "unit": "",
+          "raw": "1"
+        }
+      ],
+      "signature": "1 | 3 | 4 | 8 rooms"
+    },
+    {
+      "text": "Check-in can be at most 500 days ahead.",
+      "source": "code",
+      "input": "codebase",
+      "origin": {
+        "kind": "code-source",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 14,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+        "story": "AQPI-4"
+      },
+      "quote": "# @rule [AQPI-4] Check-in can be at most 500 days ahead.",
+      "id": "C7",
+      "tokens": [
+        "ahead",
+        "check",
+        "most"
+      ],
+      "values": [
+        {
+          "num": 500,
+          "unit": "days",
+          "raw": "500 days"
+        }
+      ],
+      "signature": "500 days"
+    }
+  ],
+  "groups": [
+    {
+      "id": "G1",
+      "bucket": "jira-only",
+      "subject": "complete confirmation flow guest input search using valid",
+      "text": "A guest can complete the complete search-to-confirmation flow using valid inputs.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "A guest can complete the complete search-to-confirmation flow using valid inputs.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J1"
+          ]
+        }
+      ],
+      "members": [
+        "J1"
+      ]
+    },
+    {
+      "id": "G2",
+      "bucket": "jira-only",
+      "subject": "available bookable inventory only presented rate valid",
+      "text": "Only bookable inventory and valid rates are presented as available.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Only bookable inventory and valid rates are presented as available.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J2"
+          ]
+        }
+      ],
+      "members": [
+        "J2"
+      ]
+    },
+    {
+      "id": "G3",
+      "bucket": "jira-only",
+      "subject": "before confirmation disclosed fee including mandatory price taxe total",
+      "text": "Total price is disclosed before confirmation, including mandatory taxes and fees.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Total price is disclosed before confirmation, including mandatory taxes and fees.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J3"
+          ]
+        }
+      ],
+      "members": [
+        "J3"
+      ]
+    },
+    {
+      "id": "G4",
+      "bucket": "jira-only",
+      "subject": "ancillary block booking declined not offer unavailable",
+      "text": "Ancillary offers do not block booking when declined or unavailable.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Ancillary offers do not block booking when declined or unavailable.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J4"
+          ]
+        }
+      ],
+      "members": [
+        "J4"
+      ]
+    },
+    {
+      "id": "G5",
+      "bucket": "jira-only",
+      "subject": "duplicate handle platform prevent reservation safely submission",
+      "text": "The platform prevents or safely handles duplicate reservation submissions.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The platform prevents or safely handles duplicate reservation submissions.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J5"
+          ]
+        }
+      ],
+      "members": [
+        "J5"
+      ]
+    },
+    {
+      "id": "G6",
+      "bucket": "jira-only",
+      "subject": "confirmation durable identifier produce reservation successful",
+      "text": "A successful reservation produces a durable confirmation identifier.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "A successful reservation produces a durable confirmation identifier.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J6"
+          ]
+        }
+      ],
+      "members": [
+        "J6"
+      ]
+    },
+    {
+      "id": "G7",
+      "bucket": "jira-only",
+      "subject": "confirmation displayed email generated request screen",
+      "text": "Confirmation is displayed on screen and an email request is generated.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Confirmation is displayed on screen and an email request is generated.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J7"
+          ]
+        }
+      ],
+      "members": [
+        "J7"
+      ]
+    },
+    {
+      "id": "G8",
+      "bucket": "jira-only",
+      "subject": "approved event identifier logged masking required rule technical using",
+      "text": "Required business and technical events are logged using approved identifiers and masking rules.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Required business and technical events are logged using approved identifiers and masking rules.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J8"
+          ]
+        }
+      ],
+      "members": [
+        "J8"
+      ]
+    },
+    {
+      "id": "G9",
+      "bucket": "jira-only",
+      "subject": "acceptance child criteria definition done meet story user",
+      "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J9",
+            "J28",
+            "J45",
+            "J63",
+            "J81",
+            "J106",
+            "J123"
+          ]
+        }
+      ],
+      "members": [
+        "J9",
+        "J28",
+        "J45",
+        "J63",
+        "J81",
+        "J106",
+        "J123"
+      ]
+    },
+    {
+      "id": "G10",
+      "bucket": "jira-only",
+      "subject": "error evidenced negative path story tested",
+      "text": "Negative and error paths for each story are tested and evidenced.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Negative and error paths for each story are tested and evidenced.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J10",
+            "J29",
+            "J46",
+            "J64",
+            "J82",
+            "J107",
+            "J124"
+          ]
+        }
+      ],
+      "members": [
+        "J10",
+        "J29",
+        "J46",
+        "J64",
+        "J82",
+        "J107",
+        "J124"
+      ]
+    },
+    {
+      "id": "G11",
+      "bucket": "jira-only",
+      "subject": "data free logging required sensitive verified",
+      "text": "Required logging is in place and verified free of sensitive data.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Required logging is in place and verified free of sensitive data.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J11",
+            "J30",
+            "J47",
+            "J65",
+            "J83",
+            "J108",
+            "J125"
+          ]
+        }
+      ],
+      "members": [
+        "J11",
+        "J30",
+        "J47",
+        "J65",
+        "J83",
+        "J108",
+        "J125"
+      ]
+    },
+    {
+      "id": "G12",
+      "bucket": "jira-only",
+      "subject": "accepted capability end owner product",
+      "text": "The Product Owner has accepted the capability end to end.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The Product Owner has accepted the capability end to end.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J12",
+            "J31",
+            "J48",
+            "J66",
+            "J84",
+            "J109",
+            "J126"
+          ]
+        }
+      ],
+      "members": [
+        "J12",
+        "J31",
+        "J48",
+        "J66",
+        "J84",
+        "J109",
+        "J126"
+      ]
+    },
+    {
+      "id": "G13",
+      "bucket": "jira-only",
+      "subject": "available created criteria given guest hotel matching request returned search submit then valid",
+      "text": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J13"
+          ]
+        }
+      ],
+      "members": [
+        "J13"
+      ]
+    },
+    {
+      "id": "G14",
+      "bucket": "jira-only",
+      "subject": "criteria editable page remain result submitted visible",
+      "text": "The submitted criteria remain visible and editable on the results page.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The submitted criteria remain visible and editable on the results page.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J14"
+          ]
+        }
+      ],
+      "members": [
+        "J14"
+      ]
+    },
+    {
+      "id": "G15",
+      "bucket": "jira-only",
+      "subject": "actionable after check date field mandatory message missing not out past rejected",
+      "text": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J15"
+          ]
+        }
+      ],
+      "members": [
+        "J15"
+      ]
+    },
+    {
+      "id": "G16",
+      "bucket": "jira-only",
+      "subject": "allow availability change criteria explain found inventory matching no result was",
+      "text": "A no-availability result explains that no matching inventory was found and allows criteria changes.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "A no-availability result explains that no matching inventory was found and allows criteria changes.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J16"
+          ]
+        }
+      ],
+      "members": [
+        "J16"
+      ]
+    },
+    {
+      "id": "G17",
+      "bucket": "jira-only",
+      "subject": "check out precede",
+      "text": "Check-in must precede check-out.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Check-in must precede check-out.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J17"
+          ]
+        }
+      ],
+      "members": [
+        "J17"
+      ]
+    },
+    {
+      "id": "G18",
+      "bucket": "jira-only",
+      "subject": "comply configured limit occupancy room",
+      "text": "Occupancy must comply with configured room limits.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Occupancy must comply with configured room limits.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J18"
+          ]
+        }
+      ],
+      "members": [
+        "J18"
+      ]
+    },
+    {
+      "id": "G19",
+      "bucket": "jira-only",
+      "subject": "configurable length maximum stay",
+      "text": "Maximum stay length must be configurable.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Maximum stay length must be configurable.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J19"
+          ]
+        }
+      ],
+      "members": [
+        "J19"
+      ]
+    },
+    {
+      "id": "G20",
+      "bucket": "jira-only",
+      "subject": "clearly field identified required",
+      "text": "Required fields are clearly identified.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Required fields are clearly identified.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J20"
+          ]
+        }
+      ],
+      "members": [
+        "J20"
+      ]
+    },
+    {
+      "id": "G21",
+      "bucket": "jira-only",
+      "subject": "combination field invalid level message return",
+      "text": "Invalid combinations return field-level messages.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Invalid combinations return field-level messages.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J21"
+          ]
+        }
+      ],
+      "members": [
+        "J21"
+      ]
+    },
+    {
+      "id": "G22",
+      "bucket": "jira-only",
+      "subject": "authoritative client differ result server validation",
+      "text": "Server validation is authoritative when client and server results differ.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Server validation is authoritative when client and server results differ.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J22"
+          ]
+        }
+      ],
+      "members": [
+        "J22"
+      ]
+    },
+    {
+      "id": "G23",
+      "bucket": "jira-only",
+      "subject": "accessible assistive message technology validation",
+      "text": "Validation messages are accessible to assistive technology.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Validation messages are accessible to assistive technology.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J23"
+          ]
+        }
+      ],
+      "members": [
+        "J23"
+      ]
+    },
+    {
+      "id": "G24",
+      "bucket": "jira-only",
+      "subject": "configurable market property rule validation vary where",
+      "text": "Validation rules must be configurable where market or property rules vary.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Validation rules must be configurable where market or property rules vary.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J24"
+          ]
+        }
+      ],
+      "members": [
+        "J24"
+      ]
+    },
+    {
+      "id": "G25",
+      "bucket": "jira-only",
+      "subject": "alter date destination filter occupancy option provide result zero",
+      "text": "Zero results provide options to alter dates, occupancy, destination, or filters.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Zero results provide options to alter dates, occupancy, destination, or filters.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J25"
+          ]
+        }
+      ],
+      "members": [
+        "J25"
+      ]
+    },
+    {
+      "id": "G26",
+      "bucket": "jira-only",
+      "subject": "display failure message non option retry technical",
+      "text": "Technical failures display a non-technical message and retry option.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Technical failures display a non-technical message and retry option.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J26"
+          ]
+        }
+      ],
+      "members": [
+        "J26"
+      ]
+    },
+    {
+      "id": "G27",
+      "bucket": "jira-only",
+      "subject": "create inconsistent not repeated session submission",
+      "text": "Repeated submission does not create inconsistent sessions.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Repeated submission does not create inconsistent sessions.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J27"
+          ]
+        }
+      ],
+      "members": [
+        "J27"
+      ]
+    },
+    {
+      "id": "G28",
+      "bucket": "jira-only",
+      "subject": "availability currency hotel image indicator location name price representative result show starting",
+      "text": "Each result shows hotel name, location, representative image, starting price, currency, and availability indicator.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Each result shows hotel name, location, representative image, starting price, currency, and availability indicator.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J32"
+          ]
+        }
+      ],
+      "members": [
+        "J32"
+      ]
+    },
+    {
+      "id": "G29",
+      "bucket": "jira-only",
+      "subject": "clearly disclosed fee mandatory pricing qualification",
+      "text": "Mandatory fees or pricing qualifications are clearly disclosed.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Mandatory fees or pricing qualifications are clearly disclosed.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J33"
+          ]
+        }
+      ],
+      "members": [
+        "J33"
+      ]
+    },
+    {
+      "id": "G30",
+      "bucket": "jira-only",
+      "subject": "bookable hotel immediately not presented unavailable",
+      "text": "Unavailable hotels are not presented as immediately bookable.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Unavailable hotels are not presented as immediately bookable.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J34"
+          ]
+        }
+      ],
+      "members": [
+        "J34"
+      ]
+    },
+    {
+      "id": "G31",
+      "bucket": "jira-only",
+      "subject": "loading pagination progressive result support",
+      "text": "Results support pagination or progressive loading.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Results support pagination or progressive loading.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J35"
+          ]
+        }
+      ],
+      "members": [
+        "J35"
+      ]
+    },
+    {
+      "id": "G32",
+      "bucket": "jira-only",
+      "subject": "correspond criteria displayed price rate returned search starting valid",
+      "text": "Displayed starting price must correspond to a valid rate returned for the search criteria.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Displayed starting price must correspond to a valid rate returned for the search criteria.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J36"
+          ]
+        }
+      ],
+      "members": [
+        "J36"
+      ]
+    },
+    {
+      "id": "G33",
+      "bucket": "jira-only",
+      "subject": "amenity apply available category data distance filter guest hotel price range such supported",
+      "text": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J37"
+          ]
+        }
+      ],
+      "members": [
+        "J37"
+      ]
+    },
+    {
+      "id": "G34",
+      "bucket": "jira-only",
+      "subject": "approved guest option sort using",
+      "text": "The guest can sort using approved options.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest can sort using approved options.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J38"
+          ]
+        }
+      ],
+      "members": [
+        "J38"
+      ]
+    },
+    {
+      "id": "G35",
+      "bucket": "jira-only",
+      "subject": "criteria removable selected visible",
+      "text": "Selected criteria are visible and removable.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Selected criteria are visible and removable.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J39"
+          ]
+        }
+      ],
+      "members": [
+        "J39"
+      ]
+    },
+    {
+      "id": "G36",
+      "bucket": "jira-only",
+      "subject": "after filtering offer option reset result zero",
+      "text": "Zero results after filtering offer a reset option.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Zero results after filtering offer a reset option.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J40"
+          ]
+        }
+      ],
+      "members": [
+        "J40"
+      ]
+    },
+    {
+      "id": "G37",
+      "bucket": "jira-only",
+      "subject": "amenity description displayed hotel image location major option policy pricing relevant restriction room",
+      "text": "Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J41"
+          ]
+        }
+      ],
+      "members": [
+        "J41"
+      ]
+    },
+    {
+      "id": "G38",
+      "bucket": "jira-only",
+      "subject": "guest plan rate room select valid",
+      "text": "The guest can select a valid room and rate plan.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest can select a valid room and rate plan.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J42"
+          ]
+        }
+      ],
+      "members": [
+        "J42"
+      ]
+    },
+    {
+      "id": "G39",
+      "bucket": "jira-only",
+      "subject": "before change continuing guest if informed inventory",
+      "text": "If inventory changes, the guest is informed before continuing.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "If inventory changes, the guest is informed before continuing.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J43"
+          ]
+        }
+      ],
+      "members": [
+        "J43"
+      ]
+    },
+    {
+      "id": "G40",
+      "bucket": "jira-only",
+      "subject": "before cancellation condition rate selection shown term",
+      "text": "Rate conditions and cancellation terms must be shown before selection.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Rate conditions and cancellation terms must be shown before selection.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J44"
+          ]
+        }
+      ],
+      "members": [
+        "J44"
+      ]
+    },
+    {
+      "id": "G41",
+      "bucket": "jira-only",
+      "subject": "attribute available composition consented consider context date declared destination hotel interest party profile room season service stay such",
+      "text": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J49"
+          ]
+        }
+      ],
+      "members": [
+        "J49"
+      ]
+    },
+    {
+      "id": "G42",
+      "bucket": "jira-only",
+      "subject": "excluded ineligible product unavailable",
+      "text": "Unavailable or ineligible products are excluded.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Unavailable or ineligible products are excluded.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J50"
+          ]
+        }
+      ],
+      "members": [
+        "J50"
+      ]
+    },
+    {
+      "id": "G43",
+      "bucket": "jira-only",
+      "subject": "code item reason recommended return service",
+      "text": "The service returns a reason code for each recommended item.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The service returns a reason code for each recommended item.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J51"
+          ]
+        }
+      ],
+      "members": [
+        "J51"
+      ]
+    },
+    {
+      "id": "G44",
+      "bucket": "jira-only",
+      "subject": "contextual data default personalization returned safe unavailable",
+      "text": "When personalization data is unavailable, safe contextual defaults may be returned.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "When personalization data is unavailable, safe contextual defaults may be returned.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J52"
+          ]
+        }
+      ],
+      "members": [
+        "J52"
+      ]
+    },
+    {
+      "id": "G45",
+      "bucket": "jira-only",
+      "subject": "inferred not sensitive trait used",
+      "text": "Sensitive traits must not be inferred or used.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Sensitive traits must not be inferred or used.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J53"
+          ]
+        }
+      ],
+      "members": [
+        "J53"
+      ]
+    },
+    {
+      "id": "G46",
+      "bucket": "jira-only",
+      "subject": "consent data honor personalization retention rule",
+      "text": "Personalization must honor consent and data-retention rules.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Personalization must honor consent and data-retention rules.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J54"
+          ]
+        }
+      ],
+      "members": [
+        "J54"
+      ]
+    },
+    {
+      "id": "G47",
+      "bucket": "jira-only",
+      "subject": "auditable model rule version",
+      "text": "Business rules and model versions must be auditable.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Business rules and model versions must be auditable.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J55"
+          ]
+        }
+      ],
+      "members": [
+        "J55"
+      ]
+    },
+    {
+      "id": "G48",
+      "bucket": "jira-only",
+      "subject": "applicability currency description name offer price restriction show",
+      "text": "Each offer shows name, description, price, currency, applicability, and any restrictions.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Each offer shows name, description, price, currency, applicability, and any restrictions.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J56"
+          ]
+        }
+      ],
+      "members": [
+        "J56"
+      ]
+    },
+    {
+      "id": "G49",
+      "bucket": "jira-only",
+      "subject": "add dismiss guest offer skip",
+      "text": "The guest can add, skip, or dismiss an offer.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest can add, skip, or dismiss an offer.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J57"
+          ]
+        }
+      ],
+      "members": [
+        "J57"
+      ]
+    },
+    {
+      "id": "G50",
+      "bucket": "jira-only",
+      "subject": "clearly distinguished fee mandatory offer",
+      "text": "Offers are clearly distinguished from mandatory fees.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Offers are clearly distinguished from mandatory fees.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J58"
+          ]
+        }
+      ],
+      "members": [
+        "J58"
+      ]
+    },
+    {
+      "id": "G51",
+      "bucket": "jira-only",
+      "subject": "block booking failure load not offer room",
+      "text": "Failure to load offers does not block room booking.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Failure to load offers does not block room booking.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J59"
+          ]
+        }
+      ],
+      "members": [
+        "J59"
+      ]
+    },
+    {
+      "id": "G52",
+      "bucket": "jira-only",
+      "subject": "identify interface offer personalized required where",
+      "text": "The interface identifies when offers are personalized where required.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The interface identifies when offers are personalized where required.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J60"
+          ]
+        }
+      ],
+      "members": [
+        "J60"
+      ]
+    },
+    {
+      "id": "G53",
+      "bucket": "jira-only",
+      "subject": "ancillary guest proceed product selecting without",
+      "text": "The guest can proceed without selecting ancillary products.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest can proceed without selecting ancillary products.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J61"
+          ]
+        }
+      ],
+      "members": [
+        "J61"
+      ]
+    },
+    {
+      "id": "G54",
+      "bucket": "jira-only",
+      "subject": "according affect change consent eligible future policy preference recommendation",
+      "text": "A consent or preference change affects future eligible recommendations according to policy.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "A consent or preference change affects future eligible recommendations according to policy.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J62"
+          ]
+        }
+      ],
+      "members": [
+        "J62"
+      ]
+    },
+    {
+      "id": "G55",
+      "bucket": "jira-only",
+      "subject": "cart component contain currency date hotel occupancy plan price quantity rate room stay",
+      "text": "The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J67"
+          ]
+        }
+      ],
+      "members": [
+        "J67"
+      ]
+    },
+    {
+      "id": "G56",
+      "bucket": "jira-only",
+      "subject": "inventory price required revalidated",
+      "text": "Inventory and price are revalidated when required.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Inventory and price are revalidated when required.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J68"
+          ]
+        }
+      ],
+      "members": [
+        "J68"
+      ]
+    },
+    {
+      "id": "G57",
+      "bucket": "jira-only",
+      "subject": "behavior cart defined display expiration relevant timeout",
+      "text": "The cart has a defined expiration and displays relevant timeout behavior.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The cart has a defined expiration and displays relevant timeout behavior.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J69"
+          ]
+        }
+      ],
+      "members": [
+        "J69"
+      ]
+    },
+    {
+      "id": "G58",
+      "bucket": "jira-only",
+      "subject": "cart create itself not reservation",
+      "text": "A cart must not itself create a reservation.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "A cart must not itself create a reservation.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J70"
+          ]
+        }
+      ],
+      "members": [
+        "J70"
+      ]
+    },
+    {
+      "id": "G59",
+      "bucket": "jira-only",
+      "subject": "acknowledgement change guest handling material price require",
+      "text": "Price-change handling must require guest acknowledgement when material.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Price-change handling must require guest acknowledgement when material.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J71"
+          ]
+        }
+      ],
+      "members": [
+        "J71"
+      ]
+    },
+    {
+      "id": "G60",
+      "bucket": "jira-only",
+      "subject": "add ancillary available guest",
+      "text": "The guest can add an available ancillary.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest can add an available ancillary.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J72"
+          ]
+        }
+      ],
+      "members": [
+        "J72"
+      ]
+    },
+    {
+      "id": "G61",
+      "bucket": "jira-only",
+      "subject": "changed limit product quantity supported",
+      "text": "Supported quantities can be changed within product limits.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Supported quantities can be changed within product limits.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J73"
+          ]
+        }
+      ],
+      "members": [
+        "J73"
+      ]
+    },
+    {
+      "id": "G62",
+      "bucket": "jira-only",
+      "subject": "immediately removal total update",
+      "text": "Removal updates totals immediately.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Removal updates totals immediately.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J74"
+          ]
+        }
+      ],
+      "members": [
+        "J74"
+      ]
+    },
+    {
+      "id": "G63",
+      "bucket": "jira-only",
+      "subject": "cannot ineligible out product retained silently sold",
+      "text": "Ineligible or sold-out products cannot be retained silently.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Ineligible or sold-out products cannot be retained silently.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J75"
+          ]
+        }
+      ],
+      "members": [
+        "J75"
+      ]
+    },
+    {
+      "id": "G64",
+      "bucket": "jira-only",
+      "subject": "charge discount fee itemized mandatory optional product room taxe total",
+      "text": "Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J76"
+          ]
+        }
+      ],
+      "members": [
+        "J76"
+      ]
+    },
+    {
+      "id": "G65",
+      "bucket": "jira-only",
+      "subject": "consistently currency displayed",
+      "text": "Currency is consistently displayed.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Currency is consistently displayed.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J77"
+          ]
+        }
+      ],
+      "members": [
+        "J77"
+      ]
+    },
+    {
+      "id": "G66",
+      "bucket": "jira-only",
+      "subject": "acknowledgement change highlighted material require",
+      "text": "Material changes are highlighted and require acknowledgement.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Material changes are highlighted and require acknowledgement.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J78"
+          ]
+        }
+      ],
+      "members": [
+        "J78"
+      ]
+    },
+    {
+      "id": "G67",
+      "bucket": "jira-only",
+      "subject": "edit guest return selection supported",
+      "text": "The guest can return to edit supported selections.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest can return to edit supported selections.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J79"
+          ]
+        }
+      ],
+      "members": [
+        "J79"
+      ]
+    },
+    {
+      "id": "G68",
+      "bucket": "jira-only",
+      "subject": "before final payable reservation revalidated submission total",
+      "text": "The final payable total must be revalidated before reservation submission.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The final payable total must be revalidated before reservation submission.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J80"
+          ]
+        }
+      ],
+      "members": [
+        "J80"
+      ]
+    },
+    {
+      "id": "G69",
+      "bucket": "jira-only",
+      "subject": "clearly distinguished field optional required",
+      "text": "Required and optional fields are clearly distinguished.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Required and optional fields are clearly distinguished.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J85"
+          ]
+        }
+      ],
+      "members": [
+        "J85"
+      ]
+    },
+    {
+      "id": "G70",
+      "bucket": "jira-only",
+      "subject": "accessible error input message validated",
+      "text": "Inputs are validated and error messages are accessible.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Inputs are validated and error messages are accessible.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J86"
+          ]
+        }
+      ],
+      "members": [
+        "J86"
+      ]
+    },
+    {
+      "id": "G71",
+      "bucket": "jira-only",
+      "subject": "applicable consent control guest notice privacy receive",
+      "text": "The guest receives applicable privacy notice and consent controls.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest receives applicable privacy notice and consent controls.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J87"
+          ]
+        }
+      ],
+      "members": [
+        "J87"
+      ]
+    },
+    {
+      "id": "G72",
+      "bucket": "jira-only",
+      "subject": "client data exposed log not securely transmitted",
+      "text": "Data is transmitted securely and is not exposed in client logs.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Data is transmitted securely and is not exposed in client logs.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J88"
+          ]
+        }
+      ],
+      "members": [
+        "J88"
+      ]
+    },
+    {
+      "id": "G73",
+      "bucket": "jira-only",
+      "subject": "apply data minimization",
+      "text": "Data minimization applies.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Data minimization applies.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J89"
+          ]
+        }
+      ],
+      "members": [
+        "J89"
+      ]
+    },
+    {
+      "id": "G74",
+      "bucket": "jira-only",
+      "subject": "analytic excluded log masked sensitive support tool value",
+      "text": "Sensitive values must be masked in support tools and excluded from analytics logs.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Sensitive values must be masked in support tools and excluded from analytics logs.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J90"
+          ]
+        }
+      ],
+      "members": [
+        "J90"
+      ]
+    },
+    {
+      "id": "G75",
+      "bucket": "jira-only",
+      "subject": "amount authorization before final guarantee guest payable see",
+      "text": "The guest sees the final payable or guarantee amount before authorization.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The guest sees the final payable or guarantee amount before authorization.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J91"
+          ]
+        }
+      ],
+      "members": [
+        "J91"
+      ]
+    },
+    {
+      "id": "G76",
+      "bucket": "jira-only",
+      "subject": "approved component data handled payment secure through",
+      "text": "Payment data is handled through approved secure components.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Payment data is handled through approved secure components.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J92"
+          ]
+        }
+      ],
+      "members": [
+        "J92"
+      ]
+    },
+    {
+      "id": "G77",
+      "bucket": "jira-only",
+      "subject": "authorization decline distinctly failure handled success technical timeout",
+      "text": "Authorization success, decline, timeout, and technical failure are handled distinctly.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Authorization success, decline, timeout, and technical failure are handled distinctly.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J93"
+          ]
+        }
+      ],
+      "members": [
+        "J93"
+      ]
+    },
+    {
+      "id": "G78",
+      "bucket": "jira-only",
+      "subject": "application card data log not product prohibited store",
+      "text": "The product does not store prohibited card data in application logs.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The product does not store prohibited card data in application logs.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J94"
+          ]
+        }
+      ],
+      "members": [
+        "J94"
+      ]
+    },
+    {
+      "id": "G79",
+      "bucket": "jira-only",
+      "subject": "condition depend payment rate requirement",
+      "text": "Payment requirements depend on rate conditions.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Payment requirements depend on rate conditions.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J95"
+          ]
+        }
+      ],
+      "members": [
+        "J95"
+      ]
+    },
+    {
+      "id": "G80",
+      "bucket": "jira-only",
+      "subject": "authorization avoid behavior duplicate retry",
+      "text": "Retry behavior must avoid duplicate authorization.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Retry behavior must avoid duplicate authorization.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J96"
+          ]
+        }
+      ],
+      "members": [
+        "J96"
+      ]
+    },
+    {
+      "id": "G81",
+      "bucket": "jira-only",
+      "subject": "confirmation create identifier one request reservation return successful",
+      "text": "A successful request creates one reservation and returns a confirmation identifier.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "A successful request creates one reservation and returns a confirmation identifier.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J97"
+          ]
+        }
+      ],
+      "members": [
+        "J97"
+      ]
+    },
+    {
+      "id": "G82",
+      "bucket": "jira-only",
+      "subject": "create duplicate idempotency key not repeated reservation same submission",
+      "text": "Repeated submissions with the same idempotency key do not create duplicate reservations.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Repeated submissions with the same idempotency key do not create duplicate reservations.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J98"
+          ]
+        }
+      ],
+      "members": [
+        "J98"
+      ]
+    },
+    {
+      "id": "G83",
+      "bucket": "jira-only",
+      "subject": "inventory outcome payment price reconcilable remain reservation",
+      "text": "Inventory, price, payment, and reservation outcomes remain reconcilable.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Inventory, price, payment, and reservation outcomes remain reconcilable.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J99"
+          ]
+        }
+      ],
+      "members": [
+        "J99"
+      ]
+    },
+    {
+      "id": "G84",
+      "bucket": "jira-only",
+      "subject": "defined failure handling manual partial recovery review trigger",
+      "text": "Partial failures trigger defined recovery or manual-review handling.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Partial failures trigger defined recovery or manual-review handling.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J100"
+          ]
+        }
+      ],
+      "members": [
+        "J100"
+      ]
+    },
+    {
+      "id": "G85",
+      "bucket": "jira-only",
+      "subject": "idempotency mechanism reservation submission use",
+      "text": "Reservation submission must use an idempotency mechanism.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Reservation submission must use an idempotency mechanism.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J101"
+          ]
+        }
+      ],
+      "members": [
+        "J101"
+      ]
+    },
+    {
+      "id": "G86",
+      "bucket": "jira-only",
+      "subject": "confirmation defined source statu truth",
+      "text": "The source of truth for confirmation status must be defined.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The source of truth for confirmation status must be defined.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J102"
+          ]
+        }
+      ],
+      "members": [
+        "J102"
+      ]
+    },
+    {
+      "id": "G87",
+      "bucket": "jira-only",
+      "subject": "confirmation display hotel identifier product selected stay success summary total",
+      "text": "Success displays confirmation identifier, hotel, stay summary, selected products, and total.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Success displays confirmation identifier, hotel, stay summary, selected products, and total.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J103"
+          ]
+        }
+      ],
+      "members": [
+        "J103"
+      ]
+    },
+    {
+      "id": "G88",
+      "bucket": "jira-only",
+      "subject": "confirmation display failure false not",
+      "text": "A failure does not display a false confirmation.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "A failure does not display a false confirmation.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J104"
+          ]
+        }
+      ],
+      "members": [
+        "J104"
+      ]
+    },
+    {
+      "id": "G89",
+      "bucket": "jira-only",
+      "subject": "blindly guest instruct not path provide recovery resubmit safe state timeout unknown",
+      "text": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J105"
+          ]
+        }
+      ],
+      "members": [
+        "J105"
+      ]
+    },
+    {
+      "id": "G90",
+      "bucket": "jira-only",
+      "subject": "applicable booked confirmation contain date detail guest hotel information item message policy pricing safe stay summary",
+      "text": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J110"
+          ]
+        }
+      ],
+      "members": [
+        "J110"
+      ]
+    },
+    {
+      "id": "G91",
+      "bucket": "jira-only",
+      "subject": "confirmed content matche message reservation state",
+      "text": "The message content matches the confirmed reservation state.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The message content matches the confirmed reservation state.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J111"
+          ]
+        }
+      ],
+      "members": [
+        "J111"
+      ]
+    },
+    {
+      "id": "G92",
+      "bucket": "jira-only",
+      "subject": "accessibility locale required standard support template",
+      "text": "Templates support required locale and accessibility standards.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Templates support required locale and accessibility standards.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J112"
+          ]
+        }
+      ],
+      "members": [
+        "J112"
+      ]
+    },
+    {
+      "id": "G93",
+      "bucket": "jira-only",
+      "subject": "data included necessary only personal",
+      "text": "Only necessary personal data may be included.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Only necessary personal data may be included.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J113"
+          ]
+        }
+      ],
+      "members": [
+        "J113"
+      ]
+    },
+    {
+      "id": "G94",
+      "bucket": "jira-only",
+      "subject": "appear detail not payment sensitive",
+      "text": "Sensitive payment details must not appear.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Sensitive payment details must not appear.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J114"
+          ]
+        }
+      ],
+      "members": [
+        "J114"
+      ]
+    },
+    {
+      "id": "G95",
+      "bucket": "jira-only",
+      "subject": "confirmation create email one request reservation successful",
+      "text": "A successful reservation creates one confirmation-email request.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "A successful reservation creates one confirmation-email request.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J115"
+          ]
+        }
+      ],
+      "members": [
+        "J115"
+      ]
+    },
+    {
+      "id": "G96",
+      "bucket": "jira-only",
+      "subject": "failure not reservation reverse send valid",
+      "text": "Send failure does not reverse a valid reservation.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Send failure does not reverse a valid reservation.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J116"
+          ]
+        }
+      ],
+      "members": [
+        "J116"
+      ]
+    },
+    {
+      "id": "G97",
+      "bucket": "jira-only",
+      "subject": "avoid duplicate excessive message permitted retry",
+      "text": "Permitted retries avoid duplicate or excessive messages.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Permitted retries avoid duplicate or excessive messages.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J117"
+          ]
+        }
+      ],
+      "members": [
+        "J117"
+      ]
+    },
+    {
+      "id": "G98",
+      "bucket": "jira-only",
+      "subject": "bounced delivered distinguish failed operational provider queued sent state supported user",
+      "text": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J118"
+          ]
+        }
+      ],
+      "members": [
+        "J118"
+      ]
+    },
+    {
+      "id": "G99",
+      "bucket": "jira-only",
+      "subject": "addresse authorized email masked operational outside view",
+      "text": "Email addresses must be masked outside authorized operational views.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Email addresses must be masked outside authorized operational views.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J119"
+          ]
+        }
+      ],
+      "members": [
+        "J119"
+      ]
+    },
+    {
+      "id": "G100",
+      "bucket": "jira-only",
+      "subject": "data exposing information request reservation sufficient verify without",
+      "text": "The request verifies sufficient reservation information without exposing data.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The request verifies sufficient reservation information without exposing data.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J120"
+          ]
+        }
+      ],
+      "members": [
+        "J120"
+      ]
+    },
+    {
+      "id": "G101",
+      "bucket": "jira-only",
+      "subject": "abuse apply control limit rate",
+      "text": "Rate limits and abuse controls apply.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Rate limits and abuse controls apply.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J121"
+          ]
+        }
+      ],
+      "members": [
+        "J121"
+      ]
+    },
+    {
+      "id": "G102",
+      "bucket": "jira-only",
+      "subject": "create creating event message new resend reservation without",
+      "text": "The resend creates a new message event without creating a new reservation.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "The resend creates a new message event without creating a new reservation.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J122"
+          ]
+        }
+      ],
+      "members": [
+        "J122"
+      ]
+    },
+    {
+      "id": "G103",
+      "bucket": "jira-only",
+      "subject": "approved classified data location mapped processing sensitive storage",
+      "text": "Sensitive data is classified and mapped to approved storage and processing locations.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Sensitive data is classified and mapped to approved storage and processing locations.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J127"
+          ]
+        }
+      ],
+      "members": [
+        "J127"
+      ]
+    },
+    {
+      "id": "G104",
+      "bucket": "jira-only",
+      "subject": "data encrypted required rest transit where",
+      "text": "Data is encrypted in transit and at rest where required.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Data is encrypted in transit and at rest where required.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J128"
+          ]
+        }
+      ],
+      "members": [
+        "J128"
+      ]
+    },
+    {
+      "id": "G105",
+      "bucket": "jira-only",
+      "subject": "analytic exclude field log mask prohibited",
+      "text": "Logs and analytics exclude or mask prohibited fields.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Logs and analytics exclude or mask prohibited fields.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J129"
+          ]
+        }
+      ],
+      "members": [
+        "J129"
+      ]
+    },
+    {
+      "id": "G106",
+      "bucket": "jira-only",
+      "subject": "access auditable based data operational role",
+      "text": "Access to operational data is role-based and auditable.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Access to operational data is role-based and auditable.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J130"
+          ]
+        }
+      ],
+      "members": [
+        "J130"
+      ]
+    },
+    {
+      "id": "G107",
+      "bucket": "jira-only",
+      "subject": "approved deletion follow policy retention",
+      "text": "Retention and deletion follow approved policy.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Retention and deletion follow approved policy.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J131"
+          ]
+        }
+      ],
+      "members": [
+        "J131"
+      ]
+    },
+    {
+      "id": "G108",
+      "bucket": "jira-only",
+      "subject": "across correlation event id service supported use",
+      "text": "Events use a correlation ID across supported services.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Events use a correlation ID across supported services.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J132"
+          ]
+        }
+      ],
+      "members": [
+        "J132"
+      ]
+    },
+    {
+      "id": "G109",
+      "bucket": "jira-only",
+      "subject": "distinguishable event log technical",
+      "text": "Business events and technical logs are distinguishable.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Business events and technical logs are distinguishable.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J133"
+          ]
+        }
+      ],
+      "members": [
+        "J133"
+      ]
+    },
+    {
+      "id": "G110",
+      "bucket": "jira-only",
+      "subject": "agreed alert critical exist failure latency metric",
+      "text": "Metrics and alerts exist for agreed critical failures and latency.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Metrics and alerts exist for agreed critical failures and latency.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J134"
+          ]
+        }
+      ],
+      "members": [
+        "J134"
+      ]
+    },
+    {
+      "id": "G111",
+      "bucket": "jira-only",
+      "subject": "block booking degradation explicitly expose logging not payload required sensitive silently unless",
+      "text": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J135"
+          ]
+        }
+      ],
+      "members": [
+        "J135"
+      ]
+    },
+    {
+      "id": "G112",
+      "bucket": "jira-only",
+      "subject": "event schema versioned",
+      "text": "Event schemas must be versioned.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Event schemas must be versioned.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J136"
+          ]
+        }
+      ],
+      "members": [
+        "J136"
+      ]
+    },
+    {
+      "id": "G113",
+      "bucket": "jira-only",
+      "subject": "access according controlled log policy production retained",
+      "text": "Production log access must be controlled and retained according to policy.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Production log access must be controlled and retained according to policy.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J137"
+          ]
+        }
+      ],
+      "members": [
+        "J137"
+      ]
+    },
+    {
+      "id": "G114",
+      "bucket": "jira-only",
+      "subject": "accessible error focu handling instruction keyboard label messaging navigation order statu",
+      "text": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J138"
+          ]
+        }
+      ],
+      "members": [
+        "J138"
+      ]
+    },
+    {
+      "id": "G115",
+      "bucket": "jira-only",
+      "subject": "alone color conveyed information not visual",
+      "text": "Visual information is not conveyed by color alone.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Visual information is not conveyed by color alone.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J139"
+          ]
+        }
+      ],
+      "members": [
+        "J139"
+      ]
+    },
+    {
+      "id": "G116",
+      "bucket": "jira-only",
+      "subject": "announced appropriately dynamic update",
+      "text": "Dynamic updates are announced appropriately.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Dynamic updates are announced appropriately.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J140"
+          ]
+        }
+      ],
+      "members": [
+        "J140"
+      ]
+    },
+    {
+      "id": "G117",
+      "bucket": "jira-only",
+      "subject": "accessible email readable structurally template",
+      "text": "Email templates are readable and structurally accessible.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Email templates are readable and structurally accessible.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J141"
+          ]
+        }
+      ],
+      "members": [
+        "J141"
+      ]
+    },
+    {
+      "id": "G118",
+      "bucket": "jira-only",
+      "subject": "agreed cart checkout dependency email performance pricing reservation search target",
+      "text": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J142"
+          ]
+        }
+      ],
+      "members": [
+        "J142"
+      ]
+    },
+    {
+      "id": "G119",
+      "bucket": "jira-only",
+      "subject": "behavior breaker circuit documented fallback retry timeout",
+      "text": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J143"
+          ]
+        }
+      ],
+      "members": [
+        "J143"
+      ]
+    },
+    {
+      "id": "G120",
+      "bucket": "jira-only",
+      "subject": "cover critical journey load recovery resilience test",
+      "text": "Load, resilience, and recovery tests cover critical journeys.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Load, resilience, and recovery tests cover critical journeys.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J144"
+          ]
+        }
+      ],
+      "members": [
+        "J144"
+      ]
+    },
+    {
+      "id": "G121",
+      "bucket": "jira-only",
+      "subject": "analytic critical integrity non over personalization prioritized reservation",
+      "text": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+      "sources": [
+        "jira"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "",
+          "values": [],
+          "text": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+          "sources": [
+            "jira"
+          ],
+          "members": [
+            "J145"
+          ]
+        }
+      ],
+      "members": [
+        "J145"
+      ]
+    },
+    {
+      "id": "G122",
+      "bucket": "code-only",
+      "subject": "after cart create created expire itself minute never reservation",
+      "text": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
+      "sources": [
+        "code"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "30",
+          "values": [
+            {
+              "num": 30,
+              "unit": "",
+              "raw": "30"
+            }
+          ],
+          "text": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
+          "sources": [
+            "code"
+          ],
+          "members": [
+            "C1"
+          ]
+        }
+      ],
+      "members": [
+        "C1"
+      ]
+    },
+    {
+      "id": "G123",
+      "bucket": "code-only",
+      "subject": "acknowledged before change checkout guest price",
+      "text": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+      "sources": [
+        "code"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "1 %",
+          "values": [
+            {
+              "num": 1,
+              "unit": "%",
+              "raw": "1%"
+            }
+          ],
+          "text": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+          "sources": [
+            "code"
+          ],
+          "members": [
+            "C2"
+          ]
+        }
+      ],
+      "members": [
+        "C2"
+      ]
+    },
+    {
+      "id": "G124",
+      "bucket": "code-only",
+      "subject": "booking confirmation most resent time",
+      "text": "A confirmation can be resent at most 3 times per booking in 24 hours.",
+      "sources": [
+        "code"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "24 hours | 3",
+          "values": [
+            {
+              "num": 24,
+              "unit": "hours",
+              "raw": "24 hours"
+            },
+            {
+              "num": 3,
+              "unit": "",
+              "raw": "3"
+            }
+          ],
+          "text": "A confirmation can be resent at most 3 times per booking in 24 hours.",
+          "sources": [
+            "code"
+          ],
+          "members": [
+            "C3"
+          ]
+        }
+      ],
+      "members": [
+        "C3"
+      ]
+    },
+    {
+      "id": "G125",
+      "bucket": "code-only",
+      "subject": "character idempotency key need original outcome replay request reservation return",
+      "text": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+      "sources": [
+        "code"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "24 hours | 64 | 8",
+          "values": [
+            {
+              "num": 24,
+              "unit": "hours",
+              "raw": "24 hours"
+            },
+            {
+              "num": 8,
+              "unit": "",
+              "raw": "8"
+            },
+            {
+              "num": 64,
+              "unit": "",
+              "raw": "64"
+            }
+          ],
+          "text": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+          "sources": [
+            "code"
+          ],
+          "members": [
+            "C4"
+          ]
+        }
+      ],
+      "members": [
+        "C4"
+      ]
+    },
+    {
+      "id": "G126",
+      "bucket": "code-only",
+      "subject": "allow most par pari stay",
+      "text": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+      "sources": [
+        "code"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "21 nights | 30 nights",
+          "values": [
+            {
+              "num": 30,
+              "unit": "nights",
+              "raw": "30 nights"
+            },
+            {
+              "num": 21,
+              "unit": "nights",
+              "raw": "21 nights"
+            }
+          ],
+          "text": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+          "sources": [
+            "code"
+          ],
+          "members": [
+            "C5"
+          ]
+        }
+      ],
+      "members": [
+        "C5"
+      ]
+    },
+    {
+      "id": "G127",
+      "bucket": "code-only",
+      "subject": "adult book children hold most one room search",
+      "text": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+      "sources": [
+        "code"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "1 | 3 | 4 | 8 rooms",
+          "values": [
+            {
+              "num": 8,
+              "unit": "rooms",
+              "raw": "8 rooms"
+            },
+            {
+              "num": 4,
+              "unit": "",
+              "raw": "4"
+            },
+            {
+              "num": 3,
+              "unit": "",
+              "raw": "3"
+            },
+            {
+              "num": 1,
+              "unit": "",
+              "raw": "1"
+            }
+          ],
+          "text": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+          "sources": [
+            "code"
+          ],
+          "members": [
+            "C6"
+          ]
+        }
+      ],
+      "members": [
+        "C6"
+      ]
+    },
+    {
+      "id": "G128",
+      "bucket": "code-only",
+      "subject": "ahead check most",
+      "text": "Check-in can be at most 500 days ahead.",
+      "sources": [
+        "code"
+      ],
+      "options": [
+        {
+          "optionId": "O1",
+          "signature": "500 days",
+          "values": [
+            {
+              "num": 500,
+              "unit": "days",
+              "raw": "500 days"
+            }
+          ],
+          "text": "Check-in can be at most 500 days ahead.",
+          "sources": [
+            "code"
+          ],
+          "members": [
+            "C7"
+          ]
+        }
+      ],
+      "members": [
+        "C7"
+      ]
+    }
+  ],
+  "counts": {
+    "statements": 152,
+    "groups": 128,
+    "agreed": 0,
+    "jira-only": 121,
+    "code-only": 7,
+    "conflict": 0
+  }
+}

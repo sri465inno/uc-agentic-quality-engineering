@@ -1,0 +1,3518 @@
+[
+  {
+    "id": "BR-001",
+    "requirementId": "REQ-001",
+    "kind": "booking-journey",
+    "title": "Search-to-confirmation journey",
+    "statement": "A guest can complete the complete search-to-confirmation flow using valid inputs.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-1",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "text": "A guest can complete the complete search-to-confirmation flow using valid inputs.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-002",
+    "requirementId": "REQ-002",
+    "kind": "bookable-inventory",
+    "title": "Only bookable inventory is offered",
+    "statement": "Only bookable inventory and valid rates are presented as available.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-1",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "text": "Only bookable inventory and valid rates are presented as available.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-003",
+    "requirementId": "REQ-003",
+    "kind": "price-disclosed",
+    "title": "Total price disclosed before confirmation",
+    "statement": "Total price is disclosed before confirmation, including mandatory taxes and fees.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-1",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "text": "Total price is disclosed before confirmation, including mandatory taxes and fees.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-004",
+    "requirementId": "REQ-004",
+    "kind": "offers-not-blocking",
+    "title": "Offers never block the booking",
+    "statement": "Ancillary offers do not block booking when declined or unavailable.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-1",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "text": "Ancillary offers do not block booking when declined or unavailable.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-005",
+    "requirementId": "REQ-005",
+    "kind": "duplicate-submission",
+    "title": "Duplicate submissions handled safely",
+    "statement": "The platform prevents or safely handles duplicate reservation submissions.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-1",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "text": "The platform prevents or safely handles duplicate reservation submissions.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-006",
+    "requirementId": "REQ-006",
+    "kind": "durable-confirmation",
+    "title": "Durable confirmation identifier",
+    "statement": "A successful reservation produces a durable confirmation identifier.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-1",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "text": "A successful reservation produces a durable confirmation identifier.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-007",
+    "requirementId": "REQ-007",
+    "kind": "confirmation-shown",
+    "title": "Confirmation shown and e-mail requested",
+    "statement": "Confirmation is displayed on screen and an email request is generated.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-1",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "text": "Confirmation is displayed on screen and an email request is generated.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-008",
+    "requirementId": "REQ-008",
+    "kind": "unclassified",
+    "title": "Required business and technical events are logged",
+    "statement": "Required business and technical events are logged using approved identifiers and masking rules.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-1",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "text": "Required business and technical events are logged using approved identifiers and masking rules.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-009",
+    "requirementId": "REQ-009",
+    "kind": "unclassified",
+    "title": "All child user stories meet their acceptance",
+    "statement": "All child user stories meet their acceptance criteria and the Definition of Done.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-2",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-6",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-10",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-14",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-18",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-23",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-27",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+        "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-010",
+    "requirementId": "REQ-010",
+    "kind": "unclassified",
+    "title": "Negative and error paths for each story",
+    "statement": "Negative and error paths for each story are tested and evidenced.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-2",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-6",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-10",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-14",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-18",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-23",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-27",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+        "text": "Negative and error paths for each story are tested and evidenced.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-011",
+    "requirementId": "REQ-011",
+    "kind": "unclassified",
+    "title": "Required logging is in place and verified",
+    "statement": "Required logging is in place and verified free of sensitive data.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-2",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-6",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-10",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-14",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-18",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-23",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-27",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+        "text": "Required logging is in place and verified free of sensitive data.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-012",
+    "requirementId": "REQ-012",
+    "kind": "unclassified",
+    "title": "The Product Owner has accepted the capability",
+    "statement": "The Product Owner has accepted the capability end to end.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-2",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+        "text": "The Product Owner has accepted the capability end to end.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-6",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+        "text": "The Product Owner has accepted the capability end to end.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-10",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+        "text": "The Product Owner has accepted the capability end to end.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-14",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+        "text": "The Product Owner has accepted the capability end to end.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-18",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+        "text": "The Product Owner has accepted the capability end to end.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-23",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+        "text": "The Product Owner has accepted the capability end to end.",
+        "provenance": "github"
+      },
+      {
+        "source": "jira",
+        "ref": "AQPI-27",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+        "text": "The Product Owner has accepted the capability end to end.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-013",
+    "requirementId": "REQ-013",
+    "kind": "hotel-search",
+    "title": "Hotel search",
+    "statement": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-3",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "text": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-014",
+    "requirementId": "REQ-014",
+    "kind": "search-criteria-kept",
+    "title": "Search criteria stay visible",
+    "statement": "The submitted criteria remain visible and editable on the results page.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-3",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "text": "The submitted criteria remain visible and editable on the results page.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-015",
+    "requirementId": "REQ-015",
+    "kind": "search-date-validation",
+    "title": "Search date and mandatory field validation",
+    "statement": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-3",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "text": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-016",
+    "requirementId": "REQ-016",
+    "kind": "no-availability",
+    "title": "No availability",
+    "statement": "A no-availability result explains that no matching inventory was found and allows criteria changes.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-3",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "text": "A no-availability result explains that no matching inventory was found and allows criteria changes.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-017",
+    "requirementId": "REQ-017",
+    "kind": "unclassified",
+    "title": "Check-in must precede check-out",
+    "statement": "Check-in must precede check-out.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-3",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "text": "Check-in must precede check-out.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-018",
+    "requirementId": "REQ-018",
+    "kind": "unclassified",
+    "title": "Occupancy must comply with configured room limits",
+    "statement": "Occupancy must comply with configured room limits.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-3",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "text": "Occupancy must comply with configured room limits.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-019",
+    "requirementId": "REQ-019",
+    "kind": "unclassified",
+    "title": "Maximum stay length must be configurable",
+    "statement": "Maximum stay length must be configurable.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-3",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "text": "Maximum stay length must be configurable.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-020",
+    "requirementId": "REQ-020",
+    "kind": "search-form",
+    "title": "Search form required fields",
+    "statement": "Required fields are clearly identified.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-4",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "text": "Required fields are clearly identified.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-021",
+    "requirementId": "REQ-021",
+    "kind": "field-level-messages",
+    "title": "Field-level validation messages",
+    "statement": "Invalid combinations return field-level messages.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-4",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "text": "Invalid combinations return field-level messages.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-022",
+    "requirementId": "REQ-022",
+    "kind": "unclassified",
+    "title": "Server validation is authoritative when client and",
+    "statement": "Server validation is authoritative when client and server results differ.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-4",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "text": "Server validation is authoritative when client and server results differ.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-023",
+    "requirementId": "REQ-023",
+    "kind": "unclassified",
+    "title": "Validation messages are accessible to assistive technology",
+    "statement": "Validation messages are accessible to assistive technology.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-4",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "text": "Validation messages are accessible to assistive technology.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-024",
+    "requirementId": "REQ-024",
+    "kind": "unclassified",
+    "title": "Validation rules must be configurable where market",
+    "statement": "Validation rules must be configurable where market or property rules vary.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-4",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "text": "Validation rules must be configurable where market or property rules vary.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-025",
+    "requirementId": "REQ-025",
+    "kind": "no-availability",
+    "title": "No availability",
+    "statement": "Zero results provide options to alter dates, occupancy, destination, or filters.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-5",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5",
+        "text": "Zero results provide options to alter dates, occupancy, destination, or filters.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-026",
+    "requirementId": "REQ-026",
+    "kind": "unclassified",
+    "title": "Technical failures display a non-technical message and",
+    "statement": "Technical failures display a non-technical message and retry option.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-5",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5",
+        "text": "Technical failures display a non-technical message and retry option.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-027",
+    "requirementId": "REQ-027",
+    "kind": "search-session",
+    "title": "Consistent search sessions",
+    "statement": "Repeated submission does not create inconsistent sessions.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-5",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5",
+        "text": "Repeated submission does not create inconsistent sessions.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-028",
+    "requirementId": "REQ-028",
+    "kind": "result-content",
+    "title": "Result card content",
+    "statement": "Each result shows hotel name, location, representative image, starting price, currency, and availability indicator.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-7",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "text": "Each result shows hotel name, location, representative image, starting price, currency, and availability indicator.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-029",
+    "requirementId": "REQ-029",
+    "kind": "fee-disclosure",
+    "title": "Pricing qualification disclosed",
+    "statement": "Mandatory fees or pricing qualifications are clearly disclosed.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-7",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "text": "Mandatory fees or pricing qualifications are clearly disclosed.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-030",
+    "requirementId": "REQ-030",
+    "kind": "unavailable-not-bookable",
+    "title": "Unavailable hotels not bookable",
+    "statement": "Unavailable hotels are not presented as immediately bookable.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-7",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "text": "Unavailable hotels are not presented as immediately bookable.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-031",
+    "requirementId": "REQ-031",
+    "kind": "pagination",
+    "title": "Result pagination",
+    "statement": "Results support pagination or progressive loading.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-7",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "text": "Results support pagination or progressive loading.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-032",
+    "requirementId": "REQ-032",
+    "kind": "starting-price",
+    "title": "Starting price backed by a valid rate",
+    "statement": "Displayed starting price must correspond to a valid rate returned for the search criteria.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-7",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "text": "Displayed starting price must correspond to a valid rate returned for the search criteria.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-033",
+    "requirementId": "REQ-033",
+    "kind": "hotel-details",
+    "title": "Hotel details page",
+    "statement": "Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-9",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+        "text": "Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-034",
+    "requirementId": "REQ-034",
+    "kind": "unclassified",
+    "title": "The guest can select a valid room",
+    "statement": "The guest can select a valid room and rate plan.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-9",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+        "text": "The guest can select a valid room and rate plan.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-035",
+    "requirementId": "REQ-035",
+    "kind": "unclassified",
+    "title": "If inventory changes, the guest is informed",
+    "statement": "If inventory changes, the guest is informed before continuing.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-9",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+        "text": "If inventory changes, the guest is informed before continuing.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-036",
+    "requirementId": "REQ-036",
+    "kind": "rate-conditions",
+    "title": "Rate conditions shown before selection",
+    "statement": "Rate conditions and cancellation terms must be shown before selection.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-9",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+        "text": "Rate conditions and cancellation terms must be shown before selection.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-037",
+    "requirementId": "REQ-037",
+    "kind": "unclassified",
+    "title": "The service considers available context such as",
+    "statement": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-11",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "text": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-038",
+    "requirementId": "REQ-038",
+    "kind": "offer-exclusion",
+    "title": "Ineligible offers excluded",
+    "statement": "Unavailable or ineligible products are excluded.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-11",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "text": "Unavailable or ineligible products are excluded.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-039",
+    "requirementId": "REQ-039",
+    "kind": "offer-reason-codes",
+    "title": "Reason code per recommendation",
+    "statement": "The service returns a reason code for each recommended item.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-11",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "text": "The service returns a reason code for each recommended item.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-040",
+    "requirementId": "REQ-040",
+    "kind": "unclassified",
+    "title": "When personalization data is unavailable, safe contextual",
+    "statement": "When personalization data is unavailable, safe contextual defaults may be returned.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-11",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "text": "When personalization data is unavailable, safe contextual defaults may be returned.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-041",
+    "requirementId": "REQ-041",
+    "kind": "unclassified",
+    "title": "Sensitive traits must not be inferred or",
+    "statement": "Sensitive traits must not be inferred or used.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-11",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "text": "Sensitive traits must not be inferred or used.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-042",
+    "requirementId": "REQ-042",
+    "kind": "unclassified",
+    "title": "Personalization must honor consent and data-retention rules",
+    "statement": "Personalization must honor consent and data-retention rules.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-11",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "text": "Personalization must honor consent and data-retention rules.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-043",
+    "requirementId": "REQ-043",
+    "kind": "unclassified",
+    "title": "Business rules and model versions must be",
+    "statement": "Business rules and model versions must be auditable.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-11",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "text": "Business rules and model versions must be auditable.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-044",
+    "requirementId": "REQ-044",
+    "kind": "offer-content",
+    "title": "Offer content and optional-extra label",
+    "statement": "Each offer shows name, description, price, currency, applicability, and any restrictions.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-12",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12",
+        "text": "Each offer shows name, description, price, currency, applicability, and any restrictions.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-045",
+    "requirementId": "REQ-045",
+    "kind": "offer-interaction",
+    "title": "Add, skip or dismiss an offer",
+    "statement": "The guest can add, skip, or dismiss an offer.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-12",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12",
+        "text": "The guest can add, skip, or dismiss an offer.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-046",
+    "requirementId": "REQ-046",
+    "kind": "offer-content",
+    "title": "Offer content and optional-extra label",
+    "statement": "Offers are clearly distinguished from mandatory fees.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-12",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12",
+        "text": "Offers are clearly distinguished from mandatory fees.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-047",
+    "requirementId": "REQ-047",
+    "kind": "offers-not-blocking",
+    "title": "Offers never block the booking",
+    "statement": "Failure to load offers does not block room booking.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-12",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12",
+        "text": "Failure to load offers does not block room booking.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-048",
+    "requirementId": "REQ-048",
+    "kind": "cart-contents",
+    "title": "Cart contents",
+    "statement": "The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-15",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "text": "The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-049",
+    "requirementId": "REQ-049",
+    "kind": "unclassified",
+    "title": "Inventory and price are revalidated when required",
+    "statement": "Inventory and price are revalidated when required.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-15",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "text": "Inventory and price are revalidated when required.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-050",
+    "requirementId": "REQ-050",
+    "kind": "unclassified",
+    "title": "The cart has a defined expiration and",
+    "statement": "The cart has a defined expiration and displays relevant timeout behavior.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-15",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "text": "The cart has a defined expiration and displays relevant timeout behavior.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-051",
+    "requirementId": "REQ-051",
+    "kind": "unclassified",
+    "title": "A cart must not itself create a",
+    "statement": "A cart must not itself create a reservation.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-15",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "text": "A cart must not itself create a reservation.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-052",
+    "requirementId": "REQ-052",
+    "kind": "unclassified",
+    "title": "Price-change handling must require guest acknowledgement when",
+    "statement": "Price-change handling must require guest acknowledgement when material.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-15",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "text": "Price-change handling must require guest acknowledgement when material.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-053",
+    "requirementId": "REQ-053",
+    "kind": "unclassified",
+    "title": "The guest can add an available ancillary",
+    "statement": "The guest can add an available ancillary.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-16",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+        "text": "The guest can add an available ancillary.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-054",
+    "requirementId": "REQ-054",
+    "kind": "ancillary-quantity",
+    "title": "Extra quantity limits",
+    "statement": "Supported quantities can be changed within product limits.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-16",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+        "text": "Supported quantities can be changed within product limits.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-055",
+    "requirementId": "REQ-055",
+    "kind": "ancillary-removal",
+    "title": "Removing an extra updates totals",
+    "statement": "Removal updates totals immediately.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-16",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+        "text": "Removal updates totals immediately.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-056",
+    "requirementId": "REQ-056",
+    "kind": "unclassified",
+    "title": "Ineligible or sold-out products cannot be retained",
+    "statement": "Ineligible or sold-out products cannot be retained silently.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-16",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+        "text": "Ineligible or sold-out products cannot be retained silently.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-057",
+    "requirementId": "REQ-057",
+    "kind": "itemized-total",
+    "title": "Itemised cart total",
+    "statement": "Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-17",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "text": "Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-058",
+    "requirementId": "REQ-058",
+    "kind": "unclassified",
+    "title": "Currency is consistently displayed",
+    "statement": "Currency is consistently displayed.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-17",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "text": "Currency is consistently displayed.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-059",
+    "requirementId": "REQ-059",
+    "kind": "unclassified",
+    "title": "Material changes are highlighted and require acknowledgement",
+    "statement": "Material changes are highlighted and require acknowledgement.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-17",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "text": "Material changes are highlighted and require acknowledgement.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-060",
+    "requirementId": "REQ-060",
+    "kind": "unclassified",
+    "title": "The guest can return to edit supported",
+    "statement": "The guest can return to edit supported selections.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-17",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "text": "The guest can return to edit supported selections.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-061",
+    "requirementId": "REQ-061",
+    "kind": "unclassified",
+    "title": "The final payable total must be revalidated",
+    "statement": "The final payable total must be revalidated before reservation submission.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-17",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "text": "The final payable total must be revalidated before reservation submission.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-062",
+    "requirementId": "REQ-062",
+    "kind": "checkout-fields",
+    "title": "Required and optional guest fields",
+    "statement": "Required and optional fields are clearly distinguished.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-19",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "text": "Required and optional fields are clearly distinguished.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-063",
+    "requirementId": "REQ-063",
+    "kind": "guest-validation",
+    "title": "Guest input validation",
+    "statement": "Inputs are validated and error messages are accessible.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-19",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "text": "Inputs are validated and error messages are accessible.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-064",
+    "requirementId": "REQ-064",
+    "kind": "privacy-consent",
+    "title": "Privacy notice required",
+    "statement": "The guest receives applicable privacy notice and consent controls.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-19",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "text": "The guest receives applicable privacy notice and consent controls.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-065",
+    "requirementId": "REQ-065",
+    "kind": "unclassified",
+    "title": "Data is transmitted securely and is not",
+    "statement": "Data is transmitted securely and is not exposed in client logs.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-19",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "text": "Data is transmitted securely and is not exposed in client logs.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-066",
+    "requirementId": "REQ-066",
+    "kind": "unclassified",
+    "title": "Data minimization applies",
+    "statement": "Data minimization applies.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-19",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "text": "Data minimization applies.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-067",
+    "requirementId": "REQ-067",
+    "kind": "support-masking",
+    "title": "Sensitive values masked for support",
+    "statement": "Sensitive values must be masked in support tools and excluded from analytics logs.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-19",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "text": "Sensitive values must be masked in support tools and excluded from analytics logs.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-068",
+    "requirementId": "REQ-068",
+    "kind": "amount-before-auth",
+    "title": "Payable amount before authorisation",
+    "statement": "The guest sees the final payable or guarantee amount before authorization.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-20",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "text": "The guest sees the final payable or guarantee amount before authorization.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-069",
+    "requirementId": "REQ-069",
+    "kind": "unclassified",
+    "title": "Payment data is handled through approved secure",
+    "statement": "Payment data is handled through approved secure components.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-20",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "text": "Payment data is handled through approved secure components.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-070",
+    "requirementId": "REQ-070",
+    "kind": "payment-outcomes",
+    "title": "Distinct payment outcomes",
+    "statement": "Authorization success, decline, timeout, and technical failure are handled distinctly.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-20",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "text": "Authorization success, decline, timeout, and technical failure are handled distinctly.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-071",
+    "requirementId": "REQ-071",
+    "kind": "no-card-data",
+    "title": "No raw card data accepted",
+    "statement": "The product does not store prohibited card data in application logs.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-20",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "text": "The product does not store prohibited card data in application logs.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-072",
+    "requirementId": "REQ-072",
+    "kind": "unclassified",
+    "title": "Payment requirements depend on rate conditions",
+    "statement": "Payment requirements depend on rate conditions.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-20",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "text": "Payment requirements depend on rate conditions.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-073",
+    "requirementId": "REQ-073",
+    "kind": "unclassified",
+    "title": "Retry behavior must avoid duplicate authorization",
+    "statement": "Retry behavior must avoid duplicate authorization.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-20",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "text": "Retry behavior must avoid duplicate authorization.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-074",
+    "requirementId": "REQ-074",
+    "kind": "one-reservation",
+    "title": "One reservation per successful request",
+    "statement": "A successful request creates one reservation and returns a confirmation identifier.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-21",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "text": "A successful request creates one reservation and returns a confirmation identifier.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-075",
+    "requirementId": "REQ-075",
+    "kind": "idempotent-reservation",
+    "title": "Idempotent reservation",
+    "statement": "Repeated submissions with the same idempotency key do not create duplicate reservations.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-21",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "text": "Repeated submissions with the same idempotency key do not create duplicate reservations.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-076",
+    "requirementId": "REQ-076",
+    "kind": "reconcilable",
+    "title": "Outcomes reconcilable",
+    "statement": "Inventory, price, payment, and reservation outcomes remain reconcilable.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-21",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "text": "Inventory, price, payment, and reservation outcomes remain reconcilable.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-077",
+    "requirementId": "REQ-077",
+    "kind": "unclassified",
+    "title": "Partial failures trigger defined recovery or manual-review",
+    "statement": "Partial failures trigger defined recovery or manual-review handling.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-21",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "text": "Partial failures trigger defined recovery or manual-review handling.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-078",
+    "requirementId": "REQ-078",
+    "kind": "unclassified",
+    "title": "Reservation submission must use an idempotency mechanism",
+    "statement": "Reservation submission must use an idempotency mechanism.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-21",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "text": "Reservation submission must use an idempotency mechanism.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-079",
+    "requirementId": "REQ-079",
+    "kind": "unclassified",
+    "title": "The source of truth for confirmation status",
+    "statement": "The source of truth for confirmation status must be defined.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-21",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "text": "The source of truth for confirmation status must be defined.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-080",
+    "requirementId": "REQ-080",
+    "kind": "confirmation-content",
+    "title": "Confirmation e-mail content",
+    "statement": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-24",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "text": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-081",
+    "requirementId": "REQ-081",
+    "kind": "confirmation-content",
+    "title": "Confirmation e-mail content",
+    "statement": "The message content matches the confirmed reservation state.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-24",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "text": "The message content matches the confirmed reservation state.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-082",
+    "requirementId": "REQ-082",
+    "kind": "unclassified",
+    "title": "Templates support required locale and accessibility standards",
+    "statement": "Templates support required locale and accessibility standards.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-24",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "text": "Templates support required locale and accessibility standards.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-083",
+    "requirementId": "REQ-083",
+    "kind": "unclassified",
+    "title": "Only necessary personal data may be included",
+    "statement": "Only necessary personal data may be included.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-24",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "text": "Only necessary personal data may be included.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-084",
+    "requirementId": "REQ-084",
+    "kind": "confirmation-content",
+    "title": "Confirmation e-mail content",
+    "statement": "Sensitive payment details must not appear.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-24",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "text": "Sensitive payment details must not appear.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-085",
+    "requirementId": "REQ-085",
+    "kind": "unclassified",
+    "title": "A successful reservation creates one confirmation-email request",
+    "statement": "A successful reservation creates one confirmation-email request.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-25",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "text": "A successful reservation creates one confirmation-email request.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-086",
+    "requirementId": "REQ-086",
+    "kind": "email-failure-isolated",
+    "title": "E-mail failure does not undo the booking",
+    "statement": "Send failure does not reverse a valid reservation.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-25",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "text": "Send failure does not reverse a valid reservation.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-087",
+    "requirementId": "REQ-087",
+    "kind": "unclassified",
+    "title": "Permitted retries avoid duplicate or excessive messages",
+    "statement": "Permitted retries avoid duplicate or excessive messages.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-25",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "text": "Permitted retries avoid duplicate or excessive messages.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-088",
+    "requirementId": "REQ-088",
+    "kind": "unclassified",
+    "title": "Operational users can distinguish queued, sent, delivered,",
+    "statement": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-25",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "text": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-089",
+    "requirementId": "REQ-089",
+    "kind": "unclassified",
+    "title": "Email addresses must be masked outside authorized",
+    "statement": "Email addresses must be masked outside authorized operational views.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-25",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "text": "Email addresses must be masked outside authorized operational views.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-090",
+    "requirementId": "REQ-090",
+    "kind": "resend-generic",
+    "title": "Resend reveals nothing",
+    "statement": "The request verifies sufficient reservation information without exposing data.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-26",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+        "text": "The request verifies sufficient reservation information without exposing data.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-091",
+    "requirementId": "REQ-091",
+    "kind": "unclassified",
+    "title": "Rate limits and abuse controls apply",
+    "statement": "Rate limits and abuse controls apply.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-26",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+        "text": "Rate limits and abuse controls apply.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-092",
+    "requirementId": "REQ-092",
+    "kind": "unclassified",
+    "title": "The resend creates a new message event",
+    "statement": "The resend creates a new message event without creating a new reservation.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-26",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+        "text": "The resend creates a new message event without creating a new reservation.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-093",
+    "requirementId": "REQ-093",
+    "kind": "unclassified",
+    "title": "Sensitive data is classified and mapped to",
+    "statement": "Sensitive data is classified and mapped to approved storage and processing locations.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-28",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "text": "Sensitive data is classified and mapped to approved storage and processing locations.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-094",
+    "requirementId": "REQ-094",
+    "kind": "unclassified",
+    "title": "Data is encrypted in transit and at",
+    "statement": "Data is encrypted in transit and at rest where required.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-28",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "text": "Data is encrypted in transit and at rest where required.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-095",
+    "requirementId": "REQ-095",
+    "kind": "unclassified",
+    "title": "Logs and analytics exclude or mask prohibited",
+    "statement": "Logs and analytics exclude or mask prohibited fields.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-28",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "text": "Logs and analytics exclude or mask prohibited fields.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-096",
+    "requirementId": "REQ-096",
+    "kind": "support-masking",
+    "title": "Sensitive values masked for support",
+    "statement": "Access to operational data is role-based and auditable.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-28",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "text": "Access to operational data is role-based and auditable.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-097",
+    "requirementId": "REQ-097",
+    "kind": "unclassified",
+    "title": "Retention and deletion follow approved policy",
+    "statement": "Retention and deletion follow approved policy.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-28",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "text": "Retention and deletion follow approved policy.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-098",
+    "requirementId": "REQ-098",
+    "kind": "correlation-id",
+    "title": "Correlation ID across services",
+    "statement": "Events use a correlation ID across supported services.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-29",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "text": "Events use a correlation ID across supported services.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-099",
+    "requirementId": "REQ-099",
+    "kind": "unclassified",
+    "title": "Business events and technical logs are distinguishable",
+    "statement": "Business events and technical logs are distinguishable.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-29",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "text": "Business events and technical logs are distinguishable.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-100",
+    "requirementId": "REQ-100",
+    "kind": "unclassified",
+    "title": "Metrics and alerts exist for agreed critical",
+    "statement": "Metrics and alerts exist for agreed critical failures and latency.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-29",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "text": "Metrics and alerts exist for agreed critical failures and latency.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-101",
+    "requirementId": "REQ-101",
+    "kind": "unclassified",
+    "title": "Logging degradation does not expose sensitive payloads",
+    "statement": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-29",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "text": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-102",
+    "requirementId": "REQ-102",
+    "kind": "unclassified",
+    "title": "Event schemas must be versioned",
+    "statement": "Event schemas must be versioned.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-29",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "text": "Event schemas must be versioned.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-103",
+    "requirementId": "REQ-103",
+    "kind": "unclassified",
+    "title": "Production log access must be controlled and",
+    "statement": "Production log access must be controlled and retained according to policy.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-29",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "text": "Production log access must be controlled and retained according to policy.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-104",
+    "requirementId": "REQ-104",
+    "kind": "unclassified",
+    "title": "Keyboard navigation, focus order, labels, instructions, status",
+    "statement": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-30",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+        "text": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-105",
+    "requirementId": "REQ-105",
+    "kind": "unclassified",
+    "title": "Visual information is not conveyed by color",
+    "statement": "Visual information is not conveyed by color alone.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-30",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+        "text": "Visual information is not conveyed by color alone.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-106",
+    "requirementId": "REQ-106",
+    "kind": "unclassified",
+    "title": "Dynamic updates are announced appropriately",
+    "statement": "Dynamic updates are announced appropriately.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-30",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+        "text": "Dynamic updates are announced appropriately.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-107",
+    "requirementId": "REQ-107",
+    "kind": "email-accessible",
+    "title": "Accessible e-mail template",
+    "statement": "Email templates are readable and structurally accessible.",
+    "parameters": {},
+    "executable": true,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-30",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+        "text": "Email templates are readable and structurally accessible.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-108",
+    "requirementId": "REQ-108",
+    "kind": "unclassified",
+    "title": "Search, pricing, cart, checkout, reservation, and email",
+    "statement": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-31",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+        "text": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-109",
+    "requirementId": "REQ-109",
+    "kind": "unclassified",
+    "title": "Timeout, retry, circuit-breaker, and fallback behavior are",
+    "statement": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-31",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+        "text": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-110",
+    "requirementId": "REQ-110",
+    "kind": "unclassified",
+    "title": "Load, resilience, and recovery tests cover critical",
+    "statement": "Load, resilience, and recovery tests cover critical journeys.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-31",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+        "text": "Load, resilience, and recovery tests cover critical journeys.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-111",
+    "requirementId": "REQ-111",
+    "kind": "unclassified",
+    "title": "Reservation integrity is prioritized over non-critical personalization",
+    "statement": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+    "parameters": {},
+    "executable": false,
+    "quotes": [
+      {
+        "source": "jira",
+        "ref": "AQPI-31",
+        "line": null,
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+        "text": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-112",
+    "requirementId": "REQ-112",
+    "kind": "cart-expiry",
+    "title": "Cart expiry and no implicit reservation",
+    "statement": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
+    "parameters": {
+      "minutes": 30
+    },
+    "executable": true,
+    "quotes": [
+      {
+        "source": "code",
+        "ref": "cart-service/src/main/resources/cart-service.yml",
+        "line": 16,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+        "text": "# @rule [AQPI-15] A cart expires 30 minutes after it is created and never creates a reservation itself.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-113",
+    "requirementId": "REQ-113",
+    "kind": "price-change-ack",
+    "title": "Material price change acknowledgement",
+    "statement": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+    "parameters": {
+      "pct": 1
+    },
+    "executable": true,
+    "quotes": [
+      {
+        "source": "code",
+        "ref": "cart-service/src/main/resources/cart-service.yml",
+        "line": 17,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+        "text": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-114",
+    "requirementId": "REQ-114",
+    "kind": "resend-limit",
+    "title": "Resend rate limit",
+    "statement": "A confirmation can be resent at most 3 times per booking in 24 hours.",
+    "parameters": {
+      "limit": 3,
+      "hours": 24
+    },
+    "executable": true,
+    "quotes": [
+      {
+        "source": "code",
+        "ref": "notification-service/src/main/resources/notification-service.yml",
+        "line": 7,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/notification-service/src/main/resources/notification-service.yml",
+        "text": "# @rule [AQPI-26] A confirmation can be resent at most 3 times per booking in 24 hours.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-115",
+    "requirementId": "REQ-115",
+    "kind": "idempotency-key",
+    "title": "Idempotency-Key required",
+    "statement": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+    "parameters": {
+      "min": 8,
+      "max": 64,
+      "hours": 24
+    },
+    "executable": true,
+    "quotes": [
+      {
+        "source": "code",
+        "ref": "reservation-service/src/main/resources/reservation-service.yml",
+        "line": 20,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/reservation-service/src/main/resources/reservation-service.yml",
+        "text": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-116",
+    "requirementId": "REQ-116",
+    "kind": "stay-length-limit",
+    "title": "Maximum stay length",
+    "statement": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+    "parameters": {
+      "max": 30,
+      "par": 21
+    },
+    "executable": true,
+    "quotes": [
+      {
+        "source": "code",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 12,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+        "text": "# @rule [AQPI-4] A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-117",
+    "requirementId": "REQ-117",
+    "kind": "occupancy-limits",
+    "title": "Occupancy and room limits",
+    "statement": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+    "parameters": {
+      "adults": 4,
+      "children": 3,
+      "rooms": 8
+    },
+    "executable": true,
+    "quotes": [
+      {
+        "source": "code",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 13,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+        "text": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  },
+  {
+    "id": "BR-118",
+    "requirementId": "REQ-118",
+    "kind": "advance-horizon",
+    "title": "Booking horizon",
+    "statement": "Check-in can be at most 500 days ahead.",
+    "parameters": {
+      "days": 500
+    },
+    "executable": true,
+    "quotes": [
+      {
+        "source": "code",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 14,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+        "text": "# @rule [AQPI-4] Check-in can be at most 500 days ahead.",
+        "provenance": "github"
+      }
+    ],
+    "designedWith": [
+      "incremental-merge",
+      "input-normalisation",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "status": "new",
+    "version": 1,
+    "previous": null
+  }
+]

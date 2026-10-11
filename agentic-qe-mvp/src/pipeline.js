@@ -28,6 +28,7 @@ const { testDataAgent, dataSetFile } = require('./agents/testdata');
 const { AiSession } = require('./ai');
 const ai = require('./agents/ai');
 const learning = require('./learning');
+const gaps = require('./gaps');
 const { extractContract, checkEndpoints } = require('./contracts');
 const { checkDraft } = require('./agents/ai');
 
@@ -183,7 +184,8 @@ ${body}
   async startCycle({ type = 'baseline', name, baselineId, inputs = {}, sutBuild, reviewer, skills, testingType, testingTypes }) {
     if (!['baseline', 'incremental'].includes(type)) throw httpError(400, 'type must be "baseline" or "incremental"');
     let tt;
-    try { tt = getTestingType(testingTypes ?? testingType); } catch (e) { throw httpError(400, e.message, [{ field: 'testingType', message: e.message }]); }
+    const inherited = type === 'incremental' && baselineId ? this.store.getBaseline(baselineId)?.testingType : undefined;
+    try { tt = getTestingType(testingTypes ?? testingType ?? inherited); } catch (e) { throw httpError(400, e.message, [{ field: 'testingType', message: e.message }]); }
     let activeSkills;
     try { activeSkills = selectSkills(this.skills, skills, tt.ids); } catch (e) { throw httpError(400, e.message); }
     let baseline = null;
@@ -198,7 +200,8 @@ ${body}
     const n = Number(id.slice(4));
     const codebase = loaded.find((i) => i.slot === 'codebase');
     const statements = loaded.flatMap((i) => i.statements);
-    const normalisation = normalise(statements);
+    const pickedUp = baseline ? gaps.pickUpStatements(baseline.skippedGaps) : [];
+    const normalisation = normalise([...statements, ...pickedUp]);
     const cycle = {
       id,
       name: name || `Cycle ${n} - ${type === 'baseline' ? 'Baseline' : 'Incremental'}`,
@@ -229,13 +232,18 @@ ${body}
     const session = this.aiFor(cycle);
     const matched = await ai.aiMatchStatements(normalisation, session, { guidance: this.skillContext(cycle, 'normalise').guidance });
     cycle.normalisation = matched.normalisation;
+    cycle.gaps = {
+      analysedAt: now(), code: codebase?.ref || null,
+      findings: gaps.findGaps({ normalisation: cycle.normalisation, inputs: loaded }),
+      pickedUp: (baseline?.skippedGaps || []).map((g) => ({ story: g.story, summary: g.summary, defectId: g.defectId, skippedInCycle: g.skippedInCycle, statementCount: g.statements.length })),
+    };
     cycle.learned = { review: learning.reviewLessons(this.store.getLearning(), cycle.normalisation), design: [], suppressed: [], defects: [] };
     const nc = cycle.normalisation.counts;
     this.handover(cycle, 'normalise');
     setPhase(cycle, 'normalise', 'done', `${nc.agreed} agreed · ${nc['jira-only']} Jira only · ${nc['code-only']} code only · ${nc.conflict} conflicts${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
     if (baseline) cycle.deltaPreview = this.previewDelta(cycle, {}, baseline);
     const reviewCtx = this.skillContext(cycle, 'review-agent');
-    cycle.reviewAgent = reviewInputs({ normalisation: cycle.normalisation, inputs: cycle.inputs, testingType: tt.id, deltaPreview: cycle.deltaPreview || null, baseline });
+    cycle.reviewAgent = reviewInputs({ normalisation: cycle.normalisation, inputs: cycle.inputs, gaps: cycle.gaps, testingType: tt.id, deltaPreview: cycle.deltaPreview || null, baseline });
     const aiFindings = await ai.aiReviewFindings(cycle.normalisation, session, { guidance: reviewCtx.guidance });
     if (aiFindings.length) {
       const ra = cycle.reviewAgent;
@@ -258,12 +266,14 @@ ${body}
     return { ...classifyDelta(baseline.requirements, reviewed), pendingConflicts: pending };
   }
 
-  review(cycleId, { reviewer, excluded = [], resolutions = {}, comment = '' }) {
+  review(cycleId, { reviewer, excluded = [], resolutions = {}, comment = '', decision = 'approve' }) {
     const cycle = this.mustGet(cycleId);
     if (cycle.status === 'awaiting-merge') {
       throw httpError(409, `The requirement set of ${cycle.id} is already approved. The step still open is the merge into baseline ${cycle.baselineId}: approve it on the merge screen.`, [{ gate: 'merge' }]);
     }
     if (cycle.status !== 'awaiting-review') throw httpError(409, `Cycle is ${cycle.status}, not awaiting review`);
+    if (!['approve', 'reject'].includes(decision)) throw httpError(400, 'decision must be "approve" or "reject"');
+    if (decision === 'reject') return this.rejectReview(cycle, { reviewer, comment });
     const open = cycle.normalisation.groups.filter((g) => g.bucket === 'conflict' && !excluded.includes(g.id) && !resolutions[g.id]);
     const missing = [
       ...(!reviewer || !String(reviewer).trim() ? [{ field: 'reviewer', message: 'Reviewer name is required: every approval is recorded against a person' }] : []),
@@ -281,6 +291,13 @@ ${body}
     }
     cycle.review = { reviewer, at: now(), excluded, resolutions, comment };
     cycle.reviewed = reviewed;
+    const skipped = (cycle.gaps?.findings || []).filter((g) => g.groupIds.length && g.groupIds.every((id) => excluded.includes(id)));
+    if (cycle.gaps) {
+      cycle.gaps.excluded = skipped.map((g) => g.story);
+      const raised = gaps.gapDefects(cycle, skipped, { startNo: this.store.meta().nextDefect, reason: `gap excluded by ${reviewer} at the requirement review` });
+      this.store.bumpDefectCounter(raised.nextNo);
+      cycle.artifacts.gapDefects = raised.defects;
+    }
     if (cycle.learned) {
       const lr = cycle.learned.review;
       lr.kept = lr.resolutions.filter((x) => resolutions[x.groupId] === x.optionId).length + lr.exclusions.filter((x) => excluded.includes(x.groupId)).length;
@@ -290,11 +307,31 @@ ${body}
     learning.recordReview(memory, cycle);
     this.store.saveLearning(memory);
     cycle.approvals.push({ gate: 'Requirement set review', by: reviewer, at: cycle.review.at, decision: 'approved', comment,
-      detail: `${reviewed.length} requirements approved; ${excluded.length} excluded; ${Object.keys(resolutions).length} conflict(s) resolved` });
+      detail: `${reviewed.length} requirements approved; ${excluded.length} excluded${cycle.gaps?.excluded?.length ? ` (gaps ${cycle.gaps.excluded.join(', ')})` : ''}; ${Object.keys(resolutions).length} conflict(s) resolved` });
     setPhase(cycle, 'review', 'done', `Approved by ${reviewer}`);
     cycle.status = 'running';
     this.store.saveCycle(cycle);
     return this.track(cycle.id, cycle.type === 'baseline' ? this.runBaseline(cycle.id) : this.runIncrementalDesign(cycle.id));
+  }
+
+  /** Rejecting the requirement set raises a gap defect per gap story and stops the cycle before design. */
+  rejectReview(cycle, { reviewer, comment }) {
+    if (!reviewer || !String(reviewer).trim()) throw httpError(400, 'Reviewer name is required: every rejection is recorded against a person', [{ field: 'reviewer', message: 'Reviewer name is required' }]);
+    const at = now();
+    cycle.review = { reviewer, at, decision: 'rejected', excluded: [], resolutions: {}, comment };
+    const findings = cycle.gaps?.findings || [];
+    const raised = gaps.gapDefects(cycle, findings, { startNo: this.store.meta().nextDefect, reason: `requirement set rejected by ${reviewer}` });
+    this.store.bumpDefectCounter(raised.nextNo);
+    if (cycle.gaps) cycle.gaps.excluded = findings.map((g) => g.story);
+    cycle.artifacts.defects = raised.defects;
+    cycle.approvals.push({ gate: 'Requirement set review', by: reviewer, at, decision: 'rejected', comment,
+      detail: `Requirement set rejected; ${raised.defects.length} gap defect(s) raised${findings.length ? ` for ${findings.map((g) => g.story).join(', ')}` : ''}` });
+    setPhase(cycle, 'review', 'done', `Rejected by ${reviewer}`);
+    for (const p of cycle.phases) if (p.status === 'pending') setPhase(cycle, p.name, 'skipped', 'Requirement set rejected');
+    cycle.status = 'rejected';
+    cycle.completedAt = at;
+    this.store.saveCycle(cycle);
+    return { cycle, done: Promise.resolve() };
   }
 
   track(id, promise) {
@@ -411,7 +448,8 @@ ${body}
       id: bid, name: `${done.inputs.find((i) => i.slot === 'epic')?.ref || 'Baseline'} baseline`, version: 1,
       createdAt: now(), sourceCycleId: done.id, cycles: [done.id], lastCycleId: done.id,
       requirements: done.artifacts.requirements, rules: done.artifacts.rules, testCases: done.artifacts.testCases, testData: done.artifacts.testData, scripts: done.artifacts.scripts,
-      counters: done.counters,
+      counters: done.counters, testingType: done.testingType,
+      skippedGaps: gaps.skippedGapsOf(done, done.gaps?.excluded || []),
       history: [{ version: 1, at: now(), cycleId: done.id, change: 'Baseline established', approvedBy: done.review.reviewer }],
     };
     this.store.saveBaseline(baseline);
@@ -544,6 +582,8 @@ ${body}
     const lastCycle = this.store.getCycle(baseline.lastCycleId);
     const previousDefects = lastCycle?.artifacts?.defects || [];
     cycle.baselineJiraItems = lastCycle ? [...cycleJiraItems(lastCycle).values()].map(({ fromBaseline, ...x }) => x) : [];
+    const pickedUpStories = new Set((cycle.gaps?.pickedUp || []).map((g) => g.story));
+    merged.skippedGaps = [...(baseline.skippedGaps || []).filter((g) => !pickedUpStories.has(g.story)), ...gaps.skippedGapsOf(cycle, cycle.gaps?.excluded || [])];
     merged.lastCycleId = cycle.id;
     this.store.saveBaseline(merged);
     cycle.approvals.push({ gate: 'Merge into baseline', by: approver, at, decision: 'approved', comment,
@@ -592,7 +632,7 @@ ${body}
     const defectCtx = this.skillContext(cycle, 'defects');
     const { defects, resolved, nextNo } = raiseDefects({
       execution, testCases: cycle.artifacts.testCases, requirements: cycle.artifacts.requirements, cycle,
-      previousDefects, startNo: this.store.meta().nextDefect,
+      previousDefects: previousDefects.filter((d) => d.type !== 'gap'), startNo: this.store.meta().nextDefect,
     });
     this.store.bumpDefectCounter(nextNo);
     const triageOf = new Map(execution.results.filter((r) => r.aiTriage).map((r) => [r.key, r.aiTriage]));
@@ -610,8 +650,9 @@ ${body}
       }
     }
     await raiseDefectsInJira(defects.filter((d) => !d.confirmation), { cycle, env: this.env, fetchImpl: this.fetchImpl, items: cycleJiraItems(cycle) });
-    cycle.artifacts.defects = defects;
-    cycle.artifacts.resolvedDefects = resolved;
+    const gapRetest = gaps.resolveGapDefects(previousDefects, cycle, execution.results);
+    cycle.artifacts.defects = [...(cycle.artifacts.gapDefects || []), ...gapRetest.open, ...defects];
+    cycle.artifacts.resolvedDefects = [...gapRetest.closed, ...resolved];
     if (cycle.learned) cycle.learned.defects = defects.filter((d) => d.confirmation).map((d) => ({ id: d.id, testCaseKey: d.testCaseKey, lesson: `${d.id} awaits QE confirmation: ${d.confirmation.reason}` }));
     const memory = this.store.getLearning();
     learning.recordDefects(memory, cycle);

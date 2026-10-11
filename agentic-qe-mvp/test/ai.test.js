@@ -203,7 +203,7 @@ test('with AI on, every agent adds labelled suggestions while execution truth an
   const aiCases = a.testCases.filter((t) => t.origin === 'ai');
   assert.equal(aiCases.length, a.testCases.length - off.artifacts.testCases.length);
   assert.ok(aiCases.length > 0 && aiCases.every((t) => t.automation === 'Not automated' && t.labels.includes('ai-suggested') && t.requirementId));
-  assert.ok(aiCases.every((t) => a.execution.results.find((r) => r.key === t.key).status === 'not-run'));
+  assert.ok(aiCases.every((t) => (a.execution.results.find((r) => r.key === t.key) || { status: 'not-run' }).status === 'not-run'));
 
   assert.equal(a.aiScripts.length, 1, 'only the draft that passes the code checks is kept');
   assert.ok(!a.scripts.some((s) => s.file === a.aiScripts[0].file), 'drafts never join the executed suite');

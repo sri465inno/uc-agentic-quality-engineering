@@ -1,0 +1,86 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:38471/api/reservations",
+    "headers": {
+      "Idempotency-Key": "kkkkkkk"
+    },
+    "data": {
+      "cartId": "C-8982d379",
+      "guest": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+1 212 555 0100",
+        "arrivalTime": "18:00"
+      },
+      "paymentToken": "tok_visa_ok",
+      "privacyNoticeAccepted": true,
+      "marketingOptIn": false,
+      "locale": "en"
+    }
+  },
+  "response": {
+    "status": 201,
+    "correlationId": "62f7d8cc-a9ff-40bc-af9c-3257862ddb4a",
+    "body": {
+      "reservationId": "R-dc445933",
+      "status": "CONFIRMED",
+      "confirmationNumber": "HB8HDLVF4X",
+      "headline": "Your booking is confirmed",
+      "message": "Your confirmation number is HB8HDLVF4X. We've sent the details to your e-mail.",
+      "doNotResubmit": true,
+      "nextSteps": [
+        "Save your confirmation number",
+        "Check your e-mail for the confirmation",
+        "Contact the hotel for special requests"
+      ],
+      "statusUrl": "/api/reservations/R-dc445933",
+      "hotelName": "Harbor View Hotel",
+      "roomName": "Standard King",
+      "ratePlanName": "Flexible – pay at hotel",
+      "checkIn": "2026-11-10",
+      "checkOut": "2026-11-13",
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "items": [
+        {
+          "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
+          "quantity": 1,
+          "amount": {
+            "amount": 585,
+            "currency": "USD"
+          }
+        },
+        {
+          "label": "Taxes",
+          "quantity": 1,
+          "amount": {
+            "amount": 110.42,
+            "currency": "USD"
+          }
+        },
+        {
+          "label": "Mandatory fees (payable as part of the room price)",
+          "quantity": 1,
+          "amount": {
+            "amount": 75,
+            "currency": "USD"
+          }
+        }
+      ],
+      "total": {
+        "amount": 770.42,
+        "currency": "USD"
+      },
+      "paymentRule": "PAY_AT_HOTEL",
+      "paymentStatus": "AUTHORIZED",
+      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+      "guestFirstName": "Jane",
+      "notificationStatus": "DELIVERED",
+      "updatedAt": "2026-10-11T16:15:52.550341465Z"
+    }
+  }
+}

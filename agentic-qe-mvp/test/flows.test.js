@@ -170,7 +170,7 @@ test('cycle report contains provenance, counts by type and phase tag, execution,
   assert.ok(r.inputs.every((i) => i.provenance === 'fixture' && /no live/.test(i.provenanceLabel)));
   assert.equal(r.requirements.total, F.c1.artifacts.requirements.length);
   assert.equal(r.testCases.total, F.c1.artifacts.testCases.length);
-  assert.ok(r.testCases.byType.functional > 0 && r.testCases.byType['non-functional'] > 0);
+  assert.ok(r.testCases.byType.functional > 0);
   assert.ok(r.testCases.byLabel.functional > 0 && r.testCases.byLabel.automation > 0);
   assert.equal(r.execution.executed, true);
   assert.equal(r.execution.summary.failed, 1);

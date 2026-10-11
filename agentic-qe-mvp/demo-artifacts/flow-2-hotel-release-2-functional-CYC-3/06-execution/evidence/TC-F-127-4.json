@@ -1,0 +1,69 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:38471/api/reservations/R-06c0ba42/cancel",
+    "headers": {},
+    "data": {}
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "a2954c51-1210-48a8-8745-ac577651ce0e",
+    "body": {
+      "reservationId": "R-06c0ba42",
+      "status": "CANCELLED",
+      "confirmationNumber": null,
+      "headline": "Your booking is cancelled",
+      "message": "Your booking was cancelled free of charge. Any payment hold has been released.",
+      "doNotResubmit": false,
+      "nextSteps": [
+        "Search again to book new dates"
+      ],
+      "statusUrl": "/api/reservations/R-06c0ba42",
+      "hotelName": "Harbor View Hotel",
+      "roomName": "Standard King",
+      "ratePlanName": "Flexible – pay at hotel",
+      "checkIn": "2026-11-10",
+      "checkOut": "2026-11-13",
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "items": [
+        {
+          "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
+          "quantity": 1,
+          "amount": {
+            "amount": 585,
+            "currency": "USD"
+          }
+        },
+        {
+          "label": "Taxes",
+          "quantity": 1,
+          "amount": {
+            "amount": 110.42,
+            "currency": "USD"
+          }
+        },
+        {
+          "label": "Mandatory fees (payable as part of the room price)",
+          "quantity": 1,
+          "amount": {
+            "amount": 75,
+            "currency": "USD"
+          }
+        }
+      ],
+      "total": {
+        "amount": 770.42,
+        "currency": "USD"
+      },
+      "paymentRule": "PAY_AT_HOTEL",
+      "paymentStatus": "VOIDED",
+      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+      "guestFirstName": "Jane",
+      "notificationStatus": "DELIVERED",
+      "updatedAt": "2026-10-11T16:15:54.836852945Z"
+    }
+  }
+}

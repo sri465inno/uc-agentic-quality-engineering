@@ -4,7 +4,7 @@ const TITLE = 'Agentic QE Platform - MVP';
 const $view = document.getElementById('view');
 let META = null;
 let pollTimer = null;
-const runState = { type: 'baseline', example: 'hotel', testingTypes: ['functional'], baselineId: '', inputs: {}, inputsOff: new Set(), skills: null, open: new Set() };
+const runState = { type: 'baseline', example: 'hotel', testingTypes: ['eqe'], baselineId: '', inputs: {}, inputsOff: new Set(), skills: null, open: new Set() };
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pill = (text, cls) => `<span class="pill ${esc(cls || String(text).replace(/\s+/g, '-'))}">${esc(text)}</span>`;
@@ -349,14 +349,12 @@ function inputsDropdown(type, slots, active) {
 <div class="ms-group">The platform also accepts</div>${types.filter((t) => !inFlow.has(t.id) && t.id !== 'data-model').map(item).join('')}`);
 }
 
+/** EQE or Functional: one type of testing per run. */
 function testingTypesDropdown(type, domainId) {
-  const ids = runState.testingTypes;
-  const parts = META.testingTypes.filter((t) => ids.includes(t.id)).map((t) => testingTypeOf(t.id, domainId));
-  const body = META.testingTypes.map((t) => checkItem({ cls: 'tt-on', value: t.id, checked: ids.includes(t.id), title: t.name, sub: testingTypeOf(t.id, domainId).focus })).join('')
-    + '<div class="ms-foot">Tick more than one to combine them in a single run: the agents design, script and run the cases every ticked type needs.</div>';
-  return `${checkDropdown('testing', chips(parts.map((p) => p.short)), body)}
-<ul class="tt-how-list">${parts.map((p) => `<li><b>${esc(p.short)}:</b> ${esc(type === 'baseline' ? p.baseline : p.incremental)}</li>`).join('')}</ul>
-<p class="hint" id="tt-msg"></p>`;
+  const [id] = runState.testingTypes;
+  const opts = META.testingTypes.map((x) => testingTypeOf(x.id, domainId)).map((x) => `<label class="mode-option"><input type="radio" name="tt" class="tt-on" value="${esc(x.id)}" ${x.id === id ? 'checked' : ''}><span><b>${esc(x.name)}</b> <span class="small">${esc(x.dimension || '')}</span><span class="muted">${esc(x.focus)}</span></span></label>`).join('');
+  const sel = testingTypeOf(id, domainId);
+  return `${opts}<p class="hint"><b>${esc(sel.short)}:</b> ${esc(type === 'baseline' ? sel.baseline : sel.incremental)}</p>`;
 }
 
 function demoInputsHtml(type, ex) {
@@ -467,12 +465,7 @@ async function viewRun(params) {
     else runState.open.delete(d.dataset.ms);
   });
   $view.querySelectorAll('.tt-on').forEach((el) => el.onchange = () => {
-    const ids = [...$view.querySelectorAll('.tt-on')].filter((x) => x.checked).map((x) => x.value);
-    if (!ids.length) {
-      el.checked = true;
-      document.getElementById('tt-msg').textContent = 'Keep at least one type of testing ticked.';
-      return;
-    }
+    const ids = [el.value];
     const prev = runState.testingTypes;
     runState.testingTypes = ids;
     if (runState.skills) {
@@ -555,21 +548,14 @@ function phaseTile(c, p, tab) {
 async function viewCycle(id, params) {
   const c = await api(`/api/cycles/${id}`);
   setTitle(c.name);
-  const tab = params.get('tab') || (c.status === 'awaiting-review' ? 'review' : c.status === 'awaiting-merge' ? 'merge' : c.status === 'completed' ? 'artifacts' : 'inputs');
+  const tab = params.get('tab') || (c.status === 'awaiting-review' ? 'review' : c.status === 'awaiting-merge' ? 'merge' : 'inputs');
   const present = new Set(c.phases.map((p) => p.name));
   const rails = PHASE_GROUPS.map(([gid, title, note, names]) => {
     const tiles = names.filter((n) => present.has(n)).map((n) => phaseTile(c, c.phases.find((p) => p.name === n), tab));
-    if (gid === 'run') tiles.push(tile({ href: `#/cycle/${c.id}?tab=skills`, art: 'skill', tag: 'Skills', big: (c.skills || []).length, title: 'Skills and hand-overs', lines: ['Which skills each agent read and what it handed over'], cls: tab === 'skills' ? 'sel' : '' }));
+    if (gid === 'run' && c.type === 'incremental') tiles.push(tile({ href: `#/cycle/${c.id}?tab=skills`, art: 'skill', tag: 'Skills', big: (c.skills || []).length, title: 'Skills and hand-overs', lines: ['Which skills each agent read and what it handed over'], cls: tab === 'skills' ? 'sel' : '' }));
     return rail(gid, title, note, tiles);
   }).join('');
-  const ex0 = c.artifacts && c.artifacts.execution ? c.artifacts.execution.summary : null;
-  const summaryRail = rail('summary', 'Cycle summary', 'what went in, what came out, and the QE lead report', [
-    tile({ href: `#/cycle/${c.id}?tab=inputs`, art: 'input', tag: 'Inputs taken', big: c.inputs.length, title: 'Inputs taken', lines: [esc(c.inputs.map((i) => `${i.label} ${i.ref}`).join(' · '))], cls: tab === 'inputs' ? 'sel' : '' }),
-    tile({ href: `#/cycle/${c.id}?tab=artifacts`, art: 'design', tag: 'Artifacts produced', big: c.phases.filter((p) => p.status === 'done').length, title: 'Artifacts produced', lines: ['Every artifact of this cycle, with links and downloads'], cls: tab === 'artifacts' ? 'sel' : '' }),
-    tile({ href: `#/cycle/${c.id}?tab=traceability`, art: 'design', tag: 'Traceability', big: c.report && c.report.traceability ? c.report.traceability.totals.jiraItems : '…', title: 'Traceability matrix', lines: [c.report && c.report.traceability ? `${c.report.traceability.totals.covered} Jira items covered · ${c.report.traceability.totals.verified} verified · ${c.report.traceability.totals.failing} failing` : '<span class="muted">available when the cycle completes</span>'], cls: tab === 'traceability' ? 'sel' : '' }),
-    tile({ href: `#/reporting?cycle=${c.id}`, art: 'run', tag: 'Reporting', big: c.report ? '✔' : '…', title: 'QE lead report', lines: [c.report ? `${ex0 ? `${ex0.passed}/${ex0.executed} passed · ` : ''}${(c.artifacts.defects || []).length} defect(s) · opens in Reporting` : '<span class="muted">available in Reporting when the cycle completes</span>'] }),
-  ]);
-  const done = c.phases.filter((p) => p.status === 'done').length;
+  const inputsRail = rail('inputs', 'Inputs considered', 'one line per input the agents read', c.inputs.map((i, n) => tile({ href: `#/cycle/${c.id}?tab=inputs`, art: 'input', tag: `Input ${n + 1}`, big: n + 1, title: i.label, lines: [esc(i.ref)], cls: tab === 'inputs' ? 'sel' : '' })));
   const ex = c.artifacts && c.artifacts.execution ? c.artifacts.execution.summary : null;
   const current = c.phases.find((p) => phaseArtifactTab(p.name, c) === tab);
   const label = tab === 'overview' ? 'QE lead report' : tab === 'artifacts' ? 'Artifacts produced' : tab === 'inputs' ? 'Inputs taken' : tab === 'skills' ? 'Skills and hand-overs' : tab === 'traceability' ? 'Traceability: Jira to defect' : tab === 'merge' ? 'Human approval to merge' : tab === 'review' ? 'Human review of requirement set' : tab === 'review-agent' ? 'Review agent suggestions' : current ? current.label : tab;
@@ -577,15 +563,16 @@ async function viewCycle(id, params) {
   try { body = await renderCycleTab(c, tab); } catch (e) { body = `<div class="banner err">${esc(e.message)}</div>`; }
   $view.innerHTML = `<section class="hero small-hero"><div class="eyebrow">${c.type === 'baseline' ? 'Flow 1 · Baseline cycle' : 'Flow 2 · Incremental cycle'}</div>
 <h1>${esc(c.name)} <span class="muted small">${esc(c.id)}</span> ${statusPill(c.status)}</h1>
-<div class="facts"><div><b>${esc(testingTypeOf(c.testingType, exampleIdOf(c)).name)}</b>type of testing</div><div><b>${done}/${c.phases.length}</b>phases done</div>${c.delta ? `<div><b>${esc(c.delta.summary)}</b>delta</div>` : ''}${ex ? `<div><b>${ex.passed}/${ex.executed}</b>passed</div><div><b>${ex.passRate}%</b>pass rate</div>` : ''}${c.artifacts && c.artifacts.defects ? `<div><b>${c.artifacts.defects.length}</b>defects</div>` : ''}</div>
+<div class="facts"><div><b>${esc(testingTypeOf(c.testingType, exampleIdOf(c)).name)}</b>type of testing</div>${reviewBadge(c)}${c.delta ? `<div><b>${esc(c.delta.summary)}</b>delta</div>` : ''}${ex ? `<div><b>${ex.passed}/${ex.executed}</b>passed</div><div><b>${ex.passRate}%</b>pass rate</div>` : ''}${c.artifacts && c.artifacts.defects ? `<div><b>${c.artifacts.defects.length}</b>defects</div>` : ''}</div>
 <div class="muted small">Baseline: ${esc(c.baselineId || '(created when this cycle completes)')}${c.baselineVersionAtStart ? ` v${c.baselineVersionAtStart} at start` : ''}${c.baselineVersionAfter ? ` → v${c.baselineVersionAfter}` : ''} · SUT build <code>${esc(c.sutBuild)}</code> · created ${fmtTime(c.createdAt)}</div></section>
 ${c.error ? `<div class="banner err">Failed: ${esc(c.error)} <button class="btn secondary" id="resume">Resume</button></div>` : ''}
 ${c.status === 'interrupted' ? `<div class="banner">This cycle was interrupted by a restart. <button class="btn secondary" id="resume">Resume</button></div>` : ''}
 ${c.status === 'running' ? '<div class="banner info">Agents are running... this page refreshes automatically.</div>' : ''}
 ${GATE_TEXT[c.status] && tab !== (c.status === 'awaiting-review' ? 'review' : 'merge') ? `<div class="banner action"><b>Action needed</b> This cycle is stopped until you ${GATE_TEXT[c.status]}${c.status === 'awaiting-merge' ? ` ${esc(c.baselineId)}` : ''}. <a href="#/cycle/${esc(c.id)}?tab=${c.status === 'awaiting-review' ? 'review' : 'merge'}">Go to the approval</a></div>` : ''}
 ${adaptedPanel(c)}
-${summaryRail}
+${inputsRail}
 ${rails}
+${gapSummary(c)}
 <section class="panel" id="detail-panel"><div class="panel-head"><h2>${esc(label)}</h2><span class="crumbs"><a href="#/cycles">Cycles</a> › <a href="#/cycle/${esc(c.id)}">${esc(c.id)}</a> › ${esc(label)}</span></div><div id="tab">${body}</div></section>`;
   const r = document.getElementById('resume');
   if (r) r.onclick = async () => { await api(`/api/cycles/${c.id}/resume`, { method: 'POST' }); route(); };
@@ -594,6 +581,33 @@ ${rails}
   if (sel) sel.parentElement.scrollLeft = Math.max(0, sel.offsetLeft - sel.parentElement.offsetLeft - 40);
   if (params.get('tab') && c.status !== 'running') document.getElementById('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
   if (c.status === 'running') pollTimer = setTimeout(route, 1500);
+}
+
+/** Outcome of the human review of the requirement set: green when approved, red when rejected. */
+function reviewBadge(c) {
+  if (!c.review) return '';
+  const bad = c.review.decision === 'rejected';
+  return `<div><span class="gate-badge ${bad ? 'bad' : 'good'}">${bad ? 'Rejected' : 'Approved'} by ${esc(c.review.reviewer)}</span>requirement set</div>`;
+}
+
+/** After gap analysis: the Jira stories the code lacks, each with its decision. */
+function gapSummary(c) {
+  const g = c.gaps;
+  if (!g || c.phases.find((p) => p.name === 'normalise')?.status !== 'done') return '';
+  const defects = [...(c.artifacts?.gapDefects || []), ...(c.artifacts?.defects || []), ...(c.artifacts?.resolvedDefects || [])].filter((d) => d.type === 'gap');
+  const defectOf = (story) => defects.find((d) => d.story === story);
+  const decision = (x) => {
+    const d = defectOf(x.story);
+    if (d) return `${esc(d.id)} ${pill(d.status === 'Closed' ? 'closed' : 'Minor gap defect', d.status === 'Closed' ? 'passed' : 'pending')}`;
+    if (!c.review) return '<span class="muted">awaiting review</span>';
+    return (g.excluded || []).includes(x.story) ? 'excluded' : 'kept in scope';
+  };
+  const picked = (g.pickedUp || []).length ? `<p class="small">Picked up from skipped gaps: ${g.pickedUp.map((x) => { const d = defectOf(x.story); return `<b>${esc(x.story)}</b> ${esc(x.summary)} (${esc(x.defectId || '-')}${d && d.status === 'Closed' ? ', fixed and retested' : ''})`; }).join('; ')}</p>` : '';
+  const head = `<div class="panel-head"><h2>Gap summary: code vs Jira</h2><span class="muted small">Jira initiative, epics and stories compared with ${esc(g.code || 'the code')}</span></div>`;
+  if (!g.findings.length) return `<section class="panel">${head}<p class="ok">No gaps: the code covers every Jira story it was given.</p>${picked}</section>`;
+  return `<section class="panel">${head}<p><b>${g.findings.length}</b> Jira ${g.findings.length === 1 ? 'story is' : 'stories are'} not in the code.</p>
+<table><tr><th>Story</th><th>Epic</th><th>Missing acceptance criteria</th><th>Severity</th><th>Decision</th></tr>${g.findings.map((x) => `<tr><td><b>${esc(x.story)}</b> ${esc(x.summary)}</td><td>${x.epic ? esc(`${x.epic.key} ${x.epic.summary || ''}`) : '-'}</td><td>${x.statementCount}</td><td>${pill('Minor', 'pending')}</td><td>${decision(x)}</td></tr>`).join('')}</table>${picked}
+${c.status === 'awaiting-review' ? `<p><a class="btn" href="#/cycle/${esc(c.id)}?tab=review">Review the gaps</a></p>` : ''}</section>`;
 }
 
 const aiBadge = (x, text = 'AI-suggested') => (x ? ` <span title="${esc(x.by || x.model || '')}">${pill(text, 'ai')}</span>` : '');
@@ -668,10 +682,10 @@ function reviewAgentView(c, { compact = false } = {}) {
   if (!ra) return '<p class="muted">No review agent ran for this cycle.</p>';
   const src = (f) => f.sources.map((x) => `${esc(x.source)} ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.ref || '')}</a>` : esc(x.ref || '')}${x.line ? `:${esc(x.line)}` : ''}`).join('<br>') || '<span class="muted">-</span>';
   const rows = ra.findings.map((f) => [esc(f.id), pill(RA_CAT[f.category][0], RA_CAT[f.category][1]), esc(f.severity), `<b>${esc(f.title)}</b>${f.groupId ? ` <span class="muted small">${esc(f.groupId)}</span>` : ''}<br><span class="small">${esc(f.detail || '')}</span>`, esc(f.suggestion), src(f)]);
-  const head = `<h2>${compact ? 'Review agent suggestions for you' : 'Review agent suggestions'} <span class="muted small">for ${esc(testingTypeOf(ra.testingType).name)}</span></h2>
+  const head = `<h2>Suggested for the Reviewer <span class="muted small">for ${esc(testingTypeOf(ra.testingType).name)}</span></h2>
 <p class="small">${ra.counts.added} added · ${ra.counts.missing} missing · ${ra.counts.conflicts} conflicts${ra.counts.ai ? ` · ${ra.counts.ai} AI-suggested` : ''} · ${ra.counts.high} high severity. <span class="muted">${esc(ra.note)}</span></p>`;
   const body = ra.findings.length ? table(['ID', 'Kind', 'Severity', 'What it found', 'Suggestion', 'Source'], rows) : '<p class="muted">No suggestions: every input agrees and nothing is missing.</p>';
-  return compact ? `<details class="card review-agent" open><summary><b>Review agent: ${ra.findings.length} suggestion(s) before you approve</b></summary>${head}${body}</details>` : `${head}${body}`;
+  return compact ? `<details class="card review-agent" open><summary><b>Suggested for the Reviewer: ${ra.findings.length} suggestion(s) before you approve</b></summary>${head}${body}</details>` : `${head}${body}`;
 }
 
 function testingScope(c) {
@@ -702,12 +716,13 @@ async function renderCycleTab(c, tab) {
     case 'review': {
       if (c.status !== 'awaiting-review') return `<div class="banner ok">Review complete.</div>${normaliseView(c, false)}`;
       return `<div class="banner info">Human review: settle every conflicting value (choose a value or exclude it), optionally exclude any statement, then approve the requirement set. Only the approved set flows on.</div>
+${gapReviewCard(c)}
 ${reviewAgentView(c, { compact: true })}
 ${c.type === 'incremental' ? `<div class="card" id="delta-box">${deltaView(c.deltaPreview, { title: 'Delta preview (before anything is designed)' })}</div>` : ''}
 ${normaliseView(c, true)}
 <div class="card"><div class="row"><label>Reviewer <input type="text" id="reviewer" value="${esc(localStorage.getItem('aqe-user') || c.createdBy || '')}"></label>
 <label>Comment <input type="text" id="comment" size="40"></label>
-<button class="btn good" id="approve-review">Approve requirement set</button></div><div id="review-msg"></div></div>`;
+<button class="btn good" id="approve-review">Approve requirement set</button> <button class="btn bad" id="reject-review">Reject requirement set</button></div><div id="review-msg"></div></div>`;
     }
     case 'delta': return c.delta ? deltaView(c.delta) : deltaView(c.deltaPreview, { title: 'Delta preview (not yet reviewed)' });
     case 'requirements':
@@ -724,6 +739,19 @@ ${normaliseView(c, true)}
   }
 }
 
+/** Story-level gaps for the reviewer: each is pre-ticked for exclusion as a Minor gap defect. */
+function gapReviewCard(c) {
+  const g = c.gaps;
+  if (!g) return '';
+  const picked = (g.pickedUp || []).length ? `<p>Picked up from skipped gaps: ${g.pickedUp.map((x) => `<b>${esc(x.story)}</b> ${esc(x.summary)} (${esc(x.defectId || '-')} from ${esc(x.skippedInCycle)})`).join('; ')}</p>` : '';
+  if (!g.findings.length) return `<div class="card"><h3>Gap analysis: code vs Jira</h3><p class="ok">No gaps: the code mentions every Jira story it was given.</p>${picked}</div>`;
+  return `<div class="card"><h3>Gap analysis: ${g.findings.length} Jira ${g.findings.length === 1 ? 'story is' : 'stories are'} not in the code</h3>${picked}
+<table><tr><th>Exclude</th><th>Story</th><th>Epic</th><th>Acceptance criteria missing in code</th><th>Severity</th></tr>
+${g.findings.map((x) => `<tr><td><input type="checkbox" class="gap-excl" checked data-story="${esc(x.story)}" data-groups="${esc(x.groupIds.join(','))}"></td><td><b>${esc(x.story)}</b> ${esc(x.summary)}</td><td>${esc(x.epic ? x.epic.key : '-')}</td><td>${x.statementCount}<ul class="small">${x.statements.map((s) => `<li>${esc(s.text)}</li>`).join('')}</ul></td><td>${pill('Minor', 'conflict')}</td></tr>`).join('')}</table>
+<p class="small muted">${esc(x0(g.findings).recommendation)}</p></div>`;
+}
+const x0 = (a) => a[0] || {};
+
 function bindCycleTab(c, tab) {
   if (tab !== 'review' || c.status !== 'awaiting-review') return;
   const conflicts = c.normalisation.groups.filter((g) => g.bucket === 'conflict');
@@ -738,6 +766,7 @@ function bindCycleTab(c, tab) {
   }
   const collect = () => {
     const excluded = [...$view.querySelectorAll('.excl:checked')].map((e) => e.dataset.g);
+    for (const e of $view.querySelectorAll('.gap-excl:checked')) for (const id of e.dataset.groups.split(',').filter(Boolean)) if (!excluded.includes(id)) excluded.push(id);
     const resolutions = {};
     for (const g of conflicts) {
       const v = $view.querySelector(`input[name="res-${g.id}"]:checked`);
@@ -757,7 +786,17 @@ function bindCycleTab(c, tab) {
       document.getElementById('delta-box').innerHTML = deltaView(p, { title: 'Delta preview (before anything is designed)' });
     }
   };
-  $view.querySelectorAll('.excl,.res').forEach((el) => el.onchange = refresh);
+  $view.querySelectorAll('.excl,.res,.gap-excl').forEach((el) => el.onchange = refresh);
+  document.getElementById('reject-review').onclick = async () => {
+    const reviewer = document.getElementById('reviewer').value.trim();
+    const msg = document.getElementById('review-msg');
+    if (!reviewer) { showBlocked(msg, 'The requirement set cannot be rejected yet', [{ field: 'reviewer', message: 'Enter the reviewer name: every rejection is recorded against a person' }], c.id); return; }
+    localStorage.setItem('aqe-user', reviewer);
+    try {
+      await api(`/api/cycles/${c.id}/review`, { method: 'POST', body: { reviewer, comment: document.getElementById('comment').value, decision: 'reject' } });
+      location.hash = `#/cycle/${c.id}`;
+    } catch (e) { showBlocked(msg, e.message, e.details || [], c.id); }
+  };
   refresh();
   btn.onclick = async () => {
     const reviewer = document.getElementById('reviewer').value.trim();
@@ -1035,12 +1074,95 @@ async function pickCycle(params, title, render, needs) {
 }
 
 const REPORT_VIEWS = [
-  ['lead', 'QE lead report', 'Summary, inputs, approach, risks, go/no-go and sign-off'],
-  ['execution', 'Execution results', 'Every test case with its real result and evidence'],
-  ['defects', 'Defects', 'Raised only from real failures, with expected vs actual'],
+  ['summary', 'Cycle summary and detailed report', 'Outcome, execution evidence, business-flow readiness, defects and risks'],
+  ['lead', 'QE lead report', 'Inputs, approach, risks, go/no-go and sign-off, as a page to share'],
   ['cycle', 'Full cycle report', 'Counts, coverage, approvals, skills and hand-overs'],
   ['downloads', 'Downloads', 'HTML, Markdown and Excel files for this cycle'],
 ];
+
+const SUITE_NAMES = { journey: 'Business-flow journeys', ui: 'Screens', nfr: 'Enterprise quality checks', load: 'Load', api: 'Domain-rule checks (API)' };
+const isGap = (d) => d.type === 'gap';
+
+/** Reporting: the cycle summary, then the detailed report (outcome, execution evidence, business-flow readiness, defects and risks). */
+function summaryReport(c, lead) {
+  const a = c.artifacts;
+  const tt = testingTypeOf(c.testingType, exampleIdOf(c));
+  const ex = a.execution ? a.execution.summary : null;
+  const defects = a.defects || [];
+  const execDefects = defects.filter((d) => !isGap(d));
+  const gapDefs = [...defects, ...(a.resolvedDefects || [])].filter(isGap);
+  const rec = lead.recommendation;
+  const tone = { ok: 'passed', warn: 'designed', bad: 'failed' }[rec.tone] || 'pending';
+  const kpi = (label, v) => `<div class="kpi">${esc(label)}<b>${v}</b></div>`;
+  const summary = `<h2>Cycle summary</h2><p>${esc(c.name)} · ${c.type === 'baseline' ? 'Flow 1 baseline' : 'Flow 2 incremental'} · <b>${esc(tt.name)}</b> (${esc(tt.dimension || tt.focus)}) · inputs: ${esc(c.inputs.map((i) => `${i.label} ${i.ref}`).join('; '))}</p>
+<div class="kpis">${kpi('Requirements', (a.requirements || []).length)}${kpi('Test cases', (a.testCases || []).length)}${kpi('Scripts', (a.scripts || []).length)}${kpi('Executed', ex ? ex.executed : '-')}${kpi('Passed', ex ? ex.passed : '-')}${kpi('Pass rate', ex ? `${ex.passRate}%` : '-')}${kpi('Defects open', execDefects.length)}${kpi('Gaps (code vs Jira)', (c.gaps?.findings || []).length)}${kpi('Go / no-go', esc(rec.decision))}</div>`;
+
+  const outcome = `<h3>1. Cycle outcome</h3><p>${pill(rec.decision, tone)} ${esc(rec.reason)}</p>${(rec.conditions || []).length ? `<ul>${rec.conditions.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${reviewBadge(c) ? `<p class="small">Requirement set: ${c.review.decision === 'rejected' ? 'rejected' : 'approved'} by ${esc(c.review.reviewer)}${(c.approvals || []).filter((x) => x.gate !== 'Requirement set review').map((x) => ` · ${esc(x.gate)}: ${esc(x.decision)} by ${esc(x.by)}`).join('')}</p>` : ''}`;
+
+  const resultOf = new Map(((a.execution && a.execution.results) || []).map((x) => [x.key, x]));
+  const suites = [...new Set((a.testCases || []).map((x) => x.suite || 'api'))];
+  const suiteRows = suites.map((s) => {
+    const cs = a.testCases.filter((x) => (x.suite || 'api') === s);
+    const rs = cs.map((x) => resultOf.get(x.key)).filter(Boolean);
+    const n = (st) => rs.filter((x) => x.status === st).length;
+    return [esc(SUITE_NAMES[s] || s), cs.filter((x) => x.inRun !== false).length, n('passed') + n('failed'), n('passed'), n('failed'), cs.filter((x) => x.inRun !== false).length - n('passed') - n('failed')];
+  });
+  const shots = ((a.execution && a.execution.results) || []).some((x) => (x.evidence || []).some((e) => e.contentType === 'image/png'));
+  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite', 'In this run', 'Executed', 'Passed', 'Failed', 'Manual / not run'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p><details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}`;
+
+  const tr = c.report && c.report.traceability;
+  const gapStories = new Set((c.gaps?.findings || []).map((g) => g.story));
+  const epics = tr ? tr.stories.filter((s) => s.level === 'epic') : [];
+  const flowRows = epics.map((e) => {
+    const kids = tr.stories.filter((s) => s.parent === e.key);
+    const failing = kids.filter((s) => s.status === 'failing');
+    const gapsIn = kids.filter((s) => gapStories.has(s.key));
+    const blocking = execDefects.filter((d) => d.blocksRelease && kids.some((s) => (d.jiraKeys || []).includes(s.key) || s.defects.includes(d.id)));
+    const verified = kids.filter((s) => s.status === 'verified').length;
+    const state = blocking.length ? pill('Blocked', 'failed') : failing.length ? pill('At risk', 'designed') : gapsIn.length ? pill('Partly implemented', 'pending') : verified ? pill('Ready', 'passed') : pill('Not verified', 'pending');
+    return [`<b>${esc(e.key)}</b> ${esc(e.summary)}`, kids.length, verified, failing.map((s) => esc(s.key)).join(', ') || '-', gapsIn.map((s) => esc(s.key)).join(', ') || '-', state];
+  });
+  const flows = `<h3>3. Business-flow readiness</h3><p class="small muted">One row per business flow (epic): its stories, how many are verified by an executed test, which fail and which the code does not implement yet.</p>${flowRows.length ? table(['Business flow', 'Stories', 'Verified', 'Failing', 'Gaps', 'Readiness'], flowRows) : '<p class="muted">No epics in this cycle.</p>'}`;
+
+  const dRow = (d) => [esc(d.id), isGap(d) ? 'Gap' : 'Execution', esc(d.severity), d.blocksRelease ? pill('blocks release', 'failed') : 'no', esc((d.jiraKeys || [d.story]).filter(Boolean).join(', ')), esc(d.title), esc(d.status || 'Open')];
+  const closed = (a.resolvedDefects || []);
+  const risks = `<h3>4. Defects and risks</h3>${defects.length ? table(['Defect', 'Kind', 'Severity', 'Blocks release', 'Story', 'Title', 'Status'], defects.map(dRow)) : '<p>No open defects.</p>'}
+${closed.length ? `<p><b>Closed this cycle:</b> ${closed.map((d) => `${esc(d.id)} (${esc((d.jiraKeys || [d.story]).filter(Boolean).join(', '))}, ${esc(d.movement || 'fixed and retested')})`).join('; ')}</p>` : ''}
+${gapDefs.length ? `<p class="small muted">${gapDefs.length} Minor gap defect(s): Jira stories the code does not implement. They never block the release and are picked up in the next release.</p>` : ''}
+<h4>Open risks</h4>${lead.risks.length ? `<ul>${lead.risks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>None.</p>'}
+${ex && ex.notRun ? `<p><b>Not tested automatically:</b> ${ex.notRun} manual case(s) handed over as not run.</p>` : ''}
+<p><a href="#/traceability?cycle=${esc(c.id)}">Open the traceability for ${esc(c.id)}</a></p>`;
+  return `${summary}<h2>Detailed report</h2>${outcome}${evidence}${flows}${risks}`;
+}
+
+const TRACE_VIEWS = [['requirement', 'By requirement'], ['testcase', 'By test case'], ['script', 'By automation script'], ['defect', 'By defect']];
+
+/** Traceability of one cycle: requirement, Jira story, test case, test data, script, result and defect. */
+async function viewTraceability(params) {
+  setTitle('Traceability');
+  const all = (await api('/api/cycles')).filter((x) => x.status === 'completed');
+  const hero = '<section class="hero small-hero"><div class="eyebrow">Traceability</div><h1>Requirement to defect, for one cycle</h1><p>Every requirement traced to its Jira story, test cases, test data, automation scripts, real results and defects.</p></section>';
+  if (!all.length) { $view.innerHTML = `${hero}<p class="muted">No cycle has completed yet. <a href="#/run">Run a cycle</a>.</p>`; return; }
+  const id = all.some((x) => x.id === params.get('cycle')) ? params.get('cycle') : all[all.length - 1].id;
+  const by = TRACE_VIEWS.some(([v]) => v === params.get('by')) ? params.get('by') : 'requirement';
+  const c = await api(`/api/cycles/${id}`);
+  const tr = c.report.traceability;
+  const rows = tr.rows;
+  const res = (x) => (x === 'passed' || x === 'failed' ? pill(x, x) : `<span class="muted small">${esc(x)}</span>`);
+  const list = (xs) => esc([...new Set(xs.filter(Boolean))].join(', ') || '-');
+  const tally = (rs) => { const p = rs.filter((x) => x.result === 'passed').length; const f = rs.filter((x) => x.result === 'failed').length; return `${p} passed${f ? ` · <b class="err">${f} failed</b>` : ''}${rs.length - p - f ? ` · ${rs.length - p - f} not run` : ''}`; };
+  const group = (key) => { const m = new Map(); for (const x of rows) { const k = x[key] || '(none)'; m.set(k, [...(m.get(k) || []), x]); } return [...m.entries()]; };
+  const defects = [...(c.artifacts.defects || []), ...(c.artifacts.resolvedDefects || [])];
+  let body;
+  if (by === 'requirement') body = table(['Requirement', 'Jira story', 'Test cases', 'Test data', 'Scripts', 'Results', 'Defects'], group('requirementId').map(([k, rs]) => [`<b>${esc(k)}</b><br><span class="small">${esc(rs[0].requirement || '')}</span>`, list(rs.flatMap((x) => x.jiraKeys)), list(rs.map((x) => x.testCaseKey)), list(rs.map((x) => x.testDataId)), list(rs.map((x) => x.scriptFile)), tally(rs), list(rs.flatMap((x) => x.defects))]));
+  else if (by === 'testcase') body = table(['Test case', 'Requirement', 'Jira', 'Test data', 'Script', 'Result', 'Defect'], rows.map((x) => [`<b>${esc(x.testCaseKey)}</b> ${esc(x.testCase)}`, esc(x.requirementId), list(x.jiraKeys), esc(x.testDataId || '-'), esc(x.scriptFile || 'manual'), res(x.result), list(x.defects)]));
+  else if (by === 'script') body = table(['Automation script', 'Test cases', 'Requirements', 'Jira', 'Results', 'Defects'], group('scriptFile').map(([k, rs]) => [`<code>${esc(k === '(none)' ? 'manual (no script)' : k)}</code>`, list(rs.map((x) => x.testCaseKey)), list(rs.map((x) => x.requirementId)), list(rs.flatMap((x) => x.jiraKeys)), tally(rs), list(rs.flatMap((x) => x.defects))]));
+  else body = defects.length ? table(['Defect', 'Kind', 'Severity', 'Status', 'Jira story', 'Requirement', 'Test case', 'Script', 'Result'], defects.map((d) => { const x = rows.find((y) => y.testCaseKey === d.testCaseKey); return [`<b>${esc(d.id)}</b> ${esc(d.title)}`, isGap(d) ? 'Gap' : 'Execution', esc(d.severity), esc(d.status || 'Open'), list(d.jiraKeys || [d.story]), esc(d.requirementId || (isGap(d) ? 'excluded as a gap' : '-')), esc(d.testCaseKey || '-'), esc(x ? x.scriptFile || 'manual' : '-'), x ? res(x.result) : '<span class="muted small">no test (not implemented)</span>']; })) : '<p>No defects in this cycle.</p>';
+  const picker = `<section class="panel cycle-picker"><label class="field" for="tr-cycle">Cycle</label><select id="tr-cycle">${all.slice().reverse().map((x) => `<option value="${esc(x.id)}" ${x.id === id ? 'selected' : ''}>${esc(x.id)} · ${esc(x.name)} · ${esc(testingTypeOf(x.testingType).short)}</option>`).join('')}</select></section>`;
+  const tabs = rail('tr-views', `${c.id} · ${esc(testingTypeOf(c.testingType).name)}`, `${tr.totals.testCases} test cases · ${tr.totals.withScript} scripted · ${tr.totals.executed} executed · ${tr.totals.verified}/${tr.totals.jiraItems} Jira items verified`, TRACE_VIEWS.map(([v, name]) => tile({ href: `#/traceability?cycle=${esc(id)}&by=${v}`, art: 'design', tag: 'Traceability', big: '⇄', title: name, lines: [''], cls: v === by ? 'sel' : '' })));
+  $view.innerHTML = `${hero}${picker}${tabs}<section class="panel"><div class="panel-head"><h2>${esc(TRACE_VIEWS.find(([v]) => v === by)[1])}</h2><a class="btn secondary" href="/api/cycles/${esc(id)}/report.xlsx">Download Excel</a></div>${body}</section>`;
+  document.getElementById('tr-cycle').onchange = (e) => { location.hash = `#/traceability?cycle=${e.target.value}&by=${by}`; };
+}
 
 function downloadsView(c) {
   const id = esc(c.id);
@@ -1060,7 +1182,7 @@ async function viewReporting(params) {
   const hero = pendingBanner(all) + '<section class="hero small-hero"><div class="eyebrow">Reporting</div><h1>Quality reports by cycle</h1><p>Pick a cycle to read its QE lead report, results, defects and the full cycle report, or download them.</p></section>';
   if (!cycles.length) { $view.innerHTML = `${hero}<p class="muted">No cycle has completed yet. <a href="#/run">Run a cycle</a>.</p>`; return; }
   const id = cycles.some((c) => c.id === params.get('cycle')) ? params.get('cycle') : cycles[cycles.length - 1].id;
-  const view = REPORT_VIEWS.some(([v]) => v === params.get('view')) ? params.get('view') : 'lead';
+  const view = REPORT_VIEWS.some(([v]) => v === params.get('view')) ? params.get('view') : 'summary';
   const c = await api(`/api/cycles/${id}`);
   const q = (v) => `#/reporting?cycle=${esc(id)}&view=${v}`;
   const when = (x) => new Date(x.completedAt || x.createdAt).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -1071,7 +1193,7 @@ async function viewReporting(params) {
 <span class="muted small">${cycles.length} completed cycle(s) · run on ${esc(when(picked))}</span></section>`;
   const ex = c.artifacts.execution ? c.artifacts.execution.summary : null;
   const defects = c.artifacts.defects || [];
-  const big = { lead: '✔', execution: ex ? `${ex.passRate}%` : '-', defects: defects.length, cycle: '≡', downloads: '⇩' };
+  const big = { summary: ex ? `${ex.passRate}%` : '-', lead: '✔', cycle: '≡', downloads: '⇩' };
   const viewTiles = REPORT_VIEWS.map(([v, name, line]) => tile({ href: q(v), art: v === 'defects' && defects.length ? 'gate' : 'run', tag: 'Report', big: big[v], title: name, lines: [esc(line)], cls: v === view ? 'sel' : '' }));
   const prev = cycles.filter((x) => x.id !== id && cycles.indexOf(x) < cycles.findIndex((y) => y.id === id)).pop();
   if (prev) viewTiles.push(tile({ href: `#/compare?a=${prev.id}&b=${id}`, art: 'flow2', tag: 'Compare', big: 'Δ', title: `Compare with ${prev.id}`, lines: ['Side by side: what changed and how results moved'] }));
@@ -1079,8 +1201,7 @@ async function viewReporting(params) {
   if (view === 'lead') {
     const { html } = await api(`/api/cycles/${id}/lead-report`);
     body = `<div class="row"><a class="btn" href="/api/cycles/${esc(id)}/lead-report.html" target="_blank">Open as page</a><a class="btn secondary" href="/api/cycles/${esc(id)}/lead-report.html?download=1">Download HTML</a><a class="btn secondary" href="/api/cycles/${esc(id)}/lead-report.md">Download Markdown</a></div>${html}`;
-  } else if (view === 'execution') body = ex ? executionView(c) : '<p class="muted">Not executed.</p>';
-  else if (view === 'defects') body = defectsView(c);
+  } else if (view === 'summary') body = summaryReport(c, (await api(`/api/cycles/${id}/lead-report`)).lead);
   else if (view === 'cycle') body = reportView(c);
   else body = downloadsView(c);
   const label = REPORT_VIEWS.find(([v]) => v === view)[1];
@@ -1343,6 +1464,7 @@ async function route() {
       case 'defects': return await pickCycle(params, 'Defects', defectsView, (c) => c.status === 'completed');
       case 'reporting': return await viewReporting(params);
       case 'learning': return await viewLearning();
+      case 'traceability': return await viewTraceability(params);
       case 'reports': location.hash = '#/reporting'; return undefined;
       case 'compare': return await viewCompare(params);
       case 'baselines': return await viewBaselines();

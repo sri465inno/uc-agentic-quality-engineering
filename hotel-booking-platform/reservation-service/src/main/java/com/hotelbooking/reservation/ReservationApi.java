@@ -54,11 +54,9 @@ public final class ReservationApi {
     public record Item(String label, int quantity, Money amount) {
     }
 
-    /** Story 7.4: the outcome page. No confirmation number unless the reservation is confirmed. */
+    /** Reservation status from the system of record. No confirmation number unless the reservation is confirmed. */
     public record Outcome(String reservationId, Status status, String confirmationNumber, String headline,
-            String message, boolean doNotResubmit, List<String> nextSteps, String statusUrl, String hotelName,
-            String roomName, String ratePlanName, LocalDate checkIn, LocalDate checkOut, long nights, int rooms,
-            int adults, int children, List<Item> items, Money total, String paymentRule, PaymentStatus paymentStatus,
+            boolean doNotResubmit, String statusUrl, Money total, String paymentRule, PaymentStatus paymentStatus,
             String cancellationTerms, String guestFirstName, String notificationStatus, Instant updatedAt) {
     }
 

@@ -14,7 +14,7 @@
   },
   "protected": false,
   "_recorded": {
-    "at": "2026-10-02T19:57:36.539Z",
+    "at": "2026-10-11T15:41:55.706Z",
     "with": "git clone --depth 1 --branch demo/hotel-booking-platform-v2 https://github.com/sri465inno/uc-agentic-quality-engineering.git"
   }
 }

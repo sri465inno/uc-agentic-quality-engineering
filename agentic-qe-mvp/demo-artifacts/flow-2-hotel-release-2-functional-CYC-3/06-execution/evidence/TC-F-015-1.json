@@ -1,0 +1,73 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:37589/api/searches/form",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "07a292da-06b0-4fe5-9d32-ca8e9b4490b1",
+    "body": {
+      "fields": [
+        {
+          "name": "destination",
+          "label": "Destination",
+          "type": "text",
+          "required": true,
+          "constraint": "2-60 letters",
+          "hint": "City or area, for example New York",
+          "errorId": "destination-error"
+        },
+        {
+          "name": "checkIn",
+          "label": "Check-in date",
+          "type": "date",
+          "required": true,
+          "constraint": "today or later, up to 500 days ahead",
+          "hint": "Format YYYY-MM-DD",
+          "errorId": "checkIn-error"
+        },
+        {
+          "name": "checkOut",
+          "label": "Check-out date",
+          "type": "date",
+          "required": true,
+          "constraint": "after check-in, up to 30 nights",
+          "hint": "Format YYYY-MM-DD",
+          "errorId": "checkOut-error"
+        },
+        {
+          "name": "rooms",
+          "label": "Rooms",
+          "type": "number",
+          "required": true,
+          "constraint": "1-8",
+          "hint": null,
+          "errorId": "rooms-error"
+        },
+        {
+          "name": "adults",
+          "label": "Adults",
+          "type": "number",
+          "required": true,
+          "constraint": "at least 1 per room, up to 4 per room",
+          "hint": null,
+          "errorId": "adults-error"
+        },
+        {
+          "name": "children",
+          "label": "Children",
+          "type": "number",
+          "required": false,
+          "constraint": "0-3 per room",
+          "hint": "Optional",
+          "errorId": "children-error"
+        }
+      ],
+      "errorSummaryRole": "alert",
+      "errorSummaryLive": "assertive",
+      "rulesVersion": "search-rules-v1"
+    }
+  }
+}

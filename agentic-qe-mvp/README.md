@@ -71,6 +71,29 @@ Each cycle stores its AI call log on `cycle.ai` (agent, purpose, model, prompt h
 
 Feedback: `POST /api/cycles/:id/feedback` with `{ target: requirement|testcase|script|defect, id, verdict: accept|reject|confirm|not-a-defect, note, by }`. `test/learning.test.js` covers the learning loop with AI off and on.
 
+## Testing types: EQE and Functional
+
+Pick one per cycle on the Run page (`testingType: eqe | functional`; default `functional` for the API). A Flow 2 cycle inherits the type of its baseline. The type drives every agent, the skills, the hand-over and the reports.
+
+| | EQE (enterprise end-to-end business flows) | Functional (domain rules) |
+| --- | --- | --- |
+| Test design | Business journeys across the services (search, select, offers, cart, checkout, confirmation), screens, enterprise quality checks the inputs state | Every business rule with its exact value, boundaries and negative cases, through the service API |
+| Suites | `journey`, `ui`, `nfr`, `load` | `api` |
+| Hand-over | `journeys` | `ruleChecks` |
+| Evidence | Each step's request and response (screenshots where a screen exists) | Each request and response |
+
+## Gaps: Jira stories the code does not implement
+
+The requirements agent reads the Jira story keys the codebase mentions (`@story AQPI-n` tags). A Jira story with acceptance criteria but no code mentioning it is a **gap** (`src/gaps.js`), one finding per story, Minor. Release 1.0 (`demo/hotel-booking-platform`) leaves out AQPI-8, AQPI-13 and AQPI-22; release 2.0 implements them. Code-only statements and different values are not gaps (they stay "code only" and "conflict").
+
+At human review the gap stories are pre-ticked to exclude. Approving raises one Minor, non-blocking gap defect per excluded story and keeps the story in the baseline as skipped. "Reject requirement set" (needs a reviewer name) raises the gap defects and stops the cycle with no baseline. Flow 2 picks the skipped stories up again; when their tests pass, the gap defect is closed as fixed and retested.
+
+## Cycle, Reporting and Traceability pages
+
+- **Cycle page:** inputs considered, the process workflow and, once gap analysis is done, the gap summary. Artifacts open from the workflow tiles.
+- **Reporting:** a cycle summary (testing type, inputs, counts, pass rate, defects, gaps, go/no-go), then the detailed report: 1 cycle outcome, 2 execution evidence, 3 business-flow readiness by epic, 4 defects and risks. The QE lead report, full cycle report and downloads are still there.
+- **Traceability** (`#/traceability?cycle=CYC-n&by=requirement|testcase|script|defect`): requirement, Jira story, test case, test data, script, result and defect for one cycle, built from `src/traceability.js`.
+
 ## Layout
 
 - `src/platform.js` - the seven agents, platform input types vs the three MVP inputs, demo scenario

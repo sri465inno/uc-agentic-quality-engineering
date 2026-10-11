@@ -1,0 +1,753 @@
+[
+  {
+    "id": "DEF-007",
+    "title": "A price change within 1% does not need acknowledgement: returns true instead of false",
+    "severity": "Critical",
+    "impact": "a guest is charged or booked wrongly",
+    "blocksRelease": true,
+    "releaseDecision": "Blocks the release: a guest is charged or booked wrongly (BR-113).",
+    "status": "Open",
+    "movement": "still open",
+    "firstSeenCycle": "CYC-2",
+    "cycleId": "CYC-3",
+    "testCaseKey": "TC-F-103",
+    "ruleId": "BR-113",
+    "requirementId": "REQ-113",
+    "requirementText": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+    "jiraKeys": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "suspectedCodeArea": "cart-service/src/main/resources/cart-service.yml:17",
+    "scriptFile": "br-113-price-change-ack.spec.js",
+    "expected": "false",
+    "actual": "true",
+    "assertion": "expect(rv.body.requiresAcknowledgement).toBe(false);",
+    "location": "br-113-price-change-ack.spec.js:115:43",
+    "errorMessage": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true",
+    "evidence": [
+      {
+        "name": "POST cart-service/api/carts",
+        "file": "TC-F-103-1.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "PUT hotel-service/api/admin/hotels/H-NYC-001/rooms/STD-K/rates/FLEX",
+        "file": "TC-F-103-2.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST cart-service/api/carts/C-60ae5609/revalidate",
+        "file": "TC-F-103-3.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "error-context",
+        "file": "TC-F-103-4.txt",
+        "contentType": "text/markdown"
+      }
+    ],
+    "executedAt": "2026-10-11T16:15:57.589Z",
+    "occurrences": [
+      {
+        "cycleId": "CYC-2",
+        "executedAt": "2026-10-11T16:15:41.620Z",
+        "actual": "true",
+        "evidence": [
+          {
+            "name": "POST cart-service/api/carts",
+            "file": "TC-F-103-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "PUT hotel-service/api/admin/hotels/H-NYC-001/rooms/STD-K/rates/FLEX",
+            "file": "TC-F-103-2.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST cart-service/api/carts/C-1143d1e2/revalidate",
+            "file": "TC-F-103-3.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-103-4.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      },
+      {
+        "cycleId": "CYC-3",
+        "executedAt": "2026-10-11T16:15:57.589Z",
+        "actual": "true",
+        "evidence": [
+          {
+            "name": "POST cart-service/api/carts",
+            "file": "TC-F-103-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "PUT hotel-service/api/admin/hotels/H-NYC-001/rooms/STD-K/rates/FLEX",
+            "file": "TC-F-103-2.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST cart-service/api/carts/C-60ae5609/revalidate",
+            "file": "TC-F-103-3.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-103-4.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-17",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-007] A price change within 1% does not need acknowledgement: returns true instead of false",
+          "labels": [
+            "agentic-qe",
+            "defect",
+            "severity-critical",
+            "cyc-3"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-3 (Hotel booking release 2.0 (AQPI-32 + AQPI-23))."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-17. Requirement REQ-113: A price change of more than 1% must be acknowledged by the guest before checkout."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Business rule: BR-113. Test case: TC-F-103. Script: br-113-price-change-ack.spec.js."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: false. Actual: true."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Failing assertion: expect(rv.body.requiresAcknowledgement).toBe(false); (br-113-price-change-ack.spec.js:115:43)"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Critical - a guest is charged or booked wrongly. Blocks the release: a guest is charged or booked wrongly (BR-113)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Suspected code area: cart-service/src/main/resources/cart-service.yml:17. Executed at 2026-10-11T16:15:57.589Z."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-17"
+        }
+      }
+    }
+  },
+  {
+    "id": "DEF-008",
+    "title": "A key shorter than 8 characters is refused: returns 201 instead of 400",
+    "severity": "Medium",
+    "impact": "wrong value or status with a workaround",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: wrong value or status with a workaround.",
+    "status": "Open",
+    "movement": "still open",
+    "firstSeenCycle": "CYC-2",
+    "cycleId": "CYC-3",
+    "testCaseKey": "TC-F-106",
+    "ruleId": "BR-115",
+    "requirementId": "REQ-115",
+    "requirementText": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "suspectedCodeArea": "reservation-service/src/main/resources/reservation-service.yml:20",
+    "scriptFile": "br-115-idempotency-key.spec.js",
+    "expected": "400",
+    "actual": "201",
+    "assertion": "expect(r.status).toBe(400);",
+    "location": "br-115-idempotency-key.spec.js:106:20",
+    "errorMessage": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 201",
+    "evidence": [
+      {
+        "name": "POST cart-service/api/carts",
+        "file": "TC-F-106-1.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST reservation-service/api/reservations",
+        "file": "TC-F-106-2.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "error-context",
+        "file": "TC-F-106-3.txt",
+        "contentType": "text/markdown"
+      }
+    ],
+    "executedAt": "2026-10-11T16:15:57.589Z",
+    "occurrences": [
+      {
+        "cycleId": "CYC-2",
+        "executedAt": "2026-10-11T16:15:41.620Z",
+        "actual": "201",
+        "evidence": [
+          {
+            "name": "POST cart-service/api/carts",
+            "file": "TC-F-106-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST reservation-service/api/reservations",
+            "file": "TC-F-106-2.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-106-3.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      },
+      {
+        "cycleId": "CYC-3",
+        "executedAt": "2026-10-11T16:15:57.589Z",
+        "actual": "201",
+        "evidence": [
+          {
+            "name": "POST cart-service/api/carts",
+            "file": "TC-F-106-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST reservation-service/api/reservations",
+            "file": "TC-F-106-2.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-106-3.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-21",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-008] A key shorter than 8 characters is refused: returns 201 instead of 400",
+          "labels": [
+            "agentic-qe",
+            "defect",
+            "severity-medium",
+            "cyc-3"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-3 (Hotel booking release 2.0 (AQPI-32 + AQPI-23))."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-21. Requirement REQ-115: Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Business rule: BR-115. Test case: TC-F-106. Script: br-115-idempotency-key.spec.js."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: 400. Actual: 201."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Failing assertion: expect(r.status).toBe(400); (br-115-idempotency-key.spec.js:106:20)"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Medium - wrong value or status with a workaround. Does not block the release: wrong value or status with a workaround."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Suspected code area: reservation-service/src/main/resources/reservation-service.yml:20. Executed at 2026-10-11T16:15:57.589Z."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-21"
+        }
+      }
+    }
+  },
+  {
+    "id": "DEF-010",
+    "title": "A 15-night stay in Paris is rejected: returns 200 instead of 400",
+    "severity": "Medium",
+    "impact": "wrong value or status with a workaround",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: wrong value or status with a workaround.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-3",
+    "cycleId": "CYC-3",
+    "testCaseKey": "TC-F-111",
+    "ruleId": "BR-116",
+    "requirementId": "REQ-116",
+    "requirementText": "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights.",
+    "jiraKeys": [
+      "AQPI-34"
+    ],
+    "sourceRefs": [
+      "AQPI-34"
+    ],
+    "suspectedCodeArea": "search-service/src/main/resources/search-service.yml:12",
+    "scriptFile": "br-116-stay-length-limit.spec.js",
+    "expected": "400",
+    "actual": "200",
+    "assertion": "expect(r.status).toBe(400);",
+    "location": "br-116-stay-length-limit.spec.js:123:20",
+    "errorMessage": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 200",
+    "evidence": [
+      {
+        "name": "POST search-service/api/searches",
+        "file": "TC-F-111-1.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "error-context",
+        "file": "TC-F-111-2.txt",
+        "contentType": "text/markdown"
+      }
+    ],
+    "executedAt": "2026-10-11T16:15:57.589Z",
+    "occurrences": [
+      {
+        "cycleId": "CYC-3",
+        "executedAt": "2026-10-11T16:15:57.589Z",
+        "actual": "200",
+        "evidence": [
+          {
+            "name": "POST search-service/api/searches",
+            "file": "TC-F-111-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-111-2.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-34",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-010] A 15-night stay in Paris is rejected: returns 200 instead of 400",
+          "labels": [
+            "agentic-qe",
+            "defect",
+            "severity-medium",
+            "cyc-3"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-3 (Hotel booking release 2.0 (AQPI-32 + AQPI-23))."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-34. Requirement REQ-116: A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Business rule: BR-116. Test case: TC-F-111. Script: br-116-stay-length-limit.spec.js."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: 400. Actual: 200."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Failing assertion: expect(r.status).toBe(400); (br-116-stay-length-limit.spec.js:123:20)"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Medium - wrong value or status with a workaround. Does not block the release: wrong value or status with a workaround."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Suspected code area: search-service/src/main/resources/search-service.yml:12. Executed at 2026-10-11T16:15:57.589Z."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-34"
+        }
+      }
+    }
+  },
+  {
+    "id": "DEF-011",
+    "title": "Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused: returns 200 instead of 409",
+    "severity": "Medium",
+    "impact": "wrong value or status with a workaround",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: wrong value or status with a workaround.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-3",
+    "cycleId": "CYC-3",
+    "testCaseKey": "TC-F-126",
+    "ruleId": "BR-125",
+    "requirementId": "REQ-125",
+    "requirementText": "Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused.",
+    "jiraKeys": [
+      "AQPI-25"
+    ],
+    "sourceRefs": [
+      "AQPI-25"
+    ],
+    "suspectedCodeArea": "notification-service/src/main/resources/notification-service.yml:14",
+    "scriptFile": "br-125-ops-retry-limit.spec.js",
+    "expected": "409",
+    "actual": "200",
+    "assertion": "expect(over.status).toBe(409);",
+    "location": "br-125-ops-retry-limit.spec.js:103:23",
+    "errorMessage": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 409\nReceived: 200",
+    "evidence": [
+      {
+        "name": "POST cart-service/api/carts",
+        "file": "TC-F-126-1.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST reservation-service/api/reservations",
+        "file": "TC-F-126-2.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "GET notification-service/api/confirmations/R-12faa965",
+        "file": "TC-F-126-3.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST notification-service/api/ops/messages/M-5ee5556c/retry",
+        "file": "TC-F-126-4.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST notification-service/api/ops/messages/M-5ee5556c/retry",
+        "file": "TC-F-126-5.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST notification-service/api/ops/messages/M-5ee5556c/retry",
+        "file": "TC-F-126-6.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST notification-service/api/ops/messages/M-5ee5556c/retry",
+        "file": "TC-F-126-7.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "error-context",
+        "file": "TC-F-126-8.txt",
+        "contentType": "text/markdown"
+      }
+    ],
+    "executedAt": "2026-10-11T16:15:57.589Z",
+    "occurrences": [
+      {
+        "cycleId": "CYC-3",
+        "executedAt": "2026-10-11T16:15:57.589Z",
+        "actual": "200",
+        "evidence": [
+          {
+            "name": "POST cart-service/api/carts",
+            "file": "TC-F-126-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST reservation-service/api/reservations",
+            "file": "TC-F-126-2.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "GET notification-service/api/confirmations/R-12faa965",
+            "file": "TC-F-126-3.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST notification-service/api/ops/messages/M-5ee5556c/retry",
+            "file": "TC-F-126-4.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST notification-service/api/ops/messages/M-5ee5556c/retry",
+            "file": "TC-F-126-5.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST notification-service/api/ops/messages/M-5ee5556c/retry",
+            "file": "TC-F-126-6.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST notification-service/api/ops/messages/M-5ee5556c/retry",
+            "file": "TC-F-126-7.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-126-8.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-25",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-011] Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused: returns 200 instead of 409",
+          "labels": [
+            "agentic-qe",
+            "defect",
+            "severity-medium",
+            "cyc-3"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-3 (Hotel booking release 2.0 (AQPI-32 + AQPI-23))."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-25. Requirement REQ-125: Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Business rule: BR-125. Test case: TC-F-126. Script: br-125-ops-retry-limit.spec.js."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: 409. Actual: 200."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Failing assertion: expect(over.status).toBe(409); (br-125-ops-retry-limit.spec.js:103:23)"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Medium - wrong value or status with a workaround. Does not block the release: wrong value or status with a workaround."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Suspected code area: notification-service/src/main/resources/notification-service.yml:14. Executed at 2026-10-11T16:15:57.589Z."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-25"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:45763/api/reservations",
+    "headers": {
+      "Idempotency-Key": "aqe-double-49c6343e-1"
+    },
+    "data": {
+      "cartId": "C-5316a58d",
+      "guest": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+1 212 555 0100",
+        "arrivalTime": "18:00"
+      },
+      "paymentToken": "tok_visa_ok",
+      "privacyNoticeAccepted": true,
+      "marketingOptIn": false,
+      "locale": "en"
+    }
+  },
+  "response": {
+    "status": 202,
+    "correlationId": "062c8d1d-d4ce-47e9-9c82-b7482bc9f172",
+    "body": {
+      "reservationId": "R-90507ddd",
+      "status": "PROCESSING",
+      "confirmationNumber": null,
+      "headline": "Your booking is being processed",
+      "message": "Please wait and don't submit again.",
+      "doNotResubmit": true,
+      "nextSteps": [
+        "Check this page again in a moment"
+      ],
+      "statusUrl": "/api/reservations/R-90507ddd",
+      "hotelName": null,
+      "roomName": null,
+      "ratePlanName": null,
+      "checkIn": null,
+      "checkOut": null,
+      "nights": 0,
+      "rooms": 0,
+      "adults": 0,
+      "children": 0,
+      "items": [],
+      "total": null,
+      "paymentRule": null,
+      "paymentStatus": "NOT_ATTEMPTED",
+      "cancellationTerms": null,
+      "guestFirstName": null,
+      "notificationStatus": "NOT_REQUESTED",
+      "updatedAt": "2026-10-11T16:16:05.461744877Z"
+    }
+  }
+}

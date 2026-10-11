@@ -1,0 +1,652 @@
+[
+  {
+    "key": "TC-F-001",
+    "requirementId": "REQ-001",
+    "ruleId": "BR-001",
+    "slot": "journey-flex",
+    "kind": "booking-journey",
+    "suite": "journey",
+    "name": "Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail",
+    "objective": "Verify the whole guest journey across all six services: search, hotel details, offers, cart, extra, payment summary, reservation and confirmation e-mail.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search NYC for the standard stay",
+      "Open the chosen hotel",
+      "Get recommended extras",
+      "Create a cart and add breakfast",
+      "Read the payment summary",
+      "Submit the reservation",
+      "Open the confirmation e-mail"
+    ],
+    "testData": "search.destination=NYC; selection.ratePlanCode=FLEX; extras.code=BREAKFAST; extras.quantity=1; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 201 CONFIRMED with a confirmation number; e-mail generated with the same number and total; cart total = payment summary total = booked total",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-001-booking-journey.spec.js",
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "search.destination",
+      "selection.ratePlanCode",
+      "extras.code"
+    ],
+    "dataSet": "TD-F-001"
+  },
+  {
+    "key": "TC-F-002",
+    "requirementId": "REQ-001",
+    "ruleId": "BR-001",
+    "slot": "journey-saver",
+    "kind": "booking-journey",
+    "suite": "journey",
+    "name": "Guest books a prepaid non-refundable room in Paris and pays now",
+    "objective": "Verify the prepaid journey: the payment summary asks for the full amount now and the booking confirms.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search PAR",
+      "Create a cart for the prepaid rate",
+      "Check pay-now equals the total",
+      "Submit the reservation"
+    ],
+    "testData": "search.destination=PAR; selection.hotelId=H-PAR-001; selection.roomCode=STD-K; selection.ratePlanCode=SAVER; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Payment summary pay-now = total; HTTP 201 CONFIRMED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-001-booking-journey.spec.js",
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "search.destination",
+      "selection.hotelId",
+      "selection.roomCode",
+      "selection.ratePlanCode"
+    ],
+    "dataSet": "TD-F-002"
+  },
+  {
+    "key": "TC-F-003",
+    "requirementId": "REQ-002",
+    "ruleId": "BR-002",
+    "slot": "journey-sold-out",
+    "kind": "bookable-inventory",
+    "suite": "journey",
+    "name": "A sold-out hotel is shown as unavailable and cannot be put in a cart",
+    "objective": "Verify that a hotel with no rooms left is not offered as bookable and that trying to book it is refused.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). Inventory of the chosen hotel is set to 0.",
+    "steps": [
+      "Set the hotel inventory to 0",
+      "Search",
+      "Try to create a cart for that hotel"
+    ],
+    "testData": "selection.hotelId=H-NYC-001; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Result shows availability SOLD_OUT, bookable false, no starting price; cart creation returns HTTP 409 ROOM_NO_LONGER_AVAILABLE",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-002-bookable-inventory.spec.js",
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.hotelId"
+    ],
+    "dataSet": "TD-F-003"
+  },
+  {
+    "key": "TC-F-004",
+    "requirementId": "REQ-004",
+    "ruleId": "BR-004",
+    "slot": "journey-unavailable-extra",
+    "kind": "offers-not-blocking",
+    "suite": "journey",
+    "name": "An unavailable extra is refused and the room still books",
+    "objective": "Verify that an extra that cannot be sold is refused clearly while the room reservation still succeeds.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). LATE_CHECKOUT is marked unavailable.",
+    "steps": [
+      "Mark LATE_CHECKOUT unavailable",
+      "Create a cart",
+      "Try to add LATE_CHECKOUT",
+      "Submit the reservation"
+    ],
+    "testData": "extras.code=LATE_CHECKOUT; extras.quantity=1; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Adding the extra returns HTTP 422 EXTRA_NOT_AVAILABLE; reservation HTTP 201 CONFIRMED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-004-offers-not-blocking.spec.js",
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "extras.code"
+    ],
+    "dataSet": "TD-F-004"
+  },
+  {
+    "key": "TC-F-005",
+    "requirementId": "REQ-005",
+    "ruleId": "BR-005",
+    "slot": "journey-double-submit",
+    "kind": "duplicate-submission",
+    "suite": "journey",
+    "name": "A double-clicked Book button creates one reservation and one payment",
+    "objective": "Verify that two simultaneous submissions with the same idempotency key produce one reservation and one authorisation.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Submit the reservation twice at the same time with one key",
+      "Read the payments ledger"
+    ],
+    "testData": "request.idempotencyKeyPrefix=aqe-double; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Both responses name the same reservation; exactly one payment authorisation exists",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-005-duplicate-submission.spec.js",
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "request.idempotencyKeyPrefix"
+    ],
+    "dataSet": "TD-F-005"
+  },
+  {
+    "key": "TC-F-006",
+    "requirementId": "REQ-006",
+    "ruleId": "BR-006",
+    "slot": "journey-durable",
+    "kind": "durable-confirmation",
+    "suite": "journey",
+    "name": "The confirmation number can be looked up again after booking",
+    "objective": "Verify the confirmation identifier is stored with the reservation and returned on later reads.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book the standard stay",
+      "Read the reservation back by id"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 201 with a 10-character HB… number; GET /api/reservations/{id} returns the same number and CONFIRMED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-006-durable-confirmation.spec.js",
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-006"
+  },
+  {
+    "key": "TC-F-007",
+    "requirementId": "REQ-007",
+    "ruleId": "BR-007",
+    "slot": "journey-confirmation",
+    "kind": "confirmation-shown",
+    "suite": "journey",
+    "name": "The guest sees the booking outcome and one confirmation e-mail is created",
+    "objective": "Verify the outcome the guest sees and that exactly one confirmation e-mail request exists.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book the standard stay",
+      "Read the outcome",
+      "List the messages for the reservation"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Outcome headline says the booking is confirmed; one CONFIRMATION message for the reservation",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-007-confirmation-shown.spec.js",
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-007"
+  },
+  {
+    "key": "TC-N-001",
+    "requirementId": "REQ-023",
+    "ruleId": "BR-023",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "nfr",
+    "name": "Verify: Validation messages are accessible to assistive technology",
+    "objective": "Confirm the behaviour \"Validation messages are accessible to assistive technology.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Validation messages are accessible to assistive technology.",
+    "priority": "Low",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "eqe"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-N-001"
+  },
+  {
+    "key": "TC-F-008",
+    "requirementId": "REQ-047",
+    "ruleId": "BR-047",
+    "slot": "journey-unavailable-extra",
+    "kind": "offers-not-blocking",
+    "suite": "journey",
+    "name": "An unavailable extra is refused and the room still books",
+    "objective": "Verify that an extra that cannot be sold is refused clearly while the room reservation still succeeds.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). LATE_CHECKOUT is marked unavailable.",
+    "steps": [
+      "Mark LATE_CHECKOUT unavailable",
+      "Create a cart",
+      "Try to add LATE_CHECKOUT",
+      "Submit the reservation"
+    ],
+    "testData": "extras.code=LATE_CHECKOUT; extras.quantity=1; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Adding the extra returns HTTP 422 EXTRA_NOT_AVAILABLE; reservation HTTP 201 CONFIRMED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-047-offers-not-blocking.spec.js",
+    "issueLinks": [
+      "AQPI-12"
+    ],
+    "sourceRefs": [
+      "AQPI-12"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "extras.code"
+    ],
+    "dataSet": "TD-F-008"
+  },
+  {
+    "key": "TC-N-002",
+    "requirementId": "REQ-082",
+    "ruleId": "BR-082",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "nfr",
+    "name": "Verify: Templates support required locale and accessibility standards",
+    "objective": "Confirm the behaviour \"Templates support required locale and accessibility standards.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Templates support required locale and accessibility standards.",
+    "priority": "Low",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "eqe"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-24"
+    ],
+    "sourceRefs": [
+      "AQPI-24"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-N-002"
+  },
+  {
+    "key": "TC-N-003",
+    "requirementId": "REQ-100",
+    "ruleId": "BR-100",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "nfr",
+    "name": "Verify: Metrics and alerts exist for agreed critical failures and latency",
+    "objective": "Confirm the behaviour \"Metrics and alerts exist for agreed critical failures and latency.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Metrics and alerts exist for agreed critical failures and latency.",
+    "priority": "Low",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "eqe"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-29"
+    ],
+    "sourceRefs": [
+      "AQPI-29"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-N-003"
+  },
+  {
+    "key": "TC-N-004",
+    "requirementId": "REQ-104",
+    "ruleId": "BR-104",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "nfr",
+    "name": "Verify: Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible",
+    "objective": "Confirm the behaviour \"Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+    "priority": "Low",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "eqe"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-30"
+    ],
+    "sourceRefs": [
+      "AQPI-30"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-N-004"
+  },
+  {
+    "key": "TC-N-005",
+    "requirementId": "REQ-108",
+    "ruleId": "BR-108",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "nfr",
+    "name": "Verify: Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets",
+    "objective": "Confirm the behaviour \"Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+    "priority": "Low",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "eqe"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-31"
+    ],
+    "sourceRefs": [
+      "AQPI-31"
+    ],
+    "cycle": "Hotel booking baseline · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-N-005"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:34565/api/reservations",
+    "headers": {
+      "Idempotency-Key": "aqe-booking-7e375b9d-1"
+    },
+    "data": {
+      "cartId": "C-0fb9e51e",
+      "guest": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+1 212 555 0100",
+        "arrivalTime": "18:00"
+      },
+      "paymentToken": "tok_decline",
+      "privacyNoticeAccepted": true,
+      "marketingOptIn": false,
+      "locale": "en"
+    }
+  },
+  "response": {
+    "status": 201,
+    "correlationId": "9dc70528-e223-4ee9-b4d2-929974e85b07",
+    "body": {
+      "reservationId": "R-f2d3e37b",
+      "status": "PAYMENT_DECLINED",
+      "confirmationNumber": null,
+      "headline": "Your payment was declined",
+      "doNotResubmit": false,
+      "statusUrl": "/api/reservations/R-f2d3e37b",
+      "total": {
+        "amount": 770.42,
+        "currency": "USD"
+      },
+      "paymentRule": "PAY_AT_HOTEL",
+      "paymentStatus": "DECLINED",
+      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
+      "guestFirstName": "Jane",
+      "notificationStatus": "NOT_REQUESTED",
+      "updatedAt": "2026-10-11T16:15:36.796661788Z"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+[
+  {
+    "id": "DEF-001",
+    "type": "gap",
+    "story": "AQPI-8",
+    "title": "AQPI-8 4.2 Sort and filter hotel results: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "implemented in code, not yet verified by a test of this testing type",
+    "firstSeenCycle": "CYC-1",
+    "cycleId": "CYC-4",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available. The guest can sort using approved options. Selected criteria are visible and removable. Zero results after filtering offer a reset option.",
+    "jiraKeys": [
+      "AQPI-8"
+    ],
+    "sourceRefs": [
+      "AQPI-8",
+      "AQPI-6"
+    ],
+    "suspectedCodeArea": "no code mentions AQPI-8",
+    "expected": "Code implements AQPI-8 (4 acceptance criteria)",
+    "actual": "No code in demo/hotel-booking-platform mentions AQPI-8",
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-1",
+        "actual": "gap"
+      }
+    ],
+    "jira": null
+  },
+  {
+    "id": "DEF-002",
+    "type": "gap",
+    "story": "AQPI-13",
+    "title": "AQPI-13 5.3 Explain and control personalization: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "implemented in code, not yet verified by a test of this testing type",
+    "firstSeenCycle": "CYC-1",
+    "cycleId": "CYC-4",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "The interface identifies when offers are personalized where required. The guest can proceed without selecting ancillary products. A consent or preference change affects future eligible recommendations according to policy.",
+    "jiraKeys": [
+      "AQPI-13"
+    ],
+    "sourceRefs": [
+      "AQPI-13",
+      "AQPI-10"
+    ],
+    "suspectedCodeArea": "no code mentions AQPI-13",
+    "expected": "Code implements AQPI-13 (3 acceptance criteria)",
+    "actual": "No code in demo/hotel-booking-platform mentions AQPI-13",
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-1",
+        "actual": "gap"
+      }
+    ],
+    "jira": null
+  },
+  {
+    "id": "DEF-003",
+    "type": "gap",
+    "story": "AQPI-22",
+    "title": "AQPI-22 7.4 Show booking outcome: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "implemented in code, not yet verified by a test of this testing type",
+    "firstSeenCycle": "CYC-1",
+    "cycleId": "CYC-4",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "Success displays confirmation identifier, hotel, stay summary, selected products, and total. A failure does not display a false confirmation. Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+    "jiraKeys": [
+      "AQPI-22"
+    ],
+    "sourceRefs": [
+      "AQPI-22",
+      "AQPI-18"
+    ],
+    "suspectedCodeArea": "no code mentions AQPI-22",
+    "expected": "Code implements AQPI-22 (3 acceptance criteria)",
+    "actual": "No code in demo/hotel-booking-platform mentions AQPI-22",
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-1",
+        "actual": "gap"
+      }
+    ],
+    "jira": null
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "DEF-004",
+    "type": "gap",
+    "story": "AQPI-8",
+    "title": "AQPI-8 4.2 Sort and filter hotel results: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-2",
+    "cycleId": "CYC-2",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available. The guest can sort using approved options. Selected criteria are visible and removable. Zero results after filtering offer a reset option.",
+    "jiraKeys": [
+      "AQPI-8"
+    ],
+    "sourceRefs": [
+      "AQPI-8",
+      "AQPI-6"
+    ],
+    "suspectedCodeArea": "no code mentions AQPI-8",
+    "expected": "Code implements AQPI-8 (4 acceptance criteria)",
+    "actual": "No code in demo/hotel-booking-platform mentions AQPI-8",
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-2",
+        "actual": "gap"
+      }
+    ],
+    "jira": null
+  },
+  {
+    "id": "DEF-005",
+    "type": "gap",
+    "story": "AQPI-13",
+    "title": "AQPI-13 5.3 Explain and control personalization: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-2",
+    "cycleId": "CYC-2",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "The interface identifies when offers are personalized where required. The guest can proceed without selecting ancillary products. A consent or preference change affects future eligible recommendations according to policy.",
+    "jiraKeys": [
+      "AQPI-13"
+    ],
+    "sourceRefs": [
+      "AQPI-13",
+      "AQPI-10"
+    ],
+    "suspectedCodeArea": "no code mentions AQPI-13",
+    "expected": "Code implements AQPI-13 (3 acceptance criteria)",
+    "actual": "No code in demo/hotel-booking-platform mentions AQPI-13",
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-2",
+        "actual": "gap"
+      }
+    ],
+    "jira": null
+  },
+  {
+    "id": "DEF-006",
+    "type": "gap",
+    "story": "AQPI-22",
+    "title": "AQPI-22 7.4 Show booking outcome: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-2",
+    "cycleId": "CYC-2",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "Success displays confirmation identifier, hotel, stay summary, selected products, and total. A failure does not display a false confirmation. Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+    "jiraKeys": [
+      "AQPI-22"
+    ],
+    "sourceRefs": [
+      "AQPI-22",
+      "AQPI-18"
+    ],
+    "suspectedCodeArea": "no code mentions AQPI-22",
+    "expected": "Code implements AQPI-22 (3 acceptance criteria)",
+    "actual": "No code in demo/hotel-booking-platform mentions AQPI-22",
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-2",
+        "actual": "gap"
+      }
+    ],
+    "jira": null
+  },
+  {
+    "id": "DEF-007",
+    "title": "A price change within 1% does not need acknowledgement: returns true instead of false",
+    "severity": "Critical",
+    "impact": "a guest is charged or booked wrongly",
+    "blocksRelease": true,
+    "releaseDecision": "Blocks the release: a guest is charged or booked wrongly (BR-113).",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-2",
+    "cycleId": "CYC-2",
+    "testCaseKey": "TC-F-103",
+    "ruleId": "BR-113",
+    "requirementId": "REQ-113",
+    "requirementText": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+    "jiraKeys": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "suspectedCodeArea": "cart-service/src/main/resources/cart-service.yml:17",
+    "scriptFile": "br-113-price-change-ack.spec.js",
+    "expected": "false",
+    "actual": "true",
+    "assertion": "expect(rv.body.requiresAcknowledgement).toBe(false);",
+    "location": "br-113-price-change-ack.spec.js:115:43",
+    "errorMessage": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true",
+    "evidence": [
+      {
+        "name": "POST cart-service/api/carts",
+        "file": "TC-F-103-1.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "PUT hotel-service/api/admin/hotels/H-NYC-001/rooms/STD-K/rates/FLEX",
+        "file": "TC-F-103-2.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST cart-service/api/carts/C-1143d1e2/revalidate",
+        "file": "TC-F-103-3.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "error-context",
+        "file": "TC-F-103-4.txt",
+        "contentType": "text/markdown"
+      }
+    ],
+    "executedAt": "2026-10-11T16:15:41.620Z",
+    "occurrences": [
+      {
+        "cycleId": "CYC-2",
+        "executedAt": "2026-10-11T16:15:41.620Z",
+        "actual": "true",
+        "evidence": [
+          {
+            "name": "POST cart-service/api/carts",
+            "file": "TC-F-103-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "PUT hotel-service/api/admin/hotels/H-NYC-001/rooms/STD-K/rates/FLEX",
+            "file": "TC-F-103-2.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST cart-service/api/carts/C-1143d1e2/revalidate",
+            "file": "TC-F-103-3.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-103-4.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-17",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-007] A price change within 1% does not need acknowledgement: returns true instead of false",
+          "labels": [
+            "agentic-qe",
+            "defect",
+            "severity-critical",
+            "cyc-2"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · Functional)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-17. Requirement REQ-113: A price change of more than 1% must be acknowledged by the guest before checkout."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Business rule: BR-113. Test case: TC-F-103. Script: br-113-price-change-ack.spec.js."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: false. Actual: true."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Failing assertion: expect(rv.body.requiresAcknowledgement).toBe(false); (br-113-price-change-ack.spec.js:115:43)"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Critical - a guest is charged or booked wrongly. Blocks the release: a guest is charged or booked wrongly (BR-113)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Suspected code area: cart-service/src/main/resources/cart-service.yml:17. Executed at 2026-10-11T16:15:41.620Z."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-17"
+        }
+      }
+    }
+  },
+  {
+    "id": "DEF-008",
+    "title": "A key shorter than 8 characters is refused: returns 201 instead of 400",
+    "severity": "Medium",
+    "impact": "wrong value or status with a workaround",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: wrong value or status with a workaround.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-2",
+    "cycleId": "CYC-2",
+    "testCaseKey": "TC-F-106",
+    "ruleId": "BR-115",
+    "requirementId": "REQ-115",
+    "requirementText": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "suspectedCodeArea": "reservation-service/src/main/resources/reservation-service.yml:20",
+    "scriptFile": "br-115-idempotency-key.spec.js",
+    "expected": "400",
+    "actual": "201",
+    "assertion": "expect(r.status).toBe(400);",
+    "location": "br-115-idempotency-key.spec.js:106:20",
+    "errorMessage": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 201",
+    "evidence": [
+      {
+        "name": "POST cart-service/api/carts",
+        "file": "TC-F-106-1.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "POST reservation-service/api/reservations",
+        "file": "TC-F-106-2.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "error-context",
+        "file": "TC-F-106-3.txt",
+        "contentType": "text/markdown"
+      }
+    ],
+    "executedAt": "2026-10-11T16:15:41.620Z",
+    "occurrences": [
+      {
+        "cycleId": "CYC-2",
+        "executedAt": "2026-10-11T16:15:41.620Z",
+        "actual": "201",
+        "evidence": [
+          {
+            "name": "POST cart-service/api/carts",
+            "file": "TC-F-106-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "POST reservation-service/api/reservations",
+            "file": "TC-F-106-2.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-106-3.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-21",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-008] A key shorter than 8 characters is refused: returns 201 instead of 400",
+          "labels": [
+            "agentic-qe",
+            "defect",
+            "severity-medium",
+            "cyc-2"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · Functional)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-21. Requirement REQ-115: Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Business rule: BR-115. Test case: TC-F-106. Script: br-115-idempotency-key.spec.js."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: 400. Actual: 201."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Failing assertion: expect(r.status).toBe(400); (br-115-idempotency-key.spec.js:106:20)"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Medium - wrong value or status with a workaround. Does not block the release: wrong value or status with a workaround."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Suspected code area: reservation-service/src/main/resources/reservation-service.yml:20. Executed at 2026-10-11T16:15:41.620Z."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-21"
+        }
+      }
+    }
+  },
+  {
+    "id": "DEF-009",
+    "title": "9 rooms in one search are rejected: returns 200 instead of 400",
+    "severity": "Medium",
+    "impact": "wrong value or status with a workaround",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: wrong value or status with a workaround.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-2",
+    "cycleId": "CYC-2",
+    "testCaseKey": "TC-F-115",
+    "ruleId": "BR-117",
+    "requirementId": "REQ-117",
+    "requirementText": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+    "jiraKeys": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "suspectedCodeArea": "search-service/src/main/resources/search-service.yml:13",
+    "scriptFile": "br-117-occupancy-limits.spec.js",
+    "expected": "400",
+    "actual": "200",
+    "assertion": "expect(r.status).toBe(400);",
+    "location": "br-117-occupancy-limits.spec.js:124:20",
+    "errorMessage": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 200",
+    "evidence": [
+      {
+        "name": "POST search-service/api/searches",
+        "file": "TC-F-115-1.json",
+        "contentType": "application/json"
+      },
+      {
+        "name": "error-context",
+        "file": "TC-F-115-2.txt",
+        "contentType": "text/markdown"
+      }
+    ],
+    "executedAt": "2026-10-11T16:15:41.620Z",
+    "occurrences": [
+      {
+        "cycleId": "CYC-2",
+        "executedAt": "2026-10-11T16:15:41.620Z",
+        "actual": "200",
+        "evidence": [
+          {
+            "name": "POST search-service/api/searches",
+            "file": "TC-F-115-1.json",
+            "contentType": "application/json"
+          },
+          {
+            "name": "error-context",
+            "file": "TC-F-115-2.txt",
+            "contentType": "text/markdown"
+          }
+        ]
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-4",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-009] 9 rooms in one search are rejected: returns 200 instead of 400",
+          "labels": [
+            "agentic-qe",
+            "defect",
+            "severity-medium",
+            "cyc-2"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · Functional)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-4. Requirement REQ-117: Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Business rule: BR-117. Test case: TC-F-115. Script: br-117-occupancy-limits.spec.js."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: 400. Actual: 200."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Failing assertion: expect(r.status).toBe(400); (br-117-occupancy-limits.spec.js:124:20)"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Medium - wrong value or status with a workaround. Does not block the release: wrong value or status with a workaround."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Suspected code area: search-service/src/main/resources/search-service.yml:13. Executed at 2026-10-11T16:15:41.620Z."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-4"
+        }
+      }
+    }
+  }
+]

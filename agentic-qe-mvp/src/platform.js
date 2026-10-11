@@ -49,7 +49,7 @@ const DEMO_EXAMPLES = [
     system: DEMO.system,
     about: 'Flow 1: AQPI-1 initiative + its 7 epics and 23 stories + the Java codebase on demo/hotel-booking-platform (release 1.0). Flow 2: Epic 8 AQPI-32 "Release 2.0" and its 4 stories + Epic 6 AQPI-23 "Confirmation and Notifications" as revised for release 2.0 (AQPI-24, AQPI-25 changed, AQPI-37 new) + demo/hotel-booking-platform-v2, added on top of the hotel baseline. Functional runs the API cases, Regression adds the privacy, security and resilience cases, End-to-end runs the guest journeys from search to the confirmation e-mail.',
     modes: ['baseline', 'incremental'],
-    testingTypes: ['functional', 'regression', 'e2e'],
+    testingTypes: ['eqe', 'functional'],
     samples: { initiative: 'AQPI-1', epic: 'AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27', incrementalEpic: 'AQPI-32, AQPI-23', incrementalSnapshot: 'release-2.0', baselineBranch: 'demo/hotel-booking-platform', incrementalBranch: 'demo/hotel-booking-platform-v2' },
   },
 ];

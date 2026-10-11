@@ -3,7 +3,7 @@
 //   requirements repository -> business rules -> test cases -> automation scripts
 // All structure and decisions are deterministic; the optional model only drafts prose elsewhere.
 const { DOMAINS, domainOf } = require('./domains');
-const { getTestingType, inRun, suiteOf, SMOKE_SLOTS } = require('../testing-types');
+const { getTestingType, inRun, suiteOf } = require('../testing-types');
 
 const pad = (n, w = 3) => String(n).padStart(w, '0');
 const clone = (x) => JSON.parse(JSON.stringify(x));
@@ -171,9 +171,7 @@ function candidateSpecs(req, c, ctx) {
 function caseLabels(type, suite, kind, slot, automated, tt) {
   return [
     type === 'functional' ? 'functional' : 'non-functional',
-    ...(tt.ids.includes('e2e') && ['ui', 'journey'].includes(suite) ? ['e2e'] : []),
-    ...(tt.ids.includes('performance') && ['nfr', 'load'].includes(suite) ? ['performance'] : []),
-    ...(tt.ids.includes('smoke') && SMOKE_SLOTS.has(`${kind}|${slot}`) ? ['smoke'] : []),
+    ...(tt.suites.includes(suite) ? [tt.id] : []),
     ...(automated ? ['automation'] : []),
   ];
 }
@@ -312,18 +310,15 @@ function selectionSummary(tt, requirements, testCases, previous, dom = DOMAINS.c
   const coveredInRun = new Set(run.map((t) => t.requirementId));
   const outOfScope = requirements.filter((r) => !coveredInRun.has(r.id)).map((r) => r.id);
   const gaps = [];
-  if (tt.ids.includes('performance') && !run.some((t) => ['nfr', 'load'].includes(t.suite))) {
-    gaps.push({ kind: 'no-performance-target', severity: 'high',
-      message: 'The inputs state no response-time target, so no performance case was designed. Add a target (e.g. "p95 within 300 ms") to the epic or the codebase README.' });
-  }
-  if (tt.ids.includes('e2e') && !run.some((t) => t.suite === 'ui')) {
+  if (tt.id === 'eqe' && !run.some((t) => t.suite === 'ui')) {
     gaps.push({ kind: 'no-ui-requirement', severity: 'medium',
       message: dom.gaps.e2eNoUi });
   }
-  if (!run.length && !tt.ids.includes('performance')) gaps.push({ kind: 'nothing-to-run', severity: 'high', message: `The inputs give ${tt.name.toLowerCase()} nothing to run.` });
+  if (!run.length) gaps.push({ kind: 'nothing-to-run', severity: 'high', message: `The inputs give ${tt.name.toLowerCase()} nothing to run.` });
   return {
     testingType: tt.id,
     name: tt.name,
+    dimension: tt.dimension,
     focus: tt.focus,
     approach: previous ? tt.incremental : tt.baseline,
     designed: testCases.length,

@@ -1,0 +1,5858 @@
+[
+  {
+    "key": "TC-F-001",
+    "requirementId": "REQ-003",
+    "ruleId": "BR-003",
+    "slot": "disclosed",
+    "kind": "price-disclosed",
+    "suite": "api",
+    "name": "The payment summary shows taxes, mandatory fees and the total before booking",
+    "objective": "Verify the guest sees the total including mandatory taxes and fees before confirming.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Read the payment summary"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Payment summary total = cart total = room + taxes + mandatory fees + extras - discounts; taxes and fees above 0",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-003-price-disclosed.spec.js",
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-001"
+  },
+  {
+    "key": "TC-F-002",
+    "requirementId": "REQ-008",
+    "ruleId": "BR-008",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Required business and technical events are logged using approved identifiers and masking rules",
+    "objective": "Confirm the behaviour \"Required business and technical events are logged using approved identifiers and masking rules.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Required business and technical events are logged using approved identifiers and masking rules.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-1"
+    ],
+    "sourceRefs": [
+      "AQPI-1"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-002"
+  },
+  {
+    "key": "TC-F-003",
+    "requirementId": "REQ-009",
+    "ruleId": "BR-009",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: All child user stories meet their acceptance criteria and the Definition of Done",
+    "objective": "Confirm the behaviour \"All child user stories meet their acceptance criteria and the Definition of Done.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "All child user stories meet their acceptance criteria and the Definition of Done.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "sourceRefs": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-003"
+  },
+  {
+    "key": "TC-F-004",
+    "requirementId": "REQ-010",
+    "ruleId": "BR-010",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Negative and error paths for each story are tested and evidenced",
+    "objective": "Confirm the behaviour \"Negative and error paths for each story are tested and evidenced.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Negative and error paths for each story are tested and evidenced.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "sourceRefs": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-004"
+  },
+  {
+    "key": "TC-F-005",
+    "requirementId": "REQ-011",
+    "ruleId": "BR-011",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Required logging is in place and verified free of sensitive data",
+    "objective": "Confirm the behaviour \"Required logging is in place and verified free of sensitive data.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Required logging is in place and verified free of sensitive data.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "sourceRefs": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-005"
+  },
+  {
+    "key": "TC-F-006",
+    "requirementId": "REQ-012",
+    "ruleId": "BR-012",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The Product Owner has accepted the capability end to end",
+    "objective": "Confirm the behaviour \"The Product Owner has accepted the capability end to end.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The Product Owner has accepted the capability end to end.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "sourceRefs": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-006"
+  },
+  {
+    "key": "TC-F-007",
+    "requirementId": "REQ-013",
+    "ruleId": "BR-013",
+    "slot": "search",
+    "kind": "hotel-search",
+    "suite": "api",
+    "name": "A valid search returns available hotels for the destination",
+    "objective": "Verify a valid search creates a search and returns matching hotels.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Submit the standard search"
+    ],
+    "testData": "search.destination=NYC; stay.nights=3; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 200, status RESULTS, a searchId, nights = 3 and at least one bookable hotel in NYC",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-013-hotel-search.spec.js",
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "search.destination",
+      "stay.nights"
+    ],
+    "dataSet": "TD-F-007"
+  },
+  {
+    "key": "TC-F-008",
+    "requirementId": "REQ-014",
+    "ruleId": "BR-014",
+    "slot": "criteria",
+    "kind": "search-criteria-kept",
+    "suite": "api",
+    "name": "The results page returns the criteria the guest submitted",
+    "objective": "Verify the results carry the submitted criteria so they can be shown and edited.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search",
+      "Open the results page"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "GET results returns destination, check-in, check-out, rooms, adults and children as submitted",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-014-search-criteria-kept.spec.js",
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-008"
+  },
+  {
+    "key": "TC-F-009",
+    "requirementId": "REQ-015",
+    "ruleId": "BR-015",
+    "slot": "past",
+    "kind": "search-date-validation",
+    "suite": "api",
+    "name": "A check-in date in the past is rejected",
+    "objective": "Verify past check-in dates are rejected with an actionable message.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search with check-in yesterday"
+    ],
+    "testData": "stay.checkInOffsetDays=-1; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, checkIn.past",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-015-search-date-validation.spec.js",
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "stay.checkInOffsetDays"
+    ],
+    "dataSet": "TD-F-009"
+  },
+  {
+    "key": "TC-F-010",
+    "requirementId": "REQ-015",
+    "ruleId": "BR-015",
+    "slot": "zero-nights",
+    "kind": "search-date-validation",
+    "suite": "api",
+    "name": "A check-out on the check-in day is rejected",
+    "objective": "Verify check-out must be after check-in.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search with 0 nights"
+    ],
+    "testData": "stay.nights=0; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, checkOut.notAfterCheckIn",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-015-search-date-validation.spec.js",
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "stay.nights"
+    ],
+    "dataSet": "TD-F-010"
+  },
+  {
+    "key": "TC-F-011",
+    "requirementId": "REQ-015",
+    "ruleId": "BR-015",
+    "slot": "no-destination",
+    "kind": "search-date-validation",
+    "suite": "api",
+    "name": "A search without a destination is rejected",
+    "objective": "Verify the destination is mandatory.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search with an empty destination"
+    ],
+    "testData": "search.destination=; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, destination.required",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-015-search-date-validation.spec.js",
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "search.destination"
+    ],
+    "dataSet": "TD-F-011"
+  },
+  {
+    "key": "TC-N-001",
+    "requirementId": "REQ-016",
+    "ruleId": "BR-016",
+    "slot": "sold-out",
+    "kind": "no-availability",
+    "suite": "api",
+    "name": "When every hotel is sold out the guest is told and offered other dates, guests or destination",
+    "objective": "Verify a no-availability result explains itself and offers ways to change the search.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). Every NYC hotel has 0 rooms.",
+    "steps": [
+      "Set all NYC inventory to 0",
+      "Search NYC"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 200, status NO_AVAILABILITY, a plain message and CHANGE_DATES, CHANGE_OCCUPANCY and CHANGE_DESTINATION suggestions",
+    "priority": "Medium",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-016-no-availability.spec.js",
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-N-001"
+  },
+  {
+    "key": "TC-F-012",
+    "requirementId": "REQ-017",
+    "ruleId": "BR-017",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Check-in must precede check-out",
+    "objective": "Confirm the behaviour \"Check-in must precede check-out.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Check-in must precede check-out.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-012"
+  },
+  {
+    "key": "TC-F-013",
+    "requirementId": "REQ-018",
+    "ruleId": "BR-018",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Occupancy must comply with configured room limits",
+    "objective": "Confirm the behaviour \"Occupancy must comply with configured room limits.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Occupancy must comply with configured room limits.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-013"
+  },
+  {
+    "key": "TC-F-014",
+    "requirementId": "REQ-019",
+    "ruleId": "BR-019",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Maximum stay length must be configurable",
+    "objective": "Confirm the behaviour \"Maximum stay length must be configurable.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Maximum stay length must be configurable.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-3"
+    ],
+    "sourceRefs": [
+      "AQPI-3"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-014"
+  },
+  {
+    "key": "TC-F-015",
+    "requirementId": "REQ-020",
+    "ruleId": "BR-020",
+    "slot": "form",
+    "kind": "search-form",
+    "suite": "api",
+    "name": "The search form marks destination, dates, rooms and adults as required",
+    "objective": "Verify the form contract identifies required fields and gives each an error id for assistive technology.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Read the search form contract"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "destination, checkIn, checkOut, rooms, adults required; children optional; every field has an errorId",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-020-search-form.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-015"
+  },
+  {
+    "key": "TC-F-016",
+    "requirementId": "REQ-021",
+    "ruleId": "BR-021",
+    "slot": "combination",
+    "kind": "field-level-messages",
+    "suite": "api",
+    "name": "Two rooms for one adult return a message on the adults field",
+    "objective": "Verify an invalid combination is reported against the field the guest must change.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search for 2 rooms and 1 adult"
+    ],
+    "testData": "occupancy.rooms=2; occupancy.adults=1; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, adults.perRoom",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-021-field-level-messages.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "occupancy.rooms",
+      "occupancy.adults"
+    ],
+    "dataSet": "TD-F-016"
+  },
+  {
+    "key": "TC-F-017",
+    "requirementId": "REQ-022",
+    "ruleId": "BR-022",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Server validation is authoritative when client and server results differ",
+    "objective": "Confirm the behaviour \"Server validation is authoritative when client and server results differ.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Server validation is authoritative when client and server results differ.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-017"
+  },
+  {
+    "key": "TC-F-018",
+    "requirementId": "REQ-024",
+    "ruleId": "BR-024",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Validation rules must be configurable where market or property rules vary",
+    "objective": "Confirm the behaviour \"Validation rules must be configurable where market or property rules vary.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Validation rules must be configurable where market or property rules vary.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-018"
+  },
+  {
+    "key": "TC-F-019",
+    "requirementId": "REQ-025",
+    "ruleId": "BR-025",
+    "slot": "sold-out",
+    "kind": "no-availability",
+    "suite": "api",
+    "name": "When every hotel is sold out the guest is told and offered other dates, guests or destination",
+    "objective": "Verify a no-availability result explains itself and offers ways to change the search.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). Every NYC hotel has 0 rooms.",
+    "steps": [
+      "Set all NYC inventory to 0",
+      "Search NYC"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 200, status NO_AVAILABILITY, a plain message and CHANGE_DATES, CHANGE_OCCUPANCY and CHANGE_DESTINATION suggestions",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-025-no-availability.spec.js",
+    "issueLinks": [
+      "AQPI-5"
+    ],
+    "sourceRefs": [
+      "AQPI-5"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-019"
+  },
+  {
+    "key": "TC-F-020",
+    "requirementId": "REQ-026",
+    "ruleId": "BR-026",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Technical failures display a non-technical message and retry option",
+    "objective": "Confirm the behaviour \"Technical failures display a non-technical message and retry option.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Technical failures display a non-technical message and retry option.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-5"
+    ],
+    "sourceRefs": [
+      "AQPI-5"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-020"
+  },
+  {
+    "key": "TC-F-021",
+    "requirementId": "REQ-027",
+    "ruleId": "BR-027",
+    "slot": "repeat",
+    "kind": "search-session",
+    "suite": "api",
+    "name": "Submitting the same search twice in one session returns the same search",
+    "objective": "Verify a repeated submission reuses the search instead of creating a second one.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search twice with the same X-Session-Id and criteria"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Both responses carry the same searchId and sessionId",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-027-search-session.spec.js",
+    "issueLinks": [
+      "AQPI-5"
+    ],
+    "sourceRefs": [
+      "AQPI-5"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-021"
+  },
+  {
+    "key": "TC-N-002",
+    "requirementId": "REQ-028",
+    "ruleId": "BR-028",
+    "slot": "cards",
+    "kind": "result-content",
+    "suite": "api",
+    "name": "Every result has a name, location, image, availability and, when bookable, a starting price in a currency",
+    "objective": "Verify each result card carries the content the story lists.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Every result: name, city, image, availability; bookable ones: startingNightly amount and currency",
+    "priority": "Medium",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-028-result-content.spec.js",
+    "issueLinks": [
+      "AQPI-7"
+    ],
+    "sourceRefs": [
+      "AQPI-7"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-N-002"
+  },
+  {
+    "key": "TC-F-022",
+    "requirementId": "REQ-029",
+    "ruleId": "BR-029",
+    "slot": "qualification",
+    "kind": "fee-disclosure",
+    "suite": "api",
+    "name": "Every bookable result states what its price includes",
+    "objective": "Verify the starting price carries a pricing qualification about taxes and fees.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Every bookable result has a priceQualification mentioning taxes or fees",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-029-fee-disclosure.spec.js",
+    "issueLinks": [
+      "AQPI-7"
+    ],
+    "sourceRefs": [
+      "AQPI-7"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-022"
+  },
+  {
+    "key": "TC-F-023",
+    "requirementId": "REQ-030",
+    "ruleId": "BR-030",
+    "slot": "sold-out-card",
+    "kind": "unavailable-not-bookable",
+    "suite": "api",
+    "name": "A sold-out hotel is listed as SOLD_OUT without a price",
+    "objective": "Verify a hotel with no rooms is not presented as bookable.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). H-NYC-004 has 0 rooms.",
+    "steps": [
+      "Set H-NYC-004 inventory to 0",
+      "Search"
+    ],
+    "testData": "selection.hotelId=H-NYC-004; every other booking attribute from the hotel data dictionary examples",
+    "expected": "H-NYC-004: availability SOLD_OUT, bookable false, startingNightly null",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-030-unavailable-not-bookable.spec.js",
+    "issueLinks": [
+      "AQPI-7"
+    ],
+    "sourceRefs": [
+      "AQPI-7"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.hotelId"
+    ],
+    "dataSet": "TD-F-023"
+  },
+  {
+    "key": "TC-F-024",
+    "requirementId": "REQ-031",
+    "ruleId": "BR-031",
+    "slot": "page",
+    "kind": "pagination",
+    "suite": "api",
+    "name": "Results can be read two at a time",
+    "objective": "Verify results are paginated.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search",
+      "Read results with size=2"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Page holds 2 results, totalPages >= 2",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-031-pagination.spec.js",
+    "issueLinks": [
+      "AQPI-7"
+    ],
+    "sourceRefs": [
+      "AQPI-7"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-024"
+  },
+  {
+    "key": "TC-F-025",
+    "requirementId": "REQ-032",
+    "ruleId": "BR-032",
+    "slot": "valid-rate",
+    "kind": "starting-price",
+    "suite": "api",
+    "name": "The starting price equals the cheapest rate on the hotel page",
+    "objective": "Verify the price shown in the results is a rate the guest can actually choose.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search",
+      "Open the hotel for the same dates"
+    ],
+    "testData": "selection.hotelId=H-NYC-001; every other booking attribute from the hotel data dictionary examples",
+    "expected": "startingNightly = lowest averageNightly over the hotel’s room rate plans",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-032-starting-price.spec.js",
+    "issueLinks": [
+      "AQPI-7"
+    ],
+    "sourceRefs": [
+      "AQPI-7"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.hotelId"
+    ],
+    "dataSet": "TD-F-025"
+  },
+  {
+    "key": "TC-F-026",
+    "requirementId": "REQ-033",
+    "ruleId": "BR-033",
+    "slot": "details",
+    "kind": "hotel-details",
+    "suite": "api",
+    "name": "The hotel page shows description, images, address, amenities, rooms with prices and policies",
+    "objective": "Verify the hotel details carry the content the story lists.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Open the hotel for the stay dates"
+    ],
+    "testData": "selection.hotelId=H-NYC-001; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 200 with description, images, address, amenities, rooms with rate plans and prices, check-in policy",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-033-hotel-details.spec.js",
+    "issueLinks": [
+      "AQPI-9"
+    ],
+    "sourceRefs": [
+      "AQPI-9"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.hotelId"
+    ],
+    "dataSet": "TD-F-026"
+  },
+  {
+    "key": "TC-F-027",
+    "requirementId": "REQ-034",
+    "ruleId": "BR-034",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The guest can select a valid room and rate plan",
+    "objective": "Confirm the behaviour \"The guest can select a valid room and rate plan.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The guest can select a valid room and rate plan.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-9"
+    ],
+    "sourceRefs": [
+      "AQPI-9"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-027"
+  },
+  {
+    "key": "TC-F-028",
+    "requirementId": "REQ-035",
+    "ruleId": "BR-035",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: If inventory changes, the guest is informed before continuing",
+    "objective": "Confirm the behaviour \"If inventory changes, the guest is informed before continuing.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "If inventory changes, the guest is informed before continuing.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-9"
+    ],
+    "sourceRefs": [
+      "AQPI-9"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-028"
+  },
+  {
+    "key": "TC-F-029",
+    "requirementId": "REQ-036",
+    "ruleId": "BR-036",
+    "slot": "terms",
+    "kind": "rate-conditions",
+    "suite": "api",
+    "name": "Every rate plan states its cancellation terms and payment rule",
+    "objective": "Verify the guest can read the conditions of each rate before choosing it.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Open the hotel"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Every rate plan has cancellationTerms, a payment rule and a refundable flag",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-036-rate-conditions.spec.js",
+    "issueLinks": [
+      "AQPI-9"
+    ],
+    "sourceRefs": [
+      "AQPI-9"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-029"
+  },
+  {
+    "key": "TC-F-030",
+    "requirementId": "REQ-037",
+    "ruleId": "BR-037",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes",
+    "objective": "Confirm the behaviour \"The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-11"
+    ],
+    "sourceRefs": [
+      "AQPI-11"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-030"
+  },
+  {
+    "key": "TC-F-031",
+    "requirementId": "REQ-038",
+    "ruleId": "BR-038",
+    "slot": "no-spa",
+    "kind": "offer-exclusion",
+    "suite": "api",
+    "name": "Spa access is not offered at a hotel without a spa",
+    "objective": "Verify an extra the hotel cannot deliver is excluded with a reason.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Get recommendations for H-NYC-001"
+    ],
+    "testData": "selection.hotelId=H-NYC-001; every other booking attribute from the hotel data dictionary examples",
+    "expected": "SPA_ACCESS not offered; listed as excluded with reason HOTEL_LACKS_SPA",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-038-offer-exclusion.spec.js",
+    "issueLinks": [
+      "AQPI-11"
+    ],
+    "sourceRefs": [
+      "AQPI-11"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.hotelId"
+    ],
+    "dataSet": "TD-F-031"
+  },
+  {
+    "key": "TC-F-032",
+    "requirementId": "REQ-039",
+    "ruleId": "BR-039",
+    "slot": "reasons",
+    "kind": "offer-reason-codes",
+    "suite": "api",
+    "name": "Every recommended extra carries at least one reason code",
+    "objective": "Verify each recommendation is explainable.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Get recommendations"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Every offer has a non-empty reasonCodes list",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-039-offer-reason-codes.spec.js",
+    "issueLinks": [
+      "AQPI-11"
+    ],
+    "sourceRefs": [
+      "AQPI-11"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-032"
+  },
+  {
+    "key": "TC-F-033",
+    "requirementId": "REQ-040",
+    "ruleId": "BR-040",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: When personalization data is unavailable, safe contextual defaults may be returned",
+    "objective": "Confirm the behaviour \"When personalization data is unavailable, safe contextual defaults may be returned.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "When personalization data is unavailable, safe contextual defaults may be returned.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-11"
+    ],
+    "sourceRefs": [
+      "AQPI-11"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-033"
+  },
+  {
+    "key": "TC-F-034",
+    "requirementId": "REQ-041",
+    "ruleId": "BR-041",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Sensitive traits must not be inferred or used",
+    "objective": "Confirm the behaviour \"Sensitive traits must not be inferred or used.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Sensitive traits must not be inferred or used.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-11"
+    ],
+    "sourceRefs": [
+      "AQPI-11"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-034"
+  },
+  {
+    "key": "TC-F-035",
+    "requirementId": "REQ-042",
+    "ruleId": "BR-042",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Personalization must honor consent and data-retention rules",
+    "objective": "Confirm the behaviour \"Personalization must honor consent and data-retention rules.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Personalization must honor consent and data-retention rules.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-11"
+    ],
+    "sourceRefs": [
+      "AQPI-11"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-035"
+  },
+  {
+    "key": "TC-F-036",
+    "requirementId": "REQ-043",
+    "ruleId": "BR-043",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Business rules and model versions must be auditable",
+    "objective": "Confirm the behaviour \"Business rules and model versions must be auditable.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Business rules and model versions must be auditable.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-11"
+    ],
+    "sourceRefs": [
+      "AQPI-11"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-036"
+  },
+  {
+    "key": "TC-F-037",
+    "requirementId": "REQ-044",
+    "ruleId": "BR-044",
+    "slot": "content",
+    "kind": "offer-content",
+    "suite": "api",
+    "name": "Each offer shows name, description, price and currency and is labelled an optional extra",
+    "objective": "Verify offer content and that offers are told apart from mandatory fees.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Get recommendations"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Every offer: name, description, price amount and currency, kind OPTIONAL_EXTRA",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-044-offer-content.spec.js",
+    "issueLinks": [
+      "AQPI-12"
+    ],
+    "sourceRefs": [
+      "AQPI-12"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-037"
+  },
+  {
+    "key": "TC-F-038",
+    "requirementId": "REQ-045",
+    "ruleId": "BR-045",
+    "slot": "dismiss",
+    "kind": "offer-interaction",
+    "suite": "api",
+    "name": "The guest can record add, skip and dismiss on an offer",
+    "objective": "Verify the three offer actions are accepted.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Send ADD, SKIP and DISMISS for BREAKFAST"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 202 for each action",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-045-offer-interaction.spec.js",
+    "issueLinks": [
+      "AQPI-12"
+    ],
+    "sourceRefs": [
+      "AQPI-12"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-038"
+  },
+  {
+    "key": "TC-F-039",
+    "requirementId": "REQ-046",
+    "ruleId": "BR-046",
+    "slot": "content",
+    "kind": "offer-content",
+    "suite": "api",
+    "name": "Each offer shows name, description, price and currency and is labelled an optional extra",
+    "objective": "Verify offer content and that offers are told apart from mandatory fees.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Get recommendations"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Every offer: name, description, price amount and currency, kind OPTIONAL_EXTRA",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-046-offer-content.spec.js",
+    "issueLinks": [
+      "AQPI-12"
+    ],
+    "sourceRefs": [
+      "AQPI-12"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-039"
+  },
+  {
+    "key": "TC-F-040",
+    "requirementId": "REQ-048",
+    "ruleId": "BR-048",
+    "slot": "contents",
+    "kind": "cart-contents",
+    "suite": "api",
+    "name": "The cart holds the selected hotel, room, rate, dates, occupancy and price components",
+    "objective": "Verify the cart content the story lists.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 201; room matches the selection and dates; totals itemised in one currency",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-048-cart-contents.spec.js",
+    "issueLinks": [
+      "AQPI-15"
+    ],
+    "sourceRefs": [
+      "AQPI-15"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-040"
+  },
+  {
+    "key": "TC-F-041",
+    "requirementId": "REQ-049",
+    "ruleId": "BR-049",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Inventory and price are revalidated when required",
+    "objective": "Confirm the behaviour \"Inventory and price are revalidated when required.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Inventory and price are revalidated when required.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-15"
+    ],
+    "sourceRefs": [
+      "AQPI-15"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-041"
+  },
+  {
+    "key": "TC-F-042",
+    "requirementId": "REQ-050",
+    "ruleId": "BR-050",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The cart has a defined expiration and displays relevant timeout behavior",
+    "objective": "Confirm the behaviour \"The cart has a defined expiration and displays relevant timeout behavior.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The cart has a defined expiration and displays relevant timeout behavior.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-15"
+    ],
+    "sourceRefs": [
+      "AQPI-15"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-042"
+  },
+  {
+    "key": "TC-F-043",
+    "requirementId": "REQ-051",
+    "ruleId": "BR-051",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: A cart must not itself create a reservation",
+    "objective": "Confirm the behaviour \"A cart must not itself create a reservation.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "A cart must not itself create a reservation.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-15"
+    ],
+    "sourceRefs": [
+      "AQPI-15"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-043"
+  },
+  {
+    "key": "TC-F-044",
+    "requirementId": "REQ-052",
+    "ruleId": "BR-052",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Price-change handling must require guest acknowledgement when material",
+    "objective": "Confirm the behaviour \"Price-change handling must require guest acknowledgement when material.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Price-change handling must require guest acknowledgement when material.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-15"
+    ],
+    "sourceRefs": [
+      "AQPI-15"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-044"
+  },
+  {
+    "key": "TC-F-045",
+    "requirementId": "REQ-053",
+    "ruleId": "BR-053",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The guest can add an available ancillary",
+    "objective": "Confirm the behaviour \"The guest can add an available ancillary.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The guest can add an available ancillary.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-16"
+    ],
+    "sourceRefs": [
+      "AQPI-16"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-045"
+  },
+  {
+    "key": "TC-F-046",
+    "requirementId": "REQ-054",
+    "ruleId": "BR-054",
+    "slot": "limit",
+    "kind": "ancillary-quantity",
+    "suite": "api",
+    "name": "Breakfast can go to 2 but not above its limit of 4",
+    "objective": "Verify quantity changes respect the product limit.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Add breakfast",
+      "Set quantity 2",
+      "Set quantity 5"
+    ],
+    "testData": "extras.code=BREAKFAST; extras.quantity=2; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Quantity 2 doubles the extra price; quantity 5 returns HTTP 422 EXTRA_QUANTITY_LIMIT",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-054-ancillary-quantity.spec.js",
+    "issueLinks": [
+      "AQPI-16"
+    ],
+    "sourceRefs": [
+      "AQPI-16"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "extras.code",
+      "extras.quantity"
+    ],
+    "dataSet": "TD-F-046"
+  },
+  {
+    "key": "TC-F-047",
+    "requirementId": "REQ-055",
+    "ruleId": "BR-055",
+    "slot": "remove",
+    "kind": "ancillary-removal",
+    "suite": "api",
+    "name": "Removing breakfast returns the total to the room-only amount",
+    "objective": "Verify totals update as soon as an extra is removed.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Add breakfast",
+      "Remove breakfast"
+    ],
+    "testData": "extras.code=BREAKFAST; extras.quantity=1; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Total after removal = total before adding; optional extras 0",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-055-ancillary-removal.spec.js",
+    "issueLinks": [
+      "AQPI-16"
+    ],
+    "sourceRefs": [
+      "AQPI-16"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "extras.code"
+    ],
+    "dataSet": "TD-F-047"
+  },
+  {
+    "key": "TC-F-048",
+    "requirementId": "REQ-056",
+    "ruleId": "BR-056",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Ineligible or sold-out products cannot be retained silently",
+    "objective": "Confirm the behaviour \"Ineligible or sold-out products cannot be retained silently.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Ineligible or sold-out products cannot be retained silently.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-16"
+    ],
+    "sourceRefs": [
+      "AQPI-16"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-048"
+  },
+  {
+    "key": "TC-F-049",
+    "requirementId": "REQ-057",
+    "ruleId": "BR-057",
+    "slot": "itemised",
+    "kind": "itemized-total",
+    "suite": "api",
+    "name": "The cart itemises room, taxes, fees, extras and discounts and they add up to the total",
+    "objective": "Verify the itemised components and their sum.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Add breakfast"
+    ],
+    "testData": "extras.code=BREAKFAST; extras.quantity=1; every other booking attribute from the hotel data dictionary examples",
+    "expected": "total = room + taxes + fees + extras - discounts, all in one currency",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-057-itemized-total.spec.js",
+    "issueLinks": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "extras.code"
+    ],
+    "dataSet": "TD-F-049"
+  },
+  {
+    "key": "TC-F-050",
+    "requirementId": "REQ-058",
+    "ruleId": "BR-058",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Currency is consistently displayed",
+    "objective": "Confirm the behaviour \"Currency is consistently displayed.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Currency is consistently displayed.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-050"
+  },
+  {
+    "key": "TC-F-051",
+    "requirementId": "REQ-059",
+    "ruleId": "BR-059",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Material changes are highlighted and require acknowledgement",
+    "objective": "Confirm the behaviour \"Material changes are highlighted and require acknowledgement.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Material changes are highlighted and require acknowledgement.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-051"
+  },
+  {
+    "key": "TC-F-052",
+    "requirementId": "REQ-060",
+    "ruleId": "BR-060",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The guest can return to edit supported selections",
+    "objective": "Confirm the behaviour \"The guest can return to edit supported selections.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The guest can return to edit supported selections.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-052"
+  },
+  {
+    "key": "TC-F-053",
+    "requirementId": "REQ-061",
+    "ruleId": "BR-061",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The final payable total must be revalidated before reservation submission",
+    "objective": "Confirm the behaviour \"The final payable total must be revalidated before reservation submission.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The final payable total must be revalidated before reservation submission.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-053"
+  },
+  {
+    "key": "TC-F-054",
+    "requirementId": "REQ-062",
+    "ruleId": "BR-062",
+    "slot": "fields",
+    "kind": "checkout-fields",
+    "suite": "api",
+    "name": "Checkout lists name, e-mail, payment and privacy notice as required and phone as optional",
+    "objective": "Verify the checkout contract separates required and optional fields.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Read the payment summary"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "requiredFields include guest.firstName, guest.lastName, guest.email, paymentToken, privacyNoticeAccepted; guest.phone is optional",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-062-checkout-fields.spec.js",
+    "issueLinks": [
+      "AQPI-19"
+    ],
+    "sourceRefs": [
+      "AQPI-19"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-054"
+  },
+  {
+    "key": "TC-N-003",
+    "requirementId": "REQ-063",
+    "ruleId": "BR-063",
+    "slot": "bad-email",
+    "kind": "guest-validation",
+    "suite": "api",
+    "name": "An invalid e-mail address is rejected on the e-mail field",
+    "objective": "Verify guest inputs are validated with a field-level message.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Submit with e-mail \"not-an-email\""
+    ],
+    "testData": "guest.email=not-an-email; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 422 VALIDATION_FAILED, EMAIL_FORMAT on guest.email",
+    "priority": "Medium",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-063-guest-validation.spec.js",
+    "issueLinks": [
+      "AQPI-19"
+    ],
+    "sourceRefs": [
+      "AQPI-19"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "guest.email"
+    ],
+    "dataSet": "TD-N-003"
+  },
+  {
+    "key": "TC-F-055",
+    "requirementId": "REQ-064",
+    "ruleId": "BR-064",
+    "slot": "no-consent",
+    "kind": "privacy-consent",
+    "suite": "api",
+    "name": "Booking without accepting the privacy notice is refused",
+    "objective": "Verify the privacy notice must be accepted.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Submit without accepting the privacy notice"
+    ],
+    "testData": "consent.privacyNoticeAccepted=false; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 422 VALIDATION_FAILED with PRIVACY_NOTICE_REQUIRED on privacyNoticeAccepted",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-064-privacy-consent.spec.js",
+    "issueLinks": [
+      "AQPI-19"
+    ],
+    "sourceRefs": [
+      "AQPI-19"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "consent.privacyNoticeAccepted"
+    ],
+    "dataSet": "TD-F-055"
+  },
+  {
+    "key": "TC-F-056",
+    "requirementId": "REQ-065",
+    "ruleId": "BR-065",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Data is transmitted securely and is not exposed in client logs",
+    "objective": "Confirm the behaviour \"Data is transmitted securely and is not exposed in client logs.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Data is transmitted securely and is not exposed in client logs.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-19"
+    ],
+    "sourceRefs": [
+      "AQPI-19"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-056"
+  },
+  {
+    "key": "TC-F-057",
+    "requirementId": "REQ-066",
+    "ruleId": "BR-066",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Data minimization applies",
+    "objective": "Confirm the behaviour \"Data minimization applies.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Data minimization applies.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-19"
+    ],
+    "sourceRefs": [
+      "AQPI-19"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-057"
+  },
+  {
+    "key": "TC-F-058",
+    "requirementId": "REQ-067",
+    "ruleId": "BR-067",
+    "slot": "support-view",
+    "kind": "support-masking",
+    "suite": "api",
+    "name": "Support staff see a masked e-mail and other callers are refused",
+    "objective": "Verify the operational view is role-based and masks personal data.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book",
+      "Read the ops view without a role",
+      "Read it as SUPPORT"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Without role HTTP 403; as SUPPORT the e-mail is masked and the full address never appears",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-067-support-masking.spec.js",
+    "issueLinks": [
+      "AQPI-19"
+    ],
+    "sourceRefs": [
+      "AQPI-19"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-058"
+  },
+  {
+    "key": "TC-F-059",
+    "requirementId": "REQ-068",
+    "ruleId": "BR-068",
+    "slot": "flex",
+    "kind": "amount-before-auth",
+    "suite": "api",
+    "name": "A pay-at-hotel rate shows nothing to pay now and the total due at the hotel",
+    "objective": "Verify the guarantee case.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a FLEX cart",
+      "Read the payment summary"
+    ],
+    "testData": "selection.ratePlanCode=FLEX; every other booking attribute from the hotel data dictionary examples",
+    "expected": "payNow 0 and payAtHotel = total",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-068-amount-before-auth.spec.js",
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.ratePlanCode"
+    ],
+    "dataSet": "TD-F-059"
+  },
+  {
+    "key": "TC-F-060",
+    "requirementId": "REQ-068",
+    "ruleId": "BR-068",
+    "slot": "saver",
+    "kind": "amount-before-auth",
+    "suite": "api",
+    "name": "A prepaid rate shows the full total to pay now",
+    "objective": "Verify the prepaid case.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a SAVER cart",
+      "Read the payment summary"
+    ],
+    "testData": "selection.ratePlanCode=SAVER; every other booking attribute from the hotel data dictionary examples",
+    "expected": "payNow = total",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-068-amount-before-auth.spec.js",
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.ratePlanCode"
+    ],
+    "dataSet": "TD-F-060"
+  },
+  {
+    "key": "TC-F-061",
+    "requirementId": "REQ-069",
+    "ruleId": "BR-069",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Payment data is handled through approved secure components",
+    "objective": "Confirm the behaviour \"Payment data is handled through approved secure components.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Payment data is handled through approved secure components.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-061"
+  },
+  {
+    "key": "TC-F-062",
+    "requirementId": "REQ-070",
+    "ruleId": "BR-070",
+    "slot": "decline",
+    "kind": "payment-outcomes",
+    "suite": "api",
+    "name": "A declined card returns a decline without a booking",
+    "objective": "Verify the decline outcome.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Pay with a declined card"
+    ],
+    "testData": "payment.token=tok_decline; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Status PAYMENT_DECLINED, no confirmation number",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-070-payment-outcomes.spec.js",
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "payment.token"
+    ],
+    "dataSet": "TD-F-062"
+  },
+  {
+    "key": "TC-F-063",
+    "requirementId": "REQ-070",
+    "ruleId": "BR-070",
+    "slot": "timeout",
+    "kind": "payment-outcomes",
+    "suite": "api",
+    "name": "A lost payment response leaves the booking pending and tells the guest not to resubmit",
+    "objective": "Verify the timeout outcome and its reconciliation.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Pay with a token whose response is lost",
+      "Reconcile"
+    ],
+    "testData": "payment.token=tok_timeout; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Status PENDING_UNKNOWN with doNotResubmit true; reconciliation confirms it",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-070-payment-outcomes.spec.js",
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "payment.token"
+    ],
+    "dataSet": "TD-F-063"
+  },
+  {
+    "key": "TC-F-064",
+    "requirementId": "REQ-070",
+    "ruleId": "BR-070",
+    "slot": "error",
+    "kind": "payment-outcomes",
+    "suite": "api",
+    "name": "A payment provider failure returns a failure without a booking",
+    "objective": "Verify the technical-failure outcome.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Pay with a token the provider fails on"
+    ],
+    "testData": "payment.token=tok_error; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Status FAILED, no confirmation number",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-070-payment-outcomes.spec.js",
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "payment.token"
+    ],
+    "dataSet": "TD-F-064"
+  },
+  {
+    "key": "TC-F-065",
+    "requirementId": "REQ-071",
+    "ruleId": "BR-071",
+    "slot": "raw-card",
+    "kind": "no-card-data",
+    "suite": "api",
+    "name": "A raw card number is refused and never echoed back",
+    "objective": "Verify only payment tokens are accepted.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Submit a raw card number as the token"
+    ],
+    "testData": "payment.token=4111111111111111; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 422 RAW_CARD_REJECTED and the card number does not appear in the response",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-071-no-card-data.spec.js",
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "payment.token"
+    ],
+    "dataSet": "TD-F-065"
+  },
+  {
+    "key": "TC-F-066",
+    "requirementId": "REQ-072",
+    "ruleId": "BR-072",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Payment requirements depend on rate conditions",
+    "objective": "Confirm the behaviour \"Payment requirements depend on rate conditions.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Payment requirements depend on rate conditions.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-066"
+  },
+  {
+    "key": "TC-F-067",
+    "requirementId": "REQ-073",
+    "ruleId": "BR-073",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Retry behavior must avoid duplicate authorization",
+    "objective": "Confirm the behaviour \"Retry behavior must avoid duplicate authorization.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Retry behavior must avoid duplicate authorization.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-20"
+    ],
+    "sourceRefs": [
+      "AQPI-20"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-067"
+  },
+  {
+    "key": "TC-F-068",
+    "requirementId": "REQ-074",
+    "ruleId": "BR-074",
+    "slot": "book",
+    "kind": "one-reservation",
+    "suite": "api",
+    "name": "A successful booking creates one reservation with a confirmation number",
+    "objective": "Verify the happy-path booking.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Submit the reservation"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 201 CONFIRMED with a confirmation number and doNotResubmit true",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-074-one-reservation.spec.js",
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-068"
+  },
+  {
+    "key": "TC-F-069",
+    "requirementId": "REQ-075",
+    "ruleId": "BR-075",
+    "slot": "replay",
+    "kind": "idempotent-reservation",
+    "suite": "api",
+    "name": "Resubmitting with the same key returns the original reservation",
+    "objective": "Verify a replay does not create a second reservation.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Submit",
+      "Submit again with the same key"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Second response HTTP 200 with the same reservation; one payment",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-075-idempotent-reservation.spec.js",
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-069"
+  },
+  {
+    "key": "TC-F-070",
+    "requirementId": "REQ-076",
+    "ruleId": "BR-076",
+    "slot": "reconcile",
+    "kind": "reconcilable",
+    "suite": "api",
+    "name": "After a booking and a decline the reconciliation report is consistent",
+    "objective": "Verify reservation, payment and inventory outcomes agree.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book one cart",
+      "Decline another",
+      "Read the reconciliation report"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Reconciliation lists both reservations and marks each consistent",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-076-reconcilable.spec.js",
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-070"
+  },
+  {
+    "key": "TC-F-071",
+    "requirementId": "REQ-077",
+    "ruleId": "BR-077",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Partial failures trigger defined recovery or manual-review handling",
+    "objective": "Confirm the behaviour \"Partial failures trigger defined recovery or manual-review handling.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Partial failures trigger defined recovery or manual-review handling.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-071"
+  },
+  {
+    "key": "TC-F-072",
+    "requirementId": "REQ-078",
+    "ruleId": "BR-078",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Reservation submission must use an idempotency mechanism",
+    "objective": "Confirm the behaviour \"Reservation submission must use an idempotency mechanism.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Reservation submission must use an idempotency mechanism.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-072"
+  },
+  {
+    "key": "TC-F-073",
+    "requirementId": "REQ-079",
+    "ruleId": "BR-079",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The source of truth for confirmation status must be defined",
+    "objective": "Confirm the behaviour \"The source of truth for confirmation status must be defined.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The source of truth for confirmation status must be defined.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-073"
+  },
+  {
+    "key": "TC-F-074",
+    "requirementId": "REQ-080",
+    "ruleId": "BR-080",
+    "slot": "email",
+    "kind": "confirmation-content",
+    "suite": "api",
+    "name": "The confirmation e-mail matches the booking and contains no payment token",
+    "objective": "Verify the e-mail content, its match with the booking and the absence of payment data.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book",
+      "Open the confirmation e-mail"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "E-mail has the same confirmation number, hotel and total; no payment token; recipient masked",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-080-confirmation-content.spec.js",
+    "issueLinks": [
+      "AQPI-24"
+    ],
+    "sourceRefs": [
+      "AQPI-24"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-074"
+  },
+  {
+    "key": "TC-F-075",
+    "requirementId": "REQ-081",
+    "ruleId": "BR-081",
+    "slot": "email",
+    "kind": "confirmation-content",
+    "suite": "api",
+    "name": "The confirmation e-mail matches the booking and contains no payment token",
+    "objective": "Verify the e-mail content, its match with the booking and the absence of payment data.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book",
+      "Open the confirmation e-mail"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "E-mail has the same confirmation number, hotel and total; no payment token; recipient masked",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-081-confirmation-content.spec.js",
+    "issueLinks": [
+      "AQPI-24"
+    ],
+    "sourceRefs": [
+      "AQPI-24"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-075"
+  },
+  {
+    "key": "TC-F-076",
+    "requirementId": "REQ-083",
+    "ruleId": "BR-083",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Only necessary personal data may be included",
+    "objective": "Confirm the behaviour \"Only necessary personal data may be included.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Only necessary personal data may be included.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-24"
+    ],
+    "sourceRefs": [
+      "AQPI-24"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-076"
+  },
+  {
+    "key": "TC-F-077",
+    "requirementId": "REQ-084",
+    "ruleId": "BR-084",
+    "slot": "email",
+    "kind": "confirmation-content",
+    "suite": "api",
+    "name": "The confirmation e-mail matches the booking and contains no payment token",
+    "objective": "Verify the e-mail content, its match with the booking and the absence of payment data.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book",
+      "Open the confirmation e-mail"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "E-mail has the same confirmation number, hotel and total; no payment token; recipient masked",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-084-confirmation-content.spec.js",
+    "issueLinks": [
+      "AQPI-24"
+    ],
+    "sourceRefs": [
+      "AQPI-24"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-077"
+  },
+  {
+    "key": "TC-F-078",
+    "requirementId": "REQ-085",
+    "ruleId": "BR-085",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: A successful reservation creates one confirmation-email request",
+    "objective": "Confirm the behaviour \"A successful reservation creates one confirmation-email request.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "A successful reservation creates one confirmation-email request.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-25"
+    ],
+    "sourceRefs": [
+      "AQPI-25"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-078"
+  },
+  {
+    "key": "TC-F-079",
+    "requirementId": "REQ-086",
+    "ruleId": "BR-086",
+    "slot": "fail",
+    "kind": "email-failure-isolated",
+    "suite": "api",
+    "name": "When the e-mail cannot be sent the booking stays confirmed",
+    "objective": "Verify e-mail failure is isolated from the reservation.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book with an address the provider rejects"
+    ],
+    "testData": "guest.email=jane@fail.test; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 201 CONFIRMED; the e-mail is recorded as FAILED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-086-email-failure-isolated.spec.js",
+    "issueLinks": [
+      "AQPI-25"
+    ],
+    "sourceRefs": [
+      "AQPI-25"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "guest.email"
+    ],
+    "dataSet": "TD-F-079"
+  },
+  {
+    "key": "TC-F-080",
+    "requirementId": "REQ-087",
+    "ruleId": "BR-087",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Permitted retries avoid duplicate or excessive messages",
+    "objective": "Confirm the behaviour \"Permitted retries avoid duplicate or excessive messages.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Permitted retries avoid duplicate or excessive messages.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-25"
+    ],
+    "sourceRefs": [
+      "AQPI-25"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-080"
+  },
+  {
+    "key": "TC-F-081",
+    "requirementId": "REQ-088",
+    "ruleId": "BR-088",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider",
+    "objective": "Confirm the behaviour \"Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-25"
+    ],
+    "sourceRefs": [
+      "AQPI-25"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-081"
+  },
+  {
+    "key": "TC-F-082",
+    "requirementId": "REQ-089",
+    "ruleId": "BR-089",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Email addresses must be masked outside authorized operational views",
+    "objective": "Confirm the behaviour \"Email addresses must be masked outside authorized operational views.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Email addresses must be masked outside authorized operational views.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-25"
+    ],
+    "sourceRefs": [
+      "AQPI-25"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-082"
+  },
+  {
+    "key": "TC-F-083",
+    "requirementId": "REQ-090",
+    "ruleId": "BR-090",
+    "slot": "generic",
+    "kind": "resend-generic",
+    "suite": "api",
+    "name": "A resend with the wrong last name gets the same answer as a correct one",
+    "objective": "Verify the resend answer does not reveal whether a booking exists.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book",
+      "Resend with the right last name",
+      "Resend with a wrong last name"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Both HTTP 202 with the same message; only the correct request creates a message",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-090-resend-generic.spec.js",
+    "issueLinks": [
+      "AQPI-26"
+    ],
+    "sourceRefs": [
+      "AQPI-26"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-083"
+  },
+  {
+    "key": "TC-F-084",
+    "requirementId": "REQ-091",
+    "ruleId": "BR-091",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Rate limits and abuse controls apply",
+    "objective": "Confirm the behaviour \"Rate limits and abuse controls apply.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Rate limits and abuse controls apply.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-26"
+    ],
+    "sourceRefs": [
+      "AQPI-26"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-084"
+  },
+  {
+    "key": "TC-F-085",
+    "requirementId": "REQ-092",
+    "ruleId": "BR-092",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: The resend creates a new message event without creating a new reservation",
+    "objective": "Confirm the behaviour \"The resend creates a new message event without creating a new reservation.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "The resend creates a new message event without creating a new reservation.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-26"
+    ],
+    "sourceRefs": [
+      "AQPI-26"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-085"
+  },
+  {
+    "key": "TC-F-086",
+    "requirementId": "REQ-093",
+    "ruleId": "BR-093",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Sensitive data is classified and mapped to approved storage and processing locations",
+    "objective": "Confirm the behaviour \"Sensitive data is classified and mapped to approved storage and processing locations.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Sensitive data is classified and mapped to approved storage and processing locations.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-28"
+    ],
+    "sourceRefs": [
+      "AQPI-28"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-086"
+  },
+  {
+    "key": "TC-F-087",
+    "requirementId": "REQ-094",
+    "ruleId": "BR-094",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Data is encrypted in transit and at rest where required",
+    "objective": "Confirm the behaviour \"Data is encrypted in transit and at rest where required.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Data is encrypted in transit and at rest where required.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-28"
+    ],
+    "sourceRefs": [
+      "AQPI-28"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-087"
+  },
+  {
+    "key": "TC-F-088",
+    "requirementId": "REQ-095",
+    "ruleId": "BR-095",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Logs and analytics exclude or mask prohibited fields",
+    "objective": "Confirm the behaviour \"Logs and analytics exclude or mask prohibited fields.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Logs and analytics exclude or mask prohibited fields.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-28"
+    ],
+    "sourceRefs": [
+      "AQPI-28"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-088"
+  },
+  {
+    "key": "TC-F-089",
+    "requirementId": "REQ-096",
+    "ruleId": "BR-096",
+    "slot": "support-view",
+    "kind": "support-masking",
+    "suite": "api",
+    "name": "Support staff see a masked e-mail and other callers are refused",
+    "objective": "Verify the operational view is role-based and masks personal data.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book",
+      "Read the ops view without a role",
+      "Read it as SUPPORT"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Without role HTTP 403; as SUPPORT the e-mail is masked and the full address never appears",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-096-support-masking.spec.js",
+    "issueLinks": [
+      "AQPI-28"
+    ],
+    "sourceRefs": [
+      "AQPI-28"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-089"
+  },
+  {
+    "key": "TC-F-090",
+    "requirementId": "REQ-097",
+    "ruleId": "BR-097",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Retention and deletion follow approved policy",
+    "objective": "Confirm the behaviour \"Retention and deletion follow approved policy.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Retention and deletion follow approved policy.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-28"
+    ],
+    "sourceRefs": [
+      "AQPI-28"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-090"
+  },
+  {
+    "key": "TC-F-091",
+    "requirementId": "REQ-098",
+    "ruleId": "BR-098",
+    "slot": "header",
+    "kind": "correlation-id",
+    "suite": "api",
+    "name": "A correlation ID sent by the client is returned by search, cart and reservation",
+    "objective": "Verify the correlation ID travels with the request.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search, create a cart and book with X-Correlation-Id"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Every response echoes the same X-Correlation-Id",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-098-correlation-id.spec.js",
+    "issueLinks": [
+      "AQPI-29"
+    ],
+    "sourceRefs": [
+      "AQPI-29"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-091"
+  },
+  {
+    "key": "TC-F-092",
+    "requirementId": "REQ-099",
+    "ruleId": "BR-099",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Business events and technical logs are distinguishable",
+    "objective": "Confirm the behaviour \"Business events and technical logs are distinguishable.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Business events and technical logs are distinguishable.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-29"
+    ],
+    "sourceRefs": [
+      "AQPI-29"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-092"
+  },
+  {
+    "key": "TC-F-093",
+    "requirementId": "REQ-101",
+    "ruleId": "BR-101",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required",
+    "objective": "Confirm the behaviour \"Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-29"
+    ],
+    "sourceRefs": [
+      "AQPI-29"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-093"
+  },
+  {
+    "key": "TC-F-094",
+    "requirementId": "REQ-102",
+    "ruleId": "BR-102",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Event schemas must be versioned",
+    "objective": "Confirm the behaviour \"Event schemas must be versioned.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Event schemas must be versioned.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-29"
+    ],
+    "sourceRefs": [
+      "AQPI-29"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-094"
+  },
+  {
+    "key": "TC-F-095",
+    "requirementId": "REQ-103",
+    "ruleId": "BR-103",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Production log access must be controlled and retained according to policy",
+    "objective": "Confirm the behaviour \"Production log access must be controlled and retained according to policy.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Production log access must be controlled and retained according to policy.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-29"
+    ],
+    "sourceRefs": [
+      "AQPI-29"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-095"
+  },
+  {
+    "key": "TC-F-096",
+    "requirementId": "REQ-105",
+    "ruleId": "BR-105",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Visual information is not conveyed by color alone",
+    "objective": "Confirm the behaviour \"Visual information is not conveyed by color alone.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Visual information is not conveyed by color alone.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-30"
+    ],
+    "sourceRefs": [
+      "AQPI-30"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-096"
+  },
+  {
+    "key": "TC-F-097",
+    "requirementId": "REQ-106",
+    "ruleId": "BR-106",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Dynamic updates are announced appropriately",
+    "objective": "Confirm the behaviour \"Dynamic updates are announced appropriately.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Dynamic updates are announced appropriately.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-30"
+    ],
+    "sourceRefs": [
+      "AQPI-30"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-097"
+  },
+  {
+    "key": "TC-N-004",
+    "requirementId": "REQ-107",
+    "ruleId": "BR-107",
+    "slot": "markup",
+    "kind": "email-accessible",
+    "suite": "api",
+    "name": "The confirmation e-mail has a language, a heading, a captioned table with scoped headers and a text part",
+    "objective": "Verify the e-mail markup is structurally accessible.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book",
+      "Open the confirmation e-mail"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "html has lang, <h1>, <caption>, <th scope=…>; a plain-text part exists",
+    "priority": "Medium",
+    "type": "non-functional",
+    "labels": [
+      "non-functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-107-email-accessible.spec.js",
+    "issueLinks": [
+      "AQPI-30"
+    ],
+    "sourceRefs": [
+      "AQPI-30"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-N-004"
+  },
+  {
+    "key": "TC-F-098",
+    "requirementId": "REQ-109",
+    "ruleId": "BR-109",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Timeout, retry, circuit-breaker, and fallback behavior are documented",
+    "objective": "Confirm the behaviour \"Timeout, retry, circuit-breaker, and fallback behavior are documented.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-31"
+    ],
+    "sourceRefs": [
+      "AQPI-31"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-098"
+  },
+  {
+    "key": "TC-F-099",
+    "requirementId": "REQ-110",
+    "ruleId": "BR-110",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Load, resilience, and recovery tests cover critical journeys",
+    "objective": "Confirm the behaviour \"Load, resilience, and recovery tests cover critical journeys.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Load, resilience, and recovery tests cover critical journeys.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-31"
+    ],
+    "sourceRefs": [
+      "AQPI-31"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-099"
+  },
+  {
+    "key": "TC-F-100",
+    "requirementId": "REQ-111",
+    "ruleId": "BR-111",
+    "slot": "manual",
+    "kind": "unclassified",
+    "suite": "api",
+    "name": "Verify: Reservation integrity is prioritized over non-critical personalization and analytics",
+    "objective": "Confirm the behaviour \"Reservation integrity is prioritized over non-critical personalization and analytics.\" (no executable template in the catalogue - manual verification).",
+    "precondition": "Access to the system under test and its operational logs.",
+    "steps": [
+      "Perform the action described by the requirement",
+      "Observe the outcome in the system or its logs"
+    ],
+    "testData": "n/a",
+    "expected": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+    "priority": "Low",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional"
+    ],
+    "automation": "Not automated",
+    "scriptFile": null,
+    "issueLinks": [
+      "AQPI-31"
+    ],
+    "sourceRefs": [
+      "AQPI-31"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-100"
+  },
+  {
+    "key": "TC-F-101",
+    "requirementId": "REQ-112",
+    "ruleId": "BR-112",
+    "slot": "expiry",
+    "kind": "cart-expiry",
+    "suite": "api",
+    "name": "A new cart expires 30 minutes after creation and reserves nothing",
+    "objective": "Verify the 30-minute hold and that the cart does not create a reservation.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "List reservations"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "expiresAt - createdAt = 30 min; timeout behaviour shown; no reservation exists",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-112-cart-expiry.spec.js",
+    "issueLinks": [
+      "AQPI-15"
+    ],
+    "sourceRefs": [
+      "AQPI-15"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-101"
+  },
+  {
+    "key": "TC-F-102",
+    "requirementId": "REQ-113",
+    "ruleId": "BR-113",
+    "slot": "material",
+    "kind": "price-change-ack",
+    "suite": "api",
+    "name": "A price rise above 1% blocks booking until the guest acknowledges it",
+    "objective": "Verify a change above 1% needs acknowledgement before checkout.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). The nightly rate rises 30% after the cart is created.",
+    "steps": [
+      "Create a cart",
+      "Raise the rate",
+      "Revalidate",
+      "Submit",
+      "Acknowledge",
+      "Submit again"
+    ],
+    "testData": "selection.ratePlanCode=FLEX; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Revalidation requires acknowledgement; first submit HTTP 409 PRICE_CHANGE_REQUIRES_ACKNOWLEDGEMENT; after acknowledging HTTP 201",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-113-price-change-ack.spec.js",
+    "issueLinks": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.ratePlanCode"
+    ],
+    "dataSet": "TD-F-102"
+  },
+  {
+    "key": "TC-F-103",
+    "requirementId": "REQ-113",
+    "ruleId": "BR-113",
+    "slot": "immaterial",
+    "kind": "price-change-ack",
+    "suite": "api",
+    "name": "A price change within 1% does not need acknowledgement",
+    "objective": "Verify a change within 1% is applied without blocking the guest.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). The nightly rate rises 0.5% after the cart is created.",
+    "steps": [
+      "Create a cart",
+      "Raise the rate slightly",
+      "Revalidate"
+    ],
+    "testData": "selection.ratePlanCode=FLEX; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Revalidation does not require acknowledgement and the new total is shown",
+    "priority": "High",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-113-price-change-ack.spec.js",
+    "issueLinks": [
+      "AQPI-17"
+    ],
+    "sourceRefs": [
+      "AQPI-17"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.ratePlanCode"
+    ],
+    "dataSet": "TD-F-103"
+  },
+  {
+    "key": "TC-F-104",
+    "requirementId": "REQ-114",
+    "ruleId": "BR-114",
+    "slot": "limit",
+    "kind": "resend-limit",
+    "suite": "api",
+    "name": "The 4th resend within 24 hours is refused",
+    "objective": "Verify at most 3 resends per booking.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book",
+      "Resend 4 times"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "First 3 resends HTTP 202, the next HTTP 429; still one reservation",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-114-resend-limit.spec.js",
+    "issueLinks": [
+      "AQPI-26"
+    ],
+    "sourceRefs": [
+      "AQPI-26"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-104"
+  },
+  {
+    "key": "TC-F-105",
+    "requirementId": "REQ-115",
+    "ruleId": "BR-115",
+    "slot": "missing",
+    "kind": "idempotency-key",
+    "suite": "api",
+    "name": "A reservation without an Idempotency-Key is refused",
+    "objective": "Verify the key is mandatory.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Submit without the header"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 IDEMPOTENCY_KEY_REQUIRED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-115-idempotency-key.spec.js",
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-105"
+  },
+  {
+    "key": "TC-F-106",
+    "requirementId": "REQ-115",
+    "ruleId": "BR-115",
+    "slot": "too-short",
+    "kind": "idempotency-key",
+    "suite": "api",
+    "name": "A key shorter than 8 characters is refused",
+    "objective": "Verify the 8-character minimum.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Create a cart",
+      "Submit with a 7-character key"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 IDEMPOTENCY_KEY_REQUIRED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-115-idempotency-key.spec.js",
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-106"
+  },
+  {
+    "key": "TC-F-107",
+    "requirementId": "REQ-115",
+    "ruleId": "BR-115",
+    "slot": "reused",
+    "kind": "idempotency-key",
+    "suite": "api",
+    "name": "Reusing a key for a different cart is refused",
+    "objective": "Verify a key cannot be reused for another request.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book cart A with a key",
+      "Submit cart B with the same key"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 409 IDEMPOTENCY_KEY_REUSED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-115-idempotency-key.spec.js",
+    "issueLinks": [
+      "AQPI-21"
+    ],
+    "sourceRefs": [
+      "AQPI-21"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "dataSet": "TD-F-107"
+  },
+  {
+    "key": "TC-F-108",
+    "requirementId": "REQ-116",
+    "ruleId": "BR-116",
+    "slot": "at-max",
+    "kind": "stay-length-limit",
+    "suite": "api",
+    "name": "A 30-night stay is accepted",
+    "objective": "Verify the upper boundary of 30 nights is accepted.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search NYC for 30 nights"
+    ],
+    "testData": "stay.nights=30; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 200 with a searchId",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-116-stay-length-limit.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "stay.nights"
+    ],
+    "dataSet": "TD-F-108"
+  },
+  {
+    "key": "TC-F-109",
+    "requirementId": "REQ-116",
+    "ruleId": "BR-116",
+    "slot": "over-max",
+    "kind": "stay-length-limit",
+    "suite": "api",
+    "name": "A 31-night stay is rejected",
+    "objective": "Verify one night over the 30-night limit is rejected.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search NYC for 31 nights"
+    ],
+    "testData": "stay.nights=31; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, stay.tooLong",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-116-stay-length-limit.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "stay.nights"
+    ],
+    "dataSet": "TD-F-109"
+  },
+  {
+    "key": "TC-F-110",
+    "requirementId": "REQ-116",
+    "ruleId": "BR-116",
+    "slot": "par-at-max",
+    "kind": "stay-length-limit",
+    "suite": "api",
+    "name": "A 21-night stay in Paris is accepted",
+    "objective": "Verify the Paris boundary of 21 nights is accepted.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search PAR for 21 nights"
+    ],
+    "testData": "search.destination=PAR; stay.nights=21; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 200 with a searchId",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-116-stay-length-limit.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "search.destination",
+      "stay.nights"
+    ],
+    "dataSet": "TD-F-110"
+  },
+  {
+    "key": "TC-F-111",
+    "requirementId": "REQ-116",
+    "ruleId": "BR-116",
+    "slot": "par-over-max",
+    "kind": "stay-length-limit",
+    "suite": "api",
+    "name": "A 22-night stay in Paris is rejected",
+    "objective": "Verify Paris rejects one night over its 21-night limit.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search PAR for 22 nights"
+    ],
+    "testData": "search.destination=PAR; stay.nights=22; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, stay.tooLong",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-116-stay-length-limit.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "search.destination",
+      "stay.nights"
+    ],
+    "dataSet": "TD-F-111"
+  },
+  {
+    "key": "TC-F-112",
+    "requirementId": "REQ-117",
+    "ruleId": "BR-117",
+    "slot": "adults-at-max",
+    "kind": "occupancy-limits",
+    "suite": "api",
+    "name": "4 adults in one room are accepted",
+    "objective": "Verify the 4-adult boundary is accepted.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search for 4 adults in 1 room"
+    ],
+    "testData": "occupancy.adults=4; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 200 with a searchId",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-117-occupancy-limits.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "occupancy.adults"
+    ],
+    "dataSet": "TD-F-112"
+  },
+  {
+    "key": "TC-F-113",
+    "requirementId": "REQ-117",
+    "ruleId": "BR-117",
+    "slot": "adults-over",
+    "kind": "occupancy-limits",
+    "suite": "api",
+    "name": "5 adults in one room are rejected",
+    "objective": "Verify more than 4 adults per room is rejected.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search for 5 adults in 1 room"
+    ],
+    "testData": "occupancy.adults=5; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, adults.max",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-117-occupancy-limits.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "occupancy.adults"
+    ],
+    "dataSet": "TD-F-113"
+  },
+  {
+    "key": "TC-F-114",
+    "requirementId": "REQ-117",
+    "ruleId": "BR-117",
+    "slot": "children-over",
+    "kind": "occupancy-limits",
+    "suite": "api",
+    "name": "4 children in one room are rejected",
+    "objective": "Verify more than 3 children per room is rejected.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search for 4 children in 1 room"
+    ],
+    "testData": "occupancy.children=4; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, children.max",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-117-occupancy-limits.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "occupancy.children"
+    ],
+    "dataSet": "TD-F-114"
+  },
+  {
+    "key": "TC-F-115",
+    "requirementId": "REQ-117",
+    "ruleId": "BR-117",
+    "slot": "rooms-over",
+    "kind": "occupancy-limits",
+    "suite": "api",
+    "name": "9 rooms in one search are rejected",
+    "objective": "Verify one search cannot book more than 8 rooms.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search for 9 rooms"
+    ],
+    "testData": "occupancy.rooms=9; occupancy.adults=9; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, rooms.range",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-117-occupancy-limits.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "occupancy.rooms",
+      "occupancy.adults"
+    ],
+    "dataSet": "TD-F-115"
+  },
+  {
+    "key": "TC-F-116",
+    "requirementId": "REQ-118",
+    "ruleId": "BR-118",
+    "slot": "at-horizon",
+    "kind": "advance-horizon",
+    "suite": "api",
+    "name": "A check-in 500 days ahead is accepted",
+    "objective": "Verify the 500-day boundary is accepted.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search with check-in 500 days from today"
+    ],
+    "testData": "stay.checkInOffsetDays=500; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 200 with a searchId",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-118-advance-horizon.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "stay.checkInOffsetDays"
+    ],
+    "dataSet": "TD-F-116"
+  },
+  {
+    "key": "TC-F-117",
+    "requirementId": "REQ-118",
+    "ruleId": "BR-118",
+    "slot": "over-horizon",
+    "kind": "advance-horizon",
+    "suite": "api",
+    "name": "A check-in 501 days ahead is rejected",
+    "objective": "Verify check-in more than 500 days ahead is rejected.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search with check-in 501 days from today"
+    ],
+    "testData": "stay.checkInOffsetDays=501; every other booking attribute from the hotel data dictionary examples",
+    "expected": "HTTP 400 VALIDATION_FAILED, checkIn.tooFarAhead",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "functional",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-118-advance-horizon.spec.js",
+    "issueLinks": [
+      "AQPI-4"
+    ],
+    "sourceRefs": [
+      "AQPI-4"
+    ],
+    "cycle": "Hotel booking baseline · Functional",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-functional",
+      "traceability-handover"
+    ],
+    "designedFor": "functional",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "stay.checkInOffsetDays"
+    ],
+    "dataSet": "TD-F-117"
+  }
+]
