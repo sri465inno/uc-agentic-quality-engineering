@@ -37,7 +37,7 @@ const INPUT_TYPES = [
 const DEMO = {
   capability: 'Guest hotel booking from search to confirmation (AQPI-1)',
   system: 'Hotel booking platform: six Java 21 Spring Boot WebFlux services (search, hotel, offer, cart, reservation, notification)',
-  flow1: 'AQPI-1 initiative + 7 epics (AQPI-2 to AQPI-27) with 23 stories + codebase branch demo/hotel-booking-platform (release 1.0). Functional, Regression and End-to-end cycles build the hotel baseline. Release 1.0 has three real defects: a 9-room search is accepted (AQPI-4), a 0.5% price change already asks for acknowledgement (AQPI-17) and a 7-character Idempotency-Key is accepted (AQPI-21).',
+  flow1: 'AQPI-1 initiative + 7 epics (AQPI-2 to AQPI-27) with 23 stories + codebase branch demo/hotel-booking-platform (release 1.0). EQE and Functional cycles build the hotel baseline. Release 1.0 has three real defects: a 9-room search is accepted (AQPI-4), a 0.5% price change already asks for acknowledgement (AQPI-17) and a 7-character Idempotency-Key is accepted (AQPI-21).',
   flow2: 'Epic 8 AQPI-32 (stories AQPI-33 to AQPI-36) + Epic 6 AQPI-23 as revised for release 2.0 (AQPI-24 to AQPI-26, new AQPI-37) + codebase branch demo/hotel-booking-platform-v2 (release 2.0). Changed: cart hold 30 -> 20 minutes, Paris stay 21 -> 14 nights, resends 3 -> 5, ops e-mail retries 2 -> 3, confirmation states the free-cancellation deadline. New: free cancellation up to 48 hours before check-in, cancellation e-mail. Release 2.0 fixes the 9-room search defect (AQPI-4), which Flow 2 retests and certifies closed; the other two Flow 1 defects stay open. New defects in the release 2.0 requirements: a 15-night Paris stay is accepted (AQPI-34) and a 4th ops e-mail retry is accepted (AQPI-25).',
 };
 

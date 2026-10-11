@@ -676,14 +676,14 @@ ${interactive ? `<label class="small"><input type="radio" name="res-${esc(g.id)}
 <h2>Agreed by Jira and code ${pill(byBucket('agreed').length, 'agreed')}</h2>${simple('agreed')}`;
 }
 
-const RA_CAT = { added: ['Added', 'enhanced'], missing: ['Missing', 'failed'], conflict: ['Conflict', 'conflict'], ai: ['AI check', 'ai'] };
+const RA_CAT = { gap: ['Gap', 'failed'], added: ['Added', 'enhanced'], missing: ['Missing', 'failed'], conflict: ['Conflict', 'conflict'], ai: ['AI check', 'ai'] };
 function reviewAgentView(c, { compact = false } = {}) {
   const ra = c.reviewAgent;
   if (!ra) return '<p class="muted">No review agent ran for this cycle.</p>';
   const src = (f) => f.sources.map((x) => `${esc(x.source)} ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.ref || '')}</a>` : esc(x.ref || '')}${x.line ? `:${esc(x.line)}` : ''}`).join('<br>') || '<span class="muted">-</span>';
-  const rows = ra.findings.map((f) => [esc(f.id), pill(RA_CAT[f.category][0], RA_CAT[f.category][1]), esc(f.severity), `<b>${esc(f.title)}</b>${f.groupId ? ` <span class="muted small">${esc(f.groupId)}</span>` : ''}<br><span class="small">${esc(f.detail || '')}</span>`, esc(f.suggestion), src(f)]);
+  const rows = ra.findings.map((f) => [esc(f.id), pill(...(RA_CAT[f.category] || [f.category, 'pending'])), esc(f.severity), `<b>${esc(f.title)}</b>${f.groupId ? ` <span class="muted small">${esc(f.groupId)}</span>` : ''}<br><span class="small">${esc(f.detail || '')}</span>`, esc(f.suggestion), src(f)]);
   const head = `<h2>Suggested for the Reviewer <span class="muted small">for ${esc(testingTypeOf(ra.testingType).name)}</span></h2>
-<p class="small">${ra.counts.added} added · ${ra.counts.missing} missing · ${ra.counts.conflicts} conflicts${ra.counts.ai ? ` · ${ra.counts.ai} AI-suggested` : ''} · ${ra.counts.high} high severity. <span class="muted">${esc(ra.note)}</span></p>`;
+<p class="small">${ra.counts.gaps ? `${ra.counts.gaps} gap(s) · ` : ''}${ra.counts.added} added · ${ra.counts.missing} missing · ${ra.counts.conflicts} conflicts${ra.counts.ai ? ` · ${ra.counts.ai} AI-suggested` : ''} · ${ra.counts.high} high severity. <span class="muted">${esc(ra.note)}</span></p>`;
   const body = ra.findings.length ? table(['ID', 'Kind', 'Severity', 'What it found', 'Suggestion', 'Source'], rows) : '<p class="muted">No suggestions: every input agrees and nothing is missing.</p>';
   return compact ? `<details class="card review-agent" open><summary><b>Suggested for the Reviewer: ${ra.findings.length} suggestion(s) before you approve</b></summary>${head}${body}</details>` : `${head}${body}`;
 }
