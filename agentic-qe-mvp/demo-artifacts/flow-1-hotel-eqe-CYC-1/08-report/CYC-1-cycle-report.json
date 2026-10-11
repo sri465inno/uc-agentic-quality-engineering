@@ -1,7 +1,7 @@
 {
   "adapted": null,
   "title": "Agentic QE Platform - MVP - Cycle report",
-  "generatedAt": "2026-10-11T16:44:18.765Z",
+  "generatedAt": "2026-10-11T17:06:49.062Z",
   "cycle": {
     "id": "CYC-1",
     "name": "Hotel booking baseline · EQE",
@@ -9,8 +9,8 @@
     "testingType": "eqe",
     "testingTypeName": "EQE testing",
     "status": "completed",
-    "createdAt": "2026-10-11T16:44:10.289Z",
-    "completedAt": "2026-10-11T16:44:18.733Z",
+    "createdAt": "2026-10-11T17:06:40.498Z",
+    "completedAt": "2026-10-11T17:06:49.024Z",
     "baselineId": "BL-1",
     "baselineVersionAtStart": null,
     "baselineVersionAfter": 1,
@@ -235,142 +235,17 @@
   "reviewAgent": {
     "counts": {
       "gaps": 3,
+      "conflicts": 0,
+      "notes": 70,
       "added": 7,
       "missing": 63,
-      "conflicts": 0,
       "ai": 0,
-      "high": 1
+      "high": 0
     },
-    "note": "Suggestions only. The human reviewer decides every conflict and approves the requirement set.",
+    "note": "Suggestions only. The human reviewer decides every gap and conflict and approves the requirement set.",
     "findings": [
       {
         "id": "RA-01",
-        "category": "added",
-        "severity": "medium",
-        "groupId": "G122",
-        "title": "In the code but in no Jira story",
-        "detail": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
-        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
-        "sources": [
-          {
-            "source": "code",
-            "ref": "cart-service/src/main/resources/cart-service.yml",
-            "line": 16,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
-            "quote": "# @rule [AQPI-15] A cart expires 30 minutes after it is created and never creates a reservation itself."
-          }
-        ]
-      },
-      {
-        "id": "RA-02",
-        "category": "added",
-        "severity": "high",
-        "groupId": "G123",
-        "title": "In the code but in no Jira story",
-        "detail": "A price change of more than 1% must be acknowledged by the guest before checkout.",
-        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
-        "sources": [
-          {
-            "source": "code",
-            "ref": "cart-service/src/main/resources/cart-service.yml",
-            "line": 17,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
-            "quote": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout."
-          }
-        ]
-      },
-      {
-        "id": "RA-03",
-        "category": "added",
-        "severity": "medium",
-        "groupId": "G124",
-        "title": "In the code but in no Jira story",
-        "detail": "A confirmation can be resent at most 3 times per booking in 24 hours.",
-        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
-        "sources": [
-          {
-            "source": "code",
-            "ref": "notification-service/src/main/resources/notification-service.yml",
-            "line": 7,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/notification-service/src/main/resources/notification-service.yml",
-            "quote": "# @rule [AQPI-26] A confirmation can be resent at most 3 times per booking in 24 hours."
-          }
-        ]
-      },
-      {
-        "id": "RA-04",
-        "category": "added",
-        "severity": "medium",
-        "groupId": "G125",
-        "title": "In the code but in no Jira story",
-        "detail": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
-        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
-        "sources": [
-          {
-            "source": "code",
-            "ref": "reservation-service/src/main/resources/reservation-service.yml",
-            "line": 20,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/reservation-service/src/main/resources/reservation-service.yml",
-            "quote": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
-          }
-        ]
-      },
-      {
-        "id": "RA-05",
-        "category": "added",
-        "severity": "medium",
-        "groupId": "G126",
-        "title": "In the code but in no Jira story",
-        "detail": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
-        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
-        "sources": [
-          {
-            "source": "code",
-            "ref": "search-service/src/main/resources/search-service.yml",
-            "line": 12,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
-            "quote": "# @rule [AQPI-4] A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights."
-          }
-        ]
-      },
-      {
-        "id": "RA-06",
-        "category": "added",
-        "severity": "medium",
-        "groupId": "G127",
-        "title": "In the code but in no Jira story",
-        "detail": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
-        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
-        "sources": [
-          {
-            "source": "code",
-            "ref": "search-service/src/main/resources/search-service.yml",
-            "line": 13,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
-            "quote": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms."
-          }
-        ]
-      },
-      {
-        "id": "RA-07",
-        "category": "added",
-        "severity": "medium",
-        "groupId": "G128",
-        "title": "In the code but in no Jira story",
-        "detail": "Check-in can be at most 500 days ahead.",
-        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
-        "sources": [
-          {
-            "source": "code",
-            "ref": "search-service/src/main/resources/search-service.yml",
-            "line": 14,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
-            "quote": "# @rule [AQPI-4] Check-in can be at most 500 days ahead."
-          }
-        ]
-      },
-      {
-        "id": "RA-08",
         "category": "gap",
         "severity": "minor",
         "groupId": "G33",
@@ -395,7 +270,7 @@
         ]
       },
       {
-        "id": "RA-09",
+        "id": "RA-02",
         "category": "gap",
         "severity": "minor",
         "groupId": "G52",
@@ -419,7 +294,7 @@
         ]
       },
       {
-        "id": "RA-10",
+        "id": "RA-03",
         "category": "gap",
         "severity": "minor",
         "groupId": "G87",
@@ -441,9 +316,137 @@
             "quote": null
           }
         ]
+      }
+    ],
+    "notes": [
+      {
+        "id": "RA-N01",
+        "category": "added",
+        "severity": "medium",
+        "groupId": "G122",
+        "title": "In the code but in no Jira story",
+        "detail": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
+        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+        "sources": [
+          {
+            "source": "code",
+            "ref": "cart-service/src/main/resources/cart-service.yml",
+            "line": 16,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+            "quote": "# @rule [AQPI-15] A cart expires 30 minutes after it is created and never creates a reservation itself."
+          }
+        ]
       },
       {
-        "id": "RA-11",
+        "id": "RA-N02",
+        "category": "added",
+        "severity": "high",
+        "groupId": "G123",
+        "title": "In the code but in no Jira story",
+        "detail": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+        "sources": [
+          {
+            "source": "code",
+            "ref": "cart-service/src/main/resources/cart-service.yml",
+            "line": 17,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+            "quote": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout."
+          }
+        ]
+      },
+      {
+        "id": "RA-N03",
+        "category": "added",
+        "severity": "medium",
+        "groupId": "G124",
+        "title": "In the code but in no Jira story",
+        "detail": "A confirmation can be resent at most 3 times per booking in 24 hours.",
+        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+        "sources": [
+          {
+            "source": "code",
+            "ref": "notification-service/src/main/resources/notification-service.yml",
+            "line": 7,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/notification-service/src/main/resources/notification-service.yml",
+            "quote": "# @rule [AQPI-26] A confirmation can be resent at most 3 times per booking in 24 hours."
+          }
+        ]
+      },
+      {
+        "id": "RA-N04",
+        "category": "added",
+        "severity": "medium",
+        "groupId": "G125",
+        "title": "In the code but in no Jira story",
+        "detail": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+        "sources": [
+          {
+            "source": "code",
+            "ref": "reservation-service/src/main/resources/reservation-service.yml",
+            "line": 20,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/reservation-service/src/main/resources/reservation-service.yml",
+            "quote": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
+          }
+        ]
+      },
+      {
+        "id": "RA-N05",
+        "category": "added",
+        "severity": "medium",
+        "groupId": "G126",
+        "title": "In the code but in no Jira story",
+        "detail": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+        "sources": [
+          {
+            "source": "code",
+            "ref": "search-service/src/main/resources/search-service.yml",
+            "line": 12,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+            "quote": "# @rule [AQPI-4] A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights."
+          }
+        ]
+      },
+      {
+        "id": "RA-N06",
+        "category": "added",
+        "severity": "medium",
+        "groupId": "G127",
+        "title": "In the code but in no Jira story",
+        "detail": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+        "sources": [
+          {
+            "source": "code",
+            "ref": "search-service/src/main/resources/search-service.yml",
+            "line": 13,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+            "quote": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms."
+          }
+        ]
+      },
+      {
+        "id": "RA-N07",
+        "category": "added",
+        "severity": "medium",
+        "groupId": "G128",
+        "title": "In the code but in no Jira story",
+        "detail": "Check-in can be at most 500 days ahead.",
+        "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+        "sources": [
+          {
+            "source": "code",
+            "ref": "search-service/src/main/resources/search-service.yml",
+            "line": 14,
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+            "quote": "# @rule [AQPI-4] Check-in can be at most 500 days ahead."
+          }
+        ]
+      },
+      {
+        "id": "RA-N08",
         "category": "missing",
         "severity": "low",
         "groupId": "G8",
@@ -461,7 +464,7 @@
         ]
       },
       {
-        "id": "RA-12",
+        "id": "RA-N09",
         "category": "missing",
         "severity": "low",
         "groupId": "G9",
@@ -521,7 +524,7 @@
         ]
       },
       {
-        "id": "RA-13",
+        "id": "RA-N10",
         "category": "missing",
         "severity": "low",
         "groupId": "G10",
@@ -581,7 +584,7 @@
         ]
       },
       {
-        "id": "RA-14",
+        "id": "RA-N11",
         "category": "missing",
         "severity": "low",
         "groupId": "G11",
@@ -641,7 +644,7 @@
         ]
       },
       {
-        "id": "RA-15",
+        "id": "RA-N12",
         "category": "missing",
         "severity": "low",
         "groupId": "G12",
@@ -701,7 +704,7 @@
         ]
       },
       {
-        "id": "RA-16",
+        "id": "RA-N13",
         "category": "missing",
         "severity": "low",
         "groupId": "G17",
@@ -719,7 +722,7 @@
         ]
       },
       {
-        "id": "RA-17",
+        "id": "RA-N14",
         "category": "missing",
         "severity": "low",
         "groupId": "G18",
@@ -737,7 +740,7 @@
         ]
       },
       {
-        "id": "RA-18",
+        "id": "RA-N15",
         "category": "missing",
         "severity": "low",
         "groupId": "G19",
@@ -755,7 +758,7 @@
         ]
       },
       {
-        "id": "RA-19",
+        "id": "RA-N16",
         "category": "missing",
         "severity": "low",
         "groupId": "G22",
@@ -773,7 +776,7 @@
         ]
       },
       {
-        "id": "RA-20",
+        "id": "RA-N17",
         "category": "missing",
         "severity": "low",
         "groupId": "G23",
@@ -791,7 +794,7 @@
         ]
       },
       {
-        "id": "RA-21",
+        "id": "RA-N18",
         "category": "missing",
         "severity": "low",
         "groupId": "G24",
@@ -809,7 +812,7 @@
         ]
       },
       {
-        "id": "RA-22",
+        "id": "RA-N19",
         "category": "missing",
         "severity": "low",
         "groupId": "G26",
@@ -827,7 +830,7 @@
         ]
       },
       {
-        "id": "RA-23",
+        "id": "RA-N20",
         "category": "missing",
         "severity": "low",
         "groupId": "G35",
@@ -845,7 +848,7 @@
         ]
       },
       {
-        "id": "RA-24",
+        "id": "RA-N21",
         "category": "missing",
         "severity": "low",
         "groupId": "G38",
@@ -863,7 +866,7 @@
         ]
       },
       {
-        "id": "RA-25",
+        "id": "RA-N22",
         "category": "missing",
         "severity": "low",
         "groupId": "G39",
@@ -881,7 +884,7 @@
         ]
       },
       {
-        "id": "RA-26",
+        "id": "RA-N23",
         "category": "missing",
         "severity": "low",
         "groupId": "G41",
@@ -899,7 +902,7 @@
         ]
       },
       {
-        "id": "RA-27",
+        "id": "RA-N24",
         "category": "missing",
         "severity": "low",
         "groupId": "G44",
@@ -917,7 +920,7 @@
         ]
       },
       {
-        "id": "RA-28",
+        "id": "RA-N25",
         "category": "missing",
         "severity": "low",
         "groupId": "G45",
@@ -935,7 +938,7 @@
         ]
       },
       {
-        "id": "RA-29",
+        "id": "RA-N26",
         "category": "missing",
         "severity": "low",
         "groupId": "G46",
@@ -953,7 +956,7 @@
         ]
       },
       {
-        "id": "RA-30",
+        "id": "RA-N27",
         "category": "missing",
         "severity": "low",
         "groupId": "G47",
@@ -971,7 +974,7 @@
         ]
       },
       {
-        "id": "RA-31",
+        "id": "RA-N28",
         "category": "missing",
         "severity": "low",
         "groupId": "G52",
@@ -989,7 +992,7 @@
         ]
       },
       {
-        "id": "RA-32",
+        "id": "RA-N29",
         "category": "missing",
         "severity": "low",
         "groupId": "G56",
@@ -1007,7 +1010,7 @@
         ]
       },
       {
-        "id": "RA-33",
+        "id": "RA-N30",
         "category": "missing",
         "severity": "low",
         "groupId": "G57",
@@ -1025,7 +1028,7 @@
         ]
       },
       {
-        "id": "RA-34",
+        "id": "RA-N31",
         "category": "missing",
         "severity": "low",
         "groupId": "G58",
@@ -1043,7 +1046,7 @@
         ]
       },
       {
-        "id": "RA-35",
+        "id": "RA-N32",
         "category": "missing",
         "severity": "low",
         "groupId": "G59",
@@ -1061,7 +1064,7 @@
         ]
       },
       {
-        "id": "RA-36",
+        "id": "RA-N33",
         "category": "missing",
         "severity": "low",
         "groupId": "G60",
@@ -1079,7 +1082,7 @@
         ]
       },
       {
-        "id": "RA-37",
+        "id": "RA-N34",
         "category": "missing",
         "severity": "low",
         "groupId": "G63",
@@ -1097,7 +1100,7 @@
         ]
       },
       {
-        "id": "RA-38",
+        "id": "RA-N35",
         "category": "missing",
         "severity": "low",
         "groupId": "G65",
@@ -1115,7 +1118,7 @@
         ]
       },
       {
-        "id": "RA-39",
+        "id": "RA-N36",
         "category": "missing",
         "severity": "low",
         "groupId": "G66",
@@ -1133,7 +1136,7 @@
         ]
       },
       {
-        "id": "RA-40",
+        "id": "RA-N37",
         "category": "missing",
         "severity": "low",
         "groupId": "G67",
@@ -1151,7 +1154,7 @@
         ]
       },
       {
-        "id": "RA-41",
+        "id": "RA-N38",
         "category": "missing",
         "severity": "low",
         "groupId": "G68",
@@ -1169,7 +1172,7 @@
         ]
       },
       {
-        "id": "RA-42",
+        "id": "RA-N39",
         "category": "missing",
         "severity": "low",
         "groupId": "G72",
@@ -1187,7 +1190,7 @@
         ]
       },
       {
-        "id": "RA-43",
+        "id": "RA-N40",
         "category": "missing",
         "severity": "low",
         "groupId": "G73",
@@ -1205,7 +1208,7 @@
         ]
       },
       {
-        "id": "RA-44",
+        "id": "RA-N41",
         "category": "missing",
         "severity": "low",
         "groupId": "G76",
@@ -1223,7 +1226,7 @@
         ]
       },
       {
-        "id": "RA-45",
+        "id": "RA-N42",
         "category": "missing",
         "severity": "low",
         "groupId": "G79",
@@ -1241,7 +1244,7 @@
         ]
       },
       {
-        "id": "RA-46",
+        "id": "RA-N43",
         "category": "missing",
         "severity": "low",
         "groupId": "G80",
@@ -1259,7 +1262,7 @@
         ]
       },
       {
-        "id": "RA-47",
+        "id": "RA-N44",
         "category": "missing",
         "severity": "low",
         "groupId": "G84",
@@ -1277,7 +1280,7 @@
         ]
       },
       {
-        "id": "RA-48",
+        "id": "RA-N45",
         "category": "missing",
         "severity": "low",
         "groupId": "G85",
@@ -1295,7 +1298,7 @@
         ]
       },
       {
-        "id": "RA-49",
+        "id": "RA-N46",
         "category": "missing",
         "severity": "low",
         "groupId": "G86",
@@ -1313,7 +1316,7 @@
         ]
       },
       {
-        "id": "RA-50",
+        "id": "RA-N47",
         "category": "missing",
         "severity": "low",
         "groupId": "G92",
@@ -1331,7 +1334,7 @@
         ]
       },
       {
-        "id": "RA-51",
+        "id": "RA-N48",
         "category": "missing",
         "severity": "low",
         "groupId": "G93",
@@ -1349,7 +1352,7 @@
         ]
       },
       {
-        "id": "RA-52",
+        "id": "RA-N49",
         "category": "missing",
         "severity": "low",
         "groupId": "G95",
@@ -1367,7 +1370,7 @@
         ]
       },
       {
-        "id": "RA-53",
+        "id": "RA-N50",
         "category": "missing",
         "severity": "low",
         "groupId": "G97",
@@ -1385,7 +1388,7 @@
         ]
       },
       {
-        "id": "RA-54",
+        "id": "RA-N51",
         "category": "missing",
         "severity": "low",
         "groupId": "G98",
@@ -1403,7 +1406,7 @@
         ]
       },
       {
-        "id": "RA-55",
+        "id": "RA-N52",
         "category": "missing",
         "severity": "low",
         "groupId": "G99",
@@ -1421,7 +1424,7 @@
         ]
       },
       {
-        "id": "RA-56",
+        "id": "RA-N53",
         "category": "missing",
         "severity": "low",
         "groupId": "G101",
@@ -1439,7 +1442,7 @@
         ]
       },
       {
-        "id": "RA-57",
+        "id": "RA-N54",
         "category": "missing",
         "severity": "low",
         "groupId": "G102",
@@ -1457,7 +1460,7 @@
         ]
       },
       {
-        "id": "RA-58",
+        "id": "RA-N55",
         "category": "missing",
         "severity": "low",
         "groupId": "G103",
@@ -1475,7 +1478,7 @@
         ]
       },
       {
-        "id": "RA-59",
+        "id": "RA-N56",
         "category": "missing",
         "severity": "low",
         "groupId": "G104",
@@ -1493,7 +1496,7 @@
         ]
       },
       {
-        "id": "RA-60",
+        "id": "RA-N57",
         "category": "missing",
         "severity": "low",
         "groupId": "G105",
@@ -1511,7 +1514,7 @@
         ]
       },
       {
-        "id": "RA-61",
+        "id": "RA-N58",
         "category": "missing",
         "severity": "low",
         "groupId": "G107",
@@ -1529,7 +1532,7 @@
         ]
       },
       {
-        "id": "RA-62",
+        "id": "RA-N59",
         "category": "missing",
         "severity": "low",
         "groupId": "G109",
@@ -1547,7 +1550,7 @@
         ]
       },
       {
-        "id": "RA-63",
+        "id": "RA-N60",
         "category": "missing",
         "severity": "low",
         "groupId": "G110",
@@ -1565,7 +1568,7 @@
         ]
       },
       {
-        "id": "RA-64",
+        "id": "RA-N61",
         "category": "missing",
         "severity": "low",
         "groupId": "G111",
@@ -1583,7 +1586,7 @@
         ]
       },
       {
-        "id": "RA-65",
+        "id": "RA-N62",
         "category": "missing",
         "severity": "low",
         "groupId": "G112",
@@ -1601,7 +1604,7 @@
         ]
       },
       {
-        "id": "RA-66",
+        "id": "RA-N63",
         "category": "missing",
         "severity": "low",
         "groupId": "G113",
@@ -1619,7 +1622,7 @@
         ]
       },
       {
-        "id": "RA-67",
+        "id": "RA-N64",
         "category": "missing",
         "severity": "low",
         "groupId": "G114",
@@ -1637,7 +1640,7 @@
         ]
       },
       {
-        "id": "RA-68",
+        "id": "RA-N65",
         "category": "missing",
         "severity": "low",
         "groupId": "G115",
@@ -1655,7 +1658,7 @@
         ]
       },
       {
-        "id": "RA-69",
+        "id": "RA-N66",
         "category": "missing",
         "severity": "low",
         "groupId": "G116",
@@ -1673,7 +1676,7 @@
         ]
       },
       {
-        "id": "RA-70",
+        "id": "RA-N67",
         "category": "missing",
         "severity": "low",
         "groupId": "G118",
@@ -1691,7 +1694,7 @@
         ]
       },
       {
-        "id": "RA-71",
+        "id": "RA-N68",
         "category": "missing",
         "severity": "low",
         "groupId": "G119",
@@ -1709,7 +1712,7 @@
         ]
       },
       {
-        "id": "RA-72",
+        "id": "RA-N69",
         "category": "missing",
         "severity": "low",
         "groupId": "G120",
@@ -1727,7 +1730,7 @@
         ]
       },
       {
-        "id": "RA-73",
+        "id": "RA-N70",
         "category": "missing",
         "severity": "low",
         "groupId": "G121",
@@ -2100,7 +2103,7 @@
         {
           "key": "suggestions",
           "status": "delivered",
-          "count": 73,
+          "count": 3,
           "skills": [
             "input-review"
           ],
@@ -2403,7 +2406,7 @@
       "children": [],
       "statements": 7,
       "provenance": "github",
-      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T16:44:09.579Z",
+      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T17:06:39.764Z",
       "files": [
         "README.md",
         "TRACEABILITY.md",
@@ -5160,24 +5163,24 @@
   "execution": {
     "executed": true,
     "quarantined": "not measured",
-    "durationMs": 4506,
+    "durationMs": 4538,
     "tool": "Playwright 1.63.0 (headless Chromium, JSON reporter)",
-    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-o7diOP/runs/CYC-1/playwright.config.js",
+    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-H9NWN9/runs/CYC-1/playwright.config.js",
     "sut": {
       "build": "demo/hotel-booking-platform",
-      "url": "http://127.0.0.1:43779",
+      "url": "http://127.0.0.1:38349",
       "services": {
-        "hotel-service": "http://127.0.0.1:41243",
-        "offer-service": "http://127.0.0.1:33631",
-        "notification-service": "http://127.0.0.1:46425",
-        "search-service": "http://127.0.0.1:43779",
-        "cart-service": "http://127.0.0.1:42047",
-        "reservation-service": "http://127.0.0.1:35151"
+        "hotel-service": "http://127.0.0.1:34429",
+        "offer-service": "http://127.0.0.1:38605",
+        "notification-service": "http://127.0.0.1:37687",
+        "search-service": "http://127.0.0.1:38349",
+        "cart-service": "http://127.0.0.1:42833",
+        "reservation-service": "http://127.0.0.1:43901"
       },
       "name": "Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform"
     },
-    "startedAt": "2026-10-11T16:44:14.208Z",
-    "finishedAt": "2026-10-11T16:44:18.714Z",
+    "startedAt": "2026-10-11T17:06:44.467Z",
+    "finishedAt": "2026-10-11T17:06:49.005Z",
     "summary": {
       "total": 13,
       "executed": 8,
@@ -5185,7 +5188,7 @@
       "failed": 0,
       "skipped": 0,
       "notRun": 5,
-      "durationMs": 1552,
+      "durationMs": 1581,
       "passRate": 100
     },
     "results": [
@@ -5194,7 +5197,7 @@
         "requirementId": "REQ-001",
         "name": "Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail",
         "status": "passed",
-        "duration": 1038,
+        "duration": 1091,
         "reason": null,
         "aiTriage": null
       },
@@ -5203,7 +5206,7 @@
         "requirementId": "REQ-001",
         "name": "Guest books a prepaid non-refundable room in Paris and pays now",
         "status": "passed",
-        "duration": 108,
+        "duration": 103,
         "reason": null,
         "aiTriage": null
       },
@@ -5212,7 +5215,7 @@
         "requirementId": "REQ-002",
         "name": "A sold-out hotel is shown as unavailable and cannot be put in a cart",
         "status": "passed",
-        "duration": 75,
+        "duration": 72,
         "reason": null,
         "aiTriage": null
       },
@@ -5221,7 +5224,7 @@
         "requirementId": "REQ-004",
         "name": "An unavailable extra is refused and the room still books",
         "status": "passed",
-        "duration": 85,
+        "duration": 77,
         "reason": null,
         "aiTriage": null
       },
@@ -5230,7 +5233,7 @@
         "requirementId": "REQ-005",
         "name": "A double-clicked Book button creates one reservation and one payment",
         "status": "passed",
-        "duration": 59,
+        "duration": 66,
         "reason": null,
         "aiTriage": null
       },
@@ -5239,7 +5242,7 @@
         "requirementId": "REQ-006",
         "name": "The confirmation number can be looked up again after booking",
         "status": "passed",
-        "duration": 59,
+        "duration": 56,
         "reason": null,
         "aiTriage": null
       },
@@ -5248,7 +5251,7 @@
         "requirementId": "REQ-007",
         "name": "The guest sees the booking outcome and one confirmation e-mail is created",
         "status": "passed",
-        "duration": 63,
+        "duration": 58,
         "reason": null,
         "aiTriage": null
       },
@@ -5266,7 +5269,7 @@
         "requirementId": "REQ-047",
         "name": "An unavailable extra is refused and the room still books",
         "status": "passed",
-        "duration": 65,
+        "duration": 58,
         "reason": null,
         "aiTriage": null
       },
@@ -5319,13 +5322,13 @@
         "movement": "new",
         "testCaseKey": null,
         "requirementId": null,
-        "expected": "Code implements AQPI-8 (4 acceptance criteria)",
-        "actual": "No code in demo/hotel-booking-platform mentions AQPI-8",
+        "expected": "The code implements AQPI-8 4.2 Sort and filter hotel results (4 acceptance criteria)",
+        "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-8",
         "story": "AQPI-8",
         "jiraStatus": "not raised",
         "jiraKey": null,
         "jiraUrl": null,
-        "jira": "not raised in Jira",
+        "jira": "not raised in Jira; linked to AQPI-8 in the platform",
         "aiTriage": null,
         "aiSummary": null,
         "aiSteps": null,
@@ -5340,13 +5343,13 @@
         "movement": "new",
         "testCaseKey": null,
         "requirementId": null,
-        "expected": "Code implements AQPI-13 (3 acceptance criteria)",
-        "actual": "No code in demo/hotel-booking-platform mentions AQPI-13",
+        "expected": "The code implements AQPI-13 5.3 Explain and control personalization (3 acceptance criteria)",
+        "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-13",
         "story": "AQPI-13",
         "jiraStatus": "not raised",
         "jiraKey": null,
         "jiraUrl": null,
-        "jira": "not raised in Jira",
+        "jira": "not raised in Jira; linked to AQPI-13 in the platform",
         "aiTriage": null,
         "aiSummary": null,
         "aiSteps": null,
@@ -5361,13 +5364,13 @@
         "movement": "new",
         "testCaseKey": null,
         "requirementId": null,
-        "expected": "Code implements AQPI-22 (3 acceptance criteria)",
-        "actual": "No code in demo/hotel-booking-platform mentions AQPI-22",
+        "expected": "The code implements AQPI-22 7.4 Show booking outcome (3 acceptance criteria)",
+        "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-22",
         "story": "AQPI-22",
         "jiraStatus": "not raised",
         "jiraKey": null,
         "jiraUrl": null,
-        "jira": "not raised in Jira",
+        "jira": "not raised in Jira; linked to AQPI-22 in the platform",
         "aiTriage": null,
         "aiSummary": null,
         "aiSteps": null,
@@ -7289,7 +7292,7 @@
     {
       "gate": "Requirement set review",
       "by": "Priya Shah",
-      "at": "2026-10-11T16:44:10.301Z",
+      "at": "2026-10-11T17:06:40.510Z",
       "decision": "approved",
       "comment": "",
       "detail": "118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved"
@@ -7323,7 +7326,7 @@
   "honesty": [
     "Jira initiative AQPI-1: Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export): Jira REST API v3 JSON of AQPI-1, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
     "Jira epic AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27: Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export): Jira REST API v3 JSON of AQPI-2, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
-    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T16:44:09.579Z",
+    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) at 2026-10-11T17:06:39.764Z",
     "Execution: 8 automated cases really executed by Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform (demo/hotel-booking-platform); 5 manual case(s) designed but not executed.",
     "No model was used (no model API key set): normalisation, review, design, data, triage and prose are rule-based. Delta classification, coverage, pass/fail and defect raising are always computed in code."
   ]

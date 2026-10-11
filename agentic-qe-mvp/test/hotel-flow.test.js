@@ -122,6 +122,12 @@ test('Flow 2: release 2.0 adds to the hotel baseline, waits for merge approval, 
   const real = (list) => list.filter((d) => d.type !== 'gap');
   const byStory = (list) => real(list).map((d) => [d.jira.linkedTo, d.movement]).sort();
   assert.deepEqual(c1.artifacts.defects.filter((d) => d.type === 'gap').map((d) => [d.story, d.severity, d.blocksRelease]), [['AQPI-8', 'Minor', false], ['AQPI-13', 'Minor', false], ['AQPI-22', 'Minor', false]]);
+  for (const d of c1.artifacts.defects.filter((x) => x.type === 'gap')) {
+    assert.ok(d.epic && d.epic.key && d.acceptanceCriteria.length && d.raisedBy && d.raisedAt && d.codeChecked && d.recommendation, `${d.id} carries story, epic, criteria, reviewer, code and recommendation`);
+    assert.equal(d.jira.linkedTo, d.story, `${d.id} is linked to its Jira story`);
+    assert.ok(d.jira.payload.fields.labels.includes('gap'));
+  }
+  assert.ok(c1.reviewAgent.findings.every((f) => f.category === 'gap'), 'on the hotel inputs the reviewer only decides the code gaps');
   assert.deepEqual(byStory(c1.artifacts.defects), [['AQPI-17', 'new'], ['AQPI-21', 'new'], ['AQPI-4', 'new']]);
   const c2 = await pipeline.startCycle({ type: 'incremental', baselineId: c1.baselineId, inputs: HOTEL_V2_INPUTS, reviewer });
   assert.equal(c2.sutBuild, HOTEL_V2);

@@ -47,9 +47,10 @@ test('review agent runs before the human review, suggests added / missing / conf
   assert.match(conflict.title, /1\.5 %/);
   assert.deepEqual([...new Set(conflict.sources.map((s) => s.source))].sort(), ['code', 'jira']);
   assert.ok(conflict.sources.every((s) => s.ref));
-  assert.ok(ra.findings.some((f) => f.category === 'added' && /no Jira story/.test(f.title) && /404/.test(f.detail)));
+  assert.ok(ra.notes.some((f) => f.category === 'added' && /no Jira story/.test(f.title) && /404/.test(f.detail)), 'a code-only rule is a note, not a finding to decide');
+  assert.ok(ra.findings.every((f) => ['gap', 'conflict'].includes(f.category)));
   assert.ok(ra.findings.filter((f) => f.category === 'gap').every((f) => f.story && f.severity === 'minor' && f.sources.every((s) => s.source === 'jira')), 'a gap is a Jira story the code lacks, never a code-only rule');
-  assert.ok(ra.findings.some((f) => /commission-driving attributes/.test(f.title)));
+  assert.ok(ra.notes.some((f) => /commission-driving attributes/.test(f.title)));
   assert.equal(ra.counts.conflicts, 1);
   assert.equal(c.normalisation.counts.conflict, 1, 'the review agent does not settle the conflict');
   assert.equal(c.review, undefined);

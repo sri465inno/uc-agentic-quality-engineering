@@ -1,7 +1,7 @@
 {
   "adapted": null,
   "title": "Agentic QE Platform - MVP - Cycle report",
-  "generatedAt": "2026-10-11T16:44:58.479Z",
+  "generatedAt": "2026-10-11T17:07:27.755Z",
   "cycle": {
     "id": "CYC-4",
     "name": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) · EQE",
@@ -9,8 +9,8 @@
     "testingType": "eqe",
     "testingTypeName": "EQE testing",
     "status": "completed",
-    "createdAt": "2026-10-11T16:44:48.990Z",
-    "completedAt": "2026-10-11T16:44:58.459Z",
+    "createdAt": "2026-10-11T17:07:19.050Z",
+    "completedAt": "2026-10-11T17:07:27.730Z",
     "baselineId": "BL-1",
     "baselineVersionAtStart": 1,
     "baselineVersionAfter": 2,
@@ -255,16 +255,18 @@
   "reviewAgent": {
     "counts": {
       "gaps": 0,
+      "conflicts": 0,
+      "notes": 42,
       "added": 27,
       "missing": 15,
-      "conflicts": 0,
       "ai": 0,
-      "high": 1
+      "high": 0
     },
-    "note": "Suggestions only. The human reviewer decides every conflict and approves the requirement set.",
-    "findings": [
+    "note": "Suggestions only. The human reviewer decides every gap and conflict and approves the requirement set.",
+    "findings": [],
+    "notes": [
       {
-        "id": "RA-01",
+        "id": "RA-N01",
         "category": "added",
         "severity": "high",
         "groupId": "G30",
@@ -282,7 +284,7 @@
         ]
       },
       {
-        "id": "RA-02",
+        "id": "RA-N02",
         "category": "added",
         "severity": "medium",
         "groupId": "G31",
@@ -300,7 +302,7 @@
         ]
       },
       {
-        "id": "RA-03",
+        "id": "RA-N03",
         "category": "added",
         "severity": "medium",
         "groupId": "G32",
@@ -318,7 +320,7 @@
         ]
       },
       {
-        "id": "RA-04",
+        "id": "RA-N04",
         "category": "added",
         "severity": "medium",
         "groupId": "G33",
@@ -336,7 +338,7 @@
         ]
       },
       {
-        "id": "RA-05",
+        "id": "RA-N05",
         "category": "missing",
         "severity": "low",
         "groupId": "G1",
@@ -361,7 +363,7 @@
         ]
       },
       {
-        "id": "RA-06",
+        "id": "RA-N06",
         "category": "missing",
         "severity": "low",
         "groupId": "G3",
@@ -386,7 +388,7 @@
         ]
       },
       {
-        "id": "RA-07",
+        "id": "RA-N07",
         "category": "missing",
         "severity": "low",
         "groupId": "G11",
@@ -404,7 +406,7 @@
         ]
       },
       {
-        "id": "RA-08",
+        "id": "RA-N08",
         "category": "missing",
         "severity": "low",
         "groupId": "G12",
@@ -422,7 +424,7 @@
         ]
       },
       {
-        "id": "RA-09",
+        "id": "RA-N09",
         "category": "missing",
         "severity": "low",
         "groupId": "G15",
@@ -440,7 +442,7 @@
         ]
       },
       {
-        "id": "RA-10",
+        "id": "RA-N10",
         "category": "missing",
         "severity": "low",
         "groupId": "G17",
@@ -458,7 +460,7 @@
         ]
       },
       {
-        "id": "RA-11",
+        "id": "RA-N11",
         "category": "missing",
         "severity": "low",
         "groupId": "G19",
@@ -476,7 +478,7 @@
         ]
       },
       {
-        "id": "RA-12",
+        "id": "RA-N12",
         "category": "missing",
         "severity": "low",
         "groupId": "G22",
@@ -494,7 +496,7 @@
         ]
       },
       {
-        "id": "RA-13",
+        "id": "RA-N13",
         "category": "missing",
         "severity": "low",
         "groupId": "G23",
@@ -519,7 +521,7 @@
         ]
       },
       {
-        "id": "RA-14",
+        "id": "RA-N14",
         "category": "missing",
         "severity": "low",
         "groupId": "G25",
@@ -537,7 +539,7 @@
         ]
       },
       {
-        "id": "RA-15",
+        "id": "RA-N15",
         "category": "missing",
         "severity": "low",
         "groupId": "G26",
@@ -555,7 +557,7 @@
         ]
       },
       {
-        "id": "RA-16",
+        "id": "RA-N16",
         "category": "missing",
         "severity": "low",
         "groupId": "G29",
@@ -573,7 +575,7 @@
         ]
       },
       {
-        "id": "RA-17",
+        "id": "RA-N17",
         "category": "missing",
         "severity": "low",
         "groupId": "G36",
@@ -591,7 +593,7 @@
         ]
       },
       {
-        "id": "RA-18",
+        "id": "RA-N18",
         "category": "missing",
         "severity": "low",
         "groupId": "G38",
@@ -609,7 +611,7 @@
         ]
       },
       {
-        "id": "RA-19",
+        "id": "RA-N19",
         "category": "missing",
         "severity": "medium",
         "groupId": null,
@@ -627,7 +629,7 @@
         ]
       },
       {
-        "id": "RA-20",
+        "id": "RA-N20",
         "category": "added",
         "severity": "medium",
         "groupId": "G2",
@@ -645,7 +647,7 @@
         ]
       },
       {
-        "id": "RA-21",
+        "id": "RA-N21",
         "category": "added",
         "severity": "medium",
         "groupId": "G4",
@@ -663,7 +665,7 @@
         ]
       },
       {
-        "id": "RA-22",
+        "id": "RA-N22",
         "category": "added",
         "severity": "medium",
         "groupId": "G5",
@@ -688,7 +690,7 @@
         ]
       },
       {
-        "id": "RA-23",
+        "id": "RA-N23",
         "category": "added",
         "severity": "medium",
         "groupId": "G6",
@@ -713,7 +715,7 @@
         ]
       },
       {
-        "id": "RA-24",
+        "id": "RA-N24",
         "category": "added",
         "severity": "medium",
         "groupId": "G7",
@@ -738,7 +740,7 @@
         ]
       },
       {
-        "id": "RA-25",
+        "id": "RA-N25",
         "category": "added",
         "severity": "medium",
         "groupId": "G8",
@@ -763,7 +765,7 @@
         ]
       },
       {
-        "id": "RA-26",
+        "id": "RA-N26",
         "category": "added",
         "severity": "medium",
         "groupId": "G9",
@@ -788,7 +790,7 @@
         ]
       },
       {
-        "id": "RA-27",
+        "id": "RA-N27",
         "category": "added",
         "severity": "medium",
         "groupId": "G10",
@@ -806,7 +808,7 @@
         ]
       },
       {
-        "id": "RA-28",
+        "id": "RA-N28",
         "category": "added",
         "severity": "medium",
         "groupId": "G16",
@@ -831,7 +833,7 @@
         ]
       },
       {
-        "id": "RA-29",
+        "id": "RA-N29",
         "category": "added",
         "severity": "medium",
         "groupId": "G21",
@@ -856,7 +858,7 @@
         ]
       },
       {
-        "id": "RA-30",
+        "id": "RA-N30",
         "category": "added",
         "severity": "medium",
         "groupId": "G27",
@@ -881,7 +883,7 @@
         ]
       },
       {
-        "id": "RA-31",
+        "id": "RA-N31",
         "category": "added",
         "severity": "medium",
         "groupId": "G28",
@@ -906,7 +908,7 @@
         ]
       },
       {
-        "id": "RA-32",
+        "id": "RA-N32",
         "category": "added",
         "severity": "medium",
         "groupId": "G29",
@@ -924,7 +926,7 @@
         ]
       },
       {
-        "id": "RA-33",
+        "id": "RA-N33",
         "category": "added",
         "severity": "medium",
         "groupId": "G34",
@@ -942,7 +944,7 @@
         ]
       },
       {
-        "id": "RA-34",
+        "id": "RA-N34",
         "category": "added",
         "severity": "medium",
         "groupId": "G35",
@@ -960,7 +962,7 @@
         ]
       },
       {
-        "id": "RA-35",
+        "id": "RA-N35",
         "category": "added",
         "severity": "medium",
         "groupId": "G36",
@@ -978,7 +980,7 @@
         ]
       },
       {
-        "id": "RA-36",
+        "id": "RA-N36",
         "category": "added",
         "severity": "medium",
         "groupId": "G37",
@@ -996,7 +998,7 @@
         ]
       },
       {
-        "id": "RA-37",
+        "id": "RA-N37",
         "category": "added",
         "severity": "medium",
         "groupId": "G38",
@@ -1014,7 +1016,7 @@
         ]
       },
       {
-        "id": "RA-38",
+        "id": "RA-N38",
         "category": "added",
         "severity": "medium",
         "groupId": "G39",
@@ -1032,7 +1034,7 @@
         ]
       },
       {
-        "id": "RA-39",
+        "id": "RA-N39",
         "category": "added",
         "severity": "medium",
         "groupId": "G40",
@@ -1050,7 +1052,7 @@
         ]
       },
       {
-        "id": "RA-40",
+        "id": "RA-N40",
         "category": "added",
         "severity": "medium",
         "groupId": "G41",
@@ -1068,7 +1070,7 @@
         ]
       },
       {
-        "id": "RA-41",
+        "id": "RA-N41",
         "category": "added",
         "severity": "medium",
         "groupId": "G42",
@@ -1086,7 +1088,7 @@
         ]
       },
       {
-        "id": "RA-42",
+        "id": "RA-N42",
         "category": "added",
         "severity": "medium",
         "groupId": "G43",
@@ -1459,7 +1461,7 @@
         {
           "key": "suggestions",
           "status": "delivered",
-          "count": 42,
+          "count": 0,
           "skills": [
             "input-review"
           ],
@@ -1754,7 +1756,7 @@
       "children": [],
       "statements": 13,
       "provenance": "github",
-      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-11T16:44:47.269Z",
+      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-11T17:07:17.764Z",
       "files": [
         "README.md",
         "TRACEABILITY.md",
@@ -4921,24 +4923,24 @@
   "execution": {
     "executed": true,
     "quarantined": "not measured",
-    "durationMs": 4965,
+    "durationMs": 4630,
     "tool": "Playwright 1.63.0 (headless Chromium, JSON reporter)",
-    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-o7diOP/runs/CYC-4/playwright.config.js",
+    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-H9NWN9/runs/CYC-4/playwright.config.js",
     "sut": {
       "build": "demo/hotel-booking-platform-v2",
-      "url": "http://127.0.0.1:39733",
+      "url": "http://127.0.0.1:43145",
       "services": {
-        "hotel-service": "http://127.0.0.1:46143",
-        "offer-service": "http://127.0.0.1:45335",
-        "notification-service": "http://127.0.0.1:36483",
-        "search-service": "http://127.0.0.1:39733",
-        "cart-service": "http://127.0.0.1:33105",
-        "reservation-service": "http://127.0.0.1:38115"
+        "hotel-service": "http://127.0.0.1:45281",
+        "offer-service": "http://127.0.0.1:36159",
+        "notification-service": "http://127.0.0.1:33891",
+        "search-service": "http://127.0.0.1:43145",
+        "cart-service": "http://127.0.0.1:42031",
+        "reservation-service": "http://127.0.0.1:44055"
       },
       "name": "Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2"
     },
-    "startedAt": "2026-10-11T16:44:53.480Z",
-    "finishedAt": "2026-10-11T16:44:58.445Z",
+    "startedAt": "2026-10-11T17:07:23.084Z",
+    "finishedAt": "2026-10-11T17:07:27.714Z",
     "summary": {
       "total": 13,
       "executed": 8,
@@ -4946,7 +4948,7 @@
       "failed": 0,
       "skipped": 0,
       "notRun": 5,
-      "durationMs": 1993,
+      "durationMs": 1606,
       "passRate": 100
     },
     "results": [
@@ -4955,7 +4957,7 @@
         "requirementId": "REQ-001",
         "name": "Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail",
         "status": "passed",
-        "duration": 1184,
+        "duration": 1106,
         "reason": null,
         "aiTriage": null
       },
@@ -4964,7 +4966,7 @@
         "requirementId": "REQ-001",
         "name": "Guest books a prepaid non-refundable room in Paris and pays now",
         "status": "passed",
-        "duration": 162,
+        "duration": 114,
         "reason": null,
         "aiTriage": null
       },
@@ -4973,7 +4975,7 @@
         "requirementId": "REQ-002",
         "name": "A sold-out hotel is shown as unavailable and cannot be put in a cart",
         "status": "passed",
-        "duration": 134,
+        "duration": 68,
         "reason": null,
         "aiTriage": null
       },
@@ -4982,7 +4984,7 @@
         "requirementId": "REQ-004",
         "name": "An unavailable extra is refused and the room still books",
         "status": "passed",
-        "duration": 127,
+        "duration": 81,
         "reason": null,
         "aiTriage": null
       },
@@ -4991,7 +4993,7 @@
         "requirementId": "REQ-005",
         "name": "A double-clicked Book button creates one reservation and one payment",
         "status": "passed",
-        "duration": 103,
+        "duration": 61,
         "reason": null,
         "aiTriage": null
       },
@@ -5000,7 +5002,7 @@
         "requirementId": "REQ-006",
         "name": "The confirmation number can be looked up again after booking",
         "status": "passed",
-        "duration": 84,
+        "duration": 53,
         "reason": null,
         "aiTriage": null
       },
@@ -5009,7 +5011,7 @@
         "requirementId": "REQ-007",
         "name": "The guest sees the booking outcome and one confirmation e-mail is created",
         "status": "passed",
-        "duration": 72,
+        "duration": 53,
         "reason": null,
         "aiTriage": null
       },
@@ -5027,7 +5029,7 @@
         "requirementId": "REQ-047",
         "name": "An unavailable extra is refused and the room still books",
         "status": "passed",
-        "duration": 127,
+        "duration": 70,
         "reason": null,
         "aiTriage": null
       },
@@ -5080,13 +5082,13 @@
         "movement": "implemented in code, not yet verified by a test of this testing type",
         "testCaseKey": null,
         "requirementId": null,
-        "expected": "Code implements AQPI-8 (4 acceptance criteria)",
-        "actual": "No code in demo/hotel-booking-platform mentions AQPI-8",
+        "expected": "The code implements AQPI-8 4.2 Sort and filter hotel results (4 acceptance criteria)",
+        "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-8",
         "story": "AQPI-8",
         "jiraStatus": "not raised",
         "jiraKey": null,
         "jiraUrl": null,
-        "jira": "not raised in Jira",
+        "jira": "not raised in Jira; linked to AQPI-8 in the platform",
         "aiTriage": null,
         "aiSummary": null,
         "aiSteps": null,
@@ -5101,13 +5103,13 @@
         "movement": "implemented in code, not yet verified by a test of this testing type",
         "testCaseKey": null,
         "requirementId": null,
-        "expected": "Code implements AQPI-13 (3 acceptance criteria)",
-        "actual": "No code in demo/hotel-booking-platform mentions AQPI-13",
+        "expected": "The code implements AQPI-13 5.3 Explain and control personalization (3 acceptance criteria)",
+        "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-13",
         "story": "AQPI-13",
         "jiraStatus": "not raised",
         "jiraKey": null,
         "jiraUrl": null,
-        "jira": "not raised in Jira",
+        "jira": "not raised in Jira; linked to AQPI-13 in the platform",
         "aiTriage": null,
         "aiSummary": null,
         "aiSteps": null,
@@ -5122,13 +5124,13 @@
         "movement": "implemented in code, not yet verified by a test of this testing type",
         "testCaseKey": null,
         "requirementId": null,
-        "expected": "Code implements AQPI-22 (3 acceptance criteria)",
-        "actual": "No code in demo/hotel-booking-platform mentions AQPI-22",
+        "expected": "The code implements AQPI-22 7.4 Show booking outcome (3 acceptance criteria)",
+        "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-22",
         "story": "AQPI-22",
         "jiraStatus": "not raised",
         "jiraKey": null,
         "jiraUrl": null,
-        "jira": "not raised in Jira",
+        "jira": "not raised in Jira; linked to AQPI-22 in the platform",
         "aiTriage": null,
         "aiSummary": null,
         "aiSteps": null,
@@ -7020,7 +7022,7 @@
     {
       "gate": "Requirement set review",
       "by": "Priya Shah",
-      "at": "2026-10-11T16:44:49.001Z",
+      "at": "2026-10-11T17:07:19.057Z",
       "decision": "approved",
       "comment": "",
       "detail": "43 requirements approved; 0 excluded; 0 conflict(s) resolved"
@@ -7028,7 +7030,7 @@
     {
       "gate": "Merge into baseline",
       "by": "Sam Lee",
-      "at": "2026-10-11T16:44:49.056Z",
+      "at": "2026-10-11T17:07:19.080Z",
       "decision": "approved",
       "comment": "",
       "detail": "23 requirements, 0 test cases, 0 scripts merged: BL-1 v1 -> v2"
@@ -7061,7 +7063,7 @@
   },
   "honesty": [
     "Jira epic AQPI-32, AQPI-23: Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export, release-2.0 snapshot): Jira REST API v3 JSON of AQPI-32, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
-    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-11T16:44:47.269Z",
+    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-11T17:07:17.764Z",
     "Execution: 8 automated cases really executed by Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2 (demo/hotel-booking-platform-v2); 5 manual case(s) designed but not executed.",
     "No model was used (no model API key set): normalisation, review, design, data, triage and prose are rule-based. Delta classification, coverage, pass/fail and defect raising are always computed in code."
   ]

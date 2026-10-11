@@ -2,20 +2,22 @@
   "agent": "Review agent",
   "advisory": true,
   "status": "suggestions",
-  "generatedAt": "2026-10-11T16:44:33.030Z",
+  "generatedAt": "2026-10-11T17:07:03.751Z",
   "testingType": "functional",
-  "note": "Suggestions only. The human reviewer decides every conflict and approves the requirement set.",
+  "note": "Suggestions only. The human reviewer decides every gap and conflict and approves the requirement set.",
   "counts": {
     "gaps": 0,
+    "conflicts": 0,
+    "notes": 42,
     "added": 27,
     "missing": 15,
-    "conflicts": 0,
     "ai": 0,
-    "high": 1
+    "high": 0
   },
-  "findings": [
+  "findings": [],
+  "notes": [
     {
-      "id": "RA-01",
+      "id": "RA-N01",
       "category": "added",
       "severity": "high",
       "groupId": "G30",
@@ -33,7 +35,7 @@
       ]
     },
     {
-      "id": "RA-02",
+      "id": "RA-N02",
       "category": "added",
       "severity": "medium",
       "groupId": "G31",
@@ -51,7 +53,7 @@
       ]
     },
     {
-      "id": "RA-03",
+      "id": "RA-N03",
       "category": "added",
       "severity": "medium",
       "groupId": "G32",
@@ -69,7 +71,7 @@
       ]
     },
     {
-      "id": "RA-04",
+      "id": "RA-N04",
       "category": "added",
       "severity": "medium",
       "groupId": "G33",
@@ -87,7 +89,7 @@
       ]
     },
     {
-      "id": "RA-05",
+      "id": "RA-N05",
       "category": "missing",
       "severity": "low",
       "groupId": "G1",
@@ -112,7 +114,7 @@
       ]
     },
     {
-      "id": "RA-06",
+      "id": "RA-N06",
       "category": "missing",
       "severity": "low",
       "groupId": "G3",
@@ -137,7 +139,7 @@
       ]
     },
     {
-      "id": "RA-07",
+      "id": "RA-N07",
       "category": "missing",
       "severity": "low",
       "groupId": "G11",
@@ -155,7 +157,7 @@
       ]
     },
     {
-      "id": "RA-08",
+      "id": "RA-N08",
       "category": "missing",
       "severity": "low",
       "groupId": "G12",
@@ -173,7 +175,7 @@
       ]
     },
     {
-      "id": "RA-09",
+      "id": "RA-N09",
       "category": "missing",
       "severity": "low",
       "groupId": "G15",
@@ -191,7 +193,7 @@
       ]
     },
     {
-      "id": "RA-10",
+      "id": "RA-N10",
       "category": "missing",
       "severity": "low",
       "groupId": "G17",
@@ -209,7 +211,7 @@
       ]
     },
     {
-      "id": "RA-11",
+      "id": "RA-N11",
       "category": "missing",
       "severity": "low",
       "groupId": "G19",
@@ -227,7 +229,7 @@
       ]
     },
     {
-      "id": "RA-12",
+      "id": "RA-N12",
       "category": "missing",
       "severity": "low",
       "groupId": "G22",
@@ -245,7 +247,7 @@
       ]
     },
     {
-      "id": "RA-13",
+      "id": "RA-N13",
       "category": "missing",
       "severity": "low",
       "groupId": "G23",
@@ -270,7 +272,7 @@
       ]
     },
     {
-      "id": "RA-14",
+      "id": "RA-N14",
       "category": "missing",
       "severity": "low",
       "groupId": "G25",
@@ -288,7 +290,7 @@
       ]
     },
     {
-      "id": "RA-15",
+      "id": "RA-N15",
       "category": "missing",
       "severity": "low",
       "groupId": "G26",
@@ -306,7 +308,7 @@
       ]
     },
     {
-      "id": "RA-16",
+      "id": "RA-N16",
       "category": "missing",
       "severity": "low",
       "groupId": "G29",
@@ -324,7 +326,7 @@
       ]
     },
     {
-      "id": "RA-17",
+      "id": "RA-N17",
       "category": "missing",
       "severity": "low",
       "groupId": "G36",
@@ -342,7 +344,7 @@
       ]
     },
     {
-      "id": "RA-18",
+      "id": "RA-N18",
       "category": "missing",
       "severity": "low",
       "groupId": "G38",
@@ -360,7 +362,7 @@
       ]
     },
     {
-      "id": "RA-19",
+      "id": "RA-N19",
       "category": "missing",
       "severity": "medium",
       "groupId": null,
@@ -378,7 +380,7 @@
       ]
     },
     {
-      "id": "RA-20",
+      "id": "RA-N20",
       "category": "added",
       "severity": "medium",
       "groupId": "G2",
@@ -396,7 +398,7 @@
       ]
     },
     {
-      "id": "RA-21",
+      "id": "RA-N21",
       "category": "added",
       "severity": "medium",
       "groupId": "G4",
@@ -414,7 +416,7 @@
       ]
     },
     {
-      "id": "RA-22",
+      "id": "RA-N22",
       "category": "added",
       "severity": "medium",
       "groupId": "G5",
@@ -439,7 +441,7 @@
       ]
     },
     {
-      "id": "RA-23",
+      "id": "RA-N23",
       "category": "added",
       "severity": "medium",
       "groupId": "G6",
@@ -464,7 +466,7 @@
       ]
     },
     {
-      "id": "RA-24",
+      "id": "RA-N24",
       "category": "added",
       "severity": "medium",
       "groupId": "G7",
@@ -489,7 +491,7 @@
       ]
     },
     {
-      "id": "RA-25",
+      "id": "RA-N25",
       "category": "added",
       "severity": "medium",
       "groupId": "G8",
@@ -514,7 +516,7 @@
       ]
     },
     {
-      "id": "RA-26",
+      "id": "RA-N26",
       "category": "added",
       "severity": "medium",
       "groupId": "G9",
@@ -539,7 +541,7 @@
       ]
     },
     {
-      "id": "RA-27",
+      "id": "RA-N27",
       "category": "added",
       "severity": "medium",
       "groupId": "G10",
@@ -557,7 +559,7 @@
       ]
     },
     {
-      "id": "RA-28",
+      "id": "RA-N28",
       "category": "added",
       "severity": "medium",
       "groupId": "G16",
@@ -582,7 +584,7 @@
       ]
     },
     {
-      "id": "RA-29",
+      "id": "RA-N29",
       "category": "added",
       "severity": "medium",
       "groupId": "G21",
@@ -607,7 +609,7 @@
       ]
     },
     {
-      "id": "RA-30",
+      "id": "RA-N30",
       "category": "added",
       "severity": "medium",
       "groupId": "G27",
@@ -632,7 +634,7 @@
       ]
     },
     {
-      "id": "RA-31",
+      "id": "RA-N31",
       "category": "added",
       "severity": "medium",
       "groupId": "G28",
@@ -657,7 +659,7 @@
       ]
     },
     {
-      "id": "RA-32",
+      "id": "RA-N32",
       "category": "added",
       "severity": "medium",
       "groupId": "G29",
@@ -675,7 +677,7 @@
       ]
     },
     {
-      "id": "RA-33",
+      "id": "RA-N33",
       "category": "added",
       "severity": "medium",
       "groupId": "G34",
@@ -693,7 +695,7 @@
       ]
     },
     {
-      "id": "RA-34",
+      "id": "RA-N34",
       "category": "added",
       "severity": "medium",
       "groupId": "G35",
@@ -711,7 +713,7 @@
       ]
     },
     {
-      "id": "RA-35",
+      "id": "RA-N35",
       "category": "added",
       "severity": "medium",
       "groupId": "G36",
@@ -729,7 +731,7 @@
       ]
     },
     {
-      "id": "RA-36",
+      "id": "RA-N36",
       "category": "added",
       "severity": "medium",
       "groupId": "G37",
@@ -747,7 +749,7 @@
       ]
     },
     {
-      "id": "RA-37",
+      "id": "RA-N37",
       "category": "added",
       "severity": "medium",
       "groupId": "G38",
@@ -765,7 +767,7 @@
       ]
     },
     {
-      "id": "RA-38",
+      "id": "RA-N38",
       "category": "added",
       "severity": "medium",
       "groupId": "G39",
@@ -783,7 +785,7 @@
       ]
     },
     {
-      "id": "RA-39",
+      "id": "RA-N39",
       "category": "added",
       "severity": "medium",
       "groupId": "G40",
@@ -801,7 +803,7 @@
       ]
     },
     {
-      "id": "RA-40",
+      "id": "RA-N40",
       "category": "added",
       "severity": "medium",
       "groupId": "G41",
@@ -819,7 +821,7 @@
       ]
     },
     {
-      "id": "RA-41",
+      "id": "RA-N41",
       "category": "added",
       "severity": "medium",
       "groupId": "G42",
@@ -837,7 +839,7 @@
       ]
     },
     {
-      "id": "RA-42",
+      "id": "RA-N42",
       "category": "added",
       "severity": "medium",
       "groupId": "G43",

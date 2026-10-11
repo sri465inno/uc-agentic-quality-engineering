@@ -680,11 +680,18 @@ function reviewAgentView(c, { compact = false } = {}) {
   const ra = c.reviewAgent;
   if (!ra) return '<p class="muted">No review agent ran for this cycle.</p>';
   const src = (f) => f.sources.map((x) => `${esc(x.source)} ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.ref || '')}</a>` : esc(x.ref || '')}${x.line ? `:${esc(x.line)}` : ''}`).join('<br>') || '<span class="muted">-</span>';
-  const rows = ra.findings.map((f) => [esc(f.id), pill(...(RA_CAT[f.category] || [f.category, 'pending'])), esc(f.severity), `<b>${esc(f.title)}</b>${f.groupId ? ` <span class="muted small">${esc(f.groupId)}</span>` : ''}<br><span class="small">${esc(f.detail || '')}</span>`, esc(f.suggestion), src(f)]);
+  const rowsOf = (list) => list.map((f) => [esc(f.id), pill(...(RA_CAT[f.category] || [f.category, 'pending'])), esc(f.severity), `<b>${esc(f.title)}</b>${f.groupId ? ` <span class="muted small">${esc(f.groupId)}</span>` : ''}<br><span class="small">${esc(f.detail || '')}</span>`, esc(f.suggestion), src(f)]);
+  const cols = ['ID', 'Kind', 'Severity', 'What it found', 'Suggestion', 'Source'];
+  if (compact) {
+    const conflicts = ra.findings.filter((f) => f.category !== 'gap');
+    return conflicts.length ? `<details class="card review-agent" open><summary><b>Suggested for the Reviewer: ${conflicts.length} conflict(s) to settle before you approve</b></summary>${table(cols, rowsOf(conflicts))}</details>` : '';
+  }
+  const notes = ra.notes || [];
   const head = `<h2>Suggested for the Reviewer <span class="muted small">for ${esc(testingTypeOf(ra.testingType).name)}</span></h2>
-<p class="small">${ra.counts.gaps ? `${ra.counts.gaps} gap(s) · ` : ''}${ra.counts.added} added · ${ra.counts.missing} missing · ${ra.counts.conflicts} conflicts${ra.counts.ai ? ` · ${ra.counts.ai} AI-suggested` : ''} · ${ra.counts.high} high severity. <span class="muted">${esc(ra.note)}</span></p>`;
-  const body = ra.findings.length ? table(['ID', 'Kind', 'Severity', 'What it found', 'Suggestion', 'Source'], rows) : '<p class="muted">No suggestions: every input agrees and nothing is missing.</p>';
-  return compact ? `<details class="card review-agent" open><summary><b>Suggested for the Reviewer: ${ra.findings.length} suggestion(s) before you approve</b></summary>${head}${body}</details>` : `${head}${body}`;
+<p class="small">${ra.counts.gaps} gap(s) · ${ra.counts.conflicts} conflict(s) to decide. <span class="muted">${esc(ra.note)}</span></p>`;
+  const body = ra.findings.length ? table(cols, rowsOf(ra.findings)) : '<p class="muted">Nothing to decide: the code has every Jira story and no values conflict.</p>';
+  const more = notes.length ? `<details class="card"><summary class="small"><b>Other observations (${notes.length})</b>: not gaps, no decision needed (rules found only in the code, statements without an exact expected value, changes against the baseline)</summary>${table(cols, rowsOf(notes))}</details>` : '';
+  return `${head}${body}${more}`;
 }
 
 function testingScope(c) {
@@ -1013,11 +1020,19 @@ function jiraDefectLine(x) {
   return `<b>Jira defect:</b> ${pill('not raised in Jira', 'pending')} ${j && j.linkedTo ? `linked to story <b>${esc(j.linkedTo)}</b> in the platform` : ''}<br><span class="small muted">${esc(j ? j.reason : 'Raised before Jira linking existed')}</span>${j && j.payload ? `<details><summary class="small">Jira payload ready to send</summary><pre class="code">${esc(JSON.stringify(j.payload, null, 2))}</pre></details>` : ''}`;
 }
 
+function gapDefectCard(c, x) {
+  const story = x.storyUrl ? `<a href="${esc(x.storyUrl)}" target="_blank" rel="noopener">${esc(x.story)}</a>` : esc(x.story);
+  return `<div class="card"><h3>${esc(x.id)} - ${esc(x.title)} ${pill('Gap defect', 'conflict')} ${pill(x.severity, 'pending')} ${pill(x.movement === 'new' ? 'new' : x.movement, x.movement === 'new' ? 'failed' : 'enhanced')}</h3>
+<div class="grid2"><div><b>Story:</b> ${story} ${esc(x.storySummary || '')}<br><b>Epic:</b> ${x.epic ? esc(`${x.epic.key} ${x.epic.summary || ''}`) : '-'}<br><b>Expected:</b> <span class="newv">${esc(x.expected)}</span><br><b>Actual:</b> <span class="old" style="text-decoration:none">${esc(x.actual)}</span><br><b>Severity / priority:</b> ${esc(x.severity)} / ${esc(x.priority || 'Low')} (${esc(x.impact)})<br><b>Release:</b> ${esc(x.releaseDecision)}</div>
+<div><b>Raised:</b> ${x.raisedBy ? `by ${esc(x.raisedBy)} ` : ''}at ${esc(x.raisedAtGate || 'the requirement review')} of ${esc(x.firstSeenCycle)}${x.raisedAt ? `, ${fmtTime(x.raisedAt)}` : ''}<br><b>Code checked:</b> <code>${esc(x.codeChecked || x.suspectedCodeArea || '-')}</code><br><b>Status:</b> ${esc(x.status)} · picked up again in the next release (Flow 2)<br><b>Recommendation:</b> ${esc(x.recommendation || '-')}<br>${jiraDefectLine(x)}</div></div>
+<details open><summary class="small"><b>Acceptance criteria not implemented (${(x.acceptanceCriteria || []).length})</b></summary><ol class="small">${(x.acceptanceCriteria || [x.requirementText]).map((s) => `<li>${esc(s)}</li>`).join('')}</ol>${(x.stepsToReproduce || []).length ? `<b class="small">How to see it</b><ol class="small">${x.stepsToReproduce.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>` : ''}</details></div>`;
+}
+
 function defectsView(c) {
   const d = c.artifacts.defects;
   const res = c.artifacts.resolvedDefects || [];
-  return `<h2>Defects (${d.length})</h2><p class="muted small">Raised only from test cases that actually failed in the real Playwright run of this cycle.</p>
-${d.length ? d.map((x) => `<div class="card"><h3>${esc(x.id)} - ${esc(x.title)} ${pill(x.severity, 'failed')} ${pill(x.movement === 'still open' ? `still open since ${x.firstSeenCycle}` : x.movement, x.movement === 'new' ? 'failed' : 'enhanced')}${x.confirmation ? ` ${pill({ needed: 'awaits QE confirmation', confirmed: 'confirmed by QE', 'not-a-defect': 'not a defect' }[x.confirmation.status], x.confirmation.status === 'confirmed' ? 'failed' : 'ai')}` : ''}</h3>
+  return `<h2>Defects (${d.length})</h2><p class="muted small">Execution defects are raised only from test cases that actually failed in the real Playwright run of this cycle. Gap defects are raised at the requirement review for each Jira story the code lacks and the reviewer excluded.</p>
+${d.length ? d.map((x) => x.type === 'gap' ? gapDefectCard(c, x) : `<div class="card"><h3>${esc(x.id)} - ${esc(x.title)} ${pill(x.severity, 'failed')} ${pill(x.movement === 'still open' ? `still open since ${x.firstSeenCycle}` : x.movement, x.movement === 'new' ? 'failed' : 'enhanced')}${x.confirmation ? ` ${pill({ needed: 'awaits QE confirmation', confirmed: 'confirmed by QE', 'not-a-defect': 'not a defect' }[x.confirmation.status], x.confirmation.status === 'confirmed' ? 'failed' : 'ai')}` : ''}</h3>
 <p class="small">${fbButtons(c, 'defect', x.id, ['confirm', 'not-a-defect'])}${x.confirmation && x.confirmation.reason ? ` <span class="muted">${esc(x.confirmation.reason)}</span>` : ''}</p>
 <div class="grid2"><div><b>Expected:</b> <span class="newv">${esc(x.expected)}</span><br><b>Actual:</b> <span class="old" style="text-decoration:none">${esc(x.actual)}</span><br><b>Severity:</b> ${esc(x.severity)}${x.impact ? ` (${esc(x.impact)})` : ''}<br><b>Release:</b> ${esc(x.releaseDecision || 'not assessed')}<br><b>Suspected code area:</b> <code>${esc(x.suspectedCodeArea || '-')}</code><br><b>Failing assertion:</b> <code>${esc(x.assertion)}</code> <span class="small muted">(${esc(x.location)})</span></div>
 <div><b>Test case:</b> <a href="#/cycle/${esc(c.id)}?tab=testcases">${esc(x.testCaseKey)}</a> · <b>Script:</b> <a href="#/scripts?cycle=${esc(c.id)}&file=${esc(x.scriptFile)}">${esc(x.scriptFile)}</a><br><b>Requirement:</b> <a href="#/cycle/${esc(c.id)}?tab=requirements">${esc(x.requirementId)}</a> ${esc(x.requirementText)}<br><b>Rule:</b> ${esc(x.ruleId || '-')} · <b>Source:</b> ${esc((x.sourceRefs || x.jiraKeys).join(', '))} · first seen ${esc(x.firstSeenCycle)}<br>${jiraDefectLine(x)}</div></div>

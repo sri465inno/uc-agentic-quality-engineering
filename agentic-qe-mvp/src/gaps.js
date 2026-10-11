@@ -64,20 +64,26 @@ function pickUpStatements(skippedGaps = []) {
 }
 
 /** A Minor, non-blocking defect per excluded (or rejected) gap story. */
-function gapDefects(cycle, findings, { startNo, reason }) {
+function gapDefects(cycle, findings, { startNo, reason, reviewer = null, at = null }) {
   let n = startNo;
+  const code = cycle.gaps?.code || cycle.sutBuild;
   const defects = findings.map((g) => {
     n += 1;
     return {
-      id: `DEF-${String(n).padStart(3, '0')}`, type: 'gap', story: g.story,
+      id: `DEF-${String(n).padStart(3, '0')}`, type: 'gap', story: g.story, storySummary: g.summary, storyUrl: g.url || null, epic: g.epic || null,
       title: `${g.story} ${g.summary}: asked for in Jira but not implemented in the code`,
-      severity: 'Minor', impact: 'requirement not implemented yet (gap); no test was run against it',
+      severity: 'Minor', priority: 'Low', impact: 'requirement not implemented yet (gap); no test was run against it',
       blocksRelease: false, releaseDecision: `Does not block the release: ${reason}.`,
       status: 'Open', movement: 'new', firstSeenCycle: cycle.id, cycleId: cycle.id,
+      raisedBy: reviewer, raisedAt: at, raisedAtGate: 'Human review of the requirement set', reason,
       testCaseKey: null, ruleId: null, requirementId: null, requirementText: g.statements.map((s) => s.text).join(' '),
+      acceptanceCriteria: g.statements.map((s) => s.text),
       jiraKeys: [g.story], sourceRefs: [g.story, ...(g.epic ? [g.epic.key] : [])],
-      suspectedCodeArea: `no code mentions ${g.story}`, expected: `Code implements ${g.story} (${g.statementCount} acceptance criteria)`,
-      actual: `No code in ${cycle.sutBuild} mentions ${g.story}`, recommendation: g.recommendation,
+      codeChecked: code, suspectedCodeArea: `no code mentions ${g.story}`,
+      expected: `The code implements ${g.story} ${g.summary} (${g.statementCount} acceptance criteria)`,
+      actual: `No code in ${code} mentions ${g.story}`,
+      stepsToReproduce: [`Open ${g.story} in Jira${g.epic ? ` (epic ${g.epic.key})` : ''} and read its acceptance criteria.`, `Search ${code} for ${g.story}.`, 'No class, rule, test or traceability entry mentions the story.'],
+      recommendation: g.recommendation,
       executedAt: null, occurrences: [{ cycleId: cycle.id, actual: 'gap' }], jira: null,
     };
   });

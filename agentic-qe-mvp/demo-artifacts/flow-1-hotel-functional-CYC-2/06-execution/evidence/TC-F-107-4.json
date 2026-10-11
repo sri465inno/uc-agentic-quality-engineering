@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:45361/api/reservations",
+    "url": "http://127.0.0.1:43023/api/reservations",
     "headers": {
       "Idempotency-Key": "aqe-booking-18eeca93-1"
     },
     "data": {
-      "cartId": "C-2ac2408d",
+      "cartId": "C-234ae0f8",
       "guest": {
         "firstName": "Jane",
         "lastName": "Doe",
@@ -22,12 +22,12 @@
   },
   "response": {
     "status": 409,
-    "correlationId": "5f60ca02-6501-40df-aa14-e262b12af081",
+    "correlationId": "d5d10db8-afe3-4e19-b576-2b4e0d76bdb8",
     "body": {
       "status": 409,
       "code": "IDEMPOTENCY_KEY_REUSED",
       "message": "This request doesn't match the booking already submitted with the same key. Please start a new booking attempt.",
-      "correlationId": "5f60ca02-6501-40df-aa14-e262b12af081",
+      "correlationId": "d5d10db8-afe3-4e19-b576-2b4e0d76bdb8",
       "retryable": false,
       "fieldIssues": []
     }

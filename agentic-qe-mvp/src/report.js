@@ -82,7 +82,7 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl = globalTh
       id: tt.id, ids: tt.ids, name: tt.name, focus: tt.focus, approach: cycle.type === 'incremental' ? tt.incremental : tt.baseline,
       selection: a.selection || null,
     },
-    reviewAgent: cycle.reviewAgent ? { counts: cycle.reviewAgent.counts, note: cycle.reviewAgent.note, findings: cycle.reviewAgent.findings } : null,
+    reviewAgent: cycle.reviewAgent ? { counts: cycle.reviewAgent.counts, note: cycle.reviewAgent.note, findings: cycle.reviewAgent.findings, notes: cycle.reviewAgent.notes || [] } : null,
     dataModel: (cycle.inputs.find((i) => i.slot === 'codebase') || {}).dataModel || null,
     skills: (cycle.skills || []).map((k) => ({ id: k.id, name: k.name, description: k.description, file: k.file, sha256: k.sha256, appliesTo: k.appliesTo, delivers: k.delivers })),
     handovers,

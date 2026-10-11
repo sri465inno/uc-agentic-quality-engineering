@@ -1,6 +1,8 @@
 'use strict';
-// Review agent: reads the normalised inputs before the human review and suggests what was added, what is
-// missing and what conflicts. Advisory only - it never approves, excludes or edits anything.
+// Review agent: reads the normalised inputs before the human review. Findings are what the reviewer decides:
+// gaps (Jira stories the code lacks) and conflicts. Everything else (code-only rules, statements without a
+// testable value, changes against the baseline, AI checks) is kept as notes. Advisory only - it never approves,
+// excludes or edits anything.
 const { domainOf } = require('./domains');
 const { getTestingType } = require('../testing-types');
 
@@ -125,16 +127,20 @@ function reviewInputs({ normalisation, inputs = [], gaps = null, testingType, de
     }
   }
 
-  const count = (c) => findings.filter((f) => f.category === c).length;
+  const decide = (f) => f.category === 'gap' || f.category === 'conflict';
+  const notes = findings.filter((f) => !decide(f)).map((f, i) => ({ ...f, id: `RA-N${String(i + 1).padStart(2, '0')}` }));
+  const asked = findings.filter(decide).map((f, i) => ({ ...f, id: `RA-${String(i + 1).padStart(2, '0')}` }));
+  const count = (c) => notes.filter((f) => f.category === c).length;
   return {
     agent: 'Review agent',
     advisory: true,
     status: 'suggestions',
     generatedAt: new Date().toISOString(),
     testingType: tt.id,
-    note: 'Suggestions only. The human reviewer decides every conflict and approves the requirement set.',
-    counts: { gaps: count('gap'), added: count('added'), missing: count('missing'), conflicts: count('conflict'), ai: count('ai'), high: findings.filter((f) => f.severity === 'high').length },
-    findings,
+    note: 'Suggestions only. The human reviewer decides every gap and conflict and approves the requirement set.',
+    counts: { gaps: asked.filter((f) => f.category === 'gap').length, conflicts: asked.filter((f) => f.category === 'conflict').length, notes: notes.length, added: count('added'), missing: count('missing'), ai: count('ai'), high: asked.filter((f) => f.severity === 'high').length },
+    findings: asked,
+    notes,
   };
 }
 

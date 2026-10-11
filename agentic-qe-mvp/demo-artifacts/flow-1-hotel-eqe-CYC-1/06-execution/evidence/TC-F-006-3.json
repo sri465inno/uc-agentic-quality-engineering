@@ -1,20 +1,20 @@
 {
   "request": {
     "method": "GET",
-    "url": "http://127.0.0.1:35151/api/reservations/R-4dce48e5",
+    "url": "http://127.0.0.1:43901/api/reservations/R-dd0281b0",
     "headers": {},
     "data": null
   },
   "response": {
     "status": 200,
-    "correlationId": "67d1e685-fcb8-4bea-8fc4-cf4bac45e14a",
+    "correlationId": "97632b20-9a58-4c53-aaee-02650427a983",
     "body": {
-      "reservationId": "R-4dce48e5",
+      "reservationId": "R-dd0281b0",
       "status": "CONFIRMED",
-      "confirmationNumber": "HBLFLVN2LR",
+      "confirmationNumber": "HBRREJJJPQ",
       "headline": "Your booking is confirmed",
       "doNotResubmit": true,
-      "statusUrl": "/api/reservations/R-4dce48e5",
+      "statusUrl": "/api/reservations/R-dd0281b0",
       "total": {
         "amount": 770.42,
         "currency": "USD"
@@ -24,7 +24,7 @@
       "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
       "guestFirstName": "Jane",
       "notificationStatus": "DELIVERED",
-      "updatedAt": "2026-10-11T16:44:16.472361434Z"
+      "updatedAt": "2026-10-11T17:06:46.782577437Z"
     }
   }
 }

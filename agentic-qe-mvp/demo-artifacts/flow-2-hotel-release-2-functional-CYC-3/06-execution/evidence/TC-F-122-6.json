@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "http://127.0.0.1:45281/api/ops/reconciliation",
+    "url": "http://127.0.0.1:34741/api/ops/reconciliation",
     "headers": {
       "X-Operator-Role": "SUPPORT"
     },
@@ -9,10 +9,10 @@
   },
   "response": {
     "status": 200,
-    "correlationId": "93f8513b-deea-4833-a084-a8b10f87fd06",
+    "correlationId": "a1f67664-20a6-4f3d-98c1-ed1ce15f5064",
     "body": [
       {
-        "reservationId": "R-d3580127",
+        "reservationId": "R-5bc36eb8",
         "status": "CANCELLED",
         "paymentStatus": "VOIDED",
         "inventoryStatus": "RELEASED",

@@ -245,19 +245,20 @@ ${body}
     if (this.learningOn) cycle.learned = { review: learning.reviewLessons(this.memory(), cycle.normalisation), design: [], suppressed: [], defects: [] };
     const nc = cycle.normalisation.counts;
     this.handover(cycle, 'normalise');
-    setPhase(cycle, 'normalise', 'done', `${nc.agreed} agreed · ${nc['jira-only']} Jira only · ${nc['code-only']} code only · ${nc.conflict} conflicts${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
+    const gapN = cycle.gaps.findings.length;
+    setPhase(cycle, 'normalise', 'done', `${nc.statements} statements from Jira and code · ${gapN ? `${gapN} Jira ${gapN === 1 ? 'story' : 'stories'} not in the code` : 'no gaps: the code has every Jira story'}${nc.conflict ? ` · ${nc.conflict} conflict(s)` : ''}${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
     if (baseline) cycle.deltaPreview = this.previewDelta(cycle, {}, baseline);
     const reviewCtx = this.skillContext(cycle, 'review-agent');
     cycle.reviewAgent = reviewInputs({ normalisation: cycle.normalisation, inputs: cycle.inputs, gaps: cycle.gaps, testingType: tt.id, deltaPreview: cycle.deltaPreview || null, baseline });
     const aiFindings = await ai.aiReviewFindings(cycle.normalisation, session, { guidance: reviewCtx.guidance });
     if (aiFindings.length) {
       const ra = cycle.reviewAgent;
-      ra.findings = [...ra.findings, ...aiFindings].map((f, i) => ({ ...f, id: `RA-${String(i + 1).padStart(2, '0')}` }));
-      ra.counts = { ...ra.counts, ai: ra.findings.filter((f) => f.category === 'ai').length, high: ra.findings.filter((f) => f.severity === 'high').length };
+      ra.notes = [...ra.notes, ...aiFindings].map((f, i) => ({ ...f, id: `RA-N${String(i + 1).padStart(2, '0')}` }));
+      ra.counts = { ...ra.counts, notes: ra.notes.length, ai: ra.notes.filter((f) => f.category === 'ai').length };
     }
     this.handover(cycle, 'review-agent');
     const rc = cycle.reviewAgent.counts;
-    setPhase(cycle, 'review-agent', 'done', `${rc.added} added · ${rc.missing} missing · ${rc.conflicts} conflicts${rc.ai ? ` · ${rc.ai} AI finding(s)` : ''} suggested for the reviewer`);
+    setPhase(cycle, 'review-agent', 'done', `${rc.gaps} gap(s)${rc.conflicts ? ` · ${rc.conflicts} conflict(s)` : ''} for the reviewer to decide`);
     setPhase(cycle, 'review', 'waiting');
     return this.store.saveCycle(cycle);
   }
@@ -299,7 +300,7 @@ ${body}
     const skipped = (cycle.gaps?.findings || []).filter((g) => g.groupIds.length && g.groupIds.every((id) => excluded.includes(id)));
     if (cycle.gaps) {
       cycle.gaps.excluded = skipped.map((g) => g.story);
-      const raised = gaps.gapDefects(cycle, skipped, { startNo: this.store.meta().nextDefect, reason: `gap excluded by ${reviewer} at the requirement review` });
+      const raised = gaps.gapDefects(cycle, skipped, { startNo: this.store.meta().nextDefect, reason: `gap excluded by ${reviewer} at the requirement review`, reviewer, at: cycle.review.at });
       this.store.bumpDefectCounter(raised.nextNo);
       cycle.artifacts.gapDefects = raised.defects;
     }
@@ -316,7 +317,17 @@ ${body}
     setPhase(cycle, 'review', 'done', `Approved by ${reviewer}`);
     cycle.status = 'running';
     this.store.saveCycle(cycle);
-    return this.track(cycle.id, cycle.type === 'baseline' ? this.runBaseline(cycle.id) : this.runIncrementalDesign(cycle.id));
+    const run = () => (cycle.type === 'baseline' ? this.runBaseline(cycle.id) : this.runIncrementalDesign(cycle.id));
+    return this.track(cycle.id, this.raiseGapDefectsInJira(cycle.id).then(run));
+  }
+
+  /** Gap defects go to Jira like execution defects: linked to their story, or kept with a ready payload. */
+  async raiseGapDefectsInJira(cycleId) {
+    const cycle = this.mustGet(cycleId);
+    const list = cycle.status === 'rejected' ? cycle.artifacts.defects : cycle.artifacts.gapDefects;
+    if (!list || !list.length) return;
+    await raiseDefectsInJira(list, { cycle, env: this.env, fetchImpl: this.fetchImpl, items: cycleJiraItems(cycle) });
+    this.store.saveCycle(cycle);
   }
 
   /** Rejecting the requirement set raises a gap defect per gap story and stops the cycle before design. */
@@ -325,7 +336,7 @@ ${body}
     const at = now();
     cycle.review = { reviewer, at, decision: 'rejected', excluded: [], resolutions: {}, comment };
     const findings = cycle.gaps?.findings || [];
-    const raised = gaps.gapDefects(cycle, findings, { startNo: this.store.meta().nextDefect, reason: `requirement set rejected by ${reviewer}` });
+    const raised = gaps.gapDefects(cycle, findings, { startNo: this.store.meta().nextDefect, reason: `requirement set rejected by ${reviewer}`, reviewer, at });
     this.store.bumpDefectCounter(raised.nextNo);
     if (cycle.gaps) cycle.gaps.excluded = findings.map((g) => g.story);
     cycle.artifacts.defects = raised.defects;
@@ -336,7 +347,7 @@ ${body}
     cycle.status = 'rejected';
     cycle.completedAt = at;
     this.store.saveCycle(cycle);
-    return { cycle, done: Promise.resolve() };
+    return this.track(cycle.id, this.raiseGapDefectsInJira(cycle.id));
   }
 
   track(id, promise) {

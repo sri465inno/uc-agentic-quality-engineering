@@ -9,11 +9,11 @@ CYC-2 · baseline cycle
 | Functional testing | 118 | 121 | 65 | 95.4% | 6 | 39.8% |
 
 ## 1. Summary
-- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-11 16:44 UTC.
+- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-11 17:06 UTC.
 - Type of testing: Functional testing. Every domain rule and its boundaries, checked through the service API.
 - We took 3 inputs (Jira initiative AQPI-1, Jira epic AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27, Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)) and produced 118 requirements, 121 test cases and 50 automated scripts.
 - We ran 65 automated tests for real: 62 passed, 3 failed (pass rate 95.4%). 56 manual tests still to be run by hand.
-- 6 defects open from real failures (6 new), 1 release-blocking: DEF-004 AQPI-8 4.2 Sort and filter hotel results: asked for in Jira but not implemented in the code (Jira: not raised in Jira); DEF-005 AQPI-13 5.3 Explain and control personalization: asked for in Jira but not implemented in the code (Jira: not raised in Jira); DEF-006 AQPI-22 7.4 Show booking outcome: asked for in Jira but not implemented in the code (Jira: not raised in Jira); DEF-007 A price change within 1% does not need acknowledgement: returns true instead of false (Jira: not raised in Jira; linked to AQPI-17 in the platform); DEF-008 A key shorter than 8 characters is refused: returns 201 instead of 400 (Jira: not raised in Jira; linked to AQPI-21 in the platform); DEF-009 9 rooms in one search are rejected: returns 200 instead of 400 (Jira: not raised in Jira; linked to AQPI-4 in the platform).
+- 6 defects open from real failures (6 new), 1 release-blocking: DEF-004 AQPI-8 4.2 Sort and filter hotel results: asked for in Jira but not implemented in the code (Jira: not raised in Jira; linked to AQPI-8 in the platform); DEF-005 AQPI-13 5.3 Explain and control personalization: asked for in Jira but not implemented in the code (Jira: not raised in Jira; linked to AQPI-13 in the platform); DEF-006 AQPI-22 7.4 Show booking outcome: asked for in Jira but not implemented in the code (Jira: not raised in Jira; linked to AQPI-22 in the platform); DEF-007 A price change within 1% does not need acknowledgement: returns true instead of false (Jira: not raised in Jira; linked to AQPI-17 in the platform); DEF-008 A key shorter than 8 characters is refused: returns 201 instead of 400 (Jira: not raised in Jira; linked to AQPI-21 in the platform); DEF-009 9 rooms in one search are rejected: returns 200 instead of 400 (Jira: not raised in Jira; linked to AQPI-4 in the platform).
 
 ## 2. Inputs taken
 | Input | Reference | What we took from it | Source |
@@ -24,8 +24,8 @@ CYC-2 · baseline cycle
 
 ## 3. How we ran the cycle
 1. Read 152 statements from the inputs and lined them up into 128 requirement groups: 0 agreed by every source, 121 only in Jira, 7 only in the code, 0 in conflict.
-2. The review agent read the inputs first and suggested 7 addition(s), 63 missing piece(s) and 0 conflict(s) for the reviewer (1 high severity). It approved nothing.
-3. Priya Shah reviewed and approved the requirement set on 2026-10-11 16:44 UTC.
+2. The review agent read the inputs first and suggested 7 addition(s), 63 missing piece(s) and 0 conflict(s) for the reviewer (0 high severity). It approved nothing.
+3. Priya Shah reviewed and approved the requirement set on 2026-10-11 17:06 UTC.
 4. Functional testing steered the design: Designs a functional test case for every domain rule, both sides of every boundary, and runs them all. Result: 121 case(s) in this run (0 reused, 0 re-designed, 121 new).
 5. The requirements agent wrote 118 requirements, each with its business rule, exact values and source quotes (57 automatable, 61 manual); the agents then designed 121 test cases (117 functional, 4 non-functional) and generated 50 Playwright scripts.
 6. Executed the automated suite with Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform; defects were raised only for tests that actually failed.
@@ -34,7 +34,7 @@ CYC-2 · baseline cycle
 | Artifact | Count | Notes | Folder |
 |---|---|---|---|
 | Inputs and provenance | 3 | what was taken from each source, and where from | [01-inputs/](01-inputs/) |
-| Review agent suggestions | 73 | 7 added · 63 missing · 0 conflicts (advisory) | [01-inputs/review-agent.json](01-inputs/review-agent.json) |
+| Review agent suggestions | 3 | 7 added · 63 missing · 0 conflicts (advisory) | [01-inputs/review-agent.json](01-inputs/review-agent.json) |
 | Normalised requirement set | 128 | 0 agreed · 121 Jira-only · 7 code-only · 0 conflicts | [01-inputs/normalisation.json](01-inputs/normalisation.json) |
 | Requirement set (with business rules) | 118 | 118 new · 118 business rules with exact values and source quotes (57 automatable · 61 manual) | [02-requirements/](02-requirements/) |
 | Test cases (Excel, Zephyr Scale format) | 121 | 65 automated · 56 not automated | [03-test-cases/](03-test-cases/) |
@@ -47,9 +47,9 @@ CYC-2 · baseline cycle
 
 ## 5. Risks and open items
 - 12 requirements had no case in this functional testing run (REQ-001, REQ-002, REQ-004, REQ-005, REQ-006, REQ-007, REQ-023, REQ-047, REQ-082, REQ-100, REQ-104, REQ-108); a wider run is needed before release.
-- DEF-004 (Minor): requirement not implemented yet (gap); no test was run against it. Expected Code implements AQPI-8 (4 acceptance criteria), got No code in demo/hotel-booking-platform mentions AQPI-8. Does not block the release: gap excluded by Priya Shah at the requirement review. Story AQPI-8; Jira: not raised in Jira.
-- DEF-005 (Minor): requirement not implemented yet (gap); no test was run against it. Expected Code implements AQPI-13 (3 acceptance criteria), got No code in demo/hotel-booking-platform mentions AQPI-13. Does not block the release: gap excluded by Priya Shah at the requirement review. Story AQPI-13; Jira: not raised in Jira.
-- DEF-006 (Minor): requirement not implemented yet (gap); no test was run against it. Expected Code implements AQPI-22 (3 acceptance criteria), got No code in demo/hotel-booking-platform mentions AQPI-22. Does not block the release: gap excluded by Priya Shah at the requirement review. Story AQPI-22; Jira: not raised in Jira.
+- DEF-004 (Minor): requirement not implemented yet (gap); no test was run against it. Expected The code implements AQPI-8 4.2 Sort and filter hotel results (4 acceptance criteria), got No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-8. Does not block the release: gap excluded by Priya Shah at the requirement review. Story AQPI-8; Jira: not raised in Jira; linked to AQPI-8 in the platform.
+- DEF-005 (Minor): requirement not implemented yet (gap); no test was run against it. Expected The code implements AQPI-13 5.3 Explain and control personalization (3 acceptance criteria), got No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-13. Does not block the release: gap excluded by Priya Shah at the requirement review. Story AQPI-13; Jira: not raised in Jira; linked to AQPI-13 in the platform.
+- DEF-006 (Minor): requirement not implemented yet (gap); no test was run against it. Expected The code implements AQPI-22 7.4 Show booking outcome (3 acceptance criteria), got No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-22. Does not block the release: gap excluded by Priya Shah at the requirement review. Story AQPI-22; Jira: not raised in Jira; linked to AQPI-22 in the platform.
 - DEF-007 (Critical): a guest is charged or booked wrongly. Expected false, got true. Blocks the release: a guest is charged or booked wrongly (BR-113). Story AQPI-17; Jira: not raised in Jira; linked to AQPI-17 in the platform.
 - DEF-008 (Medium): wrong value or status with a workaround. Expected 400, got 201. Does not block the release: wrong value or status with a workaround. Story AQPI-21; Jira: not raised in Jira; linked to AQPI-21 in the platform.
 - DEF-009 (Medium): wrong value or status with a workaround. Expected 400, got 200. Does not block the release: wrong value or status with a workaround. Story AQPI-4; Jira: not raised in Jira; linked to AQPI-4 in the platform.
@@ -103,6 +103,6 @@ _13 of 15 booking-driving attributes (out of 21 booking attributes) are varied b
 ## 7. Sign-off
 | Gate | Decision | By | When | Detail |
 |---|---|---|---|---|
-| Requirement set review | approved | Priya Shah | 2026-10-11 16:44 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
+| Requirement set review | approved | Priya Shah | 2026-10-11 17:06 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
 
-_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-11 16:44 UTC. Every figure comes from the persisted cycle; nothing is estimated._
+_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-11 17:07 UTC. Every figure comes from the persisted cycle; nothing is estimated._

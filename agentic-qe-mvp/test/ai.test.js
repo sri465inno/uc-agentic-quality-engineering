@@ -127,10 +127,10 @@ test('AI pairs AQPI-15 cart expiry by meaning; code keeps the value, the reviewe
   const norm = c.ai.calls.find((x) => x.agent === 'normalise');
   assert.ok(norm.rejected >= 1, 'the invented pair is rejected');
   const ra = c.reviewAgent;
-  assert.ok(ra.findings.some((f) => f.category === 'ai' && f.groupId === g.id && /by meaning/.test(f.title)));
-  assert.ok(ra.findings.some((f) => f.category === 'ai' && f.issue === 'ambiguous'));
-  assert.equal(ra.findings.filter((f) => f.issue === 'made-up').length, 0);
-  assert.equal(ra.counts.ai, ra.findings.filter((f) => f.category === 'ai').length);
+  assert.ok(ra.notes.some((f) => f.category === 'ai' && f.groupId === g.id && /by meaning/.test(f.title)));
+  assert.ok(ra.notes.some((f) => f.category === 'ai' && f.issue === 'ambiguous'));
+  assert.equal(ra.notes.filter((f) => f.issue === 'made-up').length, 0);
+  assert.equal(ra.counts.ai, ra.notes.filter((f) => f.category === 'ai').length);
   assert.equal(c.status, 'awaiting-review', 'AI never approves');
   const kept = applyReview(c.normalisation, { excluded: [g.id], resolutions: {} });
   assert.ok(!kept.some((r) => r.groupId === g.id), 'a human exclusion removes the AI match');
