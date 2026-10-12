@@ -280,6 +280,9 @@ const CAPABILITIES = [
   ['Governed QE learning', 'Remembers approved decisions, exclusions, defect outcomes and reviewer feedback, with versioning, scope, review and rollback.', 'Reusable organisational learning without uncontrolled spread.', 'off', 'Built; kept off until its governance is approved.', 'All agents'],
 ];
 
+/** Skills the demo invites the audience to edit, with their role. */
+const DEMO_SKILLS = { 'cycle-report': 'Reporting template', 'release-criteria': 'Governance criteria' };
+
 async function viewHome() {
   setTitle();
   const P = META.platform;
@@ -311,6 +314,13 @@ async function viewHome() {
     return tile({ detail: `cap-${i}`, art: st === 'mvp' ? 'run' : 'design', tag: label, big: i + 1, title: name, lines: [esc(value)] });
   });
   const capCount = (st) => CAPABILITIES.filter((x) => x[3] === st).length;
+  const agentNames = (ids) => P.agents.filter((g) => ids.includes(g.id)).map((g) => g.name).concat(ids.includes('review-agent') ? ['Review agent'] : []);
+  const skillTag = (k) => DEMO_SKILLS[k.id] || (k.testingType ? `${k.testingType === 'functional' ? 'DQE' : 'EQE'} skill` : 'Skill');
+  const mvpSkills = [...META.skills].sort((x, y) => Number(!DEMO_SKILLS[x.id]) - Number(!DEMO_SKILLS[y.id]));
+  const skillTiles = mvpSkills.map((k, i) => {
+    HOME_DETAIL[`skill-${k.id}`] = `<h2>${esc(k.name)}</h2><ul class="brief"><li><b>What it sets:</b> ${esc(k.description)}</li><li><b>Steers:</b> ${esc(agentNames(k.appliesTo || []).join(', ') || '-')}</li><li><b>How it is used:</b> picked on the Run page as an input to the cycle; edit the file or upload a replacement to change it without a code change.</li><li><b>File:</b> <code>${esc(k.file)}</code> (${esc(k.source)})</li></ul>`;
+    return tile({ detail: `skill-${k.id}`, art: DEMO_SKILLS[k.id] ? 'run' : 'design', tag: skillTag(k), big: i + 1, title: k.name, lines: [esc(k.description)] });
+  });
   const stats = [
     ['10+', 'Enterprise Inputs', 'Requirements, Code, APIs & Documents'],
     [String(CAPABILITIES.length), 'Platform Capabilities', `${P.agents.length} Agents Implement Them In The MVP`],
@@ -332,6 +342,7 @@ ${rail('capabilities', 'What the platform can do', `${CAPABILITIES.length} capab
 ${rail('value', 'Why it matters', 'click an outcome for details', valueTiles)}
 ${rail('inputs', 'What goes in', 'click an input for details', inputTiles)}
 ${rail('agents', 'Who does the work', 'click an agent for details', agentTiles)}
+${rail('skills', 'Skills used in the MVP', `${META.skills.length} skills, given to the agents as a run-time input on the Run page; the ${Object.keys(DEMO_SKILLS).length} demo skills come first · click one for details`, skillTiles)}
 ${rail('flows', 'How it runs', 'click a flow for a short brief', flowTiles)}`;
 }
 
@@ -659,8 +670,7 @@ function workflowStrip(c, tab, present) {
     const sel = t === tab && (p.name !== 'review' || tab === 'review') ? ' sel' : '';
     return `<a class="flow-step ${esc(p.status)}${sel}" href="${href}" title="${esc(p.summary || '')}"><span class="flow-who">${i + 1} · ${esc(who(p))}</span><b>${esc(p.label || (p.name === 'review-agent' ? 'Suggested for the Reviewer' : p.name))}</b><span class="flow-st"><span class="status-dot ${esc(p.status)}"></span>${esc(p.status)}</span><span class="flow-sum">${p.summary ? esc(p.summary) : 'not run yet'}</span>${p.handover && p.handover.status !== 'no contract' ? handoverBadge(p).replace('<br>', '') : ''}</a>`;
   };
-  const skills = c.type === 'incremental' ? `<a class="flow-step done${tab === 'skills' ? ' sel' : ''}" href="#/cycle/${esc(c.id)}?tab=skills"><span class="flow-who">Skills</span><b>Skills and hand-overs</b><span class="flow-sum">Which skills each agent read and what it handed over</span></a>` : '';
-  return `<section class="rail" id="rail-workflow"><div class="rail-head"><h2>Process workflow</h2><span class="muted small">${steps.filter((p) => p.status === 'done').length} of ${steps.length} steps done · click a step to see what it produced</span></div><div class="flow">${steps.map(step).join('')}${skills}</div></section>`;
+  return `<section class="rail" id="rail-workflow"><div class="rail-head"><h2>Process workflow</h2><span class="muted small">${steps.filter((p) => p.status === 'done').length} of ${steps.length} steps done · click a step to see what it produced</span></div><div class="flow">${steps.map(step).join('')}</div></section>`;
 }
 
 /** Outcome of the human review of the requirement set: green when approved, red when rejected. */
@@ -787,17 +797,48 @@ function testingScope(c) {
   return `<div class="banner info"><b>${esc(sel.name)}</b>: ${esc(sel.focus)} ${sel.inRun} of ${sel.designed} case(s) in this run (${sel.reused} reused · ${sel.redesigned} re-designed · ${sel.added} new)${sel.notInRun ? ` · ${sel.notInRun} kept in the pack outside this run` : ''}.${sel.gaps.map((g) => `<br><b>Gap:</b> ${esc(g.message)}`).join('')}</div>`;
 }
 
-function deltaView(d, { title = 'Delta against the baseline' } = {}) {
+/** Jira story (or epic) a delta statement belongs to, with its summary. */
+function deltaStory(it) {
+  const o = it.incoming.origins || [];
+  const j = o.find((x) => x.kind === 'jira-story') || o.find((x) => x.source === 'jira') || null;
+  const key = j ? j.ref : (o.find((x) => x.story) || {}).story || null;
+  return { key: key || '(code only)', summary: j ? j.summary : '' };
+}
+
+const baselineSize = new Map();
+
+/** Earlier vs this cycle: what the baseline already had, what changed (old -> new) and what is new, by Jira story. */
+function deltaView(d, { title = 'What changed against the baseline', cycleId = null, gapStories = [] } = {}) {
   if (!d) return '<p class="muted">No delta yet.</p>';
-  return `<h2>${esc(title)}</h2><div class="split" id="split">${esc(d.summary)}</div>
+  const by = (k) => d.items.filter((it) => it.classification === k);
+  const unchanged = by('unchanged');
+  const enhanced = by('enhanced');
+  const added = by('new');
+  const earlier = cycleId ? baselineSize.get(cycleId) : null;
+  const carried = earlier != null ? earlier - unchanged.length - enhanced.length : null;
+  const byStory = (list) => [...list.reduce((m, it) => { const s = deltaStory(it); if (!m.has(s.key)) m.set(s.key, { ...s, items: [] }); m.get(s.key).items.push(it); return m; }, new Map()).values()];
+  const storyCell = (s) => `<b>${esc(s.key)}</b>${s.summary ? `<br><span class="small muted">${esc(s.summary)}</span>` : ''}`;
+  const changedRows = enhanced.map((it) => { const s = deltaStory(it); return [storyCell(s), `<span class="old">${esc(it.previous ? it.previous.text : '')}</span>`, `<span class="newv">${esc(it.incoming.text)}</span>`]; });
+  const newRows = byStory(added).map((s) => [`${storyCell(s)}${gapStories.includes(s.key) ? `<br>${pill('gap from the baseline, now in the code', 'enhanced')}` : ''}`, `<ul class="small">${s.items.map((it) => `<li>${esc(it.incoming.text)}</li>`).join('')}</ul>`]);
+  const kpis = `<div class="kpis"><div class="kpi">Earlier (baseline)<b>${earlier != null ? earlier : '-'}</b>requirements</div><div class="kpi">Kept as they were<b>${carried != null ? carried + unchanged.length : unchanged.length}</b>${carried != null ? `${carried} not mentioned, ${unchanged.length} restated` : 'restated unchanged'}</div><div class="kpi">Changed in this cycle<b>${enhanced.length}</b>new value replaces old</div><div class="kpi">New in this cycle<b>${added.length}</b>not in the baseline</div></div>`;
+  return `<h2>${esc(title)}</h2>${kpis}
 ${d.pendingConflicts && d.pendingConflicts.length ? `<div class="banner">${d.pendingConflicts.length} conflict(s) still unresolved are not counted yet.</div>` : ''}
-<p class="muted small">Computed in code against the baseline requirements: same subject &amp; same values = unchanged; same subject, different value = enhanced (new value wins, old kept); no matching subject = new.</p>
+<h3>Changed in this cycle ${pill(enhanced.length, 'enhanced')}</h3>${enhanced.length ? table(['Jira story', 'Earlier (baseline)', 'This cycle'], changedRows) : '<p class="muted">Nothing changed.</p>'}
+<h3>New in this cycle ${pill(added.length, 'new')}</h3>${added.length ? table(['Jira story', 'New requirements'], newRows) : '<p class="muted">Nothing new.</p>'}
+<details class="card"><summary class="small"><b>Already there, unchanged (${unchanged.length} restated${carried != null ? `, ${carried} more carried over` : ''})</b>: kept and regression-tested</summary><ul class="small">${unchanged.map((it) => `<li>${esc(it.incoming.text)} <span class="muted">(${esc(it.baselineRequirementId || '-')})</span></li>`).join('')}</ul></details>
+<details class="card"><summary class="small"><b>Analyst detail</b>: how each statement was matched to the baseline</summary><p class="muted small">Computed in code against the baseline requirements: same subject &amp; same values = unchanged; same subject, different value = changed (new value wins, old kept); no matching subject = new.</p>
 ${table(['Class', 'Incoming statement', 'Baseline requirement', 'Superseded / matched value', 'Similarity'], d.items.map((it) => [artPill(it.classification), esc(it.incoming.text), esc(it.baselineRequirementId || '-'),
-    it.classification === 'enhanced' ? `<span class="old">${esc(it.previous.text)}</span>` : it.matched ? `<span class="muted">${esc(it.matched.text)}</span>` : it.previous ? `<span class="muted">${esc(it.previous.text)}</span>` : '<span class="muted small">no baseline match</span>', it.similarity]), (i) => `row-${d.items[i].classification}`)}`;
+    it.classification === 'enhanced' ? `<span class="old">${esc(it.previous.text)}</span>` : it.matched ? `<span class="muted">${esc(it.matched.text)}</span>` : it.previous ? `<span class="muted">${esc(it.previous.text)}</span>` : '<span class="muted small">no baseline match</span>', it.similarity]), (i) => `row-${d.items[i].classification}`)}</details>`;
 }
 
 async function renderCycleTab(c, tab) {
   const a = c.artifacts || {};
+  if (c.type === 'incremental' && ['review', 'delta'].includes(tab) && !baselineSize.has(c.id)) {
+    const carried = (a.requirements || []).filter((r) => r.status === 'carried over').length;
+    const d = c.delta && c.delta.counts;
+    if (a.requirements && d) baselineSize.set(c.id, carried + d.unchanged + d.enhanced);
+    else { try { const bl = (await api('/api/baselines')).find((b) => b.id === c.baselineId); if (bl) baselineSize.set(c.id, bl.counts.requirements); } catch { /* count shown as - */ } }
+  }
   const notYet = (what) => `<div class="banner info">${esc(what)} not produced yet (${esc(c.status)}).</div>`;
   switch (tab) {
     case 'inputs': return `<h2>Inputs taken</h2>${inputsTable(c)}`;
@@ -811,13 +852,13 @@ async function renderCycleTab(c, tab) {
       return `<div class="banner info">Human review: the stories missing in the code are ticked to exclude. Each excluded story becomes a Minor gap defect linked to its Jira story and is picked up again in the next release. Settle any conflicting value, then approve: only the approved set flows on to test design and execution.</div>
 ${gapReviewCard(c)}
 ${reviewAgentView(c, { compact: true })}
-${c.type === 'incremental' ? `<div class="card" id="delta-box">${deltaView(c.deltaPreview, { title: 'Delta preview (before anything is designed)' })}</div>` : ''}
+${c.type === 'incremental' ? `<div class="card" id="delta-box">${deltaView(c.deltaPreview, { title: 'Delta preview: earlier vs this cycle (before anything is designed)', cycleId: c.id, gapStories: ((c.gaps && c.gaps.pickedUp) || []).map((x) => x.story) })}</div>` : ''}
 ${normaliseView(c, true)}
 <div class="card"><div class="row"><label>Reviewer <input type="text" id="reviewer" value="${esc(localStorage.getItem('aqe-user') || c.createdBy || '')}"></label>
 <label>Comment <input type="text" id="comment" size="40"></label>
 <button class="btn good" id="approve-review">Approve requirement set</button> <button class="btn bad" id="reject-review">Reject requirement set</button></div><div id="review-msg"></div></div>`;
     }
-    case 'delta': return c.delta ? deltaView(c.delta) : deltaView(c.deltaPreview, { title: 'Delta preview (not yet reviewed)' });
+    case 'delta': return c.delta ? deltaView(c.delta, { cycleId: c.id, gapStories: ((c.gaps && c.gaps.pickedUp) || []).map((x) => x.story) }) : deltaView(c.deltaPreview, { title: 'Delta preview: earlier vs this cycle (not yet reviewed)', cycleId: c.id, gapStories: ((c.gaps && c.gaps.pickedUp) || []).map((x) => x.story) });
     case 'requirements':
     case 'rules': return a.requirements ? requirementsView(c) : notYet('Requirements');
     case 'testcases': return a.testCases ? testCasesView(c) : notYet('Test cases');
@@ -876,7 +917,7 @@ function bindCycleTab(c, tab) {
     $view.querySelectorAll('[data-conflict]').forEach((el) => { if (!open.some((g) => g.id === el.dataset.conflict)) el.classList.remove('need'); });
     if (c.type === 'incremental') {
       const p = await api(`/api/cycles/${c.id}/delta-preview`, { method: 'POST', body: d });
-      document.getElementById('delta-box').innerHTML = deltaView(p, { title: 'Delta preview (before anything is designed)' });
+      document.getElementById('delta-box').innerHTML = deltaView(p, { title: 'Delta preview: earlier vs this cycle (before anything is designed)', cycleId: c.id, gapStories: ((c.gaps && c.gaps.pickedUp) || []).map((x) => x.story) });
     }
   };
   $view.querySelectorAll('.excl,.res,.gap-excl').forEach((el) => el.onchange = refresh);
@@ -1080,7 +1121,7 @@ function executionView(c) {
   const ex = c.artifacts.execution;
   const s = ex.summary;
   return `<h2>Execution ${pill('executed', 'executed')}</h2>
-<div class="kpis"><div class="kpi">Test cases<b>${s.total}</b></div><div class="kpi">Executed<b>${s.executed}</b></div><div class="kpi">Passed<b>${s.passed}</b></div><div class="kpi">Failed<b>${s.failed}</b></div><div class="kpi">Not run (manual)<b>${s.notRun}</b></div><div class="kpi">Pass rate<b>${s.passRate}%</b></div><div class="kpi">Duration<b>${s.durationMs} ms</b></div></div>
+<div class="kpis"><div class="kpi">Test cases (all)<b>${s.total}</b></div><div class="kpi">Automated test cases run<b>${s.executed}</b></div><div class="kpi">Automated passed<b>${s.passed}</b></div><div class="kpi">Automated failed<b>${s.failed}</b></div><div class="kpi">Manual test cases (not run)<b>${s.notRun}</b></div><div class="kpi">Automated pass rate<b>${s.passRate}%</b></div><div class="kpi">Automation run time<b>${s.durationMs} ms</b></div></div>
 <p class="small">Really executed by <b>${esc(ex.tool)}</b> against <b>${esc(ex.sut.name)}</b> (build <code>${esc(ex.sut.build)}</code>, ${esc(ex.sut.url)}) from ${fmtTime(ex.startedAt)} to ${fmtTime(ex.finishedAt)}. Exit code ${ex.exitCode}.${ex.results.some((r) => r.aiTriage) ? ' AI triage is a suggestion beside each failure; the result comes only from the run.' : ''} Command: <code>${esc(ex.command)}</code>. <a href="/api/cycles/${esc(c.id)}/playwright-report.json" target="_blank">Raw Playwright JSON report</a></p>
 ${table(['Case', 'Req', 'Name', 'Result', 'Duration', 'Failure / note', 'Evidence'], ex.results.map((r) => [esc(r.key), esc(r.requirementId), esc(r.name), pill(r.status, r.status),
     r.duration != null ? `${r.duration} ms` : '-', `${r.error ? `<code>${esc(r.error.assertion || '')}</code><br>expected <b>${esc(r.error.expected)}</b>, actual <b>${esc(r.error.actual)}</b><br><span class="small muted">${esc(r.error.location || '')}</span>` : esc(r.reason || '')}${r.aiTriage ? `<div class="ai-note">${aiBadge(r.aiTriage, `AI triage: ${r.aiTriage.category} (${r.aiTriage.confidence})`)} <span class="small">${esc(r.aiTriage.rationale)}</span></div>` : ''}`,
@@ -1092,7 +1133,7 @@ function traceabilityView(c) {
   const res = (x) => (x === 'passed' || x === 'failed' ? pill(x, x) : `<span class="muted small">${esc(x)}</span>`);
   const jiraLink = (k) => `<a href="${esc(jiraBrowse(c, k))}" target="_blank" rel="noopener">${esc(k)}</a>`;
   return `<p class="muted">Every test case traced from the Jira item it came from to its requirement, business rule, test data, script, real result and defect. Computed from this cycle's artifacts.</p>
-<div class="kpis"><div class="kpi">Jira items<b>${t.totals.jiraItems}</b></div><div class="kpi">Covered by a test<b>${t.totals.covered}</b></div><div class="kpi">Verified<b>${t.totals.verified}</b></div><div class="kpi">Failing<b>${t.totals.failing}</b></div><div class="kpi">Test cases<b>${t.totals.testCases}</b></div><div class="kpi">With test data<b>${t.totals.withData}</b></div><div class="kpi">With a script<b>${t.totals.withScript}</b></div><div class="kpi">Executed<b>${t.totals.executed}</b></div></div>
+<div class="kpis"><div class="kpi">Jira items<b>${t.totals.jiraItems}</b></div><div class="kpi">Covered by a test<b>${t.totals.covered}</b></div><div class="kpi">Verified<b>${t.totals.verified}</b></div><div class="kpi">Failing<b>${t.totals.failing}</b></div><div class="kpi">Test cases<b>${t.totals.testCases}</b></div><div class="kpi">With test data<b>${t.totals.withData}</b></div><div class="kpi">With an automation script<b>${t.totals.withScript}</b></div><div class="kpi">Automated and run<b>${t.totals.executed}</b></div></div>
 <div class="row"><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.xlsx">Download Excel (Traceability sheets)</a></div>
 <h3>By Jira item (initiative, epics, stories)</h3>${t.stories.some((x) => x.scope === 'baseline') ? '<p class="muted small">Includes the baseline stories this cycle re-tested through the carried test pack, not only the incoming epics.</p>' : ''}${table(['Jira item', 'Level', 'Parent', 'Summary', 'Requirements', 'Test cases', 'Automated', 'Passed', 'Failed', 'Defects', 'Status'], t.stories.map((x) => [jiraLink(x.key), `${esc(x.level)}${x.scope === 'baseline' ? ' <span class="muted small">(baseline, re-tested)</span>' : ''}`, esc(x.parent || '-'), esc(x.summary || ''), x.requirements, x.testCases, x.automated, x.passed, x.failed, x.defects.length ? `<a href="#/cycle/${esc(c.id)}?tab=defects">${esc(x.defects.join(', '))}</a>` : '-', pill(x.status, x.status === 'verified' ? 'passed' : x.status === 'failing' ? 'failed' : 'pending')]), (i) => (t.stories[i].status === 'failing' ? 'row-failed' : ''))}
 <h3>By test case</h3>${table(['Jira', 'Requirement', 'Rule', 'Test case', 'Type', 'Test data', 'Automation script', 'Result', 'Defect'], t.rows.map((x) => [x.jiraKeys.map(jiraLink).join(', '), `<a href="#/cycle/${esc(c.id)}?tab=requirements">${esc(x.requirementId)}</a>`, esc(x.ruleId || '-'), `<b>${esc(x.testCaseKey)}</b> ${esc(x.testCase)}`, esc(x.testType), x.testDataId ? `<a target="_blank" href="/api/cycles/${esc(c.id)}/testdata/${esc(x.testCaseKey)}.json">${esc(x.testDataId)}</a>` : '-', x.scriptFile ? `<a href="#/scripts?cycle=${esc(c.id)}&file=${esc(x.scriptFile)}">${esc(x.scriptFile)}</a>` : '-', res(x.result), x.defects.length ? `<a href="#/cycle/${esc(c.id)}?tab=defects">${esc(x.defects.join(', '))}</a>${x.jiraDefects.length ? ` (${x.jiraDefects.map(jiraLink).join(', ')})` : ''}` : '-']), (i) => (t.rows[i].result === 'failed' ? 'row-failed' : ''))}`;
@@ -1135,7 +1176,7 @@ ${res.length ? `<h3>Fixed, retested and certified (${res.length})</h3><p class="
 function reportView(c) {
   const r = c.report;
   return `<div class="row"><h2 style="margin:0">Cycle report</h2><a class="btn" href="/api/cycles/${esc(c.id)}/report.html" target="_blank">Open HTML</a><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.html?download=1">Download HTML</a><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.xlsx">Download Excel</a></div>
-<div class="kpis" style="margin-top:10px"><div class="kpi">Requirements<b>${r.requirements.total}</b></div><div class="kpi">Test cases<b>${r.testCases.total}</b></div><div class="kpi">Automation scripts<b>${r.scripts.total}</b></div><div class="kpi">Executed<b>${r.execution.executed ? r.execution.summary.executed : 0}</b></div><div class="kpi">Pass rate<b>${r.execution.executed ? `${r.execution.summary.passRate}%` : 'n/a'}</b></div><div class="kpi">Defects<b>${r.defects.open.length}</b></div><div class="kpi">Coverage (passing)<b>${r.coverage ? r.coverage.percent.passing : 0}%</b></div></div>
+<div class="kpis" style="margin-top:10px"><div class="kpi">Requirements<b>${r.requirements.total}</b></div><div class="kpi">Test cases<b>${r.testCases.total}</b></div><div class="kpi">Automation scripts<b>${r.scripts.total}</b></div><div class="kpi">Automated test cases run<b>${r.execution.executed ? r.execution.summary.executed : 0}</b></div><div class="kpi">Automated pass rate<b>${r.execution.executed ? `${r.execution.summary.passRate}%` : 'n/a'}</b></div><div class="kpi">Defects<b>${r.defects.open.length}</b></div><div class="kpi">Coverage (passing)<b>${r.coverage ? r.coverage.percent.passing : 0}%</b></div></div>
 <div class="card"><b>Summary</b>${r.narrative.origin === 'ai' ? aiBadge({ by: r.narrative.draftedBy }, 'AI-drafted') : ''}<p>${esc(r.narrative.text)}</p>${(r.narrative.risks || []).length ? `<b>Risks</b><ul>${r.narrative.risks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${r.narrative.recommendation ? `<p><b>Recommendation:</b> ${esc(r.narrative.recommendation)}</p>` : ''}<p class="muted small">${esc(r.narrative.draftedBy)}</p></div>
 ${aiActivity(c)}
 <div class="card" id="report-skills"><b>Active skills (${(r.skills || []).length})</b> · hand-over <span class="hand ${r.handoverStatus === 'complete' ? 'ok' : 'bad'}">${esc(r.handoverStatus || 'not checked')}</span>
@@ -1225,9 +1266,9 @@ function summaryReport(c, lead) {
 <p class="small muted">${esc(c.id)} · ${c.type === 'baseline' ? 'Flow 1 baseline' : 'Flow 2 incremental'} · <b>${esc(tt.name)}</b> (${esc(tt.dimension || tt.focus)}) · build <code>${esc(c.sutBuild)}</code>${c.review ? ` · requirement set ${c.review.decision === 'rejected' ? 'rejected' : 'approved'} by ${esc(c.review.reviewer)}` : ''}${lead.signoffOwner ? ` · sign-off owner: <b>${esc(lead.signoffOwner.owner)}</b> (${esc(lead.signoffOwner.status.toLowerCase())})` : ''}</p>
 <h2>Metrics</h2><div class="grid2">
 ${group('Requirements and gaps', [['Jira items read', jiraRead || '-'], ['Requirements approved', (a.requirements || []).length], ['Stories missing in the code', (c.gaps?.findings || []).length]])}
-${group('Test design', [['Test cases', (a.testCases || []).length], ['Automated', ex ? ex.executed : '-'], ['Manual (handed over)', ex ? ex.notRun : '-']])}
+${group('Test design', [['Test cases', (a.testCases || []).length], ['Automated test cases', ex ? ex.executed : '-'], ['Manual test cases (handed over)', ex ? ex.notRun : '-']])}
 ${group('Automation scripts', [['Automation scripts', scripts.length], ...(c.type === 'incremental' ? [['Reused', byStatus('carried over')], ['Redesigned', byStatus('re-designed')], ['New', byStatus('new')]] : [])])}
-${group('Execution', [['Executed', ex ? ex.executed : '-'], ['Passed', ex ? ex.passed : '-'], ['Failed', ex ? ex.failed : '-'], ['Pass rate', ex ? `${ex.passRate}%` : '-']])}
+${group('Execution', [['Automated test cases run', ex ? ex.executed : '-'], ['Automated passed', ex ? ex.passed : '-'], ['Automated failed', ex ? ex.failed : '-'], ['Automated pass rate', ex ? `${ex.passRate}%` : '-']])}
 ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed test cases', execDefects.length], ['Blocking release', blocking.length], ['Closed this cycle', closedAll.length]])}
 </div>`;
 
@@ -1252,7 +1293,7 @@ ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed
     return [esc(SUITE_NAMES[s] || s), cs.filter((x) => x.inRun !== false).length, n('passed') + n('failed'), n('passed'), n('failed'), cs.filter((x) => x.inRun !== false).length - n('passed') - n('failed')];
   });
   const shots = ((a.execution && a.execution.results) || []).some((x) => (x.evidence || []).some((e) => e.contentType === 'image/png'));
-  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite (automation scripts)', 'In this run', 'Executed', 'Passed', 'Failed', 'Manual / not run'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p><details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}${evidenceCheck}`;
+  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite (automation scripts)', 'In this run', 'Automated run', 'Passed', 'Failed', 'Manual (not run)'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p><details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}${evidenceCheck}`;
 
   const tr = c.report && c.report.traceability;
   const gapStories = new Set((c.gaps?.findings || []).map((g) => g.story));

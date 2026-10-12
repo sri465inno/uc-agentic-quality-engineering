@@ -172,7 +172,7 @@ async function reportWorkbook(report, cycle) {
     { k: 'Requirements', v: report.requirements.total }, { k: 'Delta', v: report.delta ? report.delta.summary : 'n/a (baseline)' },
     { k: 'Test cases', v: report.testCases.total }, { k: 'Test cases by type', v: JSON.stringify(report.testCases.byType) },
     { k: 'Test cases by label', v: JSON.stringify(report.testCases.byLabel) }, { k: 'Automation scripts', v: report.scripts.total },
-    { k: 'Executed (real)', v: ex.executed ? ex.summary.executed : 0 }, { k: 'Passed', v: ex.executed ? ex.summary.passed : 0 },
+    { k: 'Automated test cases run', v: ex.executed ? ex.summary.executed : 0 }, { k: 'Passed', v: ex.executed ? ex.summary.passed : 0 },
     { k: 'Failed', v: ex.executed ? ex.summary.failed : 0 }, { k: 'Pass rate %', v: ex.executed ? ex.summary.passRate : 0 },
     { k: 'Execution tool', v: ex.executed ? ex.tool : 'not executed' }, { k: 'Defects', v: report.defects.open.length },
     { k: 'Coverage (passing %)', v: report.coverage ? report.coverage.percent.passing : 0 },
@@ -187,7 +187,7 @@ async function reportWorkbook(report, cycle) {
   sheetFromRows(wb, 'Execution', [['Case', 'key', 11], ['Requirement', 'requirementId', 12], ['Name', 'name', 60], ['Result', 'status', 10], ['Duration ms', 'duration', 12], ['Note', 'reason', 50], ['AI triage (suggested; result unchanged)', 'aiTriage', 60]], ex.executed ? ex.results : []);
   sheetFromRows(wb, 'Defects', [['ID', 'id', 9], ['Title', 'title', 50], ['Severity', 'severity', 9], ['Story', 'story', 11], ['Jira defect', 'jira', 40], ['Case', 'testCaseKey', 10], ['Requirement', 'requirementId', 12], ['Expected', 'expected', 14], ['Actual', 'actual', 14], ['Failing assertion', 'assertion', 50], ['Movement', 'movement', 12], ['AI triage', 'aiTriage', 14], ['AI summary (drafted)', 'aiSummary', 60], ['AI steps to reproduce', 'aiSteps', 60], ['AI likely cause', 'aiLikelyCause', 40]], report.defects.open);
   sheetFromRows(wb, 'Fixed and certified', [['ID', 'id', 9], ['Title', 'title', 50], ['Story', 'story', 11], ['Case', 'testCaseKey', 10], ['First seen', 'firstSeenCycle', 11], ['Retested in', 'resolvedInCycle', 11], ['Result', 'retestResult', 9], ['Status', 'status', 9], ['Certification', 'certification', 80]], report.defects.resolved || []);
-  sheetFromRows(wb, 'Coverage', [['Requirement', 'requirementId', 12], ['Text', 'text', 70], ['Cases', 'cases', 8], ['Automated', 'automated', 10], ['Executed', 'executed', 10], ['Failed', 'failed', 8], ['Status', 'status', 24]], report.coverage ? report.coverage.rows : []);
+  sheetFromRows(wb, 'Coverage', [['Requirement', 'requirementId', 12], ['Text', 'text', 70], ['Cases', 'cases', 8], ['Automated', 'automated', 10], ['Automated run', 'executed', 12], ['Failed', 'failed', 8], ['Status', 'status', 24]], report.coverage ? report.coverage.rows : []);
   if (report.coverage && report.coverage.attributes) {
     sheetFromRows(wb, 'Attribute coverage', [['Attribute', 'attribute', 34], ['Description', 'description', 50], ['Varied by cases', 'casesText', 30], ['Status', 'status', 24]],
       report.coverage.attributes.rows.map((x) => ({ ...x, casesText: x.cases.join(', ') })));
