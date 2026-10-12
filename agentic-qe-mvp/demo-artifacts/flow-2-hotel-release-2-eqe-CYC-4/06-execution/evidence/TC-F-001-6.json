@@ -1,29 +1,29 @@
 {
   "request": {
     "method": "GET",
-    "url": "http://127.0.0.1:44055/api/checkout/C-29b7d4c8/payment-summary",
+    "url": "http://127.0.0.1:35325/api/checkout/C-40b5a7af/payment-summary",
     "headers": {},
     "data": null
   },
   "response": {
     "status": 200,
-    "correlationId": "57975292-6f68-4533-999c-24850f31fe76",
+    "correlationId": "d514e213-0ee1-423f-995a-725db1c56413",
     "body": {
-      "cartId": "C-29b7d4c8",
+      "cartId": "C-40b5a7af",
       "paymentRule": "PAY_AT_HOTEL",
       "payNow": {
         "amount": 0,
         "currency": "USD"
       },
       "payAtHotel": {
-        "amount": 842.42,
+        "amount": 877.19,
         "currency": "USD"
       },
       "total": {
-        "amount": 842.42,
+        "amount": 877.19,
         "currency": "USD"
       },
-      "message": "Nothing is charged now. Your card guarantees the booking and you pay 842.42 USD at the hotel.",
+      "message": "Nothing is charged now. Your card guarantees the booking and you pay 877.19 USD at the hotel.",
       "privacyNoticeVersion": "privacy-2026-09",
       "requiredFields": [
         "guest.firstName",

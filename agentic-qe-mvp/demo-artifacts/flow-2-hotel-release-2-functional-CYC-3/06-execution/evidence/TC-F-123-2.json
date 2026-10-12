@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:34741/api/reservations",
+    "url": "http://127.0.0.1:35817/api/reservations",
     "headers": {
       "Idempotency-Key": "aqe-booking-439ab2cd-1"
     },
     "data": {
-      "cartId": "C-f1b92712",
+      "cartId": "C-4c7d4908",
       "guest": {
         "firstName": "Jane",
         "lastName": "Doe",
@@ -22,25 +22,25 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "9940d3c9-1d65-4599-96e1-ad9413b127e9",
+    "correlationId": "1d8260b9-f993-42fd-b46e-c63bcfa9f25c",
     "body": {
-      "reservationId": "R-d12d7a1a",
+      "reservationId": "R-6cb1bae9",
       "status": "CONFIRMED",
-      "confirmationNumber": "HBH2KJ5QPT",
+      "confirmationNumber": "HBLNZVT66Q",
       "headline": "Your booking is confirmed",
-      "message": "Your confirmation number is HBH2KJ5QPT. We've sent the details to your e-mail.",
+      "message": "Your confirmation number is HBLNZVT66Q. We've sent the details to your e-mail.",
       "doNotResubmit": true,
       "nextSteps": [
         "Save your confirmation number",
         "Check your e-mail for the confirmation",
         "Contact the hotel for special requests"
       ],
-      "statusUrl": "/api/reservations/R-d12d7a1a",
+      "statusUrl": "/api/reservations/R-6cb1bae9",
       "hotelName": "Harbor View Hotel",
       "roomName": "Standard King",
       "ratePlanName": "Advance saver – pay now",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "nights": 3,
       "rooms": 1,
       "adults": 2,
@@ -50,7 +50,7 @@
           "label": "Standard King - Advance saver – pay now x 1 room(s), 3 night(s)",
           "quantity": 1,
           "amount": {
-            "amount": 497.25,
+            "amount": 522.11,
             "currency": "USD"
           }
         },
@@ -58,7 +58,7 @@
           "label": "Taxes",
           "quantity": 1,
           "amount": {
-            "amount": 93.86,
+            "amount": 98.55,
             "currency": "USD"
           }
         },
@@ -72,7 +72,7 @@
         }
       ],
       "total": {
-        "amount": 666.11,
+        "amount": 695.66,
         "currency": "USD"
       },
       "paymentRule": "PAY_NOW",
@@ -80,7 +80,7 @@
       "cancellationTerms": "Non-refundable. Changes are not permitted.",
       "guestFirstName": "Jane",
       "notificationStatus": "DELIVERED",
-      "updatedAt": "2026-10-11T17:07:13.909090816Z"
+      "updatedAt": "2026-10-12T01:35:33.135889433Z"
     }
   }
 }

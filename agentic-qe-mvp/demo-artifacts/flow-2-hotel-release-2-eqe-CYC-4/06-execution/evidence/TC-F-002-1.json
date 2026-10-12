@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:43145/api/searches",
+    "url": "http://127.0.0.1:42613/api/searches",
     "headers": {},
     "data": {
       "destination": "PAR",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -14,15 +14,15 @@
   },
   "response": {
     "status": 200,
-    "correlationId": "55437933-819d-4b2e-ab6e-c82341c52055",
+    "correlationId": "4d81d49b-1648-4a13-8b8e-8488b39ede65",
     "body": {
-      "searchId": "S-6df32f58",
-      "sessionId": "6f02cf67-e726-4674-a3d3-a55ffe60d72f",
+      "searchId": "S-131ae0d8",
+      "sessionId": "2f063455-13f2-448e-85fa-e52621976a09",
       "status": "RESULTS",
       "criteria": {
         "destination": "PAR",
-        "checkIn": "2026-11-10",
-        "checkOut": "2026-11-13",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
         "rooms": 1,
         "adults": 2,
         "children": 0,
@@ -46,17 +46,17 @@
               "spa"
             ],
             "startingNightly": {
-              "amount": 195.5,
+              "amount": 205.28,
               "currency": "EUR"
             },
             "startingStayTotal": {
-              "amount": 655.65,
+              "amount": 687.91,
               "currency": "EUR"
             },
             "currency": "EUR",
             "availability": "AVAILABLE",
             "bookable": true,
-            "priceQualification": "From 195.50 EUR per room per night before taxes (10%); Destination fee per room per night: 3.50 EUR, payable on top of the room rate"
+            "priceQualification": "From 205.28 EUR per room per night before taxes (10%); Destination fee per room per night: 3.50 EUR, payable on top of the room rate"
           },
           {
             "hotelId": "H-PAR-002",
@@ -69,17 +69,17 @@
               "wifi"
             ],
             "startingNightly": {
-              "amount": 127.5,
+              "amount": 133.88,
               "currency": "EUR"
             },
             "startingStayTotal": {
-              "amount": 426.75,
+              "amount": 447.79,
               "currency": "EUR"
             },
             "currency": "EUR",
             "availability": "AVAILABLE",
             "bookable": true,
-            "priceQualification": "From 127.50 EUR per room per night before taxes (10%); Destination fee per room per night: 2.00 EUR, payable on top of the room rate"
+            "priceQualification": "From 133.88 EUR per room per night before taxes (10%); Destination fee per room per night: 2.00 EUR, payable on top of the room rate"
           }
         ],
         "page": 0,

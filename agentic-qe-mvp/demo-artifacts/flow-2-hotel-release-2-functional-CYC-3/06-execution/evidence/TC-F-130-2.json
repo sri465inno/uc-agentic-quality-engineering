@@ -1,21 +1,21 @@
 {
   "request": {
     "method": "GET",
-    "url": "http://127.0.0.1:41813/api/searches/S-0785762f/results?amenities=spa",
+    "url": "http://127.0.0.1:41839/api/searches/S-8dd68039/results?amenities=spa",
     "headers": {},
     "data": null
   },
   "response": {
     "status": 200,
-    "correlationId": "51915003-200e-4ff6-861b-ca65411d1068",
+    "correlationId": "97be20a0-3913-4a71-9a05-36d31cf7ceb2",
     "body": {
-      "searchId": "S-0785762f",
-      "sessionId": "66047239-9065-46ae-b397-f63994e69606",
+      "searchId": "S-8dd68039",
+      "sessionId": "fe48d1a8-d6a1-461d-95e3-6ac4022a5283",
       "status": "NO_AVAILABILITY",
       "criteria": {
         "destination": "NYC",
-        "checkIn": "2026-11-10",
-        "checkOut": "2026-11-13",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
         "rooms": 1,
         "adults": 2,
         "children": 0,
@@ -29,8 +29,8 @@
           "label": "Reset all filters",
           "criteria": {
             "destination": "NYC",
-            "checkIn": "2026-11-10",
-            "checkOut": "2026-11-13",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
             "rooms": 1,
             "adults": 2,
             "children": 0
@@ -41,8 +41,8 @@
           "label": "Try one day later",
           "criteria": {
             "destination": "NYC",
-            "checkIn": "2026-11-11",
-            "checkOut": "2026-11-14",
+            "checkIn": "2026-11-12",
+            "checkOut": "2026-11-15",
             "rooms": 1,
             "adults": 2,
             "children": 0
@@ -53,8 +53,8 @@
           "label": "Search for fewer guests",
           "criteria": {
             "destination": "NYC",
-            "checkIn": "2026-11-10",
-            "checkOut": "2026-11-13",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
             "rooms": 1,
             "adults": 1,
             "children": 0
@@ -65,8 +65,8 @@
           "label": "Try LON",
           "criteria": {
             "destination": "LON",
-            "checkIn": "2026-11-10",
-            "checkOut": "2026-11-13",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
             "rooms": 1,
             "adults": 2,
             "children": 0

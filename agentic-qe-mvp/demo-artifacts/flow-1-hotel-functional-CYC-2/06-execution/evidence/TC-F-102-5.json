@@ -1,20 +1,20 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:46597/api/carts/C-45e9c7a7/acknowledge",
+    "url": "http://127.0.0.1:36579/api/carts/C-a0411e74/acknowledge",
     "headers": {},
     "data": {
-      "priceVersion": "00d972de4802131b"
+      "priceVersion": "b5daf7fc6075605e"
     }
   },
   "response": {
     "status": 200,
-    "correlationId": "adf352e9-47c0-4a9e-9bc4-6d7003b43aa8",
+    "correlationId": "d24278c8-4577-4e37-8421-e7119c8f86a3",
     "body": {
-      "cartId": "C-45e9c7a7",
+      "cartId": "C-a0411e74",
       "status": "ACTIVE",
-      "createdAt": "2026-10-11T17:06:58.043869012Z",
-      "expiresAt": "2026-10-11T17:36:58.043869012Z",
+      "createdAt": "2026-10-12T01:35:16.978524245Z",
+      "expiresAt": "2026-10-12T02:05:16.978524245Z",
       "secondsRemaining": 1799,
       "timeoutBehaviour": "Your cart is held for 30 minutes. Rooms are not reserved until you complete booking; after expiry, price and availability are checked again.",
       "room": {
@@ -35,19 +35,19 @@
         "roomName": "Standard King",
         "ratePlanCode": "FLEX",
         "ratePlanName": "Flexible – pay at hotel",
-        "checkIn": "2026-11-10",
-        "checkOut": "2026-11-13",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
         "nights": 3,
         "rooms": 1,
         "adults": 2,
         "children": 0,
         "currency": "USD",
         "roomCharge": {
-          "amount": 760.5,
+          "amount": 838.47,
           "currency": "USD"
         },
         "taxes": {
-          "amount": 143.54,
+          "amount": 158.26,
           "currency": "USD"
         },
         "mandatoryFees": {
@@ -55,14 +55,14 @@
           "currency": "USD"
         },
         "total": {
-          "amount": 979.04,
+          "amount": 1071.73,
           "currency": "USD"
         },
         "paymentRule": "PAY_AT_HOTEL",
         "refundable": true,
         "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
         "restrictions": "Card guarantee required",
-        "priceVersion": "dbebd3a377d92910"
+        "priceVersion": "c36ebb6983892710"
       },
       "ancillaries": [],
       "lines": [
@@ -71,7 +71,7 @@
           "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
           "quantity": 1,
           "amount": {
-            "amount": 760.5,
+            "amount": 838.47,
             "currency": "USD"
           }
         },
@@ -80,7 +80,7 @@
           "label": "Taxes",
           "quantity": 1,
           "amount": {
-            "amount": 143.54,
+            "amount": 158.26,
             "currency": "USD"
           }
         },
@@ -105,11 +105,11 @@
       ],
       "totals": {
         "roomCharge": {
-          "amount": 760.5,
+          "amount": 838.47,
           "currency": "USD"
         },
         "taxes": {
-          "amount": 143.54,
+          "amount": 158.26,
           "currency": "USD"
         },
         "mandatoryFees": {
@@ -125,12 +125,12 @@
           "currency": "USD"
         },
         "total": {
-          "amount": 979.04,
+          "amount": 1071.73,
           "currency": "USD"
         }
       },
       "currency": "USD",
-      "priceVersion": "00d972de4802131b",
+      "priceVersion": "b5daf7fc6075605e",
       "pendingChange": null,
       "requiresAcknowledgement": false,
       "notices": [],

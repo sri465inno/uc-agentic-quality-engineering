@@ -1,14 +1,14 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:45763/api/carts",
+    "url": "http://127.0.0.1:35393/api/carts",
     "headers": {},
     "data": {
       "hotelId": "H-NYC-001",
       "roomCode": "STD-K",
       "ratePlanCode": "FLEX",
-      "checkIn": "2026-10-12",
-      "checkOut": "2026-10-15",
+      "checkIn": "2026-10-13",
+      "checkOut": "2026-10-16",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -16,12 +16,12 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "d29a6a6b-ef9e-432a-9756-a91ce08fae98",
+    "correlationId": "de45b730-5a59-4976-b4d3-dc6d82af68e9",
     "body": {
-      "cartId": "C-9f291d3d",
+      "cartId": "C-874885cc",
       "status": "ACTIVE",
-      "createdAt": "2026-10-11T17:07:13.777437836Z",
-      "expiresAt": "2026-10-11T17:27:13.777437836Z",
+      "createdAt": "2026-10-12T01:35:33.001762020Z",
+      "expiresAt": "2026-10-12T01:55:33.001762020Z",
       "secondsRemaining": 1199,
       "timeoutBehaviour": "Your cart is held for 20 minutes. Rooms are not reserved until you complete booking; after expiry, price and availability are checked again.",
       "room": {
@@ -42,8 +42,8 @@
         "roomName": "Standard King",
         "ratePlanCode": "FLEX",
         "ratePlanName": "Flexible – pay at hotel",
-        "checkIn": "2026-10-12",
-        "checkOut": "2026-10-15",
+        "checkIn": "2026-10-13",
+        "checkOut": "2026-10-16",
         "nights": 3,
         "rooms": 1,
         "adults": 2,
@@ -69,7 +69,7 @@
         "refundable": true,
         "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
         "restrictions": "Card guarantee required",
-        "priceVersion": "25ba43ed6e62e985"
+        "priceVersion": "564831fa7a4d38c8"
       },
       "ancillaries": [],
       "lines": [
@@ -137,7 +137,7 @@
         }
       },
       "currency": "USD",
-      "priceVersion": "2a06ad8cdaad06d5",
+      "priceVersion": "5feed7519eee8e22",
       "pendingChange": null,
       "requiresAcknowledgement": false,
       "notices": [],

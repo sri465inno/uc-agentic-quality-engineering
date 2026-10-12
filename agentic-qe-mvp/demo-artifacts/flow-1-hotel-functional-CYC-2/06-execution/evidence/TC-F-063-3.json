@@ -1,22 +1,22 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:43023/api/reservations/R-e58dd78d/reconcile",
+    "url": "http://127.0.0.1:33299/api/reservations/R-04a72c47/reconcile",
     "headers": {},
     "data": null
   },
   "response": {
     "status": 200,
-    "correlationId": "38e78514-14c4-4442-a01a-c3fbf6ff4530",
+    "correlationId": "85e3629e-6c0a-4d61-bcf0-195ff3ba3018",
     "body": {
-      "reservationId": "R-e58dd78d",
+      "reservationId": "R-04a72c47",
       "status": "CONFIRMED",
-      "confirmationNumber": "HBL82L644H",
+      "confirmationNumber": "HBM59Z8T9E",
       "headline": "Your booking is confirmed",
       "doNotResubmit": true,
-      "statusUrl": "/api/reservations/R-e58dd78d",
+      "statusUrl": "/api/reservations/R-04a72c47",
       "total": {
-        "amount": 770.42,
+        "amount": 805.19,
         "currency": "USD"
       },
       "paymentRule": "PAY_AT_HOTEL",
@@ -24,7 +24,7 @@
       "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
       "guestFirstName": "Jane",
       "notificationStatus": "DELIVERED",
-      "updatedAt": "2026-10-11T17:06:57.226505746Z"
+      "updatedAt": "2026-10-12T01:35:16.025360508Z"
     }
   }
 }

@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:38685/api/searches",
+    "url": "http://127.0.0.1:42151/api/searches",
     "headers": {},
     "data": {
       "destination": "NYC",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-12-11",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-12-12",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -14,12 +14,12 @@
   },
   "response": {
     "status": 400,
-    "correlationId": "c73397f2-4963-4b21-a979-b344b598fa06",
+    "correlationId": "53eadeaf-78c4-4b1a-b790-bd1731fae4a0",
     "body": {
       "status": 400,
       "code": "VALIDATION_FAILED",
       "message": "Please correct the highlighted search details.",
-      "correlationId": "c73397f2-4963-4b21-a979-b344b598fa06",
+      "correlationId": "53eadeaf-78c4-4b1a-b790-bd1731fae4a0",
       "retryable": false,
       "fieldIssues": [
         {

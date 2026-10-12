@@ -1,13 +1,13 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:36159/api/offers/recommendations",
+    "url": "http://127.0.0.1:40955/api/offers/recommendations",
     "headers": {},
     "data": {
       "hotelId": "H-NYC-001",
       "destination": "NYC",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "roomCode": "STD-K",
       "ratePlanCode": "FLEX",
       "adults": 2,
@@ -17,7 +17,7 @@
   },
   "response": {
     "status": 200,
-    "correlationId": "aa89fe7a-fb7a-45d5-a2d7-128d7017d00f",
+    "correlationId": "732dc1c5-33a8-403b-9e34-e30c005b07db",
     "body": {
       "offers": [
         {

@@ -2,6 +2,7 @@
 // QE lead report: the cycle written up the way a senior QE lead would, computed from the persisted cycle and its report.
 const { esc, table } = require('./report');
 const { jiraDefectText } = require('./connectors/jira-defects');
+const { TESTING_TYPES } = require('./testing-types');
 
 const SOURCE_TEXT = { live: 'Jira (live call)', github: 'pulled from GitHub', 'jira-export': 'Jira export on GitHub', fixture: 'recorded fixture', pasted: 'pasted by the user' };
 const date = (iso) => (iso ? new Date(iso).toISOString().replace('T', ' ').slice(0, 16) + ' UTC' : '-');
@@ -25,6 +26,84 @@ function recommendation(r, defects) {
   return { decision: 'Go', tone: 'ok', reason: 'Every automated test passed and every requirement is verified.', conditions: [] };
 }
 
+/** Exit criteria of the cycle's track, each met, not met or open, computed from the cycle evidence. */
+function exitCriteria(cycle, r, track) {
+  const a = cycle.artifacts;
+  const defects = a.defects || [];
+  const results = (a.execution && a.execution.results) || [];
+  const resultOf = new Map(results.map((x) => [x.key, x.status]));
+  const ran = (t) => ['passed', 'failed'].includes(resultOf.get(t.key));
+  const review = r.approvals.find((x) => x.gate === 'Requirement set review');
+  const excluded = new Set((cycle.review && cycle.review.excluded) || []);
+  const gapsFound = ((cycle.gaps && cycle.gaps.findings) || []).filter((g) => (g.groupIds || []).some((id) => excluded.has(id)));
+  const gapRaised = gapsFound.filter((g) => [...defects, ...(a.resolvedDefects || [])].some((d) => d.type === 'gap' && d.story === g.story));
+  const failed = results.filter((x) => x.status === 'failed');
+  const unraised = failed.filter((x) => !defects.some((d) => d.testCaseKey === x.key));
+  const blocking = defects.filter((d) => d.type !== 'gap' && d.blocksRelease);
+  const auto = (a.testCases || []).filter((t) => t.inRun !== false && t.automation === 'Automated');
+  const manual = (a.testCases || []).filter((t) => t.inRun !== false && t.automation !== 'Automated').length;
+  const stories = r.traceability ? r.traceability.stories : [];
+  const C = (criterion, status, detail) => ({ criterion, status, detail });
+  const isEqe = track && track.id === 'eqe';
+  const own = isEqe
+    ? (() => {
+      const journeys = auto.filter((t) => t.suite === 'journey');
+      const bad = journeys.filter((t) => resultOf.get(t.key) !== 'passed');
+      const epics = stories.filter((x) => x.level === 'epic' && x.scope !== 'baseline');
+      const parentOf = new Map(stories.map((x) => [x.key, x.parent]));
+      const checks = (a.testCases || []).filter((t) => t.inRun !== false && t.suite === 'nfr');
+      const crossed = new Set([...journeys.flatMap((t) => t.crosses || []), ...checks.flatMap((t) => (t.sourceRefs || []).map((k) => parentOf.get(k)))]);
+      const missed = epics.filter((x) => !crossed.has(x.key));
+      return [
+        C('Every business journey ran and passed end to end', !journeys.length ? 'not met' : bad.length ? 'not met' : 'met', journeys.length ? `${journeys.length - bad.length} of ${journeys.length} journeys passed${bad.length ? `; not passed: ${bad.map((t) => t.key).join(', ')}` : ''}` : 'no journey in this run'),
+        ...(epics.length && cycle.type !== 'incremental' ? [C('Every business capability (epic) is crossed by a journey or a quality check', missed.length ? 'not met' : 'met', missed.length ? `${epics.length - missed.length} of ${epics.length} crossed; not crossed: ${missed.map((x) => x.key).join(', ')}` : `${epics.length} of ${epics.length} crossed`)] : []),
+      ];
+    })()
+    : (() => {
+      const checks = auto.filter((t) => t.suite === 'api');
+      const notRan = checks.filter((t) => !ran(t));
+      const inScope = stories.filter((x) => x.level === 'story' && x.scope !== 'baseline');
+      const gapStories = new Set([...defects, ...(a.resolvedDefects || [])].filter((d) => d.type === 'gap').map((d) => d.story));
+      const untraced = inScope.filter((x) => !x.testCases && !gapStories.has(x.key));
+      return [
+        C('Every automated domain-rule check ran', notRan.length ? 'not met' : 'met', `${checks.length - notRan.length} of ${checks.length} ran`),
+        C('Every Jira story in scope is traced to a test case or a gap defect', untraced.length ? 'not met' : 'met', untraced.length ? `not traced: ${untraced.map((x) => x.key).join(', ')}` : `${inScope.length} of ${inScope.length} traced`),
+      ];
+    })();
+  return [
+    C('Requirement set approved by a named reviewer', review && review.by ? 'met' : 'not met', review ? `${review.by}: ${review.detail || review.decision}` : 'not reviewed'),
+    C('Every excluded gap is raised as a defect linked to its story', gapRaised.length === gapsFound.length ? 'met' : 'not met', gapsFound.length ? `${gapRaised.length} of ${gapsFound.length} raised (${gapsFound.map((g) => g.story).join(', ')})` : 'no gaps in this cycle'),
+    ...own,
+    C('Every failed test case has a defect', unraised.length ? 'not met' : 'met', failed.length ? `${failed.length - unraised.length} of ${failed.length} failed test cases raised${unraised.length ? `; missing: ${unraised.map((x) => x.key).join(', ')}` : ''}` : 'no failed test case'),
+    C('No open release-blocking defect', blocking.length ? 'not met' : 'met', blocking.length ? blocking.map((d) => `${d.id} (${(d.jiraKeys || []).join(', ')})`).join(', ') : 'none open'),
+    C('Manual test cases run and recorded', manual ? 'open' : 'met', manual ? `${plural(manual, 'manual test case')} handed over; their results are not recorded in the platform` : 'no manual test case in this run'),
+  ];
+}
+
+/** Each headline figure of the report recounted from the stored cycle evidence. */
+function evidenceCheck(cycle, r) {
+  const a = cycle.artifacts;
+  const results = (a.execution && a.execution.results) || [];
+  const ex = r.execution.executed ? r.execution.summary : null;
+  const ran = results.filter((x) => ['passed', 'failed'].includes(x.status));
+  const defects = a.defects || [];
+  const failedKeys = new Set(results.filter((x) => x.status === 'failed').map((x) => x.key));
+  const execDefects = defects.filter((d) => d.type !== 'gap');
+  const row = (figure, reported, recounted, from) => ({ figure, reported, recounted, from, status: String(reported) === String(recounted) ? 'reconciled' : 'mismatch' });
+  return [
+    row('Test cases', r.testCases.total, (a.testCases || []).length, 'test case artifacts'),
+    row('Automation scripts', r.scripts.total, (a.scripts || []).length, 'automation script files'),
+    ...(ex ? [
+      row('Executed', ex.executed, ran.length, 'Playwright results'),
+      row('Passed', ex.passed, ran.filter((x) => x.status === 'passed').length, 'Playwright results'),
+      row('Failed', ex.failed, ran.filter((x) => x.status === 'failed').length, 'Playwright results'),
+      row('Executed tests with stored evidence', ex.executed, ran.filter((x) => (x.evidence || []).length).length, 'request/response and log files'),
+    ] : []),
+    row('Defects from failed test cases', execDefects.length, execDefects.filter((d) => failedKeys.has(d.testCaseKey)).length, 'defects backed by a failed result'),
+    row('Gap defects', defects.filter((d) => d.type === 'gap').length, defects.filter((d) => d.type === 'gap' && d.story).length, 'gap defects linked to a Jira story'),
+  ];
+}
+
 function buildLeadReport(cycle) {
   const r = cycle.report;
   if (!r) return null;
@@ -44,6 +123,8 @@ function buildLeadReport(cycle) {
   const tt = r.testing;
   const sel = tt?.selection;
   const ra = r.reviewAgent;
+  const track = TESTING_TYPES.find((x) => x.id === cycle.testingType) || null;
+  const signoffOwner = track && track.signoff ? { ...track.signoff, track: track.short, status: 'Awaiting sign-off', note: `The platform recommends ${rec.decision}; the ${track.signoff.owner} decides and signs off outside the platform.` } : null;
 
   const summary = [
     `${isInc ? 'Incremental' : 'Baseline'} cycle for <b>${esc(r.platform?.capability || cycle.name)}</b> on build <code>${esc(r.cycle.sutBuild)}</code>, ${esc(date(r.cycle.createdAt))}.`,
@@ -114,6 +195,9 @@ function buildLeadReport(cycle) {
     coverageNote: r.coverage?.attributes ? `${r.coverage.attributes.exercised} of ${r.coverage.attributes.driverCount} ${r.platform?.driversLabel || 'commission-driving attributes'} (out of ${r.coverage.attributes.attributeCount} ${r.platform?.modelLabel || 'reservation'} attributes) are varied by at least one test.` : null,
     traceability: r.traceability ? r.traceability.stories.filter((x) => x.level !== 'initiative') : [],
     signoff: r.approvals.map((x) => ({ gate: x.gate, decision: x.decision, by: x.by, at: x.at, detail: x.detail })),
+    signoffOwner,
+    exitCriteria: exitCriteria(cycle, r, track),
+    evidenceCheck: evidenceCheck(cycle, r),
   };
 }
 
@@ -131,7 +215,9 @@ function renderLeadHtml(L, { cycleLink = null } = {}) {
 <h3>5. Risks and open items</h3>${L.risks.length ? `<ul>${L.risks.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>` : '<p>None.</p>'}${L.coverageNote ? `<p class="muted">${esc(L.coverageNote)}</p>` : ''}
 <h3>6. Recommendation and next steps</h3><p><b>${esc(rec.decision)}.</b> ${esc(rec.reason)}</p><ul>${L.nextSteps.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
 ${L.traceability && L.traceability.length ? `<h3>Traceability by story</h3>${table(['Jira item', 'Level', 'Summary', 'Requirements', 'Test cases', 'Passed', 'Failed', 'Defects', 'Status'], L.traceability.map((x) => [esc(x.key), esc(x.level), esc(x.summary || ''), esc(x.requirements), esc(x.testCases), esc(x.passed), esc(x.failed), esc(x.defects.join(', ') || '-'), esc(x.status)]))}` : ''}
-<h3>7. Sign-off</h3>${table(['Gate', 'Decision', 'By', 'When', 'Detail'], L.signoff.map((x) => [esc(x.gate), esc(x.decision), esc(x.by), esc(date(x.at)), esc(x.detail || '')]))}
+<h3>7. Sign-off</h3>${L.signoffOwner ? `<p><b>${esc(L.signoffOwner.track)} sign-off owner: ${esc(L.signoffOwner.owner)}</b> (${esc(L.signoffOwner.accountability)}). ${esc(L.signoffOwner.status)}: ${esc(L.signoffOwner.note)}</p>` : ''}${table(['Gate', 'Decision', 'By', 'When', 'Detail'], L.signoff.map((x) => [esc(x.gate), esc(x.decision), esc(x.by), esc(date(x.at)), esc(x.detail || '')]))}
+<h3>8. Exit criteria</h3>${table(['Exit criterion', 'Status', 'Detail'], L.exitCriteria.map((x) => [esc(x.criterion), esc(x.status), esc(x.detail)]))}
+<h3>9. Evidence check</h3><p class="muted small">Each figure in this report recounted from the stored cycle evidence.</p>${table(['Figure', 'In the report', 'Recounted', 'Recounted from', 'Status'], L.evidenceCheck.map((x) => [esc(x.figure), esc(x.reported), esc(x.recounted), esc(x.from), esc(x.status)]))}
 <p class="muted small">${esc(L.preparedBy)} · generated ${esc(date(L.generatedAt))}. Every figure comes from the persisted cycle; nothing is estimated.</p>
 </div>`;
 }
@@ -162,7 +248,9 @@ function renderLeadMarkdown(L) {
     '## 5. Risks and open items', ...(L.risks.length ? L.risks.map((s) => `- ${s}`) : ['None.']), ...(L.coverageNote ? ['', `_${L.coverageNote}_`] : []), '',
     '## 6. Recommendation and next steps', `**${rec.decision}.** ${rec.reason}`, '', ...L.nextSteps.map((s) => `- ${s}`), '',
     ...(L.traceability && L.traceability.length ? ['## Traceability by story', mdTable(['Jira item', 'Level', 'Summary', 'Requirements', 'Test cases', 'Passed', 'Failed', 'Defects', 'Status'], L.traceability.map((x) => [x.key, x.level, x.summary || '', x.requirements, x.testCases, x.passed, x.failed, x.defects.join(', ') || '-', x.status])), ''] : []),
-    '## 7. Sign-off', mdTable(['Gate', 'Decision', 'By', 'When', 'Detail'], L.signoff.map((x) => [x.gate, x.decision, x.by, date(x.at), x.detail || ''])), '',
+    '## 7. Sign-off', ...(L.signoffOwner ? [`**${L.signoffOwner.track} sign-off owner: ${L.signoffOwner.owner}** (${L.signoffOwner.accountability}). ${L.signoffOwner.status}: ${L.signoffOwner.note}`, ''] : []), mdTable(['Gate', 'Decision', 'By', 'When', 'Detail'], L.signoff.map((x) => [x.gate, x.decision, x.by, date(x.at), x.detail || ''])), '',
+    '## 8. Exit criteria', mdTable(['Exit criterion', 'Status', 'Detail'], L.exitCriteria.map((x) => [x.criterion, x.status, x.detail])), '',
+    '## 9. Evidence check', mdTable(['Figure', 'In the report', 'Recounted', 'Recounted from', 'Status'], L.evidenceCheck.map((x) => [x.figure, x.reported, x.recounted, x.from, x.status])), '',
     `_${L.preparedBy} · generated ${date(L.generatedAt)}. Every figure comes from the persisted cycle; nothing is estimated._`, ''].join('\n');
 }
 

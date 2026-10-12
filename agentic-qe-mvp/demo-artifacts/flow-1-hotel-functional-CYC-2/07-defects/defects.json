@@ -20,7 +20,7 @@
     "firstSeenCycle": "CYC-2",
     "cycleId": "CYC-2",
     "raisedBy": "Priya Shah",
-    "raisedAt": "2026-10-11T17:06:49.939Z",
+    "raisedAt": "2026-10-12T01:35:08.490Z",
     "raisedAtGate": "Human review of the requirement set",
     "reason": "gap excluded by Priya Shah at the requirement review",
     "testCaseKey": null,
@@ -82,7 +82,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-2 (Hotel booking baseline · Functional): gap excluded by Priya Shah at the requirement review."
+                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-2 (Hotel booking baseline · DQE): gap excluded by Priya Shah at the requirement review."
                   }
                 ]
               },
@@ -162,7 +162,7 @@
     "firstSeenCycle": "CYC-2",
     "cycleId": "CYC-2",
     "raisedBy": "Priya Shah",
-    "raisedAt": "2026-10-11T17:06:49.939Z",
+    "raisedAt": "2026-10-12T01:35:08.490Z",
     "raisedAtGate": "Human review of the requirement set",
     "reason": "gap excluded by Priya Shah at the requirement review",
     "testCaseKey": null,
@@ -223,7 +223,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-2 (Hotel booking baseline · Functional): gap excluded by Priya Shah at the requirement review."
+                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-2 (Hotel booking baseline · DQE): gap excluded by Priya Shah at the requirement review."
                   }
                 ]
               },
@@ -303,7 +303,7 @@
     "firstSeenCycle": "CYC-2",
     "cycleId": "CYC-2",
     "raisedBy": "Priya Shah",
-    "raisedAt": "2026-10-11T17:06:49.939Z",
+    "raisedAt": "2026-10-12T01:35:08.490Z",
     "raisedAtGate": "Human review of the requirement set",
     "reason": "gap excluded by Priya Shah at the requirement review",
     "testCaseKey": null,
@@ -364,7 +364,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-2 (Hotel booking baseline · Functional): gap excluded by Priya Shah at the requirement review."
+                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-2 (Hotel booking baseline · DQE): gap excluded by Priya Shah at the requirement review."
                   }
                 ]
               },
@@ -463,7 +463,7 @@
         "contentType": "application/json"
       },
       {
-        "name": "POST cart-service/api/carts/C-ec979b74/revalidate",
+        "name": "POST cart-service/api/carts/C-91ddc755/revalidate",
         "file": "TC-F-103-3.json",
         "contentType": "application/json"
       },
@@ -473,11 +473,11 @@
         "contentType": "text/markdown"
       }
     ],
-    "executedAt": "2026-10-11T17:07:01.859Z",
+    "executedAt": "2026-10-12T01:35:20.716Z",
     "occurrences": [
       {
         "cycleId": "CYC-2",
-        "executedAt": "2026-10-11T17:07:01.859Z",
+        "executedAt": "2026-10-12T01:35:20.716Z",
         "actual": "true",
         "evidence": [
           {
@@ -491,7 +491,7 @@
             "contentType": "application/json"
           },
           {
-            "name": "POST cart-service/api/carts/C-ec979b74/revalidate",
+            "name": "POST cart-service/api/carts/C-91ddc755/revalidate",
             "file": "TC-F-103-3.json",
             "contentType": "application/json"
           },
@@ -528,7 +528,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · Functional)."
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · DQE)."
                   }
                 ]
               },
@@ -582,7 +582,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Suspected code area: cart-service/src/main/resources/cart-service.yml:17. Executed at 2026-10-11T17:07:01.859Z."
+                    "text": "Suspected code area: cart-service/src/main/resources/cart-service.yml:17. Executed at 2026-10-12T01:35:20.716Z."
                   }
                 ]
               }
@@ -641,11 +641,11 @@
         "contentType": "text/markdown"
       }
     ],
-    "executedAt": "2026-10-11T17:07:01.859Z",
+    "executedAt": "2026-10-12T01:35:20.716Z",
     "occurrences": [
       {
         "cycleId": "CYC-2",
-        "executedAt": "2026-10-11T17:07:01.859Z",
+        "executedAt": "2026-10-12T01:35:20.716Z",
         "actual": "201",
         "evidence": [
           {
@@ -691,7 +691,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · Functional)."
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · DQE)."
                   }
                 ]
               },
@@ -745,7 +745,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Suspected code area: reservation-service/src/main/resources/reservation-service.yml:20. Executed at 2026-10-11T17:07:01.859Z."
+                    "text": "Suspected code area: reservation-service/src/main/resources/reservation-service.yml:20. Executed at 2026-10-12T01:35:20.716Z."
                   }
                 ]
               }
@@ -799,11 +799,11 @@
         "contentType": "text/markdown"
       }
     ],
-    "executedAt": "2026-10-11T17:07:01.859Z",
+    "executedAt": "2026-10-12T01:35:20.716Z",
     "occurrences": [
       {
         "cycleId": "CYC-2",
-        "executedAt": "2026-10-11T17:07:01.859Z",
+        "executedAt": "2026-10-12T01:35:20.716Z",
         "actual": "200",
         "evidence": [
           {
@@ -844,7 +844,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · Functional)."
+                    "text": "Raised by the Agentic QE Platform from a real failure in cycle CYC-2 (Hotel booking baseline · DQE)."
                   }
                 ]
               },
@@ -898,7 +898,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Suspected code area: search-service/src/main/resources/search-service.yml:13. Executed at 2026-10-11T17:07:01.859Z."
+                    "text": "Suspected code area: search-service/src/main/resources/search-service.yml:13. Executed at 2026-10-12T01:35:20.716Z."
                   }
                 ]
               }

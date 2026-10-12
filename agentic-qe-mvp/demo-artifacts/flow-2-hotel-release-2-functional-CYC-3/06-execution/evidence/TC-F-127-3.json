@@ -1,15 +1,15 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:34741/api/reservations/R-eb03a5d8/cancel",
+    "url": "http://127.0.0.1:35817/api/reservations/R-92033c23/cancel",
     "headers": {},
     "data": {}
   },
   "response": {
     "status": 200,
-    "correlationId": "73031f6e-da2e-4d01-b5f9-94cddf3916e1",
+    "correlationId": "9c598678-c1a1-459f-bcad-5fa8c96d7ca8",
     "body": {
-      "reservationId": "R-eb03a5d8",
+      "reservationId": "R-92033c23",
       "status": "CANCELLED",
       "confirmationNumber": null,
       "headline": "Your booking is cancelled",
@@ -18,12 +18,12 @@
       "nextSteps": [
         "Search again to book new dates"
       ],
-      "statusUrl": "/api/reservations/R-eb03a5d8",
+      "statusUrl": "/api/reservations/R-92033c23",
       "hotelName": "Harbor View Hotel",
       "roomName": "Standard King",
       "ratePlanName": "Flexible – pay at hotel",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "nights": 3,
       "rooms": 1,
       "adults": 2,
@@ -33,7 +33,7 @@
           "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
           "quantity": 1,
           "amount": {
-            "amount": 585,
+            "amount": 614.25,
             "currency": "USD"
           }
         },
@@ -41,7 +41,7 @@
           "label": "Taxes",
           "quantity": 1,
           "amount": {
-            "amount": 110.42,
+            "amount": 115.94,
             "currency": "USD"
           }
         },
@@ -55,7 +55,7 @@
         }
       ],
       "total": {
-        "amount": 770.42,
+        "amount": 805.19,
         "currency": "USD"
       },
       "paymentRule": "PAY_AT_HOTEL",
@@ -63,7 +63,7 @@
       "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
       "guestFirstName": "Jane",
       "notificationStatus": "DELIVERED",
-      "updatedAt": "2026-10-11T17:07:14.848530596Z"
+      "updatedAt": "2026-10-12T01:35:34.053336015Z"
     }
   }
 }

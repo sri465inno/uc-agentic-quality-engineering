@@ -1,10 +1,10 @@
 'use strict';
-// Type of testing chosen on Run: EQE (enterprise end-to-end business flows) or Functional (domain rules).
+// Type of testing chosen on Run: EQE (enterprise end-to-end business flows) or DQE (domain functional: the domain rules).
 // Together with the project inputs, the skills and the flow it decides which test cases the design agents
 // produce and which of them the execution agent runs. The rest of the process is the same for both.
 //
 // Every candidate case has a suite:
-//   api      a domain-rule check through the service API (Functional)
+//   api      a domain-rule check through the service API (DQE)
 //   journey  an end-to-end business flow across the services (EQE)
 //   ui       a browser check of a screen described in the inputs (EQE)
 //   nfr      an enterprise quality check stated in the inputs: privacy, security, observability, resilience (EQE)
@@ -13,6 +13,7 @@
 const TESTING_TYPES = [
   {
     id: 'eqe', name: 'EQE testing', short: 'EQE', dimension: 'Enterprise end-to-end business flows', suites: ['journey', 'ui', 'nfr', 'load'],
+    signoff: { owner: 'EQE lead', accountability: 'Enterprise assurance: the business journeys work end to end across the services' },
     produces: { functional: true, nonFunctional: true },
     focus: 'Enterprise end-to-end business flows across the services, plus the enterprise qualities the inputs state.',
     baseline: 'Designs one end-to-end journey per business flow in the inputs plus the enterprise quality checks, and runs them across the services with the evidence of every step.',
@@ -40,7 +41,8 @@ const TESTING_TYPES = [
     },
   },
   {
-    id: 'functional', name: 'Functional testing', short: 'Functional', dimension: 'Domain rules', suites: ['api'],
+    id: 'functional', name: 'DQE testing', short: 'DQE', dimension: 'Domain functional: rules, boundaries and invalid inputs', suites: ['api'],
+    signoff: { owner: 'DQE lead', accountability: 'Domain certification: every domain rule holds at its limits' },
     produces: { functional: true, nonFunctional: false },
     focus: 'Every domain rule and its boundaries, checked through the service API.',
     baseline: 'Designs a functional test case for every domain rule, both sides of every boundary, and runs them all.',

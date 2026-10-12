@@ -65,7 +65,7 @@ test('functional: baseline designs, scripts and runs every functional case; incr
   assert.ok(run.length >= 10);
   assert.ok(run.every((t) => t.type === 'functional' && t.suite === 'api'));
   assert.ok(!run.some((t) => t.ui || t.type === 'non-functional'), 'no screens or response times in a functional run');
-  assert.ok(c1.artifacts.scripts.every((s) => /Type of testing: Functional testing/.test(s.code)));
+  assert.ok(c1.artifacts.scripts.every((s) => /Type of testing: DQE testing/.test(s.code)));
   const ex = c1.artifacts.execution.summary;
   assert.equal(ex.executed, run.filter((t) => t.automation === 'Automated').length);
   assert.ok(ex.failed >= 1, 'the seeded 7-night defect is found');
@@ -93,4 +93,22 @@ test('EQE: the run is the business-flow journeys and enterprise checks; Flow 2 k
   assert.ok(c.skills.some((s) => s.id === 'testing-eqe'));
   const c2 = await incrementalDesign(pipeline, store, c.baselineId);
   assert.equal(c2.testingType, 'eqe', 'an incremental run keeps the baseline\'s type of testing unless one is chosen');
+});
+
+test('the second track is shown as DQE (domain functional) and keeps the functional id; each track names its sign-off owner', () => {
+  const { TESTING_TYPES } = require('../src/testing-types');
+  const dqe = TESTING_TYPES.find((t) => t.id === 'functional');
+  assert.equal(dqe.short, 'DQE');
+  assert.match(dqe.name, /^DQE/);
+  assert.deepEqual(TESTING_TYPES.map((t) => t.signoff.owner), ['EQE lead', 'DQE lead']);
+});
+
+test('EQE journeys name the business capabilities (epics) they cross, and traceability carries them', () => {
+  const { HOTEL_CATALOGUE } = require('../src/agents/hotel-catalogue');
+  const { computeTraceability } = require('../src/traceability');
+  const journeys = HOTEL_CATALOGUE.flatMap((e) => { try { return e.cases(e.params ? e.params([null, '1', '1', '1', '1']) : {}, { paramsOf: () => ({}) }); } catch { return []; } }).filter((c) => c.suite === 'journey');
+  assert.ok(journeys.length >= 7);
+  assert.ok(journeys.every((c) => c.crosses.length && c.crosses.every((k) => /^AQPI-\d+$/.test(k))));
+  const tr = computeTraceability({ inputs: [], artifacts: { testCases: [{ key: 'TC-F-001', requirementId: 'REQ-001', name: 'Journey', suite: 'journey', crosses: ['AQPI-2', 'AQPI-14'], sourceRefs: ['AQPI-1'] }, { key: 'TC-F-002', requirementId: 'REQ-002', name: 'Rule', suite: 'api', sourceRefs: ['AQPI-4'] }] } });
+  assert.deepEqual(tr.rows.map((r) => [r.suite, r.crosses]), [['journey', ['AQPI-2', 'AQPI-14']], ['api', []]]);
 });

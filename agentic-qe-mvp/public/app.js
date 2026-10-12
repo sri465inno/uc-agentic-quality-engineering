@@ -260,6 +260,26 @@ const FLOW_BRIEF = {
     'All tests run again, and a report compares this cycle with the last one.'], '#/run?type=incremental', 'Start an incremental update'],
 };
 
+const CAP_STATUS = { mvp: ['In the MVP', 'passed'], part: ['Partly in the MVP', 'designed'], road: ['Enterprise roadmap', 'pending'], off: ['Built, switched off', 'pending'] };
+const CAPABILITIES = [
+  ['Quality context ingestion', 'Brings requirements, code, API contracts, business documents, existing tests, defects, test-data definitions and domain guidance into one governed context.', 'One trusted foundation for every QE step after it.', 'part', 'Jira initiative, epics and stories, and the codebase.', 'Agent 1 Requirements'],
+  ['Requirement and rule intelligence', 'Normalises business intent into requirements and testable rules, and finds missing implementation, conflicts and value differences.', 'Finds quality risks before test design and execution.', 'mvp', 'Code against Jira found the 3 stories the code is missing.', 'Agent 1 Requirements, Review agent'],
+  ['Change intelligence and baseline management', 'Compares the incoming scope and code with the approved baseline: unchanged, enhanced or new.', 'Each release focuses on the change instead of restarting QE planning.', 'mvp', 'Flow 2 delta, merge approval and baseline versions.', 'Agent 1 Requirements'],
+  ['Coverage and test design', 'Reviewable test cases for the chosen track: business journeys, domain rules, boundaries, invalid inputs and stated quality checks.', 'Consistent, risk-aware coverage from approved context.', 'mvp', 'Distinct EQE and DQE test designs.', 'Agent 2 Test design'],
+  ['Test data intelligence', 'Valid, boundary and invalid data for each test case.', 'Reproducible tests with less manual data design.', 'mvp', 'One data set per generated test case.', 'Agent 3 Test data'],
+  ['Automation engineering', 'Automation scripts linked to requirements, rules and test cases; carried over, redesigned or new on each release.', 'Automation stays traceable and follows the change.', 'mvp', 'Generated Playwright automation scripts.', 'Agent 4 Automation'],
+  ['Execution and evidence management', 'Runs the approved automation scripts against the system under test and keeps results, logs, requests and responses, build and environment.', 'Trustworthy evidence of what actually ran.', 'mvp', 'Real Playwright runs against the six Java services.', 'Agent 5 Execution'],
+  ['Defect and retest intelligence', 'Defects from excluded gaps or failed test cases, with expected vs actual, evidence, severity and Jira story; retest and closure.', 'Faster triage, clear accountability and closure evidence.', 'mvp', 'Gap defects, failed-test defects and certified closures.', 'Agent 6 Defect'],
+  ['End-to-end evidence traceability', 'Journey, capability, epic, story, requirement, test case, data, automation script, result, defect and approval, linked.', 'Supports audit, investigation and release sign-off.', 'mvp', 'Traceability page by journey, requirement, test case, automation script and defect.', 'Agent 7 Reporting'],
+  ['Continuous quality reporting', 'Cycle outcome, exit criteria, business-flow readiness, execution evidence, defect risk and the QE recommendation, from the stored evidence.', 'Decision-ready reporting without rebuilding status by hand.', 'mvp', 'Cycle summary with exit criteria and evidence check, QE lead report, full report and exports.', 'Agent 7 Reporting'],
+  ['Human governance and decision controls', 'Named approval gates for requirement review, exclusions, conflicts, baseline merge, defect disposition and release, with an audit trail.', 'People stay accountable for material quality decisions.', 'part', 'Requirement review (exclusions, conflicts) and merge approval. Release sign-off owner is named, signed off outside the platform.', 'Review agent, human gates'],
+  ['Configurable QE workflows', 'The same capabilities configured for EQE enterprise end-to-end assurance or DQE domain functional certification, each with its own sign-off.', 'Enterprise reuse while each track keeps its ownership.', 'mvp', 'EQE or DQE per cycle, each with its own coverage and sign-off owner.', 'All agents'],
+  ['Connector and tool extensibility', 'Replaceable adapters for source systems, repositories, execution frameworks, defect tools, reporting channels and evidence stores.', 'No dependence on a single toolchain.', 'road', 'Jira, GitHub and Playwright today; to be proven in the pilot.', '-'],
+  ['Security, data protection and model governance', 'Identity, least privilege, secrets protection, data classification, model controls, usage logging and execution boundaries.', 'Fit for governed enterprise use.', 'road', 'Required enterprise capability; to be proven in the pilot.', '-'],
+  ['Platform operations and observability', 'Run isolation, concurrency controls, monitoring, audit logs, diagnostics, recovery and service health.', 'Dependable operation across many teams and cycles.', 'road', 'Required enterprise capability; to be proven in the pilot.', '-'],
+  ['Governed QE learning', 'Remembers approved decisions, exclusions, defect outcomes and reviewer feedback, with versioning, scope, review and rollback.', 'Reusable organisational learning without uncontrolled spread.', 'off', 'Built; kept off until its governance is approved.', 'All agents'],
+];
+
 async function viewHome() {
   setTitle();
   const P = META.platform;
@@ -285,9 +305,15 @@ async function viewHome() {
     HOME_DETAIL[`flow-${id}`] = `<h2>${esc(name)}</h2><p>${esc(intro)}</p><ul class="brief">${points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`;
     return tile({ detail: `flow-${id}`, art: i ? 'flow2' : 'flow1', tag: `Flow ${i + 1}`, big: i + 1, title: name, lines: [esc(intro)] });
   });
+  const capTiles = CAPABILITIES.map(([name, provides, value, st, evidence, agent], i) => {
+    const [label] = CAP_STATUS[st];
+    HOME_DETAIL[`cap-${i}`] = `<h2>${i + 1}. ${esc(name)}</h2><ul class="brief"><li><b>What it provides:</b> ${esc(provides)}</li><li><b>Enterprise value:</b> ${esc(value)}</li><li><b>Status:</b> ${esc(label)}. ${esc(evidence)}</li>${agent !== '-' ? `<li><b>In the MVP:</b> ${esc(agent)}</li>` : ''}</ul>`;
+    return tile({ detail: `cap-${i}`, art: st === 'mvp' ? 'run' : 'design', tag: label, big: i + 1, title: name, lines: [esc(value)] });
+  });
+  const capCount = (st) => CAPABILITIES.filter((x) => x[3] === st).length;
   const stats = [
     ['10+', 'Enterprise Inputs', 'Requirements, Code, APIs & Documents'],
-    [String(P.agents.length), 'Specialized AI Agents', 'Collaborating Across The QE Lifecycle'],
+    [String(CAPABILITIES.length), 'Platform Capabilities', `${P.agents.length} Agents Implement Them In The MVP`],
     ['100%', 'Traceability', 'Requirements To Test Evidence'],
     ['Human', 'Governance', 'Approval For Every Critical Outcome'],
   ];
@@ -302,6 +328,7 @@ async function viewHome() {
 <p>Transforming testing and quality assurance with AI-driven automation, continuous validation, and human-in-the-loop governance.</p></section>
 <section class="stats">${stats.map(([n, t, d]) => `<div class="stat"><b>${esc(n)}</b><span class="stat-t">${esc(t)}</span><span class="stat-d">${esc(d)}</span></div>`).join('')}</section>
 <section class="lifecycle"><h2>How the platform works</h2><ol>${lifecycle.map(([k, t, d]) => `<li><span class="lc-k">${esc(k)}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join('')}</ol></section>
+${rail('capabilities', 'What the platform can do', `${CAPABILITIES.length} capabilities: ${capCount('mvp')} in the MVP, ${capCount('part')} partly, ${capCount('road')} on the enterprise roadmap, ${capCount('off')} built and switched off · click one for details`, capTiles)}
 ${rail('value', 'Why it matters', 'click an outcome for details', valueTiles)}
 ${rail('inputs', 'What goes in', 'click an input for details', inputTiles)}
 ${rail('agents', 'Who does the work', 'click an agent for details', agentTiles)}
@@ -347,7 +374,7 @@ function inputsDropdown(type, slots, active) {
 <div class="ms-group">The platform also accepts</div>${types.filter((t) => !inFlow.has(t.id) && t.id !== 'data-model').map(item).join('')}`);
 }
 
-/** EQE or Functional: one type of testing per run. */
+/** EQE or DQE: one type of testing per run. */
 function testingTypesDropdown(type, domainId) {
   const [id] = runState.testingTypes;
   const opts = META.testingTypes.map((x) => testingTypeOf(x.id, domainId)).map((x) => `<label class="mode-option"><input type="radio" name="tt" class="tt-on" value="${esc(x.id)}" ${x.id === id ? 'checked' : ''}><span><b>${esc(x.name)}</b> <span class="small">${esc(x.dimension || '')}</span><span class="muted">${esc(x.focus)}</span></span></label>`).join('');
@@ -1136,7 +1163,7 @@ function summaryReport(c, lead) {
   const byStatus = (st) => scripts.filter((s) => s.status === st).length;
   const headline = `${plural(defects.length, 'open defect')}: ${openGaps.length} from code missing for Jira requirements (gaps) and ${execDefects.length} from failed test cases${blocking.length ? `, of which ${blocking.length} ${blocking.length === 1 ? 'blocks' : 'block'} the release (${blocking.map((d) => `${d.id} ${(d.jiraKeys || []).join(', ')}`).join('; ')})` : ''}.${closedAll.length ? ` ${closedAll.length} closed this cycle after passing retests.` : ''}`;
   const summary = `<div class="banner ${rec.tone === 'ok' ? 'ok' : rec.tone === 'bad' ? 'err' : 'info'}" style="font-size:15px"><b>Cycle outcome: ${esc(rec.decision)}</b> &nbsp;${esc(rec.reason)}<br>${esc(headline)}</div>
-<p class="small muted">${esc(c.id)} · ${c.type === 'baseline' ? 'Flow 1 baseline' : 'Flow 2 incremental'} · <b>${esc(tt.name)}</b> (${esc(tt.dimension || tt.focus)}) · build <code>${esc(c.sutBuild)}</code>${c.review ? ` · requirement set ${c.review.decision === 'rejected' ? 'rejected' : 'approved'} by ${esc(c.review.reviewer)}` : ''}</p>
+<p class="small muted">${esc(c.id)} · ${c.type === 'baseline' ? 'Flow 1 baseline' : 'Flow 2 incremental'} · <b>${esc(tt.name)}</b> (${esc(tt.dimension || tt.focus)}) · build <code>${esc(c.sutBuild)}</code>${c.review ? ` · requirement set ${c.review.decision === 'rejected' ? 'rejected' : 'approved'} by ${esc(c.review.reviewer)}` : ''}${lead.signoffOwner ? ` · sign-off owner: <b>${esc(lead.signoffOwner.owner)}</b> (${esc(lead.signoffOwner.status.toLowerCase())})` : ''}</p>
 <h2>Metrics</h2><div class="grid2">
 ${group('Requirements and gaps', [['Jira items read', jiraRead || '-'], ['Requirements approved', (a.requirements || []).length], ['Stories missing in the code', (c.gaps?.findings || []).length]])}
 ${group('Test design', [['Test cases', (a.testCases || []).length], ['Automated', ex ? ex.executed : '-'], ['Manual (handed over)', ex ? ex.notRun : '-']])}
@@ -1145,7 +1172,14 @@ ${group('Execution', [['Executed', ex ? ex.executed : '-'], ['Passed', ex ? ex.p
 ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed test cases', execDefects.length], ['Blocking release', blocking.length], ['Closed this cycle', closedAll.length]])}
 </div>`;
 
-  const outcome = (rec.conditions || []).length ? `<h3>1. What is needed for go</h3><ul>${rec.conditions.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : `<h3>1. What is needed for go</h3><p>Nothing outstanding.</p>`;
+  const EXIT_PILL = { met: ['Met', 'passed'], 'not met': ['Not met', 'failed'], open: ['Open', 'pending'] };
+  const exits = lead.exitCriteria || [];
+  const exitTable = exits.length ? `<h4>Exit criteria (${exits.filter((x) => x.status === 'met').length} of ${exits.length} met)</h4>${table(['Exit criterion', 'Status', 'Detail'], exits.map((x) => [esc(x.criterion), pill(...(EXIT_PILL[x.status] || [x.status, 'pending'])), `<span class="small">${esc(x.detail)}</span>`]))}` : '';
+  const signoff = lead.signoffOwner ? `<p class="small"><b>${esc(lead.signoffOwner.track)} sign-off: ${esc(lead.signoffOwner.owner)}</b>, accountable for ${esc(lead.signoffOwner.accountability.charAt(0).toLowerCase() + lead.signoffOwner.accountability.slice(1))}. ${esc(lead.signoffOwner.note)}</p>` : '';
+  const outcome = `<h3>1. Cycle outcome and exit criteria</h3>${(rec.conditions || []).length ? `<p><b>What is needed for go:</b></p><ul>${rec.conditions.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p><b>What is needed for go:</b> nothing outstanding.</p>'}${exitTable}${signoff}`;
+  const checks = lead.evidenceCheck || [];
+  const okN = checks.filter((x) => x.status === 'reconciled').length;
+  const evidenceCheck = checks.length ? `<details class="card"><summary class="small"><b>Evidence check: ${okN} of ${checks.length} report figures reconciled</b> with the stored cycle evidence${okN < checks.length ? ` <span class="fail">(${checks.length - okN} mismatch)</span>` : ''}</summary>${table(['Figure', 'In the report', 'Recounted', 'Recounted from', 'Status'], checks.map((x) => [esc(x.figure), esc(x.reported), esc(x.recounted), esc(x.from), pill(x.status, x.status === 'reconciled' ? 'passed' : 'failed')]))}</details>` : '';
 
   const resultOf = new Map(((a.execution && a.execution.results) || []).map((x) => [x.key, x]));
   const suites = [...new Set((a.testCases || []).map((x) => x.suite || 'api'))];
@@ -1156,7 +1190,7 @@ ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed
     return [esc(SUITE_NAMES[s] || s), cs.filter((x) => x.inRun !== false).length, n('passed') + n('failed'), n('passed'), n('failed'), cs.filter((x) => x.inRun !== false).length - n('passed') - n('failed')];
   });
   const shots = ((a.execution && a.execution.results) || []).some((x) => (x.evidence || []).some((e) => e.contentType === 'image/png'));
-  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite (automation scripts)', 'In this run', 'Executed', 'Passed', 'Failed', 'Manual / not run'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p><details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}`;
+  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite (automation scripts)', 'In this run', 'Executed', 'Passed', 'Failed', 'Manual / not run'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p><details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}${evidenceCheck}`;
 
   const tr = c.report && c.report.traceability;
   const gapStories = new Set((c.gaps?.findings || []).map((g) => g.story));
@@ -1185,7 +1219,7 @@ ${lead.risks.length ? `<details><summary class="small">Full risk register (${lea
   return `${summary}<h2>Detailed report</h2>${outcome}${evidence}${flows}${risks}`;
 }
 
-const TRACE_VIEWS = [['requirement', 'By requirement'], ['testcase', 'By test case'], ['script', 'By automation script'], ['defect', 'By defect']];
+const TRACE_VIEWS = [['journey', 'By business journey'], ['requirement', 'By requirement'], ['testcase', 'By test case'], ['script', 'By automation script'], ['defect', 'By defect']];
 
 /** Traceability of one cycle: requirement, Jira story, test case, test data, script, result and defect. */
 async function viewTraceability(params) {
@@ -1194,22 +1228,27 @@ async function viewTraceability(params) {
   const hero = '<section class="hero small-hero"><div class="eyebrow">Traceability</div><h1>Requirement to defect, for one cycle</h1><p>Every requirement traced to its Jira story, test cases, test data, automation scripts, real results and defects.</p></section>';
   if (!all.length) { $view.innerHTML = `${hero}<p class="muted">No cycle has completed yet. <a href="#/run">Run a cycle</a>.</p>`; return; }
   const id = all.some((x) => x.id === params.get('cycle')) ? params.get('cycle') : all[all.length - 1].id;
-  const by = TRACE_VIEWS.some(([v]) => v === params.get('by')) ? params.get('by') : 'requirement';
   const c = await api(`/api/cycles/${id}`);
   const tr = c.report.traceability;
   const rows = tr.rows;
+  const journeyRows = rows.filter((x) => x.suite === 'journey');
+  const views = TRACE_VIEWS.filter(([v]) => v !== 'journey' || journeyRows.length);
+  const by = views.some(([v]) => v === params.get('by')) ? params.get('by') : views[0][0];
   const res = (x) => (x === 'passed' || x === 'failed' ? pill(x, x) : `<span class="muted small">${esc(x)}</span>`);
   const list = (xs) => esc([...new Set(xs.filter(Boolean))].join(', ') || '-');
   const tally = (rs) => { const p = rs.filter((x) => x.result === 'passed').length; const f = rs.filter((x) => x.result === 'failed').length; return `${p} passed${f ? ` · <b class="err">${f} failed</b>` : ''}${rs.length - p - f ? ` · ${rs.length - p - f} not run` : ''}`; };
   const group = (key) => { const m = new Map(); for (const x of rows) { const k = x[key] || '(none)'; m.set(k, [...(m.get(k) || []), x]); } return [...m.entries()]; };
   const defects = [...(c.artifacts.defects || []), ...(c.artifacts.resolvedDefects || [])];
+  const itemOf = new Map(tr.stories.map((x) => [x.key, x]));
+  const epicName = (k) => (itemOf.get(k) ? `${k} ${String(itemOf.get(k).summary || '').replace(/^\[Epic \d+\]\s*/, '')}` : k);
   let body;
-  if (by === 'requirement') body = table(['Requirement', 'Jira story', 'Test cases', 'Test data', 'Automation scripts', 'Results', 'Defects'], group('requirementId').map(([k, rs]) => [`<b>${esc(k)}</b><br><span class="small">${esc(rs[0].requirement || '')}</span>`, list(rs.flatMap((x) => x.jiraKeys)), list(rs.map((x) => x.testCaseKey)), list(rs.map((x) => x.testDataId)), list(rs.map((x) => x.scriptFile)), tally(rs), list(rs.flatMap((x) => x.defects))]));
+  if (by === 'journey') body = `<p class="small muted">Each EQE business journey with the business capabilities (epics) it crosses, then its Jira link, requirement, test case, automation script, result and defects.</p>${table(['Business journey', 'Capabilities crossed', 'Jira', 'Requirement', 'Test case', 'Automation script', 'Result', 'Defects'], journeyRows.map((x) => [`<b>${esc(x.testCase)}</b>`, x.crosses.length ? `<span class="small">${x.crosses.map((k) => esc(epicName(k))).join('<br>')}</span>` : '<span class="muted small">not recorded</span>', list(x.jiraKeys), esc(x.requirementId), esc(x.testCaseKey), `<code class="small">${esc(x.scriptFile || 'manual')}</code>`, res(x.result), list(x.defects)]))}`;
+  else if (by === 'requirement') body = table(['Requirement', 'Jira story', 'Test cases', 'Test data', 'Automation scripts', 'Results', 'Defects'], group('requirementId').map(([k, rs]) => [`<b>${esc(k)}</b><br><span class="small">${esc(rs[0].requirement || '')}</span>`, list(rs.flatMap((x) => x.jiraKeys)), list(rs.map((x) => x.testCaseKey)), list(rs.map((x) => x.testDataId)), list(rs.map((x) => x.scriptFile)), tally(rs), list(rs.flatMap((x) => x.defects))]));
   else if (by === 'testcase') body = table(['Test case', 'Requirement', 'Jira', 'Test data', 'Automation script', 'Result', 'Defect'], rows.map((x) => [`<b>${esc(x.testCaseKey)}</b> ${esc(x.testCase)}`, esc(x.requirementId), list(x.jiraKeys), esc(x.testDataId || '-'), esc(x.scriptFile || 'manual'), res(x.result), list(x.defects)]));
   else if (by === 'script') body = table(['Automation script', 'Test cases', 'Requirements', 'Jira', 'Results', 'Defects'], group('scriptFile').map(([k, rs]) => [`<code>${esc(k === '(none)' ? 'manual (no script)' : k)}</code>`, list(rs.map((x) => x.testCaseKey)), list(rs.map((x) => x.requirementId)), list(rs.flatMap((x) => x.jiraKeys)), tally(rs), list(rs.flatMap((x) => x.defects))]));
   else body = defects.length ? table(['Defect', 'Kind', 'Severity', 'Status', 'Jira story', 'Requirement', 'Test case', 'Automation script', 'Result'], defects.map((d) => { const x = rows.find((y) => y.testCaseKey === d.testCaseKey); return [`<b>${esc(d.id)}</b> ${esc(d.title)}`, isGap(d) ? 'Gap' : 'Execution', esc(d.severity), esc(d.status || 'Open'), list(d.jiraKeys || [d.story]), esc(d.requirementId || (isGap(d) ? (d.retest ? 'picked up from the gap' : 'excluded as a gap') : '-')), esc(d.testCaseKey || '-'), esc(x ? x.scriptFile || 'manual' : '-'), x ? res(x.result) : d.retest ? `${pill(d.retest.result, d.retest.result)} <span class="small">${esc((d.retest.cases || []).join(', '))}</span>` : '<span class="muted small">no test (not implemented)</span>']; })) : '<p>No defects in this cycle.</p>';
   const picker = `<section class="panel cycle-picker"><label class="field" for="tr-cycle">Cycle</label><select id="tr-cycle">${all.slice().reverse().map((x) => `<option value="${esc(x.id)}" ${x.id === id ? 'selected' : ''}>${esc(x.id)} · ${esc(x.name)} · ${esc(testingTypeOf(x.testingType).short)}</option>`).join('')}</select></section>`;
-  const tabs = rail('tr-views', `${c.id} · ${esc(testingTypeOf(c.testingType).name)}`, `${tr.totals.testCases} test cases · ${tr.totals.withScript} scripted · ${tr.totals.executed} executed · ${tr.totals.verified}/${tr.totals.jiraItems} Jira items verified`, TRACE_VIEWS.map(([v, name]) => tile({ href: `#/traceability?cycle=${esc(id)}&by=${v}`, art: 'design', tag: 'Traceability', big: '⇄', title: name, lines: [''], cls: v === by ? 'sel' : '' })));
+  const tabs = rail('tr-views', `${c.id} · ${esc(testingTypeOf(c.testingType).name)}`, `${tr.totals.testCases} test cases · ${tr.totals.withScript} scripted · ${tr.totals.executed} executed · ${tr.totals.verified}/${tr.totals.jiraItems} Jira items verified`, views.map(([v, name]) => tile({ href: `#/traceability?cycle=${esc(id)}&by=${v}`, art: 'design', tag: 'Traceability', big: '⇄', title: name, lines: [''], cls: v === by ? 'sel' : '' })));
   $view.innerHTML = `${hero}${picker}${tabs}<section class="panel"><div class="panel-head"><h2>${esc(TRACE_VIEWS.find(([v]) => v === by)[1])}</h2><a class="btn secondary" href="/api/cycles/${esc(id)}/report.xlsx">Download Excel</a></div>${body}</section>`;
   document.getElementById('tr-cycle').onchange = (e) => { location.hash = `#/traceability?cycle=${e.target.value}&by=${by}`; };
 }

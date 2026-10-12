@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:38685/api/searches",
+    "url": "http://127.0.0.1:42151/api/searches",
     "headers": {},
     "data": {
       "destination": "PAR",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-12-01",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-12-02",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -14,15 +14,15 @@
   },
   "response": {
     "status": 200,
-    "correlationId": "69a99f56-e91e-46d9-abf2-dbd97b0e2f55",
+    "correlationId": "c523e175-d74f-4bcf-9b9c-540dc271d300",
     "body": {
-      "searchId": "S-be1be024",
-      "sessionId": "c03000a7-cae0-408e-b29b-1c6e9fe82ff3",
+      "searchId": "S-e49aa536",
+      "sessionId": "50abb426-f433-44da-bfcd-268e7743d6dd",
       "status": "RESULTS",
       "criteria": {
         "destination": "PAR",
-        "checkIn": "2026-11-10",
-        "checkOut": "2026-12-01",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-12-02",
         "rooms": 1,
         "adults": 2,
         "children": 0,

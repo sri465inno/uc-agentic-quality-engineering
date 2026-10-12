@@ -1,14 +1,14 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:45763/api/carts",
+    "url": "http://127.0.0.1:35393/api/carts",
     "headers": {},
     "data": {
       "hotelId": "H-NYC-001",
       "roomCode": "STD-K",
       "ratePlanCode": "SAVER",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -16,12 +16,12 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "107c0112-a344-4deb-9a24-a77ec1ab8e0f",
+    "correlationId": "d8d77f0d-d6d0-4ee2-874f-9e440e3880e3",
     "body": {
-      "cartId": "C-9b117a55",
+      "cartId": "C-3a90ccc2",
       "status": "ACTIVE",
-      "createdAt": "2026-10-11T17:07:13.997301489Z",
-      "expiresAt": "2026-10-11T17:27:13.997301489Z",
+      "createdAt": "2026-10-12T01:35:33.231591817Z",
+      "expiresAt": "2026-10-12T01:55:33.231591817Z",
       "secondsRemaining": 1199,
       "timeoutBehaviour": "Your cart is held for 20 minutes. Rooms are not reserved until you complete booking; after expiry, price and availability are checked again.",
       "room": {
@@ -42,19 +42,19 @@
         "roomName": "Standard King",
         "ratePlanCode": "SAVER",
         "ratePlanName": "Advance saver – pay now",
-        "checkIn": "2026-11-10",
-        "checkOut": "2026-11-13",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
         "nights": 3,
         "rooms": 1,
         "adults": 2,
         "children": 0,
         "currency": "USD",
         "roomCharge": {
-          "amount": 497.25,
+          "amount": 522.11,
           "currency": "USD"
         },
         "taxes": {
-          "amount": 93.86,
+          "amount": 98.55,
           "currency": "USD"
         },
         "mandatoryFees": {
@@ -62,14 +62,14 @@
           "currency": "USD"
         },
         "total": {
-          "amount": 666.11,
+          "amount": 695.66,
           "currency": "USD"
         },
         "paymentRule": "PAY_NOW",
         "refundable": false,
         "cancellationTerms": "Non-refundable. Changes are not permitted.",
         "restrictions": "Full prepayment at booking",
-        "priceVersion": "0456c8c03aa58890"
+        "priceVersion": "6607c7ccad7ae9de"
       },
       "ancillaries": [],
       "lines": [
@@ -78,7 +78,7 @@
           "label": "Standard King - Advance saver – pay now x 1 room(s), 3 night(s)",
           "quantity": 1,
           "amount": {
-            "amount": 497.25,
+            "amount": 522.11,
             "currency": "USD"
           }
         },
@@ -87,7 +87,7 @@
           "label": "Taxes",
           "quantity": 1,
           "amount": {
-            "amount": 93.86,
+            "amount": 98.55,
             "currency": "USD"
           }
         },
@@ -112,11 +112,11 @@
       ],
       "totals": {
         "roomCharge": {
-          "amount": 497.25,
+          "amount": 522.11,
           "currency": "USD"
         },
         "taxes": {
-          "amount": 93.86,
+          "amount": 98.55,
           "currency": "USD"
         },
         "mandatoryFees": {
@@ -132,12 +132,12 @@
           "currency": "USD"
         },
         "total": {
-          "amount": 666.11,
+          "amount": 695.66,
           "currency": "USD"
         }
       },
       "currency": "USD",
-      "priceVersion": "6390f62c3b53bace",
+      "priceVersion": "3e9d1b3b3349ca27",
       "pendingChange": null,
       "requiresAcknowledgement": false,
       "notices": [],

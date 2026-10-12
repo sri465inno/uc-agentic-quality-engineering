@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:34741/api/reservations",
+    "url": "http://127.0.0.1:35817/api/reservations",
     "headers": {
       "Idempotency-Key": "aqe-booking-734cdad4-2"
     },
     "data": {
-      "cartId": "C-01f58fe6",
+      "cartId": "C-0bef7a4b",
       "guest": {
         "firstName": "Jane",
         "lastName": "Doe",
@@ -22,9 +22,9 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "cc47928f-0758-40d4-8485-43b0c44006b9",
+    "correlationId": "682fa9d2-f131-403e-97d4-e6ad4312260d",
     "body": {
-      "reservationId": "R-a3093317",
+      "reservationId": "R-3e10ef01",
       "status": "PENDING_UNKNOWN",
       "confirmationNumber": null,
       "headline": "We're confirming your booking",
@@ -33,12 +33,12 @@
       "nextSteps": [
         "Check this page again in a few minutes"
       ],
-      "statusUrl": "/api/reservations/R-a3093317",
+      "statusUrl": "/api/reservations/R-3e10ef01",
       "hotelName": "Harbor View Hotel",
       "roomName": "Standard King",
       "ratePlanName": "Flexible – pay at hotel",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "nights": 3,
       "rooms": 1,
       "adults": 2,
@@ -48,7 +48,7 @@
           "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
           "quantity": 1,
           "amount": {
-            "amount": 585,
+            "amount": 614.25,
             "currency": "USD"
           }
         },
@@ -56,7 +56,7 @@
           "label": "Taxes",
           "quantity": 1,
           "amount": {
-            "amount": 110.42,
+            "amount": 115.94,
             "currency": "USD"
           }
         },
@@ -70,7 +70,7 @@
         }
       ],
       "total": {
-        "amount": 770.42,
+        "amount": 805.19,
         "currency": "USD"
       },
       "paymentRule": "PAY_AT_HOTEL",
@@ -78,7 +78,7 @@
       "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
       "guestFirstName": "Jane",
       "notificationStatus": "NOT_REQUESTED",
-      "updatedAt": "2026-10-11T17:07:11.206790577Z"
+      "updatedAt": "2026-10-12T01:35:30.133441460Z"
     }
   }
 }

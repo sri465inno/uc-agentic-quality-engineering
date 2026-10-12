@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:43901/api/reservations",
+    "url": "http://127.0.0.1:36319/api/reservations",
     "headers": {
       "Idempotency-Key": "aqe-booking-79b45dbb-2"
     },
     "data": {
-      "cartId": "C-84b232fa",
+      "cartId": "C-9ae2e538",
       "guest": {
         "firstName": "Jane",
         "lastName": "Doe",
@@ -22,16 +22,16 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "c1695cec-460a-4dae-8286-1525d14b7ecc",
+    "correlationId": "4493a510-dc40-4c82-9161-25b87a20b688",
     "body": {
-      "reservationId": "R-1905623d",
+      "reservationId": "R-d9455c9e",
       "status": "CONFIRMED",
-      "confirmationNumber": "HB775AE5BC",
+      "confirmationNumber": "HBCX7TENGH",
       "headline": "Your booking is confirmed",
       "doNotResubmit": true,
-      "statusUrl": "/api/reservations/R-1905623d",
+      "statusUrl": "/api/reservations/R-d9455c9e",
       "total": {
-        "amount": 655.65,
+        "amount": 687.91,
         "currency": "EUR"
       },
       "paymentRule": "PAY_NOW",
@@ -39,7 +39,7 @@
       "cancellationTerms": "Non-refundable. Changes are not permitted.",
       "guestFirstName": "Jane",
       "notificationStatus": "DELIVERED",
-      "updatedAt": "2026-10-11T17:06:46.479421516Z"
+      "updatedAt": "2026-10-12T01:35:05.060744685Z"
     }
   }
 }

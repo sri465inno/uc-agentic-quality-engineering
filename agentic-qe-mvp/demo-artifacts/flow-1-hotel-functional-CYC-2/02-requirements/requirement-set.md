@@ -1,4 +1,4 @@
-# Requirement set: Hotel booking baseline · Functional (CYC-2)
+# Requirement set: Hotel booking baseline · DQE (CYC-2)
 
 118 requirements, each with its business rule, exact values and where it is stated. Reviewed by Priya Shah.
 

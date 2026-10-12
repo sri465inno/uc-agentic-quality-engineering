@@ -73,11 +73,11 @@ Switched off by default for now: start the server with `AQE_LEARNING=on` to turn
 
 Feedback: `POST /api/cycles/:id/feedback` with `{ target: requirement|testcase|script|defect, id, verdict: accept|reject|confirm|not-a-defect, note, by }`. `test/learning.test.js` covers the learning loop with AI off and on.
 
-## Testing types: EQE and Functional
+## Testing types: EQE and DQE
 
-Pick one per cycle on the Run page (`testingType: eqe | functional`; default `functional` for the API). A Flow 2 cycle inherits the type of its baseline. The type drives every agent, the skills, the hand-over and the reports.
+Pick one per cycle on the Run page (`testingType: eqe | functional`, where `functional` is DQE, domain functional; default `functional` for the API). Each track has its own sign-off owner: the EQE lead for enterprise assurance, the DQE lead for domain certification. A Flow 2 cycle inherits the type of its baseline. The type drives every agent, the skills, the hand-over and the reports.
 
-| | EQE (enterprise end-to-end business flows) | Functional (domain rules) |
+| | EQE (enterprise end-to-end business flows) | DQE (domain functional: rules) |
 | --- | --- | --- |
 | Test design | Business journeys across the services (search, select, offers, cart, checkout, confirmation), screens, enterprise quality checks the inputs state | Every business rule with its exact value, boundaries and negative cases, through the service API |
 | Suites | `journey`, `ui`, `nfr`, `load` | `api` |
@@ -93,8 +93,8 @@ At human review the gap stories are pre-ticked to exclude. Approving raises one 
 ## Cycle, Reporting and Traceability pages
 
 - **Cycle page:** inputs considered, the process workflow and, once gap analysis is done, the gap summary. Artifacts open from the workflow tiles.
-- **Reporting:** a cycle summary (testing type, inputs, counts, pass rate, defects, gaps, go/no-go), then the detailed report: 1 cycle outcome, 2 execution evidence, 3 business-flow readiness by epic, 4 defects and risks. The QE lead report, full cycle report and downloads are still there.
-- **Traceability** (`#/traceability?cycle=CYC-n&by=requirement|testcase|script|defect`): requirement, Jira story, test case, test data, script, result and defect for one cycle, built from `src/traceability.js`.
+- **Reporting:** a cycle summary (testing type, inputs, counts, pass rate, defects, gaps, go/no-go), then the detailed report: 1 cycle outcome and exit criteria (met / not met / open, with the track's sign-off owner), 2 execution evidence with an evidence check that recounts each report figure from the stored cycle, 3 business-flow readiness by epic, 4 defects and risks. The QE lead report, full cycle report and downloads are still there.
+- **Traceability** (`#/traceability?cycle=CYC-n&by=journey|requirement|testcase|script|defect`): requirement, Jira story, test case, test data, automation script, result and defect for one cycle, built from `src/traceability.js`. EQE cycles add a business-journey view with the capabilities (epics) each journey crosses.
 
 ## Layout
 

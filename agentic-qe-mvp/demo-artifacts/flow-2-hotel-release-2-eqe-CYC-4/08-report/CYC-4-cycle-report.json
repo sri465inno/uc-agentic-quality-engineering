@@ -1,7 +1,7 @@
 {
   "adapted": null,
   "title": "Agentic QE Platform - MVP - Cycle report",
-  "generatedAt": "2026-10-11T17:07:27.755Z",
+  "generatedAt": "2026-10-12T01:35:49.248Z",
   "cycle": {
     "id": "CYC-4",
     "name": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) · EQE",
@@ -9,8 +9,8 @@
     "testingType": "eqe",
     "testingTypeName": "EQE testing",
     "status": "completed",
-    "createdAt": "2026-10-11T17:07:19.050Z",
-    "completedAt": "2026-10-11T17:07:27.730Z",
+    "createdAt": "2026-10-12T01:35:38.467Z",
+    "completedAt": "2026-10-12T01:35:49.207Z",
     "baselineId": "BL-1",
     "baselineVersionAtStart": 1,
     "baselineVersionAfter": 2,
@@ -1344,7 +1344,7 @@
       "name": "EQE testing - enterprise end-to-end business flows",
       "description": "Steers the agents to test each business flow end to end across the services, as the user experiences it.",
       "file": "testing-eqe.md",
-      "sha256": "77e5ebdc74cb",
+      "sha256": "588406f6509a",
       "appliesTo": [
         "requirements",
         "testcases",
@@ -1756,7 +1756,7 @@
       "children": [],
       "statements": 13,
       "provenance": "github",
-      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-11T17:07:17.764Z",
+      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-12T01:35:37.047Z",
       "files": [
         "README.md",
         "TRACEABILITY.md",
@@ -4923,24 +4923,24 @@
   "execution": {
     "executed": true,
     "quarantined": "not measured",
-    "durationMs": 4630,
+    "durationMs": 5998,
     "tool": "Playwright 1.63.0 (headless Chromium, JSON reporter)",
-    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-H9NWN9/runs/CYC-4/playwright.config.js",
+    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-wzmdRW/runs/CYC-4/playwright.config.js",
     "sut": {
       "build": "demo/hotel-booking-platform-v2",
-      "url": "http://127.0.0.1:43145",
+      "url": "http://127.0.0.1:42613",
       "services": {
-        "hotel-service": "http://127.0.0.1:45281",
-        "offer-service": "http://127.0.0.1:36159",
-        "notification-service": "http://127.0.0.1:33891",
-        "search-service": "http://127.0.0.1:43145",
-        "cart-service": "http://127.0.0.1:42031",
-        "reservation-service": "http://127.0.0.1:44055"
+        "hotel-service": "http://127.0.0.1:45819",
+        "offer-service": "http://127.0.0.1:40955",
+        "notification-service": "http://127.0.0.1:34849",
+        "search-service": "http://127.0.0.1:42613",
+        "cart-service": "http://127.0.0.1:39753",
+        "reservation-service": "http://127.0.0.1:35325"
       },
       "name": "Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2"
     },
-    "startedAt": "2026-10-11T17:07:23.084Z",
-    "finishedAt": "2026-10-11T17:07:27.714Z",
+    "startedAt": "2026-10-12T01:35:43.182Z",
+    "finishedAt": "2026-10-12T01:35:49.180Z",
     "summary": {
       "total": 13,
       "executed": 8,
@@ -4948,7 +4948,7 @@
       "failed": 0,
       "skipped": 0,
       "notRun": 5,
-      "durationMs": 1606,
+      "durationMs": 2540,
       "passRate": 100
     },
     "results": [
@@ -4957,7 +4957,7 @@
         "requirementId": "REQ-001",
         "name": "Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail",
         "status": "passed",
-        "duration": 1106,
+        "duration": 1718,
         "reason": null,
         "aiTriage": null
       },
@@ -4966,7 +4966,7 @@
         "requirementId": "REQ-001",
         "name": "Guest books a prepaid non-refundable room in Paris and pays now",
         "status": "passed",
-        "duration": 114,
+        "duration": 166,
         "reason": null,
         "aiTriage": null
       },
@@ -4975,7 +4975,7 @@
         "requirementId": "REQ-002",
         "name": "A sold-out hotel is shown as unavailable and cannot be put in a cart",
         "status": "passed",
-        "duration": 68,
+        "duration": 75,
         "reason": null,
         "aiTriage": null
       },
@@ -4984,7 +4984,7 @@
         "requirementId": "REQ-004",
         "name": "An unavailable extra is refused and the room still books",
         "status": "passed",
-        "duration": 81,
+        "duration": 145,
         "reason": null,
         "aiTriage": null
       },
@@ -4993,7 +4993,7 @@
         "requirementId": "REQ-005",
         "name": "A double-clicked Book button creates one reservation and one payment",
         "status": "passed",
-        "duration": 61,
+        "duration": 92,
         "reason": null,
         "aiTriage": null
       },
@@ -5002,7 +5002,7 @@
         "requirementId": "REQ-006",
         "name": "The confirmation number can be looked up again after booking",
         "status": "passed",
-        "duration": 53,
+        "duration": 113,
         "reason": null,
         "aiTriage": null
       },
@@ -5011,7 +5011,7 @@
         "requirementId": "REQ-007",
         "name": "The guest sees the booking outcome and one confirmation e-mail is created",
         "status": "passed",
-        "duration": 53,
+        "duration": 128,
         "reason": null,
         "aiTriage": null
       },
@@ -5029,7 +5029,7 @@
         "requirementId": "REQ-047",
         "name": "An unavailable extra is refused and the room still books",
         "status": "passed",
-        "duration": 70,
+        "duration": 103,
         "reason": null,
         "aiTriage": null
       },
@@ -6534,6 +6534,15 @@
         "testType": "functional",
         "automation": "Automated",
         "caseStatus": "carried over",
+        "suite": "journey",
+        "crosses": [
+          "AQPI-2",
+          "AQPI-6",
+          "AQPI-10",
+          "AQPI-14",
+          "AQPI-18",
+          "AQPI-23"
+        ],
         "testDataId": "TD-F-001",
         "scriptFile": "br-001-booking-journey.spec.js",
         "result": "passed",
@@ -6554,6 +6563,12 @@
         "testType": "functional",
         "automation": "Automated",
         "caseStatus": "carried over",
+        "suite": "journey",
+        "crosses": [
+          "AQPI-2",
+          "AQPI-14",
+          "AQPI-18"
+        ],
         "testDataId": "TD-F-002",
         "scriptFile": "br-001-booking-journey.spec.js",
         "result": "passed",
@@ -6574,6 +6589,12 @@
         "testType": "functional",
         "automation": "Automated",
         "caseStatus": "carried over",
+        "suite": "journey",
+        "crosses": [
+          "AQPI-2",
+          "AQPI-6",
+          "AQPI-14"
+        ],
         "testDataId": "TD-F-003",
         "scriptFile": "br-002-bookable-inventory.spec.js",
         "result": "passed",
@@ -6594,6 +6615,12 @@
         "testType": "functional",
         "automation": "Automated",
         "caseStatus": "carried over",
+        "suite": "journey",
+        "crosses": [
+          "AQPI-10",
+          "AQPI-14",
+          "AQPI-18"
+        ],
         "testDataId": "TD-F-004",
         "scriptFile": "br-004-offers-not-blocking.spec.js",
         "result": "passed",
@@ -6614,6 +6641,11 @@
         "testType": "functional",
         "automation": "Automated",
         "caseStatus": "carried over",
+        "suite": "journey",
+        "crosses": [
+          "AQPI-14",
+          "AQPI-18"
+        ],
         "testDataId": "TD-F-005",
         "scriptFile": "br-005-duplicate-submission.spec.js",
         "result": "passed",
@@ -6634,6 +6666,11 @@
         "testType": "functional",
         "automation": "Automated",
         "caseStatus": "carried over",
+        "suite": "journey",
+        "crosses": [
+          "AQPI-14",
+          "AQPI-18"
+        ],
         "testDataId": "TD-F-006",
         "scriptFile": "br-006-durable-confirmation.spec.js",
         "result": "passed",
@@ -6654,6 +6691,12 @@
         "testType": "functional",
         "automation": "Automated",
         "caseStatus": "carried over",
+        "suite": "journey",
+        "crosses": [
+          "AQPI-14",
+          "AQPI-18",
+          "AQPI-23"
+        ],
         "testDataId": "TD-F-007",
         "scriptFile": "br-007-confirmation-shown.spec.js",
         "result": "passed",
@@ -6674,6 +6717,8 @@
         "testType": "non-functional",
         "automation": "Not automated",
         "caseStatus": "carried over",
+        "suite": "nfr",
+        "crosses": [],
         "testDataId": "TD-N-001",
         "scriptFile": null,
         "result": "not-run",
@@ -6694,6 +6739,12 @@
         "testType": "functional",
         "automation": "Automated",
         "caseStatus": "carried over",
+        "suite": "journey",
+        "crosses": [
+          "AQPI-10",
+          "AQPI-14",
+          "AQPI-18"
+        ],
         "testDataId": "TD-F-008",
         "scriptFile": "br-047-offers-not-blocking.spec.js",
         "result": "passed",
@@ -6714,6 +6765,8 @@
         "testType": "non-functional",
         "automation": "Not automated",
         "caseStatus": "carried over",
+        "suite": "nfr",
+        "crosses": [],
         "testDataId": "TD-N-002",
         "scriptFile": null,
         "result": "not-run",
@@ -6734,6 +6787,8 @@
         "testType": "non-functional",
         "automation": "Not automated",
         "caseStatus": "carried over",
+        "suite": "nfr",
+        "crosses": [],
         "testDataId": "TD-N-003",
         "scriptFile": null,
         "result": "not-run",
@@ -6754,6 +6809,8 @@
         "testType": "non-functional",
         "automation": "Not automated",
         "caseStatus": "carried over",
+        "suite": "nfr",
+        "crosses": [],
         "testDataId": "TD-N-004",
         "scriptFile": null,
         "result": "not-run",
@@ -6774,6 +6831,8 @@
         "testType": "non-functional",
         "automation": "Not automated",
         "caseStatus": "carried over",
+        "suite": "nfr",
+        "crosses": [],
         "testDataId": "TD-N-005",
         "scriptFile": null,
         "result": "not-run",
@@ -7022,7 +7081,7 @@
     {
       "gate": "Requirement set review",
       "by": "Priya Shah",
-      "at": "2026-10-11T17:07:19.057Z",
+      "at": "2026-10-12T01:35:38.475Z",
       "decision": "approved",
       "comment": "",
       "detail": "43 requirements approved; 0 excluded; 0 conflict(s) resolved"
@@ -7030,7 +7089,7 @@
     {
       "gate": "Merge into baseline",
       "by": "Sam Lee",
-      "at": "2026-10-11T17:07:19.080Z",
+      "at": "2026-10-12T01:35:38.498Z",
       "decision": "approved",
       "comment": "",
       "detail": "23 requirements, 0 test cases, 0 scripts merged: BL-1 v1 -> v2"
@@ -7063,7 +7122,7 @@
   },
   "honesty": [
     "Jira epic AQPI-32, AQPI-23: Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export, release-2.0 snapshot): Jira REST API v3 JSON of AQPI-32, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
-    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-11T17:07:17.764Z",
+    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-12T01:35:37.047Z",
     "Execution: 8 automated cases really executed by Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2 (demo/hotel-booking-platform-v2); 5 manual case(s) designed but not executed.",
     "No model was used (no model API key set): normalisation, review, design, data, triage and prose are rule-based. Delta classification, coverage, pass/fail and defect raising are always computed in code."
   ]

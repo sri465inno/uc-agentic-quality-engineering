@@ -1,5 +1,6 @@
 'use strict';
 // End-to-end traceability of a cycle: Jira item -> requirement -> business rule -> test case -> test data -> script -> result -> defect.
+// EQE journeys also record the business capabilities (epics) they cross.
 
 /** Jira items named by the cycle's inputs, with their level and parent. */
 function jiraItems(inputs) {
@@ -47,6 +48,7 @@ function computeTraceability(cycle) {
       requirementId: t.requirementId, requirement: req ? req.text : null, requirementStatus: req ? req.status : null,
       ruleId: t.ruleId || null,
       testCaseKey: t.key, testCase: t.name, testType: t.type, automation: t.automation, caseStatus: t.status || null,
+      suite: t.suite || null, crosses: t.crosses || [],
       testDataId: data ? data.id : null,
       scriptFile: script ? script.file : (t.scriptFile || null),
       result: res ? res.status : t.inRun === false ? 'not in this run' : 'not executed',

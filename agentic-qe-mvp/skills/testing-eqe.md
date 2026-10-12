@@ -20,4 +20,4 @@ observability, resilience).
 Keep the evidence of every step (a screenshot where there is a screen, otherwise each request and response). A defect
 names the business flow and the step that broke; the report says which business flows are ready to release.
 
-Single-rule boundary checks belong to Functional testing.
+Single-rule boundary checks belong to DQE testing (domain functional).

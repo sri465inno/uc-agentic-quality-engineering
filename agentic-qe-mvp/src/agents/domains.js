@@ -34,7 +34,7 @@ const DOMAINS = {
     gaps: {
       eqe: { title: 'EQE testing was chosen but no input describes the advisor screen', suggestion: 'Add a story for the commission statement screen, so the journeys test a stated requirement.' },
       e2eNoUi: 'No input describes the advisor screen, so the journeys check the statement page the codebase ships without a stated requirement for it.',
-      functional: { title: 'Functional testing was chosen but no input states a commission rule', suggestion: 'Add the commission rules with their values to the epic.' },
+      functional: { title: 'DQE testing was chosen but no input states a commission rule', suggestion: 'Add the commission rules with their values to the epic.' },
     },
   },
   hotel: {
@@ -53,7 +53,7 @@ const DOMAINS = {
     gaps: {
       eqe: { title: 'EQE testing was chosen but no input describes a guest journey', suggestion: 'Add the search-to-confirmation acceptance criteria (AQPI-1) so the journeys test a stated requirement.' },
       e2eNoUi: 'The hotel services have no browser screen, so the journeys run through the service APIs; screen checks such as keyboard and focus order stay manual.',
-      functional: { title: 'Functional testing was chosen but no input states a booking or price rule', suggestion: 'Add the cart, payment and reservation acceptance criteria (AQPI-17, AQPI-20, AQPI-21).' },
+      functional: { title: 'DQE testing was chosen but no input states a booking or price rule', suggestion: 'Add the cart, payment and reservation acceptance criteria (AQPI-17, AQPI-20, AQPI-21).' },
     },
   },
 };

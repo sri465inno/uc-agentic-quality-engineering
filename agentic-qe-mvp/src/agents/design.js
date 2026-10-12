@@ -226,7 +226,7 @@ function designAgents(requirements, { cycle, counters, previous = null, skills =
       status: prev ? 're-designed' : 'new', version: prev ? prev.version + 1 : 1,
       previous: prev ? { name: prev.name, expected: prev.expected, testData: prev.testData, version: prev.version } : null,
       revisionNote: prev ? `v${prev.version + 1} (${cycle.id}): ${revision(prev, s)}` : null,
-      ui: Boolean(s.ui ?? c?.entry.ui), varies: s.varies || [],
+      ui: Boolean(s.ui ?? c?.entry.ui), varies: s.varies || [], crosses: s.crosses || [],
       code: automated ? s.code() : null,
     };
   };

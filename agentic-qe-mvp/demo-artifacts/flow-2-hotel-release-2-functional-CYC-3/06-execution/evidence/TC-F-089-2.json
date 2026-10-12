@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:34741/api/reservations",
+    "url": "http://127.0.0.1:35817/api/reservations",
     "headers": {
       "Idempotency-Key": "aqe-booking-26300c21-1"
     },
     "data": {
-      "cartId": "C-ed4b25c4",
+      "cartId": "C-86df9ed7",
       "guest": {
         "firstName": "Jane",
         "lastName": "Doe",
@@ -22,25 +22,25 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "b7f46e8d-b648-4806-9b32-2f7f271e3c4c",
+    "correlationId": "7c8f1f9b-8e55-4113-9ae5-c0defafcce1c",
     "body": {
-      "reservationId": "R-804fa19a",
+      "reservationId": "R-b74c17a1",
       "status": "CONFIRMED",
-      "confirmationNumber": "HBZWVYRT7G",
+      "confirmationNumber": "HBS2ZS993B",
       "headline": "Your booking is confirmed",
-      "message": "Your confirmation number is HBZWVYRT7G. We've sent the details to your e-mail.",
+      "message": "Your confirmation number is HBS2ZS993B. We've sent the details to your e-mail.",
       "doNotResubmit": true,
       "nextSteps": [
         "Save your confirmation number",
         "Check your e-mail for the confirmation",
         "Contact the hotel for special requests"
       ],
-      "statusUrl": "/api/reservations/R-804fa19a",
+      "statusUrl": "/api/reservations/R-b74c17a1",
       "hotelName": "Harbor View Hotel",
       "roomName": "Standard King",
       "ratePlanName": "Flexible – pay at hotel",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "nights": 3,
       "rooms": 1,
       "adults": 2,
@@ -50,7 +50,7 @@
           "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
           "quantity": 1,
           "amount": {
-            "amount": 585,
+            "amount": 614.25,
             "currency": "USD"
           }
         },
@@ -58,7 +58,7 @@
           "label": "Taxes",
           "quantity": 1,
           "amount": {
-            "amount": 110.42,
+            "amount": 115.94,
             "currency": "USD"
           }
         },
@@ -72,7 +72,7 @@
         }
       ],
       "total": {
-        "amount": 770.42,
+        "amount": 805.19,
         "currency": "USD"
       },
       "paymentRule": "PAY_AT_HOTEL",
@@ -80,7 +80,7 @@
       "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
       "guestFirstName": "Jane",
       "notificationStatus": "DELIVERED",
-      "updatedAt": "2026-10-11T17:07:11.868059423Z"
+      "updatedAt": "2026-10-12T01:35:30.965380037Z"
     }
   }
 }

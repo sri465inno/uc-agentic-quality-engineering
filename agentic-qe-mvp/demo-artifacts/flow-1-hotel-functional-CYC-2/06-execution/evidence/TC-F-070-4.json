@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:43023/api/reservations",
+    "url": "http://127.0.0.1:33299/api/reservations",
     "headers": {
       "Idempotency-Key": "aqe-booking-5c8b8ea5-2"
     },
     "data": {
-      "cartId": "C-05f116c2",
+      "cartId": "C-7b8352e1",
       "guest": {
         "firstName": "Jane",
         "lastName": "Doe",
@@ -22,16 +22,16 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "768417dd-e7fe-4368-a14d-7618302c4da4",
+    "correlationId": "c91c11d2-77fe-4206-b2f0-1138aab14a97",
     "body": {
-      "reservationId": "R-727fb2c5",
+      "reservationId": "R-cd7c0cb3",
       "status": "PAYMENT_DECLINED",
       "confirmationNumber": null,
       "headline": "Your payment was declined",
       "doNotResubmit": false,
-      "statusUrl": "/api/reservations/R-727fb2c5",
+      "statusUrl": "/api/reservations/R-cd7c0cb3",
       "total": {
-        "amount": 770.42,
+        "amount": 805.19,
         "currency": "USD"
       },
       "paymentRule": "PAY_AT_HOTEL",
@@ -39,7 +39,7 @@
       "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
       "guestFirstName": "Jane",
       "notificationStatus": "NOT_REQUESTED",
-      "updatedAt": "2026-10-11T17:06:57.474122225Z"
+      "updatedAt": "2026-10-12T01:35:16.295560875Z"
     }
   }
 }

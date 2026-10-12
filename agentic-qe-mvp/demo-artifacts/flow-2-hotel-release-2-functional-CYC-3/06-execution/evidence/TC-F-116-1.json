@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:41813/api/searches",
+    "url": "http://127.0.0.1:41839/api/searches",
     "headers": {},
     "data": {
       "destination": "NYC",
-      "checkIn": "2028-02-23",
-      "checkOut": "2028-02-26",
+      "checkIn": "2028-02-24",
+      "checkOut": "2028-02-27",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -14,15 +14,15 @@
   },
   "response": {
     "status": 200,
-    "correlationId": "66824804-8634-4659-be95-08b7fa4f89fc",
+    "correlationId": "e733f4c5-4bd8-4fd3-a020-30fbd8ef0a27",
     "body": {
-      "searchId": "S-0b349a4c",
-      "sessionId": "98bacbaf-2c68-4e14-b5ef-715589b8dfb8",
+      "searchId": "S-793ec8bc",
+      "sessionId": "1111affd-5223-4c28-87bb-3f647c158d4e",
       "status": "RESULTS",
       "criteria": {
         "destination": "NYC",
-        "checkIn": "2028-02-23",
-        "checkOut": "2028-02-26",
+        "checkIn": "2028-02-24",
+        "checkOut": "2028-02-27",
         "rooms": 1,
         "adults": 2,
         "children": 0,
@@ -47,17 +47,17 @@
               "parking"
             ],
             "startingNightly": {
-              "amount": 174.04,
+              "amount": 182.32,
               "currency": "USD"
             },
             "startingStayTotal": {
-              "amount": 695.66,
+              "amount": 725.21,
               "currency": "USD"
             },
             "currency": "USD",
             "availability": "AVAILABLE",
             "bookable": true,
-            "priceQualification": "From 174.04 USD per room per night before taxes (18.875%); Destination fee per room per night: 25.00 USD, payable on top of the room rate"
+            "priceQualification": "From 182.32 USD per room per night before taxes (18.875%); Destination fee per room per night: 25.00 USD, payable on top of the room rate"
           },
           {
             "hotelId": "H-NYC-004",
@@ -72,17 +72,17 @@
               "parking"
             ],
             "startingNightly": {
-              "amount": 147.26,
+              "amount": 154.28,
               "currency": "USD"
             },
             "startingStayTotal": {
-              "amount": 570.18,
+              "amount": 595.19,
               "currency": "USD"
             },
             "currency": "USD",
             "availability": "AVAILABLE",
             "bookable": true,
-            "priceQualification": "From 147.26 USD per room per night before taxes (18.875%); Destination fee per room per night: 15.00 USD, payable on top of the room rate"
+            "priceQualification": "From 154.28 USD per room per night before taxes (18.875%); Destination fee per room per night: 15.00 USD, payable on top of the room rate"
           },
           {
             "hotelId": "H-NYC-002",
@@ -95,17 +95,17 @@
               "wifi"
             ],
             "startingNightly": {
-              "amount": 106.21,
+              "amount": 111.26,
               "currency": "USD"
             },
             "startingStayTotal": {
-              "amount": 378.76,
+              "amount": 396.79,
               "currency": "USD"
             },
             "currency": "USD",
             "availability": "LIMITED",
             "bookable": true,
-            "priceQualification": "From 106.21 USD per room per night before taxes (18.875%)"
+            "priceQualification": "From 111.26 USD per room per night before taxes (18.875%)"
           },
           {
             "hotelId": "H-NYC-003",

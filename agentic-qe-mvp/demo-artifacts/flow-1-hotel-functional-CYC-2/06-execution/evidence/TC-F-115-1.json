@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:38685/api/searches",
+    "url": "http://127.0.0.1:42151/api/searches",
     "headers": {},
     "data": {
       "destination": "NYC",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "rooms": 9,
       "adults": 9,
       "children": 0
@@ -14,15 +14,15 @@
   },
   "response": {
     "status": 200,
-    "correlationId": "cde0786c-41d0-44a0-a889-099ac1837b1f",
+    "correlationId": "12bfd8cc-7b15-46ae-9692-7fad806d61f8",
     "body": {
-      "searchId": "S-3ae70630",
-      "sessionId": "21fb52a4-9241-4708-a62d-b1887d4f44dc",
+      "searchId": "S-76ac8977",
+      "sessionId": "b88427cc-463c-41db-9d9d-18685972a25d",
       "status": "NO_AVAILABILITY",
       "criteria": {
         "destination": "NYC",
-        "checkIn": "2026-11-10",
-        "checkOut": "2026-11-13",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
         "rooms": 9,
         "adults": 9,
         "children": 0,
@@ -36,8 +36,8 @@
           "label": "Try one day later",
           "criteria": {
             "destination": "NYC",
-            "checkIn": "2026-11-11",
-            "checkOut": "2026-11-14",
+            "checkIn": "2026-11-12",
+            "checkOut": "2026-11-15",
             "rooms": 9,
             "adults": 9,
             "children": 0
@@ -48,8 +48,8 @@
           "label": "Search for fewer guests",
           "criteria": {
             "destination": "NYC",
-            "checkIn": "2026-11-10",
-            "checkOut": "2026-11-13",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
             "rooms": 1,
             "adults": 1,
             "children": 0
@@ -60,8 +60,8 @@
           "label": "Try LON",
           "criteria": {
             "destination": "LON",
-            "checkIn": "2026-11-10",
-            "checkOut": "2026-11-13",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
             "rooms": 9,
             "adults": 9,
             "children": 0

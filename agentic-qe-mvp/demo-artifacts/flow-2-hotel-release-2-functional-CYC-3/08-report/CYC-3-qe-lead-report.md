@@ -6,11 +6,11 @@ CYC-3 · incremental cycle
 
 | Type of testing | Requirements | Test cases | Automated | Pass rate | Defects | Requirements verified |
 |---|---|---|---|---|---|---|
-| Functional testing | 138 | 144 | 83 | 95.2% | 4 | 44.2% |
+| DQE testing | 138 | 144 | 83 | 95.2% | 4 | 44.2% |
 
 ## 1. Summary
-- Incremental cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform-v2, 2026-10-11 17:07 UTC.
-- Type of testing: Functional testing. Every domain rule and its boundaries, checked through the service API.
+- Incremental cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform-v2, 2026-10-12 01:35 UTC.
+- Type of testing: DQE testing. Every domain rule and its boundaries, checked through the service API.
 - We took 2 inputs (Jira epic AQPI-32, AQPI-23, Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44)) and produced 138 requirements, 144 test cases and 65 automated scripts.
 - We ran 83 automated tests for real: 79 passed, 4 failed (pass rate 95.2%). 61 manual tests still to be run by hand.
 - 4 defects open from real failures (2 still open, 2 new), 1 release-blocking: DEF-007 A price change within 1% does not need acknowledgement: returns true instead of false (Jira: not raised in Jira; linked to AQPI-17 in the platform); DEF-008 A key shorter than 8 characters is refused: returns 201 instead of 400 (Jira: not raised in Jira; linked to AQPI-21 in the platform); DEF-010 A 15-night stay in Paris is rejected: returns 200 instead of 400 (Jira: not raised in Jira; linked to AQPI-34 in the platform); DEF-011 Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused: returns 200 instead of 409 (Jira: not raised in Jira; linked to AQPI-25 in the platform).
@@ -26,11 +26,11 @@ CYC-3 · incremental cycle
 ## 3. How we ran the cycle
 1. Read 56 statements from the inputs and lined them up into 43 requirement groups: 9 agreed by every source, 30 only in Jira, 4 only in the code, 0 in conflict.
 2. The review agent read the inputs first and suggested 27 addition(s), 15 missing piece(s) and 0 conflict(s) for the reviewer (0 high severity). It approved nothing.
-3. Priya Shah reviewed and approved the requirement set on 2026-10-11 17:07 UTC.
+3. Priya Shah reviewed and approved the requirement set on 2026-10-12 01:35 UTC.
 4. Compared every statement with baseline BL-2 v1: 20 unchanged · 3 enhanced · 20 new. Changed: REQ-112 "A cart expires 30 minutes after it is created and never creates a reservation itself." → "A cart expires 20 minutes after it is created and never creates a reservation itself."; REQ-114 "A confirmation can be resent at most 3 times per booking in 24 hours." → "A confirmation can be resent at most 5 times per booking in 24 hours."; REQ-116 "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights." → "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights.".
-5. Functional testing steered the design: Keeps the functional cases already in the baseline, re-designs the ones whose rule changed, adds cases for new rules, then runs the functional pack. Result: 144 case(s) in this run (115 reused, 6 re-designed, 23 new).
+5. DQE testing steered the design: Keeps the functional cases already in the baseline, re-designs the ones whose rule changed, adds cases for new rules, then runs the functional pack. Result: 144 case(s) in this run (115 reused, 6 re-designed, 23 new).
 6. The requirements agent wrote 138 requirements, each with its business rule, exact values and source quotes (72 automatable, 66 manual); the agents then designed 144 test cases (140 functional, 4 non-functional) and generated 65 Playwright scripts.
-7. Sam Lee approved the merge into the baseline on 2026-10-11 17:07 UTC.
+7. Sam Lee approved the merge into the baseline on 2026-10-12 01:35 UTC.
 8. Executed the automated suite with Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2; defects were raised only for tests that actually failed.
 
 ## 4. Artifacts produced
@@ -51,7 +51,7 @@ CYC-3 · incremental cycle
 | Cycle report (HTML, Excel) | 1 | full detail behind this summary | [08-report/](08-report/) |
 
 ## 5. Risks and open items
-- 12 requirements had no case in this functional testing run (REQ-001, REQ-002, REQ-004, REQ-005, REQ-006, REQ-007, REQ-023, REQ-047, REQ-082, REQ-100, REQ-104, REQ-108); a wider run is needed before release.
+- 12 requirements had no case in this dqe testing run (REQ-001, REQ-002, REQ-004, REQ-005, REQ-006, REQ-007, REQ-023, REQ-047, REQ-082, REQ-100, REQ-104, REQ-108); a wider run is needed before release.
 - DEF-007 (Critical): a guest is charged or booked wrongly. Expected false, got true. Blocks the release: a guest is charged or booked wrongly (BR-113). Story AQPI-17; Jira: not raised in Jira; linked to AQPI-17 in the platform.
 - DEF-008 (Medium): wrong value or status with a workaround. Expected 400, got 201. Does not block the release: wrong value or status with a workaround. Story AQPI-21; Jira: not raised in Jira; linked to AQPI-21 in the platform.
 - DEF-010 (Medium): wrong value or status with a workaround. Expected 400, got 200. Does not block the release: wrong value or status with a workaround. Story AQPI-34; Jira: not raised in Jira; linked to AQPI-34 in the platform.
@@ -110,9 +110,34 @@ _13 of 15 booking-driving attributes (out of 21 booking attributes) are varied b
 | AQPI-31 | story | 9.4 Meet performance and reliability objectives | 3 | 3 | 0 | 0 | - | designed, not executed |
 
 ## 7. Sign-off
+**DQE sign-off owner: DQE lead** (Domain certification: every domain rule holds at its limits). Awaiting sign-off: The platform recommends No-go; the DQE lead decides and signs off outside the platform.
+
 | Gate | Decision | By | When | Detail |
 |---|---|---|---|---|
-| Requirement set review | approved | Priya Shah | 2026-10-11 17:07 UTC | 43 requirements approved; 0 excluded; 0 conflict(s) resolved |
-| Merge into baseline | approved | Sam Lee | 2026-10-11 17:07 UTC | 23 requirements, 29 test cases, 18 scripts merged: BL-2 v1 -> v2 |
+| Requirement set review | approved | Priya Shah | 2026-10-12 01:35 UTC | 43 requirements approved; 0 excluded; 0 conflict(s) resolved |
+| Merge into baseline | approved | Sam Lee | 2026-10-12 01:35 UTC | 23 requirements, 29 test cases, 18 scripts merged: BL-2 v1 -> v2 |
 
-_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-11 17:07 UTC. Every figure comes from the persisted cycle; nothing is estimated._
+## 8. Exit criteria
+| Exit criterion | Status | Detail |
+|---|---|---|
+| Requirement set approved by a named reviewer | met | Priya Shah: 43 requirements approved; 0 excluded; 0 conflict(s) resolved |
+| Every excluded gap is raised as a defect linked to its story | met | no gaps in this cycle |
+| Every automated domain-rule check ran | met | 83 of 83 ran |
+| Every Jira story in scope is traced to a test case or a gap defect | met | 8 of 8 traced |
+| Every failed test case has a defect | met | 4 of 4 failed test cases raised |
+| No open release-blocking defect | not met | DEF-007 (AQPI-17) |
+| Manual test cases run and recorded | open | 61 manual test cases handed over; their results are not recorded in the platform |
+
+## 9. Evidence check
+| Figure | In the report | Recounted | Recounted from | Status |
+|---|---|---|---|---|
+| Test cases | 144 | 144 | test case artifacts | reconciled |
+| Automation scripts | 65 | 65 | automation script files | reconciled |
+| Executed | 83 | 83 | Playwright results | reconciled |
+| Passed | 79 | 79 | Playwright results | reconciled |
+| Failed | 4 | 4 | Playwright results | reconciled |
+| Executed tests with stored evidence | 83 | 83 | request/response and log files | reconciled |
+| Defects from failed test cases | 4 | 4 | defects backed by a failed result | reconciled |
+| Gap defects | 0 | 0 | gap defects linked to a Jira story | reconciled |
+
+_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 01:35 UTC. Every figure comes from the persisted cycle; nothing is estimated._

@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:38685/api/searches",
+    "url": "http://127.0.0.1:42151/api/searches",
     "headers": {},
     "data": {
       "destination": "PAR",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-12-02",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-12-03",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -14,12 +14,12 @@
   },
   "response": {
     "status": 400,
-    "correlationId": "9752ec1d-40d7-44c4-921b-2e5f6e93681b",
+    "correlationId": "d202244e-66ae-454e-bf5c-40df14ecd2d6",
     "body": {
       "status": 400,
       "code": "VALIDATION_FAILED",
       "message": "Please correct the highlighted search details.",
-      "correlationId": "9752ec1d-40d7-44c4-921b-2e5f6e93681b",
+      "correlationId": "d202244e-66ae-454e-bf5c-40df14ecd2d6",
       "retryable": false,
       "fieldIssues": [
         {

@@ -1,6 +1,6 @@
 ---
 id: testing-functional
-name: Functional testing
+name: DQE testing (domain functional)
 description: Steers the design agents to cover every business rule and its boundaries through the service API.
 testingType: functional
 appliesTo: [testcases, scripts, execution]

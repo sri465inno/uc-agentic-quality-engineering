@@ -9,7 +9,7 @@ CYC-4 · incremental cycle
 | EQE testing | 138 | 13 | 8 | 100% | 3 | 5.1% |
 
 ## 1. Summary
-- Incremental cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform-v2, 2026-10-11 17:07 UTC.
+- Incremental cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform-v2, 2026-10-12 01:35 UTC.
 - Type of testing: EQE testing. The guest's business flows across the six services (search, hotel details, offers, cart, payment, reservation, confirmation and cancellation e-mails), plus the privacy, security, observability and resilience checks (AQPI-28 to AQPI-31).
 - We took 2 inputs (Jira epic AQPI-32, AQPI-23, Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44)) and produced 138 requirements, 13 test cases and 7 automated scripts.
 - We ran 8 automated tests for real: 8 passed, 0 failed (pass rate 100%). 5 manual tests still to be run by hand.
@@ -25,11 +25,11 @@ CYC-4 · incremental cycle
 ## 3. How we ran the cycle
 1. Read 56 statements from the inputs and lined them up into 43 requirement groups: 9 agreed by every source, 30 only in Jira, 4 only in the code, 0 in conflict.
 2. The review agent read the inputs first and suggested 27 addition(s), 15 missing piece(s) and 0 conflict(s) for the reviewer (0 high severity). It approved nothing.
-3. Priya Shah reviewed and approved the requirement set on 2026-10-11 17:07 UTC.
+3. Priya Shah reviewed and approved the requirement set on 2026-10-12 01:35 UTC.
 4. Compared every statement with baseline BL-1 v1: 20 unchanged · 3 enhanced · 20 new. Changed: REQ-112 "A cart expires 30 minutes after it is created and never creates a reservation itself." → "A cart expires 20 minutes after it is created and never creates a reservation itself."; REQ-114 "A confirmation can be resent at most 3 times per booking in 24 hours." → "A confirmation can be resent at most 5 times per booking in 24 hours."; REQ-116 "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights." → "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights.".
 5. EQE testing steered the design: Keeps the journeys already in the baseline, re-designs the ones whose flow changed, adds journeys for new flows, then runs the business flows on the new build. Result: 13 case(s) in this run (13 reused, 0 re-designed, 0 new).
 6. The requirements agent wrote 138 requirements, each with its business rule, exact values and source quotes (72 automatable, 66 manual); the agents then designed 13 test cases (8 functional, 5 non-functional) and generated 7 Playwright scripts.
-7. Sam Lee approved the merge into the baseline on 2026-10-11 17:07 UTC.
+7. Sam Lee approved the merge into the baseline on 2026-10-12 01:35 UTC.
 8. Executed the automated suite with Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2; defects were raised only for tests that actually failed.
 
 ## 4. Artifacts produced
@@ -92,9 +92,33 @@ _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by
 | AQPI-31 | story | 9.4 Meet performance and reliability objectives | 1 | 1 | 0 | 0 | - | designed, not executed |
 
 ## 7. Sign-off
+**EQE sign-off owner: EQE lead** (Enterprise assurance: the business journeys work end to end across the services). Awaiting sign-off: The platform recommends Conditional go; the EQE lead decides and signs off outside the platform.
+
 | Gate | Decision | By | When | Detail |
 |---|---|---|---|---|
-| Requirement set review | approved | Priya Shah | 2026-10-11 17:07 UTC | 43 requirements approved; 0 excluded; 0 conflict(s) resolved |
-| Merge into baseline | approved | Sam Lee | 2026-10-11 17:07 UTC | 23 requirements, 0 test cases, 0 scripts merged: BL-1 v1 -> v2 |
+| Requirement set review | approved | Priya Shah | 2026-10-12 01:35 UTC | 43 requirements approved; 0 excluded; 0 conflict(s) resolved |
+| Merge into baseline | approved | Sam Lee | 2026-10-12 01:35 UTC | 23 requirements, 0 test cases, 0 scripts merged: BL-1 v1 -> v2 |
 
-_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-11 17:07 UTC. Every figure comes from the persisted cycle; nothing is estimated._
+## 8. Exit criteria
+| Exit criterion | Status | Detail |
+|---|---|---|
+| Requirement set approved by a named reviewer | met | Priya Shah: 43 requirements approved; 0 excluded; 0 conflict(s) resolved |
+| Every excluded gap is raised as a defect linked to its story | met | no gaps in this cycle |
+| Every business journey ran and passed end to end | met | 8 of 8 journeys passed |
+| Every failed test case has a defect | met | no failed test case |
+| No open release-blocking defect | met | none open |
+| Manual test cases run and recorded | open | 5 manual test cases handed over; their results are not recorded in the platform |
+
+## 9. Evidence check
+| Figure | In the report | Recounted | Recounted from | Status |
+|---|---|---|---|---|
+| Test cases | 13 | 13 | test case artifacts | reconciled |
+| Automation scripts | 7 | 7 | automation script files | reconciled |
+| Executed | 8 | 8 | Playwright results | reconciled |
+| Passed | 8 | 8 | Playwright results | reconciled |
+| Failed | 0 | 0 | Playwright results | reconciled |
+| Executed tests with stored evidence | 8 | 8 | request/response and log files | reconciled |
+| Defects from failed test cases | 0 | 0 | defects backed by a failed result | reconciled |
+| Gap defects | 3 | 3 | gap defects linked to a Jira story | reconciled |
+
+_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 01:35 UTC. Every figure comes from the persisted cycle; nothing is estimated._

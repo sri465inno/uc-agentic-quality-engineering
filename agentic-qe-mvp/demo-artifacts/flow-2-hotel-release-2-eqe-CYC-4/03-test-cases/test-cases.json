@@ -55,6 +55,14 @@
       "selection.ratePlanCode",
       "extras.code"
     ],
+    "crosses": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23"
+    ],
     "dataSet": "TD-F-001"
   },
   {
@@ -111,6 +119,11 @@
       "selection.roomCode",
       "selection.ratePlanCode"
     ],
+    "crosses": [
+      "AQPI-2",
+      "AQPI-14",
+      "AQPI-18"
+    ],
     "dataSet": "TD-F-002"
   },
   {
@@ -162,6 +175,11 @@
     "ui": false,
     "varies": [
       "selection.hotelId"
+    ],
+    "crosses": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-14"
     ],
     "dataSet": "TD-F-003"
   },
@@ -216,6 +234,11 @@
     "varies": [
       "extras.code"
     ],
+    "crosses": [
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18"
+    ],
     "dataSet": "TD-F-004"
   },
   {
@@ -268,6 +291,10 @@
     "varies": [
       "request.idempotencyKeyPrefix"
     ],
+    "crosses": [
+      "AQPI-14",
+      "AQPI-18"
+    ],
     "dataSet": "TD-F-005"
   },
   {
@@ -317,6 +344,10 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [
+      "AQPI-14",
+      "AQPI-18"
+    ],
     "dataSet": "TD-F-006"
   },
   {
@@ -367,6 +398,11 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23"
+    ],
     "dataSet": "TD-F-007"
   },
   {
@@ -415,6 +451,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-N-001"
   },
   {
@@ -468,6 +505,11 @@
     "varies": [
       "extras.code"
     ],
+    "crosses": [
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18"
+    ],
     "dataSet": "TD-F-008"
   },
   {
@@ -516,6 +558,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-N-002"
   },
   {
@@ -564,6 +607,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-N-003"
   },
   {
@@ -612,6 +656,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-N-004"
   },
   {
@@ -660,6 +705,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-N-005"
   }
 ]

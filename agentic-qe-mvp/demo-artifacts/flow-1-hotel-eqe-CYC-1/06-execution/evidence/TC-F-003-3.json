@@ -1,14 +1,14 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:42833/api/carts",
+    "url": "http://127.0.0.1:45725/api/carts",
     "headers": {},
     "data": {
       "hotelId": "H-NYC-001",
       "roomCode": "STD-K",
       "ratePlanCode": "FLEX",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-11-13",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -16,12 +16,12 @@
   },
   "response": {
     "status": 409,
-    "correlationId": "0cababa0-cece-4b2f-b48a-cdf764667f53",
+    "correlationId": "492afcd3-57a9-4def-965c-be1bfd20203e",
     "body": {
       "status": 409,
       "code": "ROOM_NO_LONGER_AVAILABLE",
       "message": "This room is no longer available for your dates. Please choose another room or rate.",
-      "correlationId": "0cababa0-cece-4b2f-b48a-cdf764667f53",
+      "correlationId": "492afcd3-57a9-4def-965c-be1bfd20203e",
       "retryable": false,
       "fieldIssues": []
     }

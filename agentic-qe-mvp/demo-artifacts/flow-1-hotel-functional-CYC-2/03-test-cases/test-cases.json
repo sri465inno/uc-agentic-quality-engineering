@@ -30,7 +30,7 @@
     "sourceRefs": [
       "AQPI-1"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -45,6 +45,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-001"
   },
   {
@@ -77,7 +78,7 @@
     "sourceRefs": [
       "AQPI-1"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -92,6 +93,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-002"
   },
   {
@@ -136,7 +138,7 @@
       "AQPI-23",
       "AQPI-27"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -151,6 +153,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-003"
   },
   {
@@ -195,7 +198,7 @@
       "AQPI-23",
       "AQPI-27"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -210,6 +213,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-004"
   },
   {
@@ -254,7 +258,7 @@
       "AQPI-23",
       "AQPI-27"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -269,6 +273,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-005"
   },
   {
@@ -313,7 +318,7 @@
       "AQPI-23",
       "AQPI-27"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -328,6 +333,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-006"
   },
   {
@@ -360,7 +366,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -378,6 +384,7 @@
       "search.destination",
       "stay.nights"
     ],
+    "crosses": [],
     "dataSet": "TD-F-007"
   },
   {
@@ -411,7 +418,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -426,6 +433,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-008"
   },
   {
@@ -458,7 +466,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -475,6 +483,7 @@
     "varies": [
       "stay.checkInOffsetDays"
     ],
+    "crosses": [],
     "dataSet": "TD-F-009"
   },
   {
@@ -507,7 +516,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -524,6 +533,7 @@
     "varies": [
       "stay.nights"
     ],
+    "crosses": [],
     "dataSet": "TD-F-010"
   },
   {
@@ -556,7 +566,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -573,6 +583,7 @@
     "varies": [
       "search.destination"
     ],
+    "crosses": [],
     "dataSet": "TD-F-011"
   },
   {
@@ -606,7 +617,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -621,6 +632,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-N-001"
   },
   {
@@ -653,7 +665,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -668,6 +680,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-012"
   },
   {
@@ -700,7 +713,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -715,6 +728,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-013"
   },
   {
@@ -747,7 +761,7 @@
     "sourceRefs": [
       "AQPI-3"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -762,6 +776,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-014"
   },
   {
@@ -794,7 +809,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -809,6 +824,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-015"
   },
   {
@@ -841,7 +857,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -859,6 +875,7 @@
       "occupancy.rooms",
       "occupancy.adults"
     ],
+    "crosses": [],
     "dataSet": "TD-F-016"
   },
   {
@@ -891,7 +908,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -906,6 +923,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-017"
   },
   {
@@ -938,7 +956,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -953,6 +971,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-018"
   },
   {
@@ -986,7 +1005,7 @@
     "sourceRefs": [
       "AQPI-5"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1001,6 +1020,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-019"
   },
   {
@@ -1033,7 +1053,7 @@
     "sourceRefs": [
       "AQPI-5"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1048,6 +1068,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-020"
   },
   {
@@ -1080,7 +1101,7 @@
     "sourceRefs": [
       "AQPI-5"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1095,6 +1116,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-021"
   },
   {
@@ -1127,7 +1149,7 @@
     "sourceRefs": [
       "AQPI-7"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1142,6 +1164,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-N-002"
   },
   {
@@ -1174,7 +1197,7 @@
     "sourceRefs": [
       "AQPI-7"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1189,6 +1212,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-022"
   },
   {
@@ -1222,7 +1246,7 @@
     "sourceRefs": [
       "AQPI-7"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1239,6 +1263,7 @@
     "varies": [
       "selection.hotelId"
     ],
+    "crosses": [],
     "dataSet": "TD-F-023"
   },
   {
@@ -1272,7 +1297,7 @@
     "sourceRefs": [
       "AQPI-7"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1287,6 +1312,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-024"
   },
   {
@@ -1320,7 +1346,7 @@
     "sourceRefs": [
       "AQPI-7"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1337,6 +1363,7 @@
     "varies": [
       "selection.hotelId"
     ],
+    "crosses": [],
     "dataSet": "TD-F-025"
   },
   {
@@ -1369,7 +1396,7 @@
     "sourceRefs": [
       "AQPI-9"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1386,6 +1413,7 @@
     "varies": [
       "selection.hotelId"
     ],
+    "crosses": [],
     "dataSet": "TD-F-026"
   },
   {
@@ -1418,7 +1446,7 @@
     "sourceRefs": [
       "AQPI-9"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1433,6 +1461,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-027"
   },
   {
@@ -1465,7 +1494,7 @@
     "sourceRefs": [
       "AQPI-9"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1480,6 +1509,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-028"
   },
   {
@@ -1512,7 +1542,7 @@
     "sourceRefs": [
       "AQPI-9"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1527,6 +1557,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-029"
   },
   {
@@ -1559,7 +1590,7 @@
     "sourceRefs": [
       "AQPI-11"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1574,6 +1605,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-030"
   },
   {
@@ -1606,7 +1638,7 @@
     "sourceRefs": [
       "AQPI-11"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1623,6 +1655,7 @@
     "varies": [
       "selection.hotelId"
     ],
+    "crosses": [],
     "dataSet": "TD-F-031"
   },
   {
@@ -1655,7 +1688,7 @@
     "sourceRefs": [
       "AQPI-11"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1670,6 +1703,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-032"
   },
   {
@@ -1702,7 +1736,7 @@
     "sourceRefs": [
       "AQPI-11"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1717,6 +1751,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-033"
   },
   {
@@ -1749,7 +1784,7 @@
     "sourceRefs": [
       "AQPI-11"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1764,6 +1799,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-034"
   },
   {
@@ -1796,7 +1832,7 @@
     "sourceRefs": [
       "AQPI-11"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1811,6 +1847,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-035"
   },
   {
@@ -1843,7 +1880,7 @@
     "sourceRefs": [
       "AQPI-11"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1858,6 +1895,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-036"
   },
   {
@@ -1890,7 +1928,7 @@
     "sourceRefs": [
       "AQPI-12"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1905,6 +1943,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-037"
   },
   {
@@ -1937,7 +1976,7 @@
     "sourceRefs": [
       "AQPI-12"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1952,6 +1991,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-038"
   },
   {
@@ -1984,7 +2024,7 @@
     "sourceRefs": [
       "AQPI-12"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -1999,6 +2039,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-039"
   },
   {
@@ -2031,7 +2072,7 @@
     "sourceRefs": [
       "AQPI-15"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2046,6 +2087,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-040"
   },
   {
@@ -2078,7 +2120,7 @@
     "sourceRefs": [
       "AQPI-15"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2093,6 +2135,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-041"
   },
   {
@@ -2125,7 +2168,7 @@
     "sourceRefs": [
       "AQPI-15"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2140,6 +2183,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-042"
   },
   {
@@ -2172,7 +2216,7 @@
     "sourceRefs": [
       "AQPI-15"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2187,6 +2231,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-043"
   },
   {
@@ -2219,7 +2264,7 @@
     "sourceRefs": [
       "AQPI-15"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2234,6 +2279,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-044"
   },
   {
@@ -2266,7 +2312,7 @@
     "sourceRefs": [
       "AQPI-16"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2281,6 +2327,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-045"
   },
   {
@@ -2315,7 +2362,7 @@
     "sourceRefs": [
       "AQPI-16"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2333,6 +2380,7 @@
       "extras.code",
       "extras.quantity"
     ],
+    "crosses": [],
     "dataSet": "TD-F-046"
   },
   {
@@ -2367,7 +2415,7 @@
     "sourceRefs": [
       "AQPI-16"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2384,6 +2432,7 @@
     "varies": [
       "extras.code"
     ],
+    "crosses": [],
     "dataSet": "TD-F-047"
   },
   {
@@ -2416,7 +2465,7 @@
     "sourceRefs": [
       "AQPI-16"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2431,6 +2480,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-048"
   },
   {
@@ -2464,7 +2514,7 @@
     "sourceRefs": [
       "AQPI-17"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2481,6 +2531,7 @@
     "varies": [
       "extras.code"
     ],
+    "crosses": [],
     "dataSet": "TD-F-049"
   },
   {
@@ -2513,7 +2564,7 @@
     "sourceRefs": [
       "AQPI-17"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2528,6 +2579,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-050"
   },
   {
@@ -2560,7 +2612,7 @@
     "sourceRefs": [
       "AQPI-17"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2575,6 +2627,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-051"
   },
   {
@@ -2607,7 +2660,7 @@
     "sourceRefs": [
       "AQPI-17"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2622,6 +2675,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-052"
   },
   {
@@ -2654,7 +2708,7 @@
     "sourceRefs": [
       "AQPI-17"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2669,6 +2723,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-053"
   },
   {
@@ -2702,7 +2757,7 @@
     "sourceRefs": [
       "AQPI-19"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2717,6 +2772,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-054"
   },
   {
@@ -2750,7 +2806,7 @@
     "sourceRefs": [
       "AQPI-19"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2767,6 +2823,7 @@
     "varies": [
       "guest.email"
     ],
+    "crosses": [],
     "dataSet": "TD-N-003"
   },
   {
@@ -2800,7 +2857,7 @@
     "sourceRefs": [
       "AQPI-19"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2817,6 +2874,7 @@
     "varies": [
       "consent.privacyNoticeAccepted"
     ],
+    "crosses": [],
     "dataSet": "TD-F-055"
   },
   {
@@ -2849,7 +2907,7 @@
     "sourceRefs": [
       "AQPI-19"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2864,6 +2922,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-056"
   },
   {
@@ -2896,7 +2955,7 @@
     "sourceRefs": [
       "AQPI-19"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2911,6 +2970,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-057"
   },
   {
@@ -2945,7 +3005,7 @@
     "sourceRefs": [
       "AQPI-19"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -2960,6 +3020,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-058"
   },
   {
@@ -2993,7 +3054,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3010,6 +3071,7 @@
     "varies": [
       "selection.ratePlanCode"
     ],
+    "crosses": [],
     "dataSet": "TD-F-059"
   },
   {
@@ -3043,7 +3105,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3060,6 +3122,7 @@
     "varies": [
       "selection.ratePlanCode"
     ],
+    "crosses": [],
     "dataSet": "TD-F-060"
   },
   {
@@ -3092,7 +3155,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3107,6 +3170,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-061"
   },
   {
@@ -3140,7 +3204,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3157,6 +3221,7 @@
     "varies": [
       "payment.token"
     ],
+    "crosses": [],
     "dataSet": "TD-F-062"
   },
   {
@@ -3191,7 +3256,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3208,6 +3273,7 @@
     "varies": [
       "payment.token"
     ],
+    "crosses": [],
     "dataSet": "TD-F-063"
   },
   {
@@ -3241,7 +3307,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3258,6 +3324,7 @@
     "varies": [
       "payment.token"
     ],
+    "crosses": [],
     "dataSet": "TD-F-064"
   },
   {
@@ -3291,7 +3358,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3308,6 +3375,7 @@
     "varies": [
       "payment.token"
     ],
+    "crosses": [],
     "dataSet": "TD-F-065"
   },
   {
@@ -3340,7 +3408,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3355,6 +3423,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-066"
   },
   {
@@ -3387,7 +3456,7 @@
     "sourceRefs": [
       "AQPI-20"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3402,6 +3471,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-067"
   },
   {
@@ -3435,7 +3505,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3450,6 +3520,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-068"
   },
   {
@@ -3484,7 +3555,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3499,6 +3570,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-069"
   },
   {
@@ -3533,7 +3605,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3548,6 +3620,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-070"
   },
   {
@@ -3580,7 +3653,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3595,6 +3668,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-071"
   },
   {
@@ -3627,7 +3701,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3642,6 +3716,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-072"
   },
   {
@@ -3674,7 +3749,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3689,6 +3764,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-073"
   },
   {
@@ -3722,7 +3798,7 @@
     "sourceRefs": [
       "AQPI-24"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3737,6 +3813,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-074"
   },
   {
@@ -3770,7 +3847,7 @@
     "sourceRefs": [
       "AQPI-24"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3785,6 +3862,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-075"
   },
   {
@@ -3817,7 +3895,7 @@
     "sourceRefs": [
       "AQPI-24"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3832,6 +3910,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-076"
   },
   {
@@ -3865,7 +3944,7 @@
     "sourceRefs": [
       "AQPI-24"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3880,6 +3959,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-077"
   },
   {
@@ -3912,7 +3992,7 @@
     "sourceRefs": [
       "AQPI-25"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3927,6 +4007,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-078"
   },
   {
@@ -3959,7 +4040,7 @@
     "sourceRefs": [
       "AQPI-25"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -3976,6 +4057,7 @@
     "varies": [
       "guest.email"
     ],
+    "crosses": [],
     "dataSet": "TD-F-079"
   },
   {
@@ -4008,7 +4090,7 @@
     "sourceRefs": [
       "AQPI-25"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4023,6 +4105,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-080"
   },
   {
@@ -4055,7 +4138,7 @@
     "sourceRefs": [
       "AQPI-25"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4070,6 +4153,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-081"
   },
   {
@@ -4102,7 +4186,7 @@
     "sourceRefs": [
       "AQPI-25"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4117,6 +4201,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-082"
   },
   {
@@ -4151,7 +4236,7 @@
     "sourceRefs": [
       "AQPI-26"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4166,6 +4251,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-083"
   },
   {
@@ -4198,7 +4284,7 @@
     "sourceRefs": [
       "AQPI-26"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4213,6 +4299,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-084"
   },
   {
@@ -4245,7 +4332,7 @@
     "sourceRefs": [
       "AQPI-26"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4260,6 +4347,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-085"
   },
   {
@@ -4292,7 +4380,7 @@
     "sourceRefs": [
       "AQPI-28"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4307,6 +4395,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-086"
   },
   {
@@ -4339,7 +4428,7 @@
     "sourceRefs": [
       "AQPI-28"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4354,6 +4443,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-087"
   },
   {
@@ -4386,7 +4476,7 @@
     "sourceRefs": [
       "AQPI-28"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4401,6 +4491,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-088"
   },
   {
@@ -4435,7 +4526,7 @@
     "sourceRefs": [
       "AQPI-28"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4450,6 +4541,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-089"
   },
   {
@@ -4482,7 +4574,7 @@
     "sourceRefs": [
       "AQPI-28"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4497,6 +4589,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-090"
   },
   {
@@ -4529,7 +4622,7 @@
     "sourceRefs": [
       "AQPI-29"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4544,6 +4637,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-091"
   },
   {
@@ -4576,7 +4670,7 @@
     "sourceRefs": [
       "AQPI-29"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4591,6 +4685,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-092"
   },
   {
@@ -4623,7 +4718,7 @@
     "sourceRefs": [
       "AQPI-29"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4638,6 +4733,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-093"
   },
   {
@@ -4670,7 +4766,7 @@
     "sourceRefs": [
       "AQPI-29"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4685,6 +4781,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-094"
   },
   {
@@ -4717,7 +4814,7 @@
     "sourceRefs": [
       "AQPI-29"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4732,6 +4829,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-095"
   },
   {
@@ -4764,7 +4862,7 @@
     "sourceRefs": [
       "AQPI-30"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4779,6 +4877,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-096"
   },
   {
@@ -4811,7 +4910,7 @@
     "sourceRefs": [
       "AQPI-30"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4826,6 +4925,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-097"
   },
   {
@@ -4859,7 +4959,7 @@
     "sourceRefs": [
       "AQPI-30"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4874,6 +4974,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-N-004"
   },
   {
@@ -4906,7 +5007,7 @@
     "sourceRefs": [
       "AQPI-31"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4921,6 +5022,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-098"
   },
   {
@@ -4953,7 +5055,7 @@
     "sourceRefs": [
       "AQPI-31"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -4968,6 +5070,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-099"
   },
   {
@@ -5000,7 +5103,7 @@
     "sourceRefs": [
       "AQPI-31"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5015,6 +5118,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-100"
   },
   {
@@ -5048,7 +5152,7 @@
     "sourceRefs": [
       "AQPI-15"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5063,6 +5167,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-101"
   },
   {
@@ -5100,7 +5205,7 @@
     "sourceRefs": [
       "AQPI-17"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5117,6 +5222,7 @@
     "varies": [
       "selection.ratePlanCode"
     ],
+    "crosses": [],
     "dataSet": "TD-F-102"
   },
   {
@@ -5151,7 +5257,7 @@
     "sourceRefs": [
       "AQPI-17"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5168,6 +5274,7 @@
     "varies": [
       "selection.ratePlanCode"
     ],
+    "crosses": [],
     "dataSet": "TD-F-103"
   },
   {
@@ -5201,7 +5308,7 @@
     "sourceRefs": [
       "AQPI-26"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5216,6 +5323,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-104"
   },
   {
@@ -5249,7 +5357,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5264,6 +5372,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-105"
   },
   {
@@ -5297,7 +5406,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5312,6 +5421,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-106"
   },
   {
@@ -5345,7 +5455,7 @@
     "sourceRefs": [
       "AQPI-21"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5360,6 +5470,7 @@
     "revisionNote": null,
     "ui": false,
     "varies": [],
+    "crosses": [],
     "dataSet": "TD-F-107"
   },
   {
@@ -5392,7 +5503,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5409,6 +5520,7 @@
     "varies": [
       "stay.nights"
     ],
+    "crosses": [],
     "dataSet": "TD-F-108"
   },
   {
@@ -5441,7 +5553,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5458,6 +5570,7 @@
     "varies": [
       "stay.nights"
     ],
+    "crosses": [],
     "dataSet": "TD-F-109"
   },
   {
@@ -5490,7 +5603,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5508,6 +5621,7 @@
       "search.destination",
       "stay.nights"
     ],
+    "crosses": [],
     "dataSet": "TD-F-110"
   },
   {
@@ -5540,7 +5654,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5558,6 +5672,7 @@
       "search.destination",
       "stay.nights"
     ],
+    "crosses": [],
     "dataSet": "TD-F-111"
   },
   {
@@ -5590,7 +5705,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5607,6 +5722,7 @@
     "varies": [
       "occupancy.adults"
     ],
+    "crosses": [],
     "dataSet": "TD-F-112"
   },
   {
@@ -5639,7 +5755,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5656,6 +5772,7 @@
     "varies": [
       "occupancy.adults"
     ],
+    "crosses": [],
     "dataSet": "TD-F-113"
   },
   {
@@ -5688,7 +5805,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5705,6 +5822,7 @@
     "varies": [
       "occupancy.children"
     ],
+    "crosses": [],
     "dataSet": "TD-F-114"
   },
   {
@@ -5737,7 +5855,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5755,6 +5873,7 @@
       "occupancy.rooms",
       "occupancy.adults"
     ],
+    "crosses": [],
     "dataSet": "TD-F-115"
   },
   {
@@ -5787,7 +5906,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5804,6 +5923,7 @@
     "varies": [
       "stay.checkInOffsetDays"
     ],
+    "crosses": [],
     "dataSet": "TD-F-116"
   },
   {
@@ -5836,7 +5956,7 @@
     "sourceRefs": [
       "AQPI-4"
     ],
-    "cycle": "Hotel booking baseline · Functional",
+    "cycle": "Hotel booking baseline · DQE",
     "designedWith": [
       "incremental-merge",
       "test-case-authoring",
@@ -5853,6 +5973,7 @@
     "varies": [
       "stay.checkInOffsetDays"
     ],
+    "crosses": [],
     "dataSet": "TD-F-117"
   }
 ]

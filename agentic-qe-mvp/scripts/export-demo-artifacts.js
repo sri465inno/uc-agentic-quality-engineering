@@ -16,7 +16,7 @@ const OUT = path.resolve(process.argv[2] || path.join(__dirname, '..', 'demo-art
 const REVIEWER = 'Priya Shah';
 const APPROVER = 'Sam Lee';
 const HOTEL_INPUTS = { initiative: { mode: 'github', key: 'AQPI-1' }, epic: { mode: 'github', key: 'AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27' }, codebase: { mode: 'github', branch: 'demo/hotel-booking-platform' } };
-const HOTEL_TESTING_TYPES = [['eqe', 'EQE'], ['functional', 'Functional']];
+const HOTEL_TESTING_TYPES = [['eqe', 'EQE'], ['functional', 'DQE']];
 const INCREMENT_INPUTS = { epic: { mode: 'github', key: 'AQPI-32, AQPI-23', snapshot: 'release-2.0' }, codebase: { mode: 'github', branch: 'demo/hotel-booking-platform-v2' } };
 
 const json = (f, v) => write(f, `${JSON.stringify(v, null, 2)}\n`);

@@ -37,7 +37,7 @@ const HOTEL_CATALOGUE = [
     params: () => ({}),
     cases: () => [
       {
-        slot: 'journey-flex', suite: 'journey', name: 'Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail',
+        slot: 'journey-flex', suite: 'journey', crosses: ['AQPI-2', 'AQPI-6', 'AQPI-10', 'AQPI-14', 'AQPI-18', 'AQPI-23'], name: 'Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail',
         objective: 'Verify the whole guest journey across all six services: search, hotel details, offers, cart, extra, payment summary, reservation and confirmation e-mail.',
         precondition: PRE, varies: ['search.destination', 'selection.ratePlanCode', 'extras.code'],
         steps: STEPS('Search NYC for the standard stay', 'Open the chosen hotel', 'Get recommended extras', 'Create a cart and add breakfast', 'Read the payment summary', 'Submit the reservation', 'Open the confirmation e-mail'),
@@ -68,7 +68,7 @@ const HOTEL_CATALOGUE = [
         ),
       },
       {
-        slot: 'journey-saver', suite: 'journey', name: 'Guest books a prepaid non-refundable room in Paris and pays now',
+        slot: 'journey-saver', suite: 'journey', crosses: ['AQPI-2', 'AQPI-14', 'AQPI-18'], name: 'Guest books a prepaid non-refundable room in Paris and pays now',
         objective: 'Verify the prepaid journey: the payment summary asks for the full amount now and the booking confirms.',
         precondition: PRE, varies: ['search.destination', 'selection.hotelId', 'selection.roomCode', 'selection.ratePlanCode'],
         steps: STEPS('Search PAR', 'Create a cart for the prepaid rate', 'Check pay-now equals the total', 'Submit the reservation'),
@@ -93,7 +93,7 @@ const HOTEL_CATALOGUE = [
     match: /only bookable inventory and valid rates are presented as available/i,
     params: () => ({}),
     cases: () => [{
-      slot: 'journey-sold-out', suite: 'journey', name: 'A sold-out hotel is shown as unavailable and cannot be put in a cart',
+      slot: 'journey-sold-out', suite: 'journey', crosses: ['AQPI-2', 'AQPI-6', 'AQPI-14'], name: 'A sold-out hotel is shown as unavailable and cannot be put in a cart',
       objective: 'Verify that a hotel with no rooms left is not offered as bookable and that trying to book it is refused.',
       precondition: `${PRE} Inventory of the chosen hotel is set to 0.`, varies: ['selection.hotelId'],
       steps: STEPS('Set the hotel inventory to 0', 'Search', 'Try to create a cart for that hotel'),
@@ -137,7 +137,7 @@ const HOTEL_CATALOGUE = [
     match: /(ancillary offers do not block booking|failure to load offers does not block room booking)/i,
     params: () => ({}),
     cases: () => [{
-      slot: 'journey-unavailable-extra', suite: 'journey', name: 'An unavailable extra is refused and the room still books',
+      slot: 'journey-unavailable-extra', suite: 'journey', crosses: ['AQPI-10', 'AQPI-14', 'AQPI-18'], name: 'An unavailable extra is refused and the room still books',
       objective: 'Verify that an extra that cannot be sold is refused clearly while the room reservation still succeeds.',
       precondition: `${PRE} LATE_CHECKOUT is marked unavailable.`, varies: ['extras.code'],
       steps: STEPS('Mark LATE_CHECKOUT unavailable', 'Create a cart', 'Try to add LATE_CHECKOUT', 'Submit the reservation'),
@@ -160,7 +160,7 @@ const HOTEL_CATALOGUE = [
     match: /prevents or safely handles duplicate reservation submissions/i,
     params: () => ({}),
     cases: () => [{
-      slot: 'journey-double-submit', suite: 'journey', name: 'A double-clicked Book button creates one reservation and one payment',
+      slot: 'journey-double-submit', suite: 'journey', crosses: ['AQPI-14', 'AQPI-18'], name: 'A double-clicked Book button creates one reservation and one payment',
       objective: 'Verify that two simultaneous submissions with the same idempotency key produce one reservation and one authorisation.',
       precondition: PRE, varies: ['request.idempotencyKeyPrefix'],
       steps: STEPS('Create a cart', 'Submit the reservation twice at the same time with one key', 'Read the payments ledger'),
@@ -182,7 +182,7 @@ const HOTEL_CATALOGUE = [
     match: /successful reservation produces a durable confirmation identifier/i,
     params: () => ({}),
     cases: () => [{
-      slot: 'journey-durable', suite: 'journey', name: 'The confirmation number can be looked up again after booking',
+      slot: 'journey-durable', suite: 'journey', crosses: ['AQPI-14', 'AQPI-18'], name: 'The confirmation number can be looked up again after booking',
       objective: 'Verify the confirmation identifier is stored with the reservation and returned on later reads.',
       precondition: PRE, varies: [], steps: STEPS('Book the standard stay', 'Read the reservation back by id'), testData: data(),
       expected: 'HTTP 201 with a 10-character HB… number; GET /api/reservations/{id} returns the same number and CONFIRMED',
@@ -200,7 +200,7 @@ const HOTEL_CATALOGUE = [
     match: /confirmation is displayed on screen and an email request is generated/i,
     params: () => ({}),
     cases: () => [{
-      slot: 'journey-confirmation', suite: 'journey', name: 'The guest sees the booking outcome and one confirmation e-mail is created',
+      slot: 'journey-confirmation', suite: 'journey', crosses: ['AQPI-14', 'AQPI-18', 'AQPI-23'], name: 'The guest sees the booking outcome and one confirmation e-mail is created',
       objective: 'Verify the outcome the guest sees and that exactly one confirmation e-mail request exists.',
       precondition: PRE, varies: [], steps: STEPS('Book the standard stay', 'Read the outcome', 'List the messages for the reservation'), testData: data(),
       expected: 'Outcome headline says the booking is confirmed; one CONFIRMATION message for the reservation',

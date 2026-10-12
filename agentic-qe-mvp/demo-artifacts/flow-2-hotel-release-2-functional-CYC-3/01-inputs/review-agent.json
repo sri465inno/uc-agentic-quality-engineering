@@ -2,7 +2,7 @@
   "agent": "Review agent",
   "advisory": true,
   "status": "suggestions",
-  "generatedAt": "2026-10-11T17:07:03.751Z",
+  "generatedAt": "2026-10-12T01:35:22.373Z",
   "testingType": "functional",
   "note": "Suggestions only. The human reviewer decides every gap and conflict and approves the requirement set.",
   "counts": {

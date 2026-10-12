@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:38685/api/searches",
+    "url": "http://127.0.0.1:42151/api/searches",
     "headers": {},
     "data": {
       "destination": "NYC",
-      "checkIn": "2026-11-10",
-      "checkOut": "2026-12-10",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-12-11",
       "rooms": 1,
       "adults": 2,
       "children": 0
@@ -14,15 +14,15 @@
   },
   "response": {
     "status": 200,
-    "correlationId": "818dbcbf-b330-483d-ad28-994f3e222ed2",
+    "correlationId": "cbed3413-9e81-4c69-915e-94fb6de4cb2b",
     "body": {
-      "searchId": "S-2e773175",
-      "sessionId": "328e8cbf-8419-4a44-a3a9-9e648c6dc605",
+      "searchId": "S-b4f01690",
+      "sessionId": "9011ffe6-38fb-4073-ad7c-346e11debe5e",
       "status": "RESULTS",
       "criteria": {
         "destination": "NYC",
-        "checkIn": "2026-11-10",
-        "checkOut": "2026-12-10",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-12-11",
         "rooms": 1,
         "adults": 2,
         "children": 0,
