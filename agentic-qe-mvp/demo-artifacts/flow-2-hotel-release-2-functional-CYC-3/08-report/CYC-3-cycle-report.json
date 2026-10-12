@@ -1,7 +1,7 @@
 {
   "adapted": null,
   "title": "Agentic QE Platform - MVP - Cycle report",
-  "generatedAt": "2026-10-12T01:35:36.936Z",
+  "generatedAt": "2026-10-12T02:10:38.176Z",
   "cycle": {
     "id": "CYC-3",
     "name": "Hotel booking release 2.0 (AQPI-32 + AQPI-23)",
@@ -9,8 +9,8 @@
     "testingType": "functional",
     "testingTypeName": "DQE testing",
     "status": "completed",
-    "createdAt": "2026-10-12T01:35:22.365Z",
-    "completedAt": "2026-10-12T01:35:36.875Z",
+    "createdAt": "2026-10-12T02:09:54.897Z",
+    "completedAt": "2026-10-12T02:10:38.110Z",
     "baselineId": "BL-2",
     "baselineVersionAtStart": 1,
     "baselineVersionAfter": 2,
@@ -158,7 +158,7 @@
             "source": "code",
             "ref": "cart-service/src/main/resources/cart-service.yml",
             "line": 17,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/cart-service/src/main/resources/cart-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/cart-service/src/main/resources/cart-service.yml",
             "quote": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout."
           }
         ]
@@ -176,7 +176,7 @@
             "source": "code",
             "ref": "reservation-service/src/main/resources/reservation-service.yml",
             "line": 20,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/reservation-service/src/main/resources/reservation-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
             "quote": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
           }
         ]
@@ -194,7 +194,7 @@
             "source": "code",
             "ref": "search-service/src/main/resources/search-service.yml",
             "line": 13,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/search-service/src/main/resources/search-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/search-service/src/main/resources/search-service.yml",
             "quote": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms."
           }
         ]
@@ -212,7 +212,7 @@
             "source": "code",
             "ref": "search-service/src/main/resources/search-service.yml",
             "line": 14,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/search-service/src/main/resources/search-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/search-service/src/main/resources/search-service.yml",
             "quote": "# @rule [AQPI-4] Check-in can be at most 500 days ahead."
           }
         ]
@@ -503,7 +503,7 @@
             "source": "code",
             "ref": "data-dictionary/booking-attributes.json",
             "line": null,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/data-dictionary/booking-attributes.json",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/data-dictionary/booking-attributes.json",
             "quote": null
           }
         ]
@@ -564,7 +564,7 @@
             "source": "code",
             "ref": "cart-service/src/main/resources/cart-service.yml",
             "line": 16,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/cart-service/src/main/resources/cart-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/cart-service/src/main/resources/cart-service.yml",
             "quote": "# @rule [AQPI-33] A cart expires 20 minutes after it is created and never creates a reservation itself."
           }
         ]
@@ -589,7 +589,7 @@
             "source": "code",
             "ref": "search-service/src/main/resources/search-service.yml",
             "line": 12,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/search-service/src/main/resources/search-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/search-service/src/main/resources/search-service.yml",
             "quote": "# @rule [AQPI-34] A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights."
           }
         ]
@@ -614,7 +614,7 @@
             "source": "code",
             "ref": "notification-service/src/main/resources/notification-service.yml",
             "line": 7,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
             "quote": "# @rule [AQPI-35] A confirmation can be resent at most 5 times per booking in 24 hours."
           }
         ]
@@ -639,7 +639,7 @@
             "source": "code",
             "ref": "reservation-service/src/main/resources/reservation-service.yml",
             "line": 22,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/reservation-service/src/main/resources/reservation-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
             "quote": "# @rule [AQPI-36] A confirmed reservation can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed."
           }
         ]
@@ -664,7 +664,7 @@
             "source": "code",
             "ref": "reservation-service/src/main/resources/reservation-service.yml",
             "line": 23,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/reservation-service/src/main/resources/reservation-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
             "quote": "# @rule [AQPI-36] A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released."
           }
         ]
@@ -707,7 +707,7 @@
             "source": "code",
             "ref": "notification-service/src/main/resources/notification-service.yml",
             "line": 16,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
             "quote": "# @rule [AQPI-24] The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in."
           }
         ]
@@ -732,7 +732,7 @@
             "source": "code",
             "ref": "notification-service/src/main/resources/notification-service.yml",
             "line": 14,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
             "quote": "# @rule [AQPI-25] Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused."
           }
         ]
@@ -757,7 +757,7 @@
             "source": "code",
             "ref": "notification-service/src/main/resources/notification-service.yml",
             "line": 18,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
             "quote": "# @rule [AQPI-37] A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another."
           }
         ]
@@ -782,7 +782,7 @@
             "source": "code",
             "ref": "notification-service/src/main/resources/notification-service.yml",
             "line": 19,
-            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+            "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
             "quote": "# @rule [AQPI-37] A cancellation e-mail that cannot be sent does not undo the cancellation."
           }
         ]
@@ -989,7 +989,7 @@
   },
   "dataModel": {
     "file": "data-dictionary/booking-attributes.json",
-    "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/data-dictionary/booking-attributes.json",
+    "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/data-dictionary/booking-attributes.json",
     "name": "Hotel booking attributes",
     "version": "1.0",
     "attributeCount": 21,
@@ -1180,6 +1180,21 @@
       "delivers": {
         "review-agent": [
           "suggestions"
+        ]
+      }
+    },
+    {
+      "id": "release-criteria",
+      "name": "Release criteria (Go / Conditional go / No-go)",
+      "description": "The parameters the cycle report applies to recommend Go, Conditional go or No-go. Edit this file, or upload a replacement, to change them without a code change.",
+      "file": "release-criteria.md",
+      "sha256": "960b8cf9596b",
+      "appliesTo": [
+        "report"
+      ],
+      "delivers": {
+        "report": [
+          "releaseDecision"
         ]
       }
     },
@@ -1530,7 +1545,7 @@
         {
           "key": "defects",
           "status": "delivered",
-          "count": 4,
+          "count": 1,
           "skills": [
             "defect-reporting",
             "traceability-handover"
@@ -1545,6 +1560,7 @@
       "status": "complete",
       "skills": [
         "cycle-report",
+        "release-criteria",
         "test-case-authoring",
         "traceability-handover"
       ],
@@ -1566,6 +1582,15 @@
           "count": 1,
           "skills": [
             "cycle-report"
+          ],
+          "note": null
+        },
+        {
+          "key": "releaseDecision",
+          "status": "delivered",
+          "count": 1,
+          "skills": [
+            "release-criteria"
           ],
           "note": null
         },
@@ -1609,12 +1634,12 @@
     {
       "slot": "codebase",
       "label": "Codebase",
-      "ref": "sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44)",
+      "ref": "sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (e0dab1c)",
       "summary": "AQPI-1 Intelligent Hotel Shopping and Reservation Experience: reactive Spring Boot microservices",
       "children": [],
       "statements": 13,
       "provenance": "github",
-      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-12T01:35:20.908Z",
+      "provenanceLabel": "Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (e0dab1c) at 2026-10-12T02:09:53.132Z",
       "files": [
         "README.md",
         "TRACEABILITY.md",
@@ -4876,7 +4901,7 @@
       "name": "Hotel booking attributes",
       "version": "1.0",
       "attributeCount": 21,
-      "source": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/data-dictionary/booking-attributes.json"
+      "source": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/data-dictionary/booking-attributes.json"
     },
     "total": 144,
     "conforming": 136,
@@ -6611,33 +6636,33 @@
   "execution": {
     "executed": true,
     "quarantined": "not measured",
-    "durationMs": 10476,
+    "durationMs": 38772,
     "tool": "Playwright 1.63.0 (headless Chromium, JSON reporter)",
-    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-wzmdRW/runs/CYC-3/playwright.config.js",
+    "command": "npx playwright test --config ../../../../../tmp/aqe-demo-U7iSEY/runs/CYC-3/playwright.config.js",
     "sut": {
       "build": "demo/hotel-booking-platform-v2",
-      "url": "http://127.0.0.1:41839",
+      "url": "http://127.0.0.1:45821",
       "services": {
-        "hotel-service": "http://127.0.0.1:36023",
-        "offer-service": "http://127.0.0.1:44283",
-        "notification-service": "http://127.0.0.1:46873",
-        "search-service": "http://127.0.0.1:41839",
-        "cart-service": "http://127.0.0.1:35393",
-        "reservation-service": "http://127.0.0.1:35817"
+        "hotel-service": "http://127.0.0.1:44131",
+        "offer-service": "http://127.0.0.1:40169",
+        "notification-service": "http://127.0.0.1:35443",
+        "search-service": "http://127.0.0.1:45821",
+        "cart-service": "http://127.0.0.1:40259",
+        "reservation-service": "http://127.0.0.1:43895"
       },
       "name": "Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2"
     },
-    "startedAt": "2026-10-12T01:35:26.369Z",
-    "finishedAt": "2026-10-12T01:35:36.845Z",
+    "startedAt": "2026-10-12T02:09:59.306Z",
+    "finishedAt": "2026-10-12T02:10:38.078Z",
     "summary": {
       "total": 144,
       "executed": 83,
-      "passed": 79,
-      "failed": 4,
+      "passed": 82,
+      "failed": 1,
       "skipped": 0,
       "notRun": 61,
-      "durationMs": 5196,
-      "passRate": 95.2
+      "durationMs": 34501,
+      "passRate": 98.8
     },
     "results": [
       {
@@ -6645,7 +6670,7 @@
         "requirementId": "REQ-003",
         "name": "The payment summary shows taxes, mandatory fees and the total before booking",
         "status": "passed",
-        "duration": 579,
+        "duration": 525,
         "reason": null,
         "aiTriage": null
       },
@@ -6699,7 +6724,7 @@
         "requirementId": "REQ-013",
         "name": "A valid search returns available hotels for the destination",
         "status": "passed",
-        "duration": 229,
+        "duration": 222,
         "reason": null,
         "aiTriage": null
       },
@@ -6708,7 +6733,7 @@
         "requirementId": "REQ-014",
         "name": "The results page returns the criteria the guest submitted",
         "status": "passed",
-        "duration": 63,
+        "duration": 56,
         "reason": null,
         "aiTriage": null
       },
@@ -6717,7 +6742,7 @@
         "requirementId": "REQ-015",
         "name": "A check-in date in the past is rejected",
         "status": "passed",
-        "duration": 51,
+        "duration": 45,
         "reason": null,
         "aiTriage": null
       },
@@ -6726,7 +6751,7 @@
         "requirementId": "REQ-015",
         "name": "A check-out on the check-in day is rejected",
         "status": "passed",
-        "duration": 35,
+        "duration": 38,
         "reason": null,
         "aiTriage": null
       },
@@ -6744,7 +6769,7 @@
         "requirementId": "REQ-016",
         "name": "When every hotel is sold out the guest is told and offered other dates, guests or destination",
         "status": "passed",
-        "duration": 53,
+        "duration": 48,
         "reason": null,
         "aiTriage": null
       },
@@ -6780,7 +6805,7 @@
         "requirementId": "REQ-020",
         "name": "The search form marks destination, dates, rooms and adults as required",
         "status": "passed",
-        "duration": 24,
+        "duration": 23,
         "reason": null,
         "aiTriage": null
       },
@@ -6789,7 +6814,7 @@
         "requirementId": "REQ-021",
         "name": "Two rooms for one adult return a message on the adults field",
         "status": "passed",
-        "duration": 23,
+        "duration": 19,
         "reason": null,
         "aiTriage": null
       },
@@ -6816,7 +6841,7 @@
         "requirementId": "REQ-025",
         "name": "When every hotel is sold out the guest is told and offered other dates, guests or destination",
         "status": "passed",
-        "duration": 43,
+        "duration": 37,
         "reason": null,
         "aiTriage": null
       },
@@ -6834,7 +6859,7 @@
         "requirementId": "REQ-027",
         "name": "Submitting the same search twice in one session returns the same search",
         "status": "passed",
-        "duration": 48,
+        "duration": 41,
         "reason": null,
         "aiTriage": null
       },
@@ -6843,7 +6868,7 @@
         "requirementId": "REQ-028",
         "name": "Every result has a name, location, image, availability and, when bookable, a starting price in a currency",
         "status": "passed",
-        "duration": 30,
+        "duration": 25,
         "reason": null,
         "aiTriage": null
       },
@@ -6852,7 +6877,7 @@
         "requirementId": "REQ-029",
         "name": "Every bookable result states what its price includes",
         "status": "passed",
-        "duration": 30,
+        "duration": 24,
         "reason": null,
         "aiTriage": null
       },
@@ -6861,7 +6886,7 @@
         "requirementId": "REQ-030",
         "name": "A sold-out hotel is listed as SOLD_OUT without a price",
         "status": "passed",
-        "duration": 30,
+        "duration": 27,
         "reason": null,
         "aiTriage": null
       },
@@ -6870,7 +6895,7 @@
         "requirementId": "REQ-031",
         "name": "Results can be read two at a time",
         "status": "passed",
-        "duration": 41,
+        "duration": 38,
         "reason": null,
         "aiTriage": null
       },
@@ -6879,7 +6904,7 @@
         "requirementId": "REQ-032",
         "name": "The starting price equals the cheapest rate on the hotel page",
         "status": "passed",
-        "duration": 33,
+        "duration": 35,
         "reason": null,
         "aiTriage": null
       },
@@ -6888,7 +6913,7 @@
         "requirementId": "REQ-033",
         "name": "The hotel page shows description, images, address, amenities, rooms with prices and policies",
         "status": "passed",
-        "duration": 17,
+        "duration": 18,
         "reason": null,
         "aiTriage": null
       },
@@ -6915,7 +6940,7 @@
         "requirementId": "REQ-036",
         "name": "Every rate plan states its cancellation terms and payment rule",
         "status": "passed",
-        "duration": 24,
+        "duration": 25,
         "reason": null,
         "aiTriage": null
       },
@@ -6933,7 +6958,7 @@
         "requirementId": "REQ-038",
         "name": "Spa access is not offered at a hotel without a spa",
         "status": "passed",
-        "duration": 118,
+        "duration": 121,
         "reason": null,
         "aiTriage": null
       },
@@ -6942,7 +6967,7 @@
         "requirementId": "REQ-039",
         "name": "Every recommended extra carries at least one reason code",
         "status": "passed",
-        "duration": 19,
+        "duration": 20,
         "reason": null,
         "aiTriage": null
       },
@@ -6987,7 +7012,7 @@
         "requirementId": "REQ-044",
         "name": "Each offer shows name, description, price and currency and is labelled an optional extra",
         "status": "passed",
-        "duration": 23,
+        "duration": 17,
         "reason": null,
         "aiTriage": null
       },
@@ -6996,7 +7021,7 @@
         "requirementId": "REQ-045",
         "name": "The guest can record add, skip and dismiss on an offer",
         "status": "passed",
-        "duration": 30,
+        "duration": 26,
         "reason": null,
         "aiTriage": null
       },
@@ -7005,7 +7030,7 @@
         "requirementId": "REQ-046",
         "name": "Each offer shows name, description, price and currency and is labelled an optional extra",
         "status": "passed",
-        "duration": 18,
+        "duration": 23,
         "reason": null,
         "aiTriage": null
       },
@@ -7014,7 +7039,7 @@
         "requirementId": "REQ-048",
         "name": "The cart holds the selected hotel, room, rate, dates, occupancy and price components",
         "status": "passed",
-        "duration": 24,
+        "duration": 22,
         "reason": null,
         "aiTriage": null
       },
@@ -7068,7 +7093,7 @@
         "requirementId": "REQ-054",
         "name": "Breakfast can go to 2 but not above its limit of 4",
         "status": "passed",
-        "duration": 83,
+        "duration": 87,
         "reason": null,
         "aiTriage": null
       },
@@ -7077,7 +7102,7 @@
         "requirementId": "REQ-055",
         "name": "Removing breakfast returns the total to the room-only amount",
         "status": "passed",
-        "duration": 31,
+        "duration": 41,
         "reason": null,
         "aiTriage": null
       },
@@ -7095,7 +7120,7 @@
         "requirementId": "REQ-057",
         "name": "The cart itemises room, taxes, fees, extras and discounts and they add up to the total",
         "status": "passed",
-        "duration": 28,
+        "duration": 31,
         "reason": null,
         "aiTriage": null
       },
@@ -7140,7 +7165,7 @@
         "requirementId": "REQ-062",
         "name": "Checkout lists name, e-mail, payment and privacy notice as required and phone as optional",
         "status": "passed",
-        "duration": 32,
+        "duration": 34,
         "reason": null,
         "aiTriage": null
       },
@@ -7149,7 +7174,7 @@
         "requirementId": "REQ-063",
         "name": "An invalid e-mail address is rejected on the e-mail field",
         "status": "passed",
-        "duration": 38,
+        "duration": 40,
         "reason": null,
         "aiTriage": null
       },
@@ -7158,7 +7183,7 @@
         "requirementId": "REQ-064",
         "name": "Booking without accepting the privacy notice is refused",
         "status": "passed",
-        "duration": 37,
+        "duration": 25,
         "reason": null,
         "aiTriage": null
       },
@@ -7184,8 +7209,8 @@
         "key": "TC-F-058",
         "requirementId": "REQ-067",
         "name": "Support staff see a masked e-mail and other callers are refused",
-        "status": "passed",
-        "duration": 245,
+        "status": "failed",
+        "duration": 30029,
         "reason": null,
         "aiTriage": null
       },
@@ -7194,7 +7219,7 @@
         "requirementId": "REQ-068",
         "name": "A pay-at-hotel rate shows nothing to pay now and the total due at the hotel",
         "status": "passed",
-        "duration": 37,
+        "duration": 59,
         "reason": null,
         "aiTriage": null
       },
@@ -7203,7 +7228,7 @@
         "requirementId": "REQ-068",
         "name": "A prepaid rate shows the full total to pay now",
         "status": "passed",
-        "duration": 36,
+        "duration": 44,
         "reason": null,
         "aiTriage": null
       },
@@ -7221,7 +7246,7 @@
         "requirementId": "REQ-070",
         "name": "A declined card returns a decline without a booking",
         "status": "passed",
-        "duration": 36,
+        "duration": 53,
         "reason": null,
         "aiTriage": null
       },
@@ -7230,7 +7255,7 @@
         "requirementId": "REQ-070",
         "name": "A lost payment response leaves the booking pending and tells the guest not to resubmit",
         "status": "passed",
-        "duration": 60,
+        "duration": 78,
         "reason": null,
         "aiTriage": null
       },
@@ -7239,7 +7264,7 @@
         "requirementId": "REQ-070",
         "name": "A payment provider failure returns a failure without a booking",
         "status": "passed",
-        "duration": 34,
+        "duration": 39,
         "reason": null,
         "aiTriage": null
       },
@@ -7248,7 +7273,7 @@
         "requirementId": "REQ-071",
         "name": "A raw card number is refused and never echoed back",
         "status": "passed",
-        "duration": 23,
+        "duration": 29,
         "reason": null,
         "aiTriage": null
       },
@@ -7275,7 +7300,7 @@
         "requirementId": "REQ-074",
         "name": "A successful booking creates one reservation with a confirmation number",
         "status": "passed",
-        "duration": 42,
+        "duration": 62,
         "reason": null,
         "aiTriage": null
       },
@@ -7284,7 +7309,7 @@
         "requirementId": "REQ-075",
         "name": "Resubmitting with the same key returns the original reservation",
         "status": "passed",
-        "duration": 60,
+        "duration": 55,
         "reason": null,
         "aiTriage": null
       },
@@ -7293,7 +7318,7 @@
         "requirementId": "REQ-076",
         "name": "After a booking and a decline the reconciliation report is consistent",
         "status": "passed",
-        "duration": 75,
+        "duration": 78,
         "reason": null,
         "aiTriage": null
       },
@@ -7329,7 +7354,7 @@
         "requirementId": "REQ-080",
         "name": "The confirmation e-mail matches the booking and contains no payment token",
         "status": "passed",
-        "duration": 56,
+        "duration": 64,
         "reason": null,
         "aiTriage": null
       },
@@ -7338,7 +7363,7 @@
         "requirementId": "REQ-081",
         "name": "The confirmation e-mail matches the booking and contains no payment token",
         "status": "passed",
-        "duration": 47,
+        "duration": 66,
         "reason": null,
         "aiTriage": null
       },
@@ -7356,7 +7381,7 @@
         "requirementId": "REQ-084",
         "name": "The confirmation e-mail matches the booking and contains no payment token",
         "status": "passed",
-        "duration": 53,
+        "duration": 54,
         "reason": null,
         "aiTriage": null
       },
@@ -7374,7 +7399,7 @@
         "requirementId": "REQ-086",
         "name": "When the e-mail cannot be sent the booking stays confirmed",
         "status": "passed",
-        "duration": 174,
+        "duration": 144,
         "reason": null,
         "aiTriage": null
       },
@@ -7410,7 +7435,7 @@
         "requirementId": "REQ-090",
         "name": "A resend with the wrong last name gets the same answer as a correct one",
         "status": "passed",
-        "duration": 89,
+        "duration": 73,
         "reason": null,
         "aiTriage": null
       },
@@ -7464,7 +7489,7 @@
         "requirementId": "REQ-096",
         "name": "Support staff see a masked e-mail and other callers are refused",
         "status": "passed",
-        "duration": 78,
+        "duration": 50,
         "reason": null,
         "aiTriage": null
       },
@@ -7482,7 +7507,7 @@
         "requirementId": "REQ-098",
         "name": "A correlation ID sent by the client is returned by search, cart and reservation",
         "status": "passed",
-        "duration": 68,
+        "duration": 53,
         "reason": null,
         "aiTriage": null
       },
@@ -7545,7 +7570,7 @@
         "requirementId": "REQ-107",
         "name": "The confirmation e-mail has a language, a heading, a captioned table with scoped headers and a text part",
         "status": "passed",
-        "duration": 67,
+        "duration": 48,
         "reason": null,
         "aiTriage": null
       },
@@ -7581,7 +7606,7 @@
         "requirementId": "REQ-112",
         "name": "A new cart expires 20 minutes after creation and reserves nothing",
         "status": "passed",
-        "duration": 34,
+        "duration": 21,
         "reason": null,
         "aiTriage": null
       },
@@ -7590,7 +7615,7 @@
         "requirementId": "REQ-113",
         "name": "A price rise above 1% blocks booking until the guest acknowledges it",
         "status": "passed",
-        "duration": 93,
+        "duration": 83,
         "reason": null,
         "aiTriage": null
       },
@@ -7598,8 +7623,8 @@
         "key": "TC-F-103",
         "requirementId": "REQ-113",
         "name": "A price change within 1% does not need acknowledgement",
-        "status": "failed",
-        "duration": 33,
+        "status": "passed",
+        "duration": 31,
         "reason": null,
         "aiTriage": null
       },
@@ -7608,7 +7633,7 @@
         "requirementId": "REQ-114",
         "name": "The 6th resend within 24 hours is refused",
         "status": "passed",
-        "duration": 106,
+        "duration": 85,
         "reason": null,
         "aiTriage": null
       },
@@ -7617,7 +7642,7 @@
         "requirementId": "REQ-115",
         "name": "A reservation without an Idempotency-Key is refused",
         "status": "passed",
-        "duration": 24,
+        "duration": 22,
         "reason": null,
         "aiTriage": null
       },
@@ -7625,8 +7650,8 @@
         "key": "TC-F-106",
         "requirementId": "REQ-115",
         "name": "A key shorter than 8 characters is refused",
-        "status": "failed",
-        "duration": 55,
+        "status": "passed",
+        "duration": 19,
         "reason": null,
         "aiTriage": null
       },
@@ -7635,7 +7660,7 @@
         "requirementId": "REQ-115",
         "name": "Reusing a key for a different cart is refused",
         "status": "passed",
-        "duration": 76,
+        "duration": 52,
         "reason": null,
         "aiTriage": null
       },
@@ -7644,7 +7669,7 @@
         "requirementId": "REQ-116",
         "name": "A 30-night stay is accepted",
         "status": "passed",
-        "duration": 28,
+        "duration": 25,
         "reason": null,
         "aiTriage": null
       },
@@ -7653,7 +7678,7 @@
         "requirementId": "REQ-116",
         "name": "A 31-night stay is rejected",
         "status": "passed",
-        "duration": 22,
+        "duration": 16,
         "reason": null,
         "aiTriage": null
       },
@@ -7662,7 +7687,7 @@
         "requirementId": "REQ-116",
         "name": "A 14-night stay in Paris is accepted",
         "status": "passed",
-        "duration": 39,
+        "duration": 19,
         "reason": null,
         "aiTriage": null
       },
@@ -7670,8 +7695,8 @@
         "key": "TC-F-111",
         "requirementId": "REQ-116",
         "name": "A 15-night stay in Paris is rejected",
-        "status": "failed",
-        "duration": 25,
+        "status": "passed",
+        "duration": 14,
         "reason": null,
         "aiTriage": null
       },
@@ -7680,7 +7705,7 @@
         "requirementId": "REQ-117",
         "name": "4 adults in one room are accepted",
         "status": "passed",
-        "duration": 44,
+        "duration": 19,
         "reason": null,
         "aiTriage": null
       },
@@ -7689,7 +7714,7 @@
         "requirementId": "REQ-117",
         "name": "5 adults in one room are rejected",
         "status": "passed",
-        "duration": 20,
+        "duration": 17,
         "reason": null,
         "aiTriage": null
       },
@@ -7698,7 +7723,7 @@
         "requirementId": "REQ-117",
         "name": "4 children in one room are rejected",
         "status": "passed",
-        "duration": 26,
+        "duration": 15,
         "reason": null,
         "aiTriage": null
       },
@@ -7707,7 +7732,7 @@
         "requirementId": "REQ-117",
         "name": "9 rooms in one search are rejected",
         "status": "passed",
-        "duration": 20,
+        "duration": 15,
         "reason": null,
         "aiTriage": null
       },
@@ -7716,7 +7741,7 @@
         "requirementId": "REQ-118",
         "name": "A check-in 500 days ahead is accepted",
         "status": "passed",
-        "duration": 29,
+        "duration": 17,
         "reason": null,
         "aiTriage": null
       },
@@ -7725,7 +7750,7 @@
         "requirementId": "REQ-118",
         "name": "A check-in 501 days ahead is rejected",
         "status": "passed",
-        "duration": 16,
+        "duration": 13,
         "reason": null,
         "aiTriage": null
       },
@@ -7752,7 +7777,7 @@
         "requirementId": "REQ-121",
         "name": "A flexible booking cancelled more than 48 hours before check-in is cancelled free of charge",
         "status": "passed",
-        "duration": 63,
+        "duration": 59,
         "reason": null,
         "aiTriage": null
       },
@@ -7761,7 +7786,7 @@
         "requirementId": "REQ-121",
         "name": "A cancellation within 48 hours of check-in is refused and the booking stays confirmed",
         "status": "passed",
-        "duration": 45,
+        "duration": 50,
         "reason": null,
         "aiTriage": null
       },
@@ -7770,7 +7795,7 @@
         "requirementId": "REQ-122",
         "name": "A cancelled booking shows CANCELLED, its payment hold is voided and its room is released",
         "status": "passed",
-        "duration": 60,
+        "duration": 75,
         "reason": null,
         "aiTriage": null
       },
@@ -7779,7 +7804,7 @@
         "requirementId": "REQ-123",
         "name": "A non-refundable booking cannot be cancelled free of charge",
         "status": "passed",
-        "duration": 40,
+        "duration": 47,
         "reason": null,
         "aiTriage": null
       },
@@ -7788,7 +7813,7 @@
         "requirementId": "REQ-124",
         "name": "The confirmation of a flexible booking states free cancellation until 48 hours before check-in",
         "status": "passed",
-        "duration": 44,
+        "duration": 41,
         "reason": null,
         "aiTriage": null
       },
@@ -7797,7 +7822,7 @@
         "requirementId": "REQ-124",
         "name": "The confirmation of a non-refundable booking states no free-cancellation deadline",
         "status": "passed",
-        "duration": 42,
+        "duration": 49,
         "reason": null,
         "aiTriage": null
       },
@@ -7805,8 +7830,8 @@
         "key": "TC-F-126",
         "requirementId": "REQ-125",
         "name": "Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused",
-        "status": "failed",
-        "duration": 391,
+        "status": "passed",
+        "duration": 317,
         "reason": null,
         "aiTriage": null
       },
@@ -7815,7 +7840,7 @@
         "requirementId": "REQ-126",
         "name": "A cancelled booking gets one cancellation e-mail, even when cancelled twice",
         "status": "passed",
-        "duration": 89,
+        "duration": 68,
         "reason": null,
         "aiTriage": null
       },
@@ -7824,7 +7849,7 @@
         "requirementId": "REQ-127",
         "name": "When the cancellation e-mail cannot be sent the booking stays cancelled",
         "status": "passed",
-        "duration": 196,
+        "duration": 165,
         "reason": null,
         "aiTriage": null
       },
@@ -7842,7 +7867,7 @@
         "requirementId": "REQ-129",
         "name": "Filtering by the spa amenity returns only hotels with a spa",
         "status": "passed",
-        "duration": 45,
+        "duration": 32,
         "reason": null,
         "aiTriage": null
       },
@@ -7851,7 +7876,7 @@
         "requirementId": "REQ-130",
         "name": "Sorting by lowest price orders bookable hotels by starting price",
         "status": "passed",
-        "duration": 36,
+        "duration": 24,
         "reason": null,
         "aiTriage": null
       },
@@ -7860,7 +7885,7 @@
         "requirementId": "REQ-130",
         "name": "An unapproved sort option is refused with a clear message",
         "status": "passed",
-        "duration": 65,
+        "duration": 49,
         "reason": null,
         "aiTriage": null
       },
@@ -7878,7 +7903,7 @@
         "requirementId": "REQ-132",
         "name": "A filter that leaves no hotels offers a reset",
         "status": "passed",
-        "duration": 29,
+        "duration": 28,
         "reason": null,
         "aiTriage": null
       },
@@ -7896,7 +7921,7 @@
         "requirementId": "REQ-134",
         "name": "A room books without any extra",
         "status": "passed",
-        "duration": 51,
+        "duration": 39,
         "reason": null,
         "aiTriage": null
       },
@@ -7905,7 +7930,7 @@
         "requirementId": "REQ-135",
         "name": "Withdrawing consent stops personalized offers",
         "status": "passed",
-        "duration": 32,
+        "duration": 28,
         "reason": null,
         "aiTriage": null
       },
@@ -7914,7 +7939,7 @@
         "requirementId": "REQ-136",
         "name": "The success outcome shows confirmation number, hotel, stay, extras and total",
         "status": "passed",
-        "duration": 65,
+        "duration": 49,
         "reason": null,
         "aiTriage": null
       },
@@ -7923,7 +7948,7 @@
         "requirementId": "REQ-137",
         "name": "A declined payment does not say the booking is confirmed",
         "status": "passed",
-        "duration": 30,
+        "duration": 28,
         "reason": null,
         "aiTriage": null
       },
@@ -7932,7 +7957,7 @@
         "requirementId": "REQ-138",
         "name": "A pending outcome tells the guest not to resubmit and how to check later",
         "status": "passed",
-        "duration": 35,
+        "duration": 25,
         "reason": null,
         "aiTriage": null
       }
@@ -7941,88 +7966,22 @@
   "defects": {
     "open": [
       {
-        "id": "DEF-007",
-        "title": "A price change within 1% does not need acknowledgement: returns true instead of false",
-        "severity": "Critical",
-        "blocksRelease": true,
-        "ruleId": "BR-113",
-        "movement": "still open",
-        "testCaseKey": "TC-F-103",
-        "requirementId": "REQ-113",
-        "expected": "false",
-        "actual": "true",
-        "assertion": "expect(rv.body.requiresAcknowledgement).toBe(false);",
-        "story": "AQPI-17",
-        "jiraStatus": "not raised",
-        "jiraKey": null,
-        "jiraUrl": null,
-        "jira": "not raised in Jira; linked to AQPI-17 in the platform",
-        "aiTriage": null,
-        "aiSummary": null,
-        "aiSteps": null,
-        "aiLikelyCause": null
-      },
-      {
-        "id": "DEF-008",
-        "title": "A key shorter than 8 characters is refused: returns 201 instead of 400",
-        "severity": "Medium",
-        "blocksRelease": false,
-        "ruleId": "BR-115",
-        "movement": "still open",
-        "testCaseKey": "TC-F-106",
-        "requirementId": "REQ-115",
-        "expected": "400",
-        "actual": "201",
-        "assertion": "expect(r.status).toBe(400);",
-        "story": "AQPI-21",
-        "jiraStatus": "not raised",
-        "jiraKey": null,
-        "jiraUrl": null,
-        "jira": "not raised in Jira; linked to AQPI-21 in the platform",
-        "aiTriage": null,
-        "aiSummary": null,
-        "aiSteps": null,
-        "aiLikelyCause": null
-      },
-      {
         "id": "DEF-010",
-        "title": "A 15-night stay in Paris is rejected: returns 200 instead of 400",
+        "title": "Support staff see a masked e-mail and other callers are refused: failed",
         "severity": "Medium",
         "blocksRelease": false,
-        "ruleId": "BR-116",
+        "ruleId": "BR-067",
         "movement": "new",
-        "testCaseKey": "TC-F-111",
-        "requirementId": "REQ-116",
-        "expected": "400",
-        "actual": "200",
-        "assertion": "expect(r.status).toBe(400);",
-        "story": "AQPI-34",
+        "testCaseKey": "TC-F-058",
+        "requirementId": "REQ-067",
+        "expected": "Without role HTTP 403; as SUPPORT the e-mail is masked and the full address never appears",
+        "actual": "(see failing assertion)",
+        "assertion": "Test timeout of 30000ms exceeded.",
+        "story": "AQPI-19",
         "jiraStatus": "not raised",
         "jiraKey": null,
         "jiraUrl": null,
-        "jira": "not raised in Jira; linked to AQPI-34 in the platform",
-        "aiTriage": null,
-        "aiSummary": null,
-        "aiSteps": null,
-        "aiLikelyCause": null
-      },
-      {
-        "id": "DEF-011",
-        "title": "Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused: returns 200 instead of 409",
-        "severity": "Medium",
-        "blocksRelease": false,
-        "ruleId": "BR-125",
-        "movement": "new",
-        "testCaseKey": "TC-F-126",
-        "requirementId": "REQ-125",
-        "expected": "409",
-        "actual": "200",
-        "assertion": "expect(over.status).toBe(409);",
-        "story": "AQPI-25",
-        "jiraStatus": "not raised",
-        "jiraKey": null,
-        "jiraUrl": null,
-        "jira": "not raised in Jira; linked to AQPI-25 in the platform",
+        "jira": "not raised in Jira; linked to AQPI-19 in the platform",
         "aiTriage": null,
         "aiSummary": null,
         "aiSteps": null,
@@ -8064,6 +8023,28 @@
         "certification": "AQPI-22 is implemented in build demo/hotel-booking-platform-v2; 3 test(s) of the picked-up gap passed in CYC-3, so DEF-006 (gap from CYC-2) is closed."
       },
       {
+        "id": "DEF-007",
+        "title": "A price change within 1% does not need acknowledgement: returns true instead of false",
+        "testCaseKey": "TC-F-103",
+        "story": "AQPI-17",
+        "status": "Closed",
+        "firstSeenCycle": "CYC-2",
+        "resolvedInCycle": "CYC-3",
+        "retestResult": "passed",
+        "certification": "Fixed in build demo/hotel-booking-platform-v2; TC-F-103 re-run in CYC-3 passed, so DEF-007 (first seen in CYC-2) is certified closed."
+      },
+      {
+        "id": "DEF-008",
+        "title": "A key shorter than 8 characters is refused: returns 201 instead of 400",
+        "testCaseKey": "TC-F-106",
+        "story": "AQPI-21",
+        "status": "Closed",
+        "firstSeenCycle": "CYC-2",
+        "resolvedInCycle": "CYC-3",
+        "retestResult": "passed",
+        "certification": "Fixed in build demo/hotel-booking-platform-v2; TC-F-106 re-run in CYC-3 passed, so DEF-008 (first seen in CYC-2) is certified closed."
+      },
+      {
         "id": "DEF-009",
         "title": "9 rooms in one search are rejected: returns 200 instead of 400",
         "testCaseKey": "TC-F-115",
@@ -8076,8 +8057,7 @@
       }
     ],
     "movement": {
-      "still open": 2,
-      "new": 2
+      "new": 1
     }
   },
   "coverage": {
@@ -8682,8 +8662,8 @@
         "cases": 1,
         "automated": 1,
         "executed": 1,
-        "failed": 0,
-        "status": "executed - passing"
+        "failed": 1,
+        "status": "executed - failing"
       },
       {
         "requirementId": "REQ-068",
@@ -9096,8 +9076,8 @@
         "cases": 2,
         "automated": 2,
         "executed": 2,
-        "failed": 1,
-        "status": "executed - failing"
+        "failed": 0,
+        "status": "executed - passing"
       },
       {
         "requirementId": "REQ-114",
@@ -9114,8 +9094,8 @@
         "cases": 3,
         "automated": 3,
         "executed": 3,
-        "failed": 1,
-        "status": "executed - failing"
+        "failed": 0,
+        "status": "executed - passing"
       },
       {
         "requirementId": "REQ-116",
@@ -9123,8 +9103,8 @@
         "cases": 4,
         "automated": 4,
         "executed": 4,
-        "failed": 1,
-        "status": "executed - failing"
+        "failed": 0,
+        "status": "executed - passing"
       },
       {
         "requirementId": "REQ-117",
@@ -9204,8 +9184,8 @@
         "cases": 1,
         "automated": 1,
         "executed": 1,
-        "failed": 1,
-        "status": "executed - failing"
+        "failed": 0,
+        "status": "executed - passing"
       },
       {
         "requirementId": "REQ-126",
@@ -9342,7 +9322,7 @@
             "TC-F-110",
             "TC-F-111"
           ],
-          "status": "exercised - failing"
+          "status": "exercised - passing"
         },
         {
           "attribute": "stay.checkInOffsetDays",
@@ -9366,7 +9346,7 @@
             "TC-F-110",
             "TC-F-111"
           ],
-          "status": "exercised - failing"
+          "status": "exercised - passing"
         },
         {
           "attribute": "occupancy.rooms",
@@ -9430,7 +9410,7 @@
             "TC-F-127",
             "TC-F-128"
           ],
-          "status": "exercised - failing"
+          "status": "exercised - passing"
         },
         {
           "attribute": "extras.code",
@@ -9460,7 +9440,7 @@
             "TC-F-126",
             "TC-F-128"
           ],
-          "status": "exercised - failing"
+          "status": "exercised - passing"
         },
         {
           "attribute": "payment.token",
@@ -9496,13 +9476,13 @@
       "designed": 126,
       "automated": 65,
       "executed": 65,
-      "passing": 61
+      "passing": 64
     },
     "percent": {
       "designed": 91.3,
       "automated": 47.1,
       "executed": 47.1,
-      "passing": 44.2
+      "passing": 46.4
     }
   },
   "traceability": {
@@ -10869,8 +10849,10 @@
         "crosses": [],
         "testDataId": "TD-F-058",
         "scriptFile": "br-067-support-masking.spec.js",
-        "result": "passed",
-        "defects": [],
+        "result": "failed",
+        "defects": [
+          "DEF-010"
+        ],
         "jiraDefects": []
       },
       {
@@ -11881,10 +11863,8 @@
         "crosses": [],
         "testDataId": "TD-F-103",
         "scriptFile": "br-113-price-change-ack.spec.js",
-        "result": "failed",
-        "defects": [
-          "DEF-007"
-        ],
+        "result": "passed",
+        "defects": [],
         "jiraDefects": []
       },
       {
@@ -11949,10 +11929,8 @@
         "crosses": [],
         "testDataId": "TD-F-106",
         "scriptFile": "br-115-idempotency-key.spec.js",
-        "result": "failed",
-        "defects": [
-          "DEF-008"
-        ],
+        "result": "passed",
+        "defects": [],
         "jiraDefects": []
       },
       {
@@ -12061,10 +12039,8 @@
         "crosses": [],
         "testDataId": "TD-F-111",
         "scriptFile": "br-116-stay-length-limit.spec.js",
-        "result": "failed",
-        "defects": [
-          "DEF-010"
-        ],
+        "result": "passed",
+        "defects": [],
         "jiraDefects": []
       },
       {
@@ -12393,10 +12369,8 @@
         "crosses": [],
         "testDataId": "TD-F-126",
         "scriptFile": "br-125-ops-retry-limit.spec.js",
-        "result": "failed",
-        "defects": [
-          "DEF-011"
-        ],
+        "result": "passed",
+        "defects": [],
         "jiraDefects": []
       },
       {
@@ -12746,12 +12720,10 @@
         "requirements": 1,
         "testCases": 4,
         "automated": 4,
-        "passed": 3,
-        "failed": 1,
-        "defects": [
-          "DEF-010"
-        ],
-        "status": "failing"
+        "passed": 4,
+        "failed": 0,
+        "defects": [],
+        "status": "verified"
       },
       {
         "key": "AQPI-35",
@@ -12818,12 +12790,10 @@
         "requirements": 6,
         "testCases": 6,
         "automated": 2,
-        "passed": 1,
-        "failed": 1,
-        "defects": [
-          "DEF-011"
-        ],
-        "status": "failing"
+        "passed": 2,
+        "failed": 0,
+        "defects": [],
+        "status": "verified"
       },
       {
         "key": "AQPI-26",
@@ -13086,12 +13056,10 @@
         "requirements": 6,
         "testCases": 7,
         "automated": 3,
-        "passed": 2,
-        "failed": 1,
-        "defects": [
-          "DEF-007"
-        ],
-        "status": "failing"
+        "passed": 3,
+        "failed": 0,
+        "defects": [],
+        "status": "verified"
       },
       {
         "key": "AQPI-18",
@@ -13116,10 +13084,12 @@
         "requirements": 6,
         "testCases": 6,
         "automated": 4,
-        "passed": 4,
-        "failed": 0,
-        "defects": [],
-        "status": "verified"
+        "passed": 3,
+        "failed": 1,
+        "defects": [
+          "DEF-010"
+        ],
+        "status": "failing"
       },
       {
         "key": "AQPI-20",
@@ -13144,12 +13114,10 @@
         "requirements": 7,
         "testCases": 9,
         "automated": 6,
-        "passed": 5,
-        "failed": 1,
-        "defects": [
-          "DEF-008"
-        ],
-        "status": "failing"
+        "passed": 6,
+        "failed": 0,
+        "defects": [],
+        "status": "verified"
       },
       {
         "key": "AQPI-22",
@@ -13239,8 +13207,8 @@
     "totals": {
       "jiraItems": 37,
       "covered": 37,
-      "verified": 24,
-      "failing": 4,
+      "verified": 27,
+      "failing": 1,
       "testCases": 144,
       "withData": 144,
       "withScript": 83,
@@ -13251,7 +13219,7 @@
     {
       "gate": "Requirement set review",
       "by": "Priya Shah",
-      "at": "2026-10-12T01:35:22.376Z",
+      "at": "2026-10-12T02:09:54.907Z",
       "decision": "approved",
       "comment": "",
       "detail": "43 requirements approved; 0 excluded; 0 conflict(s) resolved"
@@ -13259,14 +13227,14 @@
     {
       "gate": "Merge into baseline",
       "by": "Sam Lee",
-      "at": "2026-10-12T01:35:22.429Z",
+      "at": "2026-10-12T02:09:54.949Z",
       "decision": "approved",
       "comment": "",
       "detail": "23 requirements, 29 test cases, 18 scripts merged: BL-2 v1 -> v2"
     }
   ],
   "narrative": {
-    "text": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) (incremental) worked from Jira epic AQPI-32, AQPI-23 (Jira export on GitHub), Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) (pulled live from GitHub). The reviewed requirement set holds 138 requirements (20 unchanged · 3 enhanced · 20 new). 144 test cases are designed, 83 of them automated in 65 Playwright scripts. Execution ran 83 automated cases for real: 79 passed and 4 failed (pass rate 95.2%). 4 defect(s) were raised from real failures: DEF-007 A price change within 1% does not need acknowledgement: returns true instead of false; DEF-008 A key shorter than 8 characters is refused: returns 201 instead of 400; DEF-010 A 15-night stay in Paris is rejected: returns 200 instead of 400; DEF-011 Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused: returns 200 instead of 409.",
+    "text": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) (incremental) worked from Jira epic AQPI-32, AQPI-23 (Jira export on GitHub), Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (e0dab1c) (pulled live from GitHub). The reviewed requirement set holds 138 requirements (20 unchanged · 3 enhanced · 20 new). 144 test cases are designed, 83 of them automated in 65 Playwright scripts. Execution ran 83 automated cases for real: 82 passed and 1 failed (pass rate 98.8%). 1 defect(s) were raised from real failures: DEF-010 Support staff see a masked e-mail and other callers are refused: failed.",
     "risks": [],
     "recommendation": null,
     "draftedBy": "Deterministic template (demo mode - no model API key set)",
@@ -13292,7 +13260,7 @@
   },
   "honesty": [
     "Jira epic AQPI-32, AQPI-23: Jira export on GitHub (sri465inno/uc-agentic-quality-engineering@demo/jira-export, release-2.0 snapshot): Jira REST API v3 JSON of AQPI-32, exported from https://tcs-team-ou6drgfr.atlassian.net; no live Jira call was made",
-    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (fe1ce44) at 2026-10-12T01:35:20.908Z",
+    "Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (e0dab1c): Pulled live from GitHub: git clone of sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (e0dab1c) at 2026-10-12T02:09:53.132Z",
     "Execution: 83 automated cases really executed by Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2 (demo/hotel-booking-platform-v2); 61 manual case(s) designed but not executed.",
     "No model was used (no model API key set): normalisation, review, design, data, triage and prose are rule-based. Delta classification, coverage, pass/fail and defect raising are always computed in code."
   ]

@@ -707,5 +707,294 @@
     "varies": [],
     "crosses": [],
     "dataSet": "TD-N-005"
+  },
+  {
+    "key": "TC-F-009",
+    "requirementId": "REQ-121",
+    "ruleId": "BR-121",
+    "slot": "journey-cancel",
+    "kind": "free-cancellation",
+    "suite": "journey",
+    "name": "Guest books a flexible room, then cancels it free of charge more than 48 hours before check-in",
+    "objective": "Verify the release 2.0 cancellation journey across search, cart, reservation and payment: the booking ends cancelled and the payment hold is voided.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search NYC",
+      "Book a FLEX rate 30 days ahead",
+      "Cancel the reservation",
+      "View the reservation"
+    ],
+    "testData": "selection.ratePlanCode=FLEX; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Booking HTTP 201 CONFIRMED; cancel HTTP 200 CANCELLED with payment VOIDED; the reservation stays CANCELLED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-121-free-cancellation.spec.js",
+    "issueLinks": [
+      "AQPI-36"
+    ],
+    "sourceRefs": [
+      "AQPI-36"
+    ],
+    "cycle": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.ratePlanCode"
+    ],
+    "crosses": [
+      "AQPI-2",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-32"
+    ],
+    "dataSet": "TD-F-009"
+  },
+  {
+    "key": "TC-F-010",
+    "requirementId": "REQ-126",
+    "ruleId": "BR-126",
+    "slot": "journey-cancel-email",
+    "kind": "cancellation-email",
+    "suite": "journey",
+    "name": "Guest books, cancels and receives exactly one confirmation and one cancellation e-mail",
+    "objective": "Verify the release 2.0 cancellation journey across reservation and notification: the guest is told once about the booking and once about the cancellation.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Book a FLEX rate",
+      "Open the confirmation e-mail",
+      "Cancel the reservation",
+      "List its messages as support"
+    ],
+    "testData": "selection.ratePlanCode=FLEX; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Booking CONFIRMED with its e-mail; cancel HTTP 200 CANCELLED; exactly one CONFIRMATION and one CANCELLATION message",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-126-cancellation-email.spec.js",
+    "issueLinks": [
+      "AQPI-37"
+    ],
+    "sourceRefs": [
+      "AQPI-37"
+    ],
+    "cycle": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "selection.ratePlanCode"
+    ],
+    "crosses": [
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-32"
+    ],
+    "dataSet": "TD-F-010"
+  },
+  {
+    "key": "TC-F-011",
+    "requirementId": "REQ-130",
+    "ruleId": "BR-130",
+    "slot": "journey-sorted",
+    "kind": "result-sorting",
+    "suite": "journey",
+    "name": "Guest sorts the results by lowest price, then books a room from the sorted results",
+    "objective": "Verify the sort-and-book journey across the search, cart and reservation services.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search NYC",
+      "Sort the results by lowest price",
+      "Create a cart for a hotel in the results",
+      "Submit the reservation"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Bookable results in non-decreasing price order; the chosen hotel is in them; HTTP 201 CONFIRMED",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-130-result-sorting.spec.js",
+    "issueLinks": [
+      "AQPI-8"
+    ],
+    "sourceRefs": [
+      "AQPI-8"
+    ],
+    "cycle": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "crosses": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-14",
+      "AQPI-18"
+    ],
+    "dataSet": "TD-F-011"
+  },
+  {
+    "key": "TC-F-012",
+    "requirementId": "REQ-134",
+    "ruleId": "BR-134",
+    "slot": "journey-decline-offers",
+    "kind": "proceed-without-offers",
+    "suite": "journey",
+    "name": "Guest is shown extras, declines them all and books the room only",
+    "objective": "Verify the offers never block the journey: search, offers, cart without extras, reservation and confirmation e-mail.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search NYC",
+      "Get recommended extras",
+      "Create a cart without any extra",
+      "Submit the reservation",
+      "Open the confirmation e-mail"
+    ],
+    "testData": "Standard booking: every other booking attribute from the hotel data dictionary examples",
+    "expected": "Extras offered; HTTP 201 CONFIRMED with optional extras 0; confirmation e-mail carries the confirmation number",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-134-proceed-without-offers.spec.js",
+    "issueLinks": [
+      "AQPI-13"
+    ],
+    "sourceRefs": [
+      "AQPI-13"
+    ],
+    "cycle": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [],
+    "crosses": [
+      "AQPI-2",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23"
+    ],
+    "dataSet": "TD-F-012"
+  },
+  {
+    "key": "TC-F-013",
+    "requirementId": "REQ-136",
+    "ruleId": "BR-136",
+    "slot": "journey-outcome",
+    "kind": "booking-outcome",
+    "suite": "journey",
+    "name": "Guest books a room with breakfast and sees the full booking outcome, matching the confirmation e-mail",
+    "objective": "Verify the guest sees a clear success outcome at the end of the journey, consistent with the e-mail.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case).",
+    "steps": [
+      "Search NYC",
+      "Create a cart with breakfast",
+      "Submit the reservation",
+      "Read the booking outcome",
+      "Open the confirmation e-mail"
+    ],
+    "testData": "extras.code=BREAKFAST; extras.quantity=1; every other booking attribute from the hotel data dictionary examples",
+    "expected": "Outcome shows confirmation number, hotel, stay dates, breakfast and total; the e-mail has the same confirmation number",
+    "priority": "Medium",
+    "type": "functional",
+    "labels": [
+      "functional",
+      "eqe",
+      "automation"
+    ],
+    "automation": "Automated",
+    "scriptFile": "br-136-booking-outcome.spec.js",
+    "issueLinks": [
+      "AQPI-22"
+    ],
+    "sourceRefs": [
+      "AQPI-22"
+    ],
+    "cycle": "Hotel booking release 2.0 (AQPI-32 + AQPI-23) · EQE",
+    "designedWith": [
+      "incremental-merge",
+      "test-case-authoring",
+      "testing-eqe",
+      "traceability-handover"
+    ],
+    "designedFor": "eqe",
+    "inRun": true,
+    "status": "new",
+    "version": 1,
+    "previous": null,
+    "revisionNote": null,
+    "ui": false,
+    "varies": [
+      "extras.code"
+    ],
+    "crosses": [
+      "AQPI-2",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23"
+    ],
+    "dataSet": "TD-F-013"
   }
 ]

@@ -1,6 +1,7 @@
 'use strict';
 // What each agent actually produced, read from the persisted cycle, keyed by the artefact names skills declare.
 const { getTestingType, suiteOf } = require('./testing-types');
+const { buildLeadReport } = require('./lead-report');
 
 const present = (v) => (v === undefined ? null : v);
 
@@ -52,6 +53,7 @@ const OUTPUTS = {
   defects: (c) => ({ defects: { value: present(c.artifacts?.defects), allowEmpty: true } }),
   report: (c) => ({
     cycleReport: { value: present(c.report) },
+    releaseDecision: { value: c.report ? buildLeadReport(c).recommendation.decision : null },
     testCaseExport: { value: present(c.artifacts?.exports?.testCases) },
     comparison: c.type === 'baseline'
       ? { na: 'Baseline cycle - there is no previous cycle to compare against' }

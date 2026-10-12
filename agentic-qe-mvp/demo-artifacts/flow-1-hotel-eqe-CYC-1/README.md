@@ -2,14 +2,14 @@
 
 CYC-1 · baseline cycle
 
-> **Recommendation: Conditional go.** No release-blocking defects, but there are open items to accept or close.
+> **Recommendation: Conditional go.** No no-go criterion is triggered; open items to accept or close: no open defect for a jira story missing from the code (3: DEF-001 (AQPI-8), DEF-002 (AQPI-13), DEF-003 (AQPI-22)). Noted, not deciding: manual test cases run and recorded (5 open); every requirement verified by a passing test of this testing type (111 open).
 
 | Type of testing | Requirements | Test cases | Automated | Pass rate | Defects | Requirements verified |
 |---|---|---|---|---|---|---|
 | EQE testing | 118 | 13 | 8 | 100% | 3 | 5.9% |
 
 ## 1. Summary
-- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-12 01:34 UTC.
+- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-12 02:09 UTC.
 - Type of testing: EQE testing. The guest's business flows across the six services (search, hotel details, offers, cart, payment, reservation, confirmation and cancellation e-mails), plus the privacy, security, observability and resilience checks (AQPI-28 to AQPI-31).
 - We took 3 inputs (Jira initiative AQPI-1, Jira epic AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27, Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)) and produced 118 requirements, 13 test cases and 7 automated scripts.
 - We ran 8 automated tests for real: 8 passed, 0 failed (pass rate 100%). 5 manual tests still to be run by hand.
@@ -25,7 +25,7 @@ CYC-1 · baseline cycle
 ## 3. How we ran the cycle
 1. Read 152 statements from the inputs and lined them up into 128 requirement groups: 0 agreed by every source, 121 only in Jira, 7 only in the code, 0 in conflict.
 2. The review agent read the inputs first and suggested 7 addition(s), 63 missing piece(s) and 0 conflict(s) for the reviewer (0 high severity). It approved nothing.
-3. Priya Shah reviewed and approved the requirement set on 2026-10-12 01:34 UTC.
+3. Priya Shah reviewed and approved the requirement set on 2026-10-12 02:09 UTC.
 4. EQE testing steered the design: Designs one API journey per guest business flow and the enterprise quality checks, and runs them against the six hotel services, keeping every request and response as evidence. The services have no browser screen, so no screenshots are taken. Result: 13 case(s) in this run (0 reused, 0 re-designed, 13 new).
 5. The requirements agent wrote 118 requirements, each with its business rule, exact values and source quotes (57 automatable, 61 manual); the agents then designed 13 test cases (8 functional, 5 non-functional) and generated 7 Playwright scripts.
 6. Executed the automated suite with Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform; defects were raised only for tests that actually failed.
@@ -59,12 +59,9 @@ CYC-1 · baseline cycle
 _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by at least one test._
 
 ## 6. Recommendation and next steps
-**Conditional go.** No release-blocking defects, but there are open items to accept or close.
+**Conditional go.** No no-go criterion is triggered; open items to accept or close: no open defect for a jira story missing from the code (3: DEF-001 (AQPI-8), DEF-002 (AQPI-13), DEF-003 (AQPI-22)). Noted, not deciding: manual test cases run and recorded (5 open); every requirement verified by a passing test of this testing type (111 open).
 
-- Accept or fix DEF-001 (Minor).
-- Accept or fix DEF-002 (Minor).
-- Accept or fix DEF-003 (Minor).
-- Cover or accept 111 requirements not yet verified by a passing test.
+- No open defect for a Jira story missing from the code: 3: DEF-001 (AQPI-8), DEF-002 (AQPI-13), DEF-003 (AQPI-22).
 - Run TC-N-001, TC-N-002, TC-N-003, TC-N-004, TC-N-005 manually and record the result.
 - Use this approved baseline as the reference for the next incremental cycle.
 
@@ -107,7 +104,7 @@ _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by
 
 | Gate | Decision | By | When | Detail |
 |---|---|---|---|---|
-| Requirement set review | approved | Priya Shah | 2026-10-12 01:34 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
+| Requirement set review | approved | Priya Shah | 2026-10-12 02:09 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
 
 ## 8. Exit criteria
 | Exit criterion | Status | Detail |
@@ -132,20 +129,37 @@ _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by
 | Defects from failed test cases | 0 | 0 | defects backed by a failed result | reconciled |
 | Gap defects | 3 | 3 | gap defects linked to a Jira story | reconciled |
 
-_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 01:35 UTC. Every figure comes from the persisted cycle; nothing is estimated._
+## 10. Release criteria
+Release criteria (Go / Conditional go / No-go) (release-criteria.md); blocking severity Critical, minimum pass rate 95%.
+
+| Release parameter | Applies as | Status | Detail |
+|---|---|---|---|
+| Requirement set approved by a named reviewer | No-go if triggered | clear | - |
+| No open defect at Critical severity or marked release-blocking | No-go if triggered | clear | - |
+| Automated pass rate at least 95% | No-go if triggered | clear | - |
+| Every automated test case in the run executed | No-go if triggered | clear | - |
+| Every failed test case has a defect | No-go if triggered | clear | - |
+| Every report figure matches the stored evidence | No-go if triggered | clear | - |
+| Every business journey passed end to end | No-go if triggered | clear | - |
+| No open defect for a Jira story missing from the code | Conditional go if triggered | triggered | 3: DEF-001 (AQPI-8), DEF-002 (AQPI-13), DEF-003 (AQPI-22) |
+| No other open defect | Conditional go if triggered | clear | - |
+| Manual test cases run and recorded | Noted only | triggered | 5: TC-N-001, TC-N-002, TC-N-003, TC-N-004, TC-N-005 |
+| Every requirement verified by a passing test of this testing type | Noted only | triggered | 111: REQ-003, REQ-008, REQ-009, REQ-010, REQ-011, REQ-012, REQ-013, REQ-014, … |
+
+_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 02:09 UTC. Every figure comes from the persisted cycle; nothing is estimated._
 
 ## Appendix A: test results (real Playwright run)
 | Key | Test | Result | ms |
 |---|---|---|---|
-| TC-F-001 | Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail | passed | 1197 |
-| TC-F-002 | Guest books a prepaid non-refundable room in Paris and pays now | passed | 118 |
-| TC-F-003 | A sold-out hotel is shown as unavailable and cannot be put in a cart | passed | 80 |
-| TC-F-004 | An unavailable extra is refused and the room still books | passed | 98 |
-| TC-F-005 | A double-clicked Book button creates one reservation and one payment | passed | 67 |
-| TC-F-006 | The confirmation number can be looked up again after booking | passed | 62 |
-| TC-F-007 | The guest sees the booking outcome and one confirmation e-mail is created | passed | 52 |
+| TC-F-001 | Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail | passed | 1383 |
+| TC-F-002 | Guest books a prepaid non-refundable room in Paris and pays now | passed | 312 |
+| TC-F-003 | A sold-out hotel is shown as unavailable and cannot be put in a cart | passed | 184 |
+| TC-F-004 | An unavailable extra is refused and the room still books | passed | 286 |
+| TC-F-005 | A double-clicked Book button creates one reservation and one payment | passed | 150 |
+| TC-F-006 | The confirmation number can be looked up again after booking | passed | 139 |
+| TC-F-007 | The guest sees the booking outcome and one confirmation e-mail is created | passed | 113 |
 | TC-N-001 | Verify: Validation messages are accessible to assistive technology | not-run | 0 |
-| TC-F-008 | An unavailable extra is refused and the room still books | passed | 56 |
+| TC-F-008 | An unavailable extra is refused and the room still books | passed | 132 |
 | TC-N-002 | Verify: Templates support required locale and accessibility standards | not-run | 0 |
 | TC-N-003 | Verify: Metrics and alerts exist for agreed critical failures and latency | not-run | 0 |
 | TC-N-004 | Verify: Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible | not-run | 0 |

@@ -9,4 +9,4 @@ Running 8 tests using 1 worker
 [6/8] specs/br-006-durable-confirmation.spec.js:92:1 › TC-F-006 The confirmation number can be looked up again after booking
 [7/8] specs/br-007-confirmation-shown.spec.js:92:1 › TC-F-007 The guest sees the booking outcome and one confirmation e-mail is created
 [8/8] specs/br-047-offers-not-blocking.spec.js:92:1 › TC-F-008 An unavailable extra is refused and the room still books
-  8 passed (2.4s)
+  8 passed (3.3s)

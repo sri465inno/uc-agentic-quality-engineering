@@ -1,11 +1,11 @@
 {
   "name": "demo/hotel-booking-platform-v2",
   "commit": {
-    "sha": "fe1ce449d9a5fa0682ced74d98edc633ba2a57e4",
-    "url": "https://api.github.com/repos/sri465inno/uc-agentic-quality-engineering/commits/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4",
-    "html_url": "https://github.com/sri465inno/uc-agentic-quality-engineering/commit/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4",
+    "sha": "e0dab1c284965586342fc491680aea4ea691ad15",
+    "url": "https://api.github.com/repos/sri465inno/uc-agentic-quality-engineering/commits/e0dab1c284965586342fc491680aea4ea691ad15",
+    "html_url": "https://github.com/sri465inno/uc-agentic-quality-engineering/commit/e0dab1c284965586342fc491680aea4ea691ad15",
     "commit": {
-      "message": "hotel-booking-platform 2.0: @rule tags name the Jira story each rule implements"
+      "message": "hotel-booking-platform 2.0: AQPI-17 a price change of exactly 1% does not need acknowledgement"
     }
   },
   "_links": {
@@ -14,7 +14,7 @@
   },
   "protected": false,
   "_recorded": {
-    "at": "2026-10-11T15:41:55.706Z",
+    "at": "2026-10-12T01:59:53.468Z",
     "with": "git clone --depth 1 --branch demo/hotel-booking-platform-v2 https://github.com/sri465inno/uc-agentic-quality-engineering.git"
   }
 }

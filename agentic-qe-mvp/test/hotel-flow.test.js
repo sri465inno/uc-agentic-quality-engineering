@@ -9,6 +9,7 @@ const { issueRole, statementsFromIssue, statementsFromCodebase } = require('../s
 const { FLOWS } = require('../scripts/make-demo-inputs');
 const { domainOf } = require('../src/agents/domains');
 const { getTestingType } = require('../src/testing-types');
+const { buildLeadReport } = require('../src/lead-report');
 const { compareCycles } = require('../src/compare');
 const { computeTraceability } = require('../src/traceability');
 const { unavailableReason } = require('../sut/hotel');
@@ -148,24 +149,30 @@ test('Flow 2: release 2.0 adds to the hotel baseline, waits for merge approval, 
     'When the cancellation e-mail cannot be sent the booking stays cancelled'];
   for (const name of epic6) assert.equal(done.artifacts.execution.results.find((r) => r.name === name)?.status, 'passed', name);
   const failed = done.artifacts.execution.results.filter((r) => r.status === 'failed');
-  assert.deepEqual(failed.map((r) => r.name).sort(), ['A 15-night stay in Paris is rejected', 'A key shorter than 8 characters is refused',
-    'A price change within 1% does not need acknowledgement', 'Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused']);
-  assert.deepEqual(byStory(done.artifacts.defects), [['AQPI-17', 'still open'], ['AQPI-21', 'still open'], ['AQPI-25', 'new'], ['AQPI-34', 'new']]);
+  assert.deepEqual(failed.map((r) => r.name), []);
+  for (const name of ['A 15-night stay in Paris is rejected', 'A key shorter than 8 characters is refused',
+    'A price change within 1% does not need acknowledgement', 'Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused']) {
+    assert.equal(done.artifacts.execution.results.find((r) => r.name === name)?.status, 'passed', name);
+  }
+  assert.deepEqual(real(done.artifacts.defects), []);
   const flow1 = new Map(real(c1.artifacts.defects).map((d) => [d.jira.linkedTo, d]));
-  for (const k of ['AQPI-17', 'AQPI-21']) assert.equal(real(done.artifacts.defects).find((d) => d.jira.linkedTo === k).id, flow1.get(k).id);
-  const [fixed] = real(done.artifacts.resolvedDefects);
-  assert.equal(real(done.artifacts.resolvedDefects).length, 1);
+  const fixed = real(done.artifacts.resolvedDefects);
+  assert.deepEqual(fixed.map((d) => d.jira.linkedTo).sort(), ['AQPI-17', 'AQPI-21', 'AQPI-4']);
+  for (const d of fixed) {
+    assert.deepEqual([d.id, d.status, d.movement, d.retest.result, d.resolvedInCycle], [flow1.get(d.jira.linkedTo).id, 'Closed', 'fixed and retested', 'passed', done.id]);
+    assert.equal(done.artifacts.execution.results.find((r) => r.key === d.testCaseKey)?.status, 'passed');
+    assert.match(d.certification, /certified closed/);
+  }
   assert.deepEqual(done.artifacts.resolvedDefects.filter((d) => d.type === 'gap').map((d) => [d.story, d.status, d.movement]), [['AQPI-8', 'Closed', 'fixed and retested'], ['AQPI-13', 'Closed', 'fixed and retested'], ['AQPI-22', 'Closed', 'fixed and retested']]);
-  assert.deepEqual([fixed.id, fixed.status, fixed.movement, fixed.retest.result, fixed.resolvedInCycle], [flow1.get('AQPI-4').id, 'Closed', 'fixed and retested', 'passed', done.id]);
-  assert.equal(done.artifacts.execution.results.find((r) => r.key === fixed.testCaseKey)?.status, 'passed');
-  assert.match(fixed.certification, /certified closed/);
   const byKey = new Map(computeTraceability(done).stories.map((x) => [x.key, x]));
-  for (const k of ['AQPI-17', 'AQPI-21']) assert.deepEqual([byKey.get(k).scope, byKey.get(k).status], ['baseline', 'failing'], k);
-  assert.deepEqual([byKey.get('AQPI-34').scope, byKey.get('AQPI-34').status], ['this cycle', 'failing']);
-  assert.deepEqual([byKey.get('AQPI-4').scope, byKey.get('AQPI-4').status], ['baseline', 'verified']);
+  for (const k of ['AQPI-4', 'AQPI-17', 'AQPI-21']) assert.deepEqual([byKey.get(k).scope, byKey.get(k).status], ['baseline', 'verified'], k);
+  assert.deepEqual([byKey.get('AQPI-34').scope, byKey.get('AQPI-34').status], ['this cycle', 'verified']);
   const cmp = compareCycles(c1, done);
   assert.doesNotMatch(JSON.stringify(cmp), /commission/i);
-  assert.deepEqual([cmp.defects.new.length, cmp.defects.stillOpen.length, cmp.defects.resolved], [2, 2, [...c1.artifacts.defects.filter((d) => d.type === 'gap').map((d) => d.id), fixed.id]]);
+  assert.deepEqual([cmp.defects.new.length, cmp.defects.stillOpen.length], [0, 0]);
+  assert.deepEqual([...cmp.defects.resolved].sort(), [...c1.artifacts.defects.map((d) => d.id)].sort());
+  assert.equal(buildLeadReport(done).recommendation.decision, 'Go');
+  assert.equal(buildLeadReport(c1).recommendation.decision, 'No-go');
 });
 
 test('hotel cycles describe the hotel journeys and capability, commission cycles keep their wording', () => {

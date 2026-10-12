@@ -20,6 +20,10 @@
       "status": "modified"
     },
     {
+      "filename": "cart-service/src/main/java/com/hotelbooking/cart/CartService.java",
+      "status": "modified"
+    },
+    {
       "filename": "cart-service/src/main/resources/cart-service.yml",
       "status": "modified"
     },

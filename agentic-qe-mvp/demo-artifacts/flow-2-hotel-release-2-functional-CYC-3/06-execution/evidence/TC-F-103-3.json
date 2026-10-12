@@ -1,163 +1,24 @@
 {
   "request": {
-    "method": "POST",
-    "url": "http://127.0.0.1:35393/api/carts/C-d082e868/revalidate",
+    "method": "PUT",
+    "url": "http://127.0.0.1:44131/api/admin/hotels/H-NYC-001/rooms/STD-K/rates/FLEX",
     "headers": {},
-    "data": null
+    "data": {
+      "nightly": 201
+    }
   },
   "response": {
     "status": 200,
-    "correlationId": "a4432a6a-5cff-4e0e-8b92-0eda65a068b8",
+    "correlationId": "61b3721c-c89b-4c85-8a6d-fe9ed3b1d0d9",
     "body": {
-      "cartId": "C-d082e868",
-      "status": "ACTIVE",
-      "createdAt": "2026-10-12T01:35:31.308437138Z",
-      "expiresAt": "2026-10-12T01:55:31.308437138Z",
-      "secondsRemaining": 1199,
-      "timeoutBehaviour": "Your cart is held for 20 minutes. Rooms are not reserved until you complete booking; after expiry, price and availability are checked again.",
-      "room": {
-        "hotelId": "H-NYC-001",
-        "hotelName": "Harbor View Hotel",
-        "city": "New York",
-        "address": "12 Pier Street",
-        "checkInFrom": "15:00",
-        "checkOutUntil": "11:00",
-        "destination": "NYC",
-        "hotelAmenities": [
-          "wifi",
-          "gym",
-          "restaurant",
-          "parking"
-        ],
-        "roomCode": "STD-K",
-        "roomName": "Standard King",
-        "ratePlanCode": "FLEX",
-        "ratePlanName": "Flexible – pay at hotel",
-        "checkIn": "2026-11-11",
-        "checkOut": "2026-11-14",
-        "nights": 3,
-        "rooms": 1,
-        "adults": 2,
-        "children": 0,
-        "currency": "USD",
-        "roomCharge": {
-          "amount": 648.18,
-          "currency": "USD"
-        },
-        "taxes": {
-          "amount": 122.34,
-          "currency": "USD"
-        },
-        "mandatoryFees": {
-          "amount": 75,
-          "currency": "USD"
-        },
-        "total": {
-          "amount": 845.52,
-          "currency": "USD"
-        },
-        "paymentRule": "PAY_AT_HOTEL",
-        "refundable": true,
-        "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
-        "restrictions": "Card guarantee required",
-        "priceVersion": "3a094a2cb42d513c"
-      },
-      "ancillaries": [],
-      "lines": [
-        {
-          "type": "ROOM",
-          "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
-          "quantity": 1,
-          "amount": {
-            "amount": 648.18,
-            "currency": "USD"
-          }
-        },
-        {
-          "type": "TAX",
-          "label": "Taxes",
-          "quantity": 1,
-          "amount": {
-            "amount": 122.34,
-            "currency": "USD"
-          }
-        },
-        {
-          "type": "MANDATORY_FEE",
-          "label": "Mandatory fees (payable as part of the room price)",
-          "quantity": 1,
-          "amount": {
-            "amount": 75,
-            "currency": "USD"
-          }
-        },
-        {
-          "type": "DISCOUNT",
-          "label": "Discounts (none applied)",
-          "quantity": 0,
-          "amount": {
-            "amount": 0,
-            "currency": "USD"
-          }
-        }
-      ],
-      "totals": {
-        "roomCharge": {
-          "amount": 648.18,
-          "currency": "USD"
-        },
-        "taxes": {
-          "amount": 122.34,
-          "currency": "USD"
-        },
-        "mandatoryFees": {
-          "amount": 75,
-          "currency": "USD"
-        },
-        "optionalExtras": {
-          "amount": 0,
-          "currency": "USD"
-        },
-        "discounts": {
-          "amount": 0,
-          "currency": "USD"
-        },
-        "total": {
-          "amount": 845.52,
-          "currency": "USD"
-        }
-      },
-      "currency": "USD",
-      "priceVersion": "1e2b182548d1965b",
-      "pendingChange": {
-        "previousTotal": {
-          "amount": 805.19,
-          "currency": "USD"
-        },
-        "newTotal": {
-          "amount": 845.52,
-          "currency": "USD"
-        },
-        "difference": {
-          "amount": 40.33,
-          "currency": "USD"
-        },
-        "reasons": [
-          "Room price changed from 805.19 to 845.52 USD"
-        ]
-      },
-      "requiresAcknowledgement": true,
-      "notices": [
-        "Room price changed from 805.19 to 845.52 USD"
-      ],
-      "editActions": [
-        "CHANGE_ROOM",
-        "CHANGE_RATE_PLAN",
-        "EDIT_EXTRAS",
-        "CHANGE_DATES_WITH_NEW_SEARCH"
-      ],
-      "reservationId": null,
-      "note": "A cart is not a reservation."
+      "code": "FLEX",
+      "name": "Flexible – pay at hotel",
+      "nightly": 201,
+      "refundable": true,
+      "breakfastIncluded": false,
+      "paymentRule": "PAY_AT_HOTEL",
+      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+      "restrictions": "Card guarantee required"
     }
   }
 }

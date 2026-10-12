@@ -64,6 +64,8 @@ function parseYaml(src) {
 const AGENT_ALIASES = { rules: 'requirements' };
 const agentId = (a) => AGENT_ALIASES[a] || a;
 
+const SKILL_FIELDS = new Set(['id', 'name', 'description', 'appliesTo', 'delivers', 'testingType']);
+
 function parseSkill(text, file = '(inline)') {
   const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) throw new Error(`${file}: missing YAML front matter`);
@@ -76,8 +78,9 @@ function parseSkill(text, file = '(inline)') {
     for (const [a, keys] of Object.entries(meta.delivers)) delivers[agentId(a)] = [...new Set([...(delivers[agentId(a)] || []), ...[].concat(keys)])];
   }
   const body = m[2].trim();
+  const settings = Object.fromEntries(Object.entries(meta).filter(([k]) => !SKILL_FIELDS.has(k)));
   return {
-    id: meta.id, name: meta.name, description: meta.description, appliesTo, delivers, body, testingType: typeof meta.testingType === 'string' ? meta.testingType : null,
+    id: meta.id, name: meta.name, description: meta.description, appliesTo, delivers, body, testingType: typeof meta.testingType === 'string' ? meta.testingType : null, settings,
     file: path.basename(file), sha256: crypto.createHash('sha256').update(text).digest('hex').slice(0, 12),
   };
 }

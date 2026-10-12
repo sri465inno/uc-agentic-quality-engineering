@@ -1,24 +1,154 @@
 {
   "request": {
-    "method": "PUT",
-    "url": "http://127.0.0.1:36023/api/admin/hotels/H-NYC-001/rooms/STD-K/rates/FLEX",
+    "method": "POST",
+    "url": "http://127.0.0.1:40259/api/carts",
     "headers": {},
     "data": {
-      "nightly": 266.18
+      "hotelId": "H-NYC-001",
+      "roomCode": "STD-K",
+      "ratePlanCode": "FLEX",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
+      "rooms": 1,
+      "adults": 2,
+      "children": 0
     }
   },
   "response": {
-    "status": 200,
-    "correlationId": "82b43f10-2735-46ca-9581-e97222ef10ff",
+    "status": 201,
+    "correlationId": "91e9da9f-b26f-4ae1-a6e4-37c8538ce99e",
     "body": {
-      "code": "FLEX",
-      "name": "Flexible – pay at hotel",
-      "nightly": 266.18,
-      "refundable": true,
-      "breakfastIncluded": false,
-      "paymentRule": "PAY_AT_HOTEL",
-      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
-      "restrictions": "Card guarantee required"
+      "cartId": "C-70e947ca",
+      "status": "ACTIVE",
+      "createdAt": "2026-10-12T02:10:34.150282029Z",
+      "expiresAt": "2026-10-12T02:30:34.150282029Z",
+      "secondsRemaining": 1199,
+      "timeoutBehaviour": "Your cart is held for 20 minutes. Rooms are not reserved until you complete booking; after expiry, price and availability are checked again.",
+      "room": {
+        "hotelId": "H-NYC-001",
+        "hotelName": "Harbor View Hotel",
+        "city": "New York",
+        "address": "12 Pier Street",
+        "checkInFrom": "15:00",
+        "checkOutUntil": "11:00",
+        "destination": "NYC",
+        "hotelAmenities": [
+          "wifi",
+          "gym",
+          "restaurant",
+          "parking"
+        ],
+        "roomCode": "STD-K",
+        "roomName": "Standard King",
+        "ratePlanCode": "FLEX",
+        "ratePlanName": "Flexible – pay at hotel",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
+        "nights": 3,
+        "rooms": 1,
+        "adults": 2,
+        "children": 0,
+        "currency": "USD",
+        "roomCharge": {
+          "amount": 630,
+          "currency": "USD"
+        },
+        "taxes": {
+          "amount": 118.91,
+          "currency": "USD"
+        },
+        "mandatoryFees": {
+          "amount": 75,
+          "currency": "USD"
+        },
+        "total": {
+          "amount": 823.91,
+          "currency": "USD"
+        },
+        "paymentRule": "PAY_AT_HOTEL",
+        "refundable": true,
+        "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+        "restrictions": "Card guarantee required",
+        "priceVersion": "abae16a341abeb2b"
+      },
+      "ancillaries": [],
+      "lines": [
+        {
+          "type": "ROOM",
+          "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
+          "quantity": 1,
+          "amount": {
+            "amount": 630,
+            "currency": "USD"
+          }
+        },
+        {
+          "type": "TAX",
+          "label": "Taxes",
+          "quantity": 1,
+          "amount": {
+            "amount": 118.91,
+            "currency": "USD"
+          }
+        },
+        {
+          "type": "MANDATORY_FEE",
+          "label": "Mandatory fees (payable as part of the room price)",
+          "quantity": 1,
+          "amount": {
+            "amount": 75,
+            "currency": "USD"
+          }
+        },
+        {
+          "type": "DISCOUNT",
+          "label": "Discounts (none applied)",
+          "quantity": 0,
+          "amount": {
+            "amount": 0,
+            "currency": "USD"
+          }
+        }
+      ],
+      "totals": {
+        "roomCharge": {
+          "amount": 630,
+          "currency": "USD"
+        },
+        "taxes": {
+          "amount": 118.91,
+          "currency": "USD"
+        },
+        "mandatoryFees": {
+          "amount": 75,
+          "currency": "USD"
+        },
+        "optionalExtras": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "discounts": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "total": {
+          "amount": 823.91,
+          "currency": "USD"
+        }
+      },
+      "currency": "USD",
+      "priceVersion": "f8f5ff1f1586d374",
+      "pendingChange": null,
+      "requiresAcknowledgement": false,
+      "notices": [],
+      "editActions": [
+        "CHANGE_ROOM",
+        "CHANGE_RATE_PLAN",
+        "EDIT_EXTRAS",
+        "CHANGE_DATES_WITH_NEW_SEARCH"
+      ],
+      "reservationId": null,
+      "note": "A cart is not a reservation."
     }
   }
 }

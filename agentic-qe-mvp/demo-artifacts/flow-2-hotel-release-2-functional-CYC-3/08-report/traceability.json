@@ -1362,8 +1362,10 @@
       "crosses": [],
       "testDataId": "TD-F-058",
       "scriptFile": "br-067-support-masking.spec.js",
-      "result": "passed",
-      "defects": [],
+      "result": "failed",
+      "defects": [
+        "DEF-010"
+      ],
       "jiraDefects": []
     },
     {
@@ -2374,10 +2376,8 @@
       "crosses": [],
       "testDataId": "TD-F-103",
       "scriptFile": "br-113-price-change-ack.spec.js",
-      "result": "failed",
-      "defects": [
-        "DEF-007"
-      ],
+      "result": "passed",
+      "defects": [],
       "jiraDefects": []
     },
     {
@@ -2442,10 +2442,8 @@
       "crosses": [],
       "testDataId": "TD-F-106",
       "scriptFile": "br-115-idempotency-key.spec.js",
-      "result": "failed",
-      "defects": [
-        "DEF-008"
-      ],
+      "result": "passed",
+      "defects": [],
       "jiraDefects": []
     },
     {
@@ -2554,10 +2552,8 @@
       "crosses": [],
       "testDataId": "TD-F-111",
       "scriptFile": "br-116-stay-length-limit.spec.js",
-      "result": "failed",
-      "defects": [
-        "DEF-010"
-      ],
+      "result": "passed",
+      "defects": [],
       "jiraDefects": []
     },
     {
@@ -2886,10 +2882,8 @@
       "crosses": [],
       "testDataId": "TD-F-126",
       "scriptFile": "br-125-ops-retry-limit.spec.js",
-      "result": "failed",
-      "defects": [
-        "DEF-011"
-      ],
+      "result": "passed",
+      "defects": [],
       "jiraDefects": []
     },
     {
@@ -3239,12 +3233,10 @@
       "requirements": 1,
       "testCases": 4,
       "automated": 4,
-      "passed": 3,
-      "failed": 1,
-      "defects": [
-        "DEF-010"
-      ],
-      "status": "failing"
+      "passed": 4,
+      "failed": 0,
+      "defects": [],
+      "status": "verified"
     },
     {
       "key": "AQPI-35",
@@ -3311,12 +3303,10 @@
       "requirements": 6,
       "testCases": 6,
       "automated": 2,
-      "passed": 1,
-      "failed": 1,
-      "defects": [
-        "DEF-011"
-      ],
-      "status": "failing"
+      "passed": 2,
+      "failed": 0,
+      "defects": [],
+      "status": "verified"
     },
     {
       "key": "AQPI-26",
@@ -3579,12 +3569,10 @@
       "requirements": 6,
       "testCases": 7,
       "automated": 3,
-      "passed": 2,
-      "failed": 1,
-      "defects": [
-        "DEF-007"
-      ],
-      "status": "failing"
+      "passed": 3,
+      "failed": 0,
+      "defects": [],
+      "status": "verified"
     },
     {
       "key": "AQPI-18",
@@ -3609,10 +3597,12 @@
       "requirements": 6,
       "testCases": 6,
       "automated": 4,
-      "passed": 4,
-      "failed": 0,
-      "defects": [],
-      "status": "verified"
+      "passed": 3,
+      "failed": 1,
+      "defects": [
+        "DEF-010"
+      ],
+      "status": "failing"
     },
     {
       "key": "AQPI-20",
@@ -3637,12 +3627,10 @@
       "requirements": 7,
       "testCases": 9,
       "automated": 6,
-      "passed": 5,
-      "failed": 1,
-      "defects": [
-        "DEF-008"
-      ],
-      "status": "failing"
+      "passed": 6,
+      "failed": 0,
+      "defects": [],
+      "status": "verified"
     },
     {
       "key": "AQPI-22",
@@ -3732,8 +3720,8 @@
   "totals": {
     "jiraItems": 37,
     "covered": 37,
-    "verified": 24,
-    "failing": 4,
+    "verified": 27,
+    "failing": 1,
     "testCases": 144,
     "withData": 144,
     "withScript": 83,

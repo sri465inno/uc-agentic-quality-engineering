@@ -12,7 +12,7 @@ const { renderReportHtml } = require('../src/report');
 const { tmpDir, baselineCycle, BASELINE_INPUTS } = require('./helpers');
 
 const SKILLS_DIR = path.join(__dirname, '..', 'skills');
-const SHIPPED = ['automation-script-conventions', 'cycle-report', 'defect-reporting', 'incremental-merge', 'input-normalisation', 'input-review', 'test-case-authoring', 'test-data-generation',
+const SHIPPED = ['automation-script-conventions', 'cycle-report', 'defect-reporting', 'incremental-merge', 'input-normalisation', 'input-review', 'release-criteria', 'test-case-authoring', 'test-data-generation',
   'testing-eqe', 'testing-functional', 'traceability-handover'];
 /** Default selection for a cycle: every general skill plus the one for its type of testing (functional by default). */
 const DEFAULT_ON = SHIPPED.filter((id) => !id.startsWith('testing-') || id === 'testing-functional');

@@ -1,6 +1,6 @@
 # Agentic QE Platform - demo artifacts
 
-Generated 2026-10-12T01:35:49.644Z by `node scripts/export-demo-artifacts.js`. Every cycle was run end to end; the Playwright results are real runs against the system under test.
+Generated 2026-10-12T02:10:49.091Z by `node scripts/export-demo-artifacts.js`. Every cycle was run end to end; the Playwright results are real runs against the system under test.
 
 ## Flow 1: hotel booking platform (AQPI)
 
@@ -13,12 +13,12 @@ Inputs: the AQPI-1 initiative, its 7 epics and 23 stories (Jira REST v3 export o
 
 ## Flow 2: hotel booking release 2.0 (AQPI-32 + AQPI-23)
 
-Inputs: Epic 8 AQPI-32 "Release 2.0" with stories AQPI-33 to AQPI-36, Epic 6 AQPI-23 "Confirmation and Notifications" as revised for release 2.0 (AQPI-24 and AQPI-25 changed, AQPI-26 unchanged, AQPI-37 new; Jira export snapshot `release-2.0`) and the release 2.0 codebase on branch `demo/hotel-booking-platform-v2`, added on top of the functional baseline CYC-2. Changed: cart hold 30 -> 20 minutes, Paris stay 21 -> 14 nights, resends 3 -> 5, ops e-mail retries 2 -> 3, the confirmation of a refundable booking states its free-cancellation deadline. New: free cancellation up to 48 hours before check-in and a cancellation e-mail. The merge was approved before execution; the cases ran against the six release 2.0 services. Release 2.0 fixes the 9-room search defect (AQPI-4), which Flow 2 retests and certifies closed; the other two Flow 1 defects stay open. New defects in the release 2.0 requirements: a 15-night Paris stay is accepted (AQPI-34) and a 4th ops e-mail retry is accepted (AQPI-25).
+Inputs: Epic 8 AQPI-32 "Release 2.0" with stories AQPI-33 to AQPI-36, Epic 6 AQPI-23 "Confirmation and Notifications" as revised for release 2.0 (AQPI-24 and AQPI-25 changed, AQPI-26 unchanged, AQPI-37 new; Jira export snapshot `release-2.0`) and the release 2.0 codebase on branch `demo/hotel-booking-platform-v2`, added on top of the functional baseline CYC-2. Changed: cart hold 30 -> 20 minutes, Paris stay 21 -> 14 nights, resends 3 -> 5, ops e-mail retries 2 -> 3, the confirmation of a refundable booking states its free-cancellation deadline. New: free cancellation up to 48 hours before check-in and a cancellation e-mail. The merge was approved before execution; the cases ran against the six release 2.0 services. Release 2.0 fixes the three Flow 1 defects (AQPI-4 9 rooms, AQPI-17 1% acknowledgement, AQPI-21 8-character key) and its own rule changes (AQPI-34 14-night Paris stay, AQPI-25 3 ops e-mail retries); Flow 2 retests the defects and certifies them closed, and closes the gap defects once the picked-up stories pass.
 
 | Cycle | Mode · testing | Requirements | Test cases | Scripts | Passed | Pass rate | Defects |
 |---|---|---|---|---|---|---|---|
-| CYC-4 | incremental · eqe | 138 | 13 | 7 | 8/8 | 100% | 3 |
-| CYC-3 | incremental · functional | 138 | 144 | 65 | 79/83 | 95.2% | 4 |
+| CYC-4 | incremental · eqe | 138 | 18 | 12 | 13/13 | 100% | 0 |
+| CYC-3 | incremental · functional | 138 | 144 | 65 | 82/83 | 98.8% | 1 |
 
 ## Defect lifecycle: CYC-2 (release 1.0) -> CYC-3 (release 2.0)
 
@@ -29,11 +29,10 @@ Every defect comes from a test that really failed. Flow 2 re-runs the Flow 1 tes
 | DEF-004 | AQPI-8 | AQPI-8 4.2 Sort and filter hotel results: asked for in Jira but not implemented in the code | new | fixed, retested (4 test(s) of AQPI-8 passed), certified closed |
 | DEF-005 | AQPI-13 | AQPI-13 5.3 Explain and control personalization: asked for in Jira but not implemented in the code | new | fixed, retested (2 test(s) of AQPI-13 passed), certified closed |
 | DEF-006 | AQPI-22 | AQPI-22 7.4 Show booking outcome: asked for in Jira but not implemented in the code | new | fixed, retested (3 test(s) of AQPI-22 passed), certified closed |
-| DEF-007 | AQPI-17 | A price change within 1% does not need acknowledgement: returns true instead of false | new | still open |
-| DEF-008 | AQPI-21 | A key shorter than 8 characters is refused: returns 201 instead of 400 | new | still open |
+| DEF-007 | AQPI-17 | A price change within 1% does not need acknowledgement: returns true instead of false | new | fixed, retested (TC-F-103 passed), certified closed |
+| DEF-008 | AQPI-21 | A key shorter than 8 characters is refused: returns 201 instead of 400 | new | fixed, retested (TC-F-106 passed), certified closed |
 | DEF-009 | AQPI-4 | 9 rooms in one search are rejected: returns 200 instead of 400 | new | fixed, retested (TC-F-115 passed), certified closed |
-| DEF-010 | AQPI-34 | A 15-night stay in Paris is rejected: returns 200 instead of 400 | - | new |
-| DEF-011 | AQPI-25 | Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused: returns 200 instead of 409 | - | new |
+| DEF-010 | AQPI-19 | Support staff see a masked e-mail and other callers are refused: failed | - | new |
 
 Each cycle folder's README is its QE lead report: inputs taken, how the cycle was run, artifacts produced, risks, a go/no-go recommendation and sign-off.
 

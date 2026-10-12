@@ -1,28 +1,28 @@
 {
   "executed": true,
   "tool": "Playwright 1.63.0 (headless Chromium, JSON reporter)",
-  "command": "npx playwright test --config ../../../../../tmp/aqe-demo-wzmdRW/runs/CYC-4/playwright.config.js",
+  "command": "npx playwright test --config ../../../../../tmp/aqe-demo-U7iSEY/runs/CYC-4/playwright.config.js",
   "exitCode": 0,
   "sut": {
     "build": "demo/hotel-booking-platform-v2",
-    "url": "http://127.0.0.1:42613",
+    "url": "http://127.0.0.1:34885",
     "services": {
-      "hotel-service": "http://127.0.0.1:45819",
-      "offer-service": "http://127.0.0.1:40955",
-      "notification-service": "http://127.0.0.1:34849",
-      "search-service": "http://127.0.0.1:42613",
-      "cart-service": "http://127.0.0.1:39753",
-      "reservation-service": "http://127.0.0.1:35325"
+      "hotel-service": "http://127.0.0.1:46221",
+      "offer-service": "http://127.0.0.1:39047",
+      "notification-service": "http://127.0.0.1:41601",
+      "search-service": "http://127.0.0.1:34885",
+      "cart-service": "http://127.0.0.1:41195",
+      "reservation-service": "http://127.0.0.1:34657"
     },
     "name": "Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2"
   },
-  "startedAt": "2026-10-12T01:35:43.182Z",
-  "finishedAt": "2026-10-12T01:35:49.180Z",
+  "startedAt": "2026-10-12T02:10:43.621Z",
+  "finishedAt": "2026-10-12T02:10:48.715Z",
   "reportFile": "playwright-report.json",
   "playwrightStats": {
-    "startTime": "2026-10-12T01:35:43.851Z",
-    "duration": 3217.291,
-    "expected": 8,
+    "startTime": "2026-10-12T02:10:44.004Z",
+    "duration": 2654.192,
+    "expected": 13,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
@@ -34,7 +34,12 @@
     "br-005-duplicate-submission.spec.js",
     "br-006-durable-confirmation.spec.js",
     "br-007-confirmation-shown.spec.js",
-    "br-047-offers-not-blocking.spec.js"
+    "br-047-offers-not-blocking.spec.js",
+    "br-121-free-cancellation.spec.js",
+    "br-126-cancellation-email.spec.js",
+    "br-130-result-sorting.spec.js",
+    "br-134-proceed-without-offers.spec.js",
+    "br-136-booking-outcome.spec.js"
   ],
   "results": [
     {
@@ -46,8 +51,8 @@
       "scriptFile": "br-001-booking-journey.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 1718,
-      "startTime": "2026-10-12T01:35:44.363Z",
+      "duration": 1183,
+      "startTime": "2026-10-12T02:10:44.427Z",
       "file": "br-001-booking-journey.spec.js",
       "title": "TC-F-001 Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail",
       "error": null,
@@ -73,12 +78,12 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-40b5a7af/ancillaries",
+          "name": "POST cart-service/api/carts/C-1a4e6ff9/ancillaries",
           "file": "TC-F-001-5.json",
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/checkout/C-40b5a7af/payment-summary",
+          "name": "GET reservation-service/api/checkout/C-1a4e6ff9/payment-summary",
           "file": "TC-F-001-6.json",
           "contentType": "application/json"
         },
@@ -88,7 +93,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-c514d2c7",
+          "name": "GET notification-service/api/confirmations/R-c6288391",
           "file": "TC-F-001-8.json",
           "contentType": "application/json"
         }
@@ -103,8 +108,8 @@
       "scriptFile": "br-001-booking-journey.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 166,
-      "startTime": "2026-10-12T01:35:46.120Z",
+      "duration": 111,
+      "startTime": "2026-10-12T02:10:45.645Z",
       "file": "br-001-booking-journey.spec.js",
       "title": "TC-F-002 Guest books a prepaid non-refundable room in Paris and pays now",
       "error": null,
@@ -120,7 +125,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/checkout/C-eb827b94/payment-summary",
+          "name": "GET reservation-service/api/checkout/C-94c96e23/payment-summary",
           "file": "TC-F-002-3.json",
           "contentType": "application/json"
         },
@@ -140,8 +145,8 @@
       "scriptFile": "br-002-bookable-inventory.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 75,
-      "startTime": "2026-10-12T01:35:46.303Z",
+      "duration": 63,
+      "startTime": "2026-10-12T02:10:45.769Z",
       "file": "br-002-bookable-inventory.spec.js",
       "title": "TC-F-003 A sold-out hotel is shown as unavailable and cannot be put in a cart",
       "error": null,
@@ -172,8 +177,8 @@
       "scriptFile": "br-004-offers-not-blocking.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 145,
-      "startTime": "2026-10-12T01:35:46.391Z",
+      "duration": 83,
+      "startTime": "2026-10-12T02:10:45.841Z",
       "file": "br-004-offers-not-blocking.spec.js",
       "title": "TC-F-004 An unavailable extra is refused and the room still books",
       "error": null,
@@ -189,7 +194,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-f13c6aaf/ancillaries",
+          "name": "POST cart-service/api/carts/C-8960c38e/ancillaries",
           "file": "TC-F-004-3.json",
           "contentType": "application/json"
         },
@@ -209,8 +214,8 @@
       "scriptFile": "br-005-duplicate-submission.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 92,
-      "startTime": "2026-10-12T01:35:46.553Z",
+      "duration": 69,
+      "startTime": "2026-10-12T02:10:45.934Z",
       "file": "br-005-duplicate-submission.spec.js",
       "title": "TC-F-005 A double-clicked Book button creates one reservation and one payment",
       "error": null,
@@ -246,8 +251,8 @@
       "scriptFile": "br-006-durable-confirmation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 113,
-      "startTime": "2026-10-12T01:35:46.663Z",
+      "duration": 57,
+      "startTime": "2026-10-12T02:10:46.018Z",
       "file": "br-006-durable-confirmation.spec.js",
       "title": "TC-F-006 The confirmation number can be looked up again after booking",
       "error": null,
@@ -263,7 +268,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/reservations/R-ad9767c0",
+          "name": "GET reservation-service/api/reservations/R-ac3d4ec7",
           "file": "TC-F-006-3.json",
           "contentType": "application/json"
         }
@@ -278,8 +283,8 @@
       "scriptFile": "br-007-confirmation-shown.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 128,
-      "startTime": "2026-10-12T01:35:46.796Z",
+      "duration": 63,
+      "startTime": "2026-10-12T02:10:46.082Z",
       "file": "br-007-confirmation-shown.spec.js",
       "title": "TC-F-007 The guest sees the booking outcome and one confirmation e-mail is created",
       "error": null,
@@ -295,7 +300,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/ops/messages?reservationId=R-f2e65de9",
+          "name": "GET notification-service/api/ops/messages?reservationId=R-da594790",
           "file": "TC-F-007-3.json",
           "contentType": "application/json"
         }
@@ -323,8 +328,8 @@
       "scriptFile": "br-047-offers-not-blocking.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 103,
-      "startTime": "2026-10-12T01:35:46.942Z",
+      "duration": 59,
+      "startTime": "2026-10-12T02:10:46.153Z",
       "file": "br-047-offers-not-blocking.spec.js",
       "title": "TC-F-008 An unavailable extra is refused and the room still books",
       "error": null,
@@ -340,7 +345,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-8b09c236/ancillaries",
+          "name": "POST cart-service/api/carts/C-a5e2b88c/ancillaries",
           "file": "TC-F-008-3.json",
           "contentType": "application/json"
         },
@@ -402,16 +407,221 @@
       "duration": 0,
       "error": null,
       "evidence": []
+    },
+    {
+      "key": "TC-F-009",
+      "requirementId": "REQ-121",
+      "ruleId": "BR-121",
+      "name": "Guest books a flexible room, then cancels it free of charge more than 48 hours before check-in",
+      "type": "functional",
+      "scriptFile": "br-121-free-cancellation.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 82,
+      "startTime": "2026-10-12T02:10:46.219Z",
+      "file": "br-121-free-cancellation.spec.js",
+      "title": "TC-F-009 Guest books a flexible room, then cancels it free of charge more than 48 hours before check-in",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST search-service/api/searches",
+          "file": "TC-F-009-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-009-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-009-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations/R-50b825c1/cancel",
+          "file": "TC-F-009-4.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET reservation-service/api/reservations/R-50b825c1",
+          "file": "TC-F-009-5.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-010",
+      "requirementId": "REQ-126",
+      "ruleId": "BR-126",
+      "name": "Guest books, cancels and receives exactly one confirmation and one cancellation e-mail",
+      "type": "functional",
+      "scriptFile": "br-126-cancellation-email.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 64,
+      "startTime": "2026-10-12T02:10:46.310Z",
+      "file": "br-126-cancellation-email.spec.js",
+      "title": "TC-F-010 Guest books, cancels and receives exactly one confirmation and one cancellation e-mail",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-010-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-010-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET notification-service/api/confirmations/R-981b33db",
+          "file": "TC-F-010-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations/R-981b33db/cancel",
+          "file": "TC-F-010-4.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET notification-service/api/ops/messages?reservationId=R-981b33db",
+          "file": "TC-F-010-5.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-011",
+      "requirementId": "REQ-130",
+      "ruleId": "BR-130",
+      "name": "Guest sorts the results by lowest price, then books a room from the sorted results",
+      "type": "functional",
+      "scriptFile": "br-130-result-sorting.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 75,
+      "startTime": "2026-10-12T02:10:46.384Z",
+      "file": "br-130-result-sorting.spec.js",
+      "title": "TC-F-011 Guest sorts the results by lowest price, then books a room from the sorted results",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST search-service/api/searches",
+          "file": "TC-F-011-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET search-service/api/searches/S-05a72ff5/results?sort=PRICE_ASC",
+          "file": "TC-F-011-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-011-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-011-4.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-012",
+      "requirementId": "REQ-134",
+      "ruleId": "BR-134",
+      "name": "Guest is shown extras, declines them all and books the room only",
+      "type": "functional",
+      "scriptFile": "br-134-proceed-without-offers.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 73,
+      "startTime": "2026-10-12T02:10:46.472Z",
+      "file": "br-134-proceed-without-offers.spec.js",
+      "title": "TC-F-012 Guest is shown extras, declines them all and books the room only",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST search-service/api/searches",
+          "file": "TC-F-012-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST offer-service/api/offers/recommendations",
+          "file": "TC-F-012-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-012-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-012-4.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET notification-service/api/confirmations/R-c9e18c9d",
+          "file": "TC-F-012-5.json",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "key": "TC-F-013",
+      "requirementId": "REQ-136",
+      "ruleId": "BR-136",
+      "name": "Guest books a room with breakfast and sees the full booking outcome, matching the confirmation e-mail",
+      "type": "functional",
+      "scriptFile": "br-136-booking-outcome.spec.js",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 82,
+      "startTime": "2026-10-12T02:10:46.554Z",
+      "file": "br-136-booking-outcome.spec.js",
+      "title": "TC-F-013 Guest books a room with breakfast and sees the full booking outcome, matching the confirmation e-mail",
+      "error": null,
+      "evidence": [
+        {
+          "name": "POST search-service/api/searches",
+          "file": "TC-F-013-1.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts",
+          "file": "TC-F-013-2.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST cart-service/api/carts/C-fe8e611f/ancillaries",
+          "file": "TC-F-013-3.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "POST reservation-service/api/reservations",
+          "file": "TC-F-013-4.json",
+          "contentType": "application/json"
+        },
+        {
+          "name": "GET notification-service/api/confirmations/R-d63cbed4",
+          "file": "TC-F-013-5.json",
+          "contentType": "application/json"
+        }
+      ]
     }
   ],
   "summary": {
-    "total": 13,
-    "executed": 8,
-    "passed": 8,
+    "total": 18,
+    "executed": 13,
+    "passed": 13,
     "failed": 0,
     "skipped": 0,
     "notRun": 5,
-    "durationMs": 2540,
+    "durationMs": 2064,
     "passRate": 100
   },
   "testingType": "eqe",

@@ -5179,7 +5179,7 @@
     "suite": "api",
     "name": "A price rise above 1% blocks booking until the guest acknowledges it",
     "objective": "Verify a change above 1% needs acknowledgement before checkout.",
-    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). The nightly rate rises 30% after the cart is created.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). The nightly rate is 200 when the cart is created and rises 30% to 260.",
     "steps": [
       "Create a cart",
       "Raise the rate",
@@ -5234,7 +5234,7 @@
     "suite": "api",
     "name": "A price change within 1% does not need acknowledgement",
     "objective": "Verify a change within 1% is applied without blocking the guest.",
-    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). The nightly rate rises 0.5% after the cart is created.",
+    "precondition": "The six hotel services are running with their seeded catalogue (reset before the case). The nightly rate is 200 when the cart is created and rises 0.5% to 201.",
     "steps": [
       "Create a cart",
       "Raise the rate slightly",

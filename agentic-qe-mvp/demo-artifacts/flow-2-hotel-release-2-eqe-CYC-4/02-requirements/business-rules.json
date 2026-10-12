@@ -3322,7 +3322,7 @@
         "source": "code",
         "ref": "cart-service/src/main/resources/cart-service.yml",
         "line": 16,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/cart-service/src/main/resources/cart-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/cart-service/src/main/resources/cart-service.yml",
         "text": "# @rule [AQPI-33] A cart expires 20 minutes after it is created and never creates a reservation itself.",
         "provenance": "github"
       }
@@ -3397,7 +3397,7 @@
         "source": "code",
         "ref": "notification-service/src/main/resources/notification-service.yml",
         "line": 7,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
         "text": "# @rule [AQPI-35] A confirmation can be resent at most 5 times per booking in 24 hours.",
         "provenance": "github"
       }
@@ -3475,7 +3475,7 @@
         "source": "code",
         "ref": "search-service/src/main/resources/search-service.yml",
         "line": 12,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/search-service/src/main/resources/search-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/search-service/src/main/resources/search-service.yml",
         "text": "# @rule [AQPI-34] A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights.",
         "provenance": "github"
       }
@@ -3642,7 +3642,7 @@
         "source": "code",
         "ref": "reservation-service/src/main/resources/reservation-service.yml",
         "line": 22,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/reservation-service/src/main/resources/reservation-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
         "text": "# @rule [AQPI-36] A confirmed reservation can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed.",
         "provenance": "github"
       }
@@ -3678,7 +3678,7 @@
         "source": "code",
         "ref": "reservation-service/src/main/resources/reservation-service.yml",
         "line": 23,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/reservation-service/src/main/resources/reservation-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
         "text": "# @rule [AQPI-36] A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released.",
         "provenance": "github"
       }
@@ -3744,7 +3744,7 @@
         "source": "code",
         "ref": "notification-service/src/main/resources/notification-service.yml",
         "line": 16,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
         "text": "# @rule [AQPI-24] The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in.",
         "provenance": "github"
       }
@@ -3782,7 +3782,7 @@
         "source": "code",
         "ref": "notification-service/src/main/resources/notification-service.yml",
         "line": 14,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
         "text": "# @rule [AQPI-25] Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused.",
         "provenance": "github"
       }
@@ -3818,7 +3818,7 @@
         "source": "code",
         "ref": "notification-service/src/main/resources/notification-service.yml",
         "line": 18,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
         "text": "# @rule [AQPI-37] A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another.",
         "provenance": "github"
       }
@@ -3854,7 +3854,7 @@
         "source": "code",
         "ref": "notification-service/src/main/resources/notification-service.yml",
         "line": 19,
-        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/notification-service/src/main/resources/notification-service.yml",
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
         "text": "# @rule [AQPI-37] A cancellation e-mail that cannot be sent does not undo the cancellation.",
         "provenance": "github"
       }

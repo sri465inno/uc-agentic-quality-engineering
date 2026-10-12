@@ -101,9 +101,9 @@ Received: true
   92  | test("TC-F-102 A price rise above 1% blocks booking until the guest acknowledges it", async ({ request }, testInfo) => {
   93  |   const b = booking(testInfo);
   94  |   await fresh(request, testInfo);
-  95  |   const cart = await createCart(request, testInfo, b);
-  96  |   const nightly = cart.body.room.roomCharge.amount / cart.body.room.nights / cart.body.room.rooms;
-  97  |   await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], Math.round(nightly * 130) / 100);
+  95  |   await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], 200);
+  96  |   const cart = await createCart(request, testInfo, b);
+  97  |   await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], 260);
   98  |   const rv = await call(request, testInfo, 'cart-service', 'POST', `/api/carts/${cart.body.cartId}/revalidate`);
   99  |   expect(rv.body.requiresAcknowledgement).toBe(true);
   100 |   const blocked = await reserve(request, testInfo, cart.body.cartId, b);
@@ -117,9 +117,9 @@ Received: true
   108 | test("TC-F-103 A price change within 1% does not need acknowledgement", async ({ request }, testInfo) => {
   109 |   const b = booking(testInfo);
   110 |   await fresh(request, testInfo);
-  111 |   const cart = await createCart(request, testInfo, b);
-  112 |   const nightly = cart.body.room.roomCharge.amount / cart.body.room.nights / cart.body.room.rooms;
-  113 |   await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], Math.round(nightly * 100.5) / 100);
+  111 |   await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], 200);
+  112 |   const cart = await createCart(request, testInfo, b);
+  113 |   await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], 201);
   114 |   const rv = await call(request, testInfo, 'cart-service', 'POST', `/api/carts/${cart.body.cartId}/revalidate`);
 > 115 |   expect(rv.body.requiresAcknowledgement).toBe(false);
       |                                           ^ Error: expect(received).toBe(expected) // Object.is equality

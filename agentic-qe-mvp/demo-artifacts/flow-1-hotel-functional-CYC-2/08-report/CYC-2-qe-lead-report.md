@@ -2,14 +2,14 @@
 
 CYC-2 · baseline cycle
 
-> **Recommendation: No-go.** 1 release-blocking defect open (DEF-007).
+> **Recommendation: No-go.** No-go criteria not met: No open defect at Critical severity or marked release-blocking (1: DEF-007 Critical (AQPI-17)).
 
 | Type of testing | Requirements | Test cases | Automated | Pass rate | Defects | Requirements verified |
 |---|---|---|---|---|---|---|
 | DQE testing | 118 | 121 | 65 | 95.4% | 6 | 39.8% |
 
 ## 1. Summary
-- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-12 01:35 UTC.
+- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-12 02:09 UTC.
 - Type of testing: DQE testing. Every domain rule and its boundaries, checked through the service API.
 - We took 3 inputs (Jira initiative AQPI-1, Jira epic AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27, Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)) and produced 118 requirements, 121 test cases and 50 automated scripts.
 - We ran 65 automated tests for real: 62 passed, 3 failed (pass rate 95.4%). 56 manual tests still to be run by hand.
@@ -25,7 +25,7 @@ CYC-2 · baseline cycle
 ## 3. How we ran the cycle
 1. Read 152 statements from the inputs and lined them up into 128 requirement groups: 0 agreed by every source, 121 only in Jira, 7 only in the code, 0 in conflict.
 2. The review agent read the inputs first and suggested 7 addition(s), 63 missing piece(s) and 0 conflict(s) for the reviewer (0 high severity). It approved nothing.
-3. Priya Shah reviewed and approved the requirement set on 2026-10-12 01:35 UTC.
+3. Priya Shah reviewed and approved the requirement set on 2026-10-12 02:09 UTC.
 4. DQE testing steered the design: Designs a functional test case for every domain rule, both sides of every boundary, and runs them all. Result: 121 case(s) in this run (0 reused, 0 re-designed, 121 new).
 5. The requirements agent wrote 118 requirements, each with its business rule, exact values and source quotes (57 automatable, 61 manual); the agents then designed 121 test cases (117 functional, 4 non-functional) and generated 50 Playwright scripts.
 6. Executed the automated suite with Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform; defects were raised only for tests that actually failed.
@@ -60,7 +60,7 @@ CYC-2 · baseline cycle
 _13 of 15 booking-driving attributes (out of 21 booking attributes) are varied by at least one test._
 
 ## 6. Recommendation and next steps
-**No-go.** 1 release-blocking defect open (DEF-007).
+**No-go.** No-go criteria not met: No open defect at Critical severity or marked release-blocking (1: DEF-007 Critical (AQPI-17)).
 
 - Fix DEF-007 and re-run TC-F-103; it must pass before release.
 - Run TC-F-002, TC-F-003, TC-F-004, TC-F-005, TC-F-006, TC-F-012, TC-F-013, TC-F-014, TC-F-017, TC-F-018, TC-F-020, TC-F-027, TC-F-028, TC-F-030, TC-F-033, TC-F-034, TC-F-035, TC-F-036, TC-F-041, TC-F-042, TC-F-043, TC-F-044, TC-F-045, TC-F-048, TC-F-050, TC-F-051, TC-F-052, TC-F-053, TC-F-056, TC-F-057, TC-F-061, TC-F-066, TC-F-067, TC-F-071, TC-F-072, TC-F-073, TC-F-076, TC-F-078, TC-F-080, TC-F-081, TC-F-082, TC-F-084, TC-F-085, TC-F-086, TC-F-087, TC-F-088, TC-F-090, TC-F-092, TC-F-093, TC-F-094, TC-F-095, TC-F-096, TC-F-097, TC-F-098, TC-F-099, TC-F-100 manually and record the result.
@@ -105,7 +105,7 @@ _13 of 15 booking-driving attributes (out of 21 booking attributes) are varied b
 
 | Gate | Decision | By | When | Detail |
 |---|---|---|---|---|
-| Requirement set review | approved | Priya Shah | 2026-10-12 01:35 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
+| Requirement set review | approved | Priya Shah | 2026-10-12 02:09 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
 
 ## 8. Exit criteria
 | Exit criterion | Status | Detail |
@@ -130,4 +130,21 @@ _13 of 15 booking-driving attributes (out of 21 booking attributes) are varied b
 | Defects from failed test cases | 3 | 3 | defects backed by a failed result | reconciled |
 | Gap defects | 3 | 3 | gap defects linked to a Jira story | reconciled |
 
-_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 01:35 UTC. Every figure comes from the persisted cycle; nothing is estimated._
+## 10. Release criteria
+Release criteria (Go / Conditional go / No-go) (release-criteria.md); blocking severity Critical, minimum pass rate 95%.
+
+| Release parameter | Applies as | Status | Detail |
+|---|---|---|---|
+| Requirement set approved by a named reviewer | No-go if triggered | clear | - |
+| No open defect at Critical severity or marked release-blocking | No-go if triggered | triggered | 1: DEF-007 Critical (AQPI-17) |
+| Automated pass rate at least 95% | No-go if triggered | clear | - |
+| Every automated test case in the run executed | No-go if triggered | clear | - |
+| Every failed test case has a defect | No-go if triggered | clear | - |
+| Every report figure matches the stored evidence | No-go if triggered | clear | - |
+| Every Jira story in scope traced to a test case or a gap defect | No-go if triggered | clear | - |
+| No open defect for a Jira story missing from the code | Conditional go if triggered | triggered | 3: DEF-004 (AQPI-8), DEF-005 (AQPI-13), DEF-006 (AQPI-22) |
+| No other open defect | Conditional go if triggered | triggered | 2: DEF-008 Medium, DEF-009 Medium |
+| Manual test cases run and recorded | Noted only | triggered | 56: TC-F-002, TC-F-003, TC-F-004, TC-F-005, TC-F-006, TC-F-012, TC-F-013, TC-F-014, … |
+| Every requirement verified by a passing test of this testing type | Noted only | triggered | 71: REQ-001, REQ-002, REQ-004, REQ-005, REQ-006, REQ-007, REQ-008, REQ-009, … |
+
+_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 02:09 UTC. Every figure comes from the persisted cycle; nothing is estimated._

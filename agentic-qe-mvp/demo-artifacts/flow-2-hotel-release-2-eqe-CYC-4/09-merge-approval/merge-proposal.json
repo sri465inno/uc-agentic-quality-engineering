@@ -52,14 +52,26 @@
       "BR-137",
       "BR-138"
     ],
-    "testCases": [],
-    "scripts": []
+    "testCases": [
+      "TC-F-009",
+      "TC-F-010",
+      "TC-F-011",
+      "TC-F-012",
+      "TC-F-013"
+    ],
+    "scripts": [
+      "br-121-free-cancellation.spec.js",
+      "br-126-cancellation-email.spec.js",
+      "br-130-result-sorting.spec.js",
+      "br-134-proceed-without-offers.spec.js",
+      "br-136-booking-outcome.spec.js"
+    ]
   },
   "approvals": [
     {
       "gate": "Requirement set review",
       "by": "Priya Shah",
-      "at": "2026-10-12T01:35:38.475Z",
+      "at": "2026-10-12T02:10:39.649Z",
       "decision": "approved",
       "comment": "",
       "detail": "43 requirements approved; 0 excluded; 0 conflict(s) resolved"
@@ -67,10 +79,10 @@
     {
       "gate": "Merge into baseline",
       "by": "Sam Lee",
-      "at": "2026-10-12T01:35:38.498Z",
+      "at": "2026-10-12T02:10:39.674Z",
       "decision": "approved",
       "comment": "",
-      "detail": "23 requirements, 0 test cases, 0 scripts merged: BL-1 v1 -> v2"
+      "detail": "23 requirements, 5 test cases, 5 scripts merged: BL-1 v1 -> v2"
     }
   ]
 }

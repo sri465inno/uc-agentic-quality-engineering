@@ -1,0 +1,16 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: br-067-support-masking.spec.js >> TC-F-058 Support staff see a masked e-mail and other callers are refused
+- Location: specs/br-067-support-masking.spec.js:92:1
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```

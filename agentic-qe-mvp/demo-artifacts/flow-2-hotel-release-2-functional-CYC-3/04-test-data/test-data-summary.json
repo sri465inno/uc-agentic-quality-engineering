@@ -3,7 +3,7 @@
     "name": "Hotel booking attributes",
     "version": "1.0",
     "attributeCount": 21,
-    "source": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/fe1ce449d9a5fa0682ced74d98edc633ba2a57e4/data-dictionary/booking-attributes.json"
+    "source": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/data-dictionary/booking-attributes.json"
   },
   "total": 144,
   "conforming": 136,

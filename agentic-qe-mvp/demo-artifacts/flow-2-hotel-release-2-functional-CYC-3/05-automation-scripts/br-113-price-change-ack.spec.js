@@ -92,9 +92,9 @@ function reserve(request, testInfo, cartId, b, key = idempotencyKey(b, testInfo)
 test("TC-F-102 A price rise above 1% blocks booking until the guest acknowledges it", async ({ request }, testInfo) => {
   const b = booking(testInfo);
   await fresh(request, testInfo);
+  await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], 200);
   const cart = await createCart(request, testInfo, b);
-  const nightly = cart.body.room.roomCharge.amount / cart.body.room.nights / cart.body.room.rooms;
-  await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], Math.round(nightly * 130) / 100);
+  await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], 260);
   const rv = await call(request, testInfo, 'cart-service', 'POST', `/api/carts/${cart.body.cartId}/revalidate`);
   expect(rv.body.requiresAcknowledgement).toBe(true);
   const blocked = await reserve(request, testInfo, cart.body.cartId, b);
@@ -108,9 +108,9 @@ test("TC-F-102 A price rise above 1% blocks booking until the guest acknowledges
 test("TC-F-103 A price change within 1% does not need acknowledgement", async ({ request }, testInfo) => {
   const b = booking(testInfo);
   await fresh(request, testInfo);
+  await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], 200);
   const cart = await createCart(request, testInfo, b);
-  const nightly = cart.body.room.roomCharge.amount / cart.body.room.nights / cart.body.room.rooms;
-  await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], Math.round(nightly * 100.5) / 100);
+  await setRate(request, testInfo, b['selection.hotelId'], b['selection.roomCode'], b['selection.ratePlanCode'], 201);
   const rv = await call(request, testInfo, 'cart-service', 'POST', `/api/carts/${cart.body.cartId}/revalidate`);
   expect(rv.body.requiresAcknowledgement).toBe(false);
   expect(rv.body.totals.total.amount).toBeGreaterThan(cart.body.totals.total.amount);

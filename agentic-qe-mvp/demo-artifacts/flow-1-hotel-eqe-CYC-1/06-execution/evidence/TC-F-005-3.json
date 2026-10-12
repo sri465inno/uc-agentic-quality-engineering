@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:36319/api/reservations",
+    "url": "http://127.0.0.1:34637/api/reservations",
     "headers": {
       "Idempotency-Key": "aqe-double-49c6343e-1"
     },
     "data": {
-      "cartId": "C-e6475b7d",
+      "cartId": "C-06f7f6a9",
       "guest": {
         "firstName": "Jane",
         "lastName": "Doe",
@@ -22,14 +22,14 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "73bac1bd-395c-425c-825e-bd5c716c230f",
+    "correlationId": "8c819ddc-29b8-4d86-b571-8dc3d615222e",
     "body": {
-      "reservationId": "R-a7902415",
+      "reservationId": "R-155bc1d0",
       "status": "CONFIRMED",
-      "confirmationNumber": "HBU6SJSJVM",
+      "confirmationNumber": "HBP3MAEZES",
       "headline": "Your booking is confirmed",
       "doNotResubmit": true,
-      "statusUrl": "/api/reservations/R-a7902415",
+      "statusUrl": "/api/reservations/R-155bc1d0",
       "total": {
         "amount": 805.19,
         "currency": "USD"
@@ -39,7 +39,7 @@
       "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
       "guestFirstName": "Jane",
       "notificationStatus": "DELIVERED",
-      "updatedAt": "2026-10-12T01:35:05.331990776Z"
+      "updatedAt": "2026-10-12T02:09:36.026939942Z"
     }
   }
 }

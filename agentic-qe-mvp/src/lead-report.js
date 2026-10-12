@@ -10,20 +10,85 @@ const plural = (n, one, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 
 const movementText = (defects) => Object.entries(defects.reduce((m, d) => ({ ...m, [d.movement]: (m[d.movement] || 0) + 1 }), {})).map(([k, v]) => `${v} ${k}`).join(', ');
 
-function recommendation(r, defects) {
+const DEFAULT_POLICY = {
+  thresholds: { blockingSeverity: ['Critical'], minPassRate: ['95'] },
+  noGo: ['requirement-set-not-approved', 'blocking-defect', 'pass-rate-below-minimum', 'automated-case-not-run', 'failed-case-without-defect', 'evidence-mismatch', 'journey-failed', 'story-not-traced'],
+  conditional: ['open-gap-defect', 'open-defect-below-blocking'],
+  noted: ['manual-case-not-run', 'requirement-not-verified-by-this-track'],
+};
+
+/** The release-criteria skill of the cycle: the one written for its track first, then the general one, else the built-in default. */
+function releasePolicy(cycle) {
+  const all = (cycle.skills || []).filter((s) => s.settings && (s.settings.noGo || s.settings.conditional || s.settings.noted));
+  const skill = all.find((s) => s.testingType === cycle.testingType) || all.find((s) => !s.testingType) || null;
+  const set = skill ? skill.settings : DEFAULT_POLICY;
+  const th = set.thresholds || {};
+  return {
+    source: skill ? `${skill.name} (${skill.file || skill.id})` : 'Built-in default release criteria',
+    blockingSeverity: [].concat(th.blockingSeverity || DEFAULT_POLICY.thresholds.blockingSeverity),
+    minPassRate: Number([].concat(th.minPassRate || DEFAULT_POLICY.thresholds.minPassRate)[0]),
+    action: Object.fromEntries([...[].concat(set.noted || []).map((k) => [k, 'noted']), ...[].concat(set.conditional || []).map((k) => [k, 'conditional']), ...[].concat(set.noGo || []).map((k) => [k, 'no-go'])]),
+  };
+}
+
+/** Each release parameter, computed from the stored cycle evidence: triggered items (empty when clear). */
+function releaseParameters(cycle, r, policy) {
+  const a = cycle.artifacts;
+  const defects = a.defects || [];
+  const results = (a.execution && a.execution.results) || [];
+  const resultOf = new Map(results.map((x) => [x.key, x.status]));
+  const inRun = (a.testCases || []).filter((t) => t.inRun !== false);
+  const auto = inRun.filter((t) => t.automation === 'Automated');
+  const ex = r.execution.executed ? r.execution.summary : null;
+  const review = r.approvals.find((x) => x.gate === 'Requirement set review');
+  const isBlocking = (d) => d.type !== 'gap' && (d.blocksRelease || policy.blockingSeverity.includes(d.severity));
+  const stories = r.traceability ? r.traceability.stories : [];
+  const gapStories = new Set([...defects, ...(a.resolvedDefects || [])].filter((d) => d.type === 'gap').map((d) => d.story));
+  const isEqe = cycle.testingType === 'eqe';
+  const P = (id, label, items, track = null) => ({ id, label, items, track });
+  return [
+    P('requirement-set-not-approved', 'Requirement set approved by a named reviewer', review && review.by ? [] : ['no named approval']),
+    P('blocking-defect', `No open defect at ${policy.blockingSeverity.join(' / ')} severity or marked release-blocking`, defects.filter(isBlocking).map((d) => `${d.id} ${d.severity} (${(d.jiraKeys || []).join(', ')})`)),
+    P('pass-rate-below-minimum', `Automated pass rate at least ${policy.minPassRate}%`, ex && ex.executed && ex.passRate < policy.minPassRate ? [`${ex.passRate}%`] : []),
+    P('automated-case-not-run', 'Every automated test case in the run executed', auto.filter((t) => !['passed', 'failed'].includes(resultOf.get(t.key))).map((t) => t.key)),
+    P('failed-case-without-defect', 'Every failed test case has a defect', results.filter((x) => x.status === 'failed' && !defects.some((d) => d.testCaseKey === x.key)).map((x) => x.key)),
+    P('evidence-mismatch', 'Every report figure matches the stored evidence', evidenceCheck(cycle, r).filter((x) => x.status !== 'reconciled').map((x) => x.figure)),
+    ...(isEqe ? [P('journey-failed', 'Every business journey passed end to end', auto.filter((t) => t.suite === 'journey' && resultOf.get(t.key) !== 'passed').map((t) => t.key), 'EQE')] : []),
+    ...(!isEqe ? [P('story-not-traced', 'Every Jira story in scope traced to a test case or a gap defect', stories.filter((x) => x.level === 'story' && x.scope !== 'baseline' && !x.testCases && !gapStories.has(x.key)).map((x) => x.key), 'DQE')] : []),
+    P('open-gap-defect', 'No open defect for a Jira story missing from the code', defects.filter((d) => d.type === 'gap').map((d) => `${d.id} (${d.story})`)),
+    P('open-defect-below-blocking', 'No other open defect', defects.filter((d) => d.type !== 'gap' && !isBlocking(d)).map((d) => `${d.id} ${d.severity}`)),
+    P('manual-case-not-run', 'Manual test cases run and recorded', inRun.filter((t) => t.automation !== 'Automated').map((t) => t.key)),
+    P('requirement-not-verified-by-this-track', 'Every requirement verified by a passing test of this testing type', (r.coverage?.rows || []).filter((x) => !/passing/.test(x.status)).map((x) => x.requirementId)),
+  ];
+}
+
+const ACTION_TEXT = { 'no-go': 'No-go if triggered', conditional: 'Conditional go if triggered', noted: 'Noted only', off: 'Not applied' };
+
+function recommendation(cycle, r) {
+  const policy = releasePolicy(cycle);
+  const params = releaseParameters(cycle, r, policy).map((x) => {
+    const action = policy.action[x.id] || 'off';
+    return { ...x, action, actionText: ACTION_TEXT[action], status: x.items.length ? 'triggered' : 'clear', detail: x.items.length ? `${x.items.length}: ${x.items.slice(0, 8).join(', ')}${x.items.length > 8 ? ', …' : ''}` : 'clear' };
+  });
+  const criteria = { source: policy.source, blockingSeverity: policy.blockingSeverity, minPassRate: policy.minPassRate, parameters: params };
   const gap = (r.testing?.selection?.gaps || []).find((g) => g.severity === 'high');
-  if (!r.execution.executed) return { decision: 'Not ready', tone: 'bad', reason: gap ? gap.message : 'The tests have not been executed yet.', conditions: gap ? [gap.message] : [] };
-  const blocking = defects.filter((d) => d.blocksRelease);
-  if (blocking.length) {
-    return { decision: 'No-go', tone: 'bad', reason: `${plural(blocking.length, 'release-blocking defect')} open (${blocking.map((d) => d.id).join(', ')}).`,
-      conditions: blocking.map((d) => `Fix ${d.id} and re-run ${d.testCaseKey}; it must pass before release.`) };
+  if (!r.execution.executed) return { decision: 'Not ready', tone: 'bad', reason: gap ? gap.message : 'The tests have not been executed yet.', conditions: gap ? [gap.message] : [], criteria };
+  const hit = (action) => params.filter((x) => x.action === action && x.status === 'triggered');
+  const noGo = hit('no-go');
+  const cond = hit('conditional');
+  const noted = hit('noted');
+  const notedText = noted.length ? ` Noted, not deciding: ${noted.map((x) => `${x.label.toLowerCase()} (${x.items.length} open)`).join('; ')}.` : '';
+  if (noGo.length) {
+    return { decision: 'No-go', tone: 'bad', reason: `No-go criteria not met: ${noGo.map((x) => `${x.label} (${x.detail})`).join('; ')}.`,
+      conditions: noGo.flatMap((x) => (x.id === 'blocking-defect'
+        ? (cycle.artifacts.defects || []).filter((d) => x.items.some((i) => i.startsWith(`${d.id} `))).map((d) => `Fix ${d.id} and re-run ${d.testCaseKey}; it must pass before release.`)
+        : [`${x.label}: ${x.detail}.`])), criteria };
   }
-  const gaps = (r.coverage?.rows || []).filter((x) => !/passing/.test(x.status));
-  if (defects.length || gaps.length || r.handoverStatus === 'incomplete') {
-    return { decision: 'Conditional go', tone: 'warn', reason: 'No release-blocking defects, but there are open items to accept or close.',
-      conditions: [...defects.map((d) => `Accept or fix ${d.id} (${d.severity}).`), ...(gaps.length ? [`Cover or accept ${plural(gaps.length, 'requirement')} not yet verified by a passing test.`] : [])] };
+  if (cond.length) {
+    return { decision: 'Conditional go', tone: 'warn', reason: `No no-go criterion is triggered; open items to accept or close: ${cond.map((x) => `${x.label.toLowerCase()} (${x.detail})`).join('; ')}.${notedText}`,
+      conditions: cond.map((x) => `${x.label}: ${x.detail}.`), criteria };
   }
-  return { decision: 'Go', tone: 'ok', reason: 'Every automated test passed and every requirement is verified.', conditions: [] };
+  return { decision: 'Go', tone: 'ok', reason: `Every no-go and conditional release criterion is clear.${notedText}`, conditions: [], criteria };
 }
 
 /** Exit criteria of the cycle's track, each met, not met or open, computed from the cycle evidence. */
@@ -112,7 +177,7 @@ function buildLeadReport(cycle) {
   const fixed = a.resolvedDefects || [];
   const ex = r.execution.executed ? r.execution.summary : null;
   const n = r.normalisation;
-  const rec = recommendation(r, defects);
+  const rec = recommendation(cycle, r);
   const reviewApproval = r.approvals.find((x) => x.gate === 'Requirement set review');
   const mergeApproval = r.approvals.find((x) => x.gate === 'Merge into baseline');
   const conflicts = a.requirements.filter((q) => q.resolution && q.resolution.chosen && (q.changedInCycle || q.introducedInCycle || cycle.id) === cycle.id);
@@ -132,7 +197,7 @@ function buildLeadReport(cycle) {
     `We took ${plural(r.inputs.length, 'input')} (${r.inputs.map((i) => `${esc(i.label)} ${esc(i.ref)}`).join(', ')}) and produced ${plural(r.requirements.total, 'requirement')}, ${plural(r.testCases.total, 'test case')} and ${plural(r.scripts.total, 'automated script')}.`,
     ex ? `We ran ${plural(ex.executed, 'automated test')} for real: <b>${ex.passed} passed, ${ex.failed} failed</b> (pass rate ${ex.passRate}%). ${ex.notRun ? `${plural(ex.notRun, 'manual test')} still to be run by hand.` : ''}` : 'Tests have not been executed yet.',
     defects.length ? `${plural(defects.length, 'defect')} open from real failures (${movementText(defects)}), ${defects.filter((d) => d.blocksRelease).length} release-blocking: ${defects.map((d) => `${esc(d.id)} ${esc(d.title)} (Jira: ${esc(jiraDefectText(d))})`).join('; ')}.` : 'No defects: nothing failed.',
-    ...(fixed.length ? [`<b>${plural(fixed.length, 'defect')} fixed, retested and certified closed</b>: ${fixed.map((d) => `${esc(d.id)} ${esc(d.title)} (story ${esc((d.jira && d.jira.linkedTo) || (d.jiraKeys || [])[0] || '-')}, first seen in ${esc(d.firstSeenCycle)}; ${esc(d.testCaseKey)} passed on build ${esc((d.retest && d.retest.build) || r.cycle.sutBuild)})`).join('; ')}.`] : []),
+    ...(fixed.length ? [`<b>${plural(fixed.length, 'defect')} fixed, retested and certified closed</b>: ${fixed.map((d) => `${esc(d.id)} ${esc(d.title)} (story ${esc((d.jira && d.jira.linkedTo) || (d.jiraKeys || [])[0] || '-')}, first seen in ${esc(d.firstSeenCycle)}; ${esc(d.testCaseKey || ((d.retest && d.retest.cases) || []).join(', '))} passed on build ${esc((d.retest && d.retest.build) || r.cycle.sutBuild)})`).join('; ')}.`] : []),
     ...(isInc && r.delta ? [`Against the baseline: ${esc(r.delta.summary)}. ${r.reuse.carriedOver} of ${r.reuse.total} test cases were reused unchanged; only new and changed items were redesigned.`] : []),
   ];
 
@@ -216,8 +281,9 @@ function renderLeadHtml(L, { cycleLink = null } = {}) {
 <h3>6. Recommendation and next steps</h3><p><b>${esc(rec.decision)}.</b> ${esc(rec.reason)}</p><ul>${L.nextSteps.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
 ${L.traceability && L.traceability.length ? `<h3>Traceability by story</h3>${table(['Jira item', 'Level', 'Summary', 'Requirements', 'Test cases', 'Passed', 'Failed', 'Defects', 'Status'], L.traceability.map((x) => [esc(x.key), esc(x.level), esc(x.summary || ''), esc(x.requirements), esc(x.testCases), esc(x.passed), esc(x.failed), esc(x.defects.join(', ') || '-'), esc(x.status)]))}` : ''}
 <h3>7. Sign-off</h3>${L.signoffOwner ? `<p><b>${esc(L.signoffOwner.track)} sign-off owner: ${esc(L.signoffOwner.owner)}</b> (${esc(L.signoffOwner.accountability)}). ${esc(L.signoffOwner.status)}: ${esc(L.signoffOwner.note)}</p>` : ''}${table(['Gate', 'Decision', 'By', 'When', 'Detail'], L.signoff.map((x) => [esc(x.gate), esc(x.decision), esc(x.by), esc(date(x.at)), esc(x.detail || '')]))}
-<h3>8. Exit criteria</h3>${table(['Exit criterion', 'Status', 'Detail'], L.exitCriteria.map((x) => [esc(x.criterion), esc(x.status), esc(x.detail)]))}
+<h3>8. Exit criteria</h3>${table(['Exit criterion', 'Status', 'Detail'], L.exitCriteria.map((x) => [esc(x.criterion), esc(x.status), esc(x.status === 'clear' ? '-' : x.detail)]))}
 <h3>9. Evidence check</h3><p class="muted small">Each figure in this report recounted from the stored cycle evidence.</p>${table(['Figure', 'In the report', 'Recounted', 'Recounted from', 'Status'], L.evidenceCheck.map((x) => [esc(x.figure), esc(x.reported), esc(x.recounted), esc(x.from), esc(x.status)]))}
+${rec.criteria ? `<h3>10. Release criteria</h3><p class="muted small">${esc(rec.criteria.source)}; blocking severity ${esc(rec.criteria.blockingSeverity.join(' / '))}, minimum pass rate ${esc(rec.criteria.minPassRate)}%.</p>${table(['Release parameter', 'Applies as', 'Status', 'Detail'], rec.criteria.parameters.map((x) => [esc(x.label), esc(x.actionText), esc(x.status), esc(x.status === 'clear' ? '-' : x.detail)]))}` : ''}
 <p class="muted small">${esc(L.preparedBy)} · generated ${esc(date(L.generatedAt))}. Every figure comes from the persisted cycle; nothing is estimated.</p>
 </div>`;
 }
@@ -249,8 +315,9 @@ function renderLeadMarkdown(L) {
     '## 6. Recommendation and next steps', `**${rec.decision}.** ${rec.reason}`, '', ...L.nextSteps.map((s) => `- ${s}`), '',
     ...(L.traceability && L.traceability.length ? ['## Traceability by story', mdTable(['Jira item', 'Level', 'Summary', 'Requirements', 'Test cases', 'Passed', 'Failed', 'Defects', 'Status'], L.traceability.map((x) => [x.key, x.level, x.summary || '', x.requirements, x.testCases, x.passed, x.failed, x.defects.join(', ') || '-', x.status])), ''] : []),
     '## 7. Sign-off', ...(L.signoffOwner ? [`**${L.signoffOwner.track} sign-off owner: ${L.signoffOwner.owner}** (${L.signoffOwner.accountability}). ${L.signoffOwner.status}: ${L.signoffOwner.note}`, ''] : []), mdTable(['Gate', 'Decision', 'By', 'When', 'Detail'], L.signoff.map((x) => [x.gate, x.decision, x.by, date(x.at), x.detail || ''])), '',
-    '## 8. Exit criteria', mdTable(['Exit criterion', 'Status', 'Detail'], L.exitCriteria.map((x) => [x.criterion, x.status, x.detail])), '',
+    '## 8. Exit criteria', mdTable(['Exit criterion', 'Status', 'Detail'], L.exitCriteria.map((x) => [x.criterion, x.status, x.status === 'clear' ? '-' : x.detail])), '',
     '## 9. Evidence check', mdTable(['Figure', 'In the report', 'Recounted', 'Recounted from', 'Status'], L.evidenceCheck.map((x) => [x.figure, x.reported, x.recounted, x.from, x.status])), '',
+    ...(rec.criteria ? ['## 10. Release criteria', `${rec.criteria.source}; blocking severity ${rec.criteria.blockingSeverity.join(' / ')}, minimum pass rate ${rec.criteria.minPassRate}%.`, '', mdTable(['Release parameter', 'Applies as', 'Status', 'Detail'], rec.criteria.parameters.map((x) => [x.label, x.actionText, x.status, x.status === 'clear' ? '-' : x.detail])), ''] : []),
     `_${L.preparedBy} · generated ${date(L.generatedAt)}. Every figure comes from the persisted cycle; nothing is estimated._`, ''].join('\n');
 }
 
