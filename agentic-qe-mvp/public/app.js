@@ -572,6 +572,8 @@ async function viewCycle(id, params) {
   const label = tab === 'normalise' ? 'Gap analysis: what the code is missing' : tab === 'overview' ? 'QE lead report' : tab === 'artifacts' ? 'Artifacts produced' : tab === 'inputs' ? 'Inputs taken' : tab === 'skills' ? 'Skills and hand-overs' : tab === 'traceability' ? 'Traceability: Jira to defect' : tab === 'merge' ? 'Human approval to merge' : tab === 'review' ? 'Human review of requirement set' : tab === 'review-agent' ? 'Review agent suggestions' : current ? current.label : tab;
   let body = '';
   try { body = await renderCycleTab(c, tab); } catch (e) { body = `<div class="banner err">${esc(e.message)}</div>`; }
+  let lead = null;
+  if (c.report) { try { lead = (await api(`/api/cycles/${c.id}/lead-report`)).lead; } catch { lead = null; } }
   $view.innerHTML = `<section class="hero small-hero"><div class="eyebrow">${c.type === 'baseline' ? 'Flow 1 · Baseline cycle' : 'Flow 2 · Incremental cycle'}</div>
 <h1>${esc(c.name)} <span class="muted small">${esc(c.id)}</span> ${statusPill(c.status)}</h1>
 <div class="facts"><div><b>${esc(testingTypeOf(c.testingType, exampleIdOf(c)).name)}</b>type of testing</div>${reviewBadge(c)}${c.delta ? `<div><b>${esc(c.delta.summary)}</b>delta</div>` : ''}${ex ? `<div><b>${ex.passed}/${ex.executed}</b>passed</div><div><b>${ex.passRate}%</b>pass rate</div>` : ''}${c.gaps ? `<div><b>${c.gaps.findings.length}</b>gaps in the code</div>` : ''}${c.artifacts && c.artifacts.defects ? `<div><b>${c.artifacts.defects.length}</b>defects</div>` : ''}</div>
@@ -580,6 +582,7 @@ ${c.error ? `<div class="banner err">Failed: ${esc(c.error)} <button class="btn 
 ${c.status === 'interrupted' ? `<div class="banner">This cycle was interrupted by a restart. <button class="btn secondary" id="resume">Resume</button></div>` : ''}
 ${c.status === 'running' ? '<div class="banner info">Agents are running... this page refreshes automatically.</div>' : ''}
 ${GATE_TEXT[c.status] && tab !== (c.status === 'awaiting-review' ? 'review' : 'merge') ? `<div class="banner action"><b>Action needed</b> This cycle is stopped until you ${GATE_TEXT[c.status]}${c.status === 'awaiting-merge' ? ` ${esc(c.baselineId)}` : ''}. <a href="#/cycle/${esc(c.id)}?tab=${c.status === 'awaiting-review' ? 'review' : 'merge'}">Go to the approval</a></div>` : ''}
+${runSummary(c, lead)}
 ${adaptedPanel(c)}
 ${inputsRail}
 ${rails}
@@ -592,6 +595,58 @@ ${gapSummary(c)}
   if (sel) sel.parentElement.scrollLeft = Math.max(0, sel.offsetLeft - sel.parentElement.offsetLeft - 40);
   if (params.get('tab') && c.status !== 'running') document.getElementById('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
   if (c.status === 'running') pollTimer = setTimeout(route, 1500);
+}
+
+/** Epics and stories in scope: the Jira hierarchy this cycle read, plus the baseline's for carried stories. */
+function jiraScope(c) {
+  const epics = new Set();
+  const stories = new Set();
+  for (const i of c.inputs.filter((x) => x.slot === 'epic')) for (const h of i.hierarchy || []) { epics.add(h.key); for (const s of h.children || []) stories.add(s.key); }
+  for (const x of c.baselineJiraItems || []) { if (x.level === 'epic') epics.add(x.key); if (x.level === 'story') stories.add(x.key); }
+  return { epics: epics.size, stories: stories.size };
+}
+const nOf = (n, one, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+const cycleDefects = (a) => [...new Map([...(a.gapDefects || []), ...(a.defects || []), ...(a.resolvedDefects || [])].map((d) => [d.id, d])).values()];
+
+/** Plain-language outcome of the run, one line per stage, every number counted from the cycle's artifacts. */
+function runSummary(c, lead) {
+  const a = c.artifacts || {};
+  if (!a.requirements) return '';
+  const { epics, stories } = jiraScope(c);
+  const reqs = a.requirements;
+  const added = reqs.filter((r) => r.status === 'new').length;
+  const enhanced = reqs.filter((r) => r.status === 'enhanced').length;
+  const lines = [`<b>Scope:</b> ${nOf(epics, 'feature')} (Jira epics), ${nOf(stories, 'Jira story', 'Jira stories')} → ${nOf(reqs.length, 'requirement')}${c.type === 'incremental' ? ` (${added} new, ${enhanced} changed against the baseline)` : ''}.`];
+  const defects = cycleDefects(a);
+  const gapDefects = defects.filter((d) => d.type === 'gap');
+  const testDefects = defects.filter((d) => d.type !== 'gap');
+  const findings = (c.gaps && c.gaps.findings) || [];
+  if (findings.length) {
+    const raised = gapDefects.filter((d) => findings.some((x) => x.story === d.story));
+    lines.push(`<b>Gaps:</b> ${nOf(findings.length, 'Jira story', 'Jira stories')} missing in the code (${esc(findings.map((x) => x.story).join(', '))}) → ${raised.length ? `${nOf(raised.length, 'gap defect')} raised (${esc(raised.map((d) => d.id).join(', '))}), linked to ${raised.length === 1 ? 'its story' : 'their stories'}` : 'kept in scope by the reviewer, no defect raised'}.`);
+  } else {
+    const picked = (c.gaps && c.gaps.pickedUp) || [];
+    lines.push(`<b>Gaps:</b> no Jira story is missing in the code.${picked.length ? ` The ${nOf(picked.length, 'gap story', 'gap stories')} skipped in the baseline (${esc(picked.map((x) => x.story).join(', '))}) ${picked.length === 1 ? 'is' : 'are'} now implemented.` : ''}`);
+  }
+  const tcs = a.testCases || [];
+  if (tcs.length) {
+    const auto = tcs.filter((t) => t.automation === 'Automated').length;
+    const sel = a.selection;
+    const reuse = c.type === 'incremental' && sel ? ` ${sel.reused} reused, ${sel.redesigned} redesigned and ${sel.added} new.` : '';
+    lines.push(`<b>Test cases:</b> ${tcs.length} designed: ${auto} automated (in ${nOf((a.scripts || []).length, 'automation script')}) and ${tcs.length - auto} manual.${reuse}`);
+  }
+  const ex = a.execution && a.execution.summary;
+  if (ex) {
+    const open = testDefects.filter((d) => d.status !== 'Closed');
+    const bySev = Object.entries(open.reduce((m, d) => { m[d.severity] = (m[d.severity] || 0) + 1; return m; }, {})).map(([k, v]) => `${v} ${k}`).join(', ');
+    const closed = defects.filter((d) => d.status === 'Closed');
+    const closedGap = closed.filter((d) => d.type === 'gap').length;
+    lines.push(`<b>Execution:</b> ${ex.passed} of ${nOf(ex.executed, 'automated test case')} passed${ex.notRun ? `; ${ex.notRun} manual handed over to run by hand` : ''}. ${open.length ? `${nOf(open.length, 'defect')} raised from failed test cases (${esc(bySev)}).` : 'No defect from failed test cases.'}${closed.length ? ` ${nOf(closed.length, 'defect')} from the baseline fixed and closed after retest (${[closedGap ? `${closedGap} gap` : '', closed.length - closedGap ? `${closed.length - closedGap} from failed test cases` : ''].filter(Boolean).join(', ')}).` : ''}`);
+  }
+  const rec = lead && lead.recommendation;
+  if (rec) lines.push(`<b>Release decision: ${esc(rec.decision)}</b>. <a href="#/reporting?cycle=${esc(c.id)}">See why in the report</a>`);
+  const tone = !rec ? 'info' : rec.tone === 'ok' ? 'ok' : rec.tone === 'bad' ? 'err' : 'info';
+  return `<section class="panel run-summary"><div class="panel-head"><h2>Run summary</h2><span class="muted small">${c.status === 'completed' ? 'counted from this cycle' : 'so far; updates as the agents run'}</span></div><div class="banner ${tone}"><ul>${lines.map((l) => `<li>${l}</li>`).join('')}</ul></div></section>`;
 }
 
 /** The whole process on one strip: every step with who runs it, its status and one line of outcome. */
@@ -929,8 +984,12 @@ function requirementsView(c) {
 ${g.stories.map((s) => `<h3>${link(s.key)}${s.summary ? ` ${esc(s.summary)}` : ''} <span class="muted small">(${s.reqs.length})</span></h3>${table(head, s.reqs.map(row), (k) => `row-${s.reqs[k].status}`)}`).join('')}</details>`;
   };
   const described = reqs.filter((r) => r.ai).length;
+  const scope = jiraScope(c);
+  const gapCount = ((c.gaps && c.gaps.findings) || []).length;
+  const gapDefectCount = cycleDefects(a).filter((d) => d.type === 'gap' && ((c.gaps && c.gaps.findings) || []).some((x) => x.story === d.story)).length;
   return `<div class="banner info">The requirements agent turned the approved inputs into one common requirement set.${described ? ` AI described ${described} of them in plain language with Given/When/Then acceptance criteria (marked AI-suggested); a description that stated a number the source does not was rejected.` : ''} Each requirement carries its business rule with the exact values to test, where it is stated (Jira and code, with links and line numbers) and whether it can be automated. A BA, PO or QE can read the functionality here, story by story, before any test case is designed.</div>
-<div class="kpis"><div class="kpi">Requirements<b>${reqs.length}</b></div><div class="kpi">Jira stories<b>${groups.reduce((s, g) => s + g.stories.filter((x) => /^[A-Z]+-\d+$/.test(x.key)).length, 0)}</b></div><div class="kpi">Automatable rules<b>${automatable}</b></div><div class="kpi">Manual<b>${reqs.length - automatable}</b></div>${Object.entries(bySource).map(([k, v]) => `<div class="kpi">${esc(SOURCE_LABEL[k] || k)}<b>${v}</b></div>`).join('')}</div>
+<div class="kpis"><div class="kpi">Features (Jira epics)<b>${scope.epics}</b></div><div class="kpi">Jira stories<b>${scope.stories}</b></div><div class="kpi">Requirements<b>${reqs.length}</b></div><div class="kpi">Stories missing in the code<b>${gapCount}</b></div><div class="kpi">Gap defects raised<b>${gapDefectCount}</b></div></div>
+<details class="card"><summary class="small"><b>Analyst detail</b>: where the requirements come from and how many have a testable value</summary><div class="kpis"><div class="kpi">Rules with a testable value<b>${automatable}</b></div><div class="kpi">Rules with no testable value<b>${reqs.length - automatable}</b></div>${Object.entries(bySource).map(([k, v]) => `<div class="kpi">${esc(SOURCE_LABEL[k] || k)}<b>${v}</b></div>`).join('')}</div><p class="small muted">These count requirements, not test cases. Test case counts are on the Test cases tab.</p></details>
 ${c.type === 'incremental' ? `<p class="small">Against the baseline: ${Object.entries(byStatus).map(([k, v]) => `${esc(k)}: <b>${v}</b>`).join(' · ')}. Enhanced requirements show the superseded text and values struck through.</p>` : ''}
 ${c.report ? `<div class="row"><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.xlsx">Download Excel (Requirements sheet)</a></div>` : ''}
 ${groups.map(epicBlock).join('')}`;
