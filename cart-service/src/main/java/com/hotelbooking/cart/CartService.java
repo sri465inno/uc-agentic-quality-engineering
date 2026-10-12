@@ -279,7 +279,7 @@ public class CartService {
         }
         BigDecimal percent = after.amount().subtract(before.amount()).abs().multiply(BigDecimal.valueOf(100))
                 .divide(before.amount(), 4, RoundingMode.HALF_UP);
-        return percent.compareTo(properties.getMaterialChangePercent()) >= 0;
+        return percent.compareTo(properties.getMaterialChangePercent()) > 0;
     }
 
     CartView render(Cart cart) {
