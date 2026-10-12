@@ -1231,20 +1231,33 @@ const isGap = (d) => d.type === 'gap';
 
 const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
 
+/** EQE risks: requirements with no EQE test case are domain rules owned by DQE; name the DQE cycle that certifies them. */
+function eqeScopeRisks(unverified, uncovered, ex, dqe) {
+  const rest = unverified - uncovered;
+  const manualOnly = rest && ex && !ex.failed && rest <= ex.notRun;
+  const where = dqe
+    ? `; they are tested in ${dqe.id} (DQE ${dqe.type === 'baseline' ? 'Flow 1' : 'Flow 2'}${dqe.summary ? `, ${dqe.summary.passed} of ${dqe.summary.executed} automation test cases passed` : ''})`
+    : '; run a DQE cycle to certify them';
+  return [
+    ...(uncovered ? [`<b>Belongs to DQE:</b> ${plural(uncovered, 'requirement')} have no EQE test case because they are domain rules, not business journeys. They belong to the DQE track (domain certification)${where}.`] : []),
+    ...(rest && !manualOnly ? [`<b>Not yet verified:</b> ${plural(rest, 'requirement')} with an EQE test case have no passing result yet.`] : []),
+  ];
+}
+
 /** The few risks an executive needs, counted from the lead report's risk register. */
-function riskList(lead, ex, blocking) {
+function riskList(lead, ex, blocking, track = {}) {
   const num = (re) => { const m = lead.risks.map((r) => r.match(re)).find(Boolean); return m ? Number(m[1]) : 0; };
   const uncovered = num(/^(\d+) requirements? had no case/);
   const unverified = num(/^(\d+) requirements? not yet verified/);
   return [
     ...blocking.map((d) => `<b>Release blocker:</b> ${esc(d.id)} (${esc((d.jiraKeys || []).join(', '))}, ${esc(d.severity)}): ${esc(d.title)}.`),
-    ...(ex && ex.notRun ? [`<b>Manual testing outstanding:</b> ${plural(ex.notRun, 'test case')} cannot be automated and need a manual run before sign-off.`] : []),
-    ...(unverified ? [`<b>Not yet verified:</b> ${plural(unverified, 'requirement')} have no passing test yet${uncovered ? `, ${uncovered} of them with no test case in this testing type` : ''}.`] : []),
+    ...(ex && ex.notRun ? [`<b>Manual testing outstanding:</b> ${plural(ex.notRun, 'manual test case')} cannot be automated and need a manual run before sign-off.`] : []),
+    ...(track.eqe ? eqeScopeRisks(unverified, uncovered, ex, track.dqe) : unverified ? [`<b>Not yet verified:</b> ${plural(unverified, 'requirement')} have no passing test yet${uncovered ? `, ${uncovered} of them with no test case in this testing type` : ''}.`] : []),
   ];
 }
 
 /** Reporting: the cycle summary, then the detailed report (outcome, execution evidence, business-flow readiness, defects and risks). */
-function summaryReport(c, lead) {
+function summaryReport(c, lead, dqe = null) {
   const a = c.artifacts;
   const tt = testingTypeOf(c.testingType, exampleIdOf(c));
   const ex = a.execution ? a.execution.summary : null;
@@ -1316,7 +1329,7 @@ ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed
 <h4>A. Defects from code missing for Jira requirements (${openGaps.length})</h4><p class="small muted">Jira stories the code does not implement, excluded at the requirement review. Minor; they do not block the release and are picked up in the next release.</p>${gapTable}
 <h4>B. Defects from failed test cases (${execDefects.length})</h4><p class="small muted">Raised only from test cases that actually failed when their automation script ran on this build.</p>${tcTable}
 ${closed.length ? `<h4>C. Closed this cycle (${closed.length})</h4>${table(['Defect', 'Jira story', 'How it closed'], closed.map((d) => [esc(d.id), esc((d.jiraKeys || [d.story]).filter(Boolean).join(', ')), esc(d.movement || 'fixed and retested')]))}` : ''}
-<h4>${closed.length ? 'D' : 'C'}. Open risks</h4>${riskList(lead, ex, blocking).length ? `<ul>${riskList(lead, ex, blocking).map((x) => `<li>${x}</li>`).join('')}</ul>` : '<p>None.</p>'}
+<h4>${closed.length ? 'D' : 'C'}. Open risks</h4>${riskList(lead, ex, blocking, { eqe: c.testingType === 'eqe', dqe }).length ? `<ul>${riskList(lead, ex, blocking, { eqe: c.testingType === 'eqe', dqe }).map((x) => `<li>${x}</li>`).join('')}</ul>` : '<p>None.</p>'}
 ${lead.risks.length ? `<details><summary class="small">Full risk register (${lead.risks.length} entries, for the QE lead)</summary><ul class="small">${lead.risks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
 <p><a href="#/traceability?cycle=${esc(c.id)}">Open the traceability for ${esc(c.id)}</a></p>`;
   return `${summary}<h2>Detailed report</h2>${outcome}${evidence}${flows}${risks}`;
@@ -1393,7 +1406,7 @@ async function viewReporting(params) {
   if (view === 'lead') {
     const { html } = await api(`/api/cycles/${id}/lead-report`);
     body = `<div class="row"><a class="btn" href="/api/cycles/${esc(id)}/lead-report.html" target="_blank">Open as page</a><a class="btn secondary" href="/api/cycles/${esc(id)}/lead-report.html?download=1">Download HTML</a><a class="btn secondary" href="/api/cycles/${esc(id)}/lead-report.md">Download Markdown</a></div>${html}`;
-  } else if (view === 'summary') body = summaryReport(c, (await api(`/api/cycles/${id}/lead-report`)).lead);
+  } else if (view === 'summary') body = summaryReport(c, (await api(`/api/cycles/${id}/lead-report`)).lead, cycles.filter((x) => x.testingType === 'functional' && x.type === c.type && x.example === picked.example).pop() || null);
   else if (view === 'cycle') body = reportView(c);
   else body = downloadsView(c);
   const label = REPORT_VIEWS.find(([v]) => v === view)[1];
