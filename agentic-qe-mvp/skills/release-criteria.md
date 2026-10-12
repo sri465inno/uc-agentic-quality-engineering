@@ -39,8 +39,8 @@ Parameters (each one is computed from the stored cycle evidence):
 |---|---|
 | requirement-set-not-approved | The requirement set has no approval by a named reviewer |
 | blocking-defect | An open defect has a severity in `blockingSeverity`, or is marked release-blocking |
-| pass-rate-below-minimum | The automated pass rate is below `minPassRate` per cent |
-| automated-case-not-run | An automated test case in this run has no result |
+| pass-rate-below-minimum | The automation pass rate is below `minPassRate` per cent |
+| automated-case-not-run | An automation test case in this run has no result |
 | failed-case-without-defect | A failed test case has no defect |
 | evidence-mismatch | A report figure does not match the stored evidence |
 | journey-failed | EQE only: a business journey did not pass |

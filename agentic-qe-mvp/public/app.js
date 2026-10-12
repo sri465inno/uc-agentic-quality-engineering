@@ -233,8 +233,8 @@ const EXEC_AGENT = {
   requirements: ['Combines every input into one common requirement set, story by story, each requirement with its business rule, exact values and sources.', 'A BA, PO or QE can read and approve the functionality in one place before tests are designed at scale.'],
   testcases: ['Writes the test cases, ready for the test management tool.', 'Every requirement gets a consistent, reviewable test case.'],
   testdata: ['Builds complete, realistic test data for every test case from the data specs.', 'Every test runs on valid data that can be traced to the spec, never on copied production records.'],
-  scripts: ['Turns the test cases into automated tests.', 'The same tests can be re-run on every release.'],
-  execution: ['Runs the automated tests for real.', 'Results are actual, not estimated.'],
+  scripts: ['Turns the test cases into automation scripts.', 'The same tests can be re-run on every release.'],
+  execution: ['Runs the automation test cases for real.', 'Results are actual, not estimated.'],
   defects: ['Logs a defect only when a test really fails.', 'No noise: every defect comes with evidence.'],
   report: ['Produces the quality report and compares cycles.', 'One clear view of quality for decision makers.'],
 };
@@ -329,7 +329,7 @@ async function viewHome() {
   ];
   const lifecycle = [
     ['Bring', 'Enterprise inputs', 'Jira, code, APIs, data models and business documents.'],
-    ['Design', 'Agents 1–4', 'Requirements with their business rules, test cases, test data and automated tests.'],
+    ['Design', 'Agents 1–4', 'Requirements with their business rules, test cases, test data and automation scripts.'],
     ['Govern', 'Human approval', 'People settle disagreements and approve every baseline change.'],
     ['Validate', 'Agents 5–7', 'Real execution, evidence-backed defects and the cycle report.'],
     ['Release', 'Quality evidence', 'A traceable, release-ready report for sign-off.'],
@@ -644,7 +644,7 @@ function runSummary(c, lead) {
     const auto = tcs.filter((t) => t.automation === 'Automated').length;
     const sel = a.selection;
     const reuse = c.type === 'incremental' && sel ? ` ${sel.reused} reused, ${sel.redesigned} redesigned and ${sel.added} new.` : '';
-    lines.push(`<b>Test cases:</b> ${tcs.length} designed: ${auto} automated (in ${nOf((a.scripts || []).length, 'automation script')}) and ${tcs.length - auto} manual.${reuse}`);
+    lines.push(`<b>Test cases:</b> ${tcs.length} designed: ${nOf(auto, 'automation test case')} (in ${nOf((a.scripts || []).length, 'automation script')}) and ${tcs.length - auto} manual.${reuse}`);
   }
   const ex = a.execution && a.execution.summary;
   if (ex) {
@@ -652,7 +652,7 @@ function runSummary(c, lead) {
     const bySev = Object.entries(open.reduce((m, d) => { m[d.severity] = (m[d.severity] || 0) + 1; return m; }, {})).map(([k, v]) => `${v} ${k}`).join(', ');
     const closed = defects.filter((d) => d.status === 'Closed');
     const closedGap = closed.filter((d) => d.type === 'gap').length;
-    lines.push(`<b>Execution:</b> ${ex.passed} of ${nOf(ex.executed, 'automated test case')} passed${ex.notRun ? `; ${ex.notRun} manual handed over to run by hand` : ''}. ${open.length ? `${nOf(open.length, 'defect')} raised from failed test cases (${esc(bySev)}).` : 'No defect from failed test cases.'}${closed.length ? ` ${nOf(closed.length, 'defect')} from the baseline fixed and closed after retest (${[closedGap ? `${closedGap} gap` : '', closed.length - closedGap ? `${closed.length - closedGap} from failed test cases` : ''].filter(Boolean).join(', ')}).` : ''}`);
+    lines.push(`<b>Execution:</b> ${ex.passed} of ${nOf(ex.executed, 'automation test case')} passed${ex.notRun ? `; ${ex.notRun} manual handed over to run by hand` : ''}. ${open.length ? `${nOf(open.length, 'defect')} raised from failed test cases (${esc(bySev)}).` : 'No defect from failed test cases.'}${closed.length ? ` ${nOf(closed.length, 'defect')} from the baseline fixed and closed after retest (${[closedGap ? `${closedGap} gap` : '', closed.length - closedGap ? `${closed.length - closedGap} from failed test cases` : ''].filter(Boolean).join(', ')}).` : ''}`);
   }
   const rec = lead && lead.recommendation;
   if (rec) lines.push(`<b>Release decision: ${esc(rec.decision)}</b>. <a href="#/reporting?cycle=${esc(c.id)}">See why in the report</a>`);
@@ -1121,7 +1121,7 @@ function executionView(c) {
   const ex = c.artifacts.execution;
   const s = ex.summary;
   return `<h2>Execution ${pill('executed', 'executed')}</h2>
-<div class="kpis"><div class="kpi">Test cases (all)<b>${s.total}</b></div><div class="kpi">Automated test cases run<b>${s.executed}</b></div><div class="kpi">Automated passed<b>${s.passed}</b></div><div class="kpi">Automated failed<b>${s.failed}</b></div><div class="kpi">Manual test cases (not run)<b>${s.notRun}</b></div><div class="kpi">Automated pass rate<b>${s.passRate}%</b></div><div class="kpi">Automation run time<b>${s.durationMs} ms</b></div></div>
+<div class="kpis"><div class="kpi">Test cases (all)<b>${s.total}</b></div><div class="kpi">Automation test cases run<b>${s.executed}</b></div><div class="kpi">Automation test cases passed<b>${s.passed}</b></div><div class="kpi">Automation test cases failed<b>${s.failed}</b></div><div class="kpi">Manual test cases (not run)<b>${s.notRun}</b></div><div class="kpi">Automation pass rate<b>${s.passRate}%</b></div><div class="kpi">Automation run time<b>${s.durationMs} ms</b></div></div>
 <p class="small">Really executed by <b>${esc(ex.tool)}</b> against <b>${esc(ex.sut.name)}</b> (build <code>${esc(ex.sut.build)}</code>, ${esc(ex.sut.url)}) from ${fmtTime(ex.startedAt)} to ${fmtTime(ex.finishedAt)}. Exit code ${ex.exitCode}.${ex.results.some((r) => r.aiTriage) ? ' AI triage is a suggestion beside each failure; the result comes only from the run.' : ''} Command: <code>${esc(ex.command)}</code>. <a href="/api/cycles/${esc(c.id)}/playwright-report.json" target="_blank">Raw Playwright JSON report</a></p>
 ${table(['Case', 'Req', 'Name', 'Result', 'Duration', 'Failure / note', 'Evidence'], ex.results.map((r) => [esc(r.key), esc(r.requirementId), esc(r.name), pill(r.status, r.status),
     r.duration != null ? `${r.duration} ms` : '-', `${r.error ? `<code>${esc(r.error.assertion || '')}</code><br>expected <b>${esc(r.error.expected)}</b>, actual <b>${esc(r.error.actual)}</b><br><span class="small muted">${esc(r.error.location || '')}</span>` : esc(r.reason || '')}${r.aiTriage ? `<div class="ai-note">${aiBadge(r.aiTriage, `AI triage: ${r.aiTriage.category} (${r.aiTriage.confidence})`)} <span class="small">${esc(r.aiTriage.rationale)}</span></div>` : ''}`,
@@ -1133,9 +1133,9 @@ function traceabilityView(c) {
   const res = (x) => (x === 'passed' || x === 'failed' ? pill(x, x) : `<span class="muted small">${esc(x)}</span>`);
   const jiraLink = (k) => `<a href="${esc(jiraBrowse(c, k))}" target="_blank" rel="noopener">${esc(k)}</a>`;
   return `<p class="muted">Every test case traced from the Jira item it came from to its requirement, business rule, test data, script, real result and defect. Computed from this cycle's artifacts.</p>
-<div class="kpis"><div class="kpi">Jira items<b>${t.totals.jiraItems}</b></div><div class="kpi">Covered by a test<b>${t.totals.covered}</b></div><div class="kpi">Verified<b>${t.totals.verified}</b></div><div class="kpi">Failing<b>${t.totals.failing}</b></div><div class="kpi">Test cases<b>${t.totals.testCases}</b></div><div class="kpi">With test data<b>${t.totals.withData}</b></div><div class="kpi">With an automation script<b>${t.totals.withScript}</b></div><div class="kpi">Automated and run<b>${t.totals.executed}</b></div></div>
+<div class="kpis"><div class="kpi">Jira items<b>${t.totals.jiraItems}</b></div><div class="kpi">Covered by a test<b>${t.totals.covered}</b></div><div class="kpi">Verified<b>${t.totals.verified}</b></div><div class="kpi">Failing<b>${t.totals.failing}</b></div><div class="kpi">Test cases<b>${t.totals.testCases}</b></div><div class="kpi">With test data<b>${t.totals.withData}</b></div><div class="kpi">With an automation script<b>${t.totals.withScript}</b></div><div class="kpi">Automation test cases run<b>${t.totals.executed}</b></div></div>
 <div class="row"><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.xlsx">Download Excel (Traceability sheets)</a></div>
-<h3>By Jira item (initiative, epics, stories)</h3>${t.stories.some((x) => x.scope === 'baseline') ? '<p class="muted small">Includes the baseline stories this cycle re-tested through the carried test pack, not only the incoming epics.</p>' : ''}${table(['Jira item', 'Level', 'Parent', 'Summary', 'Requirements', 'Test cases', 'Automated', 'Passed', 'Failed', 'Defects', 'Status'], t.stories.map((x) => [jiraLink(x.key), `${esc(x.level)}${x.scope === 'baseline' ? ' <span class="muted small">(baseline, re-tested)</span>' : ''}`, esc(x.parent || '-'), esc(x.summary || ''), x.requirements, x.testCases, x.automated, x.passed, x.failed, x.defects.length ? `<a href="#/cycle/${esc(c.id)}?tab=defects">${esc(x.defects.join(', '))}</a>` : '-', pill(x.status, x.status === 'verified' ? 'passed' : x.status === 'failing' ? 'failed' : 'pending')]), (i) => (t.stories[i].status === 'failing' ? 'row-failed' : ''))}
+<h3>By Jira item (initiative, epics, stories)</h3>${t.stories.some((x) => x.scope === 'baseline') ? '<p class="muted small">Includes the baseline stories this cycle re-tested through the carried test pack, not only the incoming epics.</p>' : ''}${table(['Jira item', 'Level', 'Parent', 'Summary', 'Requirements', 'Test cases', 'Automation test cases', 'Passed', 'Failed', 'Defects', 'Status'], t.stories.map((x) => [jiraLink(x.key), `${esc(x.level)}${x.scope === 'baseline' ? ' <span class="muted small">(baseline, re-tested)</span>' : ''}`, esc(x.parent || '-'), esc(x.summary || ''), x.requirements, x.testCases, x.automated, x.passed, x.failed, x.defects.length ? `<a href="#/cycle/${esc(c.id)}?tab=defects">${esc(x.defects.join(', '))}</a>` : '-', pill(x.status, x.status === 'verified' ? 'passed' : x.status === 'failing' ? 'failed' : 'pending')]), (i) => (t.stories[i].status === 'failing' ? 'row-failed' : ''))}
 <h3>By test case</h3>${table(['Jira', 'Requirement', 'Rule', 'Test case', 'Type', 'Test data', 'Automation script', 'Result', 'Defect'], t.rows.map((x) => [x.jiraKeys.map(jiraLink).join(', '), `<a href="#/cycle/${esc(c.id)}?tab=requirements">${esc(x.requirementId)}</a>`, esc(x.ruleId || '-'), `<b>${esc(x.testCaseKey)}</b> ${esc(x.testCase)}`, esc(x.testType), x.testDataId ? `<a target="_blank" href="/api/cycles/${esc(c.id)}/testdata/${esc(x.testCaseKey)}.json">${esc(x.testDataId)}</a>` : '-', x.scriptFile ? `<a href="#/scripts?cycle=${esc(c.id)}&file=${esc(x.scriptFile)}">${esc(x.scriptFile)}</a>` : '-', res(x.result), x.defects.length ? `<a href="#/cycle/${esc(c.id)}?tab=defects">${esc(x.defects.join(', '))}</a>${x.jiraDefects.length ? ` (${x.jiraDefects.map(jiraLink).join(', ')})` : ''}` : '-']), (i) => (t.rows[i].result === 'failed' ? 'row-failed' : ''))}`;
 }
 
@@ -1176,7 +1176,7 @@ ${res.length ? `<h3>Fixed, retested and certified (${res.length})</h3><p class="
 function reportView(c) {
   const r = c.report;
   return `<div class="row"><h2 style="margin:0">Cycle report</h2><a class="btn" href="/api/cycles/${esc(c.id)}/report.html" target="_blank">Open HTML</a><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.html?download=1">Download HTML</a><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.xlsx">Download Excel</a></div>
-<div class="kpis" style="margin-top:10px"><div class="kpi">Requirements<b>${r.requirements.total}</b></div><div class="kpi">Test cases<b>${r.testCases.total}</b></div><div class="kpi">Automation scripts<b>${r.scripts.total}</b></div><div class="kpi">Automated test cases run<b>${r.execution.executed ? r.execution.summary.executed : 0}</b></div><div class="kpi">Automated pass rate<b>${r.execution.executed ? `${r.execution.summary.passRate}%` : 'n/a'}</b></div><div class="kpi">Defects<b>${r.defects.open.length}</b></div><div class="kpi">Coverage (passing)<b>${r.coverage ? r.coverage.percent.passing : 0}%</b></div></div>
+<div class="kpis" style="margin-top:10px"><div class="kpi">Requirements<b>${r.requirements.total}</b></div><div class="kpi">Test cases<b>${r.testCases.total}</b></div><div class="kpi">Automation scripts<b>${r.scripts.total}</b></div><div class="kpi">Automation test cases run<b>${r.execution.executed ? r.execution.summary.executed : 0}</b></div><div class="kpi">Automation pass rate<b>${r.execution.executed ? `${r.execution.summary.passRate}%` : 'n/a'}</b></div><div class="kpi">Defects<b>${r.defects.open.length}</b></div><div class="kpi">Coverage (passing)<b>${r.coverage ? r.coverage.percent.passing : 0}%</b></div></div>
 <div class="card"><b>Summary</b>${r.narrative.origin === 'ai' ? aiBadge({ by: r.narrative.draftedBy }, 'AI-drafted') : ''}<p>${esc(r.narrative.text)}</p>${(r.narrative.risks || []).length ? `<b>Risks</b><ul>${r.narrative.risks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${r.narrative.recommendation ? `<p><b>Recommendation:</b> ${esc(r.narrative.recommendation)}</p>` : ''}<p class="muted small">${esc(r.narrative.draftedBy)}</p></div>
 ${aiActivity(c)}
 <div class="card" id="report-skills"><b>Active skills (${(r.skills || []).length})</b> · hand-over <span class="hand ${r.handoverStatus === 'complete' ? 'ok' : 'bad'}">${esc(r.handoverStatus || 'not checked')}</span>
@@ -1266,9 +1266,9 @@ function summaryReport(c, lead) {
 <p class="small muted">${esc(c.id)} · ${c.type === 'baseline' ? 'Flow 1 baseline' : 'Flow 2 incremental'} · <b>${esc(tt.name)}</b> (${esc(tt.dimension || tt.focus)}) · build <code>${esc(c.sutBuild)}</code>${c.review ? ` · requirement set ${c.review.decision === 'rejected' ? 'rejected' : 'approved'} by ${esc(c.review.reviewer)}` : ''}${lead.signoffOwner ? ` · sign-off owner: <b>${esc(lead.signoffOwner.owner)}</b> (${esc(lead.signoffOwner.status.toLowerCase())})` : ''}</p>
 <h2>Metrics</h2><div class="grid2">
 ${group('Requirements and gaps', [['Jira items read', jiraRead || '-'], ['Requirements approved', (a.requirements || []).length], ['Stories missing in the code', (c.gaps?.findings || []).length]])}
-${group('Test design', [['Test cases', (a.testCases || []).length], ['Automated test cases', ex ? ex.executed : '-'], ['Manual test cases (handed over)', ex ? ex.notRun : '-']])}
+${group('Test design', [['Test cases', (a.testCases || []).length], ['Automation test cases', ex ? ex.executed : '-'], ['Manual test cases (handed over)', ex ? ex.notRun : '-']])}
 ${group('Automation scripts', [['Automation scripts', scripts.length], ...(c.type === 'incremental' ? [['Reused', byStatus('carried over')], ['Redesigned', byStatus('re-designed')], ['New', byStatus('new')]] : [])])}
-${group('Execution', [['Automated test cases run', ex ? ex.executed : '-'], ['Automated passed', ex ? ex.passed : '-'], ['Automated failed', ex ? ex.failed : '-'], ['Automated pass rate', ex ? `${ex.passRate}%` : '-']])}
+${group('Execution', [['Automation test cases run', ex ? ex.executed : '-'], ['Automation test cases passed', ex ? ex.passed : '-'], ['Automation test cases failed', ex ? ex.failed : '-'], ['Automation pass rate', ex ? `${ex.passRate}%` : '-']])}
 ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed test cases', execDefects.length], ['Blocking release', blocking.length], ['Closed this cycle', closedAll.length]])}
 </div>`;
 
@@ -1293,7 +1293,7 @@ ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed
     return [esc(SUITE_NAMES[s] || s), cs.filter((x) => x.inRun !== false).length, n('passed') + n('failed'), n('passed'), n('failed'), cs.filter((x) => x.inRun !== false).length - n('passed') - n('failed')];
   });
   const shots = ((a.execution && a.execution.results) || []).some((x) => (x.evidence || []).some((e) => e.contentType === 'image/png'));
-  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite (automation scripts)', 'In this run', 'Automated run', 'Passed', 'Failed', 'Manual (not run)'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p><details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}${evidenceCheck}`;
+  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite (automation scripts)', 'In this run', 'Automation test cases run', 'Passed', 'Failed', 'Manual (not run)'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p><details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}${evidenceCheck}`;
 
   const tr = c.report && c.report.traceability;
   const gapStories = new Set((c.gaps?.findings || []).map((g) => g.story));

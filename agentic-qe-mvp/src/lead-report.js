@@ -49,8 +49,8 @@ function releaseParameters(cycle, r, policy) {
   return [
     P('requirement-set-not-approved', 'Requirement set approved by a named reviewer', review && review.by ? [] : ['no named approval']),
     P('blocking-defect', `No open defect at ${policy.blockingSeverity.join(' / ')} severity or marked release-blocking`, defects.filter(isBlocking).map((d) => `${d.id} ${d.severity} (${(d.jiraKeys || []).join(', ')})`)),
-    P('pass-rate-below-minimum', `Automated pass rate at least ${policy.minPassRate}%`, ex && ex.executed && ex.passRate < policy.minPassRate ? [`${ex.passRate}%`] : []),
-    P('automated-case-not-run', 'Every automated test case in the run executed', auto.filter((t) => !['passed', 'failed'].includes(resultOf.get(t.key))).map((t) => t.key)),
+    P('pass-rate-below-minimum', `Automation pass rate at least ${policy.minPassRate}%`, ex && ex.executed && ex.passRate < policy.minPassRate ? [`${ex.passRate}%`] : []),
+    P('automated-case-not-run', 'Every automation test case in the run executed', auto.filter((t) => !['passed', 'failed'].includes(resultOf.get(t.key))).map((t) => t.key)),
     P('failed-case-without-defect', 'Every failed test case has a defect', results.filter((x) => x.status === 'failed' && !defects.some((d) => d.testCaseKey === x.key)).map((x) => x.key)),
     P('evidence-mismatch', 'Every report figure matches the stored evidence', evidenceCheck(cycle, r).filter((x) => x.status !== 'reconciled').map((x) => x.figure)),
     ...(isEqe ? [P('journey-failed', 'Every business journey passed end to end', auto.filter((t) => t.suite === 'journey' && resultOf.get(t.key) !== 'passed').map((t) => t.key), 'EQE')] : []),
@@ -131,7 +131,7 @@ function exitCriteria(cycle, r, track) {
       const gapStories = new Set([...defects, ...(a.resolvedDefects || [])].filter((d) => d.type === 'gap').map((d) => d.story));
       const untraced = inScope.filter((x) => !x.testCases && !gapStories.has(x.key));
       return [
-        C('Every automated domain-rule check ran', notRan.length ? 'not met' : 'met', `${checks.length - notRan.length} of ${checks.length} ran`),
+        C('Every domain-rule automation test case ran', notRan.length ? 'not met' : 'met', `${checks.length - notRan.length} of ${checks.length} ran`),
         C('Every Jira story in scope is traced to a test case or a gap defect', untraced.length ? 'not met' : 'met', untraced.length ? `not traced: ${untraced.map((x) => x.key).join(', ')}` : `${inScope.length} of ${inScope.length} traced`),
       ];
     })();
@@ -159,10 +159,10 @@ function evidenceCheck(cycle, r) {
     row('Test cases', r.testCases.total, (a.testCases || []).length, 'test case artifacts'),
     row('Automation scripts', r.scripts.total, (a.scripts || []).length, 'automation script files'),
     ...(ex ? [
-      row('Automated test cases run', ex.executed, ran.length, 'Playwright results'),
-      row('Automated passed', ex.passed, ran.filter((x) => x.status === 'passed').length, 'Playwright results'),
-      row('Automated failed', ex.failed, ran.filter((x) => x.status === 'failed').length, 'Playwright results'),
-      row('Automated tests run with stored evidence', ex.executed, ran.filter((x) => (x.evidence || []).length).length, 'request/response and log files'),
+      row('Automation test cases run', ex.executed, ran.length, 'Playwright results'),
+      row('Automation test cases passed', ex.passed, ran.filter((x) => x.status === 'passed').length, 'Playwright results'),
+      row('Automation test cases failed', ex.failed, ran.filter((x) => x.status === 'failed').length, 'Playwright results'),
+      row('Automation test cases run with stored evidence', ex.executed, ran.filter((x) => (x.evidence || []).length).length, 'request/response and log files'),
     ] : []),
     row('Defects from failed test cases', execDefects.length, execDefects.filter((d) => failedKeys.has(d.testCaseKey)).length, 'defects backed by a failed result'),
     row('Gap defects', defects.filter((d) => d.type === 'gap').length, defects.filter((d) => d.type === 'gap' && d.story).length, 'gap defects linked to a Jira story'),
@@ -194,8 +194,8 @@ function buildLeadReport(cycle) {
   const summary = [
     `${isInc ? 'Incremental' : 'Baseline'} cycle for <b>${esc(r.platform?.capability || cycle.name)}</b> on build <code>${esc(r.cycle.sutBuild)}</code>, ${esc(date(r.cycle.createdAt))}.`,
     ...(tt ? [`Type of testing: <b>${esc(tt.name)}</b>. ${esc(tt.focus)}${sel && sel.notInRun ? ` This run executed ${plural(sel.inRun, 'case')} of the ${sel.designed} in the pack.` : ''}`] : []),
-    `We took ${plural(r.inputs.length, 'input')} (${r.inputs.map((i) => `${esc(i.label)} ${esc(i.ref)}`).join(', ')}) and produced ${plural(r.requirements.total, 'requirement')}, ${plural(r.testCases.total, 'test case')} and ${plural(r.scripts.total, 'automated script')}.`,
-    ex ? `We ran ${plural(ex.executed, 'automated test')} for real: <b>${ex.passed} passed, ${ex.failed} failed</b> (pass rate ${ex.passRate}%). ${ex.notRun ? `${plural(ex.notRun, 'manual test')} still to be run by hand.` : ''}` : 'Tests have not been executed yet.',
+    `We took ${plural(r.inputs.length, 'input')} (${r.inputs.map((i) => `${esc(i.label)} ${esc(i.ref)}`).join(', ')}) and produced ${plural(r.requirements.total, 'requirement')}, ${plural(r.testCases.total, 'test case')} and ${plural(r.scripts.total, 'automation script')}.`,
+    ex ? `We ran ${plural(ex.executed, 'automation test case')} for real: <b>${ex.passed} passed, ${ex.failed} failed</b> (pass rate ${ex.passRate}%). ${ex.notRun ? `${plural(ex.notRun, 'manual test case')} still to be run by hand.` : ''}` : 'Tests have not been executed yet.',
     defects.length ? `${plural(defects.length, 'defect')} open from real failures (${movementText(defects)}), ${defects.filter((d) => d.blocksRelease).length} release-blocking: ${defects.map((d) => `${esc(d.id)} ${esc(d.title)} (Jira: ${esc(jiraDefectText(d))})`).join('; ')}.` : 'No defects: nothing failed.',
     ...(fixed.length ? [`<b>${plural(fixed.length, 'defect')} fixed, retested and certified closed</b>: ${fixed.map((d) => `${esc(d.id)} ${esc(d.title)} (story ${esc((d.jira && d.jira.linkedTo) || (d.jiraKeys || [])[0] || '-')}, first seen in ${esc(d.firstSeenCycle)}; ${esc(d.testCaseKey || ((d.retest && d.retest.cases) || []).join(', '))} passed on build ${esc((d.retest && d.retest.build) || r.cycle.sutBuild)})`).join('; ')}.`] : []),
     ...(isInc && r.delta ? [`Against the baseline: ${esc(r.delta.summary)}. ${r.reuse.carriedOver} of ${r.reuse.total} test cases were reused unchanged; only new and changed items were redesigned.`] : []),
@@ -211,7 +211,7 @@ function buildLeadReport(cycle) {
     ...(tt ? [`${esc(tt.name)} steered the design: ${esc(tt.approach)}${sel ? ` Result: ${sel.inRun} case(s) in this run (${sel.reused} reused, ${sel.redesigned} re-designed, ${sel.added} new)${sel.notInRun ? `, ${sel.notInRun} kept in the pack outside this run` : ''}.` : ''}`] : []),
     `The requirements agent wrote ${plural(r.requirements.total, 'requirement')}, each with its business rule, exact values and source quotes (${r.rules.executable} automatable, ${r.rules.manual} manual); the agents then designed ${plural(r.testCases.total, 'test case')} (${Object.entries(r.testCases.byType).map(([k, v]) => `${v} ${k}`).join(', ')}) and generated ${plural(r.scripts.total, 'Playwright script')}.`,
     ...(mergeApproval ? [`${esc(mergeApproval.by)} ${esc(mergeApproval.decision)} the merge into the baseline on ${esc(date(mergeApproval.at))}.`] : []),
-    ex ? `Executed the automated suite with ${esc(r.execution.tool)} against ${esc(r.execution.sut.name)}; defects were raised only for tests that actually failed.` : 'Execution has not run.',
+    ex ? `Ran the automation test cases with ${esc(r.execution.tool)} against ${esc(r.execution.sut.name)}; defects were raised only for tests that actually failed.` : 'Execution has not run.',
   ];
 
   const artifacts = [
@@ -250,7 +250,7 @@ function buildLeadReport(cycle) {
   ];
 
   const kpis = [
-    ...(tt ? [['Type of testing', tt.name]] : []), ['Requirements', r.requirements.total], ['Test cases', r.testCases.total], ['Automated', r.automation.casesCovered],
+    ...(tt ? [['Type of testing', tt.name]] : []), ['Requirements', r.requirements.total], ['Test cases', r.testCases.total], ['Automation test cases', r.automation.casesCovered],
     ['Pass rate', ex ? `${ex.passRate}%` : 'n/a'], ['Defects', defects.length], ['Requirements verified', r.coverage ? `${r.coverage.percent.passing}%` : 'n/a'],
   ];
 

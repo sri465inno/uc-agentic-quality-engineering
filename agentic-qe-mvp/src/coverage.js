@@ -27,7 +27,7 @@ function computeCoverage(requirements, testCases, results = [], dataModel = null
     const failed = executed.filter((t) => resByKey.get(t.key).status === 'failed');
     let status;
     if (!cases.length) status = 'not covered';
-    else if (!executed.length) status = automated.length ? 'automated, not executed' : 'designed only (manual)';
+    else if (!executed.length) status = automated.length ? 'automation test case, not executed' : 'designed only (manual)';
     else status = failed.length ? 'executed - failing' : 'executed - passing';
     return { requirementId: req.id, text: req.text, cases: cases.length, automated: automated.length, executed: executed.length, failed: failed.length, status };
   });

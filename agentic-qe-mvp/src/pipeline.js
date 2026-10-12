@@ -61,7 +61,7 @@ function noAutomatedRun(runCases, cycle) {
   const results = runCases.map((t) => ({ key: t.key, requirementId: t.requirementId, ruleId: t.ruleId || null, name: t.name, type: t.type, scriptFile: null,
     status: 'not-run', reason: 'Manual test case - not automated, not executed', duration: 0, error: null, evidence: [] }));
   const at = now();
-  return { executed: false, tool: 'Playwright not started: no automated case in this run', sut: { build: cycle.sutBuild }, startedAt: at, finishedAt: at,
+  return { executed: false, tool: 'Playwright not started: no automation test case in this run', sut: { build: cycle.sutBuild }, startedAt: at, finishedAt: at,
     specFiles: [], results, summary: summarise(results) };
 }
 

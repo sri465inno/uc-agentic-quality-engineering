@@ -109,7 +109,7 @@ function mapReport(report, testCases, { evidenceDir = null } = {}) {
     const base = { key: tc.key, requirementId: tc.requirementId, ruleId: tc.ruleId || null, name: tc.name, type: tc.type, scriptFile: tc.scriptFile };
     if (tc.automation !== 'Automated') return { ...base, status: 'not-run', reason: 'Manual test case - not automated, not executed', duration: 0, error: null, evidence: [] };
     const hit = found.get(tc.key);
-    if (!hit) return { ...base, status: 'not-run', reason: 'Automated case not present in the Playwright report', duration: 0, error: null, evidence: [] };
+    if (!hit) return { ...base, status: 'not-run', reason: 'Automation test case not present in the Playwright report', duration: 0, error: null, evidence: [] };
     return { ...base, ...hit };
   });
 }
