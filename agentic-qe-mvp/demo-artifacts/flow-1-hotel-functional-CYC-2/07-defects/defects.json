@@ -20,7 +20,7 @@
     "firstSeenCycle": "CYC-2",
     "cycleId": "CYC-2",
     "raisedBy": "Priya Shah",
-    "raisedAt": "2026-10-12T02:09:39.510Z",
+    "raisedAt": "2026-10-12T02:21:58.035Z",
     "raisedAtGate": "Human review of the requirement set",
     "reason": "gap excluded by Priya Shah at the requirement review",
     "testCaseKey": null,
@@ -162,7 +162,7 @@
     "firstSeenCycle": "CYC-2",
     "cycleId": "CYC-2",
     "raisedBy": "Priya Shah",
-    "raisedAt": "2026-10-12T02:09:39.510Z",
+    "raisedAt": "2026-10-12T02:21:58.035Z",
     "raisedAtGate": "Human review of the requirement set",
     "reason": "gap excluded by Priya Shah at the requirement review",
     "testCaseKey": null,
@@ -303,7 +303,7 @@
     "firstSeenCycle": "CYC-2",
     "cycleId": "CYC-2",
     "raisedBy": "Priya Shah",
-    "raisedAt": "2026-10-12T02:09:39.510Z",
+    "raisedAt": "2026-10-12T02:21:58.035Z",
     "raisedAtGate": "Human review of the requirement set",
     "reason": "gap excluded by Priya Shah at the requirement review",
     "testCaseKey": null,
@@ -468,7 +468,7 @@
         "contentType": "application/json"
       },
       {
-        "name": "POST cart-service/api/carts/C-10b4d168/revalidate",
+        "name": "POST cart-service/api/carts/C-de4603c8/revalidate",
         "file": "TC-F-103-4.json",
         "contentType": "application/json"
       },
@@ -478,11 +478,11 @@
         "contentType": "text/markdown"
       }
     ],
-    "executedAt": "2026-10-12T02:09:52.952Z",
+    "executedAt": "2026-10-12T02:22:17.759Z",
     "occurrences": [
       {
         "cycleId": "CYC-2",
-        "executedAt": "2026-10-12T02:09:52.952Z",
+        "executedAt": "2026-10-12T02:22:17.759Z",
         "actual": "true",
         "evidence": [
           {
@@ -501,7 +501,7 @@
             "contentType": "application/json"
           },
           {
-            "name": "POST cart-service/api/carts/C-10b4d168/revalidate",
+            "name": "POST cart-service/api/carts/C-de4603c8/revalidate",
             "file": "TC-F-103-4.json",
             "contentType": "application/json"
           },
@@ -592,7 +592,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Suspected code area: cart-service/src/main/resources/cart-service.yml:17. Executed at 2026-10-12T02:09:52.952Z."
+                    "text": "Suspected code area: cart-service/src/main/resources/cart-service.yml:17. Executed at 2026-10-12T02:22:17.759Z."
                   }
                 ]
               }
@@ -651,11 +651,11 @@
         "contentType": "text/markdown"
       }
     ],
-    "executedAt": "2026-10-12T02:09:52.952Z",
+    "executedAt": "2026-10-12T02:22:17.759Z",
     "occurrences": [
       {
         "cycleId": "CYC-2",
-        "executedAt": "2026-10-12T02:09:52.952Z",
+        "executedAt": "2026-10-12T02:22:17.759Z",
         "actual": "201",
         "evidence": [
           {
@@ -755,7 +755,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Suspected code area: reservation-service/src/main/resources/reservation-service.yml:20. Executed at 2026-10-12T02:09:52.952Z."
+                    "text": "Suspected code area: reservation-service/src/main/resources/reservation-service.yml:20. Executed at 2026-10-12T02:22:17.759Z."
                   }
                 ]
               }
@@ -809,11 +809,11 @@
         "contentType": "text/markdown"
       }
     ],
-    "executedAt": "2026-10-12T02:09:52.952Z",
+    "executedAt": "2026-10-12T02:22:17.759Z",
     "occurrences": [
       {
         "cycleId": "CYC-2",
-        "executedAt": "2026-10-12T02:09:52.952Z",
+        "executedAt": "2026-10-12T02:22:17.759Z",
         "actual": "200",
         "evidence": [
           {
@@ -908,7 +908,7 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "Suspected code area: search-service/src/main/resources/search-service.yml:13. Executed at 2026-10-12T02:09:52.952Z."
+                    "text": "Suspected code area: search-service/src/main/resources/search-service.yml:13. Executed at 2026-10-12T02:22:17.759Z."
                   }
                 ]
               }

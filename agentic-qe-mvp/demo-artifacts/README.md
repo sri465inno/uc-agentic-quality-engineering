@@ -1,6 +1,6 @@
 # Agentic QE Platform - demo artifacts
 
-Generated 2026-10-12T02:10:49.091Z by `node scripts/export-demo-artifacts.js`. Every cycle was run end to end; the Playwright results are real runs against the system under test.
+Generated 2026-10-12T02:22:47.026Z by `node scripts/export-demo-artifacts.js`. Every cycle was run end to end; the Playwright results are real runs against the system under test.
 
 ## Flow 1: hotel booking platform (AQPI)
 
@@ -18,7 +18,7 @@ Inputs: Epic 8 AQPI-32 "Release 2.0" with stories AQPI-33 to AQPI-36, Epic 6 AQP
 | Cycle | Mode · testing | Requirements | Test cases | Scripts | Passed | Pass rate | Defects |
 |---|---|---|---|---|---|---|---|
 | CYC-4 | incremental · eqe | 138 | 18 | 12 | 13/13 | 100% | 0 |
-| CYC-3 | incremental · functional | 138 | 144 | 65 | 82/83 | 98.8% | 1 |
+| CYC-3 | incremental · functional | 138 | 144 | 65 | 83/83 | 100% | 0 |
 
 ## Defect lifecycle: CYC-2 (release 1.0) -> CYC-3 (release 2.0)
 
@@ -32,7 +32,6 @@ Every defect comes from a test that really failed. Flow 2 re-runs the Flow 1 tes
 | DEF-007 | AQPI-17 | A price change within 1% does not need acknowledgement: returns true instead of false | new | fixed, retested (TC-F-103 passed), certified closed |
 | DEF-008 | AQPI-21 | A key shorter than 8 characters is refused: returns 201 instead of 400 | new | fixed, retested (TC-F-106 passed), certified closed |
 | DEF-009 | AQPI-4 | 9 rooms in one search are rejected: returns 200 instead of 400 | new | fixed, retested (TC-F-115 passed), certified closed |
-| DEF-010 | AQPI-19 | Support staff see a masked e-mail and other callers are refused: failed | - | new |
 
 Each cycle folder's README is its QE lead report: inputs taken, how the cycle was run, artifacts produced, risks, a go/no-go recommendation and sign-off.
 

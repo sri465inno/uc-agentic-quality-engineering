@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "http://127.0.0.1:33565/api/ops/messages?reservationId=R-51277175",
+    "url": "http://127.0.0.1:34031/api/ops/messages?reservationId=R-209f65b5",
     "headers": {
       "X-Operator-Role": "SUPPORT"
     },
@@ -9,12 +9,12 @@
   },
   "response": {
     "status": 200,
-    "correlationId": "647dcdd7-2ba9-4c59-aab5-3c62bf293dd0",
+    "correlationId": "a9246231-62f7-4a82-b6b6-d402b38eb52e",
     "body": [
       {
-        "messageId": "M-5dd5fe85",
-        "reservationId": "R-51277175",
-        "confirmationNumber": "HBAATR748E",
+        "messageId": "M-05c918f3",
+        "reservationId": "R-209f65b5",
+        "confirmationNumber": "HBYD6DPKPQ",
         "kind": "CONFIRMATION",
         "locale": "en-GB",
         "templateVersion": "confirmation-v2",
@@ -24,24 +24,24 @@
         "history": [
           {
             "status": "QUEUED",
-            "at": "2026-10-12T02:09:36.320140864Z",
+            "at": "2026-10-12T02:21:54.723906353Z",
             "detail": "CONFIRMATION"
           },
           {
             "status": "SENT",
-            "at": "2026-10-12T02:09:36.321507725Z",
+            "at": "2026-10-12T02:21:54.724333331Z",
             "detail": "accepted by provider"
           },
           {
             "status": "DELIVERED",
-            "at": "2026-10-12T02:09:36.321511066Z",
+            "at": "2026-10-12T02:21:54.724337409Z",
             "detail": "simulated provider webhook"
           }
         ],
-        "subject": "Your booking is confirmed - HBAATR748E",
-        "html": "<!DOCTYPE html>\n<html lang=\"en-GB\">\n<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width\"><title>Your booking is confirmed - HBAATR748E</title></head>\n<body>\n<main role=\"main\" style=\"font-family:Arial,sans-serif;font-size:16px;line-height:1.5;color:#1a1a1a\">\n<h1>Booking confirmed</h1>\n<p>Hello Jane,</p>\n<p>Your reservation is confirmed.</p>\n<p><strong>Confirmation number:</strong> HBAATR748E</p>\n<h2>Your stay</h2>\n<p>Harbor View Hotel<br>12 Pier Street, New York</p>\n<dl><dt>Check-in</dt><dd>11 November 2026 (15:00)</dd><dt>Check-out</dt><dd>14 November 2026 (11:00)</dd><dt>Room</dt><dd>Standard King - Flexible – pay at hotel</dd>\n<dt>Guests</dt><dd>1 room(s), 2 adult(s), 0 child(ren)</dd></dl>\n<h2>What you booked</h2>\n<table>\n<caption>What you booked</caption>\n<thead><tr><th scope=\"col\">Item</th><th scope=\"col\">Qty</th><th scope=\"col\">Amount</th></tr></thead>\n<tbody>\n<tr><td>Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)</td><td>1</td><td>614.25 USD</td></tr>\n<tr><td>Taxes</td><td>1</td><td>115.94 USD</td></tr>\n<tr><td>Mandatory fees (payable as part of the room price)</td><td>1</td><td>75.00 USD</td></tr>\n</tbody>\n<tfoot><tr><th scope=\"row\" colspan=\"2\">Total</th><td>805.19 USD</td></tr></tfoot>\n</table>\n<p>Payment: Pay at the hotel</p>\n<h2>Policies</h2>\n<p>Free cancellation until 48 hours before check-in; after that the first night is charged.</p>\n</main>\n</body>\n</html>\n",
-        "text": "Booking confirmed\n\nHello Jane,\nYour reservation is confirmed.\n\nConfirmation number: HBAATR748E\n\nHarbor View Hotel, 12 Pier Street, New York\nCheck-in: 11 November 2026 (15:00)\nCheck-out: 14 November 2026 (11:00)\nRoom: Standard King - Flexible – pay at hotel\n\nWhat you booked:\n- Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s) x1: 614.25 USD\n- Taxes x1: 115.94 USD\n- Mandatory fees (payable as part of the room price) x1: 75.00 USD\nTotal: 805.19 USD\nPayment: Pay at the hotel\n\nPolicies: Free cancellation until 48 hours before check-in; after that the first night is charged.\n",
-        "createdAt": "2026-10-12T02:09:36.320138345Z"
+        "subject": "Your booking is confirmed - HBYD6DPKPQ",
+        "html": "<!DOCTYPE html>\n<html lang=\"en-GB\">\n<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width\"><title>Your booking is confirmed - HBYD6DPKPQ</title></head>\n<body>\n<main role=\"main\" style=\"font-family:Arial,sans-serif;font-size:16px;line-height:1.5;color:#1a1a1a\">\n<h1>Booking confirmed</h1>\n<p>Hello Jane,</p>\n<p>Your reservation is confirmed.</p>\n<p><strong>Confirmation number:</strong> HBYD6DPKPQ</p>\n<h2>Your stay</h2>\n<p>Harbor View Hotel<br>12 Pier Street, New York</p>\n<dl><dt>Check-in</dt><dd>11 November 2026 (15:00)</dd><dt>Check-out</dt><dd>14 November 2026 (11:00)</dd><dt>Room</dt><dd>Standard King - Flexible – pay at hotel</dd>\n<dt>Guests</dt><dd>1 room(s), 2 adult(s), 0 child(ren)</dd></dl>\n<h2>What you booked</h2>\n<table>\n<caption>What you booked</caption>\n<thead><tr><th scope=\"col\">Item</th><th scope=\"col\">Qty</th><th scope=\"col\">Amount</th></tr></thead>\n<tbody>\n<tr><td>Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)</td><td>1</td><td>614.25 USD</td></tr>\n<tr><td>Taxes</td><td>1</td><td>115.94 USD</td></tr>\n<tr><td>Mandatory fees (payable as part of the room price)</td><td>1</td><td>75.00 USD</td></tr>\n</tbody>\n<tfoot><tr><th scope=\"row\" colspan=\"2\">Total</th><td>805.19 USD</td></tr></tfoot>\n</table>\n<p>Payment: Pay at the hotel</p>\n<h2>Policies</h2>\n<p>Free cancellation until 48 hours before check-in; after that the first night is charged.</p>\n</main>\n</body>\n</html>\n",
+        "text": "Booking confirmed\n\nHello Jane,\nYour reservation is confirmed.\n\nConfirmation number: HBYD6DPKPQ\n\nHarbor View Hotel, 12 Pier Street, New York\nCheck-in: 11 November 2026 (15:00)\nCheck-out: 14 November 2026 (11:00)\nRoom: Standard King - Flexible – pay at hotel\n\nWhat you booked:\n- Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s) x1: 614.25 USD\n- Taxes x1: 115.94 USD\n- Mandatory fees (payable as part of the room price) x1: 75.00 USD\nTotal: 805.19 USD\nPayment: Pay at the hotel\n\nPolicies: Free cancellation until 48 hours before check-in; after that the first night is charged.\n",
+        "createdAt": "2026-10-12T02:21:54.723904223Z"
       }
     ]
   }

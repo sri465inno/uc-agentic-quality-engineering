@@ -108,7 +108,7 @@
     {
       "gate": "Requirement set review",
       "by": "Priya Shah",
-      "at": "2026-10-12T02:09:54.907Z",
+      "at": "2026-10-12T02:22:19.804Z",
       "decision": "approved",
       "comment": "",
       "detail": "43 requirements approved; 0 excluded; 0 conflict(s) resolved"
@@ -116,7 +116,7 @@
     {
       "gate": "Merge into baseline",
       "by": "Sam Lee",
-      "at": "2026-10-12T02:09:54.949Z",
+      "at": "2026-10-12T02:22:19.850Z",
       "decision": "approved",
       "comment": "",
       "detail": "23 requirements, 29 test cases, 18 scripts merged: BL-2 v1 -> v2"

@@ -9,7 +9,7 @@ CYC-4 · incremental cycle
 | EQE testing | 138 | 18 | 13 | 100% | 0 | 8.7% |
 
 ## 1. Summary
-- Incremental cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform-v2, 2026-10-12 02:10 UTC.
+- Incremental cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform-v2, 2026-10-12 02:22 UTC.
 - Type of testing: EQE testing. The guest's business flows across the six services (search, hotel details, offers, cart, payment, reservation, confirmation and cancellation e-mails), plus the privacy, security, observability and resilience checks (AQPI-28 to AQPI-31).
 - We took 2 inputs (Jira epic AQPI-32, AQPI-23, Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform-v2 (e0dab1c)) and produced 138 requirements, 18 test cases and 12 automated scripts.
 - We ran 13 automated tests for real: 13 passed, 0 failed (pass rate 100%). 5 manual tests still to be run by hand.
@@ -26,11 +26,11 @@ CYC-4 · incremental cycle
 ## 3. How we ran the cycle
 1. Read 56 statements from the inputs and lined them up into 43 requirement groups: 9 agreed by every source, 30 only in Jira, 4 only in the code, 0 in conflict.
 2. The review agent read the inputs first and suggested 27 addition(s), 15 missing piece(s) and 0 conflict(s) for the reviewer (0 high severity). It approved nothing.
-3. Priya Shah reviewed and approved the requirement set on 2026-10-12 02:10 UTC.
+3. Priya Shah reviewed and approved the requirement set on 2026-10-12 02:22 UTC.
 4. Compared every statement with baseline BL-1 v1: 20 unchanged · 3 enhanced · 20 new. Changed: REQ-112 "A cart expires 30 minutes after it is created and never creates a reservation itself." → "A cart expires 20 minutes after it is created and never creates a reservation itself."; REQ-114 "A confirmation can be resent at most 3 times per booking in 24 hours." → "A confirmation can be resent at most 5 times per booking in 24 hours."; REQ-116 "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights." → "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights.".
 5. EQE testing steered the design: Keeps the journeys already in the baseline, re-designs the ones whose flow changed, adds journeys for new flows, then runs the business flows on the new build. Result: 18 case(s) in this run (13 reused, 0 re-designed, 5 new).
 6. The requirements agent wrote 138 requirements, each with its business rule, exact values and source quotes (72 automatable, 66 manual); the agents then designed 18 test cases (13 functional, 5 non-functional) and generated 12 Playwright scripts.
-7. Sam Lee approved the merge into the baseline on 2026-10-12 02:10 UTC.
+7. Sam Lee approved the merge into the baseline on 2026-10-12 02:22 UTC.
 8. Executed the automated suite with Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2; defects were raised only for tests that actually failed.
 
 ## 4. Artifacts produced
@@ -56,7 +56,6 @@ CYC-4 · incremental cycle
 - 5 test cases cannot be automated and were not executed: TC-N-001 Verify: Validation messages are accessible to assistive technology; TC-N-002 Verify: Templates support required locale and accessibility standards; TC-N-003 Verify: Metrics and alerts exist for agreed critical failures and latency; TC-N-004 Verify: Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible; TC-N-005 Verify: Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets. Needs a manual run before sign-off.
 - 126 requirements not yet verified by a passing test: REQ-003 (not covered); REQ-008 (not covered); REQ-009 (not covered); REQ-010 (not covered); REQ-011 (not covered); REQ-012 (not covered); REQ-013 (not covered); REQ-014 (not covered); REQ-015 (not covered); REQ-016 (not covered); REQ-017 (not covered); REQ-018 (not covered); REQ-019 (not covered); REQ-020 (not covered); REQ-021 (not covered); REQ-022 (not covered); REQ-023 (designed only (manual)); REQ-024 (not covered); REQ-025 (not covered); REQ-026 (not covered); REQ-027 (not covered); REQ-028 (not covered); REQ-029 (not covered); REQ-030 (not covered); REQ-031 (not covered); REQ-032 (not covered); REQ-033 (not covered); REQ-034 (not covered); REQ-035 (not covered); REQ-036 (not covered); REQ-037 (not covered); REQ-038 (not covered); REQ-039 (not covered); REQ-040 (not covered); REQ-041 (not covered); REQ-042 (not covered); REQ-043 (not covered); REQ-044 (not covered); REQ-045 (not covered); REQ-046 (not covered); REQ-048 (not covered); REQ-049 (not covered); REQ-050 (not covered); REQ-051 (not covered); REQ-052 (not covered); REQ-053 (not covered); REQ-054 (not covered); REQ-055 (not covered); REQ-056 (not covered); REQ-057 (not covered); REQ-058 (not covered); REQ-059 (not covered); REQ-060 (not covered); REQ-061 (not covered); REQ-062 (not covered); REQ-063 (not covered); REQ-064 (not covered); REQ-065 (not covered); REQ-066 (not covered); REQ-067 (not covered); REQ-068 (not covered); REQ-069 (not covered); REQ-070 (not covered); REQ-071 (not covered); REQ-072 (not covered); REQ-073 (not covered); REQ-074 (not covered); REQ-075 (not covered); REQ-076 (not covered); REQ-077 (not covered); REQ-078 (not covered); REQ-079 (not covered); REQ-080 (not covered); REQ-081 (not covered); REQ-082 (designed only (manual)); REQ-083 (not covered); REQ-084 (not covered); REQ-085 (not covered); REQ-086 (not covered); REQ-087 (not covered); REQ-088 (not covered); REQ-089 (not covered); REQ-090 (not covered); REQ-091 (not covered); REQ-092 (not covered); REQ-093 (not covered); REQ-094 (not covered); REQ-095 (not covered); REQ-096 (not covered); REQ-097 (not covered); REQ-098 (not covered); REQ-099 (not covered); REQ-100 (designed only (manual)); REQ-101 (not covered); REQ-102 (not covered); REQ-103 (not covered); REQ-104 (designed only (manual)); REQ-105 (not covered); REQ-106 (not covered); REQ-107 (not covered); REQ-108 (designed only (manual)); REQ-109 (not covered); REQ-110 (not covered); REQ-111 (not covered); REQ-112 (not covered); REQ-113 (not covered); REQ-114 (not covered); REQ-115 (not covered); REQ-116 (not covered); REQ-117 (not covered); REQ-118 (not covered); REQ-119 (not covered); REQ-120 (not covered); REQ-122 (not covered); REQ-123 (not covered); REQ-124 (not covered); REQ-125 (not covered); REQ-127 (not covered); REQ-128 (not covered); REQ-129 (not covered); REQ-131 (not covered); REQ-132 (not covered); REQ-133 (not covered); REQ-135 (not covered); REQ-137 (not covered); REQ-138 (not covered).
 - 34 requirement groups come from a single source only; the product owner should confirm them.
-- At least one agent did not hand over every artifact its skills require; see Skills and hand-overs.
 
 _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by at least one test._
 
@@ -93,8 +92,8 @@ _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by
 
 | Gate | Decision | By | When | Detail |
 |---|---|---|---|---|
-| Requirement set review | approved | Priya Shah | 2026-10-12 02:10 UTC | 43 requirements approved; 0 excluded; 0 conflict(s) resolved |
-| Merge into baseline | approved | Sam Lee | 2026-10-12 02:10 UTC | 23 requirements, 5 test cases, 5 scripts merged: BL-1 v1 -> v2 |
+| Requirement set review | approved | Priya Shah | 2026-10-12 02:22 UTC | 43 requirements approved; 0 excluded; 0 conflict(s) resolved |
+| Merge into baseline | approved | Sam Lee | 2026-10-12 02:22 UTC | 23 requirements, 5 test cases, 5 scripts merged: BL-1 v1 -> v2 |
 
 ## 8. Exit criteria
 | Exit criterion | Status | Detail |
@@ -135,4 +134,4 @@ Release criteria (Go / Conditional go / No-go) (release-criteria.md); blocking s
 | Manual test cases run and recorded | Noted only | triggered | 5: TC-N-001, TC-N-002, TC-N-003, TC-N-004, TC-N-005 |
 | Every requirement verified by a passing test of this testing type | Noted only | triggered | 126: REQ-003, REQ-008, REQ-009, REQ-010, REQ-011, REQ-012, REQ-013, REQ-014, … |
 
-_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 02:10 UTC. Every figure comes from the persisted cycle; nothing is estimated._
+_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 02:22 UTC. Every figure comes from the persisted cycle; nothing is estimated._

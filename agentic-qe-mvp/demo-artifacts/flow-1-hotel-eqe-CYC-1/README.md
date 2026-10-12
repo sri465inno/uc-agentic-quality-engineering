@@ -9,7 +9,7 @@ CYC-1 · baseline cycle
 | EQE testing | 118 | 13 | 8 | 100% | 3 | 5.9% |
 
 ## 1. Summary
-- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-12 02:09 UTC.
+- Baseline cycle for Guest hotel booking from search to confirmation (AQPI-1) on build demo/hotel-booking-platform, 2026-10-12 02:21 UTC.
 - Type of testing: EQE testing. The guest's business flows across the six services (search, hotel details, offers, cart, payment, reservation, confirmation and cancellation e-mails), plus the privacy, security, observability and resilience checks (AQPI-28 to AQPI-31).
 - We took 3 inputs (Jira initiative AQPI-1, Jira epic AQPI-2, AQPI-6, AQPI-10, AQPI-14, AQPI-18, AQPI-23, AQPI-27, Codebase sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)) and produced 118 requirements, 13 test cases and 7 automated scripts.
 - We ran 8 automated tests for real: 8 passed, 0 failed (pass rate 100%). 5 manual tests still to be run by hand.
@@ -25,7 +25,7 @@ CYC-1 · baseline cycle
 ## 3. How we ran the cycle
 1. Read 152 statements from the inputs and lined them up into 128 requirement groups: 0 agreed by every source, 121 only in Jira, 7 only in the code, 0 in conflict.
 2. The review agent read the inputs first and suggested 7 addition(s), 63 missing piece(s) and 0 conflict(s) for the reviewer (0 high severity). It approved nothing.
-3. Priya Shah reviewed and approved the requirement set on 2026-10-12 02:09 UTC.
+3. Priya Shah reviewed and approved the requirement set on 2026-10-12 02:21 UTC.
 4. EQE testing steered the design: Designs one API journey per guest business flow and the enterprise quality checks, and runs them against the six hotel services, keeping every request and response as evidence. The services have no browser screen, so no screenshots are taken. Result: 13 case(s) in this run (0 reused, 0 re-designed, 13 new).
 5. The requirements agent wrote 118 requirements, each with its business rule, exact values and source quotes (57 automatable, 61 manual); the agents then designed 13 test cases (8 functional, 5 non-functional) and generated 7 Playwright scripts.
 6. Executed the automated suite with Playwright 1.63.0 (headless Chromium, JSON reporter) against Hotel booking platform release 1.0, six Spring Boot services built from branch demo/hotel-booking-platform; defects were raised only for tests that actually failed.
@@ -54,7 +54,6 @@ CYC-1 · baseline cycle
 - 5 test cases cannot be automated and were not executed: TC-N-001 Verify: Validation messages are accessible to assistive technology; TC-N-002 Verify: Templates support required locale and accessibility standards; TC-N-003 Verify: Metrics and alerts exist for agreed critical failures and latency; TC-N-004 Verify: Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible; TC-N-005 Verify: Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets. Needs a manual run before sign-off.
 - 111 requirements not yet verified by a passing test: REQ-003 (not covered); REQ-008 (not covered); REQ-009 (not covered); REQ-010 (not covered); REQ-011 (not covered); REQ-012 (not covered); REQ-013 (not covered); REQ-014 (not covered); REQ-015 (not covered); REQ-016 (not covered); REQ-017 (not covered); REQ-018 (not covered); REQ-019 (not covered); REQ-020 (not covered); REQ-021 (not covered); REQ-022 (not covered); REQ-023 (designed only (manual)); REQ-024 (not covered); REQ-025 (not covered); REQ-026 (not covered); REQ-027 (not covered); REQ-028 (not covered); REQ-029 (not covered); REQ-030 (not covered); REQ-031 (not covered); REQ-032 (not covered); REQ-033 (not covered); REQ-034 (not covered); REQ-035 (not covered); REQ-036 (not covered); REQ-037 (not covered); REQ-038 (not covered); REQ-039 (not covered); REQ-040 (not covered); REQ-041 (not covered); REQ-042 (not covered); REQ-043 (not covered); REQ-044 (not covered); REQ-045 (not covered); REQ-046 (not covered); REQ-048 (not covered); REQ-049 (not covered); REQ-050 (not covered); REQ-051 (not covered); REQ-052 (not covered); REQ-053 (not covered); REQ-054 (not covered); REQ-055 (not covered); REQ-056 (not covered); REQ-057 (not covered); REQ-058 (not covered); REQ-059 (not covered); REQ-060 (not covered); REQ-061 (not covered); REQ-062 (not covered); REQ-063 (not covered); REQ-064 (not covered); REQ-065 (not covered); REQ-066 (not covered); REQ-067 (not covered); REQ-068 (not covered); REQ-069 (not covered); REQ-070 (not covered); REQ-071 (not covered); REQ-072 (not covered); REQ-073 (not covered); REQ-074 (not covered); REQ-075 (not covered); REQ-076 (not covered); REQ-077 (not covered); REQ-078 (not covered); REQ-079 (not covered); REQ-080 (not covered); REQ-081 (not covered); REQ-082 (designed only (manual)); REQ-083 (not covered); REQ-084 (not covered); REQ-085 (not covered); REQ-086 (not covered); REQ-087 (not covered); REQ-088 (not covered); REQ-089 (not covered); REQ-090 (not covered); REQ-091 (not covered); REQ-092 (not covered); REQ-093 (not covered); REQ-094 (not covered); REQ-095 (not covered); REQ-096 (not covered); REQ-097 (not covered); REQ-098 (not covered); REQ-099 (not covered); REQ-100 (designed only (manual)); REQ-101 (not covered); REQ-102 (not covered); REQ-103 (not covered); REQ-104 (designed only (manual)); REQ-105 (not covered); REQ-106 (not covered); REQ-107 (not covered); REQ-108 (designed only (manual)); REQ-109 (not covered); REQ-110 (not covered); REQ-111 (not covered); REQ-112 (not covered); REQ-113 (not covered); REQ-114 (not covered); REQ-115 (not covered); REQ-116 (not covered); REQ-117 (not covered); REQ-118 (not covered).
 - 128 requirement groups come from a single source only; the product owner should confirm them.
-- At least one agent did not hand over every artifact its skills require; see Skills and hand-overs.
 
 _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by at least one test._
 
@@ -104,7 +103,7 @@ _6 of 15 booking-driving attributes (out of 21 booking attributes) are varied by
 
 | Gate | Decision | By | When | Detail |
 |---|---|---|---|---|
-| Requirement set review | approved | Priya Shah | 2026-10-12 02:09 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
+| Requirement set review | approved | Priya Shah | 2026-10-12 02:21 UTC | 118 requirements approved; 10 excluded (gaps AQPI-8, AQPI-13, AQPI-22); 0 conflict(s) resolved |
 
 ## 8. Exit criteria
 | Exit criterion | Status | Detail |
@@ -146,20 +145,20 @@ Release criteria (Go / Conditional go / No-go) (release-criteria.md); blocking s
 | Manual test cases run and recorded | Noted only | triggered | 5: TC-N-001, TC-N-002, TC-N-003, TC-N-004, TC-N-005 |
 | Every requirement verified by a passing test of this testing type | Noted only | triggered | 111: REQ-003, REQ-008, REQ-009, REQ-010, REQ-011, REQ-012, REQ-013, REQ-014, … |
 
-_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 02:09 UTC. Every figure comes from the persisted cycle; nothing is estimated._
+_Agentic QE Platform (QE lead report, computed from the cycle) · generated 2026-10-12 02:21 UTC. Every figure comes from the persisted cycle; nothing is estimated._
 
 ## Appendix A: test results (real Playwright run)
 | Key | Test | Result | ms |
 |---|---|---|---|
-| TC-F-001 | Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail | passed | 1383 |
-| TC-F-002 | Guest books a prepaid non-refundable room in Paris and pays now | passed | 312 |
-| TC-F-003 | A sold-out hotel is shown as unavailable and cannot be put in a cart | passed | 184 |
-| TC-F-004 | An unavailable extra is refused and the room still books | passed | 286 |
-| TC-F-005 | A double-clicked Book button creates one reservation and one payment | passed | 150 |
-| TC-F-006 | The confirmation number can be looked up again after booking | passed | 139 |
-| TC-F-007 | The guest sees the booking outcome and one confirmation e-mail is created | passed | 113 |
+| TC-F-001 | Guest books a pay-at-hotel room with breakfast from search to confirmation e-mail | passed | 3236 |
+| TC-F-002 | Guest books a prepaid non-refundable room in Paris and pays now | passed | 328 |
+| TC-F-003 | A sold-out hotel is shown as unavailable and cannot be put in a cart | passed | 209 |
+| TC-F-004 | An unavailable extra is refused and the room still books | passed | 329 |
+| TC-F-005 | A double-clicked Book button creates one reservation and one payment | passed | 240 |
+| TC-F-006 | The confirmation number can be looked up again after booking | passed | 258 |
+| TC-F-007 | The guest sees the booking outcome and one confirmation e-mail is created | passed | 267 |
 | TC-N-001 | Verify: Validation messages are accessible to assistive technology | not-run | 0 |
-| TC-F-008 | An unavailable extra is refused and the room still books | passed | 132 |
+| TC-F-008 | An unavailable extra is refused and the room still books | passed | 147 |
 | TC-N-002 | Verify: Templates support required locale and accessibility standards | not-run | 0 |
 | TC-N-003 | Verify: Metrics and alerts exist for agreed critical failures and latency | not-run | 0 |
 | TC-N-004 | Verify: Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible | not-run | 0 |

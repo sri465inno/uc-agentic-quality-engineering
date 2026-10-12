@@ -1,30 +1,30 @@
 {
   "executed": true,
   "tool": "Playwright 1.63.0 (headless Chromium, JSON reporter)",
-  "command": "npx playwright test --config ../../../../../tmp/aqe-demo-U7iSEY/runs/CYC-3/playwright.config.js",
-  "exitCode": 1,
+  "command": "npx playwright test --config ../../../../../tmp/aqe-demo-bUDmT7/runs/CYC-3/playwright.config.js",
+  "exitCode": 0,
   "sut": {
     "build": "demo/hotel-booking-platform-v2",
-    "url": "http://127.0.0.1:45821",
+    "url": "http://127.0.0.1:35675",
     "services": {
-      "hotel-service": "http://127.0.0.1:44131",
-      "offer-service": "http://127.0.0.1:40169",
-      "notification-service": "http://127.0.0.1:35443",
-      "search-service": "http://127.0.0.1:45821",
-      "cart-service": "http://127.0.0.1:40259",
-      "reservation-service": "http://127.0.0.1:43895"
+      "hotel-service": "http://127.0.0.1:35909",
+      "offer-service": "http://127.0.0.1:45349",
+      "notification-service": "http://127.0.0.1:41809",
+      "search-service": "http://127.0.0.1:35675",
+      "cart-service": "http://127.0.0.1:39173",
+      "reservation-service": "http://127.0.0.1:40187"
     },
     "name": "Hotel booking platform release 2.0, six Spring Boot services built from branch demo/hotel-booking-platform-v2"
   },
-  "startedAt": "2026-10-12T02:09:59.306Z",
-  "finishedAt": "2026-10-12T02:10:38.078Z",
+  "startedAt": "2026-10-12T02:22:24.146Z",
+  "finishedAt": "2026-10-12T02:22:34.299Z",
   "reportFile": "playwright-report.json",
   "playwrightStats": {
-    "startTime": "2026-10-12T02:09:59.675Z",
-    "duration": 36335.725,
-    "expected": 82,
+    "startTime": "2026-10-12T02:22:24.524Z",
+    "duration": 7689.461,
+    "expected": 83,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   },
   "specFiles": [
@@ -104,8 +104,8 @@
       "scriptFile": "br-003-price-disclosed.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 525,
-      "startTime": "2026-10-12T02:10:00.482Z",
+      "duration": 541,
+      "startTime": "2026-10-12T02:22:25.359Z",
       "file": "br-003-price-disclosed.spec.js",
       "title": "TC-F-001 The payment summary shows taxes, mandatory fees and the total before booking",
       "error": null,
@@ -116,7 +116,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/checkout/C-238bdd42/payment-summary",
+          "name": "GET reservation-service/api/checkout/C-ad1bc9df/payment-summary",
           "file": "TC-F-001-2.json",
           "contentType": "application/json"
         }
@@ -196,8 +196,8 @@
       "scriptFile": "br-013-hotel-search.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 222,
-      "startTime": "2026-10-12T02:10:01.042Z",
+      "duration": 252,
+      "startTime": "2026-10-12T02:22:25.936Z",
       "file": "br-013-hotel-search.spec.js",
       "title": "TC-F-007 A valid search returns available hotels for the destination",
       "error": null,
@@ -218,8 +218,8 @@
       "scriptFile": "br-014-search-criteria-kept.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 56,
-      "startTime": "2026-10-12T02:10:01.274Z",
+      "duration": 66,
+      "startTime": "2026-10-12T02:22:26.199Z",
       "file": "br-014-search-criteria-kept.spec.js",
       "title": "TC-F-008 The results page returns the criteria the guest submitted",
       "error": null,
@@ -230,7 +230,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET search-service/api/searches/S-1b52119b/results",
+          "name": "GET search-service/api/searches/S-1c0abf33/results",
           "file": "TC-F-008-2.json",
           "contentType": "application/json"
         }
@@ -245,8 +245,8 @@
       "scriptFile": "br-015-search-date-validation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 45,
-      "startTime": "2026-10-12T02:10:01.340Z",
+      "duration": 53,
+      "startTime": "2026-10-12T02:22:26.277Z",
       "file": "br-015-search-date-validation.spec.js",
       "title": "TC-F-009 A check-in date in the past is rejected",
       "error": null,
@@ -268,7 +268,7 @@
       "status": "passed",
       "playwrightStatus": "passed",
       "duration": 38,
-      "startTime": "2026-10-12T02:10:01.392Z",
+      "startTime": "2026-10-12T02:22:26.338Z",
       "file": "br-015-search-date-validation.spec.js",
       "title": "TC-F-010 A check-out on the check-in day is rejected",
       "error": null,
@@ -289,8 +289,8 @@
       "scriptFile": "br-015-search-date-validation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 34,
-      "startTime": "2026-10-12T02:10:01.437Z",
+      "duration": 37,
+      "startTime": "2026-10-12T02:22:26.384Z",
       "file": "br-015-search-date-validation.spec.js",
       "title": "TC-F-011 A search without a destination is rejected",
       "error": null,
@@ -311,8 +311,8 @@
       "scriptFile": "br-016-no-availability.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 48,
-      "startTime": "2026-10-12T02:10:01.479Z",
+      "duration": 63,
+      "startTime": "2026-10-12T02:22:26.431Z",
       "file": "br-016-no-availability.spec.js",
       "title": "TC-N-001 When every hotel is sold out the guest is told and offered other dates, guests or destination",
       "error": null,
@@ -392,8 +392,8 @@
       "scriptFile": "br-020-search-form.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 23,
-      "startTime": "2026-10-12T02:10:01.541Z",
+      "duration": 54,
+      "startTime": "2026-10-12T02:22:26.521Z",
       "file": "br-020-search-form.spec.js",
       "title": "TC-F-015 The search form marks destination, dates, rooms and adults as required",
       "error": null,
@@ -414,8 +414,8 @@
       "scriptFile": "br-021-field-level-messages.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 19,
-      "startTime": "2026-10-12T02:10:01.572Z",
+      "duration": 44,
+      "startTime": "2026-10-12T02:22:26.600Z",
       "file": "br-021-field-level-messages.spec.js",
       "title": "TC-F-016 Two rooms for one adult return a message on the adults field",
       "error": null,
@@ -462,8 +462,8 @@
       "scriptFile": "br-025-no-availability.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 37,
-      "startTime": "2026-10-12T02:10:01.599Z",
+      "duration": 82,
+      "startTime": "2026-10-12T02:22:26.658Z",
       "file": "br-025-no-availability.spec.js",
       "title": "TC-F-019 When every hotel is sold out the guest is told and offered other dates, guests or destination",
       "error": null,
@@ -517,8 +517,8 @@
       "scriptFile": "br-027-search-session.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 41,
-      "startTime": "2026-10-12T02:10:01.646Z",
+      "duration": 74,
+      "startTime": "2026-10-12T02:22:26.761Z",
       "file": "br-027-search-session.spec.js",
       "title": "TC-F-021 Submitting the same search twice in one session returns the same search",
       "error": null,
@@ -544,8 +544,8 @@
       "scriptFile": "br-028-result-content.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 25,
-      "startTime": "2026-10-12T02:10:01.705Z",
+      "duration": 64,
+      "startTime": "2026-10-12T02:22:26.874Z",
       "file": "br-028-result-content.spec.js",
       "title": "TC-N-002 Every result has a name, location, image, availability and, when bookable, a starting price in a currency",
       "error": null,
@@ -566,8 +566,8 @@
       "scriptFile": "br-029-fee-disclosure.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 24,
-      "startTime": "2026-10-12T02:10:01.737Z",
+      "duration": 45,
+      "startTime": "2026-10-12T02:22:26.946Z",
       "file": "br-029-fee-disclosure.spec.js",
       "title": "TC-F-022 Every bookable result states what its price includes",
       "error": null,
@@ -588,8 +588,8 @@
       "scriptFile": "br-030-unavailable-not-bookable.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 27,
-      "startTime": "2026-10-12T02:10:01.769Z",
+      "duration": 52,
+      "startTime": "2026-10-12T02:22:27.005Z",
       "file": "br-030-unavailable-not-bookable.spec.js",
       "title": "TC-F-023 A sold-out hotel is listed as SOLD_OUT without a price",
       "error": null,
@@ -615,8 +615,8 @@
       "scriptFile": "br-031-pagination.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 38,
-      "startTime": "2026-10-12T02:10:01.806Z",
+      "duration": 82,
+      "startTime": "2026-10-12T02:22:27.070Z",
       "file": "br-031-pagination.spec.js",
       "title": "TC-F-024 Results can be read two at a time",
       "error": null,
@@ -627,7 +627,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET search-service/api/searches/S-f1cca1aa/results?size=2",
+          "name": "GET search-service/api/searches/S-3739670c/results?size=2",
           "file": "TC-F-024-2.json",
           "contentType": "application/json"
         }
@@ -642,8 +642,8 @@
       "scriptFile": "br-032-starting-price.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 35,
-      "startTime": "2026-10-12T02:10:01.852Z",
+      "duration": 77,
+      "startTime": "2026-10-12T02:22:27.168Z",
       "file": "br-032-starting-price.spec.js",
       "title": "TC-F-025 The starting price equals the cheapest rate on the hotel page",
       "error": null,
@@ -669,8 +669,8 @@
       "scriptFile": "br-033-hotel-details.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 18,
-      "startTime": "2026-10-12T02:10:01.894Z",
+      "duration": 42,
+      "startTime": "2026-10-12T02:22:27.256Z",
       "file": "br-033-hotel-details.spec.js",
       "title": "TC-F-026 The hotel page shows description, images, address, amenities, rooms with prices and policies",
       "error": null,
@@ -717,8 +717,8 @@
       "scriptFile": "br-036-rate-conditions.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 25,
-      "startTime": "2026-10-12T02:10:01.919Z",
+      "duration": 47,
+      "startTime": "2026-10-12T02:22:27.306Z",
       "file": "br-036-rate-conditions.spec.js",
       "title": "TC-F-029 Every rate plan states its cancellation terms and payment rule",
       "error": null,
@@ -752,8 +752,8 @@
       "scriptFile": "br-038-offer-exclusion.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 121,
-      "startTime": "2026-10-12T02:10:01.951Z",
+      "duration": 256,
+      "startTime": "2026-10-12T02:22:27.365Z",
       "file": "br-038-offer-exclusion.spec.js",
       "title": "TC-F-031 Spa access is not offered at a hotel without a spa",
       "error": null,
@@ -779,8 +779,8 @@
       "scriptFile": "br-039-offer-reason-codes.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 20,
-      "startTime": "2026-10-12T02:10:02.079Z",
+      "duration": 39,
+      "startTime": "2026-10-12T02:22:27.635Z",
       "file": "br-039-offer-reason-codes.spec.js",
       "title": "TC-F-032 Every recommended extra carries at least one reason code",
       "error": null,
@@ -853,8 +853,8 @@
       "scriptFile": "br-044-offer-content.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 17,
-      "startTime": "2026-10-12T02:10:02.105Z",
+      "duration": 40,
+      "startTime": "2026-10-12T02:22:27.682Z",
       "file": "br-044-offer-content.spec.js",
       "title": "TC-F-037 Each offer shows name, description, price and currency and is labelled an optional extra",
       "error": null,
@@ -875,8 +875,8 @@
       "scriptFile": "br-045-offer-interaction.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 26,
-      "startTime": "2026-10-12T02:10:02.129Z",
+      "duration": 45,
+      "startTime": "2026-10-12T02:22:27.730Z",
       "file": "br-045-offer-interaction.spec.js",
       "title": "TC-F-038 The guest can record add, skip and dismiss on an offer",
       "error": null,
@@ -907,8 +907,8 @@
       "scriptFile": "br-046-offer-content.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 23,
-      "startTime": "2026-10-12T02:10:02.162Z",
+      "duration": 29,
+      "startTime": "2026-10-12T02:22:27.784Z",
       "file": "br-046-offer-content.spec.js",
       "title": "TC-F-039 Each offer shows name, description, price and currency and is labelled an optional extra",
       "error": null,
@@ -929,8 +929,8 @@
       "scriptFile": "br-048-cart-contents.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 22,
-      "startTime": "2026-10-12T02:10:02.192Z",
+      "duration": 57,
+      "startTime": "2026-10-12T02:22:27.824Z",
       "file": "br-048-cart-contents.spec.js",
       "title": "TC-F-040 The cart holds the selected hotel, room, rate, dates, occupancy and price components",
       "error": null,
@@ -1016,8 +1016,8 @@
       "scriptFile": "br-054-ancillary-quantity.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 87,
-      "startTime": "2026-10-12T02:10:02.221Z",
+      "duration": 144,
+      "startTime": "2026-10-12T02:22:27.889Z",
       "file": "br-054-ancillary-quantity.spec.js",
       "title": "TC-F-046 Breakfast can go to 2 but not above its limit of 4",
       "error": null,
@@ -1028,17 +1028,17 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-66fa609c/ancillaries",
+          "name": "POST cart-service/api/carts/C-b1f4ac2c/ancillaries",
           "file": "TC-F-046-2.json",
           "contentType": "application/json"
         },
         {
-          "name": "PUT cart-service/api/carts/C-66fa609c/ancillaries/BREAKFAST",
+          "name": "PUT cart-service/api/carts/C-b1f4ac2c/ancillaries/BREAKFAST",
           "file": "TC-F-046-3.json",
           "contentType": "application/json"
         },
         {
-          "name": "PUT cart-service/api/carts/C-66fa609c/ancillaries/BREAKFAST",
+          "name": "PUT cart-service/api/carts/C-b1f4ac2c/ancillaries/BREAKFAST",
           "file": "TC-F-046-4.json",
           "contentType": "application/json"
         }
@@ -1053,8 +1053,8 @@
       "scriptFile": "br-055-ancillary-removal.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 41,
-      "startTime": "2026-10-12T02:10:02.315Z",
+      "duration": 52,
+      "startTime": "2026-10-12T02:22:28.042Z",
       "file": "br-055-ancillary-removal.spec.js",
       "title": "TC-F-047 Removing breakfast returns the total to the room-only amount",
       "error": null,
@@ -1065,12 +1065,12 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-44c73d77/ancillaries",
+          "name": "POST cart-service/api/carts/C-7ff17279/ancillaries",
           "file": "TC-F-047-2.json",
           "contentType": "application/json"
         },
         {
-          "name": "DELETE cart-service/api/carts/C-44c73d77/ancillaries/BREAKFAST",
+          "name": "DELETE cart-service/api/carts/C-7ff17279/ancillaries/BREAKFAST",
           "file": "TC-F-047-3.json",
           "contentType": "application/json"
         }
@@ -1098,8 +1098,8 @@
       "scriptFile": "br-057-itemized-total.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 31,
-      "startTime": "2026-10-12T02:10:02.363Z",
+      "duration": 67,
+      "startTime": "2026-10-12T02:22:28.103Z",
       "file": "br-057-itemized-total.spec.js",
       "title": "TC-F-049 The cart itemises room, taxes, fees, extras and discounts and they add up to the total",
       "error": null,
@@ -1110,7 +1110,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-9ad820ae/ancillaries",
+          "name": "POST cart-service/api/carts/C-995aa92a/ancillaries",
           "file": "TC-F-049-2.json",
           "contentType": "application/json"
         }
@@ -1177,8 +1177,8 @@
       "scriptFile": "br-062-checkout-fields.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 34,
-      "startTime": "2026-10-12T02:10:02.402Z",
+      "duration": 73,
+      "startTime": "2026-10-12T02:22:28.184Z",
       "file": "br-062-checkout-fields.spec.js",
       "title": "TC-F-054 Checkout lists name, e-mail, payment and privacy notice as required and phone as optional",
       "error": null,
@@ -1189,7 +1189,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/checkout/C-61aec95c/payment-summary",
+          "name": "GET reservation-service/api/checkout/C-2f5293db/payment-summary",
           "file": "TC-F-054-2.json",
           "contentType": "application/json"
         }
@@ -1204,8 +1204,8 @@
       "scriptFile": "br-063-guest-validation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 40,
-      "startTime": "2026-10-12T02:10:02.443Z",
+      "duration": 64,
+      "startTime": "2026-10-12T02:22:28.267Z",
       "file": "br-063-guest-validation.spec.js",
       "title": "TC-N-003 An invalid e-mail address is rejected on the e-mail field",
       "error": null,
@@ -1231,8 +1231,8 @@
       "scriptFile": "br-064-privacy-consent.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 25,
-      "startTime": "2026-10-12T02:10:02.490Z",
+      "duration": 71,
+      "startTime": "2026-10-12T02:22:28.338Z",
       "file": "br-064-privacy-consent.spec.js",
       "title": "TC-F-055 Booking without accepting the privacy notice is refused",
       "error": null,
@@ -1282,19 +1282,13 @@
       "name": "Support staff see a masked e-mail and other callers are refused",
       "type": "functional",
       "scriptFile": "br-067-support-masking.spec.js",
-      "status": "failed",
-      "playwrightStatus": "timedOut",
-      "duration": 30029,
-      "startTime": "2026-10-12T02:10:02.522Z",
+      "status": "passed",
+      "playwrightStatus": "passed",
+      "duration": 377,
+      "startTime": "2026-10-12T02:22:28.422Z",
       "file": "br-067-support-masking.spec.js",
       "title": "TC-F-058 Support staff see a masked e-mail and other callers are refused",
-      "error": {
-        "message": "Test timeout of 30000ms exceeded.",
-        "expected": null,
-        "actual": null,
-        "assertion": "Test timeout of 30000ms exceeded.",
-        "location": null
-      },
+      "error": null,
       "evidence": [
         {
           "name": "POST cart-service/api/carts",
@@ -1307,14 +1301,14 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/ops/reservations/R-7b6acd83",
+          "name": "GET reservation-service/api/ops/reservations/R-2f2e7194",
           "file": "TC-F-058-3.json",
           "contentType": "application/json"
         },
         {
-          "name": "error-context",
-          "file": "TC-F-058-4.txt",
-          "contentType": "text/markdown"
+          "name": "GET reservation-service/api/ops/reservations/R-2f2e7194",
+          "file": "TC-F-058-4.json",
+          "contentType": "application/json"
         }
       ]
     },
@@ -1327,8 +1321,8 @@
       "scriptFile": "br-068-amount-before-auth.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 59,
-      "startTime": "2026-10-12T02:10:32.859Z",
+      "duration": 67,
+      "startTime": "2026-10-12T02:22:28.809Z",
       "file": "br-068-amount-before-auth.spec.js",
       "title": "TC-F-059 A pay-at-hotel rate shows nothing to pay now and the total due at the hotel",
       "error": null,
@@ -1339,7 +1333,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/checkout/C-b96ffeb5/payment-summary",
+          "name": "GET reservation-service/api/checkout/C-1c0e6092/payment-summary",
           "file": "TC-F-059-2.json",
           "contentType": "application/json"
         }
@@ -1354,8 +1348,8 @@
       "scriptFile": "br-068-amount-before-auth.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 44,
-      "startTime": "2026-10-12T02:10:32.949Z",
+      "duration": 51,
+      "startTime": "2026-10-12T02:22:28.886Z",
       "file": "br-068-amount-before-auth.spec.js",
       "title": "TC-F-060 A prepaid rate shows the full total to pay now",
       "error": null,
@@ -1366,7 +1360,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/checkout/C-30633300/payment-summary",
+          "name": "GET reservation-service/api/checkout/C-8373c2e6/payment-summary",
           "file": "TC-F-060-2.json",
           "contentType": "application/json"
         }
@@ -1394,8 +1388,8 @@
       "scriptFile": "br-070-payment-outcomes.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 53,
-      "startTime": "2026-10-12T02:10:33.004Z",
+      "duration": 58,
+      "startTime": "2026-10-12T02:22:28.945Z",
       "file": "br-070-payment-outcomes.spec.js",
       "title": "TC-F-062 A declined card returns a decline without a booking",
       "error": null,
@@ -1421,8 +1415,8 @@
       "scriptFile": "br-070-payment-outcomes.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 78,
-      "startTime": "2026-10-12T02:10:33.067Z",
+      "duration": 86,
+      "startTime": "2026-10-12T02:22:29.010Z",
       "file": "br-070-payment-outcomes.spec.js",
       "title": "TC-F-063 A lost payment response leaves the booking pending and tells the guest not to resubmit",
       "error": null,
@@ -1438,7 +1432,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST reservation-service/api/reservations/R-5b40b694/reconcile",
+          "name": "POST reservation-service/api/reservations/R-5e166a79/reconcile",
           "file": "TC-F-063-3.json",
           "contentType": "application/json"
         }
@@ -1453,8 +1447,8 @@
       "scriptFile": "br-070-payment-outcomes.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 39,
-      "startTime": "2026-10-12T02:10:33.153Z",
+      "duration": 55,
+      "startTime": "2026-10-12T02:22:29.102Z",
       "file": "br-070-payment-outcomes.spec.js",
       "title": "TC-F-064 A payment provider failure returns a failure without a booking",
       "error": null,
@@ -1480,8 +1474,8 @@
       "scriptFile": "br-071-no-card-data.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 29,
-      "startTime": "2026-10-12T02:10:33.207Z",
+      "duration": 41,
+      "startTime": "2026-10-12T02:22:29.168Z",
       "file": "br-071-no-card-data.spec.js",
       "title": "TC-F-065 A raw card number is refused and never echoed back",
       "error": null,
@@ -1533,8 +1527,8 @@
       "scriptFile": "br-074-one-reservation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 62,
-      "startTime": "2026-10-12T02:10:33.244Z",
+      "duration": 67,
+      "startTime": "2026-10-12T02:22:29.218Z",
       "file": "br-074-one-reservation.spec.js",
       "title": "TC-F-068 A successful booking creates one reservation with a confirmation number",
       "error": null,
@@ -1560,8 +1554,8 @@
       "scriptFile": "br-075-idempotent-reservation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 55,
-      "startTime": "2026-10-12T02:10:33.314Z",
+      "duration": 86,
+      "startTime": "2026-10-12T02:22:29.296Z",
       "file": "br-075-idempotent-reservation.spec.js",
       "title": "TC-F-069 Resubmitting with the same key returns the original reservation",
       "error": null,
@@ -1597,8 +1591,8 @@
       "scriptFile": "br-076-reconcilable.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 78,
-      "startTime": "2026-10-12T02:10:33.378Z",
+      "duration": 146,
+      "startTime": "2026-10-12T02:22:29.389Z",
       "file": "br-076-reconcilable.spec.js",
       "title": "TC-F-070 After a booking and a decline the reconciliation report is consistent",
       "error": null,
@@ -1678,8 +1672,8 @@
       "scriptFile": "br-080-confirmation-content.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 64,
-      "startTime": "2026-10-12T02:10:33.468Z",
+      "duration": 106,
+      "startTime": "2026-10-12T02:22:29.545Z",
       "file": "br-080-confirmation-content.spec.js",
       "title": "TC-F-074 The confirmation e-mail matches the booking and contains no payment token",
       "error": null,
@@ -1695,7 +1689,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-27219876",
+          "name": "GET notification-service/api/confirmations/R-6906f154",
           "file": "TC-F-074-3.json",
           "contentType": "application/json"
         }
@@ -1710,8 +1704,8 @@
       "scriptFile": "br-081-confirmation-content.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 66,
-      "startTime": "2026-10-12T02:10:33.544Z",
+      "duration": 92,
+      "startTime": "2026-10-12T02:22:29.660Z",
       "file": "br-081-confirmation-content.spec.js",
       "title": "TC-F-075 The confirmation e-mail matches the booking and contains no payment token",
       "error": null,
@@ -1727,7 +1721,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-60353fd3",
+          "name": "GET notification-service/api/confirmations/R-90e3ad83",
           "file": "TC-F-075-3.json",
           "contentType": "application/json"
         }
@@ -1755,8 +1749,8 @@
       "scriptFile": "br-084-confirmation-content.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 54,
-      "startTime": "2026-10-12T02:10:33.620Z",
+      "duration": 73,
+      "startTime": "2026-10-12T02:22:29.764Z",
       "file": "br-084-confirmation-content.spec.js",
       "title": "TC-F-077 The confirmation e-mail matches the booking and contains no payment token",
       "error": null,
@@ -1772,7 +1766,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-b9503439",
+          "name": "GET notification-service/api/confirmations/R-02fa87bc",
           "file": "TC-F-077-3.json",
           "contentType": "application/json"
         }
@@ -1800,8 +1794,8 @@
       "scriptFile": "br-086-email-failure-isolated.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 144,
-      "startTime": "2026-10-12T02:10:33.683Z",
+      "duration": 115,
+      "startTime": "2026-10-12T02:22:29.847Z",
       "file": "br-086-email-failure-isolated.spec.js",
       "title": "TC-F-079 When the e-mail cannot be sent the booking stays confirmed",
       "error": null,
@@ -1817,7 +1811,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-4c35e235",
+          "name": "GET notification-service/api/confirmations/R-8510fcb5",
           "file": "TC-F-079-3.json",
           "contentType": "application/json"
         }
@@ -1871,8 +1865,8 @@
       "scriptFile": "br-090-resend-generic.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 73,
-      "startTime": "2026-10-12T02:10:33.837Z",
+      "duration": 69,
+      "startTime": "2026-10-12T02:22:29.975Z",
       "file": "br-090-resend-generic.spec.js",
       "title": "TC-F-083 A resend with the wrong last name gets the same answer as a correct one",
       "error": null,
@@ -1898,7 +1892,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/ops/messages?reservationId=R-e06cfafc",
+          "name": "GET notification-service/api/ops/messages?reservationId=R-f04b73c8",
           "file": "TC-F-083-5.json",
           "contentType": "application/json"
         }
@@ -1978,8 +1972,8 @@
       "scriptFile": "br-096-support-masking.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 50,
-      "startTime": "2026-10-12T02:10:33.918Z",
+      "duration": 58,
+      "startTime": "2026-10-12T02:22:30.051Z",
       "file": "br-096-support-masking.spec.js",
       "title": "TC-F-089 Support staff see a masked e-mail and other callers are refused",
       "error": null,
@@ -1995,12 +1989,12 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/ops/reservations/R-2843a9c6",
+          "name": "GET reservation-service/api/ops/reservations/R-955c26f3",
           "file": "TC-F-089-3.json",
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/ops/reservations/R-2843a9c6",
+          "name": "GET reservation-service/api/ops/reservations/R-955c26f3",
           "file": "TC-F-089-4.json",
           "contentType": "application/json"
         }
@@ -2028,8 +2022,8 @@
       "scriptFile": "br-098-correlation-id.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 53,
-      "startTime": "2026-10-12T02:10:33.980Z",
+      "duration": 52,
+      "startTime": "2026-10-12T02:22:30.117Z",
       "file": "br-098-correlation-id.spec.js",
       "title": "TC-F-091 A correlation ID sent by the client is returned by search, cart and reservation",
       "error": null,
@@ -2138,8 +2132,8 @@
       "scriptFile": "br-107-email-accessible.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 48,
-      "startTime": "2026-10-12T02:10:34.041Z",
+      "duration": 46,
+      "startTime": "2026-10-12T02:22:30.175Z",
       "file": "br-107-email-accessible.spec.js",
       "title": "TC-N-004 The confirmation e-mail has a language, a heading, a captioned table with scoped headers and a text part",
       "error": null,
@@ -2155,7 +2149,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-6f2adff3",
+          "name": "GET notification-service/api/confirmations/R-845e29f4",
           "file": "TC-N-004-3.json",
           "contentType": "application/json"
         }
@@ -2209,8 +2203,8 @@
       "scriptFile": "br-112-cart-expiry.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 21,
-      "startTime": "2026-10-12T02:10:34.097Z",
+      "duration": 20,
+      "startTime": "2026-10-12T02:22:30.228Z",
       "file": "br-112-cart-expiry.spec.js",
       "title": "TC-F-101 A new cart expires 20 minutes after creation and reserves nothing",
       "error": null,
@@ -2236,8 +2230,8 @@
       "scriptFile": "br-113-price-change-ack.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 83,
-      "startTime": "2026-10-12T02:10:34.125Z",
+      "duration": 78,
+      "startTime": "2026-10-12T02:22:30.256Z",
       "file": "br-113-price-change-ack.spec.js",
       "title": "TC-F-102 A price rise above 1% blocks booking until the guest acknowledges it",
       "error": null,
@@ -2258,7 +2252,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-70e947ca/revalidate",
+          "name": "POST cart-service/api/carts/C-ec7a87c1/revalidate",
           "file": "TC-F-102-4.json",
           "contentType": "application/json"
         },
@@ -2268,7 +2262,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-70e947ca/acknowledge",
+          "name": "POST cart-service/api/carts/C-ec7a87c1/acknowledge",
           "file": "TC-F-102-6.json",
           "contentType": "application/json"
         },
@@ -2288,8 +2282,8 @@
       "scriptFile": "br-113-price-change-ack.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 31,
-      "startTime": "2026-10-12T02:10:34.214Z",
+      "duration": 33,
+      "startTime": "2026-10-12T02:22:30.339Z",
       "file": "br-113-price-change-ack.spec.js",
       "title": "TC-F-103 A price change within 1% does not need acknowledgement",
       "error": null,
@@ -2310,7 +2304,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-6876f021/revalidate",
+          "name": "POST cart-service/api/carts/C-805434d5/revalidate",
           "file": "TC-F-103-4.json",
           "contentType": "application/json"
         }
@@ -2325,8 +2319,8 @@
       "scriptFile": "br-114-resend-limit.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 85,
-      "startTime": "2026-10-12T02:10:34.253Z",
+      "duration": 87,
+      "startTime": "2026-10-12T02:22:30.379Z",
       "file": "br-114-resend-limit.spec.js",
       "title": "TC-F-104 The 6th resend within 24 hours is refused",
       "error": null,
@@ -2388,7 +2382,7 @@
       "status": "passed",
       "playwrightStatus": "passed",
       "duration": 22,
-      "startTime": "2026-10-12T02:10:34.346Z",
+      "startTime": "2026-10-12T02:22:30.473Z",
       "file": "br-115-idempotency-key.spec.js",
       "title": "TC-F-105 A reservation without an Idempotency-Key is refused",
       "error": null,
@@ -2414,8 +2408,8 @@
       "scriptFile": "br-115-idempotency-key.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 19,
-      "startTime": "2026-10-12T02:10:34.374Z",
+      "duration": 21,
+      "startTime": "2026-10-12T02:22:30.501Z",
       "file": "br-115-idempotency-key.spec.js",
       "title": "TC-F-106 A key shorter than 8 characters is refused",
       "error": null,
@@ -2441,8 +2435,8 @@
       "scriptFile": "br-115-idempotency-key.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 52,
-      "startTime": "2026-10-12T02:10:34.398Z",
+      "duration": 55,
+      "startTime": "2026-10-12T02:22:30.528Z",
       "file": "br-115-idempotency-key.spec.js",
       "title": "TC-F-107 Reusing a key for a different cart is refused",
       "error": null,
@@ -2478,8 +2472,8 @@
       "scriptFile": "br-116-stay-length-limit.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 25,
-      "startTime": "2026-10-12T02:10:34.458Z",
+      "duration": 22,
+      "startTime": "2026-10-12T02:22:30.591Z",
       "file": "br-116-stay-length-limit.spec.js",
       "title": "TC-F-108 A 30-night stay is accepted",
       "error": null,
@@ -2500,8 +2494,8 @@
       "scriptFile": "br-116-stay-length-limit.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 16,
-      "startTime": "2026-10-12T02:10:34.489Z",
+      "duration": 19,
+      "startTime": "2026-10-12T02:22:30.618Z",
       "file": "br-116-stay-length-limit.spec.js",
       "title": "TC-F-109 A 31-night stay is rejected",
       "error": null,
@@ -2522,8 +2516,8 @@
       "scriptFile": "br-116-stay-length-limit.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 19,
-      "startTime": "2026-10-12T02:10:34.510Z",
+      "duration": 20,
+      "startTime": "2026-10-12T02:22:30.642Z",
       "file": "br-116-stay-length-limit.spec.js",
       "title": "TC-F-110 A 14-night stay in Paris is accepted",
       "error": null,
@@ -2544,8 +2538,8 @@
       "scriptFile": "br-116-stay-length-limit.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 14,
-      "startTime": "2026-10-12T02:10:34.534Z",
+      "duration": 18,
+      "startTime": "2026-10-12T02:22:30.667Z",
       "file": "br-116-stay-length-limit.spec.js",
       "title": "TC-F-111 A 15-night stay in Paris is rejected",
       "error": null,
@@ -2566,8 +2560,8 @@
       "scriptFile": "br-117-occupancy-limits.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 19,
-      "startTime": "2026-10-12T02:10:34.555Z",
+      "duration": 21,
+      "startTime": "2026-10-12T02:22:30.694Z",
       "file": "br-117-occupancy-limits.spec.js",
       "title": "TC-F-112 4 adults in one room are accepted",
       "error": null,
@@ -2589,7 +2583,7 @@
       "status": "passed",
       "playwrightStatus": "passed",
       "duration": 17,
-      "startTime": "2026-10-12T02:10:34.579Z",
+      "startTime": "2026-10-12T02:22:30.720Z",
       "file": "br-117-occupancy-limits.spec.js",
       "title": "TC-F-113 5 adults in one room are rejected",
       "error": null,
@@ -2610,8 +2604,8 @@
       "scriptFile": "br-117-occupancy-limits.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 15,
-      "startTime": "2026-10-12T02:10:34.602Z",
+      "duration": 19,
+      "startTime": "2026-10-12T02:22:30.743Z",
       "file": "br-117-occupancy-limits.spec.js",
       "title": "TC-F-114 4 children in one room are rejected",
       "error": null,
@@ -2633,7 +2627,7 @@
       "status": "passed",
       "playwrightStatus": "passed",
       "duration": 15,
-      "startTime": "2026-10-12T02:10:34.623Z",
+      "startTime": "2026-10-12T02:22:30.771Z",
       "file": "br-117-occupancy-limits.spec.js",
       "title": "TC-F-115 9 rooms in one search are rejected",
       "error": null,
@@ -2654,8 +2648,8 @@
       "scriptFile": "br-118-advance-horizon.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 17,
-      "startTime": "2026-10-12T02:10:34.645Z",
+      "duration": 18,
+      "startTime": "2026-10-12T02:22:30.796Z",
       "file": "br-118-advance-horizon.spec.js",
       "title": "TC-F-116 A check-in 500 days ahead is accepted",
       "error": null,
@@ -2676,8 +2670,8 @@
       "scriptFile": "br-118-advance-horizon.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 13,
-      "startTime": "2026-10-12T02:10:34.668Z",
+      "duration": 16,
+      "startTime": "2026-10-12T02:22:30.822Z",
       "file": "br-118-advance-horizon.spec.js",
       "title": "TC-F-117 A check-in 501 days ahead is rejected",
       "error": null,
@@ -2724,8 +2718,8 @@
       "scriptFile": "br-121-free-cancellation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 59,
-      "startTime": "2026-10-12T02:10:34.688Z",
+      "duration": 54,
+      "startTime": "2026-10-12T02:22:30.845Z",
       "file": "br-121-free-cancellation.spec.js",
       "title": "TC-F-120 A flexible booking cancelled more than 48 hours before check-in is cancelled free of charge",
       "error": null,
@@ -2741,7 +2735,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST reservation-service/api/reservations/R-30c4750f/cancel",
+          "name": "POST reservation-service/api/reservations/R-18a32691/cancel",
           "file": "TC-F-120-3.json",
           "contentType": "application/json"
         }
@@ -2756,8 +2750,8 @@
       "scriptFile": "br-121-free-cancellation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 50,
-      "startTime": "2026-10-12T02:10:34.754Z",
+      "duration": 46,
+      "startTime": "2026-10-12T02:22:30.904Z",
       "file": "br-121-free-cancellation.spec.js",
       "title": "TC-F-121 A cancellation within 48 hours of check-in is refused and the booking stays confirmed",
       "error": null,
@@ -2773,12 +2767,12 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST reservation-service/api/reservations/R-725e86f2/cancel",
+          "name": "POST reservation-service/api/reservations/R-67dda9cc/cancel",
           "file": "TC-F-121-3.json",
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/reservations/R-725e86f2",
+          "name": "GET reservation-service/api/reservations/R-67dda9cc",
           "file": "TC-F-121-4.json",
           "contentType": "application/json"
         }
@@ -2793,8 +2787,8 @@
       "scriptFile": "br-122-cancellation-outcome.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 75,
-      "startTime": "2026-10-12T02:10:34.811Z",
+      "duration": 54,
+      "startTime": "2026-10-12T02:22:30.958Z",
       "file": "br-122-cancellation-outcome.spec.js",
       "title": "TC-F-122 A cancelled booking shows CANCELLED, its payment hold is voided and its room is released",
       "error": null,
@@ -2810,7 +2804,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST reservation-service/api/reservations/R-f52b4641/cancel",
+          "name": "POST reservation-service/api/reservations/R-df9a9e0a/cancel",
           "file": "TC-F-122-3.json",
           "contentType": "application/json"
         },
@@ -2840,8 +2834,8 @@
       "scriptFile": "br-123-non-refundable-cancellation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 47,
-      "startTime": "2026-10-12T02:10:34.897Z",
+      "duration": 44,
+      "startTime": "2026-10-12T02:22:31.024Z",
       "file": "br-123-non-refundable-cancellation.spec.js",
       "title": "TC-F-123 A non-refundable booking cannot be cancelled free of charge",
       "error": null,
@@ -2857,7 +2851,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST reservation-service/api/reservations/R-b17ff6a3/cancel",
+          "name": "POST reservation-service/api/reservations/R-93a9732e/cancel",
           "file": "TC-F-123-3.json",
           "contentType": "application/json"
         }
@@ -2873,7 +2867,7 @@
       "status": "passed",
       "playwrightStatus": "passed",
       "duration": 41,
-      "startTime": "2026-10-12T02:10:34.952Z",
+      "startTime": "2026-10-12T02:22:31.078Z",
       "file": "br-124-cancellation-deadline-email.spec.js",
       "title": "TC-F-124 The confirmation of a flexible booking states free cancellation until 48 hours before check-in",
       "error": null,
@@ -2889,7 +2883,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-f0fbd632",
+          "name": "GET notification-service/api/confirmations/R-21fe20c8",
           "file": "TC-F-124-3.json",
           "contentType": "application/json"
         }
@@ -2904,8 +2898,8 @@
       "scriptFile": "br-124-cancellation-deadline-email.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 49,
-      "startTime": "2026-10-12T02:10:34.998Z",
+      "duration": 42,
+      "startTime": "2026-10-12T02:22:31.126Z",
       "file": "br-124-cancellation-deadline-email.spec.js",
       "title": "TC-F-125 The confirmation of a non-refundable booking states no free-cancellation deadline",
       "error": null,
@@ -2921,7 +2915,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-ebf81e47",
+          "name": "GET notification-service/api/confirmations/R-05ef68c5",
           "file": "TC-F-125-3.json",
           "contentType": "application/json"
         }
@@ -2936,8 +2930,8 @@
       "scriptFile": "br-125-ops-retry-limit.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 317,
-      "startTime": "2026-10-12T02:10:35.060Z",
+      "duration": 318,
+      "startTime": "2026-10-12T02:22:31.175Z",
       "file": "br-125-ops-retry-limit.spec.js",
       "title": "TC-F-126 Operations can retry a failed confirmation e-mail 3 times; retry 4 is refused",
       "error": null,
@@ -2953,32 +2947,32 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/confirmations/R-cc94badc",
+          "name": "GET notification-service/api/confirmations/R-d781bda7",
           "file": "TC-F-126-3.json",
           "contentType": "application/json"
         },
         {
-          "name": "POST notification-service/api/ops/messages/M-a8cca7b0/retry",
+          "name": "POST notification-service/api/ops/messages/M-c65b8104/retry",
           "file": "TC-F-126-4.json",
           "contentType": "application/json"
         },
         {
-          "name": "POST notification-service/api/ops/messages/M-a8cca7b0/retry",
+          "name": "POST notification-service/api/ops/messages/M-c65b8104/retry",
           "file": "TC-F-126-5.json",
           "contentType": "application/json"
         },
         {
-          "name": "POST notification-service/api/ops/messages/M-a8cca7b0/retry",
+          "name": "POST notification-service/api/ops/messages/M-c65b8104/retry",
           "file": "TC-F-126-6.json",
           "contentType": "application/json"
         },
         {
-          "name": "POST notification-service/api/ops/messages/M-a8cca7b0/retry",
+          "name": "POST notification-service/api/ops/messages/M-c65b8104/retry",
           "file": "TC-F-126-7.json",
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/reservations/R-cc94badc",
+          "name": "GET reservation-service/api/reservations/R-d781bda7",
           "file": "TC-F-126-8.json",
           "contentType": "application/json"
         }
@@ -2993,8 +2987,8 @@
       "scriptFile": "br-126-cancellation-email.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 68,
-      "startTime": "2026-10-12T02:10:35.384Z",
+      "duration": 60,
+      "startTime": "2026-10-12T02:22:31.505Z",
       "file": "br-126-cancellation-email.spec.js",
       "title": "TC-F-127 A cancelled booking gets one cancellation e-mail, even when cancelled twice",
       "error": null,
@@ -3010,17 +3004,17 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST reservation-service/api/reservations/R-f35da94b/cancel",
+          "name": "POST reservation-service/api/reservations/R-c016f03e/cancel",
           "file": "TC-F-127-3.json",
           "contentType": "application/json"
         },
         {
-          "name": "POST reservation-service/api/reservations/R-f35da94b/cancel",
+          "name": "POST reservation-service/api/reservations/R-c016f03e/cancel",
           "file": "TC-F-127-4.json",
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/ops/messages?reservationId=R-f35da94b",
+          "name": "GET notification-service/api/ops/messages?reservationId=R-c016f03e",
           "file": "TC-F-127-5.json",
           "contentType": "application/json"
         }
@@ -3035,8 +3029,8 @@
       "scriptFile": "br-127-cancellation-email-failure.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 165,
-      "startTime": "2026-10-12T02:10:35.460Z",
+      "duration": 194,
+      "startTime": "2026-10-12T02:22:31.572Z",
       "file": "br-127-cancellation-email-failure.spec.js",
       "title": "TC-F-128 When the cancellation e-mail cannot be sent the booking stays cancelled",
       "error": null,
@@ -3052,17 +3046,17 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST reservation-service/api/reservations/R-da3937df/cancel",
+          "name": "POST reservation-service/api/reservations/R-afb513d7/cancel",
           "file": "TC-F-128-3.json",
           "contentType": "application/json"
         },
         {
-          "name": "GET reservation-service/api/reservations/R-da3937df",
+          "name": "GET reservation-service/api/reservations/R-afb513d7",
           "file": "TC-F-128-4.json",
           "contentType": "application/json"
         },
         {
-          "name": "GET notification-service/api/ops/messages?reservationId=R-da3937df",
+          "name": "GET notification-service/api/ops/messages?reservationId=R-afb513d7",
           "file": "TC-F-128-5.json",
           "contentType": "application/json"
         }
@@ -3090,8 +3084,8 @@
       "scriptFile": "br-129-result-filters.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 32,
-      "startTime": "2026-10-12T02:10:35.631Z",
+      "duration": 35,
+      "startTime": "2026-10-12T02:22:31.776Z",
       "file": "br-129-result-filters.spec.js",
       "title": "TC-F-130 Filtering by the spa amenity returns only hotels with a spa",
       "error": null,
@@ -3102,7 +3096,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET search-service/api/searches/S-49da07f9/results?amenities=spa",
+          "name": "GET search-service/api/searches/S-9afbccbb/results?amenities=spa",
           "file": "TC-F-130-2.json",
           "contentType": "application/json"
         }
@@ -3117,8 +3111,8 @@
       "scriptFile": "br-130-result-sorting.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 24,
-      "startTime": "2026-10-12T02:10:35.670Z",
+      "duration": 30,
+      "startTime": "2026-10-12T02:22:31.818Z",
       "file": "br-130-result-sorting.spec.js",
       "title": "TC-F-131 Sorting by lowest price orders bookable hotels by starting price",
       "error": null,
@@ -3129,7 +3123,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET search-service/api/searches/S-2bc19758/results?sort=PRICE_ASC",
+          "name": "GET search-service/api/searches/S-4e420b61/results?sort=PRICE_ASC",
           "file": "TC-F-131-2.json",
           "contentType": "application/json"
         }
@@ -3144,8 +3138,8 @@
       "scriptFile": "br-130-result-sorting.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 49,
-      "startTime": "2026-10-12T02:10:35.699Z",
+      "duration": 53,
+      "startTime": "2026-10-12T02:22:31.853Z",
       "file": "br-130-result-sorting.spec.js",
       "title": "TC-F-132 An unapproved sort option is refused with a clear message",
       "error": null,
@@ -3156,7 +3150,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET search-service/api/searches/S-336487f0/results?sort=NAME",
+          "name": "GET search-service/api/searches/S-1967d858/results?sort=NAME",
           "file": "TC-F-132-2.json",
           "contentType": "application/json"
         }
@@ -3184,8 +3178,8 @@
       "scriptFile": "br-132-filter-reset.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 28,
-      "startTime": "2026-10-12T02:10:35.756Z",
+      "duration": 27,
+      "startTime": "2026-10-12T02:22:31.913Z",
       "file": "br-132-filter-reset.spec.js",
       "title": "TC-F-134 A filter that leaves no hotels offers a reset",
       "error": null,
@@ -3196,7 +3190,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "GET search-service/api/searches/S-c11100d7/results?minPrice=99999",
+          "name": "GET search-service/api/searches/S-d12cfc9b/results?minPrice=99999",
           "file": "TC-F-134-2.json",
           "contentType": "application/json"
         }
@@ -3224,8 +3218,8 @@
       "scriptFile": "br-134-proceed-without-offers.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 39,
-      "startTime": "2026-10-12T02:10:35.791Z",
+      "duration": 48,
+      "startTime": "2026-10-12T02:22:31.948Z",
       "file": "br-134-proceed-without-offers.spec.js",
       "title": "TC-F-136 A room books without any extra",
       "error": null,
@@ -3251,8 +3245,8 @@
       "scriptFile": "br-135-consent-personalization.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 28,
-      "startTime": "2026-10-12T02:10:35.837Z",
+      "duration": 34,
+      "startTime": "2026-10-12T02:22:32.005Z",
       "file": "br-135-consent-personalization.spec.js",
       "title": "TC-F-137 Withdrawing consent stops personalized offers",
       "error": null,
@@ -3288,8 +3282,8 @@
       "scriptFile": "br-136-booking-outcome.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 49,
-      "startTime": "2026-10-12T02:10:35.872Z",
+      "duration": 61,
+      "startTime": "2026-10-12T02:22:32.046Z",
       "file": "br-136-booking-outcome.spec.js",
       "title": "TC-F-138 The success outcome shows confirmation number, hotel, stay, extras and total",
       "error": null,
@@ -3300,7 +3294,7 @@
           "contentType": "application/json"
         },
         {
-          "name": "POST cart-service/api/carts/C-7c0c1c78/ancillaries",
+          "name": "POST cart-service/api/carts/C-9046999e/ancillaries",
           "file": "TC-F-138-2.json",
           "contentType": "application/json"
         },
@@ -3320,8 +3314,8 @@
       "scriptFile": "br-137-no-false-confirmation.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 28,
-      "startTime": "2026-10-12T02:10:35.927Z",
+      "duration": 27,
+      "startTime": "2026-10-12T02:22:32.115Z",
       "file": "br-137-no-false-confirmation.spec.js",
       "title": "TC-F-139 A declined payment does not say the booking is confirmed",
       "error": null,
@@ -3347,8 +3341,8 @@
       "scriptFile": "br-138-unknown-state.spec.js",
       "status": "passed",
       "playwrightStatus": "passed",
-      "duration": 25,
-      "startTime": "2026-10-12T02:10:35.963Z",
+      "duration": 33,
+      "startTime": "2026-10-12T02:22:32.150Z",
       "file": "br-138-unknown-state.spec.js",
       "title": "TC-F-140 A pending outcome tells the guest not to resubmit and how to check later",
       "error": null,
@@ -3369,12 +3363,12 @@
   "summary": {
     "total": 144,
     "executed": 83,
-    "passed": 82,
-    "failed": 1,
+    "passed": 83,
+    "failed": 0,
     "skipped": 0,
     "notRun": 61,
-    "durationMs": 34501,
-    "passRate": 98.8
+    "durationMs": 5997,
+    "passRate": 100
   },
   "testingType": "functional",
   "notInRun": 0

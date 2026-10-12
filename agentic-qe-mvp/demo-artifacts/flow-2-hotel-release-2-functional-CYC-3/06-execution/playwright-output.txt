@@ -32,32 +32,6 @@ Running 83 tests using 1 worker
 [29/83] specs/br-063-guest-validation.spec.js:92:1 › TC-N-003 An invalid e-mail address is rejected on the e-mail field
 [30/83] specs/br-064-privacy-consent.spec.js:92:1 › TC-F-055 Booking without accepting the privacy notice is refused
 [31/83] specs/br-067-support-masking.spec.js:92:1 › TC-F-058 Support staff see a masked e-mail and other callers are refused
-  1) specs/br-067-support-masking.spec.js:92:1 › TC-F-058 Support staff see a masked e-mail and other callers are refused 
-
-    Test timeout of 30000ms exceeded.
-
-    Error: apiRequestContext.fetch: Request context disposed.
-    Call log:
-      - → GET http://127.0.0.1:43895/api/ops/reservations/R-7b6acd83
-        - user-agent: Playwright/1.63.0 (x64; ubuntu 22.04) node/24.21
-        - accept: */*
-        - accept-encoding: gzip,deflate,br
-        - X-Operator-Role: SUPPORT
-
-
-      35 | async function call(request, testInfo, service, method, p, data, headers = {}) {
-      36 |   const url = serviceUrl(testInfo, service) + p;
-    > 37 |   const res = await request.fetch(url, { method, data, headers, failOnStatusCode: false });
-         |                             ^
-      38 |   const text = await res.text();
-      39 |   let body = null;
-      40 |   try { body = JSON.parse(text); } catch { body = text || null; }
-        at call (/tmp/aqe-demo-U7iSEY/runs/CYC-3/specs/br-067-support-masking.spec.js:37:29)
-        at /tmp/aqe-demo-U7iSEY/runs/CYC-3/specs/br-067-support-masking.spec.js:100:21
-
-    Error Context: test-results/br-067-support-masking-TC--4606e-d-other-callers-are-refused/error-context.md
-
-
 [32/83] specs/br-068-amount-before-auth.spec.js:92:1 › TC-F-059 A pay-at-hotel rate shows nothing to pay now and the total due at the hotel
 [33/83] specs/br-068-amount-before-auth.spec.js:101:1 › TC-F-060 A prepaid rate shows the full total to pay now
 [34/83] specs/br-070-payment-outcomes.spec.js:92:1 › TC-F-062 A declined card returns a decline without a booking
@@ -110,6 +84,4 @@ Running 83 tests using 1 worker
 [81/83] specs/br-136-booking-outcome.spec.js:92:1 › TC-F-138 The success outcome shows confirmation number, hotel, stay, extras and total
 [82/83] specs/br-137-no-false-confirmation.spec.js:92:1 › TC-F-139 A declined payment does not say the booking is confirmed
 [83/83] specs/br-138-unknown-state.spec.js:92:1 › TC-F-140 A pending outcome tells the guest not to resubmit and how to check later
-  1 failed
-    specs/br-067-support-masking.spec.js:92:1 › TC-F-058 Support staff see a masked e-mail and other callers are refused 
-  82 passed (36.3s)
+  83 passed (7.7s)

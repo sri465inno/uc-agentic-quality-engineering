@@ -1,6 +1,6 @@
 {
   "title": "Agentic QE Platform - MVP - Cycle comparison",
-  "generatedAt": "2026-10-12T02:10:49.087Z",
+  "generatedAt": "2026-10-12T02:22:47.020Z",
   "a": {
     "id": "CYC-2",
     "name": "Hotel booking baseline · DQE",
@@ -418,20 +418,20 @@
       "failed": 3,
       "skipped": 0,
       "notRun": 56,
-      "durationMs": 4024,
+      "durationMs": 6820,
       "passRate": 95.4
     },
     "b": {
       "total": 144,
       "executed": 83,
-      "passed": 82,
-      "failed": 1,
+      "passed": 83,
+      "failed": 0,
       "skipped": 0,
       "notRun": 61,
-      "durationMs": 34501,
-      "passRate": 98.8
+      "durationMs": 5997,
+      "passRate": 100
     },
-    "passRateDelta": 3.4
+    "passRateDelta": 4.6
   },
   "defects": {
     "a": [
@@ -442,12 +442,8 @@
       "DEF-008",
       "DEF-009"
     ],
-    "b": [
-      "DEF-010"
-    ],
-    "new": [
-      "DEF-010"
-    ],
+    "b": [],
+    "new": [],
     "stillOpen": [],
     "resolved": [
       "DEF-004",

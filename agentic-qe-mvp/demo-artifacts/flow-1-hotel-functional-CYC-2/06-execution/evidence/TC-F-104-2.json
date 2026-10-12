@@ -1,12 +1,12 @@
 {
   "request": {
     "method": "POST",
-    "url": "http://127.0.0.1:36539/api/reservations",
+    "url": "http://127.0.0.1:34927/api/reservations",
     "headers": {
       "Idempotency-Key": "aqe-booking-d06d9fdf-1"
     },
     "data": {
-      "cartId": "C-3d755fc8",
+      "cartId": "C-3f1d82ef",
       "guest": {
         "firstName": "Jane",
         "lastName": "Doe",
@@ -22,14 +22,14 @@
   },
   "response": {
     "status": 201,
-    "correlationId": "802f4775-4c5b-4902-9c86-357dfb5f40f4",
+    "correlationId": "563388ff-73ba-42fc-891a-04361a4e8387",
     "body": {
-      "reservationId": "R-3af76669",
+      "reservationId": "R-bd6bf7d7",
       "status": "CONFIRMED",
-      "confirmationNumber": "HBDG89W723",
+      "confirmationNumber": "HBY3TCWYXM",
       "headline": "Your booking is confirmed",
       "doNotResubmit": true,
-      "statusUrl": "/api/reservations/R-3af76669",
+      "statusUrl": "/api/reservations/R-bd6bf7d7",
       "total": {
         "amount": 805.19,
         "currency": "USD"
@@ -39,7 +39,7 @@
       "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
       "guestFirstName": "Jane",
       "notificationStatus": "DELIVERED",
-      "updatedAt": "2026-10-12T02:09:48.973155345Z"
+      "updatedAt": "2026-10-12T02:22:13.254351246Z"
     }
   }
 }

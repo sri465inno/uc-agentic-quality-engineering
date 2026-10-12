@@ -1362,10 +1362,8 @@
       "crosses": [],
       "testDataId": "TD-F-058",
       "scriptFile": "br-067-support-masking.spec.js",
-      "result": "failed",
-      "defects": [
-        "DEF-010"
-      ],
+      "result": "passed",
+      "defects": [],
       "jiraDefects": []
     },
     {
@@ -3597,12 +3595,10 @@
       "requirements": 6,
       "testCases": 6,
       "automated": 4,
-      "passed": 3,
-      "failed": 1,
-      "defects": [
-        "DEF-010"
-      ],
-      "status": "failing"
+      "passed": 4,
+      "failed": 0,
+      "defects": [],
+      "status": "verified"
     },
     {
       "key": "AQPI-20",
@@ -3720,8 +3716,8 @@
   "totals": {
     "jiraItems": 37,
     "covered": 37,
-    "verified": 27,
-    "failing": 1,
+    "verified": 28,
+    "failing": 0,
     "testCases": 144,
     "withData": 144,
     "withScript": 83,

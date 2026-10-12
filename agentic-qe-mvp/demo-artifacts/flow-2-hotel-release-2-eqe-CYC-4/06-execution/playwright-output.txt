@@ -14,4 +14,4 @@ Running 13 tests using 1 worker
 [11/13] specs/br-130-result-sorting.spec.js:92:1 › TC-F-011 Guest sorts the results by lowest price, then books a room from the sorted results
 [12/13] specs/br-134-proceed-without-offers.spec.js:92:1 › TC-F-012 Guest is shown extras, declines them all and books the room only
 [13/13] specs/br-136-booking-outcome.spec.js:92:1 › TC-F-013 Guest books a room with breakfast and sees the full booking outcome, matching the confirmation e-mail
-  13 passed (2.7s)
+  13 passed (2.9s)

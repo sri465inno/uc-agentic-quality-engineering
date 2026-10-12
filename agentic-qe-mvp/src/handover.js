@@ -46,6 +46,7 @@ const OUTPUTS = {
     const ran = e ? e.results.filter((r) => r.status !== 'not-run') : null;
     return {
       results: { value: ran, note: e ? `${e.summary.notRun} manual case(s) handed over as not run` : null },
+      evidence: { value: ran ? ran.flatMap((r) => r.evidence || []) : null },
       screenshots: { value: ran ? ran.flatMap((r) => (r.evidence || []).filter((x) => x.contentType === 'image/png')) : null },
       timings: { value: ran ? ran.filter((r) => r.type === 'non-functional') : null },
     };
