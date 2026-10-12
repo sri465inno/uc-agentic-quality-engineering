@@ -12,7 +12,7 @@ platform:
     resend-client-window: 1h
     simulate-delivery: true
     # @rule [AQPI-25] Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused.
-    max-manual-retries: 4
+    max-manual-retries: 3
     # @rule [AQPI-24] The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in.
     free-cancellation-window: 48h
     # @rule [AQPI-37] A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another.

@@ -20,7 +20,7 @@ platform:
       max-children-per-room: 3
     markets:
       PAR:
-        max-stay-nights: 15
+        max-stay-nights: 14
 management:
   endpoints:
     web:

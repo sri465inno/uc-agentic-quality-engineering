@@ -51,7 +51,7 @@ import reactor.core.scheduler.Schedulers;
 public class ReservationService {
 
     public static final String PAY_NOW = "PAY_NOW";
-    private static final Pattern KEY = Pattern.compile("[A-Za-z0-9._-]{7,64}");
+    private static final Pattern KEY = Pattern.compile("[A-Za-z0-9._-]{8,64}");
     private static final char[] ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789".toCharArray();
 
     public record Submission(Outcome outcome, boolean replay) {
