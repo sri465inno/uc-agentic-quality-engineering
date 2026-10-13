@@ -55,7 +55,7 @@ function releaseParameters(cycle, r, policy) {
     P('evidence-mismatch', 'Every report figure matches the stored evidence', evidenceCheck(cycle, r).filter((x) => x.status !== 'reconciled').map((x) => x.figure)),
     ...(isEqe ? [P('journey-failed', 'Every business journey passed end to end', auto.filter((t) => t.suite === 'journey' && resultOf.get(t.key) !== 'passed').map((t) => t.key), 'EQE')] : []),
     ...(!isEqe ? [P('story-not-traced', 'Every Jira story in scope traced to a test case or a gap defect', stories.filter((x) => x.level === 'story' && x.scope !== 'baseline' && !x.testCases && !gapStories.has(x.key)).map((x) => x.key), 'DQE')] : []),
-    P('open-gap-defect', 'No open defect for a Jira story missing from the code', defects.filter((d) => d.type === 'gap').map((d) => `${d.id} (${d.story})`)),
+    ...(cycle.gaps?.applicable === false ? [] : [P('open-gap-defect', 'No open defect for a Jira story missing from the code', defects.filter((d) => d.type === 'gap').map((d) => `${d.id} (${d.story})`))]),
     P('open-defect-below-blocking', 'No other open defect', defects.filter((d) => d.type !== 'gap' && !isBlocking(d)).map((d) => `${d.id} ${d.severity}`)),
     P('manual-case-not-run', 'Manual test cases run and recorded', inRun.filter((t) => t.automation !== 'Automated').map((t) => t.key)),
     P('requirement-not-verified-by-this-track', 'Every requirement verified by a passing test of this testing type', (r.coverage?.rows || []).filter((x) => !/passing/.test(x.status)).map((x) => x.requirementId)),
