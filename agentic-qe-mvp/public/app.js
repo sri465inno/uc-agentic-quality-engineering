@@ -799,8 +799,8 @@ function reviewAgentView(c, { compact = false } = {}) {
   }
   const notes = ra.notes || [];
   const head = `<h2>Suggested for the Reviewer <span class="muted small">for ${esc(testingTypeOf(ra.testingType).name)}</span></h2>
-<p class="small">${ra.counts.gaps} gap(s) · ${ra.counts.conflicts} conflict(s) to decide. <span class="muted">${esc(ra.note)}</span></p>`;
-  const body = ra.findings.length ? table(cols, rowsOf(ra.findings)) : '<p class="muted">Nothing to decide: the code has every Jira story and no values conflict.</p>';
+<p class="small">${gapChecked(c) ? `${ra.counts.gaps} gap(s) · ` : 'No gap check (Jira only) · '}${ra.counts.conflicts} conflict(s) to decide. <span class="muted">${esc(ra.note)}</span></p>`;
+  const body = ra.findings.length ? table(cols, rowsOf(ra.findings)) : `<p class="muted">${gapChecked(c) ? 'Nothing to decide: the code has every Jira story and no values conflict.' : 'Nothing to decide: no Jira values conflict, and EQE has no code input to compare Jira against.'}</p>`;
   const more = notes.length ? `<details class="card"><summary class="small"><b>Other observations (${notes.length})</b>: not gaps, no decision needed (rules found only in the code, statements without an exact expected value, changes against the baseline)</summary>${table(cols, rowsOf(notes))}</details>` : '';
   return `${head}${body}${more}`;
 }

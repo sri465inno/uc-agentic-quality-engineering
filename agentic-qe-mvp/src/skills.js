@@ -6,7 +6,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 const AGENTS = {
-  normalise: 'Normalise (3-way compare)',
+  normalise: 'Normalise (compare the inputs)',
   'review-agent': 'Review agent (added / missing pieces)',
   delta: 'Delta classification',
   requirements: 'Requirements agent (requirements with their business rules)',
