@@ -1,0 +1,70 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "search-service",
+    "version": "2.0.0",
+    "description": "Hotel booking platform release 2.0: the endpoints search-service exposes. /api/admin/* operations are internal test hooks (x-internal)."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8082",
+      "description": "local default port"
+    }
+  ],
+  "paths": {
+    "/api/searches": {
+      "post": {
+        "operationId": "postSearches",
+        "summary": "POST /api/searches",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/searches/{searchId}/results": {
+      "get": {
+        "operationId": "getSearchesBySearchIdResults",
+        "summary": "GET /api/searches/{searchId}/results",
+        "parameters": [
+          {
+            "name": "searchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/searches/form": {
+      "get": {
+        "operationId": "getSearchesForm",
+        "summary": "GET /api/searches/form",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/searches/validate": {
+      "post": {
+        "operationId": "postSearchesValidate",
+        "summary": "POST /api/searches/validate",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

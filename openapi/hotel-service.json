@@ -1,0 +1,172 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "hotel-service",
+    "version": "2.0.0",
+    "description": "Hotel booking platform release 2.0: the endpoints hotel-service exposes. /api/admin/* operations are internal test hooks (x-internal)."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081",
+      "description": "local default port"
+    }
+  ],
+  "paths": {
+    "/api/hotels/availability": {
+      "get": {
+        "operationId": "getHotelsAvailability",
+        "summary": "GET /api/hotels/availability",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/hotels/{hotelId}": {
+      "get": {
+        "operationId": "getHotelsByHotelId",
+        "summary": "GET /api/hotels/{hotelId}",
+        "parameters": [
+          {
+            "name": "hotelId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/hotels/{hotelId}/quotes": {
+      "post": {
+        "operationId": "postHotelsByHotelIdQuotes",
+        "summary": "POST /api/hotels/{hotelId}/quotes",
+        "parameters": [
+          {
+            "name": "hotelId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/inventory/commitments": {
+      "post": {
+        "operationId": "postInventoryCommitments",
+        "summary": "POST /api/inventory/commitments",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "operationId": "getInventoryCommitments",
+        "summary": "GET /api/inventory/commitments",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/inventory/commitments/{reference}": {
+      "delete": {
+        "operationId": "deleteInventoryCommitmentsByReference",
+        "summary": "DELETE /api/inventory/commitments/{reference}",
+        "parameters": [
+          {
+            "name": "reference",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/hotels/{hotelId}/rooms/{roomCode}/rates/{rateCode}": {
+      "put": {
+        "operationId": "putAdminHotelsByHotelIdRoomsByRoomCodeRatesByRateCode",
+        "summary": "PUT /api/admin/hotels/{hotelId}/rooms/{roomCode}/rates/{rateCode}",
+        "parameters": [
+          {
+            "name": "hotelId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roomCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rateCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    },
+    "/api/admin/inventory": {
+      "put": {
+        "operationId": "putAdminInventory",
+        "summary": "PUT /api/admin/inventory",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    },
+    "/api/admin/reset": {
+      "post": {
+        "operationId": "postAdminReset",
+        "summary": "POST /api/admin/reset",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    }
+  }
+}

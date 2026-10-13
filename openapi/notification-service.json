@@ -1,0 +1,125 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "notification-service",
+    "version": "2.0.0",
+    "description": "Hotel booking platform release 2.0: the endpoints notification-service exposes. /api/admin/* operations are internal test hooks (x-internal)."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8086",
+      "description": "local default port"
+    }
+  ],
+  "paths": {
+    "/api/confirmations": {
+      "post": {
+        "operationId": "postConfirmations",
+        "summary": "POST /api/confirmations",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/cancellations": {
+      "post": {
+        "operationId": "postCancellations",
+        "summary": "POST /api/cancellations",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/confirmations/{reservationId}": {
+      "get": {
+        "operationId": "getConfirmationsByReservationId",
+        "summary": "GET /api/confirmations/{reservationId}",
+        "parameters": [
+          {
+            "name": "reservationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/confirmations/resend": {
+      "post": {
+        "operationId": "postConfirmationsResend",
+        "summary": "POST /api/confirmations/resend",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/provider/webhooks": {
+      "post": {
+        "operationId": "postProviderWebhooks",
+        "summary": "POST /api/provider/webhooks",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ops/messages": {
+      "get": {
+        "operationId": "getOpsMessages",
+        "summary": "GET /api/ops/messages",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ops/messages/{messageId}/retry": {
+      "post": {
+        "operationId": "postOpsMessagesByMessageIdRetry",
+        "summary": "POST /api/ops/messages/{messageId}/retry",
+        "parameters": [
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/reset": {
+      "post": {
+        "operationId": "postAdminReset",
+        "summary": "POST /api/admin/reset",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    }
+  }
+}

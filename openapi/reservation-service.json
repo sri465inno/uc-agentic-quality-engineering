@@ -1,0 +1,188 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "reservation-service",
+    "version": "2.0.0",
+    "description": "Hotel booking platform release 2.0: the endpoints reservation-service exposes. /api/admin/* operations are internal test hooks (x-internal)."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8085",
+      "description": "local default port"
+    }
+  ],
+  "paths": {
+    "/api/checkout/{cartId}/payment-summary": {
+      "get": {
+        "operationId": "getCheckoutByCartIdPaymentSummary",
+        "summary": "GET /api/checkout/{cartId}/payment-summary",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/reservations": {
+      "post": {
+        "operationId": "postReservations",
+        "summary": "POST /api/reservations",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/reservations/{id}": {
+      "get": {
+        "operationId": "getReservationsById",
+        "summary": "GET /api/reservations/{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/reservations/{id}/cancel": {
+      "post": {
+        "operationId": "postReservationsByIdCancel",
+        "summary": "POST /api/reservations/{id}/cancel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/reservations/{id}/reconcile": {
+      "post": {
+        "operationId": "postReservationsByIdReconcile",
+        "summary": "POST /api/reservations/{id}/reconcile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ops/reconciliation": {
+      "get": {
+        "operationId": "getOpsReconciliation",
+        "summary": "GET /api/ops/reconciliation",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ops/manual-review": {
+      "get": {
+        "operationId": "getOpsManualReview",
+        "summary": "GET /api/ops/manual-review",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ops/payments": {
+      "get": {
+        "operationId": "getOpsPayments",
+        "summary": "GET /api/ops/payments",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ops/reservations/{id}": {
+      "get": {
+        "operationId": "getOpsReservationsById",
+        "summary": "GET /api/ops/reservations/{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ops/retention/purge": {
+      "post": {
+        "operationId": "postOpsRetentionPurge",
+        "summary": "POST /api/ops/retention/purge",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/reset": {
+      "post": {
+        "operationId": "postAdminReset",
+        "summary": "POST /api/admin/reset",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    }
+  }
+}
