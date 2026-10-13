@@ -1,0 +1,6408 @@
+[
+  {
+    "id": "REQ-001",
+    "title": "Search-to-confirmation journey",
+    "text": "A guest can complete the complete search-to-confirmation flow using valid inputs.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J1",
+        "source": "jira",
+        "input": "initiative",
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "quote": "A guest can complete the complete search-to-confirmation flow using valid inputs."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-1"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-001",
+      "kind": "booking-journey",
+      "title": "Search-to-confirmation journey",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-002",
+    "title": "Only bookable inventory is offered",
+    "text": "Only bookable inventory and valid rates are presented as available.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J2",
+        "source": "jira",
+        "input": "initiative",
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "quote": "Only bookable inventory and valid rates are presented as available."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-1"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-002",
+      "kind": "bookable-inventory",
+      "title": "Only bookable inventory is offered",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-003",
+    "title": "Total price disclosed before confirmation",
+    "text": "Total price is disclosed before confirmation, including mandatory taxes and fees.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J3",
+        "source": "jira",
+        "input": "initiative",
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "quote": "Total price is disclosed before confirmation, including mandatory taxes and fees."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-1"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-003",
+      "kind": "price-disclosed",
+      "title": "Total price disclosed before confirmation",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-004",
+    "title": "Offers never block the booking",
+    "text": "Ancillary offers do not block booking when declined or unavailable.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J4",
+        "source": "jira",
+        "input": "initiative",
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "quote": "Ancillary offers do not block booking when declined or unavailable."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-1"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-004",
+      "kind": "offers-not-blocking",
+      "title": "Offers never block the booking",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-005",
+    "title": "Duplicate submissions handled safely",
+    "text": "The platform prevents or safely handles duplicate reservation submissions.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J5",
+        "source": "jira",
+        "input": "initiative",
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "quote": "The platform prevents or safely handles duplicate reservation submissions."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-1"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-005",
+      "kind": "duplicate-submission",
+      "title": "Duplicate submissions handled safely",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-006",
+    "title": "Durable confirmation identifier",
+    "text": "A successful reservation produces a durable confirmation identifier.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J6",
+        "source": "jira",
+        "input": "initiative",
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "quote": "A successful reservation produces a durable confirmation identifier."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-1"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-006",
+      "kind": "durable-confirmation",
+      "title": "Durable confirmation identifier",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-007",
+    "title": "Confirmation shown and e-mail requested",
+    "text": "Confirmation is displayed on screen and an email request is generated.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J7",
+        "source": "jira",
+        "input": "initiative",
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "quote": "Confirmation is displayed on screen and an email request is generated."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-1"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-007",
+      "kind": "confirmation-shown",
+      "title": "Confirmation shown and e-mail requested",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-008",
+    "title": "Required business and technical events are logged",
+    "text": "Required business and technical events are logged using approved identifiers and masking rules.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J8",
+        "source": "jira",
+        "input": "initiative",
+        "kind": "jira-initiative",
+        "ref": "AQPI-1",
+        "summary": "[Initiative] Intelligent Hotel Shopping and Reservation Experience",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+        "quote": "Required business and technical events are logged using approved identifiers and masking rules."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-1"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-008",
+      "kind": "unclassified",
+      "title": "Required business and technical events are logged",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-009",
+    "title": "All child user stories meet their acceptance",
+    "text": "All child user stories meet their acceptance criteria and the Definition of Done.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J9",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+        "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+      },
+      {
+        "statementId": "J28",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+        "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+      },
+      {
+        "statementId": "J45",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+        "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+      },
+      {
+        "statementId": "J63",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+        "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+      },
+      {
+        "statementId": "J81",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+        "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+      },
+      {
+        "statementId": "J106",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+        "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+      },
+      {
+        "statementId": "J123",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+        "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-009",
+      "kind": "unclassified",
+      "title": "All child user stories meet their acceptance",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-010",
+    "title": "Negative and error paths for each story",
+    "text": "Negative and error paths for each story are tested and evidenced.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J10",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+        "quote": "Negative and error paths for each story are tested and evidenced."
+      },
+      {
+        "statementId": "J29",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+        "quote": "Negative and error paths for each story are tested and evidenced."
+      },
+      {
+        "statementId": "J46",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+        "quote": "Negative and error paths for each story are tested and evidenced."
+      },
+      {
+        "statementId": "J64",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+        "quote": "Negative and error paths for each story are tested and evidenced."
+      },
+      {
+        "statementId": "J82",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+        "quote": "Negative and error paths for each story are tested and evidenced."
+      },
+      {
+        "statementId": "J107",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+        "quote": "Negative and error paths for each story are tested and evidenced."
+      },
+      {
+        "statementId": "J124",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+        "quote": "Negative and error paths for each story are tested and evidenced."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-010",
+      "kind": "unclassified",
+      "title": "Negative and error paths for each story",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-011",
+    "title": "Required logging is in place and verified",
+    "text": "Required logging is in place and verified free of sensitive data.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J11",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+        "quote": "Required logging is in place and verified free of sensitive data."
+      },
+      {
+        "statementId": "J30",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+        "quote": "Required logging is in place and verified free of sensitive data."
+      },
+      {
+        "statementId": "J47",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+        "quote": "Required logging is in place and verified free of sensitive data."
+      },
+      {
+        "statementId": "J65",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+        "quote": "Required logging is in place and verified free of sensitive data."
+      },
+      {
+        "statementId": "J83",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+        "quote": "Required logging is in place and verified free of sensitive data."
+      },
+      {
+        "statementId": "J108",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+        "quote": "Required logging is in place and verified free of sensitive data."
+      },
+      {
+        "statementId": "J125",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+        "quote": "Required logging is in place and verified free of sensitive data."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-011",
+      "kind": "unclassified",
+      "title": "Required logging is in place and verified",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-012",
+    "title": "The Product Owner has accepted the capability",
+    "text": "The Product Owner has accepted the capability end to end.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J12",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-2",
+        "summary": "[Epic 1] Search and Availability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+        "quote": "The Product Owner has accepted the capability end to end."
+      },
+      {
+        "statementId": "J31",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-6",
+        "summary": "[Epic 2] Hotel Results and Selection",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+        "quote": "The Product Owner has accepted the capability end to end."
+      },
+      {
+        "statementId": "J48",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-10",
+        "summary": "[Epic 3] Personalized Ancillary Offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+        "quote": "The Product Owner has accepted the capability end to end."
+      },
+      {
+        "statementId": "J66",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-14",
+        "summary": "[Epic 4] Cart Management",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+        "quote": "The Product Owner has accepted the capability end to end."
+      },
+      {
+        "statementId": "J84",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-18",
+        "summary": "[Epic 5] Checkout and Reservation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+        "quote": "The Product Owner has accepted the capability end to end."
+      },
+      {
+        "statementId": "J109",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-23",
+        "summary": "[Epic 6] Confirmation and Notifications",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+        "quote": "The Product Owner has accepted the capability end to end."
+      },
+      {
+        "statementId": "J126",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-27",
+        "summary": "[Epic 7] Cross-Cutting Quality, Privacy and Observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+        "quote": "The Product Owner has accepted the capability end to end."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-2",
+      "AQPI-6",
+      "AQPI-10",
+      "AQPI-14",
+      "AQPI-18",
+      "AQPI-23",
+      "AQPI-27"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-012",
+      "kind": "unclassified",
+      "title": "The Product Owner has accepted the capability",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-013",
+    "title": "Hotel search",
+    "text": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J13",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "quote": "Given valid search criteria, when the guest submits the search, then a search request is created and matching available hotels are returned."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-3"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-013",
+      "kind": "hotel-search",
+      "title": "Hotel search",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-014",
+    "title": "Search criteria stay visible",
+    "text": "The submitted criteria remain visible and editable on the results page.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J14",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "quote": "The submitted criteria remain visible and editable on the results page."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-3"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-014",
+      "kind": "search-criteria-kept",
+      "title": "Search criteria stay visible",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-015",
+    "title": "Search date and mandatory field validation",
+    "text": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J15",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "quote": "Past check-in dates, check-out dates not after check-in, and missing mandatory fields are rejected with actionable messages."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-3"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-015",
+      "kind": "search-date-validation",
+      "title": "Search date and mandatory field validation",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-016",
+    "title": "No availability",
+    "text": "A no-availability result explains that no matching inventory was found and allows criteria changes.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J16",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "quote": "A no-availability result explains that no matching inventory was found and allows criteria changes."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-3"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-016",
+      "kind": "no-availability",
+      "title": "No availability",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-017",
+    "title": "Check-in must precede check-out",
+    "text": "Check-in must precede check-out.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J17",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "quote": "Check-in must precede check-out."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-3"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-017",
+      "kind": "unclassified",
+      "title": "Check-in must precede check-out",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-018",
+    "title": "Occupancy must comply with configured room limits",
+    "text": "Occupancy must comply with configured room limits.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J18",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "quote": "Occupancy must comply with configured room limits."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-3"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-018",
+      "kind": "unclassified",
+      "title": "Occupancy must comply with configured room limits",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-019",
+    "title": "Maximum stay length must be configurable",
+    "text": "Maximum stay length must be configurable.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J19",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-3",
+        "summary": "3.1 Search hotels by destination and date range",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+        "quote": "Maximum stay length must be configurable."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-3"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-019",
+      "kind": "unclassified",
+      "title": "Maximum stay length must be configurable",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-020",
+    "title": "Search form required fields",
+    "text": "Required fields are clearly identified.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J20",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "quote": "Required fields are clearly identified."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-4"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-020",
+      "kind": "search-form",
+      "title": "Search form required fields",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-021",
+    "title": "Field-level validation messages",
+    "text": "Invalid combinations return field-level messages.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J21",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "quote": "Invalid combinations return field-level messages."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-4"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-021",
+      "kind": "field-level-messages",
+      "title": "Field-level validation messages",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-022",
+    "title": "Server validation is authoritative when client and",
+    "text": "Server validation is authoritative when client and server results differ.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J22",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "quote": "Server validation is authoritative when client and server results differ."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-4"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-022",
+      "kind": "unclassified",
+      "title": "Server validation is authoritative when client and",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-023",
+    "title": "Validation messages are accessible to assistive technology",
+    "text": "Validation messages are accessible to assistive technology.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J23",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "quote": "Validation messages are accessible to assistive technology."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-4"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-023",
+      "kind": "unclassified",
+      "title": "Validation messages are accessible to assistive technology",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-024",
+    "title": "Validation rules must be configurable where market",
+    "text": "Validation rules must be configurable where market or property rules vary.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J24",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-4",
+        "summary": "3.2 Validate occupancy and stay criteria",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+        "quote": "Validation rules must be configurable where market or property rules vary."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-4"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-024",
+      "kind": "unclassified",
+      "title": "Validation rules must be configurable where market",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-025",
+    "title": "No availability",
+    "text": "Zero results provide options to alter dates, occupancy, destination, or filters.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J25",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-5",
+        "summary": "3.3 Handle unavailable or failed searches",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5",
+        "quote": "Zero results provide options to alter dates, occupancy, destination, or filters."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-5"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-025",
+      "kind": "no-availability",
+      "title": "No availability",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-026",
+    "title": "Technical failures display a non-technical message and",
+    "text": "Technical failures display a non-technical message and retry option.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J26",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-5",
+        "summary": "3.3 Handle unavailable or failed searches",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5",
+        "quote": "Technical failures display a non-technical message and retry option."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-5"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-026",
+      "kind": "unclassified",
+      "title": "Technical failures display a non-technical message and",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-027",
+    "title": "Consistent search sessions",
+    "text": "Repeated submission does not create inconsistent sessions.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J27",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-5",
+        "summary": "3.3 Handle unavailable or failed searches",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5",
+        "quote": "Repeated submission does not create inconsistent sessions."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-5"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-027",
+      "kind": "search-session",
+      "title": "Consistent search sessions",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-028",
+    "title": "Result card content",
+    "text": "Each result shows hotel name, location, representative image, starting price, currency, and availability indicator.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J32",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "quote": "Each result shows hotel name, location, representative image, starting price, currency, and availability indicator."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-7"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-028",
+      "kind": "result-content",
+      "title": "Result card content",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-029",
+    "title": "Pricing qualification disclosed",
+    "text": "Mandatory fees or pricing qualifications are clearly disclosed.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J33",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "quote": "Mandatory fees or pricing qualifications are clearly disclosed."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-7"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-029",
+      "kind": "fee-disclosure",
+      "title": "Pricing qualification disclosed",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-030",
+    "title": "Unavailable hotels not bookable",
+    "text": "Unavailable hotels are not presented as immediately bookable.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J34",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "quote": "Unavailable hotels are not presented as immediately bookable."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-7"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-030",
+      "kind": "unavailable-not-bookable",
+      "title": "Unavailable hotels not bookable",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-031",
+    "title": "Result pagination",
+    "text": "Results support pagination or progressive loading.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J35",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "quote": "Results support pagination or progressive loading."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-7"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-031",
+      "kind": "pagination",
+      "title": "Result pagination",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-032",
+    "title": "Starting price backed by a valid rate",
+    "text": "Displayed starting price must correspond to a valid rate returned for the search criteria.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J36",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-7",
+        "summary": "4.1 Display available hotels",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-7",
+        "quote": "Displayed starting price must correspond to a valid rate returned for the search criteria."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-7"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-032",
+      "kind": "starting-price",
+      "title": "Starting price backed by a valid rate",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-033",
+    "title": "Hotel details page",
+    "text": "Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J41",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-9",
+        "summary": "4.3 View hotel and room details",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+        "quote": "Hotel description, images, location, amenities, room options, pricing, major policies, and relevant restrictions are displayed."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-9"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-033",
+      "kind": "hotel-details",
+      "title": "Hotel details page",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-034",
+    "title": "The guest can select a valid room",
+    "text": "The guest can select a valid room and rate plan.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J42",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-9",
+        "summary": "4.3 View hotel and room details",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+        "quote": "The guest can select a valid room and rate plan."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-9"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-034",
+      "kind": "unclassified",
+      "title": "The guest can select a valid room",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-035",
+    "title": "If inventory changes, the guest is informed",
+    "text": "If inventory changes, the guest is informed before continuing.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J43",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-9",
+        "summary": "4.3 View hotel and room details",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+        "quote": "If inventory changes, the guest is informed before continuing."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-9"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-035",
+      "kind": "unclassified",
+      "title": "If inventory changes, the guest is informed",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-036",
+    "title": "Rate conditions shown before selection",
+    "text": "Rate conditions and cancellation terms must be shown before selection.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J44",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-9",
+        "summary": "4.3 View hotel and room details",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+        "quote": "Rate conditions and cancellation terms must be shown before selection."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-9"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-036",
+      "kind": "rate-conditions",
+      "title": "Rate conditions shown before selection",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-037",
+    "title": "The service considers available context such as",
+    "text": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J49",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "quote": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-11"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-037",
+      "kind": "unclassified",
+      "title": "The service considers available context such as",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-038",
+    "title": "Ineligible offers excluded",
+    "text": "Unavailable or ineligible products are excluded.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J50",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "quote": "Unavailable or ineligible products are excluded."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-11"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-038",
+      "kind": "offer-exclusion",
+      "title": "Ineligible offers excluded",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-039",
+    "title": "Reason code per recommendation",
+    "text": "The service returns a reason code for each recommended item.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J51",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "quote": "The service returns a reason code for each recommended item."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-11"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-039",
+      "kind": "offer-reason-codes",
+      "title": "Reason code per recommendation",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-040",
+    "title": "When personalization data is unavailable, safe contextual",
+    "text": "When personalization data is unavailable, safe contextual defaults may be returned.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J52",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "quote": "When personalization data is unavailable, safe contextual defaults may be returned."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-11"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-040",
+      "kind": "unclassified",
+      "title": "When personalization data is unavailable, safe contextual",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-041",
+    "title": "Sensitive traits must not be inferred or",
+    "text": "Sensitive traits must not be inferred or used.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J53",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "quote": "Sensitive traits must not be inferred or used."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-11"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-041",
+      "kind": "unclassified",
+      "title": "Sensitive traits must not be inferred or",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-042",
+    "title": "Personalization must honor consent and data-retention rules",
+    "text": "Personalization must honor consent and data-retention rules.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J54",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "quote": "Personalization must honor consent and data-retention rules."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-11"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-042",
+      "kind": "unclassified",
+      "title": "Personalization must honor consent and data-retention rules",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-043",
+    "title": "Business rules and model versions must be",
+    "text": "Business rules and model versions must be auditable.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J55",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-11",
+        "summary": "5.1 Determine eligible ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+        "quote": "Business rules and model versions must be auditable."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-11"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-043",
+      "kind": "unclassified",
+      "title": "Business rules and model versions must be",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-044",
+    "title": "Offer content and optional-extra label",
+    "text": "Each offer shows name, description, price, currency, applicability, and any restrictions.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J56",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-12",
+        "summary": "5.2 Display ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12",
+        "quote": "Each offer shows name, description, price, currency, applicability, and any restrictions."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-12"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-044",
+      "kind": "offer-content",
+      "title": "Offer content and optional-extra label",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-045",
+    "title": "Add, skip or dismiss an offer",
+    "text": "The guest can add, skip, or dismiss an offer.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J57",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-12",
+        "summary": "5.2 Display ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12",
+        "quote": "The guest can add, skip, or dismiss an offer."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-12"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-045",
+      "kind": "offer-interaction",
+      "title": "Add, skip or dismiss an offer",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-046",
+    "title": "Offer content and optional-extra label",
+    "text": "Offers are clearly distinguished from mandatory fees.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J58",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-12",
+        "summary": "5.2 Display ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12",
+        "quote": "Offers are clearly distinguished from mandatory fees."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-12"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-046",
+      "kind": "offer-content",
+      "title": "Offer content and optional-extra label",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-047",
+    "title": "Offers never block the booking",
+    "text": "Failure to load offers does not block room booking.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J59",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-12",
+        "summary": "5.2 Display ancillary offers",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-12",
+        "quote": "Failure to load offers does not block room booking."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-12"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-047",
+      "kind": "offers-not-blocking",
+      "title": "Offers never block the booking",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-048",
+    "title": "Cart contents",
+    "text": "The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J67",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "quote": "The cart contains hotel, room, rate plan, stay dates, occupancy, quantity, currency, and price components."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-15"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-048",
+      "kind": "cart-contents",
+      "title": "Cart contents",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-049",
+    "title": "Inventory and price are revalidated when required",
+    "text": "Inventory and price are revalidated when required.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J68",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "quote": "Inventory and price are revalidated when required."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-15"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-049",
+      "kind": "unclassified",
+      "title": "Inventory and price are revalidated when required",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-050",
+    "title": "The cart has a defined expiration and",
+    "text": "The cart has a defined expiration and displays relevant timeout behavior.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J69",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "quote": "The cart has a defined expiration and displays relevant timeout behavior."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-15"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-050",
+      "kind": "unclassified",
+      "title": "The cart has a defined expiration and",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-051",
+    "title": "A cart must not itself create a",
+    "text": "A cart must not itself create a reservation.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J70",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "quote": "A cart must not itself create a reservation."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-15"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-051",
+      "kind": "unclassified",
+      "title": "A cart must not itself create a",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-052",
+    "title": "Price-change handling must require guest acknowledgement when",
+    "text": "Price-change handling must require guest acknowledgement when material.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J71",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-15",
+        "summary": "6.1 Add room selection to cart",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+        "quote": "Price-change handling must require guest acknowledgement when material."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-15"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-052",
+      "kind": "unclassified",
+      "title": "Price-change handling must require guest acknowledgement when",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-053",
+    "title": "The guest can add an available ancillary",
+    "text": "The guest can add an available ancillary.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J72",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-16",
+        "summary": "6.2 Add, update, and remove ancillaries",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+        "quote": "The guest can add an available ancillary."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-16"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-053",
+      "kind": "unclassified",
+      "title": "The guest can add an available ancillary",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-054",
+    "title": "Extra quantity limits",
+    "text": "Supported quantities can be changed within product limits.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J73",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-16",
+        "summary": "6.2 Add, update, and remove ancillaries",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+        "quote": "Supported quantities can be changed within product limits."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-16"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-054",
+      "kind": "ancillary-quantity",
+      "title": "Extra quantity limits",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-055",
+    "title": "Removing an extra updates totals",
+    "text": "Removal updates totals immediately.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J74",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-16",
+        "summary": "6.2 Add, update, and remove ancillaries",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+        "quote": "Removal updates totals immediately."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-16"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-055",
+      "kind": "ancillary-removal",
+      "title": "Removing an extra updates totals",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-056",
+    "title": "Ineligible or sold-out products cannot be retained",
+    "text": "Ineligible or sold-out products cannot be retained silently.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J75",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-16",
+        "summary": "6.2 Add, update, and remove ancillaries",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+        "quote": "Ineligible or sold-out products cannot be retained silently."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-16"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-056",
+      "kind": "unclassified",
+      "title": "Ineligible or sold-out products cannot be retained",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-057",
+    "title": "Itemised cart total",
+    "text": "Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J76",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "quote": "Room charges, taxes, mandatory fees, optional products, discounts, and total are itemized."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-17"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-057",
+      "kind": "itemized-total",
+      "title": "Itemised cart total",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-058",
+    "title": "Currency is consistently displayed",
+    "text": "Currency is consistently displayed.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J77",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "quote": "Currency is consistently displayed."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-17"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-058",
+      "kind": "unclassified",
+      "title": "Currency is consistently displayed",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-059",
+    "title": "Material changes are highlighted and require acknowledgement",
+    "text": "Material changes are highlighted and require acknowledgement.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J78",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "quote": "Material changes are highlighted and require acknowledgement."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-17"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-059",
+      "kind": "unclassified",
+      "title": "Material changes are highlighted and require acknowledgement",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-060",
+    "title": "The guest can return to edit supported",
+    "text": "The guest can return to edit supported selections.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J79",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "quote": "The guest can return to edit supported selections."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-17"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-060",
+      "kind": "unclassified",
+      "title": "The guest can return to edit supported",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-061",
+    "title": "The final payable total must be revalidated",
+    "text": "The final payable total must be revalidated before reservation submission.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J80",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-17",
+        "summary": "6.3 Review cart and total price",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+        "quote": "The final payable total must be revalidated before reservation submission."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-17"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-061",
+      "kind": "unclassified",
+      "title": "The final payable total must be revalidated",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-062",
+    "title": "Required and optional guest fields",
+    "text": "Required and optional fields are clearly distinguished.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J85",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "quote": "Required and optional fields are clearly distinguished."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-19"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-062",
+      "kind": "checkout-fields",
+      "title": "Required and optional guest fields",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-063",
+    "title": "Guest input validation",
+    "text": "Inputs are validated and error messages are accessible.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J86",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "quote": "Inputs are validated and error messages are accessible."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-19"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-063",
+      "kind": "guest-validation",
+      "title": "Guest input validation",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-064",
+    "title": "Privacy notice required",
+    "text": "The guest receives applicable privacy notice and consent controls.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J87",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "quote": "The guest receives applicable privacy notice and consent controls."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-19"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-064",
+      "kind": "privacy-consent",
+      "title": "Privacy notice required",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-065",
+    "title": "Data is transmitted securely and is not",
+    "text": "Data is transmitted securely and is not exposed in client logs.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J88",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "quote": "Data is transmitted securely and is not exposed in client logs."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-19"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-065",
+      "kind": "unclassified",
+      "title": "Data is transmitted securely and is not",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-066",
+    "title": "Data minimization applies",
+    "text": "Data minimization applies.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J89",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "quote": "Data minimization applies."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-19"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-066",
+      "kind": "unclassified",
+      "title": "Data minimization applies",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-067",
+    "title": "Sensitive values masked for support",
+    "text": "Sensitive values must be masked in support tools and excluded from analytics logs.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J90",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-19",
+        "summary": "7.1 Capture guest and contact information",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+        "quote": "Sensitive values must be masked in support tools and excluded from analytics logs."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-19"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-067",
+      "kind": "support-masking",
+      "title": "Sensitive values masked for support",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-068",
+    "title": "Payable amount before authorisation",
+    "text": "The guest sees the final payable or guarantee amount before authorization.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J91",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "quote": "The guest sees the final payable or guarantee amount before authorization."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-20"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-068",
+      "kind": "amount-before-auth",
+      "title": "Payable amount before authorisation",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-069",
+    "title": "Payment data is handled through approved secure",
+    "text": "Payment data is handled through approved secure components.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J92",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "quote": "Payment data is handled through approved secure components."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-20"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-069",
+      "kind": "unclassified",
+      "title": "Payment data is handled through approved secure",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-070",
+    "title": "Distinct payment outcomes",
+    "text": "Authorization success, decline, timeout, and technical failure are handled distinctly.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J93",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "quote": "Authorization success, decline, timeout, and technical failure are handled distinctly."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-20"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-070",
+      "kind": "payment-outcomes",
+      "title": "Distinct payment outcomes",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-071",
+    "title": "No raw card data accepted",
+    "text": "The product does not store prohibited card data in application logs.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J94",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "quote": "The product does not store prohibited card data in application logs."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-20"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-071",
+      "kind": "no-card-data",
+      "title": "No raw card data accepted",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-072",
+    "title": "Payment requirements depend on rate conditions",
+    "text": "Payment requirements depend on rate conditions.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J95",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "quote": "Payment requirements depend on rate conditions."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-20"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-072",
+      "kind": "unclassified",
+      "title": "Payment requirements depend on rate conditions",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-073",
+    "title": "Retry behavior must avoid duplicate authorization",
+    "text": "Retry behavior must avoid duplicate authorization.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J96",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-20",
+        "summary": "7.2 Capture and authorize payment",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+        "quote": "Retry behavior must avoid duplicate authorization."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-20"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-073",
+      "kind": "unclassified",
+      "title": "Retry behavior must avoid duplicate authorization",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-074",
+    "title": "One reservation per successful request",
+    "text": "A successful request creates one reservation and returns a confirmation identifier.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J97",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "quote": "A successful request creates one reservation and returns a confirmation identifier."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-074",
+      "kind": "one-reservation",
+      "title": "One reservation per successful request",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-075",
+    "title": "Idempotent reservation",
+    "text": "Repeated submissions with the same idempotency key do not create duplicate reservations.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J98",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "quote": "Repeated submissions with the same idempotency key do not create duplicate reservations."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-075",
+      "kind": "idempotent-reservation",
+      "title": "Idempotent reservation",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-076",
+    "title": "Outcomes reconcilable",
+    "text": "Inventory, price, payment, and reservation outcomes remain reconcilable.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J99",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "quote": "Inventory, price, payment, and reservation outcomes remain reconcilable."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-076",
+      "kind": "reconcilable",
+      "title": "Outcomes reconcilable",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-077",
+    "title": "Partial failures trigger defined recovery or manual-review",
+    "text": "Partial failures trigger defined recovery or manual-review handling.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J100",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "quote": "Partial failures trigger defined recovery or manual-review handling."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-077",
+      "kind": "unclassified",
+      "title": "Partial failures trigger defined recovery or manual-review",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-078",
+    "title": "Reservation submission must use an idempotency mechanism",
+    "text": "Reservation submission must use an idempotency mechanism.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J101",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "quote": "Reservation submission must use an idempotency mechanism."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-078",
+      "kind": "unclassified",
+      "title": "Reservation submission must use an idempotency mechanism",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-079",
+    "title": "The source of truth for confirmation status",
+    "text": "The source of truth for confirmation status must be defined.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J102",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-21",
+        "summary": "7.3 Create reservation idempotently",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+        "quote": "The source of truth for confirmation status must be defined."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-079",
+      "kind": "unclassified",
+      "title": "The source of truth for confirmation status",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-080",
+    "title": "Confirmation e-mail content",
+    "text": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J110",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "quote": "The message contains guest-safe confirmation details, hotel information, stay dates, booked items, pricing summary, and applicable policy information."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-24"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-080",
+      "kind": "confirmation-content",
+      "title": "Confirmation e-mail content",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-081",
+    "title": "Confirmation e-mail content",
+    "text": "The message content matches the confirmed reservation state.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J111",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "quote": "The message content matches the confirmed reservation state."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-24"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-081",
+      "kind": "confirmation-content",
+      "title": "Confirmation e-mail content",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-082",
+    "title": "Templates support required locale and accessibility standards",
+    "text": "Templates support required locale and accessibility standards.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J112",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "quote": "Templates support required locale and accessibility standards."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-24"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-082",
+      "kind": "unclassified",
+      "title": "Templates support required locale and accessibility standards",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-083",
+    "title": "Only necessary personal data may be included",
+    "text": "Only necessary personal data may be included.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J113",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "quote": "Only necessary personal data may be included."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-24"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-083",
+      "kind": "unclassified",
+      "title": "Only necessary personal data may be included",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-084",
+    "title": "Confirmation e-mail content",
+    "text": "Sensitive payment details must not appear.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J114",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "quote": "Sensitive payment details must not appear."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-24"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-084",
+      "kind": "confirmation-content",
+      "title": "Confirmation e-mail content",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-085",
+    "title": "A successful reservation creates one confirmation-email request",
+    "text": "A successful reservation creates one confirmation-email request.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J115",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "quote": "A successful reservation creates one confirmation-email request."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-25"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-085",
+      "kind": "unclassified",
+      "title": "A successful reservation creates one confirmation-email request",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-086",
+    "title": "E-mail failure does not undo the booking",
+    "text": "Send failure does not reverse a valid reservation.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J116",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "quote": "Send failure does not reverse a valid reservation."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-25"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-086",
+      "kind": "email-failure-isolated",
+      "title": "E-mail failure does not undo the booking",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-087",
+    "title": "Permitted retries avoid duplicate or excessive messages",
+    "text": "Permitted retries avoid duplicate or excessive messages.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J117",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "quote": "Permitted retries avoid duplicate or excessive messages."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-25"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-087",
+      "kind": "unclassified",
+      "title": "Permitted retries avoid duplicate or excessive messages",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-088",
+    "title": "Operational users can distinguish queued, sent, delivered,",
+    "text": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J118",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "quote": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-25"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-088",
+      "kind": "unclassified",
+      "title": "Operational users can distinguish queued, sent, delivered,",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-089",
+    "title": "Email addresses must be masked outside authorized",
+    "text": "Email addresses must be masked outside authorized operational views.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J119",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "quote": "Email addresses must be masked outside authorized operational views."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-25"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-089",
+      "kind": "unclassified",
+      "title": "Email addresses must be masked outside authorized",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-090",
+    "title": "Resend reveals nothing",
+    "text": "The request verifies sufficient reservation information without exposing data.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J120",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-26",
+        "summary": "8.3 Resend confirmation safely",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+        "quote": "The request verifies sufficient reservation information without exposing data."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-26"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-090",
+      "kind": "resend-generic",
+      "title": "Resend reveals nothing",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-091",
+    "title": "Rate limits and abuse controls apply",
+    "text": "Rate limits and abuse controls apply.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J121",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-26",
+        "summary": "8.3 Resend confirmation safely",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+        "quote": "Rate limits and abuse controls apply."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-26"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-091",
+      "kind": "unclassified",
+      "title": "Rate limits and abuse controls apply",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-092",
+    "title": "The resend creates a new message event",
+    "text": "The resend creates a new message event without creating a new reservation.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J122",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-26",
+        "summary": "8.3 Resend confirmation safely",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+        "quote": "The resend creates a new message event without creating a new reservation."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-26"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-092",
+      "kind": "unclassified",
+      "title": "The resend creates a new message event",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-093",
+    "title": "Sensitive data is classified and mapped to",
+    "text": "Sensitive data is classified and mapped to approved storage and processing locations.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J127",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "quote": "Sensitive data is classified and mapped to approved storage and processing locations."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-28"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-093",
+      "kind": "unclassified",
+      "title": "Sensitive data is classified and mapped to",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-094",
+    "title": "Data is encrypted in transit and at",
+    "text": "Data is encrypted in transit and at rest where required.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J128",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "quote": "Data is encrypted in transit and at rest where required."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-28"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-094",
+      "kind": "unclassified",
+      "title": "Data is encrypted in transit and at",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-095",
+    "title": "Logs and analytics exclude or mask prohibited",
+    "text": "Logs and analytics exclude or mask prohibited fields.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J129",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "quote": "Logs and analytics exclude or mask prohibited fields."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-28"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-095",
+      "kind": "unclassified",
+      "title": "Logs and analytics exclude or mask prohibited",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-096",
+    "title": "Sensitive values masked for support",
+    "text": "Access to operational data is role-based and auditable.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J130",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "quote": "Access to operational data is role-based and auditable."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-28"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-096",
+      "kind": "support-masking",
+      "title": "Sensitive values masked for support",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-097",
+    "title": "Retention and deletion follow approved policy",
+    "text": "Retention and deletion follow approved policy.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J131",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-28",
+        "summary": "9.1 Protect sensitive data",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+        "quote": "Retention and deletion follow approved policy."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-28"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-097",
+      "kind": "unclassified",
+      "title": "Retention and deletion follow approved policy",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-098",
+    "title": "Correlation ID across services",
+    "text": "Events use a correlation ID across supported services.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J132",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "quote": "Events use a correlation ID across supported services."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-29"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-098",
+      "kind": "correlation-id",
+      "title": "Correlation ID across services",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-099",
+    "title": "Business events and technical logs are distinguishable",
+    "text": "Business events and technical logs are distinguishable.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J133",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "quote": "Business events and technical logs are distinguishable."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-29"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-099",
+      "kind": "unclassified",
+      "title": "Business events and technical logs are distinguishable",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-100",
+    "title": "Metrics and alerts exist for agreed critical",
+    "text": "Metrics and alerts exist for agreed critical failures and latency.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J134",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "quote": "Metrics and alerts exist for agreed critical failures and latency."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-29"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-100",
+      "kind": "unclassified",
+      "title": "Metrics and alerts exist for agreed critical",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-101",
+    "title": "Logging degradation does not expose sensitive payloads",
+    "text": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J135",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "quote": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-29"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-101",
+      "kind": "unclassified",
+      "title": "Logging degradation does not expose sensitive payloads",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-102",
+    "title": "Event schemas must be versioned",
+    "text": "Event schemas must be versioned.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J136",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "quote": "Event schemas must be versioned."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-29"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-102",
+      "kind": "unclassified",
+      "title": "Event schemas must be versioned",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-103",
+    "title": "Production log access must be controlled and",
+    "text": "Production log access must be controlled and retained according to policy.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J137",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-29",
+        "summary": "9.2 Provide end-to-end observability",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+        "quote": "Production log access must be controlled and retained according to policy."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-29"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-103",
+      "kind": "unclassified",
+      "title": "Production log access must be controlled and",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-104",
+    "title": "Keyboard navigation, focus order, labels, instructions, status",
+    "text": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J138",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-30",
+        "summary": "9.3 Meet accessibility requirements",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+        "quote": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-30"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-104",
+      "kind": "unclassified",
+      "title": "Keyboard navigation, focus order, labels, instructions, status",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-105",
+    "title": "Visual information is not conveyed by color",
+    "text": "Visual information is not conveyed by color alone.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J139",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-30",
+        "summary": "9.3 Meet accessibility requirements",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+        "quote": "Visual information is not conveyed by color alone."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-30"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-105",
+      "kind": "unclassified",
+      "title": "Visual information is not conveyed by color",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-106",
+    "title": "Dynamic updates are announced appropriately",
+    "text": "Dynamic updates are announced appropriately.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J140",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-30",
+        "summary": "9.3 Meet accessibility requirements",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+        "quote": "Dynamic updates are announced appropriately."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-30"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-106",
+      "kind": "unclassified",
+      "title": "Dynamic updates are announced appropriately",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-107",
+    "title": "Accessible e-mail template",
+    "text": "Email templates are readable and structurally accessible.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J141",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-30",
+        "summary": "9.3 Meet accessibility requirements",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+        "quote": "Email templates are readable and structurally accessible."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-30"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-107",
+      "kind": "email-accessible",
+      "title": "Accessible e-mail template",
+      "parameters": {},
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-108",
+    "title": "Search, pricing, cart, checkout, reservation, and email",
+    "text": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+    "values": [],
+    "type": "non-functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J142",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-31",
+        "summary": "9.4 Meet performance and reliability objectives",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+        "quote": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-31"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-108",
+      "kind": "unclassified",
+      "title": "Search, pricing, cart, checkout, reservation, and email",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-109",
+    "title": "Timeout, retry, circuit-breaker, and fallback behavior are",
+    "text": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J143",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-31",
+        "summary": "9.4 Meet performance and reliability objectives",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+        "quote": "Timeout, retry, circuit-breaker, and fallback behavior are documented."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-31"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-109",
+      "kind": "unclassified",
+      "title": "Timeout, retry, circuit-breaker, and fallback behavior are",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-110",
+    "title": "Load, resilience, and recovery tests cover critical",
+    "text": "Load, resilience, and recovery tests cover critical journeys.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J144",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-31",
+        "summary": "9.4 Meet performance and reliability objectives",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+        "quote": "Load, resilience, and recovery tests cover critical journeys."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-31"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-110",
+      "kind": "unclassified",
+      "title": "Load, resilience, and recovery tests cover critical",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-111",
+    "title": "Reservation integrity is prioritized over non-critical personalization",
+    "text": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J145",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-31",
+        "summary": "9.4 Meet performance and reliability objectives",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+        "quote": "Reservation integrity is prioritized over non-critical personalization and analytics."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-31"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "carried over",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-111",
+      "kind": "unclassified",
+      "title": "Reservation integrity is prioritized over non-critical personalization",
+      "parameters": {},
+      "executable": false,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-112",
+    "title": "Cart expiry and no implicit reservation",
+    "text": "A cart expires 20 minutes after it is created and never creates a reservation itself.",
+    "values": [
+      {
+        "num": 20,
+        "unit": "",
+        "raw": "20"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "code-only",
+    "origins": [
+      {
+        "statementId": "J5",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-33",
+        "summary": "10.1 Shorten the cart hold to 20 minutes",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-33",
+        "quote": "A cart expires 20 minutes after it is created and never creates a reservation itself."
+      },
+      {
+        "statementId": "C1",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "cart-service/src/main/resources/cart-service.yml",
+        "line": 16,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/cart-service/src/main/resources/cart-service.yml",
+        "story": "AQPI-33",
+        "quote": "# @rule [AQPI-33] A cart expires 20 minutes after it is created and never creates a reservation itself."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-33"
+    ],
+    "resolution": null,
+    "version": 2,
+    "status": "enhanced",
+    "previous": {
+      "text": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
+      "values": [
+        {
+          "num": 30,
+          "unit": "",
+          "raw": "30"
+        }
+      ],
+      "version": 1,
+      "origins": [
+        {
+          "statementId": "C1",
+          "source": "code",
+          "input": "codebase",
+          "kind": "code-source",
+          "ref": "cart-service/src/main/resources/cart-service.yml",
+          "line": 16,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+          "story": "AQPI-15",
+          "quote": "# @rule [AQPI-15] A cart expires 30 minutes after it is created and never creates a reservation itself."
+        }
+      ]
+    },
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-112",
+      "kind": "cart-expiry",
+      "title": "Cart expiry and no implicit reservation",
+      "parameters": {
+        "minutes": 20
+      },
+      "executable": true,
+      "status": "re-designed",
+      "version": 2,
+      "previousParameters": {
+        "minutes": 30
+      }
+    }
+  },
+  {
+    "id": "REQ-113",
+    "title": "Material price change acknowledgement",
+    "text": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+    "values": [
+      {
+        "num": 1,
+        "unit": "%",
+        "raw": "1%"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code"
+    ],
+    "bucket": "code-only",
+    "origins": [
+      {
+        "statementId": "C2",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "cart-service/src/main/resources/cart-service.yml",
+        "line": 17,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+        "story": "AQPI-17",
+        "quote": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-17"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-113",
+      "kind": "price-change-ack",
+      "title": "Material price change acknowledgement",
+      "parameters": {
+        "pct": 1
+      },
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-114",
+    "title": "Resend rate limit",
+    "text": "A confirmation can be resent at most 5 times per booking in 24 hours.",
+    "values": [
+      {
+        "num": 24,
+        "unit": "hours",
+        "raw": "24 hours"
+      },
+      {
+        "num": 5,
+        "unit": "",
+        "raw": "5"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "code-only",
+    "origins": [
+      {
+        "statementId": "J7",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-35",
+        "summary": "10.3 Allow up to 5 confirmation resends",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-35",
+        "quote": "A confirmation can be resent at most 5 times per booking in 24 hours."
+      },
+      {
+        "statementId": "C3",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "notification-service/src/main/resources/notification-service.yml",
+        "line": 7,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+        "story": "AQPI-35",
+        "quote": "# @rule [AQPI-35] A confirmation can be resent at most 5 times per booking in 24 hours."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-35"
+    ],
+    "resolution": null,
+    "version": 2,
+    "status": "enhanced",
+    "previous": {
+      "text": "A confirmation can be resent at most 3 times per booking in 24 hours.",
+      "values": [
+        {
+          "num": 24,
+          "unit": "hours",
+          "raw": "24 hours"
+        },
+        {
+          "num": 3,
+          "unit": "",
+          "raw": "3"
+        }
+      ],
+      "version": 1,
+      "origins": [
+        {
+          "statementId": "C3",
+          "source": "code",
+          "input": "codebase",
+          "kind": "code-source",
+          "ref": "notification-service/src/main/resources/notification-service.yml",
+          "line": 7,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/notification-service/src/main/resources/notification-service.yml",
+          "story": "AQPI-26",
+          "quote": "# @rule [AQPI-26] A confirmation can be resent at most 3 times per booking in 24 hours."
+        }
+      ]
+    },
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-114",
+      "kind": "resend-limit",
+      "title": "Resend rate limit",
+      "parameters": {
+        "limit": 5,
+        "hours": 24
+      },
+      "executable": true,
+      "status": "re-designed",
+      "version": 2,
+      "previousParameters": {
+        "limit": 3,
+        "hours": 24
+      }
+    }
+  },
+  {
+    "id": "REQ-115",
+    "title": "Idempotency-Key required",
+    "text": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+    "values": [
+      {
+        "num": 24,
+        "unit": "hours",
+        "raw": "24 hours"
+      },
+      {
+        "num": 8,
+        "unit": "",
+        "raw": "8"
+      },
+      {
+        "num": 64,
+        "unit": "",
+        "raw": "64"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code"
+    ],
+    "bucket": "code-only",
+    "origins": [
+      {
+        "statementId": "C4",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "reservation-service/src/main/resources/reservation-service.yml",
+        "line": 20,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/reservation-service/src/main/resources/reservation-service.yml",
+        "story": "AQPI-21",
+        "quote": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-21"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-115",
+      "kind": "idempotency-key",
+      "title": "Idempotency-Key required",
+      "parameters": {
+        "min": 8,
+        "max": 64,
+        "hours": 24
+      },
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-116",
+    "title": "Maximum stay length",
+    "text": "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights.",
+    "values": [
+      {
+        "num": 30,
+        "unit": "nights",
+        "raw": "30 nights"
+      },
+      {
+        "num": 14,
+        "unit": "nights",
+        "raw": "14 nights"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "code-only",
+    "origins": [
+      {
+        "statementId": "J6",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-34",
+        "summary": "10.2 Limit Paris stays to 14 nights",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-34",
+        "quote": "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights."
+      },
+      {
+        "statementId": "C11",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 12,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/search-service/src/main/resources/search-service.yml",
+        "story": "AQPI-34",
+        "quote": "# @rule [AQPI-34] A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-34"
+    ],
+    "resolution": null,
+    "version": 2,
+    "status": "enhanced",
+    "previous": {
+      "text": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+      "values": [
+        {
+          "num": 30,
+          "unit": "nights",
+          "raw": "30 nights"
+        },
+        {
+          "num": 21,
+          "unit": "nights",
+          "raw": "21 nights"
+        }
+      ],
+      "version": 1,
+      "origins": [
+        {
+          "statementId": "C5",
+          "source": "code",
+          "input": "codebase",
+          "kind": "code-source",
+          "ref": "search-service/src/main/resources/search-service.yml",
+          "line": 12,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+          "story": "AQPI-4",
+          "quote": "# @rule [AQPI-4] A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights."
+        }
+      ]
+    },
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-116",
+      "kind": "stay-length-limit",
+      "title": "Maximum stay length",
+      "parameters": {
+        "max": 30,
+        "par": 14
+      },
+      "executable": true,
+      "status": "re-designed",
+      "version": 2,
+      "previousParameters": {
+        "max": 30,
+        "par": 21
+      }
+    }
+  },
+  {
+    "id": "REQ-117",
+    "title": "Occupancy and room limits",
+    "text": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+    "values": [
+      {
+        "num": 8,
+        "unit": "rooms",
+        "raw": "8 rooms"
+      },
+      {
+        "num": 4,
+        "unit": "",
+        "raw": "4"
+      },
+      {
+        "num": 3,
+        "unit": "",
+        "raw": "3"
+      },
+      {
+        "num": 1,
+        "unit": "",
+        "raw": "1"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code"
+    ],
+    "bucket": "code-only",
+    "origins": [
+      {
+        "statementId": "C6",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 13,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+        "story": "AQPI-4",
+        "quote": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-4"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-117",
+      "kind": "occupancy-limits",
+      "title": "Occupancy and room limits",
+      "parameters": {
+        "adults": 4,
+        "children": 3,
+        "rooms": 8
+      },
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-118",
+    "title": "Booking horizon",
+    "text": "Check-in can be at most 500 days ahead.",
+    "values": [
+      {
+        "num": 500,
+        "unit": "days",
+        "raw": "500 days"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code"
+    ],
+    "bucket": "code-only",
+    "origins": [
+      {
+        "statementId": "C7",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "search-service/src/main/resources/search-service.yml",
+        "line": 14,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+        "story": "AQPI-4",
+        "quote": "# @rule [AQPI-4] Check-in can be at most 500 days ahead."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-4"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "unchanged",
+    "previous": null,
+    "introducedInCycle": "CYC-1",
+    "changedInCycle": "CYC-1",
+    "businessRule": {
+      "id": "BR-118",
+      "kind": "advance-horizon",
+      "title": "Booking horizon",
+      "parameters": {
+        "days": 500
+      },
+      "executable": true,
+      "status": "carried over",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-119",
+    "title": "Release 1.0 behaviour not named in this",
+    "text": "Release 1.0 behaviour not named in this epic is unchanged and passes regression.",
+    "values": [
+      {
+        "num": 1,
+        "unit": "",
+        "raw": "1.0"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J2",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-32",
+        "summary": "[Epic 8] Release 2.0 – Booking Rule Changes and Free Cancellation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+        "quote": "Release 1.0 behaviour not named in this epic is unchanged and passes regression."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-32"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-119",
+      "kind": "unclassified",
+      "title": "Release 1.0 behaviour not named in this",
+      "parameters": {
+        "value1": "1"
+      },
+      "executable": false,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-120",
+    "title": "The Product Owner has accepted the release",
+    "text": "The Product Owner has accepted the release 2.0 changes end to end.",
+    "values": [
+      {
+        "num": 2,
+        "unit": "",
+        "raw": "2.0"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J4",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-epic",
+        "ref": "AQPI-32",
+        "summary": "[Epic 8] Release 2.0 – Booking Rule Changes and Free Cancellation",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+        "quote": "The Product Owner has accepted the release 2.0 changes end to end."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-32"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-120",
+      "kind": "unclassified",
+      "title": "The Product Owner has accepted the release",
+      "parameters": {
+        "value1": "2"
+      },
+      "executable": false,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-121",
+    "title": "Free cancellation window",
+    "text": "A confirmed reservation on a refundable rate can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed.",
+    "values": [
+      {
+        "num": 48,
+        "unit": "hours",
+        "raw": "48 hours"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "agreed",
+    "origins": [
+      {
+        "statementId": "J8",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-36",
+        "summary": "10.4 Cancel a reservation free of charge",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+        "quote": "A confirmed reservation on a refundable rate can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed."
+      },
+      {
+        "statementId": "C9",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "reservation-service/src/main/resources/reservation-service.yml",
+        "line": 22,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
+        "story": "AQPI-36",
+        "quote": "# @rule [AQPI-36] A confirmed reservation can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-36"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-121",
+      "kind": "free-cancellation",
+      "title": "Free cancellation window",
+      "parameters": {
+        "hours": 48
+      },
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-122",
+    "title": "Cancellation voids payment and releases rooms",
+    "text": "A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "agreed",
+    "origins": [
+      {
+        "statementId": "J9",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-36",
+        "summary": "10.4 Cancel a reservation free of charge",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+        "quote": "A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released."
+      },
+      {
+        "statementId": "C10",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "reservation-service/src/main/resources/reservation-service.yml",
+        "line": 23,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
+        "story": "AQPI-36",
+        "quote": "# @rule [AQPI-36] A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-36"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-122",
+      "kind": "cancellation-outcome",
+      "title": "Cancellation voids payment and releases rooms",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-123",
+    "title": "Non-refundable rates are not cancelled free of charge",
+    "text": "A reservation on a non-refundable rate cannot be cancelled free of charge and stays confirmed.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J10",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-36",
+        "summary": "10.4 Cancel a reservation free of charge",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+        "quote": "A reservation on a non-refundable rate cannot be cancelled free of charge and stays confirmed."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-36"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-123",
+      "kind": "non-refundable-cancellation",
+      "title": "Non-refundable rates are not cancelled free of charge",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-124",
+    "title": "Confirmation states the free-cancellation deadline",
+    "text": "The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in.",
+    "values": [
+      {
+        "num": 48,
+        "unit": "hours",
+        "raw": "48 hours"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "agreed",
+    "origins": [
+      {
+        "statementId": "J18",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-24",
+        "summary": "8.1 Generate confirmation message",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+        "quote": "The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in."
+      },
+      {
+        "statementId": "C5",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "notification-service/src/main/resources/notification-service.yml",
+        "line": 16,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+        "story": "AQPI-24",
+        "quote": "# @rule [AQPI-24] The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-24"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-124",
+      "kind": "cancellation-deadline-email",
+      "title": "Confirmation states the free-cancellation deadline",
+      "parameters": {
+        "hours": 48
+      },
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-125",
+    "title": "Operational e-mail retry limit",
+    "text": "Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused.",
+    "values": [
+      {
+        "num": 3,
+        "unit": "",
+        "raw": "3"
+      }
+    ],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "agreed",
+    "origins": [
+      {
+        "statementId": "J23",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-25",
+        "summary": "8.2 Send and track confirmation email",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+        "quote": "Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused."
+      },
+      {
+        "statementId": "C4",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "notification-service/src/main/resources/notification-service.yml",
+        "line": 14,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+        "story": "AQPI-25",
+        "quote": "# @rule [AQPI-25] Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-25"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-125",
+      "kind": "ops-retry-limit",
+      "title": "Operational e-mail retry limit",
+      "parameters": {
+        "limit": 3
+      },
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-126",
+    "title": "One cancellation e-mail per cancelled booking",
+    "text": "A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "agreed",
+    "origins": [
+      {
+        "statementId": "J29",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-37",
+        "summary": "8.4 Send a cancellation e-mail",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+        "quote": "A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another."
+      },
+      {
+        "statementId": "C6",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "notification-service/src/main/resources/notification-service.yml",
+        "line": 18,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+        "story": "AQPI-37",
+        "quote": "# @rule [AQPI-37] A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-37"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-126",
+      "kind": "cancellation-email",
+      "title": "One cancellation e-mail per cancelled booking",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-127",
+    "title": "Cancellation e-mail failure does not undo the cancellation",
+    "text": "A cancellation e-mail that cannot be sent does not undo the cancellation.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "code",
+      "jira"
+    ],
+    "bucket": "agreed",
+    "origins": [
+      {
+        "statementId": "J30",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-37",
+        "summary": "8.4 Send a cancellation e-mail",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+        "quote": "A cancellation e-mail that cannot be sent does not undo the cancellation."
+      },
+      {
+        "statementId": "C7",
+        "source": "code",
+        "input": "codebase",
+        "kind": "code-source",
+        "ref": "notification-service/src/main/resources/notification-service.yml",
+        "line": 19,
+        "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+        "story": "AQPI-37",
+        "quote": "# @rule [AQPI-37] A cancellation e-mail that cannot be sent does not undo the cancellation."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-37"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-127",
+      "kind": "cancellation-email-failure",
+      "title": "Cancellation e-mail failure does not undo the cancellation",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-128",
+    "title": "Operational users see the cancellation e-mail with",
+    "text": "Operational users see the cancellation e-mail with its own delivery state, separate from the confirmation.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J31",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-37",
+        "summary": "8.4 Send a cancellation e-mail",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+        "quote": "Operational users see the cancellation e-mail with its own delivery state, separate from the confirmation."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-37"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-128",
+      "kind": "unclassified",
+      "title": "Operational users see the cancellation e-mail with",
+      "parameters": {},
+      "executable": false,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-129",
+    "title": "Result filters",
+    "text": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J34",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-8",
+        "summary": "4.2 Sort and filter hotel results",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-8"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-129",
+      "kind": "result-filters",
+      "title": "Result filters",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-130",
+    "title": "Approved sort options",
+    "text": "The guest can sort using approved options.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J35",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-8",
+        "summary": "4.2 Sort and filter hotel results",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "The guest can sort using approved options."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-8"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-130",
+      "kind": "result-sorting",
+      "title": "Approved sort options",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-131",
+    "title": "Selected criteria are visible and removable",
+    "text": "Selected criteria are visible and removable.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J36",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-8",
+        "summary": "4.2 Sort and filter hotel results",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "Selected criteria are visible and removable."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-8"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-131",
+      "kind": "unclassified",
+      "title": "Selected criteria are visible and removable",
+      "parameters": {},
+      "executable": false,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-132",
+    "title": "Reset after filtering to zero",
+    "text": "Zero results after filtering offer a reset option.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J37",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-8",
+        "summary": "4.2 Sort and filter hotel results",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "Zero results after filtering offer a reset option."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-8"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-132",
+      "kind": "filter-reset",
+      "title": "Reset after filtering to zero",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-133",
+    "title": "The interface identifies when offers are personalized",
+    "text": "The interface identifies when offers are personalized where required.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J38",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-13",
+        "summary": "5.3 Explain and control personalization",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "The interface identifies when offers are personalized where required."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-13"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-133",
+      "kind": "unclassified",
+      "title": "The interface identifies when offers are personalized",
+      "parameters": {},
+      "executable": false,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-134",
+    "title": "Proceed without extras",
+    "text": "The guest can proceed without selecting ancillary products.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J39",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-13",
+        "summary": "5.3 Explain and control personalization",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "The guest can proceed without selecting ancillary products."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-13"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-134",
+      "kind": "proceed-without-offers",
+      "title": "Proceed without extras",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-135",
+    "title": "Consent drives personalization",
+    "text": "A consent or preference change affects future eligible recommendations according to policy.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J40",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-13",
+        "summary": "5.3 Explain and control personalization",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "A consent or preference change affects future eligible recommendations according to policy."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-13"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-135",
+      "kind": "consent-personalization",
+      "title": "Consent drives personalization",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-136",
+    "title": "Booking outcome content",
+    "text": "Success displays confirmation identifier, hotel, stay summary, selected products, and total.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J41",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-22",
+        "summary": "7.4 Show booking outcome",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "Success displays confirmation identifier, hotel, stay summary, selected products, and total."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-22"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-136",
+      "kind": "booking-outcome",
+      "title": "Booking outcome content",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-137",
+    "title": "No false confirmation",
+    "text": "A failure does not display a false confirmation.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J42",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-22",
+        "summary": "7.4 Show booking outcome",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "A failure does not display a false confirmation."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-22"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-137",
+      "kind": "no-false-confirmation",
+      "title": "No false confirmation",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  },
+  {
+    "id": "REQ-138",
+    "title": "Safe guidance in unknown states",
+    "text": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+    "values": [],
+    "type": "functional",
+    "sources": [
+      "jira"
+    ],
+    "bucket": "jira-only",
+    "origins": [
+      {
+        "statementId": "J43",
+        "source": "jira",
+        "input": "epic",
+        "kind": "jira-story",
+        "ref": "AQPI-22",
+        "summary": "7.4 Show booking outcome",
+        "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+        "pickedUpFromGap": "CYC-1",
+        "quote": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path."
+      }
+    ],
+    "jiraKeys": [
+      "AQPI-22"
+    ],
+    "resolution": null,
+    "version": 1,
+    "status": "new",
+    "previous": null,
+    "introducedInCycle": "CYC-4",
+    "changedInCycle": "CYC-4",
+    "businessRule": {
+      "id": "BR-138",
+      "kind": "unknown-state",
+      "title": "Safe guidance in unknown states",
+      "parameters": {},
+      "executable": true,
+      "status": "new",
+      "version": 1,
+      "previousParameters": null
+    }
+  }
+]

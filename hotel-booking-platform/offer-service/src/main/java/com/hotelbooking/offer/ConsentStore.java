@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import com.hotelbooking.offer.OfferApi.Consent;
 import com.hotelbooking.offer.OfferApi.Interest;
 
-/** Consented profile interests with retention (stories 5.1 BR, 5.3 AC3, 9.1 AC5). */
+/** Consented profile interests with retention (story 5.1 BR, 9.1 AC5). */
 @Component
 public class ConsentStore {
 

@@ -28,7 +28,9 @@ const { testDataAgent, dataSetFile } = require('./agents/testdata');
 const { AiSession } = require('./ai');
 const ai = require('./agents/ai');
 const learning = require('./learning');
-const { extractContract, checkEndpoints } = require('./contracts');
+const gaps = require('./gaps');
+const { extractContract, checkEndpoints, endpointCoverage } = require('./contracts');
+const { DEMO_EXAMPLES } = require('./platform');
 const { checkDraft } = require('./agents/ai');
 
 const DICTIONARY_FILE = 'inputs/data-dictionary.json';
@@ -41,7 +43,7 @@ const PHASES = {
   incremental: ['ingest', 'normalise', 'review-agent', 'review', 'delta', 'requirements', 'testcases', 'testdata', 'scripts', 'merge-approval', 'execution', 'defects', 'report'],
 };
 const PHASE_LABEL = {
-  ingest: 'Ingest inputs', normalise: 'Normalise (3-way compare)', review: 'Human review of requirement set', delta: 'Delta classification',
+  ingest: 'Ingest inputs', normalise: 'Normalise (compare the inputs)', review: 'Human review of requirement set', delta: 'Delta classification',
   requirements: 'Requirements agent (requirements with their business rules)', testcases: 'Test case agent', testdata: 'Test data agent', scripts: 'Automation script agent',
   'merge-approval': 'Human approval to merge', execution: 'Execution agent (Playwright, real run)', defects: 'Defect agent', report: 'Cycle report agent',
 };
@@ -60,14 +62,22 @@ function noAutomatedRun(runCases, cycle) {
   const results = runCases.map((t) => ({ key: t.key, requirementId: t.requirementId, ruleId: t.ruleId || null, name: t.name, type: t.type, scriptFile: null,
     status: 'not-run', reason: 'Manual test case - not automated, not executed', duration: 0, error: null, evidence: [] }));
   const at = now();
-  return { executed: false, tool: 'Playwright not started: no automated case in this run', sut: { build: cycle.sutBuild }, startedAt: at, finishedAt: at,
+  return { executed: false, tool: 'Playwright not started: no automation test case in this run', sut: { build: cycle.sutBuild }, startedAt: at, finishedAt: at,
     specFiles: [], results, summary: summarise(results) };
+}
+
+/** Build under test of a Jira-only (EQE) run: the demo example whose Jira project the inputs name. */
+function demoBuildOf(loaded, type) {
+  const project = (loaded.map((i) => String(i.ref || '').match(/\b([A-Z][A-Z0-9]+)-\d+/)).find(Boolean) || [])[1];
+  const ex = project && DEMO_EXAMPLES.find((e) => Object.values(e.samples).some((v) => String(v).startsWith(`${project}-`)));
+  return ex ? ex.samples[type === 'baseline' ? 'baselineBranch' : 'incrementalBranch'] : null;
 }
 
 class Pipeline {
   constructor(store, { env = process.env, skills = [], fetchImpl = globalThis.fetch } = {}) {
     this.store = store;
     this.env = env;
+    this.learningOn = env.AQE_LEARNING === 'on';
     this.skills = skills;
     this.fetchImpl = fetchImpl;
     this.running = new Map();
@@ -112,8 +122,10 @@ class Pipeline {
     }
   }
 
-  /** Endpoints declared by the cycle's codebase; AI-written specs may call only these. */
+  /** Endpoints of the cycle's API endpoints input, else those its codebase declares; AI-written specs may call only these. */
   contractOf(cycle) {
+    const api = cycle.inputs.find((i) => i.slot === 'api');
+    if (api?.endpoints?.length) return api.endpoints.map(({ service, method, path: p, file }) => ({ service, method, path: p, file }));
     const branch = cycle.inputs.find((i) => i.slot === 'codebase')?.branch || cycle.sutBuild;
     return BRANCHES[branch] ? extractContract(path.join(__dirname, '..', 'fixtures', 'github', BRANCHES[branch].dir, 'contents')) : [];
   }
@@ -139,9 +151,13 @@ ${body}
     return file;
   }
 
+  memory() { return this.learningOn ? this.store.getLearning() : learning.EMPTY(); }
+
+  saveMemory(m) { if (this.learningOn) this.store.saveLearning(m); }
+
   /** Scripts people accepted in earlier cycles are re-checked and run for the same case in this one. */
   promoteLearnedScripts(cycle, requirements, out) {
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     if (!memory.feedback.some((f) => f.target === 'script' && f.verdict === 'accept')) return [];
     const contract = this.contractOf(cycle);
     const reqText = new Map(requirements.map((r) => [r.id, r.text]));
@@ -168,7 +184,7 @@ ${body}
     const ctx = agentContext(cycle.skills, agentId);
     const p = cycle.phases.find((x) => x.name === agentId);
     if (p) p.skills = ctx.skills.map((x) => x.id);
-    const learned = learning.guidance(this.store.getLearning());
+    const learned = learning.guidance(this.memory());
     return learned ? { ...ctx, guidance: [ctx.guidance, learned].filter(Boolean).join('\n\n'), learned: true } : ctx;
   }
 
@@ -183,7 +199,8 @@ ${body}
   async startCycle({ type = 'baseline', name, baselineId, inputs = {}, sutBuild, reviewer, skills, testingType, testingTypes }) {
     if (!['baseline', 'incremental'].includes(type)) throw httpError(400, 'type must be "baseline" or "incremental"');
     let tt;
-    try { tt = getTestingType(testingTypes ?? testingType); } catch (e) { throw httpError(400, e.message, [{ field: 'testingType', message: e.message }]); }
+    const inherited = type === 'incremental' && baselineId ? this.store.getBaseline(baselineId)?.testingType : undefined;
+    try { tt = getTestingType(testingTypes ?? testingType ?? inherited); } catch (e) { throw httpError(400, e.message, [{ field: 'testingType', message: e.message }]); }
     let activeSkills;
     try { activeSkills = selectSkills(this.skills, skills, tt.ids); } catch (e) { throw httpError(400, e.message); }
     let baseline = null;
@@ -191,14 +208,17 @@ ${body}
       baseline = this.store.getBaseline(baselineId);
       if (!baseline) throw httpError(400, 'Pick an existing approved baseline for an incremental cycle');
     }
-    const slots = type === 'baseline' ? ['initiative', 'epic', 'codebase'] : ['epic', 'codebase'];
+    const slots = tt.inputs[type];
     const loaded = await loadInputs(inputs, slots, { env: this.env });
     if (!loaded.length) throw httpError(400, 'Provide at least one input');
     const id = this.store.nextId('nextCycle', 'CYC');
     const n = Number(id.slice(4));
     const codebase = loaded.find((i) => i.slot === 'codebase');
+    const apiInput = loaded.find((i) => i.slot === 'api');
+    const dictInput = [apiInput, codebase].find((i) => i?.dictionary);
     const statements = loaded.flatMap((i) => i.statements);
-    const normalisation = normalise(statements);
+    const pickedUp = baseline ? gaps.pickUpStatements(baseline.skippedGaps) : [];
+    const normalisation = normalise([...statements, ...pickedUp]);
     const cycle = {
       id,
       name: name || `Cycle ${n} - ${type === 'baseline' ? 'Baseline' : 'Incremental'}`,
@@ -211,40 +231,48 @@ ${body}
       createdBy: reviewer || null,
       baselineId: baseline ? baseline.id : null,
       baselineVersionAtStart: baseline ? baseline.version : null,
-      sutBuild: sutBuild || codebase?.branch || DEFAULT_BUILD,
+      sutBuild: sutBuild || codebase?.branch || apiInput?.build || demoBuildOf(loaded, type) || DEFAULT_BUILD,
       inputs: loaded.map(({ statements: s, dictionary: _d, ...rest }) => ({ ...rest, statementCount: s.length })),
-      dataDictionary: codebase?.dictionary ? { file: DICTIONARY_FILE, source: codebase.dataModel?.url || null, name: codebase.dictionary.name, version: codebase.dictionary.version, attributeCount: codebase.dictionary.attributes.length } : null,
+      dataDictionary: dictInput ? { file: DICTIONARY_FILE, source: dictInput.dataModel?.url || null, input: dictInput.label, name: dictInput.dictionary.name, version: dictInput.dictionary.version, attributeCount: dictInput.dictionary.attributes.length } : null,
       normalisation,
       skills: activeSkills,
       phases: PHASES[type].map((p) => ({ name: p, label: PHASE_LABEL[p], status: 'pending' })),
       approvals: [],
       artifacts: {},
     };
-    if (codebase?.dictionary) {
+    if (dictInput) {
       const file = path.join(this.store.runDir(id), DICTIONARY_FILE);
       fs.mkdirSync(path.dirname(file), { recursive: true });
-      fs.writeFileSync(file, JSON.stringify(codebase.dictionary));
+      fs.writeFileSync(file, JSON.stringify(dictInput.dictionary));
     }
     setPhase(cycle, 'ingest', 'done', `${loaded.length} input(s), ${statements.length} statements`);
     const session = this.aiFor(cycle);
     const matched = await ai.aiMatchStatements(normalisation, session, { guidance: this.skillContext(cycle, 'normalise').guidance });
     cycle.normalisation = matched.normalisation;
-    cycle.learned = { review: learning.reviewLessons(this.store.getLearning(), cycle.normalisation), design: [], suppressed: [], defects: [] };
+    cycle.gaps = {
+      analysedAt: now(), code: codebase?.ref || null, applicable: Boolean(codebase),
+      findings: gaps.findGaps({ normalisation: cycle.normalisation, inputs: loaded }),
+      pickedUp: (baseline?.skippedGaps || []).map((g) => ({ story: g.story, summary: g.summary, defectId: g.defectId, skippedInCycle: g.skippedInCycle, statementCount: g.statements.length })),
+    };
+    if (this.learningOn) cycle.learned = { review: learning.reviewLessons(this.memory(), cycle.normalisation), design: [], suppressed: [], defects: [] };
     const nc = cycle.normalisation.counts;
     this.handover(cycle, 'normalise');
-    setPhase(cycle, 'normalise', 'done', `${nc.agreed} agreed · ${nc['jira-only']} Jira only · ${nc['code-only']} code only · ${nc.conflict} conflicts${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
+    const gapN = cycle.gaps.findings.length;
+    setPhase(cycle, 'normalise', 'done', `${nc.statements} statements from ${cycle.gaps.applicable ? 'Jira and code' : 'Jira'} · ${!cycle.gaps.applicable ? 'no code input, so no Jira-vs-code gap check' : gapN ? `${gapN} Jira ${gapN === 1 ? 'story' : 'stories'} not in the code` : 'no gaps: the code has every Jira story'}${nc.conflict ? ` · ${nc.conflict} conflict(s)` : ''}${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
     if (baseline) cycle.deltaPreview = this.previewDelta(cycle, {}, baseline);
     const reviewCtx = this.skillContext(cycle, 'review-agent');
-    cycle.reviewAgent = reviewInputs({ normalisation: cycle.normalisation, inputs: cycle.inputs, testingType: tt.id, deltaPreview: cycle.deltaPreview || null, baseline });
+    cycle.reviewAgent = reviewInputs({ normalisation: cycle.normalisation, inputs: cycle.inputs, gaps: cycle.gaps, testingType: tt.id, deltaPreview: cycle.deltaPreview || null, baseline });
     const aiFindings = await ai.aiReviewFindings(cycle.normalisation, session, { guidance: reviewCtx.guidance });
     if (aiFindings.length) {
       const ra = cycle.reviewAgent;
-      ra.findings = [...ra.findings, ...aiFindings].map((f, i) => ({ ...f, id: `RA-${String(i + 1).padStart(2, '0')}` }));
-      ra.counts = { ...ra.counts, ai: ra.findings.filter((f) => f.category === 'ai').length, high: ra.findings.filter((f) => f.severity === 'high').length };
+      ra.notes = [...ra.notes, ...aiFindings].map((f, i) => ({ ...f, id: `RA-N${String(i + 1).padStart(2, '0')}` }));
+      ra.counts = { ...ra.counts, notes: ra.notes.length, ai: ra.notes.filter((f) => f.category === 'ai').length };
     }
     this.handover(cycle, 'review-agent');
     const rc = cycle.reviewAgent.counts;
-    setPhase(cycle, 'review-agent', 'done', `${rc.added} added · ${rc.missing} missing · ${rc.conflicts} conflicts${rc.ai ? ` · ${rc.ai} AI finding(s)` : ''} suggested for the reviewer`);
+    setPhase(cycle, 'review-agent', 'done', cycle.gaps?.applicable === false
+      ? `no gap check (Jira only)${rc.conflicts ? ` · ${rc.conflicts} conflict(s) for the reviewer to decide` : ''}`
+      : `${rc.gaps} gap(s)${rc.conflicts ? ` · ${rc.conflicts} conflict(s)` : ''} for the reviewer to decide`);
     setPhase(cycle, 'review', 'waiting');
     return this.store.saveCycle(cycle);
   }
@@ -258,12 +286,14 @@ ${body}
     return { ...classifyDelta(baseline.requirements, reviewed), pendingConflicts: pending };
   }
 
-  review(cycleId, { reviewer, excluded = [], resolutions = {}, comment = '' }) {
+  review(cycleId, { reviewer, excluded = [], resolutions = {}, comment = '', decision = 'approve' }) {
     const cycle = this.mustGet(cycleId);
     if (cycle.status === 'awaiting-merge') {
       throw httpError(409, `The requirement set of ${cycle.id} is already approved. The step still open is the merge into baseline ${cycle.baselineId}: approve it on the merge screen.`, [{ gate: 'merge' }]);
     }
     if (cycle.status !== 'awaiting-review') throw httpError(409, `Cycle is ${cycle.status}, not awaiting review`);
+    if (!['approve', 'reject'].includes(decision)) throw httpError(400, 'decision must be "approve" or "reject"');
+    if (decision === 'reject') return this.rejectReview(cycle, { reviewer, comment });
     const open = cycle.normalisation.groups.filter((g) => g.bucket === 'conflict' && !excluded.includes(g.id) && !resolutions[g.id]);
     const missing = [
       ...(!reviewer || !String(reviewer).trim() ? [{ field: 'reviewer', message: 'Reviewer name is required: every approval is recorded against a person' }] : []),
@@ -281,20 +311,57 @@ ${body}
     }
     cycle.review = { reviewer, at: now(), excluded, resolutions, comment };
     cycle.reviewed = reviewed;
+    const skipped = (cycle.gaps?.findings || []).filter((g) => g.groupIds.length && g.groupIds.every((id) => excluded.includes(id)));
+    if (cycle.gaps) {
+      cycle.gaps.excluded = skipped.map((g) => g.story);
+      const raised = gaps.gapDefects(cycle, skipped, { startNo: this.store.meta().nextDefect, reason: `gap excluded by ${reviewer} at the requirement review`, reviewer, at: cycle.review.at });
+      this.store.bumpDefectCounter(raised.nextNo);
+      cycle.artifacts.gapDefects = raised.defects;
+    }
     if (cycle.learned) {
       const lr = cycle.learned.review;
       lr.kept = lr.resolutions.filter((x) => resolutions[x.groupId] === x.optionId).length + lr.exclusions.filter((x) => excluded.includes(x.groupId)).length;
       lr.overridden = lr.resolutions.length + lr.exclusions.length - lr.kept;
     }
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     learning.recordReview(memory, cycle);
-    this.store.saveLearning(memory);
+    this.saveMemory(memory);
     cycle.approvals.push({ gate: 'Requirement set review', by: reviewer, at: cycle.review.at, decision: 'approved', comment,
-      detail: `${reviewed.length} requirements approved; ${excluded.length} excluded; ${Object.keys(resolutions).length} conflict(s) resolved` });
+      detail: `${reviewed.length} requirements approved; ${excluded.length} excluded${cycle.gaps?.excluded?.length ? ` (gaps ${cycle.gaps.excluded.join(', ')})` : ''}; ${Object.keys(resolutions).length} conflict(s) resolved` });
     setPhase(cycle, 'review', 'done', `Approved by ${reviewer}`);
     cycle.status = 'running';
     this.store.saveCycle(cycle);
-    return this.track(cycle.id, cycle.type === 'baseline' ? this.runBaseline(cycle.id) : this.runIncrementalDesign(cycle.id));
+    const run = () => (cycle.type === 'baseline' ? this.runBaseline(cycle.id) : this.runIncrementalDesign(cycle.id));
+    return this.track(cycle.id, this.raiseGapDefectsInJira(cycle.id).then(run));
+  }
+
+  /** Gap defects go to Jira like execution defects: linked to their story, or kept with a ready payload. */
+  async raiseGapDefectsInJira(cycleId) {
+    const cycle = this.mustGet(cycleId);
+    const list = cycle.status === 'rejected' ? cycle.artifacts.defects : cycle.artifacts.gapDefects;
+    if (!list || !list.length) return;
+    await raiseDefectsInJira(list, { cycle, env: this.env, fetchImpl: this.fetchImpl, items: cycleJiraItems(cycle) });
+    this.store.saveCycle(cycle);
+  }
+
+  /** Rejecting the requirement set raises a gap defect per gap story and stops the cycle before design. */
+  rejectReview(cycle, { reviewer, comment }) {
+    if (!reviewer || !String(reviewer).trim()) throw httpError(400, 'Reviewer name is required: every rejection is recorded against a person', [{ field: 'reviewer', message: 'Reviewer name is required' }]);
+    const at = now();
+    cycle.review = { reviewer, at, decision: 'rejected', excluded: [], resolutions: {}, comment };
+    const findings = cycle.gaps?.findings || [];
+    const raised = gaps.gapDefects(cycle, findings, { startNo: this.store.meta().nextDefect, reason: `requirement set rejected by ${reviewer}`, reviewer, at });
+    this.store.bumpDefectCounter(raised.nextNo);
+    if (cycle.gaps) cycle.gaps.excluded = findings.map((g) => g.story);
+    cycle.artifacts.defects = raised.defects;
+    cycle.approvals.push({ gate: 'Requirement set review', by: reviewer, at, decision: 'rejected', comment,
+      detail: `Requirement set rejected; ${raised.defects.length} gap defect(s) raised${findings.length ? ` for ${findings.map((g) => g.story).join(', ')}` : ''}` });
+    setPhase(cycle, 'review', 'done', `Rejected by ${reviewer}`);
+    for (const p of cycle.phases) if (p.status === 'pending') setPhase(cycle, p.name, 'skipped', 'Requirement set rejected');
+    cycle.status = 'rejected';
+    cycle.completedAt = at;
+    this.store.saveCycle(cycle);
+    return this.track(cycle.id, this.raiseGapDefectsInJira(cycle.id));
   }
 
   track(id, promise) {
@@ -342,7 +409,7 @@ ${body}
     const reqById = new Map(requirements.map((r) => [r.id, r]));
     const ruleByReq = new Map(out.rules.map((b) => [b.requirementId, b]));
     const extra = new Map();
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     const suppressed = [];
     for (const s of d.cases) {
       const req = reqById.get(s.requirementId);
@@ -373,7 +440,7 @@ ${body}
     const out = design.designAgents(requirements, { cycle, counters, previous, skills, testingType: cycle.testingType });
     design.attachBusinessRules(requirements, out.rules);
     this.applyAiDesign(cycle, requirements, out);
-    if (cycle.learned) cycle.learned.design = [...learning.applyToDesign(this.store.getLearning(), requirements, out.testCases), ...this.promoteLearnedScripts(cycle, requirements, out)];
+    if (cycle.learned) cycle.learned.design = [...learning.applyToDesign(this.memory(), requirements, out.testCases), ...this.promoteLearnedScripts(cycle, requirements, out)];
     if (cycle.aiDesign) out.selection = design.selectionSummary(getTestingType(cycle.testingType, domainOf(cycle).id), requirements, out.testCases, previous, domainOf(cycle));
     const count = (arr, st) => arr.filter((x) => x.status === st).length;
     const split = (arr) => (previous ? ` (${count(arr, 'new') + count(arr, 'added')} new · ${count(arr, 're-designed')} re-designed · ${count(arr, 'carried over')} carried over)` : '');
@@ -393,6 +460,8 @@ ${body}
     setPhase(cycle, 'testdata', 'done', `${tds.total} data sets of ${tds.dictionary.attributeCount} attributes · ${tds.conforming} conform to the data dictionary · ${tds.negative} deliberately invalid (negative tests)${tds.nonConforming ? ` · ${tds.nonConforming} do not conform` : ''}${previous ? ` (${tds.byStatus.new || 0} new · ${tds.byStatus['re-generated'] || 0} re-generated · ${tds.byStatus['carried over'] || 0} carried over)` : ''}${tds.ai ? ` · ${tds.ai.personas} AI personas` : ''}`);
     setPhase(cycle, 'scripts', 'done', `${out.scripts.length} Playwright specs${split(out.scripts)}${aiNote((out.aiScripts || []).length, 'AI draft spec(s) awaiting QE review, not executed')}`);
     cycle.artifacts = { ...cycle.artifacts, requirements, rules: out.rules, testCases: out.testCases, testData: td.dataSets, testDataSummary: tds, scripts: out.scripts, aiScripts: out.aiScripts || [], affected: out.affected, selection: out.selection };
+    const apiIn = cycle.inputs.find((i) => i.slot === 'api' && i.endpoints);
+    if (apiIn) cycle.artifacts.apiCoverage = { input: apiIn.ref, ...endpointCoverage(out.scripts, apiIn.endpoints, domainOf(cycle).SPEC_PRELUDE) };
     for (const a of ['requirements', 'testcases', 'testdata', 'scripts']) this.handover(cycle, a);
   }
 
@@ -411,7 +480,8 @@ ${body}
       id: bid, name: `${done.inputs.find((i) => i.slot === 'epic')?.ref || 'Baseline'} baseline`, version: 1,
       createdAt: now(), sourceCycleId: done.id, cycles: [done.id], lastCycleId: done.id,
       requirements: done.artifacts.requirements, rules: done.artifacts.rules, testCases: done.artifacts.testCases, testData: done.artifacts.testData, scripts: done.artifacts.scripts,
-      counters: done.counters,
+      counters: done.counters, testingType: done.testingType,
+      skippedGaps: gaps.skippedGapsOf(done, done.gaps?.excluded || []),
       history: [{ version: 1, at: now(), cycleId: done.id, change: 'Baseline established', approvedBy: done.review.reviewer }],
     };
     this.store.saveBaseline(baseline);
@@ -525,9 +595,9 @@ ${body}
     if (unknown.length) throw httpError(400, `Not a row of this merge: ${unknown.join(', ')}`);
     if (rejected.length && rejected.length === cycle.mergeProposal.requirements.length) throw httpError(400, 'Every row is rejected - reject the whole merge instead');
     if (rejected.length) {
-      const memory = this.store.getLearning();
+      const memory = this.memory();
       learning.recordMergeRejections(memory, cycle, rejected, approver);
-      this.store.saveLearning(memory);
+      this.saveMemory(memory);
       cycle.rejectedRows = rejected;
       this.withoutRejectedRows(cycle, baseline, rejected);
     }
@@ -544,6 +614,8 @@ ${body}
     const lastCycle = this.store.getCycle(baseline.lastCycleId);
     const previousDefects = lastCycle?.artifacts?.defects || [];
     cycle.baselineJiraItems = lastCycle ? [...cycleJiraItems(lastCycle).values()].map(({ fromBaseline, ...x }) => x) : [];
+    const pickedUpStories = new Set((cycle.gaps?.pickedUp || []).map((g) => g.story));
+    merged.skippedGaps = [...(baseline.skippedGaps || []).filter((g) => !pickedUpStories.has(g.story)), ...gaps.skippedGapsOf(cycle, cycle.gaps?.excluded || [])];
     merged.lastCycleId = cycle.id;
     this.store.saveBaseline(merged);
     cycle.approvals.push({ gate: 'Merge into baseline', by: approver, at, decision: 'approved', comment,
@@ -592,7 +664,7 @@ ${body}
     const defectCtx = this.skillContext(cycle, 'defects');
     const { defects, resolved, nextNo } = raiseDefects({
       execution, testCases: cycle.artifacts.testCases, requirements: cycle.artifacts.requirements, cycle,
-      previousDefects, startNo: this.store.meta().nextDefect,
+      previousDefects: previousDefects.filter((d) => d.type !== 'gap'), startNo: this.store.meta().nextDefect,
     });
     this.store.bumpDefectCounter(nextNo);
     const triageOf = new Map(execution.results.filter((r) => r.aiTriage).map((r) => [r.key, r.aiTriage]));
@@ -610,26 +682,28 @@ ${body}
       }
     }
     await raiseDefectsInJira(defects.filter((d) => !d.confirmation), { cycle, env: this.env, fetchImpl: this.fetchImpl, items: cycleJiraItems(cycle) });
-    cycle.artifacts.defects = defects;
-    cycle.artifacts.resolvedDefects = resolved;
+    const gapRetest = gaps.resolveGapDefects(previousDefects, cycle, execution.results);
+    cycle.artifacts.defects = [...(cycle.artifacts.gapDefects || []), ...gapRetest.open, ...defects];
+    cycle.artifacts.resolvedDefects = [...gapRetest.closed, ...resolved];
     if (cycle.learned) cycle.learned.defects = defects.filter((d) => d.confirmation).map((d) => ({ id: d.id, testCaseKey: d.testCaseKey, lesson: `${d.id} awaits QE confirmation: ${d.confirmation.reason}` }));
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     learning.recordDefects(memory, cycle);
-    this.store.saveLearning(memory);
+    this.saveMemory(memory);
     this.handover(cycle, 'defects');
     const inJira = defects.filter((d) => d.jira && d.jira.key).length;
     setPhase(cycle, 'defects', 'done', `${defects.length} defect(s) from real failures${defects.length ? ` · ${inJira} in Jira` : ''}${resolved.length ? ` · ${resolved.length} resolved` : ''}`);
-    cycle.artifacts.coverage = computeCoverage(cycle.artifacts.requirements, runCases, execution.results, cycle.inputs.find((i) => i.slot === 'codebase')?.dataModel);
+    cycle.artifacts.coverage = computeCoverage(cycle.artifacts.requirements, runCases, execution.results, cycle.inputs.find((i) => i.slot === 'api' && i.dataModel)?.dataModel || cycle.inputs.find((i) => i.slot === 'codebase')?.dataModel);
     this.store.saveCycle(cycle);
   }
 
   /** A person's verdict on an artefact of a cycle; it is remembered for the next cycles. */
   feedback(cycleId, body = {}) {
+    if (!this.learningOn) throw httpError(404, 'Learning is switched off (set AQE_LEARNING=on)');
     const cycle = this.mustGet(cycleId);
-    const memory = this.store.getLearning();
+    const memory = this.memory();
     let rec;
     try { rec = learning.recordFeedback(memory, cycle, body); } catch (e) { throw httpError(400, e.message); }
-    this.store.saveLearning(memory);
+    this.saveMemory(memory);
     cycle.feedback = [...(cycle.feedback || []).filter((f) => !(f.target === rec.target && f.id === rec.id)), rec];
     if (rec.target === 'script' && rec.verdict === 'accept' && cycle.status === 'awaiting-merge') {
       const a = cycle.artifacts;
@@ -653,7 +727,7 @@ ${body}
       d.blocksRelease = rec.verdict === 'confirm' ? wasBlocking : false;
       d.releaseDecision = rec.verdict === 'confirm' ? `Confirmed by ${rec.by}. ${wasBlocking ? 'Blocks the release.' : 'Does not block the release.'}` : `Marked not a defect by ${rec.by}${rec.note ? `: ${rec.note}` : ''}. Treated as a test issue in later cycles.`;
       learning.recordDefects(memory, cycle);
-      this.store.saveLearning(memory);
+      this.saveMemory(memory);
     }
     this.store.saveCycle(cycle);
     return { feedback: rec, learning: learning.summary(memory) };

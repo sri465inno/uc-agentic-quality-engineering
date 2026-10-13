@@ -66,7 +66,7 @@ test('Test Lab: sentences that cannot become a hotel test get plain-language rea
   });
 });
 
-test('Test Lab: happy path passes and defect path fails with expected vs actual, both really run on release 2.0', { skip: unavailableReason(process.env, V2) || false }, async () => {
+test('Test Lab: happy path and the Paris stay limit both pass on release 2.0 (the limit is fixed there)', { skip: unavailableReason(process.env, V2) || false }, async () => {
   await withServer(async ({ base, post }) => {
     const { demos } = await (await fetch(`${base}/api/lab`)).json();
     const happy = await post('/api/lab/run', { text: demos[0].text });
@@ -77,12 +77,9 @@ test('Test Lab: happy path passes and defect path fails with expected vs actual,
     assert.match(happy.body.execution.tool, /^Playwright/);
     assert.match(happy.body.execution.sut.name, /release 2\.0/);
     const defect = await post('/api/lab/run', { text: demos[1].text });
-    assert.equal(defect.body.status, 'failed');
+    assert.equal(defect.body.status, 'passed');
     assert.equal(defect.body.expected, 'HTTP 400 VALIDATION_FAILED (stay.tooLong)');
-    assert.equal(defect.body.actual, 'HTTP 200 with search results');
-    assert.deepEqual(defect.body.checks[0], { label: 'HTTP status', expected: '400', actual: '200', match: false });
-    assert.match(defect.body.defect.title, /15-night stay in Paris/);
-    assert.match(defect.body.defect.cause, /Paris \(PAR\) allows at most 14 nights/);
+    assert.equal(defect.body.defect, null);
     assert.match(defect.body.script.code, /expect\(s\.status\)\.toBe\(400\)/);
   });
 });

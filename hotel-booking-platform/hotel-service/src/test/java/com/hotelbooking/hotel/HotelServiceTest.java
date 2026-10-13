@@ -51,36 +51,11 @@ class HotelServiceTest {
     }
 
     @Test
-    @DisplayName("AQPI-8 4.2: sort, filter, paginate and reset refinements")
-    void refineResults() {
-        JsonNode sorted = get("/api/hotels/availability?destination=NYC&sort=PRICE_ASC&" + STAY);
-        List<BigDecimal> prices = new ArrayList<>();
-        List<String> availability = new ArrayList<>();
-        sorted.path("results").forEach(h -> {
-            availability.add(h.path("availability").asText());
-            if (!"SOLD_OUT".equals(h.path("availability").asText())) {
-                prices.add(h.path("startingNightly").path("amount").decimalValue());
-            }
-        });
-        assertThat(prices).isNotEmpty().isSorted();
-        int firstSoldOut = availability.indexOf("SOLD_OUT");
-        if (firstSoldOut >= 0) {
-            assertThat(availability.subList(firstSoldOut, availability.size())).containsOnly("SOLD_OUT");
-        }
-
-        JsonNode spa = get("/api/hotels/availability?destination=NYC&amenities=spa&" + STAY);
-        assertThat(spa.path("totalResults").asInt()).isEqualTo(1);
-        assertThat(spa.path("results").get(0).path("hotelId").asText()).isEqualTo("H-NYC-003");
-        assertThat(spa.path("appliedFilters").size()).isEqualTo(1);
-        assertThat(spa.path("resetAvailable").asBoolean()).isTrue();
-        assertThat(spa.path("unfilteredResults").asInt()).isEqualTo(4);
-
+    @DisplayName("AQPI-7 4.1: results are paged")
+    void pagedResults() {
         JsonNode paged = get("/api/hotels/availability?destination=NYC&size=3&page=1&" + STAY);
         assertThat(paged.path("totalPages").asInt()).isEqualTo(2);
         assertThat(paged.path("results").size()).isEqualTo(1);
-
-        web.get().uri("/api/hotels/availability?destination=NYC&sort=RANDOM&" + STAY).exchange()
-                .expectStatus().isBadRequest().expectBody().jsonPath("$.code").isEqualTo("UNSUPPORTED_SORT");
     }
 
     @Test

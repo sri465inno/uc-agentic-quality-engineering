@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:36677/api/searches",
+    "headers": {},
+    "data": {
+      "destination": "PAR",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-12-03",
+      "rooms": 1,
+      "adults": 2,
+      "children": 0
+    }
+  },
+  "response": {
+    "status": 400,
+    "correlationId": "f541adb2-f440-447e-9e50-307f869e97a4",
+    "body": {
+      "status": 400,
+      "code": "VALIDATION_FAILED",
+      "message": "Please correct the highlighted search details.",
+      "correlationId": "f541adb2-f440-447e-9e50-307f869e97a4",
+      "retryable": false,
+      "fieldIssues": [
+        {
+          "field": "checkOut",
+          "ruleId": "stay.tooLong",
+          "message": "Stays can be up to 21 nights. Shorten your stay."
+        }
+      ]
+    }
+  }
+}

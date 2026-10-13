@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "http://127.0.0.1:45349/api/consents/p-d5e285aa",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "f78584bd-b26f-4ab2-bffd-de8a8979a3e4",
+    "body": {
+      "deleted": true,
+      "profileId": "p-d5e285aa"
+    }
+  }
+}

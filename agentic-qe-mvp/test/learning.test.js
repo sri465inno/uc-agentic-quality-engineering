@@ -9,7 +9,7 @@ const { extractContract, checkEndpoints } = require('../src/contracts');
 const { AiSession, aiStatus } = require('../src/ai');
 const { BASELINE_INPUTS, baselineCycle, tmpDir } = require('./helpers');
 
-const ENV = { ANTHROPIC_API_KEY: 'sk-test', ANTHROPIC_MODEL: 'mock-model' };
+const ENV = { ANTHROPIC_API_KEY: 'sk-test', ANTHROPIC_MODEL: 'mock-model', AQE_LEARNING: 'on' };
 const lastJson = (prompt) => JSON.parse(prompt.trim().split('\n').reverse().find((l) => /^[[{]/.test(l.trim())));
 const reply = (model) => async (url, opts) => {
   const body = JSON.parse(opts.body);
@@ -37,7 +37,7 @@ test('the API contract comes from the controllers; specs calling anything else a
 
 test('the platform learns across cycles: reviewer decisions pre-fill, defect history raises priority, "not a defect" needs confirmation', async () => {
   const dataDir = tmpDir('learning');
-  const { pipeline, store } = createApp({ dataDir, env: {} });
+  const { pipeline, store } = createApp({ dataDir, env: { AQE_LEARNING: 'on' } });
   const c1 = await baselineCycle(pipeline, store);
   const mem = store.getLearning();
   assert.equal(mem.decisions.length, 1, 'the conflict decision is remembered');
@@ -129,7 +129,7 @@ test('a cassette records model replies by prompt hash and replays them without a
 });
 
 test('feedback and learning over HTTP: invalid feedback is a 400, accepted feedback shows on the Learning page', async () => {
-  const ctx = createApp({ dataDir: tmpDir('learning-http'), env: {} });
+  const ctx = createApp({ dataDir: tmpDir('learning-http'), env: { AQE_LEARNING: 'on' } });
   const c = await baselineCycle(ctx.pipeline, ctx.store);
   const server = ctx.app.listen(0);
   const base = `http://127.0.0.1:${server.address().port}`;

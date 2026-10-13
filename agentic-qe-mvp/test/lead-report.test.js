@@ -37,3 +37,20 @@ test('QE lead report: incremental reports the delta, reuse, the enhanced value a
 test('QE lead report is only available once the cycle has a report', () => {
   assert.equal(buildLeadReport({ ...F.c1, report: null }), null);
 });
+
+test('QE lead report: exit criteria, an evidence check that recounts every figure, and the track sign-off owner', () => {
+  const L = buildLeadReport(F.c1);
+  assert.equal(L.signoffOwner.owner, 'DQE lead');
+  assert.match(L.signoffOwner.accountability, /Domain certification/);
+  const status = Object.fromEntries(L.exitCriteria.map((x) => [x.criterion, x.status]));
+  assert.equal(status['Requirement set approved by a named reviewer'], 'met');
+  assert.equal(status['No open release-blocking defect'], 'not met', 'DEF-001 blocks the release');
+  assert.equal(status['Every failed test case has a defect'], 'met');
+  assert.ok(L.exitCriteria.every((x) => ['met', 'not met', 'open'].includes(x.status) && x.detail));
+  assert.ok(L.evidenceCheck.length >= 6);
+  assert.ok(L.evidenceCheck.every((x) => x.status === 'reconciled'), JSON.stringify(L.evidenceCheck.filter((x) => x.status !== 'reconciled')));
+  const tampered = buildLeadReport({ ...F.c1, report: { ...F.c1.report, scripts: { ...F.c1.report.scripts, total: F.c1.report.scripts.total + 1 } } });
+  assert.equal(tampered.evidenceCheck.find((x) => x.figure === 'Automation scripts').status, 'mismatch');
+  const md = renderLeadMarkdown(L);
+  for (const h of ['## 8. Exit criteria', '## 9. Evidence check', 'DQE sign-off owner: DQE lead']) assert.ok(md.includes(h), h);
+});

@@ -55,7 +55,7 @@ public class ReservationController {
                 .body(s.outcome()));
     }
 
-    /** Story 7.4: outcome from the system of record. */
+    /** Reservation status from the system of record. */
     @GetMapping("/reservations/{id}")
     public Mono<Outcome> view(@PathVariable String id) {
         return reservations.view(id);

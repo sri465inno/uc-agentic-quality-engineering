@@ -1,0 +1,1522 @@
+{
+  "agent": "Review agent",
+  "advisory": true,
+  "status": "suggestions",
+  "generatedAt": "2026-10-12T02:21:58.031Z",
+  "testingType": "functional",
+  "note": "Suggestions only. The human reviewer decides every gap and conflict and approves the requirement set.",
+  "counts": {
+    "gaps": 3,
+    "conflicts": 0,
+    "notes": 70,
+    "added": 7,
+    "missing": 63,
+    "ai": 0,
+    "high": 0
+  },
+  "findings": [
+    {
+      "id": "RA-01",
+      "category": "gap",
+      "severity": "minor",
+      "groupId": "G33",
+      "groupIds": [
+        "G33",
+        "G34",
+        "G35",
+        "G36"
+      ],
+      "story": "AQPI-8",
+      "title": "Asked for in Jira but not mentioned in the code: AQPI-8 4.2 Sort and filter hotel results",
+      "detail": "4 acceptance criteria of AQPI-8 (epic AQPI-6) have no implementation in the code: The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available. The guest can sort using approved options. Selected criteria are visible and removable. Zero results after filtering offer a reset option.",
+      "suggestion": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-8",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "RA-02",
+      "category": "gap",
+      "severity": "minor",
+      "groupId": "G52",
+      "groupIds": [
+        "G52",
+        "G53",
+        "G54"
+      ],
+      "story": "AQPI-13",
+      "title": "Asked for in Jira but not mentioned in the code: AQPI-13 5.3 Explain and control personalization",
+      "detail": "3 acceptance criteria of AQPI-13 (epic AQPI-10) have no implementation in the code: The interface identifies when offers are personalized where required. The guest can proceed without selecting ancillary products. A consent or preference change affects future eligible recommendations according to policy.",
+      "suggestion": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-13",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "RA-03",
+      "category": "gap",
+      "severity": "minor",
+      "groupId": "G87",
+      "groupIds": [
+        "G87",
+        "G88",
+        "G89"
+      ],
+      "story": "AQPI-22",
+      "title": "Asked for in Jira but not mentioned in the code: AQPI-22 7.4 Show booking outcome",
+      "detail": "3 acceptance criteria of AQPI-22 (epic AQPI-18) have no implementation in the code: Success displays confirmation identifier, hotel, stay summary, selected products, and total. A failure does not display a false confirmation. Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+      "suggestion": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-22",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+          "quote": null
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "RA-N01",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G122",
+      "title": "In the code but in no Jira story",
+      "detail": "A cart expires 30 minutes after it is created and never creates a reservation itself.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "cart-service/src/main/resources/cart-service.yml",
+          "line": 16,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+          "quote": "# @rule [AQPI-15] A cart expires 30 minutes after it is created and never creates a reservation itself."
+        }
+      ]
+    },
+    {
+      "id": "RA-N02",
+      "category": "added",
+      "severity": "high",
+      "groupId": "G123",
+      "title": "In the code but in no Jira story",
+      "detail": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "cart-service/src/main/resources/cart-service.yml",
+          "line": 17,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/cart-service/src/main/resources/cart-service.yml",
+          "quote": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout."
+        }
+      ]
+    },
+    {
+      "id": "RA-N03",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G124",
+      "title": "In the code but in no Jira story",
+      "detail": "A confirmation can be resent at most 3 times per booking in 24 hours.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "notification-service/src/main/resources/notification-service.yml",
+          "line": 7,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/notification-service/src/main/resources/notification-service.yml",
+          "quote": "# @rule [AQPI-26] A confirmation can be resent at most 3 times per booking in 24 hours."
+        }
+      ]
+    },
+    {
+      "id": "RA-N04",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G125",
+      "title": "In the code but in no Jira story",
+      "detail": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "reservation-service/src/main/resources/reservation-service.yml",
+          "line": 20,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/reservation-service/src/main/resources/reservation-service.yml",
+          "quote": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
+        }
+      ]
+    },
+    {
+      "id": "RA-N05",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G126",
+      "title": "In the code but in no Jira story",
+      "detail": "A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "search-service/src/main/resources/search-service.yml",
+          "line": 12,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+          "quote": "# @rule [AQPI-4] A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights."
+        }
+      ]
+    },
+    {
+      "id": "RA-N06",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G127",
+      "title": "In the code but in no Jira story",
+      "detail": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "search-service/src/main/resources/search-service.yml",
+          "line": 13,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+          "quote": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms."
+        }
+      ]
+    },
+    {
+      "id": "RA-N07",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G128",
+      "title": "In the code but in no Jira story",
+      "detail": "Check-in can be at most 500 days ahead.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "search-service/src/main/resources/search-service.yml",
+          "line": 14,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/b212a32842ba767b64efdda896b3a2ec7b4dde63/search-service/src/main/resources/search-service.yml",
+          "quote": "# @rule [AQPI-4] Check-in can be at most 500 days ahead."
+        }
+      ]
+    },
+    {
+      "id": "RA-N08",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G8",
+      "title": "No testable expected value",
+      "detail": "Required business and technical events are logged using approved identifiers and masking rules.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-1",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-1",
+          "quote": "Required business and technical events are logged using approved identifiers and masking rules."
+        }
+      ]
+    },
+    {
+      "id": "RA-N09",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G9",
+      "title": "No testable expected value",
+      "detail": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-2",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-6",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-10",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-14",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-18",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-23",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-27",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        }
+      ]
+    },
+    {
+      "id": "RA-N10",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G10",
+      "title": "No testable expected value",
+      "detail": "Negative and error paths for each story are tested and evidenced.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-2",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+          "quote": "Negative and error paths for each story are tested and evidenced."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-6",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+          "quote": "Negative and error paths for each story are tested and evidenced."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-10",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+          "quote": "Negative and error paths for each story are tested and evidenced."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-14",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+          "quote": "Negative and error paths for each story are tested and evidenced."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-18",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+          "quote": "Negative and error paths for each story are tested and evidenced."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-23",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+          "quote": "Negative and error paths for each story are tested and evidenced."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-27",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+          "quote": "Negative and error paths for each story are tested and evidenced."
+        }
+      ]
+    },
+    {
+      "id": "RA-N11",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G11",
+      "title": "No testable expected value",
+      "detail": "Required logging is in place and verified free of sensitive data.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-2",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-6",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-10",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-14",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-18",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-23",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-27",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        }
+      ]
+    },
+    {
+      "id": "RA-N12",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G12",
+      "title": "No testable expected value",
+      "detail": "The Product Owner has accepted the capability end to end.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-2",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-2",
+          "quote": "The Product Owner has accepted the capability end to end."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-6",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-6",
+          "quote": "The Product Owner has accepted the capability end to end."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-10",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-10",
+          "quote": "The Product Owner has accepted the capability end to end."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-14",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-14",
+          "quote": "The Product Owner has accepted the capability end to end."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-18",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-18",
+          "quote": "The Product Owner has accepted the capability end to end."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-23",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+          "quote": "The Product Owner has accepted the capability end to end."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-27",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-27",
+          "quote": "The Product Owner has accepted the capability end to end."
+        }
+      ]
+    },
+    {
+      "id": "RA-N13",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G17",
+      "title": "No testable expected value",
+      "detail": "Check-in must precede check-out.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-3",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+          "quote": "Check-in must precede check-out."
+        }
+      ]
+    },
+    {
+      "id": "RA-N14",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G18",
+      "title": "No testable expected value",
+      "detail": "Occupancy must comply with configured room limits.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-3",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+          "quote": "Occupancy must comply with configured room limits."
+        }
+      ]
+    },
+    {
+      "id": "RA-N15",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G19",
+      "title": "No testable expected value",
+      "detail": "Maximum stay length must be configurable.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-3",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-3",
+          "quote": "Maximum stay length must be configurable."
+        }
+      ]
+    },
+    {
+      "id": "RA-N16",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G22",
+      "title": "No testable expected value",
+      "detail": "Server validation is authoritative when client and server results differ.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-4",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+          "quote": "Server validation is authoritative when client and server results differ."
+        }
+      ]
+    },
+    {
+      "id": "RA-N17",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G23",
+      "title": "No testable expected value",
+      "detail": "Validation messages are accessible to assistive technology.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-4",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+          "quote": "Validation messages are accessible to assistive technology."
+        }
+      ]
+    },
+    {
+      "id": "RA-N18",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G24",
+      "title": "No testable expected value",
+      "detail": "Validation rules must be configurable where market or property rules vary.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-4",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-4",
+          "quote": "Validation rules must be configurable where market or property rules vary."
+        }
+      ]
+    },
+    {
+      "id": "RA-N19",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G26",
+      "title": "No testable expected value",
+      "detail": "Technical failures display a non-technical message and retry option.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-5",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-5",
+          "quote": "Technical failures display a non-technical message and retry option."
+        }
+      ]
+    },
+    {
+      "id": "RA-N20",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G35",
+      "title": "No testable expected value",
+      "detail": "Selected criteria are visible and removable.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-8",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+          "quote": "Selected criteria are visible and removable."
+        }
+      ]
+    },
+    {
+      "id": "RA-N21",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G38",
+      "title": "No testable expected value",
+      "detail": "The guest can select a valid room and rate plan.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-9",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+          "quote": "The guest can select a valid room and rate plan."
+        }
+      ]
+    },
+    {
+      "id": "RA-N22",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G39",
+      "title": "No testable expected value",
+      "detail": "If inventory changes, the guest is informed before continuing.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-9",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-9",
+          "quote": "If inventory changes, the guest is informed before continuing."
+        }
+      ]
+    },
+    {
+      "id": "RA-N23",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G41",
+      "title": "No testable expected value",
+      "detail": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-11",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+          "quote": "The service considers available context such as stay dates, season, destination, hotel, room, party composition, declared interests, and consented profile attributes."
+        }
+      ]
+    },
+    {
+      "id": "RA-N24",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G44",
+      "title": "No testable expected value",
+      "detail": "When personalization data is unavailable, safe contextual defaults may be returned.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-11",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+          "quote": "When personalization data is unavailable, safe contextual defaults may be returned."
+        }
+      ]
+    },
+    {
+      "id": "RA-N25",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G45",
+      "title": "No testable expected value",
+      "detail": "Sensitive traits must not be inferred or used.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-11",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+          "quote": "Sensitive traits must not be inferred or used."
+        }
+      ]
+    },
+    {
+      "id": "RA-N26",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G46",
+      "title": "No testable expected value",
+      "detail": "Personalization must honor consent and data-retention rules.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-11",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+          "quote": "Personalization must honor consent and data-retention rules."
+        }
+      ]
+    },
+    {
+      "id": "RA-N27",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G47",
+      "title": "No testable expected value",
+      "detail": "Business rules and model versions must be auditable.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-11",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-11",
+          "quote": "Business rules and model versions must be auditable."
+        }
+      ]
+    },
+    {
+      "id": "RA-N28",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G52",
+      "title": "No testable expected value",
+      "detail": "The interface identifies when offers are personalized where required.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-13",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+          "quote": "The interface identifies when offers are personalized where required."
+        }
+      ]
+    },
+    {
+      "id": "RA-N29",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G56",
+      "title": "No testable expected value",
+      "detail": "Inventory and price are revalidated when required.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-15",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+          "quote": "Inventory and price are revalidated when required."
+        }
+      ]
+    },
+    {
+      "id": "RA-N30",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G57",
+      "title": "No testable expected value",
+      "detail": "The cart has a defined expiration and displays relevant timeout behavior.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-15",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+          "quote": "The cart has a defined expiration and displays relevant timeout behavior."
+        }
+      ]
+    },
+    {
+      "id": "RA-N31",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G58",
+      "title": "No testable expected value",
+      "detail": "A cart must not itself create a reservation.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-15",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+          "quote": "A cart must not itself create a reservation."
+        }
+      ]
+    },
+    {
+      "id": "RA-N32",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G59",
+      "title": "No testable expected value",
+      "detail": "Price-change handling must require guest acknowledgement when material.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-15",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-15",
+          "quote": "Price-change handling must require guest acknowledgement when material."
+        }
+      ]
+    },
+    {
+      "id": "RA-N33",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G60",
+      "title": "No testable expected value",
+      "detail": "The guest can add an available ancillary.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-16",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+          "quote": "The guest can add an available ancillary."
+        }
+      ]
+    },
+    {
+      "id": "RA-N34",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G63",
+      "title": "No testable expected value",
+      "detail": "Ineligible or sold-out products cannot be retained silently.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-16",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-16",
+          "quote": "Ineligible or sold-out products cannot be retained silently."
+        }
+      ]
+    },
+    {
+      "id": "RA-N35",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G65",
+      "title": "No testable expected value",
+      "detail": "Currency is consistently displayed.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-17",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+          "quote": "Currency is consistently displayed."
+        }
+      ]
+    },
+    {
+      "id": "RA-N36",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G66",
+      "title": "No testable expected value",
+      "detail": "Material changes are highlighted and require acknowledgement.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-17",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+          "quote": "Material changes are highlighted and require acknowledgement."
+        }
+      ]
+    },
+    {
+      "id": "RA-N37",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G67",
+      "title": "No testable expected value",
+      "detail": "The guest can return to edit supported selections.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-17",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+          "quote": "The guest can return to edit supported selections."
+        }
+      ]
+    },
+    {
+      "id": "RA-N38",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G68",
+      "title": "No testable expected value",
+      "detail": "The final payable total must be revalidated before reservation submission.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-17",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-17",
+          "quote": "The final payable total must be revalidated before reservation submission."
+        }
+      ]
+    },
+    {
+      "id": "RA-N39",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G72",
+      "title": "No testable expected value",
+      "detail": "Data is transmitted securely and is not exposed in client logs.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-19",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+          "quote": "Data is transmitted securely and is not exposed in client logs."
+        }
+      ]
+    },
+    {
+      "id": "RA-N40",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G73",
+      "title": "No testable expected value",
+      "detail": "Data minimization applies.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-19",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-19",
+          "quote": "Data minimization applies."
+        }
+      ]
+    },
+    {
+      "id": "RA-N41",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G76",
+      "title": "No testable expected value",
+      "detail": "Payment data is handled through approved secure components.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-20",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+          "quote": "Payment data is handled through approved secure components."
+        }
+      ]
+    },
+    {
+      "id": "RA-N42",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G79",
+      "title": "No testable expected value",
+      "detail": "Payment requirements depend on rate conditions.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-20",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+          "quote": "Payment requirements depend on rate conditions."
+        }
+      ]
+    },
+    {
+      "id": "RA-N43",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G80",
+      "title": "No testable expected value",
+      "detail": "Retry behavior must avoid duplicate authorization.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-20",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-20",
+          "quote": "Retry behavior must avoid duplicate authorization."
+        }
+      ]
+    },
+    {
+      "id": "RA-N44",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G84",
+      "title": "No testable expected value",
+      "detail": "Partial failures trigger defined recovery or manual-review handling.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-21",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+          "quote": "Partial failures trigger defined recovery or manual-review handling."
+        }
+      ]
+    },
+    {
+      "id": "RA-N45",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G85",
+      "title": "No testable expected value",
+      "detail": "Reservation submission must use an idempotency mechanism.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-21",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+          "quote": "Reservation submission must use an idempotency mechanism."
+        }
+      ]
+    },
+    {
+      "id": "RA-N46",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G86",
+      "title": "No testable expected value",
+      "detail": "The source of truth for confirmation status must be defined.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-21",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-21",
+          "quote": "The source of truth for confirmation status must be defined."
+        }
+      ]
+    },
+    {
+      "id": "RA-N47",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G92",
+      "title": "No testable expected value",
+      "detail": "Templates support required locale and accessibility standards.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-24",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+          "quote": "Templates support required locale and accessibility standards."
+        }
+      ]
+    },
+    {
+      "id": "RA-N48",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G93",
+      "title": "No testable expected value",
+      "detail": "Only necessary personal data may be included.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-24",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+          "quote": "Only necessary personal data may be included."
+        }
+      ]
+    },
+    {
+      "id": "RA-N49",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G95",
+      "title": "No testable expected value",
+      "detail": "A successful reservation creates one confirmation-email request.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-25",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+          "quote": "A successful reservation creates one confirmation-email request."
+        }
+      ]
+    },
+    {
+      "id": "RA-N50",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G97",
+      "title": "No testable expected value",
+      "detail": "Permitted retries avoid duplicate or excessive messages.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-25",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+          "quote": "Permitted retries avoid duplicate or excessive messages."
+        }
+      ]
+    },
+    {
+      "id": "RA-N51",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G98",
+      "title": "No testable expected value",
+      "detail": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-25",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+          "quote": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider."
+        }
+      ]
+    },
+    {
+      "id": "RA-N52",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G99",
+      "title": "No testable expected value",
+      "detail": "Email addresses must be masked outside authorized operational views.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-25",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+          "quote": "Email addresses must be masked outside authorized operational views."
+        }
+      ]
+    },
+    {
+      "id": "RA-N53",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G101",
+      "title": "No testable expected value",
+      "detail": "Rate limits and abuse controls apply.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-26",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+          "quote": "Rate limits and abuse controls apply."
+        }
+      ]
+    },
+    {
+      "id": "RA-N54",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G102",
+      "title": "No testable expected value",
+      "detail": "The resend creates a new message event without creating a new reservation.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-26",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+          "quote": "The resend creates a new message event without creating a new reservation."
+        }
+      ]
+    },
+    {
+      "id": "RA-N55",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G103",
+      "title": "No testable expected value",
+      "detail": "Sensitive data is classified and mapped to approved storage and processing locations.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-28",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+          "quote": "Sensitive data is classified and mapped to approved storage and processing locations."
+        }
+      ]
+    },
+    {
+      "id": "RA-N56",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G104",
+      "title": "No testable expected value",
+      "detail": "Data is encrypted in transit and at rest where required.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-28",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+          "quote": "Data is encrypted in transit and at rest where required."
+        }
+      ]
+    },
+    {
+      "id": "RA-N57",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G105",
+      "title": "No testable expected value",
+      "detail": "Logs and analytics exclude or mask prohibited fields.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-28",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+          "quote": "Logs and analytics exclude or mask prohibited fields."
+        }
+      ]
+    },
+    {
+      "id": "RA-N58",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G107",
+      "title": "No testable expected value",
+      "detail": "Retention and deletion follow approved policy.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-28",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-28",
+          "quote": "Retention and deletion follow approved policy."
+        }
+      ]
+    },
+    {
+      "id": "RA-N59",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G109",
+      "title": "No testable expected value",
+      "detail": "Business events and technical logs are distinguishable.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-29",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+          "quote": "Business events and technical logs are distinguishable."
+        }
+      ]
+    },
+    {
+      "id": "RA-N60",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G110",
+      "title": "No testable expected value",
+      "detail": "Metrics and alerts exist for agreed critical failures and latency.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-29",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+          "quote": "Metrics and alerts exist for agreed critical failures and latency."
+        }
+      ]
+    },
+    {
+      "id": "RA-N61",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G111",
+      "title": "No testable expected value",
+      "detail": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-29",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+          "quote": "Logging degradation does not expose sensitive payloads or silently block booking unless explicitly required."
+        }
+      ]
+    },
+    {
+      "id": "RA-N62",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G112",
+      "title": "No testable expected value",
+      "detail": "Event schemas must be versioned.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-29",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+          "quote": "Event schemas must be versioned."
+        }
+      ]
+    },
+    {
+      "id": "RA-N63",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G113",
+      "title": "No testable expected value",
+      "detail": "Production log access must be controlled and retained according to policy.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-29",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-29",
+          "quote": "Production log access must be controlled and retained according to policy."
+        }
+      ]
+    },
+    {
+      "id": "RA-N64",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G114",
+      "title": "No testable expected value",
+      "detail": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-30",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+          "quote": "Keyboard navigation, focus order, labels, instructions, status messaging, and error handling are accessible."
+        }
+      ]
+    },
+    {
+      "id": "RA-N65",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G115",
+      "title": "No testable expected value",
+      "detail": "Visual information is not conveyed by color alone.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-30",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+          "quote": "Visual information is not conveyed by color alone."
+        }
+      ]
+    },
+    {
+      "id": "RA-N66",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G116",
+      "title": "No testable expected value",
+      "detail": "Dynamic updates are announced appropriately.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-30",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-30",
+          "quote": "Dynamic updates are announced appropriately."
+        }
+      ]
+    },
+    {
+      "id": "RA-N67",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G118",
+      "title": "No testable expected value",
+      "detail": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-31",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+          "quote": "Search, pricing, cart, checkout, reservation, and email dependencies have agreed performance targets."
+        }
+      ]
+    },
+    {
+      "id": "RA-N68",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G119",
+      "title": "No testable expected value",
+      "detail": "Timeout, retry, circuit-breaker, and fallback behavior are documented.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-31",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+          "quote": "Timeout, retry, circuit-breaker, and fallback behavior are documented."
+        }
+      ]
+    },
+    {
+      "id": "RA-N69",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G120",
+      "title": "No testable expected value",
+      "detail": "Load, resilience, and recovery tests cover critical journeys.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-31",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+          "quote": "Load, resilience, and recovery tests cover critical journeys."
+        }
+      ]
+    },
+    {
+      "id": "RA-N70",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G121",
+      "title": "No testable expected value",
+      "detail": "Reservation integrity is prioritized over non-critical personalization and analytics.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-31",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-31",
+          "quote": "Reservation integrity is prioritized over non-critical personalization and analytics."
+        }
+      ]
+    }
+  ]
+}

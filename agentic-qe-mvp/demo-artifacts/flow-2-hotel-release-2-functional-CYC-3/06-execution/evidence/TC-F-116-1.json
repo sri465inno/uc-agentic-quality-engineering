@@ -1,0 +1,159 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:35675/api/searches",
+    "headers": {},
+    "data": {
+      "destination": "NYC",
+      "checkIn": "2028-02-24",
+      "checkOut": "2028-02-27",
+      "rooms": 1,
+      "adults": 2,
+      "children": 0
+    }
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "9cb9481d-1dc3-4db7-a7bb-87fff6a4057b",
+    "body": {
+      "searchId": "S-0f39d460",
+      "sessionId": "9ac41f88-8d8f-4ba1-b44d-9aa4dd943fc5",
+      "status": "RESULTS",
+      "criteria": {
+        "destination": "NYC",
+        "checkIn": "2028-02-24",
+        "checkOut": "2028-02-27",
+        "rooms": 1,
+        "adults": 2,
+        "children": 0,
+        "nights": 3
+      },
+      "message": null,
+      "retryable": false,
+      "suggestions": [],
+      "page": {
+        "results": [
+          {
+            "hotelId": "H-NYC-001",
+            "name": "Harbor View Hotel",
+            "city": "New York",
+            "distanceKm": 1.2,
+            "category": 4,
+            "image": "https://img.example.test/H-NYC-001/exterior.jpg",
+            "amenities": [
+              "wifi",
+              "gym",
+              "restaurant",
+              "parking"
+            ],
+            "startingNightly": {
+              "amount": 182.32,
+              "currency": "USD"
+            },
+            "startingStayTotal": {
+              "amount": 725.21,
+              "currency": "USD"
+            },
+            "currency": "USD",
+            "availability": "AVAILABLE",
+            "bookable": true,
+            "priceQualification": "From 182.32 USD per room per night before taxes (18.875%); Destination fee per room per night: 25.00 USD, payable on top of the room rate"
+          },
+          {
+            "hotelId": "H-NYC-004",
+            "name": "Brooklyn Loft Suites",
+            "city": "New York",
+            "distanceKm": 6.8,
+            "category": 3,
+            "image": "https://img.example.test/H-NYC-004/exterior.jpg",
+            "amenities": [
+              "wifi",
+              "kitchen",
+              "parking"
+            ],
+            "startingNightly": {
+              "amount": 154.28,
+              "currency": "USD"
+            },
+            "startingStayTotal": {
+              "amount": 595.19,
+              "currency": "USD"
+            },
+            "currency": "USD",
+            "availability": "AVAILABLE",
+            "bookable": true,
+            "priceQualification": "From 154.28 USD per room per night before taxes (18.875%); Destination fee per room per night: 15.00 USD, payable on top of the room rate"
+          },
+          {
+            "hotelId": "H-NYC-002",
+            "name": "Midtown Budget Inn",
+            "city": "New York",
+            "distanceKm": 0.6,
+            "category": 2,
+            "image": "https://img.example.test/H-NYC-002/exterior.jpg",
+            "amenities": [
+              "wifi"
+            ],
+            "startingNightly": {
+              "amount": 111.26,
+              "currency": "USD"
+            },
+            "startingStayTotal": {
+              "amount": 396.79,
+              "currency": "USD"
+            },
+            "currency": "USD",
+            "availability": "LIMITED",
+            "bookable": true,
+            "priceQualification": "From 111.26 USD per room per night before taxes (18.875%)"
+          },
+          {
+            "hotelId": "H-NYC-003",
+            "name": "Central Park Grand",
+            "city": "New York",
+            "distanceKm": 2.4,
+            "category": 5,
+            "image": "https://img.example.test/H-NYC-003/exterior.jpg",
+            "amenities": [
+              "wifi",
+              "gym",
+              "spa",
+              "pool",
+              "restaurant"
+            ],
+            "startingNightly": null,
+            "startingStayTotal": null,
+            "currency": "USD",
+            "availability": "SOLD_OUT",
+            "bookable": false,
+            "priceQualification": "Not available for your dates and party"
+          }
+        ],
+        "page": 0,
+        "size": 10,
+        "totalResults": 4,
+        "totalPages": 1,
+        "unfilteredResults": 4,
+        "sort": "RECOMMENDED",
+        "sortOptions": [
+          "RECOMMENDED",
+          "PRICE_ASC",
+          "PRICE_DESC",
+          "DISTANCE",
+          "CATEGORY"
+        ],
+        "appliedFilters": [],
+        "resetAvailable": false,
+        "availableAmenities": [
+          "gym",
+          "kitchen",
+          "parking",
+          "pool",
+          "restaurant",
+          "spa",
+          "wifi"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "http://127.0.0.1:35491/api/admin/hotels/H-NYC-001/rooms/STD-K/rates/FLEX",
+    "headers": {},
+    "data": {
+      "nightly": 260
+    }
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "41f6a005-770c-4412-8087-9ecc1bb5b67a",
+    "body": {
+      "code": "FLEX",
+      "name": "Flexible – pay at hotel",
+      "nightly": 260,
+      "refundable": true,
+      "breakfastIncluded": false,
+      "paymentRule": "PAY_AT_HOTEL",
+      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
+      "restrictions": "Card guarantee required"
+    }
+  }
+}

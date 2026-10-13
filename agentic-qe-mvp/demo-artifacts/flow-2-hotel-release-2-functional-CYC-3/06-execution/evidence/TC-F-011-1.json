@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:35675/api/searches",
+    "headers": {},
+    "data": {
+      "destination": "",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
+      "rooms": 1,
+      "adults": 2,
+      "children": 0
+    }
+  },
+  "response": {
+    "status": 400,
+    "correlationId": "8b144d4d-99ad-45a6-934b-a5e01598b1c5",
+    "body": {
+      "status": 400,
+      "code": "VALIDATION_FAILED",
+      "message": "Please correct the highlighted search details.",
+      "correlationId": "8b144d4d-99ad-45a6-934b-a5e01598b1c5",
+      "retryable": false,
+      "fieldIssues": [
+        {
+          "field": "destination",
+          "ruleId": "destination.required",
+          "message": "Enter a destination, for example New York."
+        }
+      ]
+    }
+  }
+}

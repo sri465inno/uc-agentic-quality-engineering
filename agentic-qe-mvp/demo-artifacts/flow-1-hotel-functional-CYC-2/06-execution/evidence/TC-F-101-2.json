@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:34927/api/ops/reconciliation",
+    "headers": {
+      "X-Operator-Role": "SUPPORT"
+    },
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "ca365dd1-e4db-4afc-891f-659241b9e36a",
+    "body": []
+  }
+}

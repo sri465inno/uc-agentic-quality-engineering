@@ -1,18 +1,22 @@
 'use strict';
-// Records the demo branches (commission engine, hotel booking platform) from GitHub (shallow git clone) into fixtures/github/<dir>
+// Records the demo branches (commission engine, hotel booking platform, hotel API endpoints) from GitHub (shallow git clone) into fixtures/github/<dir>
 // in GitHub REST API shapes (branch, contents, compare), so the MVP also runs offline.
 // Usage: node scripts/record-github-fixtures.js [branch ...]   (default: every known branch)
 const fs = require('fs');
 const path = require('path');
-const { pullSnapshot, BRANCHES, SOURCE } = require('../src/connectors/codebase');
+const { pullSnapshot, BRANCHES: CODE_BRANCHES, SOURCE } = require('../src/connectors/codebase');
+const { API_BRANCHES } = require('../src/connectors/api');
+
+const BRANCHES = { ...CODE_BRANCHES, ...API_BRANCHES };
 
 const ROOT = path.join(__dirname, '..', 'fixtures', 'github');
 const API = `https://api.github.com/repos/${SOURCE.fullName}`;
 const b64 = (s) => Buffer.from(s, 'utf8').toString('base64').replace(/(.{76})/g, '$1\n') + '\n';
 const write = (file, obj) => { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, JSON.stringify(obj, null, 2) + '\n'); };
 
-async function record(branchName, { dir, compareWith }) {
-  const snap = await pullSnapshot(branchName);
+async function record(branchName, config) {
+  const { dir, compareWith } = config;
+  const snap = await pullSnapshot(branchName, { config });
   const out = path.join(ROOT, dir);
   fs.rmSync(out, { recursive: true, force: true });
   write(path.join(out, 'branch.json'), {

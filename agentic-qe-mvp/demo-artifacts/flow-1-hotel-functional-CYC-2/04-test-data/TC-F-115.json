@@ -1,0 +1,49 @@
+{
+  "dataSet": "TD-F-115",
+  "testCase": "TC-F-115",
+  "generatedBy": "Test data agent",
+  "dictionary": {
+    "name": "Hotel booking attributes",
+    "version": "1.0"
+  },
+  "drivers": [
+    {
+      "attribute": "occupancy.rooms",
+      "value": 9,
+      "spec": "integer, required"
+    },
+    {
+      "attribute": "occupancy.adults",
+      "value": 9,
+      "spec": "integer, required"
+    }
+  ],
+  "parameters": {},
+  "conformance": "negative test",
+  "problems": [
+    "occupancy.rooms = 9 is above the maximum of 8"
+  ],
+  "reservation": {
+    "search.destination": "NYC",
+    "stay.checkInOffsetDays": 30,
+    "stay.nights": 3,
+    "occupancy.rooms": 9,
+    "occupancy.adults": 9,
+    "occupancy.children": 0,
+    "selection.hotelId": "H-NYC-001",
+    "selection.roomCode": "STD-K",
+    "selection.ratePlanCode": "FLEX",
+    "extras.code": "",
+    "extras.quantity": 0,
+    "guest.firstName": "Jane",
+    "guest.lastName": "Doe",
+    "guest.email": "jane.doe@example.com",
+    "guest.phone": "+1 212 555 0100",
+    "guest.arrivalTime": "18:00",
+    "payment.token": "tok_visa_ok",
+    "consent.privacyNoticeAccepted": true,
+    "consent.marketingOptIn": false,
+    "notification.locale": "en",
+    "request.idempotencyKeyPrefix": "aqe-booking"
+  }
+}

@@ -1,0 +1,860 @@
+{
+  "agent": "Review agent",
+  "advisory": true,
+  "status": "suggestions",
+  "generatedAt": "2026-10-12T02:22:36.179Z",
+  "testingType": "eqe",
+  "note": "Suggestions only. The human reviewer decides every gap and conflict and approves the requirement set.",
+  "counts": {
+    "gaps": 0,
+    "conflicts": 0,
+    "notes": 42,
+    "added": 27,
+    "missing": 15,
+    "ai": 0,
+    "high": 0
+  },
+  "findings": [],
+  "notes": [
+    {
+      "id": "RA-N01",
+      "category": "added",
+      "severity": "high",
+      "groupId": "G30",
+      "title": "In the code but in no Jira story",
+      "detail": "A price change of more than 1% must be acknowledged by the guest before checkout.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "cart-service/src/main/resources/cart-service.yml",
+          "line": 17,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/cart-service/src/main/resources/cart-service.yml",
+          "quote": "# @rule [AQPI-17] A price change of more than 1% must be acknowledged by the guest before checkout."
+        }
+      ]
+    },
+    {
+      "id": "RA-N02",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G31",
+      "title": "In the code but in no Jira story",
+      "detail": "Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "reservation-service/src/main/resources/reservation-service.yml",
+          "line": 20,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
+          "quote": "# @rule [AQPI-21] Every reservation request needs an Idempotency-Key of 8 to 64 characters; a replay within 24 hours returns the original outcome."
+        }
+      ]
+    },
+    {
+      "id": "RA-N03",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G32",
+      "title": "In the code but in no Jira story",
+      "detail": "Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "search-service/src/main/resources/search-service.yml",
+          "line": 13,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/search-service/src/main/resources/search-service.yml",
+          "quote": "# @rule [AQPI-4] Each room holds at most 4 adults and 3 children, and one search books 1 to 8 rooms."
+        }
+      ]
+    },
+    {
+      "id": "RA-N04",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G33",
+      "title": "In the code but in no Jira story",
+      "detail": "Check-in can be at most 500 days ahead.",
+      "suggestion": "Ask the product owner to add acceptance criteria for it, or exclude it if the behaviour is unintended.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "search-service/src/main/resources/search-service.yml",
+          "line": 14,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/search-service/src/main/resources/search-service.yml",
+          "quote": "# @rule [AQPI-4] Check-in can be at most 500 days ahead."
+        }
+      ]
+    },
+    {
+      "id": "RA-N05",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G1",
+      "title": "No testable expected value",
+      "detail": "All child user stories meet their acceptance criteria and the Definition of Done.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-32",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-23",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+          "quote": "All child user stories meet their acceptance criteria and the Definition of Done."
+        }
+      ]
+    },
+    {
+      "id": "RA-N06",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G3",
+      "title": "No testable expected value",
+      "detail": "Required logging is in place and verified free of sensitive data.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-32",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-23",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+          "quote": "Required logging is in place and verified free of sensitive data."
+        }
+      ]
+    },
+    {
+      "id": "RA-N07",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G11",
+      "title": "No testable expected value",
+      "detail": "Negative and error paths for each story are tested and evidenced.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-23",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+          "quote": "Negative and error paths for each story are tested and evidenced."
+        }
+      ]
+    },
+    {
+      "id": "RA-N08",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G12",
+      "title": "No testable expected value",
+      "detail": "The Product Owner has accepted the capability end to end.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-23",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-23",
+          "quote": "The Product Owner has accepted the capability end to end."
+        }
+      ]
+    },
+    {
+      "id": "RA-N09",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G15",
+      "title": "No testable expected value",
+      "detail": "Templates support required locale and accessibility standards.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-24",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+          "quote": "Templates support required locale and accessibility standards."
+        }
+      ]
+    },
+    {
+      "id": "RA-N10",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G17",
+      "title": "No testable expected value",
+      "detail": "Only necessary personal data may be included.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-24",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+          "quote": "Only necessary personal data may be included."
+        }
+      ]
+    },
+    {
+      "id": "RA-N11",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G19",
+      "title": "No testable expected value",
+      "detail": "A successful reservation creates one confirmation-email request.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-25",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+          "quote": "A successful reservation creates one confirmation-email request."
+        }
+      ]
+    },
+    {
+      "id": "RA-N12",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G22",
+      "title": "No testable expected value",
+      "detail": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-25",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+          "quote": "Operational users can distinguish queued, sent, delivered, bounced, and failed states when supported by the provider."
+        }
+      ]
+    },
+    {
+      "id": "RA-N13",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G23",
+      "title": "No testable expected value",
+      "detail": "Email addresses must be masked outside authorized operational views.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-25",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+          "quote": "Email addresses must be masked outside authorized operational views."
+        },
+        {
+          "source": "jira",
+          "ref": "AQPI-37",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+          "quote": "Email addresses must be masked outside authorized operational views."
+        }
+      ]
+    },
+    {
+      "id": "RA-N14",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G25",
+      "title": "No testable expected value",
+      "detail": "Rate limits and abuse controls apply.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-26",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+          "quote": "Rate limits and abuse controls apply."
+        }
+      ]
+    },
+    {
+      "id": "RA-N15",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G26",
+      "title": "No testable expected value",
+      "detail": "The resend creates a new message event without creating a new reservation.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-26",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-26",
+          "quote": "The resend creates a new message event without creating a new reservation."
+        }
+      ]
+    },
+    {
+      "id": "RA-N16",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G29",
+      "title": "No testable expected value",
+      "detail": "Operational users see the cancellation e-mail with its own delivery state, separate from the confirmation.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-37",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+          "quote": "Operational users see the cancellation e-mail with its own delivery state, separate from the confirmation."
+        }
+      ]
+    },
+    {
+      "id": "RA-N17",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G36",
+      "title": "No testable expected value",
+      "detail": "Selected criteria are visible and removable.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-8",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+          "quote": "Selected criteria are visible and removable."
+        }
+      ]
+    },
+    {
+      "id": "RA-N18",
+      "category": "missing",
+      "severity": "low",
+      "groupId": "G38",
+      "title": "No testable expected value",
+      "detail": "The interface identifies when offers are personalized where required.",
+      "suggestion": "Add an example with an exact expected result (amount, status or error code); until then it can only become a manual case.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-13",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+          "quote": "The interface identifies when offers are personalized where required."
+        }
+      ]
+    },
+    {
+      "id": "RA-N19",
+      "category": "missing",
+      "severity": "medium",
+      "groupId": null,
+      "title": "5 of 15 booking-driving attributes have no rule that varies them",
+      "detail": "selection.hotelId (Hotel chosen from the results); selection.roomCode (Room type chosen on the hotel details page); extras.quantity (Quantity of the ancillary); consent.privacyNoticeAccepted (Guest confirmed the privacy notice); request.idempotencyKeyPrefix (Prefix of the Idempotency-Key sent with a reservation (the full key is 8 to 64 characters))",
+      "suggestion": "Ask for a rule or an example per attribute in the epic; until then no test changes these attributes.",
+      "sources": [
+        {
+          "source": "code",
+          "ref": "data-dictionary/booking-attributes.json",
+          "line": null,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/data-dictionary/booking-attributes.json",
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "RA-N20",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G2",
+      "title": "New for baseline BL-1",
+      "detail": "Release 1.0 behaviour not named in this epic is unchanged and passes regression.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-32",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+          "quote": "Release 1.0 behaviour not named in this epic is unchanged and passes regression."
+        }
+      ]
+    },
+    {
+      "id": "RA-N21",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G4",
+      "title": "New for baseline BL-1",
+      "detail": "The Product Owner has accepted the release 2.0 changes end to end.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-32",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-32",
+          "quote": "The Product Owner has accepted the release 2.0 changes end to end."
+        }
+      ]
+    },
+    {
+      "id": "RA-N22",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G5",
+      "title": "Changes REQ-112 of baseline BL-1",
+      "detail": "Was: A cart expires 30 minutes after it is created and never creates a reservation itself. Now: A cart expires 20 minutes after it is created and never creates a reservation itself.",
+      "suggestion": "Confirm the new value; its cases will be re-designed and the old version kept in history.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-33",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-33",
+          "quote": "A cart expires 20 minutes after it is created and never creates a reservation itself."
+        },
+        {
+          "source": "code",
+          "ref": "cart-service/src/main/resources/cart-service.yml",
+          "line": 16,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/cart-service/src/main/resources/cart-service.yml",
+          "quote": "# @rule [AQPI-33] A cart expires 20 minutes after it is created and never creates a reservation itself."
+        }
+      ]
+    },
+    {
+      "id": "RA-N23",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G6",
+      "title": "Changes REQ-116 of baseline BL-1",
+      "detail": "Was: A stay can be at most 30 nights; Paris (PAR) allows at most 21 nights. Now: A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights.",
+      "suggestion": "Confirm the new value; its cases will be re-designed and the old version kept in history.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-34",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-34",
+          "quote": "A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights."
+        },
+        {
+          "source": "code",
+          "ref": "search-service/src/main/resources/search-service.yml",
+          "line": 12,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/search-service/src/main/resources/search-service.yml",
+          "quote": "# @rule [AQPI-34] A stay can be at most 30 nights; Paris (PAR) allows at most 14 nights."
+        }
+      ]
+    },
+    {
+      "id": "RA-N24",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G7",
+      "title": "Changes REQ-114 of baseline BL-1",
+      "detail": "Was: A confirmation can be resent at most 3 times per booking in 24 hours. Now: A confirmation can be resent at most 5 times per booking in 24 hours.",
+      "suggestion": "Confirm the new value; its cases will be re-designed and the old version kept in history.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-35",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-35",
+          "quote": "A confirmation can be resent at most 5 times per booking in 24 hours."
+        },
+        {
+          "source": "code",
+          "ref": "notification-service/src/main/resources/notification-service.yml",
+          "line": 7,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+          "quote": "# @rule [AQPI-35] A confirmation can be resent at most 5 times per booking in 24 hours."
+        }
+      ]
+    },
+    {
+      "id": "RA-N25",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G8",
+      "title": "New for baseline BL-1",
+      "detail": "A confirmed reservation on a refundable rate can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-36",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+          "quote": "A confirmed reservation on a refundable rate can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed."
+        },
+        {
+          "source": "code",
+          "ref": "reservation-service/src/main/resources/reservation-service.yml",
+          "line": 22,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
+          "quote": "# @rule [AQPI-36] A confirmed reservation can be cancelled free of charge up to 48 hours before check-in; a later cancellation is refused and the reservation stays confirmed."
+        }
+      ]
+    },
+    {
+      "id": "RA-N26",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G9",
+      "title": "New for baseline BL-1",
+      "detail": "A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-36",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+          "quote": "A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released."
+        },
+        {
+          "source": "code",
+          "ref": "reservation-service/src/main/resources/reservation-service.yml",
+          "line": 23,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/reservation-service/src/main/resources/reservation-service.yml",
+          "quote": "# @rule [AQPI-36] A cancelled reservation shows status CANCELLED, its payment authorisation is voided and its rooms are released."
+        }
+      ]
+    },
+    {
+      "id": "RA-N27",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G10",
+      "title": "New for baseline BL-1",
+      "detail": "A reservation on a non-refundable rate cannot be cancelled free of charge and stays confirmed.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-36",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-36",
+          "quote": "A reservation on a non-refundable rate cannot be cancelled free of charge and stays confirmed."
+        }
+      ]
+    },
+    {
+      "id": "RA-N28",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G16",
+      "title": "New for baseline BL-1",
+      "detail": "The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-24",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-24",
+          "quote": "The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in."
+        },
+        {
+          "source": "code",
+          "ref": "notification-service/src/main/resources/notification-service.yml",
+          "line": 16,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+          "quote": "# @rule [AQPI-24] The confirmation e-mail of a refundable booking states its free-cancellation deadline, 48 hours before check-in."
+        }
+      ]
+    },
+    {
+      "id": "RA-N29",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G21",
+      "title": "New for baseline BL-1",
+      "detail": "Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-25",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-25",
+          "quote": "Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused."
+        },
+        {
+          "source": "code",
+          "ref": "notification-service/src/main/resources/notification-service.yml",
+          "line": 14,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+          "quote": "# @rule [AQPI-25] Operations can retry a failed confirmation e-mail at most 3 times; a further retry is refused."
+        }
+      ]
+    },
+    {
+      "id": "RA-N30",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G27",
+      "title": "New for baseline BL-1",
+      "detail": "A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-37",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+          "quote": "A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another."
+        },
+        {
+          "source": "code",
+          "ref": "notification-service/src/main/resources/notification-service.yml",
+          "line": 18,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+          "quote": "# @rule [AQPI-37] A cancelled reservation gets one cancellation e-mail; cancelling it again does not send another."
+        }
+      ]
+    },
+    {
+      "id": "RA-N31",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G28",
+      "title": "New for baseline BL-1",
+      "detail": "A cancellation e-mail that cannot be sent does not undo the cancellation.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-37",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+          "quote": "A cancellation e-mail that cannot be sent does not undo the cancellation."
+        },
+        {
+          "source": "code",
+          "ref": "notification-service/src/main/resources/notification-service.yml",
+          "line": 19,
+          "url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/notification-service/src/main/resources/notification-service.yml",
+          "quote": "# @rule [AQPI-37] A cancellation e-mail that cannot be sent does not undo the cancellation."
+        }
+      ]
+    },
+    {
+      "id": "RA-N32",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G29",
+      "title": "New for baseline BL-1",
+      "detail": "Operational users see the cancellation e-mail with its own delivery state, separate from the confirmation.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-37",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-37",
+          "quote": "Operational users see the cancellation e-mail with its own delivery state, separate from the confirmation."
+        }
+      ]
+    },
+    {
+      "id": "RA-N33",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G34",
+      "title": "New for baseline BL-1",
+      "detail": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-8",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+          "quote": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available."
+        }
+      ]
+    },
+    {
+      "id": "RA-N34",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G35",
+      "title": "New for baseline BL-1",
+      "detail": "The guest can sort using approved options.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-8",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+          "quote": "The guest can sort using approved options."
+        }
+      ]
+    },
+    {
+      "id": "RA-N35",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G36",
+      "title": "New for baseline BL-1",
+      "detail": "Selected criteria are visible and removable.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-8",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+          "quote": "Selected criteria are visible and removable."
+        }
+      ]
+    },
+    {
+      "id": "RA-N36",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G37",
+      "title": "New for baseline BL-1",
+      "detail": "Zero results after filtering offer a reset option.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-8",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+          "quote": "Zero results after filtering offer a reset option."
+        }
+      ]
+    },
+    {
+      "id": "RA-N37",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G38",
+      "title": "New for baseline BL-1",
+      "detail": "The interface identifies when offers are personalized where required.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-13",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+          "quote": "The interface identifies when offers are personalized where required."
+        }
+      ]
+    },
+    {
+      "id": "RA-N38",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G39",
+      "title": "New for baseline BL-1",
+      "detail": "The guest can proceed without selecting ancillary products.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-13",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+          "quote": "The guest can proceed without selecting ancillary products."
+        }
+      ]
+    },
+    {
+      "id": "RA-N39",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G40",
+      "title": "New for baseline BL-1",
+      "detail": "A consent or preference change affects future eligible recommendations according to policy.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-13",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+          "quote": "A consent or preference change affects future eligible recommendations according to policy."
+        }
+      ]
+    },
+    {
+      "id": "RA-N40",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G41",
+      "title": "New for baseline BL-1",
+      "detail": "Success displays confirmation identifier, hotel, stay summary, selected products, and total.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-22",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+          "quote": "Success displays confirmation identifier, hotel, stay summary, selected products, and total."
+        }
+      ]
+    },
+    {
+      "id": "RA-N41",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G42",
+      "title": "New for baseline BL-1",
+      "detail": "A failure does not display a false confirmation.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-22",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+          "quote": "A failure does not display a false confirmation."
+        }
+      ]
+    },
+    {
+      "id": "RA-N42",
+      "category": "added",
+      "severity": "medium",
+      "groupId": "G43",
+      "title": "New for baseline BL-1",
+      "detail": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+      "suggestion": "Confirm it belongs in this increment; new cases will be designed for it.",
+      "sources": [
+        {
+          "source": "jira",
+          "ref": "AQPI-22",
+          "line": null,
+          "url": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+          "quote": "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path."
+        }
+      ]
+    }
+  ]
+}

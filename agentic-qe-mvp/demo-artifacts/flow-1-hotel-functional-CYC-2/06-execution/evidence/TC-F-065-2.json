@@ -1,0 +1,41 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:34927/api/reservations",
+    "headers": {
+      "Idempotency-Key": "aqe-booking-b9556370-1"
+    },
+    "data": {
+      "cartId": "C-6e06a3f8",
+      "guest": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+1 212 555 0100",
+        "arrivalTime": "18:00"
+      },
+      "paymentToken": "4111111111111111",
+      "privacyNoticeAccepted": true,
+      "marketingOptIn": false,
+      "locale": "en"
+    }
+  },
+  "response": {
+    "status": 422,
+    "correlationId": "7fc40193-ca72-4bd7-9954-34139be9475a",
+    "body": {
+      "status": 422,
+      "code": "VALIDATION_FAILED",
+      "message": "Please correct the highlighted fields.",
+      "correlationId": "7fc40193-ca72-4bd7-9954-34139be9475a",
+      "retryable": false,
+      "fieldIssues": [
+        {
+          "field": "paymentToken",
+          "ruleId": "RAW_CARD_REJECTED",
+          "message": "Card numbers can't be sent directly. Please use the secure payment field."
+        }
+      ]
+    }
+  }
+}

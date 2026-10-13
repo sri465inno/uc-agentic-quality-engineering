@@ -1,0 +1,133 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:35675/api/searches/S-9afbccbb/results?amenities=spa",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "65acb723-7a7a-4bdb-80cf-0c44630cb959",
+    "body": {
+      "searchId": "S-9afbccbb",
+      "sessionId": "b06cfd51-bbd0-4bf8-b7e1-102e67935a39",
+      "status": "NO_AVAILABILITY",
+      "criteria": {
+        "destination": "NYC",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
+        "rooms": 1,
+        "adults": 2,
+        "children": 0,
+        "nights": 3
+      },
+      "message": "No hotels match the filters you applied. Remove a filter or reset all filters.",
+      "retryable": false,
+      "suggestions": [
+        {
+          "action": "RESET_FILTERS",
+          "label": "Reset all filters",
+          "criteria": {
+            "destination": "NYC",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
+            "rooms": 1,
+            "adults": 2,
+            "children": 0
+          }
+        },
+        {
+          "action": "CHANGE_DATES",
+          "label": "Try one day later",
+          "criteria": {
+            "destination": "NYC",
+            "checkIn": "2026-11-12",
+            "checkOut": "2026-11-15",
+            "rooms": 1,
+            "adults": 2,
+            "children": 0
+          }
+        },
+        {
+          "action": "CHANGE_OCCUPANCY",
+          "label": "Search for fewer guests",
+          "criteria": {
+            "destination": "NYC",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
+            "rooms": 1,
+            "adults": 1,
+            "children": 0
+          }
+        },
+        {
+          "action": "CHANGE_DESTINATION",
+          "label": "Try LON",
+          "criteria": {
+            "destination": "LON",
+            "checkIn": "2026-11-11",
+            "checkOut": "2026-11-14",
+            "rooms": 1,
+            "adults": 2,
+            "children": 0
+          }
+        }
+      ],
+      "page": {
+        "results": [
+          {
+            "hotelId": "H-NYC-003",
+            "name": "Central Park Grand",
+            "city": "New York",
+            "distanceKm": 2.4,
+            "category": 5,
+            "image": "https://img.example.test/H-NYC-003/exterior.jpg",
+            "amenities": [
+              "wifi",
+              "gym",
+              "spa",
+              "pool",
+              "restaurant"
+            ],
+            "startingNightly": null,
+            "startingStayTotal": null,
+            "currency": "USD",
+            "availability": "SOLD_OUT",
+            "bookable": false,
+            "priceQualification": "Not available for your dates and party"
+          }
+        ],
+        "page": 0,
+        "size": 10,
+        "totalResults": 1,
+        "totalPages": 1,
+        "unfilteredResults": 4,
+        "sort": "RECOMMENDED",
+        "sortOptions": [
+          "RECOMMENDED",
+          "PRICE_ASC",
+          "PRICE_DESC",
+          "DISTANCE",
+          "CATEGORY"
+        ],
+        "appliedFilters": [
+          {
+            "name": "amenity",
+            "value": "spa",
+            "removeHint": "Remove amenity spa"
+          }
+        ],
+        "resetAvailable": true,
+        "availableAmenities": [
+          "gym",
+          "kitchen",
+          "parking",
+          "pool",
+          "restaurant",
+          "spa",
+          "wifi"
+        ]
+      }
+    }
+  }
+}

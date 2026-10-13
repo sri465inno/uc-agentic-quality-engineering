@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:35045/api/offers/interactions",
+    "headers": {},
+    "data": {
+      "sessionId": "sess-bb751ba5",
+      "offerCode": "BREAKFAST",
+      "action": "DISMISS"
+    }
+  },
+  "response": {
+    "status": 202,
+    "correlationId": "f218e273-ca7e-4217-bfac-8db5e4e19d06",
+    "body": null
+  }
+}

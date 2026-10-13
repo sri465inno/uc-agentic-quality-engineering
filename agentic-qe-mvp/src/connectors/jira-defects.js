@@ -19,7 +19,24 @@ function storyOf(defect, items = new Map()) {
   return keys[0] || null;
 }
 
+function gapDefectFields(d, { cycle, story }) {
+  return {
+    project: { key: story.split('-')[0] },
+    summary: `[${d.id}] ${d.title}`.slice(0, 250),
+    labels: ['agentic-qe', 'gap', label(`severity-${d.severity}`), label(cycle.id)],
+    description: adf([
+      `Raised by the Agentic QE Platform at the requirement review of cycle ${cycle.id} (${cycle.name}): ${d.reason || 'gap excluded'}.`,
+      `Story: ${story} ${d.storySummary || ''}${d.epic ? `. Epic: ${d.epic.key} ${d.epic.summary || ''}` : ''}.`,
+      `Acceptance criteria not implemented in the code: ${(d.acceptanceCriteria || []).map((x, i) => `${i + 1}. ${x}`).join(' ')}`,
+      `Expected: ${d.expected}. Actual: ${d.actual}.`,
+      `Severity: ${d.severity} - ${d.impact || ''}. ${d.releaseDecision || ''}`,
+      `Recommendation: ${d.recommendation || '-'}`,
+    ]),
+  };
+}
+
 function defectFields(d, { cycle, story }) {
+  if (d.type === 'gap') return gapDefectFields(d, { cycle, story });
   return {
     project: { key: story.split('-')[0] },
     summary: `[${d.id}] ${d.title}`.slice(0, 250),

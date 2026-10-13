@@ -127,9 +127,9 @@ function git(args, cwd, timeout = 120000) {
   });
 }
 
-/** Shallow `git clone` of a branch; returns the raw snapshot (every snapshot file with its blob sha and text). */
-async function pullSnapshot(branchName = DEFAULT_BRANCH, { cloneUrl = SOURCE.cloneUrl } = {}) {
-  const cfg = branchConfig(branchName);
+/** Shallow `git clone` of a branch (a codebase branch, or any branch with its own `config`); returns the raw snapshot (every snapshot file with its blob sha and text). */
+async function pullSnapshot(branchName = DEFAULT_BRANCH, { cloneUrl = SOURCE.cloneUrl, config } = {}) {
+  const cfg = config || branchConfig(branchName);
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'aqe-clone-'));
   const pulledAt = new Date().toISOString();
   try {

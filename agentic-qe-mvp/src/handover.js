@@ -1,6 +1,7 @@
 'use strict';
 // What each agent actually produced, read from the persisted cycle, keyed by the artefact names skills declare.
 const { getTestingType, suiteOf } = require('./testing-types');
+const { buildLeadReport } = require('./lead-report');
 
 const present = (v) => (v === undefined ? null : v);
 
@@ -27,10 +28,9 @@ const OUTPUTS = {
       testCases: { value: present(t) },
       functional: tt.produces.functional ? { value: t ? t.filter((x) => x.type === 'functional') : null } : skip('functional'),
       nonFunctional: tt.produces.nonFunctional ? { value: t ? t.filter((x) => x.type === 'non-functional') : null } : skip('non-functional'),
-      regressionPack: { ...of(() => true), note: t ? `${t.filter((x) => x.status === 'carried over' && x.inRun !== false).length} carried-over case(s) re-run` : null },
-      journeys: of((x) => ['ui', 'journey'].includes(suiteOf(x))),
-      smokeSet: of(() => true),
-      performanceChecks: of((x) => ['nfr', 'load'].includes(suiteOf(x))),
+      reusedPack: { ...of(() => true), note: t ? `${t.filter((x) => x.status === 'carried over' && x.inRun !== false).length} carried-over case(s) re-run` : null },
+      journeys: tt.id === 'eqe' ? of((x) => ['ui', 'journey'].includes(suiteOf(x))) : skip('journey'),
+      ruleChecks: tt.id === 'functional' ? of((x) => suiteOf(x) === 'api') : skip('single-rule'),
     };
   },
   testdata: (c) => {
@@ -46,6 +46,7 @@ const OUTPUTS = {
     const ran = e ? e.results.filter((r) => r.status !== 'not-run') : null;
     return {
       results: { value: ran, note: e ? `${e.summary.notRun} manual case(s) handed over as not run` : null },
+      evidence: { value: ran ? ran.flatMap((r) => r.evidence || []) : null },
       screenshots: { value: ran ? ran.flatMap((r) => (r.evidence || []).filter((x) => x.contentType === 'image/png')) : null },
       timings: { value: ran ? ran.filter((r) => r.type === 'non-functional') : null },
     };
@@ -53,6 +54,7 @@ const OUTPUTS = {
   defects: (c) => ({ defects: { value: present(c.artifacts?.defects), allowEmpty: true } }),
   report: (c) => ({
     cycleReport: { value: present(c.report) },
+    releaseDecision: { value: c.report ? buildLeadReport(c).recommendation.decision : null },
     testCaseExport: { value: present(c.artifacts?.exports?.testCases) },
     comparison: c.type === 'baseline'
       ? { na: 'Baseline cycle - there is no previous cycle to compare against' }

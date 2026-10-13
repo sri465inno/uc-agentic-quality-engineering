@@ -45,7 +45,7 @@ import com.hotelbooking.reservation.ReservationApi.Status;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
-/** Stories 7.1-7.4 (AQPI-19..22) and the reservation side of 9.1 (AQPI-28). */
+/** Stories 7.1-7.3 (AQPI-19..21) and the reservation side of 9.1 (AQPI-28). */
 @Service
 public class ReservationService {
 
@@ -140,7 +140,7 @@ public class ReservationService {
                 .then(Mono.fromSupplier(() -> new Submission(outcome(reservation), false)));
     }
 
-    /** Story 7.3 AC4 / 7.4 AC2: resolve PENDING_UNKNOWN and inventory-unknown MANUAL_REVIEW cases. */
+    /** Story 7.3 AC4: resolve PENDING_UNKNOWN and inventory-unknown MANUAL_REVIEW cases. */
     public Mono<Outcome> reconcile(String reservationId) {
         Reservation r = find(reservationId);
         if (r.status == Status.PENDING_UNKNOWN) {
@@ -356,59 +356,36 @@ public class ReservationService {
     Outcome outcome(Reservation r) {
         synchronized (r) {
             String headline;
-            String message;
             boolean doNotResubmit;
-            List<String> next;
             switch (r.status) {
                 case CONFIRMED -> {
                     headline = "Your booking is confirmed";
-                    message = "Your confirmation number is " + r.confirmationNumber + ". We've sent the details to your e-mail.";
                     doNotResubmit = true;
-                    next = List.of("Save your confirmation number", "Check your e-mail for the confirmation",
-                            "Contact the hotel for special requests");
                 }
                 case PAYMENT_DECLINED -> {
                     headline = "Your payment was declined";
-                    message = "Your bank declined the payment. You have not been charged and no booking was made.";
                     doNotResubmit = false;
-                    next = List.of("Try a different card", "Contact your bank if the problem continues");
                 }
                 case FAILED -> {
                     headline = "Your booking was not completed";
-                    message = "ROOM_UNAVAILABLE".equals(r.failureCode)
-                            ? "The room became unavailable while we were booking it. Any payment hold has been released."
-                            : "We couldn't complete the payment step. You have not been charged and no booking was made.";
                     doNotResubmit = false;
-                    next = "ROOM_UNAVAILABLE".equals(r.failureCode) ? List.of("Search again for other rooms or dates")
-                            : List.of("Try again in a few minutes");
                 }
                 case PENDING_UNKNOWN -> {
                     headline = "We're confirming your booking";
-                    message = "Please don't book again. We'll update this page and e-mail you as soon as it's confirmed.";
                     doNotResubmit = true;
-                    next = List.of("Check this page again in a few minutes");
                 }
                 case MANUAL_REVIEW -> {
                     headline = "Your booking is being checked";
-                    message = "Our team is checking your booking. You will not be charged twice, and we'll e-mail you with the result.";
                     doNotResubmit = true;
-                    next = List.of("Keep this reference: " + r.id, "Check this page again later");
                 }
                 default -> {
                     headline = "Your booking is being processed";
-                    message = "Please wait and don't submit again.";
                     doNotResubmit = true;
-                    next = List.of("Check this page again in a moment");
                 }
             }
             CartRoom room = r.cart == null ? null : r.cart.room();
-            return new Outcome(r.id, r.status, r.status == Status.CONFIRMED ? r.confirmationNumber : null, headline, message,
-                    doNotResubmit, next, "/api/reservations/" + r.id,
-                    room == null ? null : room.hotelName(), room == null ? null : room.roomName(),
-                    room == null ? null : room.ratePlanName(), room == null ? null : room.checkIn(),
-                    room == null ? null : room.checkOut(), room == null ? 0 : room.nights(),
-                    room == null ? 0 : room.rooms(), room == null ? 0 : room.adults(), room == null ? 0 : room.children(),
-                    r.cart == null ? List.of() : items(r), r.cart == null ? null : r.cart.totals().total(),
+            return new Outcome(r.id, r.status, r.status == Status.CONFIRMED ? r.confirmationNumber : null, headline,
+                    doNotResubmit, "/api/reservations/" + r.id, r.cart == null ? null : r.cart.totals().total(),
                     room == null ? null : room.paymentRule(), r.paymentStatus,
                     room == null ? null : room.cancellationTerms(),
                     r.anonymized || r.firstNameSealed == null ? null : open(r.firstNameSealed), r.notificationStatus,

@@ -1,0 +1,12 @@
+{
+  "type": "file",
+  "encoding": "base64",
+  "size": 386,
+  "name": "README.md",
+  "path": "README.md",
+  "sha": "570cf21837026ef0c21921647007f7440d2fc865",
+  "url": "https://api.github.com/repos/sri465inno/uc-agentic-quality-engineering/contents/README.md?ref=demo%2Fhotel-api-contract-v2",
+  "html_url": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/0b25be5899d7f049de0c0da6a73280e0c8c69f59/README.md",
+  "download_url": "https://raw.githubusercontent.com/sri465inno/uc-agentic-quality-engineering/0b25be5899d7f049de0c0da6a73280e0c8c69f59/README.md",
+  "content": "IyBIb3RlbCBib29raW5nIHBsYXRmb3JtIEFQSSwgcmVsZWFzZSAyLjAKClRoZSBBUEkgZW5kcG9p\nbnRzIGlucHV0IG9mIHRoZSBBZ2VudGljIFFFIFBsYXRmb3JtIGRlbW86IHdoYXQgdGhlIHNpeCBz\nZXJ2aWNlcyBleHBvc2UsIHdpdGhvdXQgdGhlaXIgY29kZS4KCi0gYG9wZW5hcGkvPHNlcnZpY2U+\nLmpzb25gOiBvbmUgT3BlbkFQSSAzIGRvY3VtZW50IHBlciBzZXJ2aWNlLCA1MiBvcGVyYXRpb25z\nIGluIGFsbCAoNDMgYnVzaW5lc3MgZW5kcG9pbnRzLCA5IGludGVybmFsIGFkbWluIGhvb2tzKS4K\nLSBgZGF0YS1kaWN0aW9uYXJ5L2Jvb2tpbmctYXR0cmlidXRlcy5qc29uYDogdGhlIGJvb2tpbmcg\nYXR0cmlidXRlcyB0aGUgdGVzdCBkYXRhIGlzIGdlbmVyYXRlZCBmcm9tLgo=\n"
+}

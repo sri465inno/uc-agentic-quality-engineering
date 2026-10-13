@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:35675/api/searches",
+    "headers": {},
+    "data": {
+      "destination": "NYC",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
+      "rooms": 1,
+      "adults": 2,
+      "children": 4
+    }
+  },
+  "response": {
+    "status": 400,
+    "correlationId": "84da4c0a-d682-42d4-ac07-b53b32893f64",
+    "body": {
+      "status": 400,
+      "code": "VALIDATION_FAILED",
+      "message": "Please correct the highlighted search details.",
+      "correlationId": "84da4c0a-d682-42d4-ac07-b53b32893f64",
+      "retryable": false,
+      "fieldIssues": [
+        {
+          "field": "children",
+          "ruleId": "children.max",
+          "message": "Up to 3 children per room are allowed. Add a room or reduce the number of children."
+        }
+      ]
+    }
+  }
+}

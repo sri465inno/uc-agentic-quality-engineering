@@ -28,8 +28,7 @@ import reactor.core.publisher.Mono;
 public class SearchController {
 
     public static final String SESSION_HEADER = "X-Session-Id";
-    private static final Set<String> REFINEMENTS = Set.of("sort", "minPrice", "maxPrice", "amenities", "minCategory",
-            "maxDistanceKm", "page", "size");
+    private static final Set<String> REFINEMENTS = Set.of("page", "size");
 
     private final SearchService searches;
     private final SearchValidator validator;
@@ -46,7 +45,7 @@ public class SearchController {
         return searches.search(request, sessionId).map(SearchController::entity);
     }
 
-    /** Story 4.2: sort, filter and page an existing search. */
+    /** Story 4.1: page an existing search. */
     @GetMapping("/{searchId}/results")
     public Mono<ResponseEntity<SearchResponse>> refine(@PathVariable String searchId,
             @RequestParam Map<String, String> params) {

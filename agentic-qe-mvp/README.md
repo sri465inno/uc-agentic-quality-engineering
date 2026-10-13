@@ -59,7 +59,9 @@ Each cycle stores its AI call log on `cycle.ai` (agent, purpose, model, prompt h
 
 ## Adaptive platform: what it learns
 
-`src/learning.js` keeps a memory across cycles in `data/learning.json` (cleared by "Reset the demo"). It is shown on the **Learning** page (`GET /api/learning`), and every cycle shows an **Adapted this cycle** panel, also in the cycle report and its `Adapted this cycle` Excel sheet.
+Switched off by default for now: start the server with `AQE_LEARNING=on` to turn it on. When off, no memory is read or written, cycles carry no `learned` section, the feedback endpoint returns 404, and the report has no `Adapted this cycle` section or sheet. The Learning page and the Test Lab are not in the menu (the Test Lab API, `/api/lab`, is unchanged).
+
+`src/learning.js` keeps a memory across cycles in `data/learning.json` (cleared by "Reset the demo"). It is exposed as `GET /api/learning`, and when on every cycle shows an **Adapted this cycle** panel, also in the cycle report and its `Adapted this cycle` Excel sheet.
 
 | It remembers | From | The next cycle |
 | --- | --- | --- |
@@ -70,6 +72,29 @@ Each cycle stores its AI call log on `cycle.ai` (agent, purpose, model, prompt h
 | "Not a defect" and "Confirm" | Defect buttons | The same failure needs QE confirmation before it blocks the release or is raised in Jira |
 
 Feedback: `POST /api/cycles/:id/feedback` with `{ target: requirement|testcase|script|defect, id, verdict: accept|reject|confirm|not-a-defect, note, by }`. `test/learning.test.js` covers the learning loop with AI off and on.
+
+## Testing types: EQE and DQE
+
+Pick one per cycle on the Run page (`testingType: eqe | functional`, where `functional` is DQE, domain functional; default `functional` for the API). Each track has its own sign-off owner: the EQE lead for enterprise assurance, the DQE lead for domain certification. A Flow 2 cycle inherits the type of its baseline. The type drives every agent, the skills, the hand-over and the reports.
+
+| | EQE (enterprise end-to-end business flows) | DQE (domain functional: rules) |
+| --- | --- | --- |
+| Test design | Business journeys across the services (search, select, offers, cart, checkout, confirmation), screens, enterprise quality checks the inputs state | Every business rule with its exact value, boundaries and negative cases, through the service API |
+| Suites | `journey`, `ui`, `nfr`, `load` | `api` |
+| Hand-over | `journeys` | `ruleChecks` |
+| Evidence | Each step's request and response (screenshots where a screen exists) | Each request and response |
+
+## Gaps: Jira stories the code does not implement
+
+The requirements agent reads the Jira story keys the codebase mentions (`@story AQPI-n` tags). A Jira story with acceptance criteria but no code mentioning it is a **gap** (`src/gaps.js`), one finding per story, Minor. Release 1.0 (`demo/hotel-booking-platform`) leaves out AQPI-8, AQPI-13 and AQPI-22; release 2.0 implements them. Code-only statements and different values are not gaps (they stay "code only" and "conflict").
+
+At human review the gap stories are pre-ticked to exclude. Approving raises one Minor, non-blocking gap defect per excluded story and keeps the story in the baseline as skipped. "Reject requirement set" (needs a reviewer name) raises the gap defects and stops the cycle with no baseline. Flow 2 picks the skipped stories up again; when their tests pass, the gap defect is closed as fixed and retested.
+
+## Cycle, Reporting and Traceability pages
+
+- **Cycle page:** inputs considered, the process workflow and, once gap analysis is done, the gap summary. Artifacts open from the workflow tiles.
+- **Reporting:** a cycle summary (testing type, inputs, counts, pass rate, defects, gaps, go/no-go), then the detailed report: 1 cycle outcome and exit criteria (met / not met / open, with the track's sign-off owner), 2 execution evidence with an evidence check that recounts each report figure from the stored cycle, 3 business-flow readiness by epic, 4 defects and risks. The QE lead report, full cycle report and downloads are still there.
+- **Traceability** (`#/traceability?cycle=CYC-n&by=journey|requirement|testcase|script|defect`): requirement, Jira story, test case, test data, automation script, result and defect for one cycle, built from `src/traceability.js`. EQE cycles add a business-journey view with the capabilities (epics) each journey crosses.
 
 ## Layout
 

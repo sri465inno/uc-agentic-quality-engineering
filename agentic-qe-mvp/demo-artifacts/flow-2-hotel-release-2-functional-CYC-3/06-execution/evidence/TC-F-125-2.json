@@ -1,0 +1,86 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:40187/api/reservations",
+    "headers": {
+      "Idempotency-Key": "aqe-booking-670ced39-2"
+    },
+    "data": {
+      "cartId": "C-ae2bb3aa",
+      "guest": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+1 212 555 0100",
+        "arrivalTime": "18:00"
+      },
+      "paymentToken": "tok_visa_ok",
+      "privacyNoticeAccepted": true,
+      "marketingOptIn": false,
+      "locale": "en"
+    }
+  },
+  "response": {
+    "status": 201,
+    "correlationId": "5a3c550e-b10a-4a57-923c-8780283d44cd",
+    "body": {
+      "reservationId": "R-05ef68c5",
+      "status": "CONFIRMED",
+      "confirmationNumber": "HBVNZWNLFE",
+      "headline": "Your booking is confirmed",
+      "message": "Your confirmation number is HBVNZWNLFE. We've sent the details to your e-mail.",
+      "doNotResubmit": true,
+      "nextSteps": [
+        "Save your confirmation number",
+        "Check your e-mail for the confirmation",
+        "Contact the hotel for special requests"
+      ],
+      "statusUrl": "/api/reservations/R-05ef68c5",
+      "hotelName": "Harbor View Hotel",
+      "roomName": "Standard King",
+      "ratePlanName": "Advance saver – pay now",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "items": [
+        {
+          "label": "Standard King - Advance saver – pay now x 1 room(s), 3 night(s)",
+          "quantity": 1,
+          "amount": {
+            "amount": 522.11,
+            "currency": "USD"
+          }
+        },
+        {
+          "label": "Taxes",
+          "quantity": 1,
+          "amount": {
+            "amount": 98.55,
+            "currency": "USD"
+          }
+        },
+        {
+          "label": "Mandatory fees (payable as part of the room price)",
+          "quantity": 1,
+          "amount": {
+            "amount": 75,
+            "currency": "USD"
+          }
+        }
+      ],
+      "total": {
+        "amount": 695.66,
+        "currency": "USD"
+      },
+      "paymentRule": "PAY_NOW",
+      "paymentStatus": "AUTHORIZED",
+      "cancellationTerms": "Non-refundable. Changes are not permitted.",
+      "guestFirstName": "Jane",
+      "notificationStatus": "DELIVERED",
+      "updatedAt": "2026-10-12T02:22:31.159978908Z"
+    }
+  }
+}

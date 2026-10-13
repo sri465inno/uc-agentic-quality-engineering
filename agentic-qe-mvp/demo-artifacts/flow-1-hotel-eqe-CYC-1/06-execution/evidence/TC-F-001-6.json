@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:38899/api/checkout/C-3528e713/payment-summary",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "1210c9a4-1e36-4834-9692-431bd16e7f6d",
+    "body": {
+      "cartId": "C-3528e713",
+      "paymentRule": "PAY_AT_HOTEL",
+      "payNow": {
+        "amount": 0,
+        "currency": "USD"
+      },
+      "payAtHotel": {
+        "amount": 877.19,
+        "currency": "USD"
+      },
+      "total": {
+        "amount": 877.19,
+        "currency": "USD"
+      },
+      "message": "Nothing is charged now. Your card guarantees the booking and you pay 877.19 USD at the hotel.",
+      "privacyNoticeVersion": "privacy-2026-09",
+      "requiredFields": [
+        "guest.firstName",
+        "guest.lastName",
+        "guest.email",
+        "paymentToken",
+        "privacyNoticeAccepted"
+      ]
+    }
+  }
+}

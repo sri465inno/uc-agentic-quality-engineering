@@ -1,0 +1,45 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:38899/api/reservations",
+    "headers": {
+      "Idempotency-Key": "aqe-booking-79b45dbb-2"
+    },
+    "data": {
+      "cartId": "C-abcfa99b",
+      "guest": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+1 212 555 0100",
+        "arrivalTime": "18:00"
+      },
+      "paymentToken": "tok_visa_ok",
+      "privacyNoticeAccepted": true,
+      "marketingOptIn": false,
+      "locale": "en"
+    }
+  },
+  "response": {
+    "status": 201,
+    "correlationId": "43f9e681-d458-4c82-9e10-137450ee393f",
+    "body": {
+      "reservationId": "R-dcef8328",
+      "status": "CONFIRMED",
+      "confirmationNumber": "HBUG9AV66X",
+      "headline": "Your booking is confirmed",
+      "doNotResubmit": true,
+      "statusUrl": "/api/reservations/R-dcef8328",
+      "total": {
+        "amount": 687.91,
+        "currency": "EUR"
+      },
+      "paymentRule": "PAY_NOW",
+      "paymentStatus": "AUTHORIZED",
+      "cancellationTerms": "Non-refundable. Changes are not permitted.",
+      "guestFirstName": "Jane",
+      "notificationStatus": "DELIVERED",
+      "updatedAt": "2026-10-12T02:21:53.282769845Z"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:40187/api/reservations/R-c016f03e/cancel",
+    "headers": {},
+    "data": {}
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "d00b53d3-e9b5-4f91-937d-3c52b4f60f14",
+    "body": {
+      "reservationId": "R-c016f03e",
+      "status": "CANCELLED",
+      "confirmationNumber": null,
+      "headline": "Your booking is cancelled",
+      "message": "Your booking was cancelled free of charge. Any payment hold has been released.",
+      "doNotResubmit": false,
+      "nextSteps": [
+        "Search again to book new dates"
+      ],
+      "statusUrl": "/api/reservations/R-c016f03e",
+      "hotelName": "Harbor View Hotel",
+      "roomName": "Standard King",
+      "ratePlanName": "Flexible – pay at hotel",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
+      "nights": 3,
+      "rooms": 1,
+      "adults": 2,
+      "children": 0,
+      "items": [
+        {
+          "label": "Standard King - Flexible – pay at hotel x 1 room(s), 3 night(s)",
+          "quantity": 1,
+          "amount": {
+            "amount": 614.25,
+            "currency": "USD"
+          }
+        },
+        {
+          "label": "Taxes",
+          "quantity": 1,
+          "amount": {
+            "amount": 115.94,
+            "currency": "USD"
+          }
+        },
+        {
+          "label": "Mandatory fees (payable as part of the room price)",
+          "quantity": 1,
+          "amount": {
+            "amount": 75,
+            "currency": "USD"
+          }
+        }
+      ],
+      "total": {
+        "amount": 805.19,
+        "currency": "USD"
+      },
+      "paymentRule": "PAY_AT_HOTEL",
+      "paymentStatus": "VOIDED",
+      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the booking can no longer be cancelled.",
+      "guestFirstName": "Jane",
+      "notificationStatus": "DELIVERED",
+      "updatedAt": "2026-10-12T02:22:31.556081314Z"
+    }
+  }
+}

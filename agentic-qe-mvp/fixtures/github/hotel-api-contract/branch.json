@@ -1,0 +1,20 @@
+{
+  "name": "demo/hotel-api-contract",
+  "commit": {
+    "sha": "33718449e63a3c106045283c7e359bdbeccf9a71",
+    "url": "https://api.github.com/repos/sri465inno/uc-agentic-quality-engineering/commits/33718449e63a3c106045283c7e359bdbeccf9a71",
+    "html_url": "https://github.com/sri465inno/uc-agentic-quality-engineering/commit/33718449e63a3c106045283c7e359bdbeccf9a71",
+    "commit": {
+      "message": "hotel-booking-platform API endpoints, release 1.0: OpenAPI per service + booking data dictionary"
+    }
+  },
+  "_links": {
+    "self": "https://api.github.com/repos/sri465inno/uc-agentic-quality-engineering/branches/demo%2Fhotel-api-contract",
+    "html": "https://github.com/sri465inno/uc-agentic-quality-engineering/tree/demo/hotel-api-contract"
+  },
+  "protected": false,
+  "_recorded": {
+    "at": "2026-10-13T15:37:37.396Z",
+    "with": "git clone --depth 1 --branch demo/hotel-api-contract https://github.com/sri465inno/uc-agentic-quality-engineering.git"
+  }
+}

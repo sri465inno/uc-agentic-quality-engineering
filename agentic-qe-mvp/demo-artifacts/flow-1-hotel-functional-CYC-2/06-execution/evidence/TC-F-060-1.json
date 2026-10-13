@@ -1,0 +1,154 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:42379/api/carts",
+    "headers": {},
+    "data": {
+      "hotelId": "H-NYC-001",
+      "roomCode": "STD-K",
+      "ratePlanCode": "SAVER",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
+      "rooms": 1,
+      "adults": 2,
+      "children": 0
+    }
+  },
+  "response": {
+    "status": 201,
+    "correlationId": "5648bc65-63fe-4857-b972-99a343b92847",
+    "body": {
+      "cartId": "C-63ff5571",
+      "status": "ACTIVE",
+      "createdAt": "2026-10-12T02:22:09.083360549Z",
+      "expiresAt": "2026-10-12T02:52:09.083360549Z",
+      "secondsRemaining": 1799,
+      "timeoutBehaviour": "Your cart is held for 30 minutes. Rooms are not reserved until you complete booking; after expiry, price and availability are checked again.",
+      "room": {
+        "hotelId": "H-NYC-001",
+        "hotelName": "Harbor View Hotel",
+        "city": "New York",
+        "address": "12 Pier Street",
+        "checkInFrom": "15:00",
+        "checkOutUntil": "11:00",
+        "destination": "NYC",
+        "hotelAmenities": [
+          "wifi",
+          "gym",
+          "restaurant",
+          "parking"
+        ],
+        "roomCode": "STD-K",
+        "roomName": "Standard King",
+        "ratePlanCode": "SAVER",
+        "ratePlanName": "Advance saver – pay now",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
+        "nights": 3,
+        "rooms": 1,
+        "adults": 2,
+        "children": 0,
+        "currency": "USD",
+        "roomCharge": {
+          "amount": 522.11,
+          "currency": "USD"
+        },
+        "taxes": {
+          "amount": 98.55,
+          "currency": "USD"
+        },
+        "mandatoryFees": {
+          "amount": 75,
+          "currency": "USD"
+        },
+        "total": {
+          "amount": 695.66,
+          "currency": "USD"
+        },
+        "paymentRule": "PAY_NOW",
+        "refundable": false,
+        "cancellationTerms": "Non-refundable. Changes are not permitted.",
+        "restrictions": "Full prepayment at booking",
+        "priceVersion": "6607c7ccad7ae9de"
+      },
+      "ancillaries": [],
+      "lines": [
+        {
+          "type": "ROOM",
+          "label": "Standard King - Advance saver – pay now x 1 room(s), 3 night(s)",
+          "quantity": 1,
+          "amount": {
+            "amount": 522.11,
+            "currency": "USD"
+          }
+        },
+        {
+          "type": "TAX",
+          "label": "Taxes",
+          "quantity": 1,
+          "amount": {
+            "amount": 98.55,
+            "currency": "USD"
+          }
+        },
+        {
+          "type": "MANDATORY_FEE",
+          "label": "Mandatory fees (payable as part of the room price)",
+          "quantity": 1,
+          "amount": {
+            "amount": 75,
+            "currency": "USD"
+          }
+        },
+        {
+          "type": "DISCOUNT",
+          "label": "Discounts (none applied)",
+          "quantity": 0,
+          "amount": {
+            "amount": 0,
+            "currency": "USD"
+          }
+        }
+      ],
+      "totals": {
+        "roomCharge": {
+          "amount": 522.11,
+          "currency": "USD"
+        },
+        "taxes": {
+          "amount": 98.55,
+          "currency": "USD"
+        },
+        "mandatoryFees": {
+          "amount": 75,
+          "currency": "USD"
+        },
+        "optionalExtras": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "discounts": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "total": {
+          "amount": 695.66,
+          "currency": "USD"
+        }
+      },
+      "currency": "USD",
+      "priceVersion": "3e9d1b3b3349ca27",
+      "pendingChange": null,
+      "requiresAcknowledgement": false,
+      "notices": [],
+      "editActions": [
+        "CHANGE_ROOM",
+        "CHANGE_RATE_PLAN",
+        "EDIT_EXTRAS",
+        "CHANGE_DATES_WITH_NEW_SEARCH"
+      ],
+      "reservationId": null,
+      "note": "A cart is not a reservation."
+    }
+  }
+}

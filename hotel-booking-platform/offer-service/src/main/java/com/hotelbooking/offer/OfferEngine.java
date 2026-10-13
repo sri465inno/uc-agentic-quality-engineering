@@ -26,7 +26,7 @@ import com.hotelbooking.offer.OfferApi.OfferResponse;
 import com.hotelbooking.offer.OfferCatalog.Product;
 
 /**
- * Eligibility then ranking (stories 5.1-5.3). Eligibility uses only stay context; ranking may use declared
+ * Eligibility then ranking (stories 5.1-5.2). Eligibility uses only stay context; ranking may use declared
  * interests and, with consent, profile interests. No other personal attributes are read.
  */
 @Service

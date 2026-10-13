@@ -1,0 +1,389 @@
+{
+  "dictionary": {
+    "name": "Hotel booking attributes",
+    "version": "1.0",
+    "attributeCount": 21,
+    "source": "https://github.com/sri465inno/uc-agentic-quality-engineering/blob/e0dab1c284965586342fc491680aea4ea691ad15/data-dictionary/booking-attributes.json"
+  },
+  "total": 18,
+  "conforming": 18,
+  "negative": 0,
+  "nonConforming": 0,
+  "byStatus": {
+    "carried over": 13,
+    "new": 5
+  },
+  "method": "Booking drivers come from the test case; every other attribute takes the example value the hotel data dictionary specifies, so each data set is a complete, valid booking unless the case deliberately breaks one value.",
+  "ai": null,
+  "sets": [
+    {
+      "id": "TD-F-001",
+      "testCaseKey": "TC-F-001",
+      "requirementId": "REQ-001",
+      "drivers": [
+        {
+          "attribute": "search.destination",
+          "value": "NYC",
+          "spec": "one of NYC, LON, PAR"
+        },
+        {
+          "attribute": "selection.ratePlanCode",
+          "value": "FLEX",
+          "spec": "one of FLEX, SAVER"
+        },
+        {
+          "attribute": "extras.code",
+          "value": "BREAKFAST",
+          "spec": "one of BREAKFAST, LATE_CHECKOUT, AIRPORT_TRANSFER, PARKING, SPA_ACCESS, KIDS_CLUB, CITY_TOUR, ROMANCE, WINTER_SKATING"
+        },
+        {
+          "attribute": "extras.quantity",
+          "value": 1,
+          "spec": "integer"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 17,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-001.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-F-002",
+      "testCaseKey": "TC-F-002",
+      "requirementId": "REQ-001",
+      "drivers": [
+        {
+          "attribute": "search.destination",
+          "value": "PAR",
+          "spec": "one of NYC, LON, PAR"
+        },
+        {
+          "attribute": "selection.hotelId",
+          "value": "H-PAR-001",
+          "spec": "string, required"
+        },
+        {
+          "attribute": "selection.roomCode",
+          "value": "STD-K",
+          "spec": "string, required"
+        },
+        {
+          "attribute": "selection.ratePlanCode",
+          "value": "SAVER",
+          "spec": "one of FLEX, SAVER"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 17,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-002.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-F-003",
+      "testCaseKey": "TC-F-003",
+      "requirementId": "REQ-002",
+      "drivers": [
+        {
+          "attribute": "selection.hotelId",
+          "value": "H-NYC-001",
+          "spec": "string, required"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 20,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-003.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-F-004",
+      "testCaseKey": "TC-F-004",
+      "requirementId": "REQ-004",
+      "drivers": [
+        {
+          "attribute": "extras.code",
+          "value": "LATE_CHECKOUT",
+          "spec": "one of BREAKFAST, LATE_CHECKOUT, AIRPORT_TRANSFER, PARKING, SPA_ACCESS, KIDS_CLUB, CITY_TOUR, ROMANCE, WINTER_SKATING"
+        },
+        {
+          "attribute": "extras.quantity",
+          "value": 1,
+          "spec": "integer"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 19,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-004.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-F-005",
+      "testCaseKey": "TC-F-005",
+      "requirementId": "REQ-005",
+      "drivers": [
+        {
+          "attribute": "request.idempotencyKeyPrefix",
+          "value": "aqe-double",
+          "spec": "string, required"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 20,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-005.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-F-006",
+      "testCaseKey": "TC-F-006",
+      "requirementId": "REQ-006",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-006.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-F-007",
+      "testCaseKey": "TC-F-007",
+      "requirementId": "REQ-007",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-007.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-N-001",
+      "testCaseKey": "TC-N-001",
+      "requirementId": "REQ-023",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-N-001.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-F-008",
+      "testCaseKey": "TC-F-008",
+      "requirementId": "REQ-047",
+      "drivers": [
+        {
+          "attribute": "extras.code",
+          "value": "LATE_CHECKOUT",
+          "spec": "one of BREAKFAST, LATE_CHECKOUT, AIRPORT_TRANSFER, PARKING, SPA_ACCESS, KIDS_CLUB, CITY_TOUR, ROMANCE, WINTER_SKATING"
+        },
+        {
+          "attribute": "extras.quantity",
+          "value": 1,
+          "spec": "integer"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 19,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-008.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-N-002",
+      "testCaseKey": "TC-N-002",
+      "requirementId": "REQ-082",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-N-002.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-N-003",
+      "testCaseKey": "TC-N-003",
+      "requirementId": "REQ-100",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-N-003.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-N-004",
+      "testCaseKey": "TC-N-004",
+      "requirementId": "REQ-104",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-N-004.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-N-005",
+      "testCaseKey": "TC-N-005",
+      "requirementId": "REQ-108",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-N-005.json",
+      "status": "carried over",
+      "version": 1
+    },
+    {
+      "id": "TD-F-009",
+      "testCaseKey": "TC-F-009",
+      "requirementId": "REQ-121",
+      "drivers": [
+        {
+          "attribute": "selection.ratePlanCode",
+          "value": "FLEX",
+          "spec": "one of FLEX, SAVER"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 20,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-009.json",
+      "status": "new",
+      "version": 1
+    },
+    {
+      "id": "TD-F-010",
+      "testCaseKey": "TC-F-010",
+      "requirementId": "REQ-126",
+      "drivers": [
+        {
+          "attribute": "selection.ratePlanCode",
+          "value": "FLEX",
+          "spec": "one of FLEX, SAVER"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 20,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-010.json",
+      "status": "new",
+      "version": 1
+    },
+    {
+      "id": "TD-F-011",
+      "testCaseKey": "TC-F-011",
+      "requirementId": "REQ-130",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-011.json",
+      "status": "new",
+      "version": 1
+    },
+    {
+      "id": "TD-F-012",
+      "testCaseKey": "TC-F-012",
+      "requirementId": "REQ-134",
+      "drivers": [],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 21,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-012.json",
+      "status": "new",
+      "version": 1
+    },
+    {
+      "id": "TD-F-013",
+      "testCaseKey": "TC-F-013",
+      "requirementId": "REQ-136",
+      "drivers": [
+        {
+          "attribute": "extras.code",
+          "value": "BREAKFAST",
+          "spec": "one of BREAKFAST, LATE_CHECKOUT, AIRPORT_TRANSFER, PARKING, SPA_ACCESS, KIDS_CLUB, CITY_TOUR, ROMANCE, WINTER_SKATING"
+        },
+        {
+          "attribute": "extras.quantity",
+          "value": 1,
+          "spec": "integer"
+        }
+      ],
+      "parameters": {},
+      "attributeCount": 21,
+      "generated": 19,
+      "aiGenerated": 0,
+      "conformance": "conforms",
+      "problems": [],
+      "file": "test-data/TC-F-013.json",
+      "status": "new",
+      "version": 1
+    }
+  ]
+}

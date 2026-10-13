@@ -64,7 +64,7 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl = globalTh
   const manual = a.testCases.filter((t) => t.automation !== 'Automated');
   const handovers = collectHandovers(cycle);
   return {
-    adapted: adaptedIn(cycle),
+    adapted: cycle.learned ? adaptedIn(cycle) : null,
     title: `${APP_TITLE} - Cycle report`,
     generatedAt: new Date().toISOString(),
     cycle: {
@@ -82,8 +82,8 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl = globalTh
       id: tt.id, ids: tt.ids, name: tt.name, focus: tt.focus, approach: cycle.type === 'incremental' ? tt.incremental : tt.baseline,
       selection: a.selection || null,
     },
-    reviewAgent: cycle.reviewAgent ? { counts: cycle.reviewAgent.counts, note: cycle.reviewAgent.note, findings: cycle.reviewAgent.findings } : null,
-    dataModel: (cycle.inputs.find((i) => i.slot === 'codebase') || {}).dataModel || null,
+    reviewAgent: cycle.reviewAgent ? { counts: cycle.reviewAgent.counts, note: cycle.reviewAgent.note, findings: cycle.reviewAgent.findings, notes: cycle.reviewAgent.notes || [] } : null,
+    dataModel: (cycle.inputs.find((i) => i.slot === 'api' && i.dataModel) || cycle.inputs.find((i) => i.slot === 'codebase') || {}).dataModel || null,
     skills: (cycle.skills || []).map((k) => ({ id: k.id, name: k.name, description: k.description, file: k.file, sha256: k.sha256, appliesTo: k.appliesTo, delivers: k.delivers })),
     handovers,
     handoverStatus: handovers.some((h) => h.status === 'incomplete') ? 'incomplete' : 'complete',
@@ -161,7 +161,7 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl = globalTh
     },
     honesty: [
       ...cycle.inputs.map((i) => `${i.label} ${i.ref}: ${i.provenance.label}`),
-      exec ? `Execution: ${exec.summary.executed} automated cases really executed by ${exec.tool} against ${exec.sut.name} (${exec.sut.build}); ${exec.summary.notRun} manual case(s) designed but not executed.` : 'Execution: not run.',
+      exec ? `Execution: ${exec.summary.executed} automation test cases really executed by ${exec.tool} against ${exec.sut.name} (${exec.sut.build}); ${exec.summary.notRun} manual case(s) designed but not executed.` : 'Execution: not run.',
       aiState.mode === 'ai'
         ? `AI (${aiState.providerLabel} ${aiState.model}) suggested matches, findings, descriptions, extra manual cases, synthetic data, draft specs, triage and prose; code checked every suggestion and people approved the requirement set. Values, delta classification, coverage, pass/fail and defect raising are computed in code, not by the model.`
         : 'No model was used (no model API key set): normalisation, review, design, data, triage and prose are rule-based. Delta classification, coverage, pass/fail and defect raising are always computed in code.',
@@ -186,7 +186,7 @@ function traceabilityHtml(t) {
   if (!t) return '';
   const res = (x) => (x === 'passed' || x === 'failed' ? statusCell(x) : esc(x));
   return `<h2>Traceability</h2><p class="muted">Jira item &rarr; requirement &rarr; business rule &rarr; test case &rarr; test data &rarr; script &rarr; result &rarr; defect. ${esc(t.totals.covered)} of ${esc(t.totals.jiraItems)} Jira items covered by a test case; ${esc(t.totals.verified)} verified, ${esc(t.totals.failing)} failing.</p>
-<h3>By Jira item</h3>${table(['Jira item', 'Level', 'Parent', 'Summary', 'Requirements', 'Test cases', 'Automated', 'Passed', 'Failed', 'Defects', 'Status'], t.stories.map((x) => [esc(x.key), esc(x.level), esc(x.parent || '-'), esc(x.summary || ''), x.requirements, x.testCases, x.automated, x.passed, x.failed, esc(x.defects.join(', ') || '-'), esc(x.status)]))}
+<h3>By Jira item</h3>${table(['Jira item', 'Level', 'Parent', 'Summary', 'Requirements', 'Test cases', 'Automation test cases', 'Passed', 'Failed', 'Defects', 'Status'], t.stories.map((x) => [esc(x.key), esc(x.level), esc(x.parent || '-'), esc(x.summary || ''), x.requirements, x.testCases, x.automated, x.passed, x.failed, esc(x.defects.join(', ') || '-'), esc(x.status)]))}
 <h3>By test case</h3>${table(['Jira', 'Requirement', 'Rule', 'Test case', 'Type', 'Test data', 'Script', 'Result', 'Defect', 'Jira defect'], t.rows.map((x) => [esc(x.jiraKeys.join(', ')), esc(x.requirementId), esc(x.ruleId || '-'), `${esc(x.testCaseKey)} ${esc(x.testCase)}`, esc(x.testType), esc(x.testDataId || '-'), esc(x.scriptFile || '-'), res(x.result), esc(x.defects.join(', ') || '-'), esc(x.jiraDefects.join(', ') || '-')]))}`;
 }
 
@@ -206,12 +206,12 @@ ${r.platform ? `<h2>Platform scope</h2><p>Capability under test: <b>${esc(r.plat
 <p>${r.platform.agents.length} platform agents: ${r.platform.agents.map((g) => `${g.no}. ${esc(g.name)} <span class="muted">(${esc(g.status)})</span>`).join(' &middot; ')}</p>
 <p>Inputs implemented in this MVP: ${esc(r.platform.inputsImplemented.join('; '))}. Platform input types not in this MVP: <span class="muted">${esc(r.platform.inputsPlatformOnly.join('; '))}</span>.</p>` : ''}
 <h2>Type of testing</h2>${r.testing ? `<p><b>${esc(r.testing.name)}</b>: ${esc(r.testing.focus)}<br>${esc(r.testing.approach)}</p>${r.testing.selection ? `<p>${kv({ 'cases in the pack': r.testing.selection.designed, 'in this run': r.testing.selection.inRun, reused: r.testing.selection.reused, 're-designed': r.testing.selection.redesigned, added: r.testing.selection.added, 'kept outside this run': r.testing.selection.notInRun })}</p>${r.testing.selection.gaps.length ? `<ul>${r.testing.selection.gaps.map((g) => `<li class="fail">${esc(g.message)}</li>`).join('')}</ul>` : ''}` : ''}` : ''}
-<h2>Adapted this cycle: what the platform learned from earlier cycles</h2>${(r.adapted || []).length ? table(['Lesson applied', 'Detail'], r.adapted.map((x) => [esc(x.kind), esc(x.lesson)])) : '<p>No earlier lesson applied to this cycle.</p>'}
+${r.adapted ? `<h2>Adapted this cycle: what the platform learned from earlier cycles</h2>${r.adapted.length ? table(['Lesson applied', 'Detail'], r.adapted.map((x) => [esc(x.kind), esc(x.lesson)])) : '<p>No earlier lesson applied to this cycle.</p>'}` : ''}
 <h2>Review agent suggestions</h2>${r.reviewAgent ? `<p>${kv(r.reviewAgent.counts)} &middot; <span class="muted">${esc(r.reviewAgent.note)}</span></p>${table(['ID', 'Kind', 'Severity', 'Suggestion', 'Source'], r.reviewAgent.findings.map((f) => [esc(f.id), esc(f.category), esc(f.severity), `<b>${esc(f.title)}</b><br>${esc(f.detail || '')}<br><span class="muted">${esc(f.suggestion)}</span>`, esc(f.sources.map((x) => [x.ref, x.line].filter(Boolean).join(':')).join(', '))]))}` : '<p>No review agent ran for this cycle.</p>'}
 <h2>Active skills</h2>${(r.skills || []).length ? table(['Skill', 'Description', 'Seen by agents', 'Owes', 'File'], r.skills.map((k) => [`<b>${esc(k.name)}</b><br><code>${esc(k.id)}</code>`, esc(k.description), esc(k.appliesTo.join(', ')), esc(Object.entries(k.delivers).map(([ag, keys]) => `${ag}: ${keys.join(', ')}`).join('; ')), `${esc(k.file)} <span class="muted">${esc(k.sha256)}</span>`])) : '<p>No skills were active for this cycle.</p>'}
 <div class="kpis">
-<div class="kpi">Requirements<b>${r.requirements.total}</b></div><div class="kpi">Test cases<b>${r.testCases.total}</b></div><div class="kpi">Scripts<b>${r.scripts.total}</b></div>
-<div class="kpi">Executed<b>${ex.executed ? ex.summary.executed : 0}</b></div><div class="kpi">Pass rate<b>${ex.executed ? ex.summary.passRate + '%' : 'n/a'}</b></div><div class="kpi">Defects<b>${r.defects.open.length}</b></div>
+<div class="kpi">Requirements<b>${r.requirements.total}</b></div><div class="kpi">Test cases<b>${r.testCases.total}</b></div><div class="kpi">Automation scripts<b>${r.scripts.total}</b></div>
+<div class="kpi">Automation test cases run<b>${ex.executed ? ex.summary.executed : 0}</b></div><div class="kpi">Automation pass rate<b>${ex.executed ? ex.summary.passRate + '%' : 'n/a'}</b></div><div class="kpi">Defects<b>${r.defects.open.length}</b></div>
 </div>
 <h2>Summary</h2><p>${esc(r.narrative.text)}</p>${(r.narrative.risks || []).length ? `<p><b>Risks</b></p><ul>${r.narrative.risks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${r.narrative.recommendation ? `<p><b>Recommendation:</b> ${esc(r.narrative.recommendation)}</p>` : ''}<p class="muted">Narrative: ${esc(r.narrative.draftedBy)}</p>
 ${aiHtml(r.ai)}
@@ -230,7 +230,7 @@ ${table(['Case', 'Requirement', 'Name', 'Result', 'Duration ms', 'Note'], ex.res
 ${table(['ID', 'Title', 'Severity', 'Blocks release', 'Story', 'Jira defect', 'Case', 'Rule', 'Requirement', 'Expected', 'Actual', 'Failing assertion', 'Movement'], r.defects.open.map((d) => [esc(d.id), esc(d.title), esc(d.severity), d.blocksRelease === null ? 'not assessed' : d.blocksRelease ? '<b class="fail">yes</b>' : 'no', esc(d.story || '-'), d.jiraUrl ? `<a href="${esc(d.jiraUrl)}">${esc(d.jiraKey)}</a>` : esc(d.jira || 'not raised in Jira'), esc(d.testCaseKey), esc(d.ruleId || '-'), esc(d.requirementId), esc(d.expected), esc(d.actual), `<code>${esc(d.assertion)}</code>`, esc(d.movement)]))}
 ${r.defects.resolved.length ? `<h3>Fixed, retested and certified</h3>${table(['ID', 'Title', 'Story', 'First seen', 'Retested', 'Result', 'Status', 'Certification'], r.defects.resolved.map((d) => [esc(d.id), esc(d.title), esc(d.story || '-'), esc(d.firstSeenCycle), `${esc(d.testCaseKey)} in ${esc(d.resolvedInCycle || '-')}`, statusCell(d.retestResult || 'passed'), esc(d.status), esc(d.certification || '')]))}` : ''}
 <h2>Coverage</h2>${r.coverage ? `<p>${kv({ 'designed %': r.coverage.percent.designed, 'automated %': r.coverage.percent.automated, 'executed %': r.coverage.percent.executed, 'passing %': r.coverage.percent.passing })}</p>
-${table(['Requirement', 'Cases', 'Automated', 'Executed', 'Failed', 'Status'], r.coverage.rows.map((c) => [esc(c.requirementId), c.cases, c.automated, c.executed, c.failed, esc(c.status)]))}
+${table(['Requirement', 'Test cases', 'Automation test cases', 'Automation test cases run', 'Failed', 'Status'], r.coverage.rows.map((c) => [esc(c.requirementId), c.cases, c.automated, c.executed, c.failed, esc(c.status)]))}
 ${r.coverage.attributes ? `<h3>Driver attribute coverage</h3><p>${esc(r.coverage.attributes.exercised)} of ${esc(r.coverage.attributes.driverCount)} ${esc(r.platform?.driversLabel || 'commission-driving attributes')} (of ${esc(r.coverage.attributes.attributeCount)} ${esc(r.platform?.modelLabel || 'reservation')} attributes) are varied by at least one test case (${esc(r.coverage.attributes.percent)}%).</p>
 ${table(['Attribute', 'Description', 'Varied by cases', 'Status'], r.coverage.attributes.rows.map((x) => [`<code>${esc(x.attribute)}</code>`, esc(x.description), esc(x.cases.join(', ') || '-'), esc(x.status)]))}` : ''}` : '-'}
 ${traceabilityHtml(r.traceability)}

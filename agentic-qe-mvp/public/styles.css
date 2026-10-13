@@ -234,3 +234,12 @@ details.ms[open]>summary{border-color:var(--navy);box-shadow:0 0 0 2px var(--nav
 .lab-example{display:block;width:100%;text-align:left;margin:6px 0 0;padding:7px 10px;border:1px solid var(--line2);border-radius:3px;background:var(--s1);color:inherit;font:inherit;font-size:13px;cursor:pointer}
 .lab-example:hover{border-color:var(--navy);background:var(--navy-soft)}
 #lab-text{font-family:inherit;font-size:14px;line-height:1.45;min-height:96px}
+.gate-badge{display:inline-block;border-radius:999px;padding:3px 12px;font-weight:600;font-size:13px;border:1px solid}.gate-badge.good{background:#eaf5ee;color:var(--ok);border-color:#b6d5c2}.gate-badge.bad{background:#fbeaea;color:#a12b2b;border-color:#e7b9b9}
+
+.flow{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;padding:6px 0 4px}
+.flow-step{display:flex;flex-direction:column;gap:3px;padding:8px 10px;border:1px solid var(--line);border-top:4px solid var(--line);border-radius:4px;background:var(--s1);color:var(--tx);text-decoration:none;font-size:12px;box-shadow:var(--shadow)}
+.flow-step:hover{border-color:var(--line2)}.flow-step.sel{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy)}
+.flow-step.done{border-top-color:#2e7d32}.flow-step.running,.flow-step.waiting{border-top-color:#e09b00}.flow-step.failed{border-top-color:#c62828}
+.flow-step b{font-size:13px}.flow-who{color:var(--muted,#5b6475);font-size:11px;text-transform:uppercase;letter-spacing:.03em}.flow-st{font-size:11px}
+.flow-sum{color:var(--muted,#5b6475);overflow-wrap:anywhere}
+.run-summary .banner ul{margin:0;padding-left:18px}.run-summary .banner li{margin:4px 0;font-size:14px}

@@ -16,8 +16,8 @@ const tmpDir = (label) => fs.mkdtempSync(path.join(os.tmpdir(), `aqe-${label}-`)
 async function baselineCycle(pipeline, store, { reviewer = 'Priya Shah', pick = '1.5 %', testingType } = {}) {
   let c = await pipeline.startCycle({ type: 'baseline', inputs: BASELINE_INPUTS, reviewer, testingType });
   const conflict = c.normalisation.groups.find((g) => g.bucket === 'conflict');
-  const opt = conflict.options.find((o) => o.signature === pick);
-  const { done } = pipeline.review(c.id, { reviewer, resolutions: { [conflict.id]: opt.optionId } });
+  const opt = conflict && conflict.options.find((o) => o.signature === pick);
+  const { done } = pipeline.review(c.id, { reviewer, resolutions: conflict ? { [conflict.id]: opt.optionId } : {} });
   await done;
   c = store.getCycle(c.id);
   return c;

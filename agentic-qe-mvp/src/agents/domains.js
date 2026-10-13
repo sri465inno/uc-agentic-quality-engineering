@@ -32,13 +32,9 @@ const DOMAINS = {
     modelLabel: 'reservation',
     driversLabel: 'commission-driving attributes',
     gaps: {
-      performanceKind: 'quote-latency',
-      performance: { title: 'Performance testing was chosen but no input states a response-time target', suggestion: 'Add a target such as "Commission quotes return within 300 ms at the 95th percentile" to the epic or the codebase README.' },
-      e2e: { title: 'End-to-end testing was chosen but no input describes the advisor screen', suggestion: 'Add a story for the commission statement screen, so the journeys test a stated requirement.' },
+      eqe: { title: 'EQE testing was chosen but no input describes the advisor screen', suggestion: 'Add a story for the commission statement screen, so the journeys test a stated requirement.' },
       e2eNoUi: 'No input describes the advisor screen, so the journeys check the statement page the codebase ships without a stated requirement for it.',
-      smokeKind: 'base-commission-rate',
-      smoke: { title: 'Smoke testing was chosen but no input states the base commission rate', suggestion: 'Add the base rate; the smoke run checks it first.' },
-      functional: { title: 'Functional testing was chosen but no input states a commission rule', suggestion: 'Add the commission rules with their values to the epic.' },
+      functional: { title: 'DQE testing was chosen but no input states a commission rule', suggestion: 'Add the commission rules with their values to the epic.' },
     },
   },
   hotel: {
@@ -55,21 +51,17 @@ const DOMAINS = {
     modelLabel: 'booking',
     driversLabel: 'booking-driving attributes',
     gaps: {
-      performanceKind: null,
-      performance: { title: 'Performance testing was chosen but no hotel input states a measurable response-time target this MVP can time', suggestion: 'AQPI-31 states reliability objectives; add a p95 target per endpoint to time it. Until then performance is reported as a gap, not measured.' },
-      e2e: { title: 'End-to-end testing was chosen but no input describes a guest journey', suggestion: 'Add the search-to-confirmation acceptance criteria (AQPI-1) so the journeys test a stated requirement.' },
+      eqe: { title: 'EQE testing was chosen but no input describes a guest journey', suggestion: 'Add the search-to-confirmation acceptance criteria (AQPI-1) so the journeys test a stated requirement.' },
       e2eNoUi: 'The hotel services have no browser screen, so the journeys run through the service APIs; screen checks such as keyboard and focus order stay manual.',
-      smokeKind: 'hotel-search',
-      smoke: { title: 'Smoke testing was chosen but no input states the hotel search behaviour', suggestion: 'Add the search acceptance criteria (AQPI-3); the smoke run checks search first.' },
-      functional: { title: 'Functional testing was chosen but no input states a booking or price rule', suggestion: 'Add the cart, payment and reservation acceptance criteria (AQPI-17, AQPI-20, AQPI-21).' },
+      functional: { title: 'DQE testing was chosen but no input states a booking or price rule', suggestion: 'Add the cart, payment and reservation acceptance criteria (AQPI-17, AQPI-20, AQPI-21).' },
     },
   },
 };
 
-/** Domain of a branch name, a cycle (its SUT build) or a list of cycle inputs (the codebase input's branch). */
+/** Domain of a branch name, a cycle (its SUT build) or a list of cycle inputs (the codebase input's branch, else the build of the API endpoints input). */
 function domainOf(x) {
   const branch = typeof x === 'string' ? x
-    : Array.isArray(x) ? x.find((i) => i.slot === 'codebase')?.branch
+    : Array.isArray(x) ? x.find((i) => i.slot === 'codebase')?.branch || x.find((i) => i.slot === 'api')?.build
       : x?.sutBuild;
   return isHotelBranch(branch) ? DOMAINS.hotel : DOMAINS.commission;
 }

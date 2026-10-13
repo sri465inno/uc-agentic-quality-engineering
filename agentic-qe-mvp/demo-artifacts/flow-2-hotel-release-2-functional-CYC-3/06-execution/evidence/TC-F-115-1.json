@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:35675/api/searches",
+    "headers": {},
+    "data": {
+      "destination": "NYC",
+      "checkIn": "2026-11-11",
+      "checkOut": "2026-11-14",
+      "rooms": 9,
+      "adults": 9,
+      "children": 0
+    }
+  },
+  "response": {
+    "status": 400,
+    "correlationId": "c2aa79e9-022f-459d-8b86-572d8c0f8994",
+    "body": {
+      "status": 400,
+      "code": "VALIDATION_FAILED",
+      "message": "Please correct the highlighted search details.",
+      "correlationId": "c2aa79e9-022f-459d-8b86-572d8c0f8994",
+      "retryable": false,
+      "fieldIssues": [
+        {
+          "field": "rooms",
+          "ruleId": "rooms.range",
+          "message": "Choose between 1 and 8 rooms."
+        }
+      ]
+    }
+  }
+}

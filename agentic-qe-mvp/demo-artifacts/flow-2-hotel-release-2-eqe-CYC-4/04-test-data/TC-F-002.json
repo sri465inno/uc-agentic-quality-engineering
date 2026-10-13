@@ -1,0 +1,57 @@
+{
+  "dataSet": "TD-F-002",
+  "testCase": "TC-F-002",
+  "generatedBy": "Test data agent",
+  "dictionary": {
+    "name": "Hotel booking attributes",
+    "version": "1.0"
+  },
+  "drivers": [
+    {
+      "attribute": "search.destination",
+      "value": "PAR",
+      "spec": "one of NYC, LON, PAR"
+    },
+    {
+      "attribute": "selection.hotelId",
+      "value": "H-PAR-001",
+      "spec": "string, required"
+    },
+    {
+      "attribute": "selection.roomCode",
+      "value": "STD-K",
+      "spec": "string, required"
+    },
+    {
+      "attribute": "selection.ratePlanCode",
+      "value": "SAVER",
+      "spec": "one of FLEX, SAVER"
+    }
+  ],
+  "parameters": {},
+  "conformance": "conforms",
+  "problems": [],
+  "reservation": {
+    "search.destination": "PAR",
+    "stay.checkInOffsetDays": 30,
+    "stay.nights": 3,
+    "occupancy.rooms": 1,
+    "occupancy.adults": 2,
+    "occupancy.children": 0,
+    "selection.hotelId": "H-PAR-001",
+    "selection.roomCode": "STD-K",
+    "selection.ratePlanCode": "SAVER",
+    "extras.code": "",
+    "extras.quantity": 0,
+    "guest.firstName": "Jane",
+    "guest.lastName": "Doe",
+    "guest.email": "jane.doe@example.com",
+    "guest.phone": "+1 212 555 0100",
+    "guest.arrivalTime": "18:00",
+    "payment.token": "tok_visa_ok",
+    "consent.privacyNoticeAccepted": true,
+    "consent.marketingOptIn": false,
+    "notification.locale": "en",
+    "request.idempotencyKeyPrefix": "aqe-booking"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:40187/api/checkout/C-8373c2e6/payment-summary",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "95681413-dd65-4fc6-b38b-ec33b1378e37",
+    "body": {
+      "cartId": "C-8373c2e6",
+      "paymentRule": "PAY_NOW",
+      "payNow": {
+        "amount": 695.66,
+        "currency": "USD"
+      },
+      "payAtHotel": {
+        "amount": 0,
+        "currency": "USD"
+      },
+      "total": {
+        "amount": 695.66,
+        "currency": "USD"
+      },
+      "message": "You will be charged 695.66 USD now.",
+      "privacyNoticeVersion": "privacy-2026-09",
+      "requiredFields": [
+        "guest.firstName",
+        "guest.lastName",
+        "guest.email",
+        "paymentToken",
+        "privacyNoticeAccepted"
+      ]
+    }
+  }
+}

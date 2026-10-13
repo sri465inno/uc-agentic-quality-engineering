@@ -1,0 +1,426 @@
+[
+  {
+    "id": "DEF-001",
+    "type": "gap",
+    "story": "AQPI-8",
+    "storySummary": "4.2 Sort and filter hotel results",
+    "storyUrl": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-8",
+    "epic": {
+      "key": "AQPI-6",
+      "summary": "[Epic 2] Hotel Results and Selection"
+    },
+    "title": "AQPI-8 4.2 Sort and filter hotel results: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "priority": "Low",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-1",
+    "cycleId": "CYC-1",
+    "raisedBy": "Priya Shah",
+    "raisedAt": "2026-10-12T02:21:41.616Z",
+    "raisedAtGate": "Human review of the requirement set",
+    "reason": "gap excluded by Priya Shah at the requirement review",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available. The guest can sort using approved options. Selected criteria are visible and removable. Zero results after filtering offer a reset option.",
+    "acceptanceCriteria": [
+      "The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available.",
+      "The guest can sort using approved options.",
+      "Selected criteria are visible and removable.",
+      "Zero results after filtering offer a reset option."
+    ],
+    "jiraKeys": [
+      "AQPI-8"
+    ],
+    "sourceRefs": [
+      "AQPI-8",
+      "AQPI-6"
+    ],
+    "codeChecked": "sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)",
+    "suspectedCodeArea": "no code mentions AQPI-8",
+    "expected": "The code implements AQPI-8 4.2 Sort and filter hotel results (4 acceptance criteria)",
+    "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-8",
+    "stepsToReproduce": [
+      "Open AQPI-8 in Jira (epic AQPI-6) and read its acceptance criteria.",
+      "Search sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) for AQPI-8.",
+      "No class, rule, test or traceability entry mentions the story."
+    ],
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-1",
+        "actual": "gap"
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-8",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-001] AQPI-8 4.2 Sort and filter hotel results: asked for in Jira but not implemented in the code",
+          "labels": [
+            "agentic-qe",
+            "gap",
+            "severity-minor",
+            "cyc-1"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-1 (Hotel booking baseline · EQE): gap excluded by Priya Shah at the requirement review."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-8 4.2 Sort and filter hotel results. Epic: AQPI-6 [Epic 2] Hotel Results and Selection."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Acceptance criteria not implemented in the code: 1. The guest can apply supported filters such as price range, amenities, hotel category, and distance when data is available. 2. The guest can sort using approved options. 3. Selected criteria are visible and removable. 4. Zero results after filtering offer a reset option."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: The code implements AQPI-8 4.2 Sort and filter hotel results (4 acceptance criteria). Actual: No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-8."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Minor - requirement not implemented yet (gap); no test was run against it. Does not block the release: gap excluded by Priya Shah at the requirement review."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Recommendation: Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-8"
+        }
+      }
+    }
+  },
+  {
+    "id": "DEF-002",
+    "type": "gap",
+    "story": "AQPI-13",
+    "storySummary": "5.3 Explain and control personalization",
+    "storyUrl": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-13",
+    "epic": {
+      "key": "AQPI-10",
+      "summary": "[Epic 3] Personalized Ancillary Offers"
+    },
+    "title": "AQPI-13 5.3 Explain and control personalization: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "priority": "Low",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-1",
+    "cycleId": "CYC-1",
+    "raisedBy": "Priya Shah",
+    "raisedAt": "2026-10-12T02:21:41.616Z",
+    "raisedAtGate": "Human review of the requirement set",
+    "reason": "gap excluded by Priya Shah at the requirement review",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "The interface identifies when offers are personalized where required. The guest can proceed without selecting ancillary products. A consent or preference change affects future eligible recommendations according to policy.",
+    "acceptanceCriteria": [
+      "The interface identifies when offers are personalized where required.",
+      "The guest can proceed without selecting ancillary products.",
+      "A consent or preference change affects future eligible recommendations according to policy."
+    ],
+    "jiraKeys": [
+      "AQPI-13"
+    ],
+    "sourceRefs": [
+      "AQPI-13",
+      "AQPI-10"
+    ],
+    "codeChecked": "sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)",
+    "suspectedCodeArea": "no code mentions AQPI-13",
+    "expected": "The code implements AQPI-13 5.3 Explain and control personalization (3 acceptance criteria)",
+    "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-13",
+    "stepsToReproduce": [
+      "Open AQPI-13 in Jira (epic AQPI-10) and read its acceptance criteria.",
+      "Search sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) for AQPI-13.",
+      "No class, rule, test or traceability entry mentions the story."
+    ],
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-1",
+        "actual": "gap"
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-13",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-002] AQPI-13 5.3 Explain and control personalization: asked for in Jira but not implemented in the code",
+          "labels": [
+            "agentic-qe",
+            "gap",
+            "severity-minor",
+            "cyc-1"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-1 (Hotel booking baseline · EQE): gap excluded by Priya Shah at the requirement review."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-13 5.3 Explain and control personalization. Epic: AQPI-10 [Epic 3] Personalized Ancillary Offers."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Acceptance criteria not implemented in the code: 1. The interface identifies when offers are personalized where required. 2. The guest can proceed without selecting ancillary products. 3. A consent or preference change affects future eligible recommendations according to policy."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: The code implements AQPI-13 5.3 Explain and control personalization (3 acceptance criteria). Actual: No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-13."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Minor - requirement not implemented yet (gap); no test was run against it. Does not block the release: gap excluded by Priya Shah at the requirement review."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Recommendation: Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-13"
+        }
+      }
+    }
+  },
+  {
+    "id": "DEF-003",
+    "type": "gap",
+    "story": "AQPI-22",
+    "storySummary": "7.4 Show booking outcome",
+    "storyUrl": "https://tcs-team-ou6drgfr.atlassian.net/browse/AQPI-22",
+    "epic": {
+      "key": "AQPI-18",
+      "summary": "[Epic 5] Checkout and Reservation"
+    },
+    "title": "AQPI-22 7.4 Show booking outcome: asked for in Jira but not implemented in the code",
+    "severity": "Minor",
+    "priority": "Low",
+    "impact": "requirement not implemented yet (gap); no test was run against it",
+    "blocksRelease": false,
+    "releaseDecision": "Does not block the release: gap excluded by Priya Shah at the requirement review.",
+    "status": "Open",
+    "movement": "new",
+    "firstSeenCycle": "CYC-1",
+    "cycleId": "CYC-1",
+    "raisedBy": "Priya Shah",
+    "raisedAt": "2026-10-12T02:21:41.616Z",
+    "raisedAtGate": "Human review of the requirement set",
+    "reason": "gap excluded by Priya Shah at the requirement review",
+    "testCaseKey": null,
+    "ruleId": null,
+    "requirementId": null,
+    "requirementText": "Success displays confirmation identifier, hotel, stay summary, selected products, and total. A failure does not display a false confirmation. Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path.",
+    "acceptanceCriteria": [
+      "Success displays confirmation identifier, hotel, stay summary, selected products, and total.",
+      "A failure does not display a false confirmation.",
+      "Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path."
+    ],
+    "jiraKeys": [
+      "AQPI-22"
+    ],
+    "sourceRefs": [
+      "AQPI-22",
+      "AQPI-18"
+    ],
+    "codeChecked": "sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32)",
+    "suspectedCodeArea": "no code mentions AQPI-22",
+    "expected": "The code implements AQPI-22 7.4 Show booking outcome (3 acceptance criteria)",
+    "actual": "No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-22",
+    "stepsToReproduce": [
+      "Open AQPI-22 in Jira (epic AQPI-18) and read its acceptance criteria.",
+      "Search sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) for AQPI-22.",
+      "No class, rule, test or traceability entry mentions the story."
+    ],
+    "recommendation": "Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner.",
+    "executedAt": null,
+    "occurrences": [
+      {
+        "cycleId": "CYC-1",
+        "actual": "gap"
+      }
+    ],
+    "jira": {
+      "status": "not raised",
+      "reason": "Jira write is not configured (JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN): the defect is kept in the platform with its story link and a ready Jira payload",
+      "linkedTo": "AQPI-22",
+      "payload": {
+        "fields": {
+          "project": {
+            "key": "AQPI"
+          },
+          "summary": "[DEF-003] AQPI-22 7.4 Show booking outcome: asked for in Jira but not implemented in the code",
+          "labels": [
+            "agentic-qe",
+            "gap",
+            "severity-minor",
+            "cyc-1"
+          ],
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Raised by the Agentic QE Platform at the requirement review of cycle CYC-1 (Hotel booking baseline · EQE): gap excluded by Priya Shah at the requirement review."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Story: AQPI-22 7.4 Show booking outcome. Epic: AQPI-18 [Epic 5] Checkout and Reservation."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Acceptance criteria not implemented in the code: 1. Success displays confirmation identifier, hotel, stay summary, selected products, and total. 2. A failure does not display a false confirmation. 3. Unknown or timeout states instruct the guest not to resubmit blindly and provide a safe recovery path."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected: The code implements AQPI-22 7.4 Show booking outcome (3 acceptance criteria). Actual: No code in sri465inno/uc-agentic-quality-engineering@demo/hotel-booking-platform (b212a32) mentions AQPI-22."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Severity: Minor - requirement not implemented yet (gap); no test was run against it. Does not block the release: gap excluded by Priya Shah at the requirement review."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Recommendation: Exclude it from this cycle as a gap (a Minor gap defect is raised and the story is picked up again in the next release), or discuss with the developer and the product owner."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Relates",
+          "to": "AQPI-22"
+        }
+      }
+    }
+  }
+]

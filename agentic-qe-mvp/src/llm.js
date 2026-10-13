@@ -12,8 +12,8 @@ function templateNarrative(f) {
   const parts = [
     `${f.cycleName} (${f.cycleType}) worked from ${f.inputs}.`,
     `The reviewed requirement set holds ${f.requirements} requirements${f.delta ? ` (${f.delta})` : ''}.`,
-    `${f.testCases} test cases are designed, ${f.automated} of them automated in ${f.scripts} Playwright scripts.`,
-    f.executed ? `Execution ran ${f.executed} automated cases for real: ${f.passed} passed and ${f.failed} failed (pass rate ${f.passRate}%).` : 'The suite has not been executed yet.',
+    `${f.testCases} test cases are designed, ${f.automated} of them automation test cases in ${f.scripts} Playwright automation scripts.`,
+    f.executed ? `Execution ran ${f.executed} automation test cases for real: ${f.passed} passed and ${f.failed} failed (pass rate ${f.passRate}%).` : 'The suite has not been executed yet.',
     f.defects ? `${f.defects} defect(s) were raised from real failures: ${f.defectTitles}.` : 'No defects were raised.',
   ];
   return parts.join(' ');

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:38899/api/reservations/R-0a87ed35",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "e425de94-cc0b-46ce-834e-0500ea47d7fb",
+    "body": {
+      "reservationId": "R-0a87ed35",
+      "status": "CONFIRMED",
+      "confirmationNumber": "HBCLPJEY9M",
+      "headline": "Your booking is confirmed",
+      "doNotResubmit": true,
+      "statusUrl": "/api/reservations/R-0a87ed35",
+      "total": {
+        "amount": 805.19,
+        "currency": "USD"
+      },
+      "paymentRule": "PAY_AT_HOTEL",
+      "paymentStatus": "AUTHORIZED",
+      "cancellationTerms": "Free cancellation until 48 hours before check-in; after that the first night is charged.",
+      "guestFirstName": "Jane",
+      "notificationStatus": "DELIVERED",
+      "updatedAt": "2026-10-12T02:21:54.431979948Z"
+    }
+  }
+}

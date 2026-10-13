@@ -1,0 +1,108 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "http://127.0.0.1:35675/api/searches/S-3739670c/results?size=2",
+    "headers": {},
+    "data": null
+  },
+  "response": {
+    "status": 200,
+    "correlationId": "e6651d16-1e4f-4e4c-a7a5-00d6f57d5651",
+    "body": {
+      "searchId": "S-3739670c",
+      "sessionId": "9253d3bd-cdff-444d-8379-748f96094032",
+      "status": "RESULTS",
+      "criteria": {
+        "destination": "NYC",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-14",
+        "rooms": 1,
+        "adults": 2,
+        "children": 0,
+        "nights": 3
+      },
+      "message": null,
+      "retryable": false,
+      "suggestions": [],
+      "page": {
+        "results": [
+          {
+            "hotelId": "H-NYC-001",
+            "name": "Harbor View Hotel",
+            "city": "New York",
+            "distanceKm": 1.2,
+            "category": 4,
+            "image": "https://img.example.test/H-NYC-001/exterior.jpg",
+            "amenities": [
+              "wifi",
+              "gym",
+              "restaurant",
+              "parking"
+            ],
+            "startingNightly": {
+              "amount": 174.04,
+              "currency": "USD"
+            },
+            "startingStayTotal": {
+              "amount": 695.66,
+              "currency": "USD"
+            },
+            "currency": "USD",
+            "availability": "AVAILABLE",
+            "bookable": true,
+            "priceQualification": "From 174.04 USD per room per night before taxes (18.875%); Destination fee per room per night: 25.00 USD, payable on top of the room rate"
+          },
+          {
+            "hotelId": "H-NYC-004",
+            "name": "Brooklyn Loft Suites",
+            "city": "New York",
+            "distanceKm": 6.8,
+            "category": 3,
+            "image": "https://img.example.test/H-NYC-004/exterior.jpg",
+            "amenities": [
+              "wifi",
+              "kitchen",
+              "parking"
+            ],
+            "startingNightly": {
+              "amount": 147.26,
+              "currency": "USD"
+            },
+            "startingStayTotal": {
+              "amount": 570.18,
+              "currency": "USD"
+            },
+            "currency": "USD",
+            "availability": "AVAILABLE",
+            "bookable": true,
+            "priceQualification": "From 147.26 USD per room per night before taxes (18.875%); Destination fee per room per night: 15.00 USD, payable on top of the room rate"
+          }
+        ],
+        "page": 0,
+        "size": 2,
+        "totalResults": 4,
+        "totalPages": 2,
+        "unfilteredResults": 4,
+        "sort": "RECOMMENDED",
+        "sortOptions": [
+          "RECOMMENDED",
+          "PRICE_ASC",
+          "PRICE_DESC",
+          "DISTANCE",
+          "CATEGORY"
+        ],
+        "appliedFilters": [],
+        "resetAvailable": false,
+        "availableAmenities": [
+          "gym",
+          "kitchen",
+          "parking",
+          "pool",
+          "restaurant",
+          "spa",
+          "wifi"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://127.0.0.1:38899/api/reservations",
+    "headers": {
+      "Idempotency-Key": "aqe-double-49c6343e-1"
+    },
+    "data": {
+      "cartId": "C-7558da99",
+      "guest": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+1 212 555 0100",
+        "arrivalTime": "18:00"
+      },
+      "paymentToken": "tok_visa_ok",
+      "privacyNoticeAccepted": true,
+      "marketingOptIn": false,
+      "locale": "en"
+    }
+  },
+  "response": {
+    "status": 202,
+    "correlationId": "dfc5e7e5-b8c9-472d-90a3-adad80b73ffc",
+    "body": {
+      "reservationId": "R-080fee31",
+      "status": "PROCESSING",
+      "confirmationNumber": null,
+      "headline": "Your booking is being processed",
+      "doNotResubmit": true,
+      "statusUrl": "/api/reservations/R-080fee31",
+      "total": null,
+      "paymentRule": null,
+      "paymentStatus": "NOT_ATTEMPTED",
+      "cancellationTerms": null,
+      "guestFirstName": null,
+      "notificationStatus": "NOT_REQUESTED",
+      "updatedAt": "2026-10-12T02:21:54.058294039Z"
+    }
+  }
+}

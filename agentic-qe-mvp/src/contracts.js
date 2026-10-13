@@ -51,4 +51,41 @@ function checkEndpoints(body, contract) {
   return unknown.length ? `calls endpoint(s) not in the API contract: ${unknown.map((c) => `${c.method} ${c.service}${c.path}`).join(', ')}` : null;
 }
 
-module.exports = { extractContract, checkEndpoints, endpointsIn };
+const CALL = /\bcall\(\s*request\s*,\s*testInfo\s*,\s*['"]([\w-]+)['"]\s*,\s*['"](\w+)['"]\s*,\s*(['"`])((?:(?!\3).)*)\3/g;
+const callsIn = (text) => [...String(text).matchAll(CALL)].map((m) => ({ service: m[1], method: m[2].toUpperCase(), path: m[4].replace(/\$\{[^}]*\}/g, 'x').split('?')[0] }));
+
+/** Helpers of a spec prelude (function or arrow) and the endpoints each one calls. */
+function preludeHelpers(prelude) {
+  const out = new Map();
+  for (const chunk of String(prelude || '').split(/\n(?=(?:async\s+)?function\s|const\s)/)) {
+    const name = (chunk.match(/^(?:async\s+)?function\s+(\w+)|^const\s+(\w+)\s*=/) || []).slice(1).find(Boolean);
+    if (name && name !== 'call') { const calls = callsIn(chunk); if (calls.length) out.set(name, calls); }
+  }
+  return out;
+}
+
+/** Which business endpoints of the API contract the automation scripts call, directly or through a prelude helper. */
+function endpointCoverage(scripts, contract, prelude) {
+  const helpers = preludeHelpers(prelude);
+  const business = contract.filter((e) => !e.internal);
+  const rows = business.map((e) => ({ service: e.service, method: e.method, path: e.path, scripts: [], testCases: [] }));
+  const unknown = [];
+  for (const sc of scripts || []) {
+    const body = String(sc.code || '').replace(prelude || '\u0000', '');
+    const calls = [...callsIn(body), ...[...helpers].filter(([n]) => new RegExp(`\\b${n}\\(`).test(body)).flatMap(([, c]) => c)];
+    for (const c of calls) {
+      const row = rows.find((r) => r.service === c.service && r.method === c.method && pattern(r.path).test(c.path));
+      if (row) {
+        if (!row.scripts.includes(sc.file)) row.scripts.push(sc.file);
+        for (const k of (sc.covers || []).map((x) => (typeof x === 'string' ? x : x.testCaseKey || x.key)).filter(Boolean)) if (!row.testCases.includes(k)) row.testCases.push(k);
+      } else if (!contract.some((e) => e.service === c.service && e.method === c.method && pattern(e.path).test(c.path))) {
+        const label = `${c.method} ${c.service}${c.path}`;
+        if (!unknown.includes(label)) unknown.push(label);
+      }
+    }
+  }
+  const called = rows.filter((r) => r.scripts.length).length;
+  return { total: rows.length, called, notCalled: rows.length - called, internal: contract.length - business.length, rows, unknownCalls: unknown };
+}
+
+module.exports = { extractContract, checkEndpoints, endpointsIn, endpointCoverage, preludeHelpers };
