@@ -87,7 +87,7 @@ function reviewInputs({ normalisation, inputs = [], gaps = null, testingType, de
     });
   }
 
-  const dataModel = inputs.find((i) => i.slot === 'codebase')?.dataModel;
+  const dataModel = (inputs.find((i) => i.slot === 'api' && i.dataModel) || inputs.find((i) => i.slot === 'codebase'))?.dataModel;
   if (dataModel) {
     const varied = variedAttributes(groups, classify);
     const untouched = dataModel.drivers.filter((d) => !varied.has(d.name));

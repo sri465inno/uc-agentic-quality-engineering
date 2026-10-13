@@ -1,5 +1,5 @@
 'use strict';
-// Three-input normalisation: Jira initiative + Jira epic + codebase -> one requirement set.
+// Normalisation: the Jira initiative and epics, plus the codebase when the testing type reads it (DQE), -> one requirement set.
 // Pure, deterministic code: no model involvement.
 const { describe, jaccard, SAME_SUBJECT_THRESHOLD } = require('./text');
 

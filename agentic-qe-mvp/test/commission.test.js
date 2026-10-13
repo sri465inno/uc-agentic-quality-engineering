@@ -53,8 +53,8 @@ test('Jira export mode pulls the synthetic REST v3 export from GitHub and never 
   assert.ok(!calls.some((u) => u.includes('atlassian.net')));
 });
 
-test('the MVP accepts exactly three input types for a baseline; the platform lists more', async () => {
-  assert.deepEqual(INPUT_TYPES.filter((t) => t.mvp === 'implemented').map((t) => t.id), ['jira-initiative', 'jira-epic', 'codebase']);
+test('the MVP accepts Jira, codebase and API endpoints inputs; the platform lists more', async () => {
+  assert.deepEqual(INPUT_TYPES.filter((t) => t.mvp === 'implemented').map((t) => t.id), ['jira-initiative', 'jira-epic', 'codebase', 'api-contract']);
   assert.ok(INPUT_TYPES.filter((t) => t.mvp === 'platform only').length >= 5);
   const loaded = await loadInputs({ initiative: { mode: 'jira', key: 'COM-1' }, epic: { mode: 'jira', key: 'COM-10' }, codebase: { mode: 'sample', branch: 'demo/commission-engine' }, confluence: { mode: 'paste', text: 'x' } },
     ['initiative', 'epic', 'codebase'], { env: {} });

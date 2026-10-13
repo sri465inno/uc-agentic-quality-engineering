@@ -29,7 +29,8 @@ const { AiSession } = require('./ai');
 const ai = require('./agents/ai');
 const learning = require('./learning');
 const gaps = require('./gaps');
-const { extractContract, checkEndpoints } = require('./contracts');
+const { extractContract, checkEndpoints, endpointCoverage } = require('./contracts');
+const { DEMO_EXAMPLES } = require('./platform');
 const { checkDraft } = require('./agents/ai');
 
 const DICTIONARY_FILE = 'inputs/data-dictionary.json';
@@ -63,6 +64,13 @@ function noAutomatedRun(runCases, cycle) {
   const at = now();
   return { executed: false, tool: 'Playwright not started: no automation test case in this run', sut: { build: cycle.sutBuild }, startedAt: at, finishedAt: at,
     specFiles: [], results, summary: summarise(results) };
+}
+
+/** Build under test of a Jira-only (EQE) run: the demo example whose Jira project the inputs name. */
+function demoBuildOf(loaded, type) {
+  const project = (loaded.map((i) => String(i.ref || '').match(/\b([A-Z][A-Z0-9]+)-\d+/)).find(Boolean) || [])[1];
+  const ex = project && DEMO_EXAMPLES.find((e) => Object.values(e.samples).some((v) => String(v).startsWith(`${project}-`)));
+  return ex ? ex.samples[type === 'baseline' ? 'baselineBranch' : 'incrementalBranch'] : null;
 }
 
 class Pipeline {
@@ -114,8 +122,10 @@ class Pipeline {
     }
   }
 
-  /** Endpoints declared by the cycle's codebase; AI-written specs may call only these. */
+  /** Endpoints of the cycle's API endpoints input, else those its codebase declares; AI-written specs may call only these. */
   contractOf(cycle) {
+    const api = cycle.inputs.find((i) => i.slot === 'api');
+    if (api?.endpoints?.length) return api.endpoints.map(({ service, method, path: p, file }) => ({ service, method, path: p, file }));
     const branch = cycle.inputs.find((i) => i.slot === 'codebase')?.branch || cycle.sutBuild;
     return BRANCHES[branch] ? extractContract(path.join(__dirname, '..', 'fixtures', 'github', BRANCHES[branch].dir, 'contents')) : [];
   }
@@ -198,12 +208,14 @@ ${body}
       baseline = this.store.getBaseline(baselineId);
       if (!baseline) throw httpError(400, 'Pick an existing approved baseline for an incremental cycle');
     }
-    const slots = type === 'baseline' ? ['initiative', 'epic', 'codebase'] : ['epic', 'codebase'];
+    const slots = tt.inputs[type];
     const loaded = await loadInputs(inputs, slots, { env: this.env });
     if (!loaded.length) throw httpError(400, 'Provide at least one input');
     const id = this.store.nextId('nextCycle', 'CYC');
     const n = Number(id.slice(4));
     const codebase = loaded.find((i) => i.slot === 'codebase');
+    const apiInput = loaded.find((i) => i.slot === 'api');
+    const dictInput = [apiInput, codebase].find((i) => i?.dictionary);
     const statements = loaded.flatMap((i) => i.statements);
     const pickedUp = baseline ? gaps.pickUpStatements(baseline.skippedGaps) : [];
     const normalisation = normalise([...statements, ...pickedUp]);
@@ -219,26 +231,26 @@ ${body}
       createdBy: reviewer || null,
       baselineId: baseline ? baseline.id : null,
       baselineVersionAtStart: baseline ? baseline.version : null,
-      sutBuild: sutBuild || codebase?.branch || DEFAULT_BUILD,
+      sutBuild: sutBuild || codebase?.branch || apiInput?.build || demoBuildOf(loaded, type) || DEFAULT_BUILD,
       inputs: loaded.map(({ statements: s, dictionary: _d, ...rest }) => ({ ...rest, statementCount: s.length })),
-      dataDictionary: codebase?.dictionary ? { file: DICTIONARY_FILE, source: codebase.dataModel?.url || null, name: codebase.dictionary.name, version: codebase.dictionary.version, attributeCount: codebase.dictionary.attributes.length } : null,
+      dataDictionary: dictInput ? { file: DICTIONARY_FILE, source: dictInput.dataModel?.url || null, input: dictInput.label, name: dictInput.dictionary.name, version: dictInput.dictionary.version, attributeCount: dictInput.dictionary.attributes.length } : null,
       normalisation,
       skills: activeSkills,
       phases: PHASES[type].map((p) => ({ name: p, label: PHASE_LABEL[p], status: 'pending' })),
       approvals: [],
       artifacts: {},
     };
-    if (codebase?.dictionary) {
+    if (dictInput) {
       const file = path.join(this.store.runDir(id), DICTIONARY_FILE);
       fs.mkdirSync(path.dirname(file), { recursive: true });
-      fs.writeFileSync(file, JSON.stringify(codebase.dictionary));
+      fs.writeFileSync(file, JSON.stringify(dictInput.dictionary));
     }
     setPhase(cycle, 'ingest', 'done', `${loaded.length} input(s), ${statements.length} statements`);
     const session = this.aiFor(cycle);
     const matched = await ai.aiMatchStatements(normalisation, session, { guidance: this.skillContext(cycle, 'normalise').guidance });
     cycle.normalisation = matched.normalisation;
     cycle.gaps = {
-      analysedAt: now(), code: codebase?.ref || null,
+      analysedAt: now(), code: codebase?.ref || null, applicable: Boolean(codebase),
       findings: gaps.findGaps({ normalisation: cycle.normalisation, inputs: loaded }),
       pickedUp: (baseline?.skippedGaps || []).map((g) => ({ story: g.story, summary: g.summary, defectId: g.defectId, skippedInCycle: g.skippedInCycle, statementCount: g.statements.length })),
     };
@@ -246,7 +258,7 @@ ${body}
     const nc = cycle.normalisation.counts;
     this.handover(cycle, 'normalise');
     const gapN = cycle.gaps.findings.length;
-    setPhase(cycle, 'normalise', 'done', `${nc.statements} statements from Jira and code · ${gapN ? `${gapN} Jira ${gapN === 1 ? 'story' : 'stories'} not in the code` : 'no gaps: the code has every Jira story'}${nc.conflict ? ` · ${nc.conflict} conflict(s)` : ''}${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
+    setPhase(cycle, 'normalise', 'done', `${nc.statements} statements from ${cycle.gaps.applicable ? 'Jira and code' : 'Jira'} · ${!cycle.gaps.applicable ? 'no code input, so no Jira-vs-code gap check' : gapN ? `${gapN} Jira ${gapN === 1 ? 'story' : 'stories'} not in the code` : 'no gaps: the code has every Jira story'}${nc.conflict ? ` · ${nc.conflict} conflict(s)` : ''}${nc.aiMatched ? ` · ${nc.aiMatched} Jira/code pair(s) matched by AI` : ''}`);
     if (baseline) cycle.deltaPreview = this.previewDelta(cycle, {}, baseline);
     const reviewCtx = this.skillContext(cycle, 'review-agent');
     cycle.reviewAgent = reviewInputs({ normalisation: cycle.normalisation, inputs: cycle.inputs, gaps: cycle.gaps, testingType: tt.id, deltaPreview: cycle.deltaPreview || null, baseline });
@@ -446,6 +458,8 @@ ${body}
     setPhase(cycle, 'testdata', 'done', `${tds.total} data sets of ${tds.dictionary.attributeCount} attributes · ${tds.conforming} conform to the data dictionary · ${tds.negative} deliberately invalid (negative tests)${tds.nonConforming ? ` · ${tds.nonConforming} do not conform` : ''}${previous ? ` (${tds.byStatus.new || 0} new · ${tds.byStatus['re-generated'] || 0} re-generated · ${tds.byStatus['carried over'] || 0} carried over)` : ''}${tds.ai ? ` · ${tds.ai.personas} AI personas` : ''}`);
     setPhase(cycle, 'scripts', 'done', `${out.scripts.length} Playwright specs${split(out.scripts)}${aiNote((out.aiScripts || []).length, 'AI draft spec(s) awaiting QE review, not executed')}`);
     cycle.artifacts = { ...cycle.artifacts, requirements, rules: out.rules, testCases: out.testCases, testData: td.dataSets, testDataSummary: tds, scripts: out.scripts, aiScripts: out.aiScripts || [], affected: out.affected, selection: out.selection };
+    const apiIn = cycle.inputs.find((i) => i.slot === 'api' && i.endpoints);
+    if (apiIn) cycle.artifacts.apiCoverage = { input: apiIn.ref, ...endpointCoverage(out.scripts, apiIn.endpoints, domainOf(cycle).SPEC_PRELUDE) };
     for (const a of ['requirements', 'testcases', 'testdata', 'scripts']) this.handover(cycle, a);
   }
 
@@ -676,7 +690,7 @@ ${body}
     this.handover(cycle, 'defects');
     const inJira = defects.filter((d) => d.jira && d.jira.key).length;
     setPhase(cycle, 'defects', 'done', `${defects.length} defect(s) from real failures${defects.length ? ` · ${inJira} in Jira` : ''}${resolved.length ? ` · ${resolved.length} resolved` : ''}`);
-    cycle.artifacts.coverage = computeCoverage(cycle.artifacts.requirements, runCases, execution.results, cycle.inputs.find((i) => i.slot === 'codebase')?.dataModel);
+    cycle.artifacts.coverage = computeCoverage(cycle.artifacts.requirements, runCases, execution.results, cycle.inputs.find((i) => i.slot === 'api' && i.dataModel)?.dataModel || cycle.inputs.find((i) => i.slot === 'codebase')?.dataModel);
     this.store.saveCycle(cycle);
   }
 

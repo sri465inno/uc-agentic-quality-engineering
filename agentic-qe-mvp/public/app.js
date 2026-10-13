@@ -352,11 +352,18 @@ function cycleTile(c) {
     lines: [`${c.example ? `${esc(exampleShort(c.example))} · ` : ''}${c.delta ? esc(c.delta) : `baseline ${esc(c.baselineId || '(on completion)')}`}`, ex ? `${ex.passed}/${ex.executed} passed · ${ex.passRate}%` : '<span class="muted">not executed yet</span>'], progress: ex ? ex.passRate : 0 });
 }
 
+/** False on EQE cycles: no code input, so Jira is not compared with the code. */
+const gapChecked = (c) => Boolean(c.gaps) && c.gaps.applicable !== false && !(c.gaps.applicable === undefined && !c.inputs.some((i) => i.slot === 'codebase'));
+const NO_GAP_CHECK = 'No gap check: EQE takes only the Jira initiative, epics and stories, not the code, so Jira is not compared with the code. The Jira-vs-code gap check and its gap defects belong to the DQE track.';
+
 /* ---------------- Run ---------------- */
 const RUN_SLOTS = {
-  baseline: [['initiative', 'Jira initiative', 'jira-initiative', 'initiative'], ['epic', 'Jira epic', 'jira-epic', 'epic'], ['codebase', 'Codebase', 'codebase', 'baselineBranch']],
-  incremental: [['epic', 'New Jira epic', 'jira-epic', 'incrementalEpic'], ['codebase', 'Updated codebase', 'codebase', 'incrementalBranch']],
+  baseline: { initiative: ['initiative', 'Jira initiative', 'jira-initiative', 'initiative'], epic: ['epic', 'Jira epics and stories', 'jira-epic', 'epic'], codebase: ['codebase', 'Codebase', 'codebase', 'baselineBranch'], api: ['api', 'API endpoints', 'api-contract', 'baselineApi'] },
+  incremental: { epic: ['epic', 'New Jira epics and stories', 'jira-epic', 'incrementalEpic'], codebase: ['codebase', 'Updated codebase', 'codebase', 'incrementalBranch'], api: ['api', 'Updated API endpoints', 'api-contract', 'incrementalApi'] },
 };
+/** The inputs a type of testing reads: EQE only Jira; DQE Jira, the codebase and the API endpoints. */
+const runSlots = (type, ttId) => ((META.testingTypes.find((t) => t.id === ttId) || {}).inputs || { baseline: ['initiative', 'epic', 'codebase'], incremental: ['epic', 'codebase'] })[type].map((s) => RUN_SLOTS[type][s]);
+const TECH_SLOTS = new Set(['codebase', 'api']);
 let DEMO_INPUTS = null;
 
 /** The demo example whose inputs fill the slots: picked for a baseline, the one with an increment otherwise. */
@@ -373,13 +380,15 @@ function inputsDropdown(type, slots, active) {
   const item = (t) => {
     const slot = inFlow.get(t.id);
     if (slot) return checkItem({ cls: 'input-on', value: slot, checked: used.has(t.id), title: t.name, tag: pill('in this demo', 'passed'), sub: t.about });
-    const viaCode = t.id === 'data-model';
-    const tag = viaCode ? pill('read from the codebase', 'carried')
-      : t.mvp === 'implemented' ? pill(type === 'incremental' ? 'baseline only' : 'not used', 'pending') : pill('platform', 'pending');
-    return checkItem({ cls: 'input-fixed', value: t.id, checked: viaCode && used.has('codebase'), disabled: true, title: t.name, tag, sub: t.about });
+    const viaCode = t.id === 'data-model' && (used.has('codebase') || used.has('api-contract'));
+    const dqeOnly = ['codebase', 'api-contract', 'data-model'].includes(t.id) && runState.testingTypes[0] === 'eqe';
+    const tag = viaCode ? pill('read from the codebase and API endpoints', 'carried')
+      : dqeOnly ? pill('DQE only', 'pending')
+        : t.mvp === 'implemented' ? pill(type === 'incremental' ? 'baseline only' : 'not used', 'pending') : pill('platform', 'pending');
+    return checkItem({ cls: 'input-fixed', value: t.id, checked: viaCode, disabled: true, title: t.name, tag, sub: t.about });
   };
   const types = META.platform.inputTypes;
-  const names = types.filter((t) => used.has(t.id) || (t.id === 'data-model' && used.has('codebase'))).map((t) => t.name.replace(/ \(.*\)$/, ''));
+  const names = types.filter((t) => used.has(t.id) || (t.id === 'data-model' && (used.has('codebase') || used.has('api-contract')))).map((t) => t.name.replace(/ \(.*\)$/, ''));
   return checkDropdown('inputs', `${chips(names)}<span class="muted small">${names.length} of ${types.length} input types</span>`,
     `<div class="ms-group">In this demo (Flow ${type === 'baseline' ? 1 : 2})</div>${types.filter((t) => inFlow.has(t.id) || t.id === 'data-model').map(item).join('')}
 <div class="ms-group">The platform also accepts</div>${types.filter((t) => !inFlow.has(t.id) && t.id !== 'data-model').map(item).join('')}`);
@@ -398,7 +407,7 @@ function demoInputsHtml(type, ex) {
   const flow = (DEMO_INPUTS || []).find((f) => f.branch === branch);
   if (!flow) return '';
   return `<ul class="downloads">${flow.files.map((f) => `<li><a href="${esc(f.url)}" download>${esc(f.name)}</a></li>`).join('')}</ul>
-<p class="hint">The same Jira and codebase content the agents pull, to read or share. <a href="/demo-inputs/README.md" download>README</a></p>`;
+<p class="hint">The same Jira, codebase and API endpoints content the agents pull, to read or share. EQE uses only the Jira files. <a href="/demo-inputs/README.md" download>README</a></p>`;
 }
 
 async function resetDemo() {
@@ -420,13 +429,13 @@ async function viewRun(params) {
   if (!DEMO_INPUTS) DEMO_INPUTS = await api('/api/demo-inputs');
   if (runState.type === 'incremental' && !baselines.some((b) => b.id === runState.baselineId)) runState.baselineId = baselines.length ? baselines[baselines.length - 1].id : '';
   const type = runState.type;
-  const slots = RUN_SLOTS[type];
+  const slots = runSlots(type, runState.testingTypes[0]);
   const ex = exampleFor(type);
   const forType = `${type}:${ex.id}`;
   for (const [slot, , , sampleKey] of slots) {
     const def = ex.samples[sampleKey];
     const cur = runState.inputs[slot];
-    if (!cur || cur.forType !== forType) runState.inputs[slot] = slot === 'codebase' ? { forType, mode: 'github', branch: def, text: '' } : { forType, mode: META.jira.mode === 'live' ? 'jira' : 'github', key: def, text: '', snapshot: type === 'incremental' ? ex.samples.incrementalSnapshot : undefined };
+    if (!cur || cur.forType !== forType) runState.inputs[slot] = TECH_SLOTS.has(slot) ? { forType, mode: 'github', branch: def, text: '' } : { forType, mode: META.jira.mode === 'live' ? 'jira' : 'github', key: def, text: '', snapshot: type === 'incremental' ? ex.samples.incrementalSnapshot : undefined };
   }
   const exampleOption = (e) => `<label class="mode-option"><input type="radio" name="run-example" value="${esc(e.id)}" ${e.id === ex.id ? 'checked' : ''}><span><b>${esc(e.name)}</b><span class="muted">${esc(e.about)}</span></span></label>`;
   const active = slots.filter(([slot]) => !runState.inputsOff.has(`${type}:${slot}`));
@@ -458,7 +467,7 @@ async function viewRun(params) {
   </div>
   <div class="step-block">
     <h3><span class="step-num">3</span>Choose what you are bringing</h3>
-    <p class="hint">The platform accepts all of these. This demo runs Flow ${flowNo} on the ${slots.length} inputs marked "in this demo"; untick one to leave it out. The rest show what else a project can bring.</p>
+    <p class="hint"><b>${esc(ttParts[0] ? ttParts[0].short : '')} reads ${slots.length} inputs:</b> ${esc((META.testingTypes.find((t) => t.id === runState.testingTypes[0]) || {}).inputNote || '')} This demo runs Flow ${flowNo} on the inputs marked "in this demo"; untick one to leave it out. The rest show what else a project can bring.</p>
     ${inputsDropdown(type, slots, active)}
     <p class="hint" id="input-msg"></p>
   </div>
@@ -539,7 +548,7 @@ async function viewRun(params) {
     ev.target.disabled = true;
     document.getElementById('run-msg').innerHTML = '<div class="banner info">Ingesting, normalising and running the review agent...</div>';
     try {
-      const c = await api('/api/cycles', { method: 'POST', body: { type, testingTypes: runState.testingTypes, baselineId: runState.baselineId, inputs, reviewer: who, skills: selectedSkills() } });
+      const c = await api('/api/cycles', { method: 'POST', body: { type, testingTypes: runState.testingTypes, baselineId: runState.baselineId, inputs, reviewer: who, skills: selectedSkills(), ...(active.some(([slot]) => TECH_SLOTS.has(slot)) ? {} : { sutBuild: ex.samples[type === 'baseline' ? 'baselineBranch' : 'incrementalBranch'] }) } });
       location.hash = `#/cycle/${c.id}`;
     } catch (e) {
       document.getElementById('run-msg').innerHTML = `<div class="banner err">${esc(e.message)}</div>`;
@@ -580,14 +589,14 @@ async function viewCycle(id, params) {
   const inputsRail = rail('inputs', 'Inputs considered', 'one line per input the agents read', c.inputs.map((i, n) => tile({ href: `#/cycle/${c.id}?tab=inputs`, art: 'input', tag: `Input ${n + 1}`, big: n + 1, title: i.label, lines: [esc(i.ref)], cls: tab === 'inputs' ? 'sel' : '' })));
   const ex = c.artifacts && c.artifacts.execution ? c.artifacts.execution.summary : null;
   const current = c.phases.find((p) => phaseArtifactTab(p.name, c) === tab);
-  const label = tab === 'normalise' ? 'Gap analysis: what the code is missing' : tab === 'overview' ? 'QE lead report' : tab === 'artifacts' ? 'Artifacts produced' : tab === 'inputs' ? 'Inputs taken' : tab === 'skills' ? 'Skills and hand-overs' : tab === 'traceability' ? 'Traceability: Jira to defect' : tab === 'merge' ? 'Human approval to merge' : tab === 'review' ? 'Human review of requirement set' : tab === 'review-agent' ? 'Review agent suggestions' : current ? current.label : tab;
+  const label = tab === 'normalise' ? (gapChecked(c) ? 'Gap analysis: what the code is missing' : 'Requirements read from Jira') : tab === 'overview' ? 'QE lead report' : tab === 'artifacts' ? 'Artifacts produced' : tab === 'inputs' ? 'Inputs taken' : tab === 'skills' ? 'Skills and hand-overs' : tab === 'traceability' ? 'Traceability: Jira to defect' : tab === 'merge' ? 'Human approval to merge' : tab === 'review' ? 'Human review of requirement set' : tab === 'review-agent' ? 'Review agent suggestions' : current ? current.label : tab;
   let body = '';
   try { body = await renderCycleTab(c, tab); } catch (e) { body = `<div class="banner err">${esc(e.message)}</div>`; }
   let lead = null;
   if (c.report) { try { lead = (await api(`/api/cycles/${c.id}/lead-report`)).lead; } catch { lead = null; } }
   $view.innerHTML = `<section class="hero small-hero"><div class="eyebrow">${c.type === 'baseline' ? 'Flow 1 · Baseline cycle' : 'Flow 2 · Incremental cycle'}</div>
 <h1>${esc(c.name)} <span class="muted small">${esc(c.id)}</span> ${statusPill(c.status)}</h1>
-<div class="facts"><div><b>${esc(testingTypeOf(c.testingType, exampleIdOf(c)).name)}</b>type of testing</div>${reviewBadge(c)}${c.delta ? `<div><b>${esc(c.delta.summary)}</b>delta</div>` : ''}${ex ? `<div><b>${ex.passed}/${ex.executed}</b>passed</div><div><b>${ex.passRate}%</b>pass rate</div>` : ''}${c.gaps ? `<div><b>${c.gaps.findings.length}</b>gaps in the code</div>` : ''}${c.artifacts && c.artifacts.defects ? `<div><b>${c.artifacts.defects.length}</b>defects</div>` : ''}</div>
+<div class="facts"><div><b>${esc(testingTypeOf(c.testingType, exampleIdOf(c)).name)}</b>type of testing</div>${reviewBadge(c)}${c.delta ? `<div><b>${esc(c.delta.summary)}</b>delta</div>` : ''}${ex ? `<div><b>${ex.passed}/${ex.executed}</b>passed</div><div><b>${ex.passRate}%</b>pass rate</div>` : ''}${gapChecked(c) ? `<div><b>${c.gaps.findings.length}</b>gaps in the code</div>` : ''}${c.artifacts && c.artifacts.defects ? `<div><b>${c.artifacts.defects.length}</b>defects</div>` : ''}</div>
 <div class="muted small">Baseline: ${esc(c.baselineId || '(created when this cycle completes)')}${c.baselineVersionAtStart ? ` v${c.baselineVersionAtStart} at start` : ''}${c.baselineVersionAfter ? ` → v${c.baselineVersionAfter}` : ''} · SUT build <code>${esc(c.sutBuild)}</code> · created ${fmtTime(c.createdAt)}</div></section>
 ${c.error ? `<div class="banner err">Failed: ${esc(c.error)} <button class="btn secondary" id="resume">Resume</button></div>` : ''}
 ${c.status === 'interrupted' ? `<div class="banner">This cycle was interrupted by a restart. <button class="btn secondary" id="resume">Resume</button></div>` : ''}
@@ -632,7 +641,9 @@ function runSummary(c, lead) {
   const gapDefects = defects.filter((d) => d.type === 'gap');
   const testDefects = defects.filter((d) => d.type !== 'gap');
   const findings = (c.gaps && c.gaps.findings) || [];
-  if (findings.length) {
+  if (c.gaps && !gapChecked(c)) {
+    lines.push('<b>Gaps:</b> not checked in EQE: the inputs are Jira only, with no code. The Jira-vs-code gap check is part of DQE.');
+  } else if (findings.length) {
     const raised = gapDefects.filter((d) => findings.some((x) => x.story === d.story));
     lines.push(`<b>Gaps:</b> ${nOf(findings.length, 'Jira story', 'Jira stories')} missing in the code (${esc(findings.map((x) => x.story).join(', '))}) → ${raised.length ? `${nOf(raised.length, 'gap defect')} raised (${esc(raised.map((d) => d.id).join(', '))}), linked to ${raised.length === 1 ? 'its story' : 'their stories'}` : 'kept in scope by the reviewer, no defect raised'}.`);
   } else {
@@ -693,6 +704,7 @@ function gapSummary(c) {
     return (g.excluded || []).includes(x.story) ? 'excluded' : 'kept in scope';
   };
   const picked = (g.pickedUp || []).length ? `<p class="small">Picked up from skipped gaps: ${g.pickedUp.map((x) => { const d = defectOf(x.story); return `<b>${esc(x.story)}</b> ${esc(x.summary)} (${esc(x.defectId || '-')}${d && d.status === 'Closed' ? ', fixed and retested' : ''})`; }).join('; ')}</p>` : '';
+  if (!gapChecked(c)) return `<section class="panel"><div class="panel-head"><h2>Gap summary</h2></div><p class="small">${esc(NO_GAP_CHECK)}</p></section>`;
   const head = `<div class="panel-head"><h2>Gap summary: code vs Jira</h2><span class="muted small">Jira initiative, epics and stories compared with ${esc(g.code || 'the code')}</span></div>`;
   if (!g.findings.length) return `<section class="panel">${head}<p class="ok">No gaps: the code covers every Jira story it was given.</p>${picked}</section>`;
   return `<section class="panel">${head}<p><b>${g.findings.length}</b> Jira ${g.findings.length === 1 ? 'story is' : 'stories are'} not in the code.</p>
@@ -755,9 +767,10 @@ function normaliseView(c, interactive) {
   const conflicts = byBucket('conflict');
   const gaps = (c.gaps && c.gaps.findings) || [];
   const jiraItems = new Set(n.statements.filter((s) => s.source === 'jira').map((s) => s.origin.ref).filter(Boolean));
-  const kpis = `<div class="kpis"><div class="kpi">Jira items read<b>${jiraItems.size}</b></div><div class="kpi">Stories missing in the code<b>${gaps.length}</b></div><div class="kpi">Acceptance criteria not implemented<b>${gaps.reduce((s, x) => s + x.statementCount, 0)}</b></div>${conflicts.length ? `<div class="kpi">Conflicting values<b>${conflicts.length}</b></div>` : ''}</div>
-<p class="muted small">The initiative, epics and stories from Jira are compared with ${esc((c.gaps && c.gaps.code) || 'the code')}: a story is a gap when no code implements it. Rules found only in the code are not gaps.</p>`;
-  const gapTable = interactive ? '' : gaps.length ? table(['Story', 'Epic', 'Acceptance criteria not implemented in the code', 'Severity'], gaps.map((x) => [`<b>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.story)}</a>` : esc(x.story)}</b> ${esc(x.summary)}`, x.epic ? esc(`${x.epic.key} ${x.epic.summary || ''}`) : '-', `<ol class="small">${x.statements.map((s) => `<li>${esc(s.text)}</li>`).join('')}</ol>`, pill('Minor', 'pending')])) + `<p class="small muted">${esc(x0(gaps).recommendation)}</p>` : '<p class="ok">No gaps: the code implements every Jira story it was given.</p>';
+  const kpis = gapChecked(c) ? `<div class="kpis"><div class="kpi">Jira items read<b>${jiraItems.size}</b></div><div class="kpi">Stories missing in the code<b>${gaps.length}</b></div><div class="kpi">Acceptance criteria not implemented<b>${gaps.reduce((s, x) => s + x.statementCount, 0)}</b></div>${conflicts.length ? `<div class="kpi">Conflicting values<b>${conflicts.length}</b></div>` : ''}</div>
+<p class="muted small">The initiative, epics and stories from Jira are compared with ${esc((c.gaps && c.gaps.code) || 'the code')}: a story is a gap when no code implements it. Rules found only in the code are not gaps.</p>`
+    : `<div class="kpis"><div class="kpi">Jira items read<b>${jiraItems.size}</b></div><div class="kpi">Statements<b>${n.statements.length}</b></div>${conflicts.length ? `<div class="kpi">Conflicting values<b>${conflicts.length}</b></div>` : ''}</div><p class="muted small">${esc(NO_GAP_CHECK)}</p>`;
+  const gapTable = interactive || !gapChecked(c) ? '' : gaps.length ? table(['Story', 'Epic', 'Acceptance criteria not implemented in the code', 'Severity'], gaps.map((x) => [`<b>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.story)}</a>` : esc(x.story)}</b> ${esc(x.summary)}`, x.epic ? esc(`${x.epic.key} ${x.epic.summary || ''}`) : '-', `<ol class="small">${x.statements.map((s) => `<li>${esc(s.text)}</li>`).join('')}</ol>`, pill('Minor', 'pending')])) + `<p class="small muted">${esc(x0(gaps).recommendation)}</p>` : '<p class="ok">No gaps: the code implements every Jira story it was given.</p>';
   const conflictBlock = conflicts.length ? `<h2>Conflicting values ${pill(`${conflicts.length}`, 'conflict')}</h2>${conflicts.map((g) => `<div class="card" data-conflict="${esc(g.id)}"><b>${esc(g.id)}</b> - subject: <i>${esc(g.subject)}</i>
 ${aiMatch(g)}${(c.learned && c.learned.review.resolutions.find((x) => x.groupId === g.id)) ? `<p class="small">${pill('learned', 'ai')} Pre-filled: ${esc(c.learned.review.resolutions.find((x) => x.groupId === g.id).lesson)}. Change it if this release differs.</p>` : ''}${table(['Choose', 'Value', 'Statement', 'Source'], g.options.map((o) => [interactive ? `<input type="radio" name="res-${esc(g.id)}" value="${esc(o.optionId)}" class="res" data-g="${esc(g.id)}">` : (decisions.resolutions[g.id] === o.optionId ? pill('chosen', 'passed') : ''),
     `<b>${esc(o.signature)}</b>`, esc(o.text), o.sources.map((s) => pill(s, s === 'jira' ? 'jira-only' : 'code-only')).join(' ')]))}
@@ -849,7 +862,7 @@ async function renderCycleTab(c, tab) {
     case 'normalise': return `${c.review ? `<div class="banner ok">Reviewed by ${esc(c.review.reviewer)} at ${fmtTime(c.review.at)}. The reviewed set - not the raw inputs - flowed on.</div>` : ''}${normaliseView(c, false)}`;
     case 'review': {
       if (c.status !== 'awaiting-review') return `<div class="banner ok">Review complete.</div>${normaliseView(c, false)}`;
-      return `<div class="banner info">Human review: the stories missing in the code are ticked to exclude. Each excluded story becomes a Minor gap defect linked to its Jira story and is picked up again in the next release. Settle any conflicting value, then approve: only the approved set flows on to test design and execution.</div>
+      return `<div class="banner info">Human review: ${gapChecked(c) ? 'the stories missing in the code are ticked to exclude. Each excluded story becomes a Minor gap defect linked to its Jira story and is picked up again in the next release.' : 'EQE read only Jira, so there are no code gaps to decide.'} Settle any conflicting value, then approve: only the approved set flows on to test design and execution.</div>
 ${gapReviewCard(c)}
 ${reviewAgentView(c, { compact: true })}
 ${c.type === 'incremental' ? `<div class="card" id="delta-box">${deltaView(c.deltaPreview, { title: 'Delta preview: earlier vs this cycle (before anything is designed)', cycleId: c.id, gapStories: ((c.gaps && c.gaps.pickedUp) || []).map((x) => x.story) })}</div>` : ''}
@@ -878,6 +891,7 @@ function gapReviewCard(c) {
   const g = c.gaps;
   if (!g) return '';
   const picked = (g.pickedUp || []).length ? `<p>Picked up from skipped gaps: ${g.pickedUp.map((x) => `<b>${esc(x.story)}</b> ${esc(x.summary)} (${esc(x.defectId || '-')} from ${esc(x.skippedInCycle)})`).join('; ')}</p>` : '';
+  if (!gapChecked(c)) return `<div class="card"><h3>Gap analysis</h3><p class="small">${esc(NO_GAP_CHECK)}</p></div>`;
   if (!g.findings.length) return `<div class="card"><h3>Gap analysis: code vs Jira</h3><p class="ok">No gaps: the code mentions every Jira story it was given.</p>${picked}</div>`;
   return `<div class="card"><h3>Gap analysis: ${g.findings.length} Jira ${g.findings.length === 1 ? 'story is' : 'stories are'} not in the code</h3>${picked}
 <table><tr><th>Exclude</th><th>Story</th><th>Epic</th><th>Acceptance criteria missing in code</th><th>Severity</th></tr>
@@ -1029,7 +1043,7 @@ ${g.stories.map((s) => `<h3>${link(s.key)}${s.summary ? ` ${esc(s.summary)}` : '
   const gapCount = ((c.gaps && c.gaps.findings) || []).length;
   const gapDefectCount = cycleDefects(a).filter((d) => d.type === 'gap' && ((c.gaps && c.gaps.findings) || []).some((x) => x.story === d.story)).length;
   return `<div class="banner info">The requirements agent turned the approved inputs into one common requirement set.${described ? ` AI described ${described} of them in plain language with Given/When/Then acceptance criteria (marked AI-suggested); a description that stated a number the source does not was rejected.` : ''} Each requirement carries its business rule with the exact values to test, where it is stated (Jira and code, with links and line numbers) and whether it can be automated. A BA, PO or QE can read the functionality here, story by story, before any test case is designed.</div>
-<div class="kpis"><div class="kpi">Features (Jira epics)<b>${scope.epics}</b></div><div class="kpi">Jira stories<b>${scope.stories}</b></div><div class="kpi">Requirements<b>${reqs.length}</b></div><div class="kpi">Stories missing in the code<b>${gapCount}</b></div><div class="kpi">Gap defects raised<b>${gapDefectCount}</b></div></div>
+<div class="kpis"><div class="kpi">Features (Jira epics)<b>${scope.epics}</b></div><div class="kpi">Jira stories<b>${scope.stories}</b></div><div class="kpi">Requirements<b>${reqs.length}</b></div>${gapChecked(c) ? `<div class="kpi">Stories missing in the code<b>${gapCount}</b></div><div class="kpi">Gap defects raised<b>${gapDefectCount}</b></div>` : '<div class="kpi">Gap check<b class="small">DQE only</b></div>'}</div>
 <details class="card"><summary class="small"><b>Analyst detail</b>: where the requirements come from and how many have a testable value</summary><div class="kpis"><div class="kpi">Rules with a testable value<b>${automatable}</b></div><div class="kpi">Rules with no testable value<b>${reqs.length - automatable}</b></div>${Object.entries(bySource).map(([k, v]) => `<div class="kpi">${esc(SOURCE_LABEL[k] || k)}<b>${v}</b></div>`).join('')}</div><p class="small muted">These count requirements, not test cases. Test case counts are on the Test cases tab.</p></details>
 ${c.type === 'incremental' ? `<p class="small">Against the baseline: ${Object.entries(byStatus).map(([k, v]) => `${esc(k)}: <b>${v}</b>`).join(' · ')}. Enhanced requirements show the superseded text and values struck through.</p>` : ''}
 ${c.report ? `<div class="row"><a class="btn secondary" href="/api/cycles/${esc(c.id)}/report.xlsx">Download Excel (Requirements sheet)</a></div>` : ''}
@@ -1278,7 +1292,7 @@ function summaryReport(c, lead, dqe = null) {
   const summary = `<div class="banner ${rec.tone === 'ok' ? 'ok' : rec.tone === 'bad' ? 'err' : 'info'}" style="font-size:15px"><b>Cycle outcome: ${esc(rec.decision)}</b> &nbsp;${esc(rec.reason)}<br>${esc(headline)}</div>
 <p class="small muted">${esc(c.id)} · ${c.type === 'baseline' ? 'Flow 1 baseline' : 'Flow 2 incremental'} · <b>${esc(tt.name)}</b> (${esc(tt.dimension || tt.focus)}) · build <code>${esc(c.sutBuild)}</code>${c.review ? ` · requirement set ${c.review.decision === 'rejected' ? 'rejected' : 'approved'} by ${esc(c.review.reviewer)}` : ''}${lead.signoffOwner ? ` · sign-off owner: <b>${esc(lead.signoffOwner.owner)}</b> (${esc(lead.signoffOwner.status.toLowerCase())})` : ''}</p>
 <h2>Metrics</h2><div class="grid2">
-${group('Requirements and gaps', [['Jira items read', jiraRead || '-'], ['Requirements approved', (a.requirements || []).length], ['Stories missing in the code', (c.gaps?.findings || []).length]])}
+${group('Requirements and gaps', [['Jira items read', jiraRead || '-'], ['Requirements approved', (a.requirements || []).length], [gapChecked(c) ? 'Stories missing in the code' : 'Gap check (Jira vs code)', gapChecked(c) ? (c.gaps?.findings || []).length : 'DQE only']])}
 ${group('Test design', [['Test cases', (a.testCases || []).length], ['Automation test cases', ex ? ex.executed : '-'], ['Manual test cases (handed over)', ex ? ex.notRun : '-']])}
 ${group('Automation scripts', [['Automation scripts', scripts.length], ...(c.type === 'incremental' ? [['Reused', byStatus('carried over')], ['Redesigned', byStatus('re-designed')], ['New', byStatus('new')]] : [])])}
 ${group('Execution', [['Automation test cases run', ex ? ex.executed : '-'], ['Automation test cases passed', ex ? ex.passed : '-'], ['Automation test cases failed', ex ? ex.failed : '-'], ['Automation pass rate', ex ? `${ex.passRate}%` : '-']])}

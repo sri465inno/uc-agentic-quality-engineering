@@ -89,7 +89,7 @@ test('meta lists only the hotel booking example: release 1.0 for Flow 1 and rele
     assert.equal(meta.platform.examples.length, 1);
     const [hotel] = meta.platform.examples;
     assert.deepEqual([hotel.id, hotel.flow, hotel.modes], ['hotel', 1, ['baseline', 'incremental']]);
-    assert.deepEqual(hotel.samples, { initiative: 'AQPI-1', epic: EPICS, incrementalEpic: 'AQPI-32, AQPI-23', incrementalSnapshot: 'release-2.0', baselineBranch: HOTEL, incrementalBranch: HOTEL_V2 });
+    assert.deepEqual(hotel.samples, { initiative: 'AQPI-1', epic: EPICS, incrementalEpic: 'AQPI-32, AQPI-23', incrementalSnapshot: 'release-2.0', baselineBranch: HOTEL, incrementalBranch: HOTEL_V2, baselineApi: 'demo/hotel-api-contract', incrementalApi: 'demo/hotel-api-contract-v2' });
     assert.deepEqual(hotel.testingTypes, ['eqe', 'functional']);
     assert.deepEqual(meta.samples, hotel.samples);
     assert.doesNotMatch(JSON.stringify(meta), /commission|COM-\d/i);

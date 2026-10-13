@@ -13,6 +13,8 @@
 const TESTING_TYPES = [
   {
     id: 'eqe', name: 'EQE testing', short: 'EQE', dimension: 'Enterprise end-to-end business flows', suites: ['journey', 'ui', 'nfr', 'load'],
+    inputs: { baseline: ['initiative', 'epic'], incremental: ['epic'] },
+    inputNote: 'Jira initiative, epics and stories only: EQE tests the business journeys through the running services, not their code or API contract, so there is no Jira-vs-code gap check.',
     signoff: { owner: 'EQE lead', accountability: 'Enterprise assurance: the business journeys work end to end across the services' },
     produces: { functional: true, nonFunctional: true },
     focus: 'Enterprise end-to-end business flows across the services, plus the enterprise qualities the inputs state.',
@@ -42,6 +44,8 @@ const TESTING_TYPES = [
   },
   {
     id: 'functional', name: 'DQE testing', short: 'DQE', dimension: 'Domain functional: rules, boundaries and invalid inputs', suites: ['api'],
+    inputs: { baseline: ['initiative', 'epic', 'codebase', 'api'], incremental: ['epic', 'codebase', 'api'] },
+    inputNote: 'Jira, the codebase and the API endpoints: DQE certifies the domain rules as coded, and the Jira stories missing from the code become gap defects.',
     signoff: { owner: 'DQE lead', accountability: 'Domain certification: every domain rule holds at its limits' },
     produces: { functional: true, nonFunctional: false },
     focus: 'Every domain rule and its boundaries, checked through the service API.',

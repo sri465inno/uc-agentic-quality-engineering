@@ -58,10 +58,10 @@ const DOMAINS = {
   },
 };
 
-/** Domain of a branch name, a cycle (its SUT build) or a list of cycle inputs (the codebase input's branch). */
+/** Domain of a branch name, a cycle (its SUT build) or a list of cycle inputs (the codebase input's branch, else the build of the API endpoints input). */
 function domainOf(x) {
   const branch = typeof x === 'string' ? x
-    : Array.isArray(x) ? x.find((i) => i.slot === 'codebase')?.branch
+    : Array.isArray(x) ? x.find((i) => i.slot === 'codebase')?.branch || x.find((i) => i.slot === 'api')?.build
       : x?.sutBuild;
   return isHotelBranch(branch) ? DOMAINS.hotel : DOMAINS.commission;
 }

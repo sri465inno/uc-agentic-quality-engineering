@@ -83,7 +83,7 @@ async function buildCycleReport(cycle, { env = process.env, fetchImpl = globalTh
       selection: a.selection || null,
     },
     reviewAgent: cycle.reviewAgent ? { counts: cycle.reviewAgent.counts, note: cycle.reviewAgent.note, findings: cycle.reviewAgent.findings, notes: cycle.reviewAgent.notes || [] } : null,
-    dataModel: (cycle.inputs.find((i) => i.slot === 'codebase') || {}).dataModel || null,
+    dataModel: (cycle.inputs.find((i) => i.slot === 'api' && i.dataModel) || cycle.inputs.find((i) => i.slot === 'codebase') || {}).dataModel || null,
     skills: (cycle.skills || []).map((k) => ({ id: k.id, name: k.name, description: k.description, file: k.file, sha256: k.sha256, appliesTo: k.appliesTo, delivers: k.delivers })),
     handovers,
     handoverStatus: handovers.some((h) => h.status === 'incomplete') ? 'incomplete' : 'complete',
