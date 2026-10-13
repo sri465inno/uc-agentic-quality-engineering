@@ -1,0 +1,242 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "cart-service",
+    "version": "1.0.0",
+    "description": "Hotel booking platform release 1.0: the endpoints cart-service exposes. /api/admin/* operations are internal test hooks (x-internal)."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8084",
+      "description": "local default port"
+    }
+  ],
+  "paths": {
+    "/api/carts": {
+      "post": {
+        "operationId": "postCarts",
+        "summary": "POST /api/carts",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/carts/{cartId}": {
+      "get": {
+        "operationId": "getCartsByCartId",
+        "summary": "GET /api/carts/{cartId}",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/carts/{cartId}/ancillaries": {
+      "post": {
+        "operationId": "postCartsByCartIdAncillaries",
+        "summary": "POST /api/carts/{cartId}/ancillaries",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/carts/{cartId}/ancillaries/{code}": {
+      "put": {
+        "operationId": "putCartsByCartIdAncillariesByCode",
+        "summary": "PUT /api/carts/{cartId}/ancillaries/{code}",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteCartsByCartIdAncillariesByCode",
+        "summary": "DELETE /api/carts/{cartId}/ancillaries/{code}",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/carts/{cartId}/room": {
+      "put": {
+        "operationId": "putCartsByCartIdRoom",
+        "summary": "PUT /api/carts/{cartId}/room",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/carts/{cartId}/revalidate": {
+      "post": {
+        "operationId": "postCartsByCartIdRevalidate",
+        "summary": "POST /api/carts/{cartId}/revalidate",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/carts/{cartId}/acknowledge": {
+      "post": {
+        "operationId": "postCartsByCartIdAcknowledge",
+        "summary": "POST /api/carts/{cartId}/acknowledge",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/carts/{cartId}/checkout": {
+      "post": {
+        "operationId": "postCartsByCartIdCheckout",
+        "summary": "POST /api/carts/{cartId}/checkout",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/carts/{cartId}/complete": {
+      "post": {
+        "operationId": "postCartsByCartIdComplete",
+        "summary": "POST /api/carts/{cartId}/complete",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/reset": {
+      "post": {
+        "operationId": "postAdminReset",
+        "summary": "POST /api/admin/reset",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Hotel booking attributes",
+  "version": "1.0",
+  "system": "Hotel booking platform (AQPI-1)",
+  "description": "Every value a guest or the platform supplies along the search-to-confirmation journey. Types, limits and allowed values follow the service configuration and validators; examples form a valid standard booking.",
+  "generationMethod": "Booking drivers come from the test case; every other attribute takes the example value the hotel data dictionary specifies, so each data set is a complete, valid booking unless the case deliberately breaks one value.",
+  "groups": [
+    { "id": "search", "name": "Search criteria" },
+    { "id": "stay", "name": "Stay" },
+    { "id": "occupancy", "name": "Occupancy" },
+    { "id": "selection", "name": "Room and rate selection" },
+    { "id": "extras", "name": "Ancillary products" },
+    { "id": "guest", "name": "Guest and contact" },
+    { "id": "payment", "name": "Payment" },
+    { "id": "consent", "name": "Privacy and consent" },
+    { "id": "notification", "name": "Notification" },
+    { "id": "request", "name": "Request control" }
+  ],
+  "attributes": [
+    { "name": "search.destination", "group": "search", "type": "string", "required": true, "values": ["NYC", "LON", "PAR"], "example": "NYC", "driver": true, "description": "Destination code the guest searches (demo catalogue: New York, London, Paris)", "source": "search-service SearchRules.destinations" },
+    { "name": "stay.checkInOffsetDays", "group": "stay", "type": "integer", "required": true, "min": 0, "max": 500, "example": 30, "driver": true, "description": "Check-in date as days from today (0 = today)", "source": "search-service.yml platform.search.defaults.max-advance-days" },
+    { "name": "stay.nights", "group": "stay", "type": "integer", "required": true, "min": 1, "max": 30, "example": 3, "driver": true, "description": "Nights between check-in and check-out (PAR allows at most 21)", "source": "search-service.yml platform.search.defaults.max-stay-nights, markets.PAR" },
+    { "name": "occupancy.rooms", "group": "occupancy", "type": "integer", "required": true, "min": 1, "max": 8, "example": 1, "driver": true, "description": "Rooms requested", "source": "search-service.yml platform.search.defaults.max-rooms" },
+    { "name": "occupancy.adults", "group": "occupancy", "type": "integer", "required": true, "min": 1, "example": 2, "driver": true, "description": "Adults in the party (at least one per room, at most 4 per room)", "source": "search-service.yml max-adults-per-room" },
+    { "name": "occupancy.children", "group": "occupancy", "type": "integer", "required": false, "min": 0, "example": 0, "driver": true, "description": "Children in the party (at most 3 per room)", "source": "search-service.yml max-children-per-room" },
+    { "name": "selection.hotelId", "group": "selection", "type": "string", "required": true, "example": "H-NYC-001", "driver": true, "description": "Hotel chosen from the results", "source": "hotel-service seeded catalogue" },
+    { "name": "selection.roomCode", "group": "selection", "type": "string", "required": true, "example": "STD-K", "driver": true, "description": "Room type chosen on the hotel details page", "source": "hotel-service seeded catalogue" },
+    { "name": "selection.ratePlanCode", "group": "selection", "type": "string", "required": true, "values": ["FLEX", "SAVER"], "example": "FLEX", "driver": true, "description": "FLEX = pay at hotel with a card guarantee; SAVER = prepaid, non-refundable", "source": "hotel-service seeded rate plans" },
+    { "name": "extras.code", "group": "extras", "type": "string", "required": false, "values": ["BREAKFAST", "LATE_CHECKOUT", "AIRPORT_TRANSFER", "PARKING", "SPA_ACCESS", "KIDS_CLUB", "CITY_TOUR", "ROMANCE", "WINTER_SKATING"], "example": "", "driver": true, "description": "Optional ancillary added to the cart (empty = none)", "source": "offer-service OfferCatalog" },
+    { "name": "extras.quantity", "group": "extras", "type": "integer", "required": false, "min": 0, "max": 10, "example": 0, "driver": true, "description": "Quantity of the ancillary", "source": "offer-service product limits" },
+    { "name": "guest.firstName", "group": "guest", "type": "string", "required": true, "example": "Jane", "description": "Guest first name", "source": "reservation-service GuestValidator" },
+    { "name": "guest.lastName", "group": "guest", "type": "string", "required": true, "example": "Doe", "description": "Guest last name (also verifies a confirmation resend)", "source": "reservation-service GuestValidator" },
+    { "name": "guest.email", "group": "guest", "type": "string", "required": true, "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$", "example": "jane.doe@example.com", "driver": true, "description": "Where the confirmation e-mail goes", "source": "reservation-service GuestValidator (EMAIL_FORMAT)" },
+    { "name": "guest.phone", "group": "guest", "type": "string", "required": false, "example": "+1 212 555 0100", "description": "Optional contact phone", "source": "reservation-service GuestValidator" },
+    { "name": "guest.arrivalTime", "group": "guest", "type": "string", "required": false, "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$", "example": "18:00", "description": "Optional expected arrival time (HH:mm)", "source": "reservation-service GuestValidator" },
+    { "name": "payment.token", "group": "payment", "type": "string", "required": true, "values": ["tok_visa_ok", "tok_decline", "tok_error", "tok_timeout", "tok_void_fails"], "example": "tok_visa_ok", "driver": true, "description": "Token from the secure payment component; raw card numbers are never accepted", "source": "reservation-service PaymentGateway (simulated provider)" },
+    { "name": "consent.privacyNoticeAccepted", "group": "consent", "type": "boolean", "required": true, "example": true, "driver": true, "description": "Guest confirmed the privacy notice", "source": "reservation-service GuestValidator (PRIVACY_NOTICE_REQUIRED)" },
+    { "name": "consent.marketingOptIn", "group": "consent", "type": "boolean", "required": false, "example": false, "description": "Optional marketing consent", "source": "reservation-service" },
+    { "name": "notification.locale", "group": "notification", "type": "string", "required": false, "values": ["en", "fr", "es"], "example": "en", "description": "Language of the confirmation e-mail", "source": "notification-service TemplateRenderer" },
+    { "name": "request.idempotencyKeyPrefix", "group": "request", "type": "string", "required": true, "pattern": "^[A-Za-z0-9._-]{8,40}$", "example": "aqe-booking", "driver": true, "description": "Prefix of the Idempotency-Key sent with a reservation (the full key is 8 to 64 characters)", "source": "reservation-service.yml (Idempotency-Key)" }
+  ]
+}

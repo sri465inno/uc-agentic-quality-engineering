@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "offer-service",
+    "version": "1.0.0",
+    "description": "Hotel booking platform release 1.0: the endpoints offer-service exposes. /api/admin/* operations are internal test hooks (x-internal)."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8083",
+      "description": "local default port"
+    }
+  ],
+  "paths": {
+    "/api/offers/recommendations": {
+      "post": {
+        "operationId": "postOffersRecommendations",
+        "summary": "POST /api/offers/recommendations",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/offers/validate": {
+      "post": {
+        "operationId": "postOffersValidate",
+        "summary": "POST /api/offers/validate",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/offers/interactions": {
+      "post": {
+        "operationId": "postOffersInteractions",
+        "summary": "POST /api/offers/interactions",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/offers/{code}/availability": {
+      "put": {
+        "operationId": "putAdminOffersByCodeAvailability",
+        "summary": "PUT /api/admin/offers/{code}/availability",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    },
+    "/api/admin/profile-store": {
+      "put": {
+        "operationId": "putAdminProfileStore",
+        "summary": "PUT /api/admin/profile-store",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    },
+    "/api/admin/reset": {
+      "post": {
+        "operationId": "postAdminReset",
+        "summary": "POST /api/admin/reset",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-internal": true
+      }
+    }
+  }
+}
