@@ -1094,13 +1094,20 @@ function changedLines(code, prev) {
   return code.split('\n').filter((l) => l.trim() && !old.has(l));
 }
 
+function apiCoverageView(c) {
+  const cov = c.artifacts && c.artifacts.apiCoverage;
+  if (!cov) return '';
+  const missed = cov.rows.filter((r) => !r.scripts.length);
+  return `<div class="card"><h4 style="margin:0 0 6px">API endpoint coverage</h4><p class="small"><b>${cov.called} of ${cov.total}</b> business endpoints of the API endpoints input (<code>${esc(cov.input)}</code>) are called by the automation scripts; ${cov.notCalled} not called${cov.internal ? `, ${cov.internal} internal hooks not counted` : ''}. ${cov.unknownCalls.length ? `<b>${cov.unknownCalls.length} call(s) to endpoints not in the API endpoints input:</b> ${esc(cov.unknownCalls.join(', '))}.` : 'Every call is to a known endpoint.'}</p>${missed.length ? `<details><summary class="small">Endpoints not called by any automation script (${missed.length})</summary>${table(['Service', 'Method', 'Path'], missed.map((r) => [esc(r.service), esc(r.method), `<code>${esc(r.path)}</code>`]))}</details>` : ''}</div>`;
+}
+
 function scriptsView(c, params = new URLSearchParams()) {
   const scripts = c.artifacts.scripts;
   const file = params.get('file');
   const drafts = c.artifacts.aiScripts || [];
   const draftHtml = drafts.length ? `<h2>AI draft specs (${drafts.length}) ${pill('AI draft - not executed', 'ai')}</h2><p class="muted small">Drafted for manual test cases, compiled and checked in code (asserts something, no require/process/eval). They are kept out of the run until a QE reviews and promotes them.</p>
 ${drafts.map((s) => `<details class="card" ${file === s.file ? 'open' : ''} id="s-${esc(s.file)}"><summary><b>${esc(s.file)}</b> · for ${esc(s.caseKey)} · ${esc(s.requirementId)} ${aiBadge(s, 'AI draft')} <span class="small muted">${esc(s.status)}</span></summary><p class="small">${fbButtons(c, 'script', s.file, ['accept', 'reject'])} <span class="muted">Accept to run it: at the merge gate it joins this run, otherwise it runs from the next cycle after a fresh API contract check.</span></p>${codeBlock(s.code)}</details>`).join('')}` : '';
-  return `${draftHtml}<h2>Automation scripts (${scripts.length}, Playwright)</h2><p class="muted small">Generated, self-contained specs against the bundled sample service. ${c.artifacts.execution ? 'These specs were <b>executed</b> by the Playwright CLI in this cycle.' : 'Designed, not yet executed.'}</p>
+  return `${draftHtml}${apiCoverageView(c)}<h2>Automation scripts (${scripts.length}, Playwright)</h2><p class="muted small">Generated, self-contained specs against the bundled sample service. ${c.artifacts.execution ? 'These specs were <b>executed</b> by the Playwright CLI in this cycle.' : 'Designed, not yet executed.'}</p>
 ${scripts.map((s) => `<details class="card" ${!file || file === s.file ? 'open' : ''} id="s-${esc(s.file)}"><summary><b>${esc(s.file)}</b> · covers ${esc(s.covers.join(', '))} · ${esc(s.requirementId)} · v${s.version ?? 1} ${artPill(s.status)}${s.origin === 'ai' ? ` ${pill('AI-generated, code-checked', 'ai')} <span class="small muted">accepted by ${esc(s.acceptedBy)}</span>` : ''}
 <a class="small" href="/api/cycles/${esc(c.id)}/scripts/${encodeURIComponent(s.file)}?download=1">download</a></summary>
 ${s.previous ? `<p class="small">Re-designed from v${s.previous.version}; changed lines highlighted.</p><div class="grid2"><div><b class="small">Superseded (v${s.previous.version})</b>${codeBlock(s.previous.code, changedLines(s.previous.code, s.code))}</div><div><b class="small">New (v${s.version})</b>${codeBlock(s.code, changedLines(s.code, s.previous.code))}</div></div>` : codeBlock(s.code)}</details>`).join('')}`;
@@ -1289,7 +1296,7 @@ function summaryReport(c, lead, dqe = null) {
   const jiraRead = new Set((c.normalisation?.statements || []).filter((s) => s.source === 'jira').map((s) => s.origin.ref).filter(Boolean)).size;
   const scripts = a.scripts || [];
   const byStatus = (st) => scripts.filter((s) => s.status === st).length;
-  const headline = `${plural(defects.length, 'open defect')}: ${openGaps.length} from code missing for Jira requirements (gaps) and ${execDefects.length} from failed test cases${blocking.length ? `, of which ${blocking.length} ${blocking.length === 1 ? 'blocks' : 'block'} the release (${blocking.map((d) => `${d.id} ${(d.jiraKeys || []).join(', ')}`).join('; ')})` : ''}.${closedAll.length ? ` ${closedAll.length} closed this cycle after passing retests.` : ''}`;
+  const headline = `${plural(defects.length, 'open defect')}: ${gapChecked(c) ? `${openGaps.length} from code missing for Jira requirements (gaps) and ` : ''}${execDefects.length} from failed test cases${blocking.length ? `, of which ${blocking.length} ${blocking.length === 1 ? 'blocks' : 'block'} the release (${blocking.map((d) => `${d.id} ${(d.jiraKeys || []).join(', ')}`).join('; ')})` : ''}.${closedAll.length ? ` ${closedAll.length} closed this cycle after passing retests.` : ''}`;
   const summary = `<div class="banner ${rec.tone === 'ok' ? 'ok' : rec.tone === 'bad' ? 'err' : 'info'}" style="font-size:15px"><b>Cycle outcome: ${esc(rec.decision)}</b> &nbsp;${esc(rec.reason)}<br>${esc(headline)}</div>
 <p class="small muted">${esc(c.id)} · ${c.type === 'baseline' ? 'Flow 1 baseline' : 'Flow 2 incremental'} · <b>${esc(tt.name)}</b> (${esc(tt.dimension || tt.focus)}) · build <code>${esc(c.sutBuild)}</code>${c.review ? ` · requirement set ${c.review.decision === 'rejected' ? 'rejected' : 'approved'} by ${esc(c.review.reviewer)}` : ''}${lead.signoffOwner ? ` · sign-off owner: <b>${esc(lead.signoffOwner.owner)}</b> (${esc(lead.signoffOwner.status.toLowerCase())})` : ''}</p>
 <h2>Metrics</h2><div class="grid2">
@@ -1297,7 +1304,7 @@ ${group('Requirements and gaps', [['Jira items read', jiraRead || '-'], ['Requir
 ${group('Test design', [['Test cases', (a.testCases || []).length], ['Automation test cases', ex ? ex.executed : '-'], ['Manual test cases (handed over)', ex ? ex.notRun : '-']])}
 ${group('Automation scripts', [['Automation scripts', scripts.length], ...(c.type === 'incremental' ? [['Reused', byStatus('carried over')], ['Redesigned', byStatus('re-designed')], ['New', byStatus('new')]] : [])])}
 ${group('Execution', [['Automation test cases run', ex ? ex.executed : '-'], ['Automation test cases passed', ex ? ex.passed : '-'], ['Automation test cases failed', ex ? ex.failed : '-'], ['Automation pass rate', ex ? `${ex.passRate}%` : '-']])}
-${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed test cases', execDefects.length], ['Blocking release', blocking.length], ['Closed this cycle', closedAll.length]])}
+${group('Defects', [...(gapChecked(c) ? [['From code missing (gaps)', openGaps.length]] : []), ['From failed test cases', execDefects.length], ['Blocking release', blocking.length], ['Closed this cycle', closedAll.length]])}
 </div>`;
 
   const EXIT_PILL = { met: ['Met', 'passed'], 'not met': ['Not met', 'failed'], open: ['Open', 'pending'] };
@@ -1321,7 +1328,7 @@ ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed
     return [esc(SUITE_NAMES[s] || s), cs.filter((x) => x.inRun !== false).length, n('passed') + n('failed'), n('passed'), n('failed'), cs.filter((x) => x.inRun !== false).length - n('passed') - n('failed')];
   });
   const shots = ((a.execution && a.execution.results) || []).some((x) => (x.evidence || []).some((e) => e.contentType === 'image/png'));
-  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite (automation scripts)', 'In this run', 'Automation test cases run', 'Passed', 'Failed', 'Manual (not run)'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p><details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}${evidenceCheck}`;
+  const evidence = `<h3>2. Execution evidence</h3>${ex ? `${table(['Suite (automation scripts)', 'In this run', 'Automation test cases run', 'Passed', 'Failed', 'Manual (not run)'], suiteRows)}<p class="small muted">${shots ? 'Screens are evidenced by screenshots; service calls by each request and response.' : 'The system under test has no browser screen, so every executed test keeps each request and response (and its log) as evidence.'} Playwright ran the scripts for real on build <code>${esc(c.sutBuild)}</code>.</p>${apiCoverageView(c)}<details><summary>Every test case with its result and evidence</summary>${executionView(c)}</details>` : '<p class="muted">Not executed.</p>'}${evidenceCheck}`;
 
   const tr = c.report && c.report.traceability;
   const gapStories = new Set((c.gaps?.findings || []).map((g) => g.story));
@@ -1333,18 +1340,20 @@ ${group('Defects', [['From code missing (gaps)', openGaps.length], ['From failed
     const blocking = execDefects.filter((d) => d.blocksRelease && kids.some((s) => (d.jiraKeys || []).includes(s.key) || s.defects.includes(d.id)));
     const verified = kids.filter((s) => s.status === 'verified').length;
     const state = blocking.length ? pill('Blocked', 'failed') : failing.length ? pill('At risk', 'designed') : gapsIn.length ? pill('Partly implemented', 'pending') : verified ? pill('Ready', 'passed') : pill('Not verified', 'pending');
-    return [`<b>${esc(e.key)}</b> ${esc(e.summary)}`, kids.length, verified, failing.map((s) => esc(s.key)).join(', ') || '-', gapsIn.map((s) => esc(s.key)).join(', ') || '-', state];
+    return [`<b>${esc(e.key)}</b> ${esc(e.summary)}`, kids.length, verified, failing.map((s) => esc(s.key)).join(', ') || '-', ...(gapChecked(c) ? [gapsIn.map((s) => esc(s.key)).join(', ') || '-'] : []), state];
   });
-  const flows = `<h3>3. Business-flow readiness</h3><p class="small muted">One row per business flow (epic): its stories, how many are verified by an executed test, which fail and which the code does not implement yet.</p>${flowRows.length ? table(['Business flow', 'Stories', 'Verified', 'Failing', 'Gaps', 'Readiness'], flowRows) : '<p class="muted">No epics in this cycle.</p>'}`;
+  const flows = `<h3>3. Business-flow readiness</h3><p class="small muted">One row per business flow (epic): its stories, how many are verified by an executed test, which fail${gapChecked(c) ? ' and which the code does not implement yet' : ''}.</p>${flowRows.length ? table(['Business flow', 'Stories', 'Verified', 'Failing', ...(gapChecked(c) ? ['Gaps'] : []), 'Readiness'], flowRows) : '<p class="muted">No epics in this cycle.</p>'}`;
 
   const closed = closedAll;
   const gapTable = openGaps.length ? table(['Defect', 'Jira story', 'Epic', 'Missing acceptance criteria', 'Severity', 'Status'], openGaps.map((d) => [esc(d.id), `<b>${esc(d.story)}</b> ${esc(d.storySummary || '')}`, esc(d.epic ? d.epic.key : '-'), (d.acceptanceCriteria || []).length || '-', esc(d.severity), esc(d.movement === 'new' ? 'Open (new)' : `Open (${d.movement || 'still open'})`)])) : '<p>None.</p>';
   const tcTable = execDefects.length ? table(['Defect', 'Jira story', 'Test case', 'Automation script', 'Expected vs actual', 'Severity', 'Blocks release', 'Status'], execDefects.map((d) => [esc(d.id), esc((d.jiraKeys || []).join(', ')), esc(d.testCaseKey || '-'), `<code class="small">${esc(d.scriptFile || '-')}</code>`, `<span class="small">${esc(d.expected || '')}<br><span class="fail">${esc(d.actual || '')}</span></span>`, esc(d.severity), d.blocksRelease ? pill('blocks release', 'failed') : 'no', esc(d.movement === 'new' ? 'Open (new)' : `Open (${d.movement || 'still open'})`)])) : '<p>None: every executed test case passed.</p>';
+  let letter = gapChecked(c) ? 1 : 0;
+  const L = () => 'ABCD'[letter++];
   const risks = `<h3>4. Defects and risks</h3>
-<h4>A. Defects from code missing for Jira requirements (${openGaps.length})</h4><p class="small muted">Jira stories the code does not implement, excluded at the requirement review. Minor; they do not block the release and are picked up in the next release.</p>${gapTable}
-<h4>B. Defects from failed test cases (${execDefects.length})</h4><p class="small muted">Raised only from test cases that actually failed when their automation script ran on this build.</p>${tcTable}
-${closed.length ? `<h4>C. Closed this cycle (${closed.length})</h4>${table(['Defect', 'Jira story', 'How it closed'], closed.map((d) => [esc(d.id), esc((d.jiraKeys || [d.story]).filter(Boolean).join(', ')), esc(d.movement || 'fixed and retested')]))}` : ''}
-<h4>${closed.length ? 'D' : 'C'}. Open risks</h4>${riskList(lead, ex, blocking, { eqe: c.testingType === 'eqe', dqe }).length ? `<ul>${riskList(lead, ex, blocking, { eqe: c.testingType === 'eqe', dqe }).map((x) => `<li>${x}</li>`).join('')}</ul>` : '<p>None.</p>'}
+${gapChecked(c) ? `<h4>A. Defects from code missing for Jira requirements (${openGaps.length})</h4><p class="small muted">Jira stories the code does not implement, excluded at the requirement review. Minor; they do not block the release and are picked up in the next release.</p>${gapTable}` : ''}
+<h4>${L()}. Defects from failed test cases (${execDefects.length})</h4><p class="small muted">Raised only from test cases that actually failed when their automation script ran on this build.</p>${tcTable}
+${closed.length ? `<h4>${L()}. Closed this cycle (${closed.length})</h4>${table(['Defect', 'Jira story', 'How it closed'], closed.map((d) => [esc(d.id), esc((d.jiraKeys || [d.story]).filter(Boolean).join(', ')), esc(d.movement || 'fixed and retested')]))}` : ''}
+<h4>${L()}. Open risks</h4>${riskList(lead, ex, blocking, { eqe: c.testingType === 'eqe', dqe }).length ? `<ul>${riskList(lead, ex, blocking, { eqe: c.testingType === 'eqe', dqe }).map((x) => `<li>${x}</li>`).join('')}</ul>` : '<p>None.</p>'}
 ${lead.risks.length ? `<details><summary class="small">Full risk register (${lead.risks.length} entries, for the QE lead)</summary><ul class="small">${lead.risks.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
 <p><a href="#/traceability?cycle=${esc(c.id)}">Open the traceability for ${esc(c.id)}</a></p>`;
   return `${summary}<h2>Detailed report</h2>${outcome}${evidence}${flows}${risks}`;

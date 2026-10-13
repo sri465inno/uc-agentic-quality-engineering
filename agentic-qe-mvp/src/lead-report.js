@@ -137,7 +137,7 @@ function exitCriteria(cycle, r, track) {
     })();
   return [
     C('Requirement set approved by a named reviewer', review && review.by ? 'met' : 'not met', review ? `${review.by}: ${review.detail || review.decision}` : 'not reviewed'),
-    C('Every excluded gap is raised as a defect linked to its story', gapRaised.length === gapsFound.length ? 'met' : 'not met', gapsFound.length ? `${gapRaised.length} of ${gapsFound.length} raised (${gapsFound.map((g) => g.story).join(', ')})` : 'no gaps in this cycle'),
+    ...(cycle.gaps?.applicable === false ? [] : [C('Every excluded gap is raised as a defect linked to its story', gapRaised.length === gapsFound.length ? 'met' : 'not met', gapsFound.length ? `${gapRaised.length} of ${gapsFound.length} raised (${gapsFound.map((g) => g.story).join(', ')})` : 'no gaps in this cycle')]),
     ...own,
     C('Every failed test case has a defect', unraised.length ? 'not met' : 'met', failed.length ? `${failed.length - unraised.length} of ${failed.length} failed test cases raised${unraised.length ? `; missing: ${unraised.map((x) => x.key).join(', ')}` : ''}` : 'no failed test case'),
     C('No open release-blocking defect', blocking.length ? 'not met' : 'met', blocking.length ? blocking.map((d) => `${d.id} (${(d.jiraKeys || []).join(', ')})`).join(', ') : 'none open'),
