@@ -377,6 +377,7 @@ const exampleShort = (id) => (META.platform.examples || []).find((e) => e.id ===
 function inputsDropdown(type, slots, active) {
   const inFlow = new Map(slots.map((sl) => [sl[2], sl[0]]));
   const used = new Set(active.map((sl) => sl[2]));
+  const withModel = inFlow.has('codebase') || inFlow.has('api-contract');
   const item = (t) => {
     const slot = inFlow.get(t.id);
     if (slot) return checkItem({ cls: 'input-on', value: slot, checked: used.has(t.id), title: t.name, tag: pill('in this demo', 'passed'), sub: t.about });
@@ -390,8 +391,8 @@ function inputsDropdown(type, slots, active) {
   const types = META.platform.inputTypes;
   const names = types.filter((t) => used.has(t.id) || (t.id === 'data-model' && (used.has('codebase') || used.has('api-contract')))).map((t) => t.name.replace(/ \(.*\)$/, ''));
   return checkDropdown('inputs', `${chips(names)}<span class="muted small">${names.length} of ${types.length} input types</span>`,
-    `<div class="ms-group">In this demo (Flow ${type === 'baseline' ? 1 : 2})</div>${types.filter((t) => inFlow.has(t.id) || t.id === 'data-model').map(item).join('')}
-<div class="ms-group">The platform also accepts</div>${types.filter((t) => !inFlow.has(t.id) && t.id !== 'data-model').map(item).join('')}`);
+    `<div class="ms-group">In this demo (Flow ${type === 'baseline' ? 1 : 2})</div>${types.filter((t) => inFlow.has(t.id) || (t.id === 'data-model' && withModel)).map(item).join('')}
+<div class="ms-group">The platform also accepts</div>${types.filter((t) => !inFlow.has(t.id) && (t.id !== 'data-model' || !withModel)).map(item).join('')}`);
 }
 
 /** EQE or DQE: one type of testing per run. */
